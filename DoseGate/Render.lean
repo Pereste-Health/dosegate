@@ -21,6 +21,7 @@ inductive Block where
   | inactiveOrder (id : List Char)
   | missingField (id : List Char) (f : Field)
   | unseparated
+  | unbound
   deriving Repr, DecidableEq, Inhabited
 
 def blockedToken (p : Policy) (tok : List Char) : Bool :=
@@ -54,9 +55,28 @@ def sepChain : List (List Char) → Bool
 
 def allSeparated (ps : List (List Char)) : Bool := sepChain (ps.filter (!·.isEmpty))
 
+def isSentenceEnd (c : Char) : Bool :=
+  c == '.' || c == '!' || c == '?' || c == ';' || c == ':' || c == '\n'
+
+def sentenceGroups : List Seg → List (Field × List Char) → List (List (Field × List Char))
+  | [], cur => [cur]
+  | .text t :: rest, cur =>
+      if t.any isSentenceEnd then cur :: sentenceGroups rest [] else sentenceGroups rest cur
+  | .slot f id :: rest, cur => sentenceGroups rest ((f, id) :: cur)
+
+def groupBound (g : List (Field × List Char)) : Bool :=
+  let fs := g.map (·.1)
+  let ids := g.map (·.2)
+  ids.all (· == (ids.headD [])) &&
+  fs.Nodup &&
+  (!fs.contains .sig || !(fs.contains .dose || fs.contains .frequency || fs.contains .route)) &&
+  (!(fs.contains .dose || fs.contains .frequency || fs.contains .route || fs.contains .sig) ||
+    fs.contains .drug)
+
 def render (p : Policy) (chart : List MedReq) (out : List Char) : Except Block (List Char) := do
   if !(chart.map (·.id)).Nodup then throw .duplicateIds
   let some segs := parseTemplate out | throw .malformed
+  if !(sentenceGroups segs []).all groupBound then throw .unbound
   let pieces ← segs.mapM (renderSeg p chart)
   if !allSeparated pieces then throw .unseparated
   pure pieces.flatten

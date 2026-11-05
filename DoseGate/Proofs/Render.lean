@@ -41,4 +41,8 @@ theorem render_missing_field {p : Policy} {chart : List MedReq} {out id : List C
 theorem render_duplicate_ids {p : Policy} {chart : List MedReq} {out : List Char}
     (h : ¬ (chart.map (·.id)).Nodup) : ∃ b, render p chart out = .error b := sorry
 
+theorem render_binding {p : Policy} {chart : List MedReq} {out r : List Char} {segs : List Seg}
+    (h : render p chart out = .ok r) (hp : parseTemplate out = some segs) :
+    ∀ g ∈ sentenceGroups segs [], groupBound g = true := sorry
+
 end DoseGate

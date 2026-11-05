@@ -15,8 +15,9 @@ def show' (e : Except Block (List Char)) : String := match e with
 #eval String.ofList (fmtDec ⟨100, 2⟩)
 #eval String.ofList (fmtDec ⟨5, 4⟩)
 #eval parseDec? "0.0005".toList
+#eval show' (render {} [met] "Take {{drug:m1}} {{dose:m1}} {{route:m1}} {{frequency:m1}}.".toList)
 #eval show' (render {} [met] "Take {{dose:m1}} {{route:m1}} {{frequency:m1}}.".toList)
-#eval show' (render {} [met] "Your plan: {{sig:m1}}.".toList)
+#eval show' (render {} [met] "Your plan for {{drug:m1}} is {{sig:m1}}.".toList)
 #eval show' (render {} [met] "Take 2 tablets {{frequency:m1}}.".toList)
 #eval show' (render {} [met] "Take 1{{dose:m1}}.".toList)
 #eval show' (render {} [met] "Take {{dose:m2}}.".toList)
