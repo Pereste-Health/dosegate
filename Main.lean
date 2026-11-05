@@ -108,12 +108,15 @@ def requestChart (ignoreFreeText : Bool) (req : Lean.Json) : Except (Lean.Json Ã
           match subjectProblem patient req with
           | some e => .error (errorJson e, 1)
           | none =>
-              match chartOf ignoreFreeText patient req with
-              | none => .error (errorJson "request has neither bundle nor medicationRequests", 1)
-              | some chart =>
-                  if chart.length > maxOrders then
-                    .error (errorJson s!"the request has more than {maxOrders} MedicationRequests", 1)
-                  else .ok chart
+              match orderProblems patient req with
+              | some e => .error (errorJson e, 1)
+              | none =>
+                  match chartOf ignoreFreeText patient req with
+                  | none => .error (errorJson "request has neither bundle nor medicationRequests", 1)
+                  | some chart =>
+                      if chart.length > maxOrders then
+                        .error (errorJson s!"the request has more than {maxOrders} MedicationRequests", 1)
+                      else .ok chart
 
 def renderChart (o : Opts) (chart : List MedReq) (out : String) : Lean.Json Ã— UInt8 :=
   match render o.policy chart out.toList with
