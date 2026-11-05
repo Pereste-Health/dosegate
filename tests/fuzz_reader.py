@@ -9,7 +9,9 @@ orders and output templates are mutated, sent as one JSON request per line throu
 a single serve process, and each reply is compared with the prediction: the status,
 and the reason for a block or the text for an ok. An error reply must be an error.
 
---core v2 (default) judges the binary against version 2.1, the current layer.
+--core v2 (default) judges the binary against version 2.1, the current layer. Its shape rules
+reject a wrong JSON type, an empty string, or an unknown key in a request, bundle, or bundle entry
+wherever the reader would otherwise skip or default the value. The v1 core has none of these rules.
 --core v1 judges it against the layer before version 2 (no 2.1 rules).
 --pre-merge accepts a disagreement when the reply matches the version 1 prediction
 exactly: the binary still has the version 1 core, and the difference comes from a
@@ -159,12 +161,17 @@ CORES = {
     "v1": {"vocab": VOCAB_V1, "total": TOTAL_WORDS_V1, "shapes": V1_SHAPES, "free_drug_slot": True,
            "related": "token", "ambiguity_all_fields": False, "name_rules": "v1", "hours_rule": False,
            "daily_needs_timing": False, "ambiguous_reason": "ambiguousDaily",
-           "gate_2_1": False, "require_all": False, "text_chars": TEXT_CHARS_V1},
+           "gate_2_1": False, "require_all": False, "text_chars": TEXT_CHARS_V1, "strict": False},
     "v2": {"vocab": VOCAB_V2, "total": TOTAL_WORDS_V2, "shapes": V2_SHAPES, "free_drug_slot": False,
            "related": "conservative", "ambiguity_all_fields": True, "name_rules": "v2", "hours_rule": True,
            "daily_needs_timing": True, "ambiguous_reason": "ambiguousDrug",
-           "gate_2_1": True, "require_all": True, "text_chars": TEXT_CHARS_V2},
+           "gate_2_1": True, "require_all": True, "text_chars": TEXT_CHARS_V2, "strict": True},
 }
+REQUEST_KEYS = ("output", "bundle", "medicationRequests", "patient")
+BUNDLE_KEYS = ("resourceType", "id", "meta", "implicitRules", "language", "identifier", "type", "timestamp",
+               "total", "link", "entry", "signature", "extension")
+ENTRY_KEYS = ("fullUrl", "resource", "search", "response", "link", "extension")
+FHIR_PERIOD_UNITS = ("s", "min", "h", "d", "wk", "mo", "a")
 ASCII_LETTERS = set(string.ascii_letters)
 SLOT = re.compile(r"\{\{(drug|dose|frequency|route|sig|daily):([A-Za-z0-9.\-]+)\}\}")
 SENTENCE_END = re.compile(r"[.!?;:\n]")
@@ -831,6 +838,86 @@ def render(chart, out, cfg):
     return ("ok", "".join(pieces))
 
 
+def is_text(value):
+    return isinstance(value, str) and trim(value) != ""
+
+
+def is_number(value):
+    return isinstance(value, Decimal)
+
+
+def is_whole(value):
+    return isinstance(value, Decimal) and value >= 0 and value == value.to_integral_value()
+
+
+def field_ok(obj, key, ok):
+    value = obj.get(key)
+    return value is None or ok(value)
+
+
+def list_of(ok):
+    return lambda value: isinstance(value, list) and all(ok(item) for item in value)
+
+
+def keys_allowed(obj, allowed):
+    return all(key in allowed or obj[key] is None for key in obj)
+
+
+def code_ok(coding):
+    return isinstance(coding, dict) and all(field_ok(coding, k, is_text) for k in ("system", "code", "display"))
+
+
+def concept_ok(concept):
+    return isinstance(concept, dict) and field_ok(concept, "text", is_text) \
+        and field_ok(concept, "coding", list_of(code_ok))
+
+
+def quantity_ok_shape(quantity):
+    return isinstance(quantity, dict) and all(field_ok(quantity, k, ok) for k, ok in (
+        ("value", is_number), ("unit", is_text), ("code", is_text), ("system", is_text)))
+
+
+def rate_ok(rate):
+    return isinstance(rate, dict) and field_ok(rate, "doseQuantity", quantity_ok_shape)
+
+
+def timing_ok(timing):
+    if not isinstance(timing, dict):
+        return False
+    repeat = timing.get("repeat")
+    if repeat is None:
+        return True
+    return isinstance(repeat, dict) and field_ok(repeat, "frequency", is_whole) \
+        and field_ok(repeat, "period", is_whole) \
+        and field_ok(repeat, "periodUnit", lambda u: isinstance(u, str) and u in FHIR_PERIOD_UNITS)
+
+
+def dosage_ok(dosage):
+    return isinstance(dosage, dict) and field_ok(dosage, "timing", timing_ok) \
+        and field_ok(dosage, "route", concept_ok) and field_ok(dosage, "doseAndRate", list_of(rate_ok)) \
+        and field_ok(dosage, "asNeededBoolean", lambda v: isinstance(v, bool))
+
+
+def order_ok(order):
+    return field_ok(order, "resourceType", lambda v: v == "MedicationRequest") \
+        and field_ok(order, "doNotPerform", lambda v: isinstance(v, bool)) \
+        and (order.get("medicationCodeableConcept") is not None or order.get("medicationReference") is not None) \
+        and field_ok(order, "medicationCodeableConcept", concept_ok) \
+        and field_ok(order, "dosageInstruction", list_of(dosage_ok)) \
+        and field_ok(order, "dispenseRequest", lambda v: isinstance(v, dict)) \
+        and field_ok(order, "meta", lambda v: isinstance(v, dict))
+
+
+def entry_ok(entry):
+    return isinstance(entry, dict) and keys_allowed(entry, ENTRY_KEYS) \
+        and isinstance(entry.get("resource"), dict) and is_text(entry["resource"].get("resourceType"))
+
+
+def bundle_ok(bundle):
+    return keys_allowed(bundle, BUNDLE_KEYS) and field_ok(bundle, "resourceType", lambda v: v == "Bundle") \
+        and all(entry_ok(entry) for entry in bundle["entry"])
+
+
 def predict(line, core):
     cfg = CORES[core]
     text = line.strip(" \t\r\n")
@@ -847,6 +934,8 @@ def predict(line, core):
         return ("error",)
     if cfg["gate_2_1"] and request.get("bundle") is not None and request.get("medicationRequests") is not None:
         return ("error",)
+    if cfg["strict"] and not keys_allowed(request, REQUEST_KEYS):
+        return ("error",)
     if "bundle" in request:
         bundle = request["bundle"]
         if not isinstance(bundle, dict) or not isinstance(bundle.get("entry"), list):
@@ -855,6 +944,8 @@ def predict(line, core):
         if kind is not None and not (isinstance(kind, str) and kind in ("searchset", "collection")):
             return ("error",)
         if any(isinstance(entry, dict) and entry.get("request") is not None for entry in bundle["entry"]):
+            return ("error",)
+        if cfg["strict"] and not bundle_ok(bundle):
             return ("error",)
         orders = [entry["resource"] for entry in bundle["entry"] if isinstance(entry, dict)
                   and isinstance(entry.get("resource"), dict)
@@ -866,6 +957,8 @@ def predict(line, core):
     else:
         return ("error",)
     if not all(isinstance(order, dict) and isinstance(order.get("id"), str) for order in orders):
+        return ("error",)
+    if cfg["strict"] and not all(is_text(order["id"]) and order_ok(order) for order in orders):
         return ("error",)
     patient = request.get("patient")
     if patient is not None and (not isinstance(patient, str) or patient == ""):

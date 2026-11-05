@@ -1,0 +1,1 @@
+{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "m1", "status": "active", "intent": "order", "medicationCodeableConcept": {"text": "aspirin"}, "subject": {"reference": "Patient/pat1"}, "dosageInstruction": {}}], "output": "Take {{drug:m1}} {{dose:m1}} {{route:m1}} {{frequency:m1}}."}

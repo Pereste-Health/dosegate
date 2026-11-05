@@ -1,0 +1,1 @@
+{"bundle": {"resourceType": "Bundle", "type": "collection", "entry": [{"fullUrl": "urn:uuid:m1"}]}, "output": "Take {{drug:m1}} {{dose:m1}} {{route:m1}} {{frequency:m1}}."}
