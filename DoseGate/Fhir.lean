@@ -153,8 +153,11 @@ def dailyDose? (m : MedReq) : Option Dose :=
 
 def drugNameChar (c : Char) : Bool := c.isAlpha || c == ' ' || c == '-'
 
+def nameEdgesAlpha (cs : List Char) : Bool :=
+  (cs.head?.map Char.isAlpha).getD false && (cs.getLast?.map Char.isAlpha).getD false
+
 def drugNameOk (cs : List Char) : Bool :=
-  cs.any Char.isAlpha && cs.length ≤ 60 && (tokens cs).length ≤ 5 && cs.all drugNameChar &&
+  nameEdgesAlpha cs && cs.any Char.isAlpha && cs.length ≤ 60 && (tokens cs).length ≤ 5 && cs.all drugNameChar &&
     !(tokens cs).any isForbidden && !(tokens cs).any isNameWord
 
 def fmtField (f : Field) (m : MedReq) : Option (List Char) :=

@@ -149,6 +149,11 @@ def trimmed (s : String) : String := s.trimAscii.toString
 
 def sameName (a b : String) : Bool := (trimmed a).toLower == (trimmed b).toLower
 
+def namePrefixOf (t d : String) : Bool :=
+  let tl := (trimmed t).toLower.toList
+  let dl := (trimmed d).toLower.toList
+  tl.isPrefixOf dl && ((dl.drop tl.length).head?.map (fun c => !c.isAlpha)).getD true
+
 def displaysOf (cc : Json) : List String :=
   ((jArr? cc "coding").filterMap fun c => (jStr? c "display").map trimmed).filter (!·.isEmpty)
 
@@ -162,7 +167,7 @@ def jDrug (mr : Json) : List Char :=
           | d :: ds => if ds.all (sameName · d) then d else ""
           | [] => ""
         match (jStr? cc "text").map trimmed with
-        | some t => if t.isEmpty then common else if displays.all (sameName · t) then t else ""
+        | some t => if t.isEmpty then common else if displays.all (namePrefixOf t ·) then t else ""
         | none => common
   name.toList
 

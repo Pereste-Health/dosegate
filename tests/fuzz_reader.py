@@ -123,6 +123,7 @@ VOCAB_V2 = set("""a an the and or to of for about on at by from here there this 
 they them their you your yours we our us is are be been being was were will also so ask have has medicine
 medicines medication medications list doctor doctors nurse nurses pharmacist pharmacists care team question
 questions health plan please thank thanks hello hi important information read carefully what who how why""".split())
+VOCAB_V2 -= {"about", "or", "it"}
 INSTR_WORDS = {"take"}
 TOTAL_WORDS_V1 = {"that", "is", "a", "total", "of"}
 TOTAL_WORDS_V2 = {"which", "is"}
@@ -205,6 +206,11 @@ def ascii_lower(text):
 
 def trim(text):
     return text.strip(" \t\r\n")
+
+
+def name_prefix_of(t, d):
+    tl, dl = ascii_lower(trim(t)), ascii_lower(trim(d))
+    return dl.startswith(tl) and (len(dl) == len(tl) or not ("a" <= dl[len(tl)] <= "z"))
 
 
 def same_text(a, b):
@@ -304,7 +310,7 @@ def drug_of(order):
         spelled = trim(text)
         if spelled == "":
             return common
-        return spelled if all(same_text(d, spelled) for d in displays) else ""
+        return spelled if all(name_prefix_of(spelled, d) for d in displays) else ""
     return common
 
 
@@ -552,6 +558,8 @@ def drug_name_ok(name, cfg):
     if not all(c in ASCII_LETTERS or c in " -" for c in name):
         return False
     if any(is_forbidden(w) for w in words):
+        return False
+    if cfg["name_rules"] == "v2" and not (name[:1] in ASCII_LETTERS and name[-1:] in ASCII_LETTERS):
         return False
     if cfg["name_rules"] == "v2":
         for w in words:
