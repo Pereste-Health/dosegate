@@ -22,6 +22,10 @@ def maxRequestBytes : Nat := 2000000
 def reservedKeys : List String := ["allow", "extraWords"]
 def orderIntents : List String :=
   ["order", "original-order", "reflex-order", "filler-order", "instance-order"]
+def statusCodes : List String :=
+  ["active", "on-hold", "cancelled", "completed", "entered-in-error", "stopped", "draft", "unknown"]
+def intentCodes : List String :=
+  ["proposal", "plan", "order", "original-order", "reflex-order", "filler-order", "instance-order", "option"]
 
 def decodeKey (raw : List Char) : String :=
   match Lean.Json.parse ("\"" ++ String.ofList raw ++ "\"") with
@@ -199,13 +203,23 @@ def doNotPerform (mr : Json) : Bool :=
   | some (.bool false) | none => false
   | some _ => true
 
+def subjectRef (mr : Json) : Option String :=
+  ((jField? mr "subject").bind (jStr? · "reference")).filter fun r => !r.isEmpty
+
+def patientIdOf? (r : String) : Option String :=
+  let segs := r.splitOn "/"
+  let id? :=
+    if r.startsWith "urn:uuid:" then some (r.drop 9).toString
+    else if segs.length = 2 && segs.head? = some "Patient" then segs.getLast?
+    else if (r.startsWith "http://" || r.startsWith "https://") && segs.length ≥ 2
+        && segs[segs.length - 2]? = some "Patient" then segs.getLast?
+    else none
+  id?.filter fun x => !x.isEmpty && !x.any (fun c => c == '/' || c == '?' || c == '#')
+
 def subjectMatches (patient : Option String) (mr : Json) : Bool :=
   match patient with
   | none => true
-  | some p =>
-      match (jField? mr "subject").bind (fun s => jStr? s "reference") with
-      | some r => r == "Patient/" ++ p || r == "urn:uuid:" ++ p
-      | none => false
+  | some p => (subjectRef mr).bind patientIdOf? == some p
 
 def isActive (patient : Option String) (mr : Json) : Bool :=
   jStr? mr "status" == some "active" &&
@@ -372,8 +386,20 @@ def orderResources (req : Json) : List Json :=
   | some b => bundleResources b
   | none => jArr? req "medicationRequests"
 
-def subjectRef (mr : Json) : Option String :=
-  ((jField? mr "subject").bind (jStr? · "reference")).filter fun r => !r.isEmpty
+def orderProblem (patient : Option String) (mr : Json) : Option String :=
+  let id := (jStr? mr "id").getD ""
+  if !((jStr? mr "status").any statusCodes.contains) then
+    some ("MedicationRequest " ++ id ++ " needs a status string that is one of " ++ ", ".intercalate statusCodes)
+  else if !((jStr? mr "intent").any intentCodes.contains) then
+    some ("MedicationRequest " ++ id ++ " needs an intent string that is one of " ++ ", ".intercalate intentCodes)
+  else match patient with
+    | some _ =>
+        if ((subjectRef mr).bind patientIdOf?).isSome then none
+        else some ("MedicationRequest " ++ id ++ " needs a subject.reference that is Patient/id, urn:uuid:id, or an http or https URL ending in Patient/id")
+    | none => none
+
+def orderProblems (patient : Option String) (req : Json) : Option String :=
+  (orderResources req).findSome? (orderProblem patient)
 
 def subjectProblem (patient : Option String) (req : Json) : Option String :=
   let refs := (orderResources req).map subjectRef

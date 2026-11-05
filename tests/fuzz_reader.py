@@ -47,6 +47,9 @@ MAX_NAME_LENGTH = 60
 MAX_NAME_WORDS = 5
 RESERVED_KEYS = ("allow", "extraWords")
 ORDER_INTENTS = ("order", "original-order", "reflex-order", "filler-order", "instance-order")
+STATUS_CODES = ("active", "on-hold", "cancelled", "completed", "entered-in-error", "stopped", "draft", "unknown")
+INTENT_CODES = ("proposal", "plan", "order", "original-order", "reflex-order", "filler-order", "instance-order",
+                "option")
 PERIOD_UNITS = ("h", "d", "wk", "mo")
 SNOMED = "http://snomed.info/sct"
 UCUM = "http://unitsofmeasure.org"
@@ -317,6 +320,21 @@ def drug_of(order):
     return common
 
 
+def patient_id_of(ref):
+    segs = ref.split("/")
+    if ref.startswith("urn:uuid:"):
+        ident = ref[len("urn:uuid:"):]
+    elif len(segs) == 2 and segs[0] == "Patient":
+        ident = segs[1]
+    elif (ref.startswith("http://") or ref.startswith("https://")) and len(segs) >= 2 and segs[-2] == "Patient":
+        ident = segs[-1]
+    else:
+        return None
+    if ident == "" or any(c in ident for c in "/?#"):
+        return None
+    return ident
+
+
 def is_active(order, patient):
     if order.get("status") != "active":
         return False
@@ -326,7 +344,7 @@ def is_active(order, patient):
     not_performed = order.get("doNotPerform")
     if not_performed is not None and not_performed is not False:
         return False
-    if patient is not None and subject_ref(order) not in ("Patient/" + patient, "urn:uuid:" + patient):
+    if patient is not None and patient_id_of(subject_ref(order)) != patient:
         return False
     return True
 
@@ -849,6 +867,10 @@ def predict(line, core):
         return ("error",)
     refs = [subject_ref(order) for order in orders]
     if None in refs or (patient is None and len(set(refs)) > 1):
+        return ("error",)
+    if any(order.get("status") not in STATUS_CODES or order.get("intent") not in INTENT_CODES for order in orders):
+        return ("error",)
+    if patient is not None and any(patient_id_of(ref) is None for ref in refs):
         return ("error",)
     if len(orders) > MAX_ORDERS:
         return ("error",)
