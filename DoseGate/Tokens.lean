@@ -78,8 +78,8 @@ def vocab : List String :=
    "yours", "we", "our", "us", "is", "are", "be", "been", "being", "was", "were", "will",
    "also", "so", "ask", "have", "has", "medicine", "medicines", "medication", "medications",
    "list", "doctor", "doctors", "nurse", "nurses", "pharmacist", "pharmacists", "care", "team",
-   "question", "questions", "health", "plan", "please", "thank", "thanks", "hello", "hi",
-   "important", "information", "read", "carefully", "what", "who", "how", "why"]
+   "question", "questions", "please", "thank", "thanks", "hello", "hi",
+   "information", "read", "carefully", "what", "who", "how", "why"]
 
 def instrWords : List String := ["take"]
 

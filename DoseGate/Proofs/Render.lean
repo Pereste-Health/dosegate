@@ -380,7 +380,7 @@ theorem hasSignBeforeSlot_split : ∀ (s u : List Seg) (t : List Char) (f : Fiel
       hasSignBeforeSlot_split s u t f id (hasSignBeforeSlot_cons (x := x) (by simpa using h))
 
 theorem endsSign_false {t : List Char} (h : endsSign t = false) :
-    t.getLast? ≠ some '-' ∧ t.getLast? ≠ some '+' := by
+    (dropTrailingSpaces t).getLast? ≠ some '-' ∧ (dropTrailingSpaces t).getLast? ≠ some '+' := by
   constructor <;> intro heq <;> simp [endsSign, heq] at h
 
 theorem render_decomp_full {p : Policy} {chart : List MedReq} {out r : List Char}
@@ -437,7 +437,8 @@ theorem render_no_sign_before_slot {p : Policy} {chart : List MedReq} {out r : L
     ∃ segs pieces, parseTemplate out = some segs ∧ Forall₂ (SegRendersTo chart) segs pieces ∧
       r = pieces.flatten ∧
       ∀ (s u : List Seg) (t : List Char) (f : Field) (id : List Char),
-        segs = s ++ Seg.text t :: Seg.slot f id :: u → t.getLast? ≠ some '-' ∧ t.getLast? ≠ some '+' := by
+        segs = s ++ Seg.text t :: Seg.slot f id :: u →
+        (dropTrailingSpaces t).getLast? ≠ some '-' ∧ (dropTrailingSpaces t).getLast? ≠ some '+' := by
   obtain ⟨hn, segs, pieces, hp, hF, -, hr, -, -, hs, -⟩ := render_decomp_full h
   refine ⟨segs, pieces, hp, forall₂_spec hn hF, hr, ?_⟩
   intro s u t f id hsplit

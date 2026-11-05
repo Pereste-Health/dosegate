@@ -10,13 +10,13 @@ namespace DoseGate
 
 structure Policy where
   extraWords : List String := []
-  requireAll : Bool := false
+  requireAll : Bool := true
   deriving Repr, Inhabited
 
 inductive Block where
   | malformed
   | duplicateIds
-  | nonAscii
+  | disallowedCharacter
   | forbiddenWord (tok : List Char)
   | unknownWord (tok : List Char)
   | unknownRef (id : List Char)
@@ -39,7 +39,7 @@ def isTextChar (c : Char) : Bool :=
     c == '(' || c == ')' || c == '\'' || c == '"' || c == '-' || c == '/'
 
 def checkText (p : Policy) (t : List Char) : Except Block Unit :=
-  if !t.all isTextChar then .error .nonAscii
+  if !t.all isTextChar then .error .disallowedCharacter
   else match (tokens t).find? isForbidden with
     | some tok => .error (.forbiddenWord tok)
     | none => match (tokens t).find? (fun tok => !allowedWord p tok) with
@@ -144,8 +144,10 @@ def noRepeatedValue (segs : List Seg) : Bool :=
   vs.all fun fi => fi.1 != .sig ||
     !vs.any fun gj => gj.2 == fi.2 && (gj.1 == .dose || gj.1 == .route || gj.1 == .frequency)
 
+def dropTrailingSpaces (t : List Char) : List Char := (t.reverse.dropWhile (· == ' ')).reverse
+
 def endsSign (t : List Char) : Bool :=
-  (t.getLast?.map fun c => c == '-' || c == '+').getD false
+  ((dropTrailingSpaces t).getLast?.map fun c => c == '-' || c == '+').getD false
 
 def hasSignBeforeSlot : List Seg → Bool
   | .text t :: .slot f id :: rest => endsSign t || hasSignBeforeSlot (.slot f id :: rest)

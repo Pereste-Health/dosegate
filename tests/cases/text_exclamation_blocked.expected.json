@@ -1,1 +1,1 @@
-{"detail": "output contains a character that model text may not use: only letters, digits, spaces, line breaks, and . , ; : ( ) ' \" - /", "reason": "nonAscii", "status": "blocked"}
+{"detail": "output contains a character that model text may not use: only letters, digits, spaces, line breaks, and . , ; : ( ) ' \" - /", "reason": "disallowedCharacter", "status": "blocked"}

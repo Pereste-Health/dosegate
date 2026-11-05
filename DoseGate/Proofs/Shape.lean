@@ -221,4 +221,11 @@ theorem render_all_orders_named {p : Policy} {chart : List MedReq} {out r : List
   · rw [← hid']
     exact mem_of_mem_slotsOf segs f id hs.1
 
+
+theorem render_all_orders_named_default {chart : List MedReq} {out r : List Char}
+    (h : render ({} : Policy) chart out = .ok r) :
+    ∃ segs, parseTemplate out = some segs ∧
+      ∀ m ∈ chart, m.active = true → ∃ f, f ≠ .drug ∧ Seg.slot f m.id ∈ segs :=
+  render_all_orders_named (p := {}) rfl h
+
 end DoseGate

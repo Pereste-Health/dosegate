@@ -33,7 +33,10 @@ done
 for request in tests/raw/*.request.json; do
     name="$(basename "$request" .request.json)"
     expected="tests/raw/$name.expected.json"
-    "$bin" render < "$request" > "$out/actual.json"
+    flags="$root/tests/raw/$name.flags"
+    extra=""
+    [ -f "$flags" ] && extra="$(cat "$flags")"
+    "$bin" render $extra < "$request" > "$out/actual.json"
     code=$?
     if python3 tests/check.py case "$out/actual.json" "$code" "$expected"; then
         pass=$((pass + 1))
@@ -129,6 +132,19 @@ else
     echo "FAIL serve session"
     fail=$((fail + 1))
 fi
+
+for request in tests/fallback/*.request.json; do
+    name="$(basename "$request" .request.json)"
+    expected="tests/fallback/$name.expected.json"
+    "$bin" fallback < "$request" > "$out/actual.json"
+    code=$?
+    if python3 tests/check.py case "$out/actual.json" "$code" "$expected"; then
+        pass=$((pass + 1))
+    else
+        echo "FAIL fallback $name"
+        fail=$((fail + 1))
+    fi
+done
 
 echo "passed: $pass, failed: $fail"
 [ "$fail" -eq 0 ]

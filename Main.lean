@@ -7,7 +7,7 @@ open DoseGate
 def blockName : Block → String
   | .malformed => "malformed"
   | .duplicateIds => "duplicateIds"
-  | .nonAscii => "nonAscii"
+  | .disallowedCharacter => "disallowedCharacter"
   | .forbiddenWord _ => "forbiddenWord"
   | .unknownWord _ => "unknownWord"
   | .unknownRef _ => "unknownRef"
@@ -54,7 +54,7 @@ def locateDetail (out : String) (pred : List Seg → Bool) (problem fallback : S
 def blockDetail (p : Policy) (out : String) : Block → String
   | .malformed => "output has an unclosed, stray, or unrecognized brace"
   | .duplicateIds => "two MedicationRequests share one id"
-  | .nonAscii => "output contains a character that model text may not use: only letters, digits, spaces, line breaks, and . , ; : ( ) ' \" - /"
+  | .disallowedCharacter => "output contains a character that model text may not use: only letters, digits, spaces, line breaks, and . , ; : ( ) ' \" - /"
   | .forbiddenWord tok => "free text contains the forbidden word " ++ String.ofList tok
   | .unknownWord tok =>
       locateDetail out (fun g => (wordsOf g).contains tok)
@@ -72,7 +72,7 @@ def blockDetail (p : Policy) (out : String) : Block → String
   | .ambiguousDrug _ =>
       "another active order has the same or a related drug name, so the instructions could be confused"
   | .signBeforeSlot =>
-      "a text segment directly before a slot ends with - or +, which would put a sign in front of a filled value"
+      "a text segment directly before a slot ends with - or +, ignoring trailing spaces, which would put a sign in front of a filled value"
   | .omittedOrder id =>
       "MedicationRequest " ++ String.ofList id ++ " is active but no dose, route, frequency, sig, or daily slot names it"
 
@@ -90,38 +90,61 @@ structure Opts where
   policy : Policy
   ignoreFreeText : Bool
 
-def handle (o : Opts) (req : Lean.Json) : Lean.Json × UInt8 :=
+def outputProblem (out : String) : Option String :=
+  if out.length > maxOutput then some s!"the output is longer than {maxOutput} characters"
+  else if (out.splitOn "{{").length - 1 > maxSlots then some s!"the output has more than {maxSlots} slots"
+  else none
+
+def requestChart (ignoreFreeText : Bool) (req : Lean.Json) : Except (Lean.Json × UInt8) (List MedReq) :=
+  match shapeProblem req with
+  | some e => .error (errorJson e, 1)
+  | none =>
+      match patientOf req with
+      | .error e => .error (errorJson e, 1)
+      | .ok patient =>
+          match subjectProblem patient req with
+          | some e => .error (errorJson e, 1)
+          | none =>
+              match chartOf ignoreFreeText patient req with
+              | none => .error (errorJson "request has neither bundle nor medicationRequests", 1)
+              | some chart =>
+                  if chart.length > maxOrders then
+                    .error (errorJson s!"the request has more than {maxOrders} MedicationRequests", 1)
+                  else .ok chart
+
+def renderChart (o : Opts) (chart : List MedReq) (out : String) : Lean.Json × UInt8 :=
+  match render o.policy chart out.toList with
+  | .ok text =>
+      if text.length > maxOutput then
+        (errorJson s!"the rendered text is longer than {maxOutput} characters", 1)
+      else (okJson (String.ofList text), 0)
+  | .error b => (blockedJson b (blockDetail o.policy out b), 2)
+
+def handleRender (o : Opts) (req : Lean.Json) : Lean.Json × UInt8 :=
   match jStr? req "output" with
   | none => (errorJson "request has no output string", 1)
   | some out =>
-      if out.length > maxOutput then
-        (errorJson s!"the output is longer than {maxOutput} characters", 1)
-      else if (out.splitOn "{{").length - 1 > maxSlots then
-        (errorJson s!"the output has more than {maxSlots} slots", 1)
-      else
-        match shapeProblem req with
-        | some e => (errorJson e, 1)
-        | none =>
-            match patientOf req with
-            | .error e => (errorJson e, 1)
-            | .ok patient =>
-                match subjectProblem patient req with
-                | some e => (errorJson e, 1)
-                | none =>
-                    match chartOf o.ignoreFreeText patient req with
-                    | none => (errorJson "request has neither bundle nor medicationRequests", 1)
-                    | some chart =>
-                        if chart.length > maxOrders then
-                          (errorJson s!"the request has more than {maxOrders} MedicationRequests", 1)
-                        else
-                          match render o.policy chart out.toList with
-                          | .ok text =>
-                              if text.length > maxOutput then
-                                (errorJson s!"the rendered text is longer than {maxOutput} characters", 1)
-                              else (okJson (String.ofList text), 0)
-                          | .error b => (blockedJson b (blockDetail o.policy out b), 2)
+      match outputProblem out with
+      | some e => (errorJson e, 1)
+      | none =>
+          match requestChart o.ignoreFreeText req with
+          | .error r => r
+          | .ok chart => renderChart o chart out
 
-def respondLine (o : Opts) (line : String) : Lean.Json × UInt8 :=
+def fallbackTemplate (chart : List MedReq) : String :=
+  String.intercalate "\n" ((chart.filter (·.active)).map fun m =>
+    "Take {{drug:" ++ String.ofList m.id ++ "}} {{sig:" ++ String.ofList m.id ++ "}}.")
+
+def handleFallback (o : Opts) (req : Lean.Json) : Lean.Json × UInt8 :=
+  match requestChart o.ignoreFreeText req with
+  | .error r => r
+  | .ok chart =>
+      let out := fallbackTemplate chart
+      match outputProblem out with
+      | some e => (errorJson e, 1)
+      | none => renderChart o chart out
+
+def respondLine (handler : Lean.Json → Lean.Json × UInt8) (line : String) : Lean.Json × UInt8 :=
   if line.utf8ByteSize > maxRequestBytes then
     (errorJson s!"the request is larger than {maxRequestBytes} bytes", 1)
   else
@@ -130,7 +153,7 @@ def respondLine (o : Opts) (line : String) : Lean.Json × UInt8 :=
     | none =>
         match Lean.Json.parse line with
         | .error e => (errorJson ("invalid JSON: " ++ e), 1)
-        | .ok req => handle o req
+        | .ok req => handler req
 
 partial def readAll (h : IO.FS.Stream) (acc : String := "") : IO String := do
   let line ← h.getLine
@@ -144,7 +167,7 @@ partial def serveLoop (o : Opts) (stdin stdout : IO.FS.Stream) : IO Unit := do
   if line.isEmpty then return
   let text := line.trimAscii.toString
   if !text.isEmpty then
-    stdout.putStrLn (respondLine o text).1.compress
+    stdout.putStrLn (respondLine (handleRender o) text).1.compress
     stdout.flush
   serveLoop o stdin stdout
 
@@ -154,7 +177,7 @@ def parseOptions : List String → Option (Option String × Bool × Bool)
       (parseOptions rest).bind fun (f, i, a) => if f.isSome then none else some (some path, i, a)
   | "--ignore-free-text" :: rest =>
       (parseOptions rest).bind fun (f, i, a) => if i then none else some (f, true, a)
-  | "--require-all-orders" :: rest =>
+  | "--allow-omissions" :: rest =>
       (parseOptions rest).bind fun (f, i, a) => if a then none else some (f, i, true)
   | _ => none
 
@@ -171,8 +194,12 @@ def policyOf : Option String → IO Policy
       pure { extraWords := words }
 
 def usage : IO UInt32 := do
-  IO.eprintln "usage: dosegate render|serve [--extra-words FILE] [--ignore-free-text] [--require-all-orders]"
+  IO.eprintln "usage: dosegate render|serve [--extra-words FILE] [--ignore-free-text] [--allow-omissions], or dosegate fallback"
   pure 1
+
+def optsOf (file? : Option String) (ign allow : Bool) : IO Opts := do
+  let pol ← policyOf file?
+  pure { policy := { pol with requireAll := !allow }, ignoreFreeText := ign }
 
 def main (args : List String) : IO UInt32 := do
   let stdin ← IO.getStdin
@@ -181,16 +208,20 @@ def main (args : List String) : IO UInt32 := do
     | c :: r => (c, r)
     | [] => ("", [])
   match cmd, parseOptions rest with
-  | "render", some (file?, ign, all) =>
-      let pol ← policyOf file?
-      let o : Opts := { policy := { pol with requireAll := all }, ignoreFreeText := ign }
-      let (resp, code) := respondLine o (← readAll stdin)
+  | "render", some (file?, ign, allow) =>
+      let o ← optsOf file? ign allow
+      let (resp, code) := respondLine (handleRender o) (← readAll stdin)
       stdout.putStrLn resp.compress
       stdout.flush
       pure code.toUInt32
-  | "serve", some (file?, ign, all) =>
-      let pol ← policyOf file?
-      let o : Opts := { policy := { pol with requireAll := all }, ignoreFreeText := ign }
+  | "serve", some (file?, ign, allow) =>
+      let o ← optsOf file? ign allow
       serveLoop o stdin stdout
       pure 0
+  | "fallback", some (none, false, false) =>
+      let o : Opts := { policy := {}, ignoreFreeText := false }
+      let (resp, code) := respondLine (handleFallback o) (← readAll stdin)
+      stdout.putStrLn resp.compress
+      stdout.flush
+      pure code.toUInt32
   | _, _ => usage

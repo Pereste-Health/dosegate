@@ -193,6 +193,7 @@ open DoseGate
 #print axioms DoseGate.instr_total_clean
 #print axioms DoseGate.render_no_sign_before_slot
 #print axioms DoseGate.render_all_orders_named
+#print axioms DoseGate.render_all_orders_named_default
 #print axioms DoseGate.endsSign_false
 #print axioms DoseGate.hasSignBeforeSlot_cons
 #print axioms DoseGate.hasSignBeforeSlot_split

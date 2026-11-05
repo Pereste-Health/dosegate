@@ -122,7 +122,7 @@ symptom life""".split())
 VOCAB_V2 = set("""a an the and or to of for about on at by from here there this that these those it its
 they them their you your yours we our us is are be been being was were will also so ask have has medicine
 medicines medication medications list doctor doctors nurse nurses pharmacist pharmacists care team question
-questions health plan please thank thanks hello hi important information read carefully what who how why""".split())
+questions please thank thanks hello hi information read carefully what who how why""".split())
 VOCAB_V2 -= {"about", "or", "it"}
 INSTR_WORDS = {"take"}
 TOTAL_WORDS_V1 = {"that", "is", "a", "total", "of"}
@@ -153,11 +153,11 @@ CORES = {
     "v1": {"vocab": VOCAB_V1, "total": TOTAL_WORDS_V1, "shapes": V1_SHAPES, "free_drug_slot": True,
            "related": "token", "ambiguity_all_fields": False, "name_rules": "v1", "hours_rule": False,
            "daily_needs_timing": False, "ambiguous_reason": "ambiguousDaily",
-           "gate_2_1": False, "text_chars": TEXT_CHARS_V1},
+           "gate_2_1": False, "require_all": False, "text_chars": TEXT_CHARS_V1},
     "v2": {"vocab": VOCAB_V2, "total": TOTAL_WORDS_V2, "shapes": V2_SHAPES, "free_drug_slot": False,
            "related": "conservative", "ambiguity_all_fields": True, "name_rules": "v2", "hours_rule": True,
            "daily_needs_timing": True, "ambiguous_reason": "ambiguousDrug",
-           "gate_2_1": True, "text_chars": TEXT_CHARS_V2},
+           "gate_2_1": True, "require_all": True, "text_chars": TEXT_CHARS_V2},
 }
 ASCII_LETTERS = set(string.ascii_letters)
 SLOT = re.compile(r"\{\{(drug|dose|frequency|route|sig|daily):([A-Za-z0-9.\-]+)\}\}")
@@ -736,7 +736,7 @@ def no_repeated_value(segs):
 
 def check_text(text, cfg):
     if any(c not in cfg["text_chars"] for c in text):
-        return "nonAscii"
+        return "disallowedCharacter"
     words = tokens(text)
     if any(is_forbidden(w) for w in words):
         return "forbiddenWord"
@@ -764,9 +764,14 @@ def render(chart, out, cfg):
         return ("blocked", "unbound")
     if not no_repeated_value(segs):
         return ("blocked", "repeatedValue")
-    if cfg["gate_2_1"] and any(segs[i][0] == "text" and segs[i][1][-1] in "-+" and segs[i + 1][0] == "slot"
-                               for i in range(len(segs) - 1)):
+    if cfg["gate_2_1"] and any(segs[i][0] == "text" and segs[i][1].rstrip(" ").endswith(("-", "+"))
+                               and segs[i + 1][0] == "slot" for i in range(len(segs) - 1)):
         return ("blocked", "signBeforeSlot")
+    if cfg["require_all"] and any(
+            built["active"] and not any(seg[0] == "slot" and seg[1] != "drug" and seg[2] == built["id"]
+                                        for seg in segs)
+            for built in chart):
+        return ("blocked", "omittedOrder")
     pieces = []
     for seg in segs:
         if seg[0] == "text":

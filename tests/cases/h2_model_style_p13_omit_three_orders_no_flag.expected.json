@@ -1,1 +1,1 @@
-{"status": "ok", "text": "Here is your medicine list.\nTake metoprolol tartrate 25 mg by mouth twice a day.\nTake metformin 500 mg by mouth twice a day.\nTake albuterol 2 puffs breathed in every 4 hours as needed."}
+{"detail": "MedicationRequest m2 is active but no dose, route, frequency, sig, or daily slot names it", "reason": "omittedOrder", "status": "blocked"}
