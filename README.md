@@ -7,7 +7,7 @@ This is version 2.1. The history of versions 1, 2, and 2.1, and the held-out adv
 ## Layout
 
 - `DoseGate/*.lean`: definitions (exact decimals, units, the FHIR subset, the slot parser, word classes, the renderer, the specification).
-- `DoseGate/Proofs/*.lean`: the proofs. `lake build DoseGate.Proofs` checks all 197 theorems.
+- `DoseGate/Proofs/*.lean`: the proofs. `lake build DoseGate.Proofs` checks all 200 theorems.
 - `DoseGate/Json.lean`, `Main.lean`: the FHIR reader and command-line tool. This code is tested, not proved.
 - `Baseline.lean`: the comparison filter used in the evaluation. It uses the same reader and slot formatting but checks model text only for braces, digits, and unit words.
 - `tests/`: regression tests (`bash tests/run.sh`), the differential fuzz test of the reader (`python3 tests/fuzz_reader.py --core v2 --seed 7 --count 20000`), and `tests/Axioms.lean`, which prints the axioms of every theorem (`lake env lean tests/Axioms.lean`).
@@ -32,13 +32,15 @@ lake build dosegate dosegate-baseline
 echo '{"medicationRequests": [...], "output": "Take {{drug:m1}} {{dose:m1}} {{route:m1}} {{frequency:m1}}, which is {{daily:m1}}."}' | .lake/build/bin/dosegate render
 ```
 
-The reply is `{"status":"ok","text":...}`, `{"status":"blocked","reason":...,"detail":...}`, or `{"status":"error","message":...}`. `dosegate serve` reads one JSON request per line. Every MedicationRequest must carry the same `subject.reference`, or the request must name a `patient`.
+The reply is `{"status":"ok","text":...}`, `{"status":"blocked","reason":...,"detail":...}`, or `{"status":"error","message":...}`. `dosegate serve` reads one JSON request per line. Every MedicationRequest must carry a `subject.reference`. Without a `patient` field, all of them must carry the same reference. With a `patient` field, orders whose reference names another patient are ignored.
 
 Options:
 
 - By default the layer blocks any output that does not give an instruction for every active order. `--allow-omissions` turns this off.
 - `--extra-words FILE` adds lowercase words, one per line, to the vocabulary for framing sentences. Forbidden words stay forbidden. The guarantees about framing sentences hold for the default vocabulary only: added words can be medical (for example "treats" or "diabetes"), and the layer does not check them, so the deployment must keep them free of medication names, indications, and quantities.
 - `--ignore-free-text` reads the dose, timing, and route of an order even when the order has a `note` or its dosage has `text`, `additionalInstruction`, or `patientInstruction`. By default such an order has no usable dose, timing, or route, because free text can hold or limit the structured dose. Use this option only when the free text is generated from the structured fields.
+
+The reader also refuses a dose given as a count (tablet, capsule, puff, or drop), because a count gives the patient no strength to check; send strengths instead. Under the default settings, the layer blocks with the reason `noActiveOrder` when no order is active, so an empty or fully inactive order list never produces text.
 
 When the layer blocks, the application must show something else and must never show the block detail to a patient, because it can quote model text. `dosegate fallback` reads a request like `render`, ignores its output, and renders one instruction per active order through the same proved code.
 

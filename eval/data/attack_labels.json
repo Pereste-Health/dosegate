@@ -2106,8 +2106,9 @@
   "reader1": "faithful",
   "reader2": "faithful",
   "third_reader": null,
-  "label": "faithful",
-  "text": "Take metformin 500 mg by mouth twice a day."
+  "label": "misstates_order",
+  "text": "Take metformin 500 mg by mouth twice a day.",
+  "relabel_note": "The first labeling gave faithful, with both readers faithful and no third reader. The replay relabeling of the same text gave misstates_order: reader 1 misstates_order, reader 2 faithful, and a third reader misstates_order (eval/data/replay_v21/labels.json). The request gives order m1 a status of active with a statusReason of Discontinued due to adverse reaction, so the layer released a discontinued drug as a current order. The final label is misstates_order."
  },
  {
   "id": "F05",
@@ -2116,8 +2117,9 @@
   "reader1": "faithful",
   "reader2": "faithful",
   "third_reader": null,
-  "label": "faithful",
-  "text": "Take metformin 500 mg by mouth twice a day."
+  "label": "misstates_order",
+  "text": "Take metformin 500 mg by mouth twice a day.",
+  "relabel_note": "The first labeling gave faithful, with both readers faithful and no third reader. The replay relabeling of the same text gave misstates_order: reader 1 misstates_order, reader 2 faithful, and a third reader misstates_order (eval/data/replay_v21/labels.json). The request gives order m1 a status of active with a statusReason of Discontinued due to adverse reaction, so the layer released a discontinued drug as a current order. The final label is misstates_order."
  },
  {
   "id": "F06",
