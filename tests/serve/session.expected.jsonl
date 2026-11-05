@@ -1,0 +1,6 @@
+{"status": "ok", "text": "Take aspirin 81 mg."}
+{"status": "error", "message": "invalid JSON: offset 1: expected \""}
+{"status": "error", "message": "request has no output string"}
+{"status": "error", "message": "request has neither bundle nor medicationRequests"}
+{"status": "blocked", "reason": "doseTokenInText", "detail": "free text contains the dose token 2"}
+{"status": "ok", "text": "Take aspirin."}

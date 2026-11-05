@@ -1,0 +1,1 @@
+{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "d3", "status": "active", "medicationCodeableConcept": {"text": "metformin"}, "dosageInstruction": [{"doseAndRate": [{"doseQuantity": {"value": 500, "unit": "mg", "code": "mg"}}]}, {"doseAndRate": [{"doseQuantity": {"value": 1000, "unit": "mg", "code": "mg"}}]}]}], "output": "Take {{drug:d3}} {{dose:d3}}."}

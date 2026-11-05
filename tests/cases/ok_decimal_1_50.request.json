@@ -1,0 +1,1 @@
+{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "d2", "status": "active", "medicationCodeableConcept": {"text": "digoxin"}, "dosageInstruction": [{"doseAndRate": [{"doseQuantity": {"value": 1.50, "unit": "mg", "system": "http://unitsofmeasure.org", "code": "mg"}}]}]}], "output": "Take {{drug:d2}} {{dose:d2}}."}
