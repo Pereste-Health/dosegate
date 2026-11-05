@@ -16,8 +16,110 @@
       "dosageInstruction.additionalInstruction": 29,
       "dosageInstruction.patientInstruction": 0
     },
+    "flagged_orders_with_more_than_one_dosage_instruction": 0,
+    "flagged_orders_with_as_needed_phrase_without_flag": 3,
+    "share_of_bundles_with_active_mr_with_free_text": 0.4333,
     "share_of_active_mr_with_free_text": 0.2153,
-    "share_of_active_single_dosage_mr_with_free_text": 0.3269
+    "share_of_active_single_dosage_mr_with_free_text": 0.3269,
+    "flagged_order_texts": [
+      {
+        "dosageInstruction.text": "Take as needed.",
+        "dosageInstruction.additionalInstruction": null,
+        "orders": 89,
+        "asNeededBoolean_true": 89,
+        "asNeededBoolean_absent_or_false": 0
+      },
+      {
+        "dosageInstruction.text": "Every four to six hours (qualifier value)",
+        "dosageInstruction.additionalInstruction": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "225757006",
+                "display": "Every four to six hours (qualifier value)"
+              }
+            ],
+            "text": "Every four to six hours (qualifier value)"
+          }
+        ],
+        "orders": 17,
+        "asNeededBoolean_true": 0,
+        "asNeededBoolean_absent_or_false": 17
+      },
+      {
+        "dosageInstruction.text": "Every six hours (qualifier value)",
+        "dosageInstruction.additionalInstruction": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "307468000",
+                "display": "Every six hours (qualifier value)"
+              }
+            ],
+            "text": "Every six hours (qualifier value)"
+          }
+        ],
+        "orders": 5,
+        "asNeededBoolean_true": 0,
+        "asNeededBoolean_absent_or_false": 5
+      },
+      {
+        "dosageInstruction.text": "Every seventy two hours (qualifier value)",
+        "dosageInstruction.additionalInstruction": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "396143001",
+                "display": "Every seventy two hours (qualifier value)"
+              }
+            ],
+            "text": "Every seventy two hours (qualifier value)"
+          }
+        ],
+        "orders": 3,
+        "asNeededBoolean_true": 0,
+        "asNeededBoolean_absent_or_false": 3
+      },
+      {
+        "dosageInstruction.text": "Every twelve hours as required (qualifier value)",
+        "dosageInstruction.additionalInstruction": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "1831000175103",
+                "display": "Every twelve hours as required (qualifier value)"
+              }
+            ],
+            "text": "Every twelve hours as required (qualifier value)"
+          }
+        ],
+        "orders": 3,
+        "asNeededBoolean_true": 0,
+        "asNeededBoolean_absent_or_false": 3
+      },
+      {
+        "dosageInstruction.text": "Every four hours (qualifier value)",
+        "dosageInstruction.additionalInstruction": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "225756002",
+                "display": "Every four hours (qualifier value)"
+              }
+            ],
+            "text": "Every four hours (qualifier value)"
+          }
+        ],
+        "orders": 1,
+        "asNeededBoolean_true": 0,
+        "asNeededBoolean_absent_or_false": 1
+      }
+    ]
   },
   "all_bundles": {
     "bundles": 5980,
@@ -32,7 +134,127 @@
       "dosageInstruction.additionalInstruction": 1947,
       "dosageInstruction.patientInstruction": 0
     },
+    "flagged_orders_with_more_than_one_dosage_instruction": 0,
+    "flagged_orders_with_as_needed_phrase_without_flag": 193,
+    "share_of_bundles_with_active_mr_with_free_text": 0.449,
     "share_of_active_mr_with_free_text": 0.2244,
-    "share_of_active_single_dosage_mr_with_free_text": 0.3507
+    "share_of_active_single_dosage_mr_with_free_text": 0.3507,
+    "flagged_order_texts": [
+      {
+        "dosageInstruction.text": "Take as needed.",
+        "dosageInstruction.additionalInstruction": null,
+        "orders": 4066,
+        "asNeededBoolean_true": 4066,
+        "asNeededBoolean_absent_or_false": 0
+      },
+      {
+        "dosageInstruction.text": "Every four to six hours (qualifier value)",
+        "dosageInstruction.additionalInstruction": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "225757006",
+                "display": "Every four to six hours (qualifier value)"
+              }
+            ],
+            "text": "Every four to six hours (qualifier value)"
+          }
+        ],
+        "orders": 1069,
+        "asNeededBoolean_true": 0,
+        "asNeededBoolean_absent_or_false": 1069
+      },
+      {
+        "dosageInstruction.text": "Every six hours (qualifier value)",
+        "dosageInstruction.additionalInstruction": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "307468000",
+                "display": "Every six hours (qualifier value)"
+              }
+            ],
+            "text": "Every six hours (qualifier value)"
+          }
+        ],
+        "orders": 323,
+        "asNeededBoolean_true": 0,
+        "asNeededBoolean_absent_or_false": 323
+      },
+      {
+        "dosageInstruction.text": "Every seventy two hours (qualifier value)",
+        "dosageInstruction.additionalInstruction": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "396143001",
+                "display": "Every seventy two hours (qualifier value)"
+              }
+            ],
+            "text": "Every seventy two hours (qualifier value)"
+          }
+        ],
+        "orders": 221,
+        "asNeededBoolean_true": 0,
+        "asNeededBoolean_absent_or_false": 221
+      },
+      {
+        "dosageInstruction.text": "Every twelve hours as required (qualifier value)",
+        "dosageInstruction.additionalInstruction": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "1831000175103",
+                "display": "Every twelve hours as required (qualifier value)"
+              }
+            ],
+            "text": "Every twelve hours as required (qualifier value)"
+          }
+        ],
+        "orders": 193,
+        "asNeededBoolean_true": 0,
+        "asNeededBoolean_absent_or_false": 193
+      },
+      {
+        "dosageInstruction.text": "Every four hours (qualifier value)",
+        "dosageInstruction.additionalInstruction": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "225756002",
+                "display": "Every four hours (qualifier value)"
+              }
+            ],
+            "text": "Every four hours (qualifier value)"
+          }
+        ],
+        "orders": 140,
+        "asNeededBoolean_true": 0,
+        "asNeededBoolean_absent_or_false": 140
+      },
+      {
+        "dosageInstruction.text": "Take at regular intervals. Complete the prescribed course unless otherwise directed (qualifier value)",
+        "dosageInstruction.additionalInstruction": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "418577003",
+                "display": "Take at regular intervals. Complete the prescribed course unless otherwise directed (qualifier value)"
+              }
+            ],
+            "text": "Take at regular intervals. Complete the prescribed course unless otherwise directed (qualifier value)"
+          }
+        ],
+        "orders": 1,
+        "asNeededBoolean_true": 0,
+        "asNeededBoolean_absent_or_false": 1
+      }
+    ]
   }
 }

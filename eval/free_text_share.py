@@ -11,6 +11,7 @@ CASES = os.path.join(HERE, "data", "cases.jsonl")
 N_PATIENTS = 120
 FIELDS = ("note", "dosageInstruction.text", "dosageInstruction.additionalInstruction",
           "dosageInstruction.patientInstruction")
+PHRASES = ("as required", "as needed")
 
 
 def free_text(mr):
@@ -23,11 +24,18 @@ def free_text(mr):
     }
 
 
+def has_as_needed_phrase(di):
+    return any(any(p in (d.get("text") or "").lower() for p in PHRASES) for d in di)
+
+
 def tally(bundles):
     t = {"bundles": 0, "bundles_with_active_mr_with_free_text": 0, "active_mr": 0,
          "active_mr_with_free_text": 0, "active_single_dosage_mr": 0,
          "active_single_dosage_mr_with_free_text": 0,
-         "active_mr_by_field": {f: 0 for f in FIELDS}}
+         "active_mr_by_field": {f: 0 for f in FIELDS},
+         "flagged_orders_with_more_than_one_dosage_instruction": 0,
+         "flagged_orders_with_as_needed_phrase_without_flag": 0}
+    rows = {}
     for bundle in bundles:
         t["bundles"] += 1
         bundle_flag = False
@@ -45,10 +53,31 @@ def tally(bundles):
             if len(mr.get("dosageInstruction", [])) == 1:
                 t["active_single_dosage_mr"] += 1
                 t["active_single_dosage_mr_with_free_text"] += flagged
+            if not flagged:
+                continue
+            di = mr.get("dosageInstruction", [])
+            if len(di) > 1:
+                t["flagged_orders_with_more_than_one_dosage_instruction"] += 1
+            if has_as_needed_phrase(di) and not any(d.get("asNeededBoolean") is True for d in di):
+                t["flagged_orders_with_as_needed_phrase_without_flag"] += 1
+            for d in di:
+                text, addl = d.get("text"), d.get("additionalInstruction")
+                key = json.dumps([text, addl], sort_keys=True)
+                row = rows.setdefault(key, {"dosageInstruction.text": text,
+                                            "dosageInstruction.additionalInstruction": addl,
+                                            "orders": 0, "asNeededBoolean_true": 0})
+                row["orders"] += 1
+                row["asNeededBoolean_true"] += d.get("asNeededBoolean") is True
         t["bundles_with_active_mr_with_free_text"] += bundle_flag
+    t["share_of_bundles_with_active_mr_with_free_text"] = round(
+        t["bundles_with_active_mr_with_free_text"] / t["bundles"], 4)
     t["share_of_active_mr_with_free_text"] = round(t["active_mr_with_free_text"] / t["active_mr"], 4)
     t["share_of_active_single_dosage_mr_with_free_text"] = round(
         t["active_single_dosage_mr_with_free_text"] / t["active_single_dosage_mr"], 4)
+    t["flagged_order_texts"] = sorted(
+        ({**row, "asNeededBoolean_absent_or_false": row["orders"] - row["asNeededBoolean_true"]}
+         for row in rows.values()),
+        key=lambda row: (-row["orders"], str(row["dosageInstruction.text"])))
     return t
 
 
@@ -89,6 +118,8 @@ with open(OUT, "w") as f:
 
 for key in ("patients", "all_bundles"):
     t = result[key]
-    print(key, {k: v for k, v in t.items() if k != "active_mr_by_field"}, file=sys.stdout)
+    print(key, {k: v for k, v in t.items() if k not in ("active_mr_by_field", "flagged_order_texts")}, file=sys.stdout)
     print(key, "by field", t["active_mr_by_field"], file=sys.stdout)
+    for row in t["flagged_order_texts"]:
+        print(key, row, file=sys.stdout)
 print("same_bundles_as_cases_jsonl", result["patients"]["same_bundles_as_cases_jsonl"])
