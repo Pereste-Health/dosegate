@@ -1,0 +1,6 @@
+.lake/
+data/openfda-labels/
+._*
+.DS_Store
+__pycache__/
+.venv/

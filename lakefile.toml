@@ -1,0 +1,10 @@
+name = "DoseGate"
+version = "0.1.0"
+defaultTargets = ["dosegate"]
+
+[[lean_lib]]
+name = "DoseGate"
+
+[[lean_exe]]
+name = "dosegate"
+root = "Main"
