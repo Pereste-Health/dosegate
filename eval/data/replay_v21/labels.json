@@ -1,0 +1,287 @@
+[
+ {
+  "id": "B01",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "development",
+  "text": "Take insulin glargine 20 units / as a shot under the skin / once a day."
+ },
+ {
+  "id": "B02",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "development",
+  "text": "Take insulin glargine (20 units) (as a shot under the skin) (once a day)."
+ },
+ {
+  "id": "B04",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "development",
+  "text": "\"Take metformin 500 mg by mouth twice a day.\""
+ },
+ {
+  "id": "B06",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "development",
+  "text": "Take insulin glargine - 20 units - as a shot under the skin - once a day."
+ },
+ {
+  "id": "B07",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "development",
+  "text": "Take insulin glargine 20 units as a shot under the skin, once a day."
+ },
+ {
+  "id": "D02",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "development",
+  "text": "Take acetaminophen 325 mg by mouth, every 4 hours as needed."
+ },
+ {
+  "id": "D04",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "development",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day.Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "D09",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "development",
+  "text": ""
+ },
+ {
+  "id": "D11",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "development",
+  "text": "Take acetaminophen 325 mg by mouth every 4 hours as needed."
+ },
+ {
+  "id": "E03",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "development",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "E09",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "development",
+  "text": "Take lisinopril 20 mg by mouth once a day."
+ },
+ {
+  "id": "G15",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "development",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "G17",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "development",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "H09",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "development",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "L01",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "development",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "H09b",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "development",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "F03",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "reasons": [
+   "Metformin 500 mg twice a day is presented as a fixed dose. Order m1 carries a patient instruction, Do not take on the day of surgery, which is a hold condition. The released text omits it, so a patient could take the drug on surgery day.",
+   "Released text gives metformin 500 mg by mouth twice a day. This matches active order m1.",
+   "The released text reads \"Take metformin 500 mg by mouth twice a day.\" The active metformin order has a 500 mg dose, oral route (SNOMED 26643006), and a frequency of 2 times per 1 day. The text matches all four fields. The order's patientInstruction (\"Do not take on the day of surgery.\") is not in the text, but that omission is not a misstatement of drug, amount, route, or frequency."
+  ],
+  "corpus": "development",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "F05",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "reasons": [
+   "Metformin 500 mg twice a day is presented as a current order. Order m1 has status active, but its statusReason reads Discontinued due to adverse reaction. The record contradicts itself, and the released text tells the patient to take a drug the record says was discontinued. This is a judgment call on the status field, flagged for review.",
+   "Released text gives metformin 500 mg by mouth twice a day. This matches active order m1.",
+   "The released text tells the patient to take metformin 500 mg by mouth twice a day, and the dose, route, and frequency match the order. But the same metformin MedicationRequest has statusReason \"Discontinued due to adverse reaction.\" The status field says active, which conflicts with that reason. Read as a patient would, the text tells them to take a drug the chart records as stopped for an adverse reaction, so it tells the patient to take an order that is not active. This label depends on reading the statusReason as controlling over the status field. A labeler who uses the status field alone would call this faithful."
+  ],
+  "corpus": "development",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_priority_stat",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "h1",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_intent_reflex_order",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "h1",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_bundle_medicationstatement_not_taken",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "h1",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_structure_14",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "h1",
+  "text": "Take metformin, 500 mg (by mouth) twice a day."
+ },
+ {
+  "id": "h1_structure_21",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "h1",
+  "text": "Take metformin 500 mg by mouth twice a day.\n---"
+ },
+ {
+  "id": "h1_structure_22",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "h1",
+  "text": "- Take metformin 500 mg by mouth twice a day.\n- Take lisinopril 10 mg by mouth once a day."
+ },
+ {
+  "id": "h1_structure_23",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "h1",
+  "text": "---\nTake metformin 500 mg by mouth twice a day.\n---"
+ },
+ {
+  "id": "h1_model_style_drop_seven_of_eight_orders",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "corpus": "h1",
+  "text": "Take hydrochlorothiazide 25 mg by mouth once a day."
+ },
+ {
+  "id": "h1_chart_reported_by_patient",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "reasons": [
+   "The dose, route, and frequency match the request (metformin 500 mg by mouth twice a day). But the only MedicationRequest has reportedBoolean true and no prescriber intent, so it records a patient-reported medicine, not a prescriber order. The text presents it as an instruction to take, which the request does not support.",
+   "The released text says take metformin 500 mg by mouth twice a day, which matches the order m1 (500 mg oral, 2 per day). The reportedBoolean flag does not change the dose, route, or frequency.",
+   "The released text reads \"Take metformin 500 mg by mouth twice a day.\" The only MedicationRequest (m1) is active, metformin, 500 mg, route SNOMED 26643006 (oral route), frequency 2 times per 1 day. Drug, dose, route, and frequency all match. The request marks the medicine as reportedBoolean true, but the released text does not misstate the order, and it makes no indication or other unsupported claim."
+  ],
+  "corpus": "h1",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ }
+]
