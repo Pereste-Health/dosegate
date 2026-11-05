@@ -9,14 +9,15 @@ import DoseGate.Tokens
 namespace DoseGate
 
 structure Policy where
-  allow : List (List Char) := []
+  extraWords : List String := []
   deriving Repr, Inhabited
 
 inductive Block where
   | malformed
   | duplicateIds
   | nonAscii
-  | doseTokenInText (tok : List Char)
+  | forbiddenWord (tok : List Char)
+  | unknownWord (tok : List Char)
   | unknownRef (id : List Char)
   | inactiveOrder (id : List Char)
   | missingField (id : List Char) (f : Field)
@@ -24,14 +25,18 @@ inductive Block where
   | unbound
   deriving Repr, DecidableEq, Inhabited
 
-def blockedToken (p : Policy) (tok : List Char) : Bool :=
-  isDoseToken tok && !p.allow.contains tok
+def allowedWord (p : Policy) (tok : List Char) : Bool :=
+  !isForbidden tok && (wordIn vocab tok || wordIn p.extraWords tok)
+
+def isTextChar (c : Char) : Bool := (c.toNat ≥ 32 && c.toNat < 127) || c == '\n'
 
 def checkText (p : Policy) (t : List Char) : Except Block Unit :=
-  if !t.all (·.toNat < 128) then .error .nonAscii
-  else match (tokens t).find? (blockedToken p) with
-    | some tok => .error (.doseTokenInText tok)
-    | none => .ok ()
+  if !t.all isTextChar then .error .nonAscii
+  else match (tokens t).find? isForbidden with
+    | some tok => .error (.forbiddenWord tok)
+    | none => match (tokens t).find? (fun tok => !allowedWord p tok) with
+      | some tok => .error (.unknownWord tok)
+      | none => .ok ()
 
 def renderSeg (p : Policy) (chart : List MedReq) : Seg → Except Block (List Char)
   | .text t => do checkText p t; pure t
@@ -70,8 +75,8 @@ def groupBound (g : List (Field × List Char)) : Bool :=
   ids.all (· == (ids.headD [])) &&
   fs.Nodup &&
   (!fs.contains .sig || !(fs.contains .dose || fs.contains .frequency || fs.contains .route)) &&
-  (!(fs.contains .dose || fs.contains .frequency || fs.contains .route || fs.contains .sig) ||
-    fs.contains .drug)
+  (!(fs.contains .dose || fs.contains .frequency || fs.contains .route || fs.contains .sig ||
+      fs.contains .daily) || fs.contains .drug)
 
 def render (p : Policy) (chart : List MedReq) (out : List Char) : Except Block (List Char) := do
   if !(chart.map (·.id)).Nodup then throw .duplicateIds

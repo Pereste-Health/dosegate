@@ -23,7 +23,12 @@ def Seg.isSlot : Seg → Bool
   | .slot _ _ => true
   | .text _ => false
 
-def slotDoseTokens (p : Policy) (segs : List Seg) (pieces : List (List Char)) : List (List Char) :=
-  ((segs.zip pieces).filter (·.1.isSlot)).flatMap fun sp => (tokens sp.2).filter (blockedToken p)
+def Seg.isValueSlot : Seg → Bool
+  | .slot .drug _ => false
+  | .slot _ _ => true
+  | .text _ => false
+
+def valueSlotTokens (segs : List Seg) (pieces : List (List Char)) : List (List Char) :=
+  ((segs.zip pieces).filter (·.1.isValueSlot)).flatMap fun sp => (tokens sp.2).filter isForbidden
 
 end DoseGate

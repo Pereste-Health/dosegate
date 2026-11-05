@@ -339,11 +339,11 @@ theorem render_fidelity {p : Policy} {chart : List MedReq} {out r : List Char}
   obtain ⟨hn, segs, pieces, hp, hF, -, hr, -⟩ := render_decomp h
   exact ⟨segs, pieces, hp, forall₂_spec hn hF, hr⟩
 
-theorem render_dose_tokens_from_chart {p : Policy} {chart : List MedReq} {out r : List Char}
+theorem render_forbidden_tokens_from_value_slots {p : Policy} {chart : List MedReq} {out r : List Char}
     (h : render p chart out = .ok r) :
     ∃ segs pieces, parseTemplate out = some segs ∧
       Forall₂ (SegRendersTo chart) segs pieces ∧
-      (tokens r).filter (blockedToken p) = slotDoseTokens p segs pieces := by
+      (tokens r).filter isForbidden = valueSlotTokens segs pieces := by
   obtain ⟨hn, segs, pieces, hp, hF, hsep, hr, -⟩ := render_decomp h
   refine ⟨segs, pieces, hp, forall₂_spec hn hF, ?_⟩
   rw [hr, tokens_flatten_filter_eq hsep]
@@ -351,7 +351,8 @@ theorem render_dose_tokens_from_chart {p : Policy} {chart : List MedReq} {out r 
 
 theorem render_text_clean {p : Policy} {chart : List MedReq} {out r t : List Char} {segs : List Seg}
     (h : render p chart out = .ok r) (hp : parseTemplate out = some segs) (ht : Seg.text t ∈ segs) :
-    (tokens t).all (fun tok => !blockedToken p tok) = true ∧ t.all (·.toNat < 128) = true := by
+    (tokens t).all (allowedWord p) = true ∧ (tokens t).all (fun tok => !isForbidden tok) = true ∧
+      t.all isTextChar = true := by
   obtain ⟨-, segs', pieces, hp', hF, -, -, -⟩ := render_decomp h
   have e : segs' = segs := Option.some.inj (hp'.symm.trans hp)
   subst e

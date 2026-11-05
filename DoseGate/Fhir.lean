@@ -4,6 +4,7 @@ phrases it prints for each field. Only orders with status "active" can be
 spoken. A missing field is `none`, and asking for a missing field blocks.
 -/
 import DoseGate.Units
+import DoseGate.Tokens
 
 namespace DoseGate
 
@@ -78,7 +79,7 @@ structure MedReq where
   deriving Repr, DecidableEq, Inhabited
 
 inductive Field where
-  | drug | dose | frequency | route | sig
+  | drug | dose | frequency | route | sig | daily
   deriving Repr, DecidableEq, Inhabited
 
 def Field.ofName? : List Char → Option Field
@@ -87,6 +88,7 @@ def Field.ofName? : List Char → Option Field
   | ['f', 'r', 'e', 'q', 'u', 'e', 'n', 'c', 'y'] => some .frequency
   | ['r', 'o', 'u', 't', 'e'] => some .route
   | ['s', 'i', 'g'] => some .sig
+  | ['d', 'a', 'i', 'l', 'y'] => some .daily
   | _ => none
 
 def Field.name : Field → List Char
@@ -95,6 +97,7 @@ def Field.name : Field → List Char
   | .frequency => "frequency".toList
   | .route => "route".toList
   | .sig => "sig".toList
+  | .daily => "daily".toList
 
 def fmtDose (d : Dose) : List Char :=
   fmtDec d.amount ++ ' ' :: d.unit.name (d.amount.normalize == ⟨1, 0⟩)
@@ -133,9 +136,25 @@ def fmtFrequency (m : MedReq) : Option (List Char) :=
   | none, true => some "as needed".toList
   | none, false => none
 
+def dosesPerDay? (t : Timing) : Option Nat :=
+  match t.periodUnit with
+  | .d => if t.period = 1 ∧ t.frequency ≠ 0 then some t.frequency else none
+  | .h => if t.period ≠ 0 ∧ 24 % t.period = 0 ∧ t.frequency ≠ 0 then some (t.frequency * (24 / t.period)) else none
+  | _ => none
+
+def dailyDose? (m : MedReq) : Option Dose :=
+  if m.asNeeded then none
+  else match m.dose, m.timing with
+    | some d, some t => (dosesPerDay? t).map fun k => ⟨⟨d.amount.mant * k, d.amount.scale⟩, d.unit⟩
+    | _, _ => none
+
+def drugNameOk (cs : List Char) : Bool :=
+  !cs.isEmpty && cs.all (fun c => c.toNat ≥ 32 && c.toNat < 127) && !(tokens cs).any isForbidden
+
 def fmtField (f : Field) (m : MedReq) : Option (List Char) :=
   match f with
-  | .drug => if m.drug.isEmpty then none else some m.drug
+  | .drug => if drugNameOk m.drug then some m.drug else none
+  | .daily => (dailyDose? m).map fun d => fmtDose d ++ " a day".toList
   | .dose => m.dose.map fmtDose
   | .route => m.route.map Route.phrase
   | .frequency => fmtFrequency m
