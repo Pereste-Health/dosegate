@@ -199,3 +199,6 @@ open DoseGate
 #print axioms DoseGate.render_decomp_full
 #print axioms DoseGate.render_sign_eq
 #print axioms DoseGate.render_unnamed_eq
+#print axioms DoseGate.render_noActive_eq
+#print axioms DoseGate.render_no_active_default
+#print axioms DoseGate.render_one_active_ok

@@ -19,6 +19,7 @@ def blockName : Block → String
   | .ambiguousDrug _ => "ambiguousDrug"
   | .signBeforeSlot => "signBeforeSlot"
   | .omittedOrder _ => "omittedOrder"
+  | .noActiveOrder => "noActiveOrder"
 
 def slotText (f : Field) (id : List Char) : String :=
   "{{" ++ String.ofList f.name ++ ":" ++ String.ofList id ++ "}}"
@@ -75,6 +76,8 @@ def blockDetail (p : Policy) (out : String) : Block → String
       "a text segment directly before a slot ends with a run of non-letter, non-digit characters that contains - or +, which would put a sign in front of a filled value"
   | .omittedOrder id =>
       "MedicationRequest " ++ String.ofList id ++ " is active but no dose, route, frequency, sig, or daily slot names it"
+  | .noActiveOrder =>
+      "no MedicationRequest is active, so the output has no order to name and is blocked"
 
 def okJson (text : String) : Lean.Json :=
   Lean.Json.mkObj [("status", Lean.Json.str "ok"), ("text", Lean.Json.str text)]

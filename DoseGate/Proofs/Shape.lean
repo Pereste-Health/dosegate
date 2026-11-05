@@ -200,7 +200,7 @@ theorem render_all_orders_named {p : Policy} {chart : List MedReq} {out r : List
     (hreq : p.requireAll = true) (h : render p chart out = .ok r) :
     ∃ segs, parseTemplate out = some segs ∧
       ∀ m ∈ chart, m.active = true → ∃ f, f ≠ .drug ∧ Seg.slot f m.id ∈ segs := by
-  obtain ⟨-, segs, -, hp, -, -, -, -, -, -, hom⟩ := render_decomp_full h
+  obtain ⟨-, segs, -, hp, -, -, -, -, -, -, -, hom⟩ := render_decomp_full h
   refine ⟨segs, hp, fun m hm ha => ?_⟩
   unfold unnamedOrder at hom
   simp only [hreq, ↓reduceIte] at hom

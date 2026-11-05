@@ -28,6 +28,7 @@ inductive Block where
   | ambiguousDrug (id : List Char)
   | signBeforeSlot
   | omittedOrder (id : List Char)
+  | noActiveOrder
   deriving Repr, DecidableEq, Inhabited
 
 def allowedWord (p : Policy) (tok : List Char) : Bool :=
@@ -163,6 +164,7 @@ def render (p : Policy) (chart : List MedReq) (out : List Char) : Except Block (
   if !(sentences segs).all (sentenceOk p) then throw .unbound
   if !noRepeatedValue segs then throw .repeatedValue
   if hasSignBeforeSlot segs then throw .signBeforeSlot
+  if p.requireAll && chart.all (!·.active) then throw .noActiveOrder
   match unnamedOrder p chart segs with
   | some id => throw (.omittedOrder id)
   | none => pure ()

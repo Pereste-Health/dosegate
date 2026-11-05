@@ -776,6 +776,8 @@ def render(chart, out, cfg):
     if cfg["gate_2_1"] and any(segs[i][0] == "text" and ends_sign(segs[i][1])
                                and segs[i + 1][0] == "slot" for i in range(len(segs) - 1)):
         return ("blocked", "signBeforeSlot")
+    if cfg["require_all"] and not any(built["active"] for built in chart):
+        return ("blocked", "noActiveOrder")
     if cfg["require_all"] and any(
             built["active"] and not any(seg[0] == "slot" and seg[1] != "drug" and seg[2] == built["id"]
                                         for seg in segs)
