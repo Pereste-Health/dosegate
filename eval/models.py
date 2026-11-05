@@ -2,7 +2,8 @@ import json, math, os
 
 from score import DATA
 
-MODELS = [("v2_qwen3.5-4b", "Qwen3.5-4B"), ("v2_medgemma-4b", "MedGemma 4B"), ("v2_llama3.2-3b", "Llama 3.2 3B")]
+MODELS = [("v2_qwen3.5-4b", "Qwen3.5-4B"), ("v2_medgemma-4b", "MedGemma 4B"), ("v2_llama3.2-3b", "Llama 3.2 3B"),
+          ("v2_claude-haiku-5-5", "Claude Haiku 5.5"), ("v2_claude-sonnet-5-5", "Claude Sonnet 5.5")]
 ROWS = [("slot_first_attempt", "Slot, first attempt"), ("slot_after_retries", "Slot, after rewrites"),
         ("slot_daily_first_attempt", "Slot daily, first attempt"), ("slot_daily_after_retries", "Slot daily, after rewrites"),
         ("slot_hot", "Slot, temperature 1.0"), ("free", "Free"), ("free_daily", "Free daily"), ("attack", "Attack")]
@@ -48,8 +49,8 @@ def main():
                          "block_reasons": r["block_reasons"],
                          "released_outputs_with_error": shown["outputs_any_error"], "released_orders": shown["orders"],
                          "raw_outputs_with_error": raw["outputs_any_error"]}
-        released = sum(rows[k]["released"] for k in ("slot_after_retries", "slot_daily_after_retries", "slot_hot"))
-        errs = sum(rows[k]["released_outputs_with_error"] for k in ("slot_after_retries", "slot_daily_after_retries", "slot_hot"))
+        released = sum(rows[k]["released"] for k in ("slot_after_retries", "slot_daily_after_retries", "slot_hot") if k in rows)
+        errs = sum(rows[k]["released_outputs_with_error"] for k in ("slot_after_retries", "slot_daily_after_retries", "slot_hot") if k in rows)
         lo, hi = wilson(errs, released)
         out[name] = {"rows": rows, "released_total": released, "released_with_error": errs,
                      "error_ci": [r1(100 * lo), r1(100 * hi)], "gate_ms": a["gate_ms"]}

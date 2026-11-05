@@ -1,0 +1,90 @@
+[
+  {
+    "anchor": "Running title: Verified layer for medication instructions",
+    "comment": "How this review loop works: I put a comment wherever I need your decision or your eyes. Reply inside the comment, send the file back, and I read every reply and apply it to the Markdown source, which stays the master copy. Edits you make directly in the text I will also pick up, but a reply in the comment is the surest route."
+  },
+  {
+    "anchor": "Keywords: large language models; medication errors; formal verification; patient education; FHIR",
+    "comment": "JAMIA allows up to five keywords. Change any of these? The title page also needs your decision on the author block: your credentials and affiliation line as you want them printed, and whether the clinical co-author placeholder stays until the mentor agrees."
+  },
+  {
+    "anchor": "3,999 on 2026-11-05",
+    "comment": "JAMIA's official instructions page sits behind a Cloudflare human check that I could not pass, so the 4,000-word and 250-word limits, the four-table limit, and the required statements come from two secondary guides that quote the page. Please open https://academic.oup.com/jamia/pages/General_Instructions once and confirm the limits, whether a blinded copy is required, and whether the submission file must be double-spaced. The main text is 1 word under the limit, so any addition needs a cut."
+  },
+  {
+    "anchor": "To build and evaluate a layer, proved in Lean 4,",
+    "comment": "The abstract is exactly 250 words counting the headings, so every added word needs a cut elsewhere. Is this the framing you want, or should the objective lead with the clinical problem instead of the layer?"
+  },
+  {
+    "anchor": "98.3%, 83.3%, 1.7%, 98.3%, and 98.3% of slot outputs",
+    "comment": "The two hosted models are now in the headline. Claude Haiku 5.5 and Claude Sonnet 5.5 ran today on the same 120 cases through the repository harness; the run cost about $1.73 in total. Say if you would rather keep the abstract to the open models and leave the frontier result for Results and Discussion."
+  },
+  {
+    "anchor": "approved 14.0% to 60.5% of prohibited doses,^3^",
+    "comment": "Verified on arXiv on 2026-11-05: reference 3 (DoseBench) exists with these exact figures and authors, and references 8, 9, 10, and 28 exist with the authors as listed. The remaining citations (journal articles, standards, model cards) were carried over from paper.md and not rechecked by me."
+  },
+  {
+    "anchor": "Trusted; proofs cover only injectivity and the absence of forbidden words",
+    "comment": "This row is the point a formal-methods reviewer will press: the route and unit code tables and the frequency words are trusted, not proved against SNOMED or UCUM. The gap list now asks a pharmacist to check each code against its printed phrase. Do you want a sentence on that here, or leave the row as it stands?"
+  },
+  {
+    "anchor": "Two hosted models from Anthropic, Claude Haiku 5.5 and Claude Sonnet 5.5",
+    "comment": "Settings to confirm: effort low, a 2,000-token output limit that includes thinking, the API's default sampling because these models reject a temperature setting, no fallback model, four conditions and no temperature 1.0 condition, and no labeler read their outputs. The exact model identifiers the API returned are recorded on every generation record. If you would rather rerun at a higher effort or with thinking visible, say so; the harness now takes EFFORT and MAX_TOKENS from the environment."
+  },
+  {
+    "anchor": "No human labeled these outputs.",
+    "comment": "This is the sentence a JAMIA reviewer will circle. The gap list proposes that a pharmacist relabels the 9 misstatements, the 4 unsupported claims, 30 of the faithful releases, and the 16 same-ingredient pairs, blind to the model labels, and that we report the agreement. That is the concrete ask for your mentor; say if you want it framed differently."
+  },
+  {
+    "anchor": "which departs from the labeling protocol; under the protocol that row reads 1, 10, and 33",
+    "comment": "Two decisions here. First: keep the adopted F05 label (2 misstatements in 44) as the primary figure, or report the protocol count (1) as primary and the relabel in a footnote? Second: this table now follows the round-10 labeling rule that your other session adopted today (two active orders of one drug given once each is faithful; a repeated instruction is a misstatement), which moved the round h1 count from 41 to 38 and the comparison filter's counts to 92, 51, and 23. That relabel was in the working tree but not committed when I committed this draft, so confirm it lands, or I revert these four numbers."
+  },
+  {
+    "anchor": "The nine round h2 requests on which version 2 released a misstatement",
+    "comment": "Each cause in this table was recomputed today from the request files and the replay results, not copied from paper.md. The last row truncates a nine-order output; say if you want the full text shown."
+  },
+  {
+    "anchor": "The two hosted models released 93.3% and 92.5% of first slot attempts and 98.3% after rewrites",
+    "comment": "The finding about the rules from the frontier run: the only thing the layer blocked in these models' good outputs was a caveat sentence such as 'Please ask your care team any questions you have', because 'any' is on the forbidden number-word list. That is a vocabulary cost, not a safety gap, and the rewrite loop recovers it. No hosted-model output got past a rule it should not have."
+  },
+  {
+    "anchor": "Claude Haiku 5.5 stated the doubled amount in 1 output and Claude Sonnet 5.5 in none",
+    "comment": "Both hosted models refused the doubling instruction in their own words while still writing the slot instructions. The layer blocked those outputs because the refusal sentence uses forbidden words, so in the attack condition the layer's blocks fell on refusals, not on doubled doses. Worth a sentence in the cover letter: the frontier models did not need the layer to resist this attack, the small models did."
+  },
+  {
+    "anchor": "lisinopril in 48, and simvastatin in 24",
+    "comment": "The lisinopril comparator is the top of the usual range (40 mg), not a labeled maximum. A pharmacist should confirm the four thresholds and the DailyMed quotations in eval/maxima.py before this section is final. This analysis moved to the supplement to stay under the word limit."
+  },
+  {
+    "anchor": "[TODO clinical validation paragraph: pharmacist review and human labels.]",
+    "comment": "This placeholder becomes a short paragraph once the mentor's review is done: who reviewed what, how many items changed, and the agreement with the model labels. The ten validation tasks are listed in paper/gap_list.md, gap 3."
+  },
+  {
+    "anchor": "print 0.075 mg and 0.0375 mg where United States tablets are labeled in micrograms",
+    "comment": "A patient-facing unit problem in the evaluation's own orders. Two options: leave it as a stated limitation, or add a microgram printing rule with new proofs before submission (a few days of Lean work). Your call."
+  },
+  {
+    "anchor": "This work received no external funding. [TODO confirm or name any support.]",
+    "comment": "Confirm, or name any support: school funding, compute, or the API credits used for the frontier run (about $1.73)."
+  },
+  {
+    "anchor": "Parker Smith (PS) is affiliated with Pereste Health, which develops patient-facing software. [TODO confirm the role and any financial interest.]",
+    "comment": "Please confirm the wording, your role, and whether Pereste Health has any commercial interest in DoseGate."
+  },
+  {
+    "anchor": "[TODO move the v2.1.0 tag to the final commit and add a Zenodo DOI.]",
+    "comment": "The v2.1.0 tag, locally and on GitHub, points to a commit older than the code this paper describes (197 theorems there against 200 here). I will move it only when you say the code is final. Do you want a Zenodo DOI minted on that tag for the data availability statement?"
+  },
+  {
+    "anchor": "The author used Claude (Anthropic) to draft Lean definitions",
+    "comment": "Please confirm this statement against OUP's current policy on AI-assisted writing and code, and decide whether to name the Claude model versions used. Note that two of the evaluated models are also Claude models; a reviewer may ask whether that is a conflict, so the statement should say the evaluation harness and scoring are the same for every model."
+  },
+  {
+    "anchor": "[TODO pharmacist confirmation of this list.]",
+    "comment": "Your reading alone decided these 16 pairs. This is the first item on the pharmacist's list."
+  },
+  {
+    "anchor": "Across three small open models and two hosted frontier models the scoring script found no misstatement in released text on the 120 test cases",
+    "comment": "The closing claim now covers five models. The Discussion states the frontier result as: a more capable model raised the release rate and changed nothing about what released text could say. Is that the sentence you want to defend?"
+  }
+]

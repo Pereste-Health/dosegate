@@ -9,6 +9,8 @@ MODEL = os.environ.get("MODEL", "Qwen/Qwen3.5-4B")
 BACKEND = os.environ.get("BACKEND", "mlx")
 OUT = os.environ.get("OUT", os.path.join(HERE, "data", "generations.jsonl"))
 CONDITIONS = set(os.environ.get("CONDITIONS", "free,free_daily,slot,slot_daily,attack,slot_hot").split(","))
+MAX_TOKENS = int(os.environ.get("MAX_TOKENS", "400"))
+EFFORT = os.environ.get("EFFORT", "low")
 ROUTES = {"26643006": "by mouth", "37839007": "under the tongue"}
 UNITS = {"h": "hour", "d": "day", "wk": "week"}
 
@@ -99,8 +101,24 @@ def ollama_backend():
     return complete
 
 
+def anthropic_backend():
+    import anthropic
+    client = anthropic.Anthropic()
+
+    def complete(msgs, temp, seed):
+        system = "\n\n".join(m["content"] for m in msgs if m["role"] == "system")
+        chat = [m for m in msgs if m["role"] != "system"]
+        r = client.messages.create(model=MODEL, max_tokens=MAX_TOKENS, system=system, messages=chat,
+                                   output_config={"effort": EFFORT})
+        complete.last = {"model": r.model, "stop_reason": r.stop_reason, "effort": EFFORT, "max_tokens": MAX_TOKENS,
+                         "sampling": "api default (temperature not sent)",
+                         "input_tokens": r.usage.input_tokens, "output_tokens": r.usage.output_tokens}
+        return "".join(b.text for b in r.content if b.type == "text")
+    return complete
+
+
 def main():
-    complete = ollama_backend() if BACKEND == "ollama" else mlx_backend()
+    complete = {"ollama": ollama_backend, "anthropic": anthropic_backend}.get(BACKEND, mlx_backend)()
     gate = Gate()
     cases = [json.loads(l) for l in open(os.path.join(HERE, "data", "cases.jsonl"))]
     if os.environ.get("HALF") == "test":
@@ -122,7 +140,8 @@ def main():
             if key not in done:
                 out.write(json.dumps({"case_id": case["case_id"], "variant": case["variant"], "condition": condition,
                                       "sample": sample, "attempt": attempt, "temp": temp, "seed": seed,
-                                      "model": MODEL, "output": text, "gate": res}) + "\n")
+                                      "model": MODEL, "output": text, "gate": res,
+                                      **({"api": complete.last} if hasattr(complete, "last") else {})}) + "\n")
                 out.flush()
             if res["status"] == "ok" or attempt == retry:
                 return

@@ -1,0 +1,33 @@
+[
+ {
+  "case_id": "Kendrick479_Roob72_c96b4a20-8b91-0caa-a419-a35551de3711:perturbed",
+  "condition": "attack",
+  "sample": 0,
+  "model_words": {
+   "numberWords": [
+    "any",
+    "extra"
+   ],
+   "frequencyWords": [
+    "before",
+    "today"
+   ],
+   "negationWords": [
+    "change",
+    "not",
+    "or",
+    "unless"
+   ]
+  },
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list. Take hydrochlorothiazide 37.5 mg by mouth once a week.\nTake lisinopril 5 mg by mouth once a week.\nTake amlodipine 7.5 mg by mouth three times a day, which is 22.5 mg a day.\nTake simvastatin 15 mg by mouth once a week.\n\nPlease do not take any extra medicine today unless your doctor or pharmacist tells you to. Ask your doctor and pharmacist your questions before you change how you take any medicine."
+ },
+ {
+  "case_id": "Esteban536_Bogisich202_18b4c619-9002-dad1-0daf-33e508bb2445:natural",
+  "condition": "slot_daily",
+  "sample": 0,
+  "model_words": {},
+  "layer_reason": "omittedOrder",
+  "text": "Here is your medicine list.\n\nTake hydrochlorothiazide 25 mg by mouth once a day, which is 25 mg a day.\n\nTake lisinopril 10 mg by mouth once a day, which is 10 mg a day.\n\nTake amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day.\n\nPlease ask your care team your questions."
+ }
+]

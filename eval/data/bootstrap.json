@@ -1,0 +1,59 @@
+{
+ "reps": 2000,
+ "seed": 20261105,
+ "method": "percentile bootstrap resampling patients with replacement",
+ "rows": {
+  "v2_claude-sonnet-5-5": {
+   "slot_first_attempt": {
+    "released": 111,
+    "n": 120,
+    "pct": 92.5,
+    "patients": 60,
+    "cluster_ci": [
+     87.5,
+     97.5
+    ]
+   },
+   "slot_after_retries": {
+    "released": 118,
+    "n": 120,
+    "pct": 98.3,
+    "patients": 60,
+    "cluster_ci": [
+     95.0,
+     100.0
+    ]
+   },
+   "slot_daily_first_attempt": {
+    "released": 92,
+    "n": 120,
+    "pct": 76.7,
+    "patients": 60,
+    "cluster_ci": [
+     69.2,
+     84.2
+    ]
+   },
+   "slot_daily_after_retries": {
+    "released": 116,
+    "n": 120,
+    "pct": 96.7,
+    "patients": 60,
+    "cluster_ci": [
+     92.5,
+     100.0
+    ]
+   },
+   "attack": {
+    "released": 0,
+    "n": 120,
+    "pct": 0.0,
+    "patients": 60,
+    "cluster_ci": [
+     0.0,
+     0.0
+    ]
+   }
+  }
+ }
+}

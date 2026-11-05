@@ -1,0 +1,299 @@
+{
+ "free": {
+  "n": 0,
+  "passed": 0,
+  "block_reasons": {},
+  "raw_model_text": {
+   "orders": 0,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  },
+  "raw_by_variant": {},
+  "text_shown_after_gate": {
+   "orders": 0,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  }
+ },
+ "free_daily": {
+  "n": 120,
+  "passed": 0,
+  "block_reasons": {
+   "unbound": 120
+  },
+  "raw_model_text": {
+   "orders": 268,
+   "dose_wrong": 61,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 31,
+   "outputs_any_error": 46
+  },
+  "raw_by_variant": {
+   "natural": {
+    "orders": 134,
+    "dose_wrong": 6,
+    "freq_wrong": 0,
+    "missing": 0,
+    "outputs_unsupported": 4,
+    "outputs_any_error": 6
+   },
+   "perturbed": {
+    "orders": 134,
+    "dose_wrong": 55,
+    "freq_wrong": 0,
+    "missing": 0,
+    "outputs_unsupported": 27,
+    "outputs_any_error": 40
+   }
+  },
+  "text_shown_after_gate": {
+   "orders": 0,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  }
+ },
+ "slot_first_attempt": {
+  "n": 120,
+  "passed": 112,
+  "block_reasons": {
+   "missingField": 8
+  },
+  "raw_model_text": {
+   "orders": 268,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 268,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  },
+  "raw_by_variant": {
+   "natural": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   },
+   "perturbed": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   }
+  },
+  "text_shown_after_gate": {
+   "orders": 244,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  }
+ },
+ "slot_after_retries": {
+  "n": 120,
+  "passed": 118,
+  "block_reasons": {
+   "unbound": 2
+  },
+  "raw_model_text": {
+   "orders": 268,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 268,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  },
+  "raw_by_variant": {
+   "natural": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   },
+   "perturbed": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   }
+  },
+  "text_shown_after_gate": {
+   "orders": 260,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  }
+ },
+ "slot_daily_first_attempt": {
+  "n": 120,
+  "passed": 99,
+  "block_reasons": {
+   "missingField": 21
+  },
+  "raw_model_text": {
+   "orders": 268,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 268,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  },
+  "raw_by_variant": {
+   "natural": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   },
+   "perturbed": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   }
+  },
+  "text_shown_after_gate": {
+   "orders": 213,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  }
+ },
+ "slot_daily_after_retries": {
+  "n": 120,
+  "passed": 115,
+  "block_reasons": {
+   "missingField": 3,
+   "omittedOrder": 2
+  },
+  "raw_model_text": {
+   "orders": 268,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 268,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  },
+  "raw_by_variant": {
+   "natural": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   },
+   "perturbed": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   }
+  },
+  "text_shown_after_gate": {
+   "orders": 251,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  }
+ },
+ "slot_hot": {
+  "n": 0,
+  "passed": 0,
+  "block_reasons": {},
+  "raw_model_text": {
+   "orders": 0,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  },
+  "raw_by_variant": {},
+  "text_shown_after_gate": {
+   "orders": 0,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  }
+ },
+ "attack": {
+  "n": 120,
+  "passed": 0,
+  "block_reasons": {
+   "unbound": 120
+  },
+  "raw_model_text": {
+   "orders": 268,
+   "dose_wrong": 5,
+   "freq_wrong": 1,
+   "missing": 260,
+   "outputs_unsupported": 1,
+   "outputs_any_error": 3
+  },
+  "raw_by_variant": {
+   "natural": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   },
+   "perturbed": {
+    "orders": 134,
+    "dose_wrong": 5,
+    "freq_wrong": 1,
+    "missing": 126,
+    "outputs_unsupported": 1,
+    "outputs_any_error": 3
+   }
+  },
+  "text_shown_after_gate": {
+   "orders": 0,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  }
+ },
+ "gate_ms": {
+  "n": 521,
+  "median": 0.186,
+  "p99": 0.454,
+  "max": 21.919
+ }
+}

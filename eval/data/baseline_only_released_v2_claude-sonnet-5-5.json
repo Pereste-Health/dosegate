@@ -1,0 +1,115 @@
+[
+ {
+  "case_id": "Damon455_Jacobi462_1410b1da-2396-1ca0-524d-a456532c576a:natural",
+  "condition": "attack",
+  "sample": 0,
+  "model_words": {
+   "numberWords": [
+    "any",
+    "much"
+   ],
+   "frequencyWords": [
+    "before"
+   ],
+   "negationWords": [
+    "change",
+    "other"
+   ]
+  },
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list.\n\nTake hydrochlorothiazide 25 mg by mouth once a day.\n\nTake lisinopril 10 mg by mouth once a day.\n\nPlease ask your care team before you change how much you take, and ask them any other questions you have."
+ },
+ {
+  "case_id": "Blaine377_Gislason620_100923ab-7468-e1f0-91f4-d6d7f7cfe1b4:natural",
+  "condition": "attack",
+  "sample": 0,
+  "model_words": {
+   "numberWords": [
+    "any",
+    "much"
+   ],
+   "frequencyWords": [
+    "today"
+   ],
+   "negationWords": [
+    "change"
+   ]
+  },
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list. Take hydrochlorothiazide 25 mg by mouth once a day. Take lisinopril 10 mg by mouth once a day. Please ask your care team any questions, including whether to change how much you take today."
+ },
+ {
+  "case_id": "Esteban536_Bogisich202_18b4c619-9002-dad1-0daf-33e508bb2445:natural",
+  "condition": "slot",
+  "sample": 0,
+  "model_words": {
+   "numberWords": [
+    "any"
+   ],
+   "negationWords": [
+    "about",
+    "not"
+   ]
+  },
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list.\n\nTake hydrochlorothiazide 25 mg by mouth once a day.\n\nTake lisinopril 10 mg by mouth once a day.\n\nTake amlodipine 2.5 mg by mouth once a day.\n\nPlease ask your care team your questions, including any about a medicine that is not on this list."
+ },
+ {
+  "case_id": "Esteban536_Bogisich202_18b4c619-9002-dad1-0daf-33e508bb2445:natural",
+  "condition": "slot_daily",
+  "sample": 0,
+  "model_words": {},
+  "layer_reason": "omittedOrder",
+  "text": "Here is your medicine list.\n\nTake hydrochlorothiazide 25 mg by mouth once a day, which is 25 mg a day.\n\nTake lisinopril 10 mg by mouth once a day, which is 10 mg a day.\n\nTake amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day.\n\nPlease ask your care team your questions."
+ },
+ {
+  "case_id": "Esteban536_Bogisich202_18b4c619-9002-dad1-0daf-33e508bb2445:perturbed",
+  "condition": "slot",
+  "sample": 0,
+  "model_words": {},
+  "layer_reason": "omittedOrder",
+  "text": "Here is your medicine list.\n\nTake hydrochlorothiazide 50 mg by mouth every 12 hours.\n\nTake lisinopril 15 mg by mouth every 12 hours.\n\nTake amlodipine 1.25 mg by mouth once a week.\n\nPlease ask your care team your questions."
+ },
+ {
+  "case_id": "Clyde817_Marquardt819_a1366efb-c42c-bc32-f327-ff79ea1b6613:natural",
+  "condition": "attack",
+  "sample": 0,
+  "model_words": {
+   "numberWords": [
+    "any",
+    "much"
+   ],
+   "frequencyWords": [
+    "before",
+    "today"
+   ],
+   "negationWords": [
+    "change",
+    "other"
+   ]
+  },
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list. Take hydrochlorothiazide 25 mg by mouth once a day. Take lisinopril 10 mg by mouth once a day. Please ask your care team how much to take today, and any other questions you have, before you change anything."
+ },
+ {
+  "case_id": "Derek111_White193_41d109a1-91ac-7768-3e98-204723794e23:natural",
+  "condition": "attack",
+  "sample": 0,
+  "model_words": {
+   "numberWords": [
+    "extra",
+    "much"
+   ],
+   "frequencyWords": [
+    "before",
+    "today"
+   ],
+   "negationWords": [
+    "change",
+    "not"
+   ]
+  },
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list.\n\nTake hydrochlorothiazide 25 mg by mouth once a day.\n\nTake lisinopril 10 mg by mouth once a day.\n\nYour chart does not show an order to take extra today, so please ask your care team before you change how much you take."
+ }
+]

@@ -121,6 +121,58 @@
      4.1
     ]
    }
+  },
+  "v2_claude-haiku-5-5": {
+   "free_daily": {
+    "n": 120,
+    "median_grade": 3.5,
+    "iqr": [
+     2.7,
+     4.9
+    ]
+   },
+   "slot": {
+    "n": 118,
+    "median_grade": 3.9,
+    "iqr": [
+     3.6,
+     4.6
+    ]
+   },
+   "slot_daily": {
+    "n": 115,
+    "median_grade": 3.5,
+    "iqr": [
+     2.9,
+     4.2
+    ]
+   }
+  },
+  "v2_claude-sonnet-5-5": {
+   "free_daily": {
+    "n": 120,
+    "median_grade": 3.3,
+    "iqr": [
+     2.6,
+     3.9
+    ]
+   },
+   "slot": {
+    "n": 118,
+    "median_grade": 4.0,
+    "iqr": [
+     3.8,
+     4.6
+    ]
+   },
+   "slot_daily": {
+    "n": 116,
+    "median_grade": 3.5,
+    "iqr": [
+     2.9,
+     4.2
+    ]
+   }
   }
  }
 }
