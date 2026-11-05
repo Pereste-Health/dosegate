@@ -123,7 +123,9 @@ def jUnit? (q : Json) : Option DoseUnit :=
 
 def jDose? (q : Json) : Option Dose :=
   match (jField? q "value").bind jDec? with
-  | some amount => if amount.mant = 0 then none else (jUnit? q).map fun u => ⟨amount, u⟩
+  | some amount =>
+      if amount.mant = 0 then none
+      else (jUnit? q).bind fun u => if u.dim = .count then none else some ⟨amount, u⟩
   | none => none
 
 def jTiming? (r : Json) : Option Timing := do

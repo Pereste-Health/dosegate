@@ -80,6 +80,7 @@ UNIT_OF_CODE = {
     "{puff}": "puff", "puff": "puff", "puffs": "puff",
     "[drp]": "drop", "{drop}": "drop", "drop": "drop", "drops": "drop",
 }
+COUNT_UNITS = {"tablet", "capsule", "puff", "drop"}
 TIMES = {1: "once", 2: "twice", 3: "three times", 4: "four times"}
 
 NUMBER_WORDS = set("""zero one two three four five six seven eight nine ten eleven twelve thirteen
@@ -362,7 +363,7 @@ def dose_of(dosage):
     else:
         unit = quantity.get("unit")
         key = UNIT_OF_CODE.get(unit) if isinstance(unit, str) else None
-    if key is None:
+    if key is None or key in COUNT_UNITS:
         return None
     return (mantissa, scale, key)
 
