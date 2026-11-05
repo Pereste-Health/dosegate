@@ -30,7 +30,9 @@ def allowedWord (p : Policy) (tok : List Char) : Bool :=
   !isForbidden tok &&
     (wordIn vocab tok || wordIn instrWords tok || wordIn totalWords tok || wordIn p.extraWords tok)
 
-def isTextChar (c : Char) : Bool := (c.toNat ≥ 32 && c.toNat < 127) || c == '\n'
+def isTextChar (c : Char) : Bool :=
+  c.isAlphanum || c == ' ' || c == '\n' || c == '.' || c == ',' || c == ';' || c == ':' || c == '!' ||
+    c == '?' || c == '(' || c == ')' || c == '\'' || c == '"' || c == '-' || c == '/'
 
 def checkText (p : Policy) (t : List Char) : Except Block Unit :=
   if !t.all isTextChar then .error .nonAscii
@@ -98,21 +100,31 @@ def isValueField : Field → Bool
   | .drug => false
   | _ => true
 
+inductive Item where
+  | w (tok : List Char)
+  | s (f : Field)
+  deriving Repr, DecidableEq
+
+def itemsOf (g : List Seg) : List Item :=
+  g.flatMap fun
+    | .text t => (tokens t).map Item.w
+    | .slot f _ => [Item.s f]
+
+def instrShape : List Item := [.w "take".toList, .s .drug, .s .dose, .s .route, .s .frequency]
+
+def sigShape : List Item := [.w "take".toList, .s .drug, .s .sig]
+
+def totalShape : List Item :=
+  [.w "that".toList, .w "is".toList, .w "a".toList, .w "total".toList, .w "of".toList, .s .daily,
+   .w "of".toList, .s .drug]
+
 def sentenceOk (p : Policy) (g : List Seg) : Bool :=
   let sl := slotsOf g
-  let fs := sl.map (·.1)
   let ids := sl.map (·.2)
-  let ws := wordsOf g
-  ids.all (· == ids.headD []) && fs.Nodup &&
-  (if fs.any isValueField then
-    fs.contains .drug &&
-    (if fs.contains .daily then
-      fs.all (fun f => f == .drug || f == .daily) && ws.all (wordIn totalWords)
-    else
-      ((fs.contains .sig && fs.all (fun f => f == .drug || f == .sig)) ||
-        (!fs.contains .sig && fs.contains .dose && fs.contains .route && fs.contains .frequency)) &&
-      ws.all (wordIn instrWords))
-  else ws.all (fun w => wordIn vocab w || wordIn p.extraWords w))
+  ids.all (· == ids.headD []) &&
+  (if sl.any (isValueField ·.1) then
+    itemsOf g == instrShape || itemsOf g == sigShape || itemsOf g == totalShape
+  else (wordsOf g).all (fun w => wordIn vocab w || wordIn p.extraWords w))
 
 def valueSlots (segs : List Seg) : List (Field × List Char) :=
   (slotsOf segs).filter (isValueField ·.1)

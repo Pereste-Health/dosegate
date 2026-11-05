@@ -148,11 +148,10 @@ def dailyDose? (m : MedReq) : Option Dose :=
     | some d, some t => (dosesPerDay? t).map fun k => ⟨⟨d.amount.mant * k, d.amount.scale⟩, d.unit⟩
     | _, _ => none
 
-def drugNameChar (c : Char) : Bool :=
-  c.isAlpha || c == ' ' || c == '-' || c == '(' || c == ')' || c == '/' || c == ','
+def drugNameChar (c : Char) : Bool := c.isAlpha || c == ' ' || c == '-'
 
 def drugNameOk (cs : List Char) : Bool :=
-  cs.any Char.isAlpha && cs.length ≤ 100 && cs.all drugNameChar && !(tokens cs).any isForbidden
+  cs.any Char.isAlpha && cs.length ≤ 60 && (tokens cs).length ≤ 5 && cs.all drugNameChar && !(tokens cs).any isForbidden
 
 def fmtField (f : Field) (m : MedReq) : Option (List Char) :=
   match f with

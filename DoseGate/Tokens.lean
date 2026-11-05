@@ -70,8 +70,8 @@ def negationWords : List String :=
 
 def vocab : List String :=
   ["a", "an", "the", "and", "to", "of", "for", "on", "at", "with", "by", "from", "this",
-   "that", "these", "those", "its", "they", "them", "their", "you", "your", "yours",
-   "we", "our", "us", "is", "are", "be", "been", "being", "was", "were", "will", "do", "does",
+   "that", "these", "those", "its", "they", "them", "their", "you", "your", "yours", "we",
+   "our", "us", "is", "are", "be", "been", "being", "was", "were", "will", "do", "does",
    "also", "so", "because", "which", "who", "what", "how", "why", "here", "there", "please",
    "thank", "thanks", "help", "helps", "helping", "work", "works", "working", "control",
    "controls", "controlling", "prevent", "prevents", "preventing", "protect", "protects",
@@ -85,9 +85,7 @@ def vocab : List String :=
    "stroke", "strokes", "attack", "attacks", "infection", "infections", "thyroid", "mood",
    "stomach", "condition", "conditions", "level", "levels", "risk", "plan", "list", "clots",
    "clot", "bones", "bone", "joints", "inflammation", "fever", "allergies", "anxiety",
-   "depression", "seizures", "diabetes", "asthma", "healthy", "well", "better", "steady",
-   "stable", "high", "low", "strong", "safe", "safely", "important", "good", "calm",
-   "comfortable", "relaxed", "open", "clear", "flowing", "smoothly", "properly", "symptoms",
+   "depression", "seizures", "diabetes", "asthma", "healthy", "important", "symptoms",
    "symptom", "life"]
 
 def instrWords : List String := ["take"]
