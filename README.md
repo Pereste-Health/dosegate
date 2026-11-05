@@ -7,7 +7,7 @@ This is version 2.1. The history of versions 1, 2, and 2.1, and the held-out adv
 ## Layout
 
 - `DoseGate/*.lean`: definitions (exact decimals, units, the FHIR subset, the slot parser, word classes, the renderer, the specification).
-- `DoseGate/Proofs/*.lean`: the proofs. `lake build DoseGate.Proofs` checks all 198 theorems.
+- `DoseGate/Proofs/*.lean`: the proofs. `lake build DoseGate.Proofs` checks all 197 theorems.
 - `DoseGate/Json.lean`, `Main.lean`: the FHIR reader and command-line tool. This code is tested, not proved.
 - `Baseline.lean`: the comparison filter used in the evaluation. It uses the same reader and slot formatting but checks model text only for braces, digits, and unit words.
 - `tests/`: regression tests (`bash tests/run.sh`), the differential fuzz test of the reader (`python3 tests/fuzz_reader.py --core v2 --seed 7 --count 20000`), and `tests/Axioms.lean`, which prints the axioms of every theorem (`lake env lean tests/Axioms.lean`).

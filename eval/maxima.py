@@ -1,4 +1,4 @@
-import collections, json, os
+import collections, json, os, re
 
 from score import DATA, orders
 
@@ -24,6 +24,11 @@ def main():
             if hit:
                 above[variant] += 1
                 by_drug.update(hit)
+                shown = False
+                for drug in hit:
+                    m = re.search(re.escape(drug) + r"[^.\n]*which is (\d+(?:\.\d+)?) mg a day", text)
+                    shown |= bool(m) and float(m.group(1)) > MAX_MG_PER_DAY[drug]
+                above["daily_total_printed" if shown else "daily_total_implied_by_dose_and_frequency"] += 1
     report = {"thresholds_mg_per_day": MAX_MG_PER_DAY, "released": dict(released),
               "released_above_threshold": dict(above), "by_drug": dict(by_drug)}
     json.dump(report, open(os.path.join(DATA, "maxima.json"), "w"), indent=1)

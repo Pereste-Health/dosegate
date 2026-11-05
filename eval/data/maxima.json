@@ -10,7 +10,9 @@
   "perturbed": 368
  },
  "released_above_threshold": {
-  "perturbed": 205
+  "perturbed": 205,
+  "daily_total_printed": 122,
+  "daily_total_implied_by_dose_and_frequency": 83
  },
  "by_drug": {
   "hydrochlorothiazide": 113,
