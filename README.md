@@ -7,7 +7,7 @@ This is version 2.1. The history of versions 1, 2, and 2.1, and the held-out adv
 ## Layout
 
 - `DoseGate/*.lean`: definitions (exact decimals, units, the FHIR subset, the slot parser, word classes, the renderer, the specification).
-- `DoseGate/Proofs/*.lean`: the proofs. `lake build DoseGate.Proofs` checks all 197 theorems.
+- `DoseGate/Proofs/*.lean`: the proofs. `lake build DoseGate.Proofs` checks all 198 theorems.
 - `DoseGate/Json.lean`, `Main.lean`: the FHIR reader and command-line tool. This code is tested, not proved.
 - `Baseline.lean`: the comparison filter used in the evaluation. It uses the same reader and slot formatting but checks model text only for braces, digits, and unit words.
 - `tests/`: regression tests (`bash tests/run.sh`), the differential fuzz test of the reader (`python3 tests/fuzz_reader.py --core v2 --seed 7 --count 20000`), and `tests/Axioms.lean`, which prints the axioms of every theorem (`lake env lean tests/Axioms.lean`).
@@ -36,11 +36,11 @@ The reply is `{"status":"ok","text":...}`, `{"status":"blocked","reason":...,"de
 
 Options:
 
-- `--require-all-orders` blocks any output that does not give an instruction for every active order.
+- By default the layer blocks any output that does not give an instruction for every active order. `--allow-omissions` turns this off.
 - `--extra-words FILE` adds lowercase words, one per line, to the vocabulary for framing sentences. Forbidden words stay forbidden.
 - `--ignore-free-text` reads the dose, timing, and route of an order even when the order has a `note` or its dosage has `text`, `additionalInstruction`, or `patientInstruction`. By default such an order has no usable dose, timing, or route, because free text can hold or limit the structured dose. Use this option only when the free text is generated from the structured fields.
 
-When the layer blocks, the application must show something else, for example a list rendered by DoseGate itself from the orders with no model text, or a message to contact the pharmacist.
+When the layer blocks, the application must show something else and must never show the block detail to a patient, because it can quote model text. `dosegate fallback` reads a request like `render`, ignores its output, and renders one instruction per active order through the same proved code.
 
 ## Reproducing the evaluation
 
