@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Differential fuzz test of the DoseGate reader and render checks.
 
-An independent Python reference predicts each reply of `dosegate serve`. The
-reference is written from the specification and FHIR R4, not from Lean. Realistic
+A separate Python reference predicts each reply of `dosegate serve`. The
+reference is written from the specification and FHIR R4, but it copies the route
+and unit tables from the Lean source and encodes the same reader policy, so it
+checks agreement with that policy, not with an outside standard. Realistic
 orders and output templates are mutated, sent as one JSON request per line through
 a single serve process, and each reply is compared with the prediction: the status,
 and the reason for a block or the text for an ok. An error reply must be an error.

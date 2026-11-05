@@ -1,0 +1,38 @@
+{
+  "source_directory": "fhir",
+  "bundle_files": 5980,
+  "patients": {
+    "selection": "first 120 bundles, in build_cases.py shuffle order (seed 20261104), with at least one order that the normalization keeps",
+    "same_bundles_as_cases_jsonl": true,
+    "bundles": 120,
+    "bundles_with_active_mr_with_free_text": 52,
+    "active_mr": 548,
+    "active_mr_with_free_text": 118,
+    "active_single_dosage_mr": 361,
+    "active_single_dosage_mr_with_free_text": 118,
+    "active_mr_by_field": {
+      "note": 0,
+      "dosageInstruction.text": 118,
+      "dosageInstruction.additionalInstruction": 29,
+      "dosageInstruction.patientInstruction": 0
+    },
+    "share_of_active_mr_with_free_text": 0.2153,
+    "share_of_active_single_dosage_mr_with_free_text": 0.3269
+  },
+  "all_bundles": {
+    "bundles": 5980,
+    "bundles_with_active_mr_with_free_text": 2685,
+    "active_mr": 26800,
+    "active_mr_with_free_text": 6013,
+    "active_single_dosage_mr": 17145,
+    "active_single_dosage_mr_with_free_text": 6013,
+    "active_mr_by_field": {
+      "note": 0,
+      "dosageInstruction.text": 6013,
+      "dosageInstruction.additionalInstruction": 1947,
+      "dosageInstruction.patientInstruction": 0
+    },
+    "share_of_active_mr_with_free_text": 0.2244,
+    "share_of_active_single_dosage_mr_with_free_text": 0.3507
+  }
+}

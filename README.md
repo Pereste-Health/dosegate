@@ -1,6 +1,6 @@
 # DoseGate
 
-DoseGate is a small program, written in Lean 4 and proved to meet a written specification, that sits between a language model and a reader. The model writes each medication instruction with slots such as `{{dose:m1}}` instead of values. DoseGate fills each slot from the FHIR MedicationRequest it receives or blocks the whole output. The proofs guarantee, for every model and every output, that every drug name, dose, daily total, route, and frequency in released text is the corresponding value of the single active order the slot names, that each value appears only inside a complete instruction for its own order, and that every other sentence uses only a small vocabulary of framing words. The code that reads FHIR JSON into Lean values is tested, not proved.
+DoseGate is a small program, written in Lean 4 and proved to meet a written specification, that sits between a language model and a reader. The model writes each medication instruction with slots such as `{{dose:m1}}` instead of values. DoseGate fills each slot from the FHIR MedicationRequest it receives or blocks the whole output. The proofs guarantee, for every model and every output, that every drug name, dose, daily total, route, and frequency the layer fills from a slot is the corresponding value of the single active order the slot names, and that each filled value appears only inside an instruction for its own order that states its dose, route, and frequency. With the default vocabulary, every other sentence uses only a small set of framing words; a deployment that adds words with `--extra-words` can release a drug name outside any instruction. The code that reads FHIR JSON into Lean values is tested, not proved.
 
 This is version 2.1. The history of versions 1, 2, and 2.1, and the held-out adversarial rounds that led to them, is described in the paper.
 
@@ -32,7 +32,7 @@ lake build dosegate dosegate-baseline
 echo '{"medicationRequests": [...], "output": "Take {{drug:m1}} {{dose:m1}} {{route:m1}} {{frequency:m1}}, which is {{daily:m1}}."}' | .lake/build/bin/dosegate render
 ```
 
-The reply is `{"status":"ok","text":...}`, `{"status":"blocked","reason":...,"detail":...}`, or `{"status":"error","message":...}`. `dosegate serve` reads one JSON request per line. Every MedicationRequest must carry a `subject.reference`. Without a `patient` field, all of them must carry the same reference. With a `patient` field, orders whose reference names another patient are ignored.
+The reply is `{"status":"ok","text":...}`, `{"status":"blocked","reason":...,"detail":...}`, or `{"status":"error","message":...}`. `dosegate serve` reads one JSON request per line. Every MedicationRequest must carry a `subject.reference`. Without a `patient` field, all of them must carry the same reference. An order whose `status` or `intent` is missing or is not a FHIR R4 code (case variants such as `Active` included) makes the whole request an error. Valid statuses other than active (on-hold, cancelled, completed, entered-in-error, stopped, draft, unknown) and valid intents that are not order intents (proposal, plan, option) make the order inactive, and inactive orders are omitted without a block. With a `patient` field, an order is for that patient when its subject reference is `Patient/<id>`, `urn:uuid:<id>`, or an http or https URL ending in `Patient/<id>`; a reference in one of those forms with another id makes the order inactive; any other form makes the request an error.
 
 Options:
 
@@ -49,6 +49,7 @@ When the layer blocks, the application must show something else and must never s
 All commands run from the repository root with Python 3 (standard library) after building. Model generation needs MLX LM 0.32.2 for Qwen3.5-4B and Ollama for the other two models.
 
 - `eval/build_cases.py` rebuilds `eval/data/cases.jsonl` from the Synthea bundles (not distributed).
+- `python3 eval/free_text_share.py` counts the active MedicationRequests and their free-text fields in the raw Synthea bundles, read in place from `SYNTHEA_FHIR_DIR`, and writes `eval/data/free_text_share.json`.
 - `eval/generate.py` generates model outputs. Version 2 runs used `HALF=test` with `MODEL`, `BACKEND`, `OUT`, and `CONDITIONS` set as in the paper; outputs are `eval/data/generations_v2_*.jsonl`.
 - `TAG=v2_qwen3.5-4b python3 eval/score.py` (and likewise for `v2_medgemma-4b` and `v2_llama3.2-3b`) re-gates every stored output with the built binary and writes `results_all_<tag>.json` and `final_gate_decisions_<tag>.json`.
 - `TAG=<tag> python3 eval/controls.py` runs the comparison filter, the planted-error test, and the attack counts (`controls_<tag>.json`).
