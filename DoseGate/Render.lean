@@ -24,6 +24,7 @@ inductive Block where
   | unseparated
   | unbound
   | repeatedValue
+  | ambiguousDaily (id : List Char)
   deriving Repr, DecidableEq, Inhabited
 
 def allowedWord (p : Policy) (tok : List Char) : Bool :=
@@ -49,6 +50,8 @@ def renderSeg (p : Policy) (chart : List MedReq) : Seg → Except Block (List Ch
       | none => .error (.unknownRef id)
       | some m =>
           if !m.active then .error (.inactiveOrder id)
+          else if f == .daily && (chart.filter fun m' => m'.active && m'.drug == m.drug).length > 1 then
+            .error (.ambiguousDaily id)
           else match fmtField f m with
             | none => .error (.missingField id f)
             | some piece => .ok piece

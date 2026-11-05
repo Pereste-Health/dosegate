@@ -16,6 +16,7 @@ def blockName : Block → String
   | .unseparated => "unseparated"
   | .unbound => "unbound"
   | .repeatedValue => "repeatedValue"
+  | .ambiguousDaily _ => "ambiguousDaily"
 
 def slotText (f : Field) (id : List Char) : String :=
   "{{" ++ String.ofList f.name ++ ":" ++ String.ofList id ++ "}}"
@@ -68,6 +69,8 @@ def blockDetail (p : Policy) (out : String) : Block → String
         "a sentence does not match a valid sentence shape"
   | .repeatedValue =>
       "a value slot (dose, route, frequency, sig, or daily) appears twice for one order, or sig appears with dose, route, or frequency for one order"
+  | .ambiguousDaily _ =>
+      "two active orders share this drug name, so a daily total for one order would not be the drug's total"
 
 def okJson (text : String) : Lean.Json :=
   Lean.Json.mkObj [("status", Lean.Json.str "ok"), ("text", Lean.Json.str text)]
@@ -88,24 +91,27 @@ def handle (policy : Policy) (req : Lean.Json) : Lean.Json × UInt8 :=
       else if (out.splitOn "{{").length - 1 > maxSlots then
         (errorJson s!"the output has more than {maxSlots} slots", 1)
       else
-        match patientOf req with
-        | .error e => (errorJson e, 1)
-        | .ok patient =>
-            match subjectProblem patient req with
-            | some e => (errorJson e, 1)
-            | none =>
-                match chartOf patient req with
-                | none => (errorJson "request has neither bundle nor medicationRequests", 1)
-                | some chart =>
-                    if chart.length > maxOrders then
-                      (errorJson s!"the request has more than {maxOrders} MedicationRequests", 1)
-                    else
-                      match render policy chart out.toList with
-                      | .ok text =>
-                          if text.length > maxOutput then
-                            (errorJson s!"the rendered text is longer than {maxOutput} characters", 1)
-                          else (okJson (String.ofList text), 0)
-                      | .error b => (blockedJson b (blockDetail policy out b), 2)
+        match shapeProblem req with
+        | some e => (errorJson e, 1)
+        | none =>
+            match patientOf req with
+            | .error e => (errorJson e, 1)
+            | .ok patient =>
+                match subjectProblem patient req with
+                | some e => (errorJson e, 1)
+                | none =>
+                    match chartOf patient req with
+                    | none => (errorJson "request has neither bundle nor medicationRequests", 1)
+                    | some chart =>
+                        if chart.length > maxOrders then
+                          (errorJson s!"the request has more than {maxOrders} MedicationRequests", 1)
+                        else
+                          match render policy chart out.toList with
+                          | .ok text =>
+                              if text.length > maxOutput then
+                                (errorJson s!"the rendered text is longer than {maxOutput} characters", 1)
+                              else (okJson (String.ofList text), 0)
+                          | .error b => (blockedJson b (blockDetail policy out b), 2)
 
 def respondLine (policy : Policy) (line : String) : Lean.Json × UInt8 :=
   if line.utf8ByteSize > maxRequestBytes then

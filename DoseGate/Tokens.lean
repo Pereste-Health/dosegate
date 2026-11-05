@@ -71,22 +71,18 @@ def negationWords : List String :=
 def vocab : List String :=
   ["a", "an", "the", "and", "to", "of", "for", "on", "at", "with", "by", "from", "this",
    "that", "these", "those", "its", "they", "them", "their", "you", "your", "yours", "we",
-   "our", "us", "is", "are", "be", "been", "being", "was", "were", "will", "do", "does",
-   "also", "so", "because", "which", "who", "what", "how", "why", "here", "there", "please",
-   "thank", "thanks", "help", "helps", "helping", "work", "works", "working", "control",
-   "controls", "controlling", "prevent", "prevents", "preventing", "protect", "protects",
-   "protecting", "relax", "relaxes", "relaxing", "manage", "manages", "managing", "treat",
-   "treats", "treating", "support", "supports", "remember", "follow", "ask", "call", "tell",
-   "talk", "get", "make", "makes", "let", "have", "has", "see", "medicine", "medicines",
+   "our", "us", "is", "are", "be", "been", "being", "was", "were", "will", "also", "so",
+   "because", "which", "who", "what", "how", "why", "here", "there", "help", "helps",
+   "helping", "control", "controls", "controlling", "prevent", "prevents", "preventing",
+   "protect", "protects", "protecting", "relax", "relaxes", "relaxing", "manage", "manages",
+   "managing", "treat", "treats", "treating", "support", "supports", "medicine", "medicines",
    "medication", "medications", "heart", "blood", "pressure", "sugar", "cholesterol", "pain",
-   "body", "kidney", "kidneys", "liver", "lungs", "lung", "breathing", "vessels", "vessel",
-   "arteries", "artery", "muscles", "swelling", "fluid", "water", "salt", "health", "doctor",
-   "nurse", "pharmacist", "care", "team", "question", "questions", "side", "effect", "effects",
+   "breathing", "swelling", "fluid", "water", "salt", "health", "doctor", "nurse",
+   "pharmacist", "care", "team", "question", "questions", "side", "effect", "effects",
    "stroke", "strokes", "attack", "attacks", "infection", "infections", "thyroid", "mood",
-   "stomach", "condition", "conditions", "level", "levels", "risk", "plan", "list", "clots",
-   "clot", "bones", "bone", "joints", "inflammation", "fever", "allergies", "anxiety",
-   "depression", "seizures", "diabetes", "asthma", "healthy", "important", "symptoms",
-   "symptom", "life"]
+   "condition", "conditions", "level", "levels", "risk", "plan", "list", "clots", "clot",
+   "inflammation", "fever", "allergies", "anxiety", "depression", "seizures", "diabetes",
+   "asthma", "healthy", "important", "symptoms", "symptom", "life"]
 
 def instrWords : List String := ["take"]
 

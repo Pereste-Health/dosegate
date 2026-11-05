@@ -1,0 +1,1 @@
+{"bundle": {"resourceType": "Bundle", "entry": {}}, "output": "Your medicine is {{drug:m1}}."}

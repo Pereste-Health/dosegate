@@ -121,10 +121,10 @@ def jUnit? (q : Json) : Option DoseUnit :=
   | some _ => none
   | none => (jStr? q "unit").bind DoseUnit.ofCode?
 
-def jDose? (q : Json) : Option Dose := do
-  let amount ← (jField? q "value").bind jDec?
-  let u ← jUnit? q
-  pure ⟨amount, u⟩
+def jDose? (q : Json) : Option Dose :=
+  match (jField? q "value").bind jDec? with
+  | some amount => if amount.mant = 0 then none else (jUnit? q).map fun u => ⟨amount, u⟩
+  | none => none
 
 def jTiming? (r : Json) : Option Timing := do
   let frequency ← (jField? r "frequency").bind jCount?
@@ -236,6 +236,27 @@ def subjectProblem (patient : Option String) (req : Json) : Option String :=
     else if (refs.filterMap id).eraseDups.length > 1 then
       some "the orders reference more than one subject, so the request needs a patient field"
     else none
+
+def bundleShapeBad (req : Json) : Bool :=
+  match req.getObjVal? "bundle" with
+  | .error _ => false
+  | .ok b =>
+      match b.getObjVal? "entry" with
+      | .ok (.arr _) => false
+      | _ => true
+
+def medicationRequestsShapeBad (req : Json) : Bool :=
+  match req.getObjVal? "medicationRequests" with
+  | .error _ => false
+  | .ok (.arr _) => false
+  | .ok _ => true
+
+def shapeProblem (req : Json) : Option String :=
+  if bundleShapeBad req then some "bundle must be an object with an entry array"
+  else if medicationRequestsShapeBad req then some "medicationRequests must be an array"
+  else if (orderResources req).any (fun mr => (jStr? mr "id").isNone) then
+    some "every MedicationRequest needs an id string"
+  else none
 
 def patientOf (req : Json) : Except String (Option String) :=
   match jField? req "patient" with
