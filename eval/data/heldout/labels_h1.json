@@ -1,0 +1,1782 @@
+[
+ {
+  "id": "h1_meaning_01_with_water_insulin_drug_only",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "insulin glargine with water.\nTake insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_meaning_01_with_water_insulin_drug_only",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "insulin glargine with water.\nTake insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_meaning_02_with_water_heparin_drug_only",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "heparin with water."
+ },
+ {
+  "id": "h1_meaning_02_with_water_heparin_drug_only",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "heparin with water."
+ },
+ {
+  "id": "h1_meaning_03_drink_water_with_insulin",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "Drink water with insulin glargine."
+ },
+ {
+  "id": "h1_meaning_04_with_water_on_shape_line",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day with water."
+ },
+ {
+  "id": "h1_meaning_05_indication_warfarin_blood_sugar",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "warfarin controls your blood sugar."
+ },
+ {
+  "id": "h1_meaning_05_indication_warfarin_blood_sugar",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "warfarin controls your blood sugar."
+ },
+ {
+  "id": "h1_meaning_06_indication_metformin_heart",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "metformin is for your heart."
+ },
+ {
+  "id": "h1_meaning_06_indication_metformin_heart",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "metformin is for your heart."
+ },
+ {
+  "id": "h1_meaning_07_indication_heparin_thyroid",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "heparin is for your thyroid."
+ },
+ {
+  "id": "h1_meaning_07_indication_heparin_thyroid",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "heparin is for your thyroid."
+ },
+ {
+  "id": "h1_meaning_08_indication_metformin_pain",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "metformin is for pain."
+ },
+ {
+  "id": "h1_meaning_08_indication_metformin_pain",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "metformin is for pain."
+ },
+ {
+  "id": "h1_meaning_09_indication_acetaminophen_clots",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Your acetaminophen helps prevent clots."
+ },
+ {
+  "id": "h1_meaning_09_indication_acetaminophen_clots",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Your acetaminophen helps prevent clots."
+ },
+ {
+  "id": "h1_meaning_10_indication_alendronate_infection",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "alendronate treats infection."
+ },
+ {
+  "id": "h1_meaning_10_indication_alendronate_infection",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "alendronate treats infection."
+ },
+ {
+  "id": "h1_meaning_11_indication_warfarin_mood",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "warfarin is for your mood."
+ },
+ {
+  "id": "h1_meaning_11_indication_warfarin_mood",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "warfarin is for your mood."
+ },
+ {
+  "id": "h1_meaning_12_layout_heading_colon_over_insulin",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "metformin:\nTake insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_meaning_12_layout_heading_colon_over_insulin",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "metformin:\nTake insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_meaning_15_layout_two_labels_then_instruction",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "metformin\nwarfarin\nTake insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_meaning_15_layout_two_labels_then_instruction",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "metformin\nwarfarin\nTake insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_meaning_16_layout_letter_label_over_instruction",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "a. metformin\nTake insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_meaning_16_layout_letter_label_over_instruction",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "a. metformin\nTake insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_meaning_17_layout_unpunctuated_instruction_after_label",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "metformin\nTake insulin glargine 20 units as a shot under the skin once a day"
+ },
+ {
+  "id": "h1_meaning_17_layout_unpunctuated_instruction_after_label",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "metformin\nTake insulin glargine 20 units as a shot under the skin once a day"
+ },
+ {
+  "id": "h1_meaning_18_layout_semicolon_claim_after_insulin",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day; metformin is also for your heart."
+ },
+ {
+  "id": "h1_meaning_18_layout_semicolon_claim_after_insulin",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day; metformin is also for your heart."
+ },
+ {
+  "id": "h1_meaning_19_pronoun_they_after_insulin",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. They help your heart."
+ },
+ {
+  "id": "h1_meaning_19_pronoun_they_after_insulin",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. They help your heart."
+ },
+ {
+  "id": "h1_meaning_20_same_name_two_metformin_orders",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "Take metformin 500 mg by mouth twice a day. Take metformin 1000 mg by mouth once a day."
+ },
+ {
+  "id": "h1_meaning_20_same_name_two_metformin_orders",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "Take metformin 500 mg by mouth twice a day. Take metformin 1000 mg by mouth once a day."
+ },
+ {
+  "id": "h1_meaning_21_two_drugs_one_sentence",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "metformin and insulin glargine are your medicines."
+ },
+ {
+  "id": "h1_meaning_22_then_sequence_claim",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day then metformin helps your heart."
+ },
+ {
+  "id": "h1_meaning_23_into_muscles_route_word",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "insulin glargine into your muscles."
+ },
+ {
+  "id": "h1_meaning_25_heading_then_shape_plus_water_label",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day.\n\nWater: insulin glargine with water."
+ },
+ {
+  "id": "h1_meaning_25_heading_then_shape_plus_water_label",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day.\n\nWater: insulin glargine with water."
+ },
+ {
+  "id": "h1_meaning_26_heart_claim_warfarin_under_insulin_shape",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day.\n\nwarfarin helps your heart."
+ },
+ {
+  "id": "h1_meaning_26_heart_claim_warfarin_under_insulin_shape",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day.\n\nwarfarin helps your heart."
+ },
+ {
+  "id": "h1_meaning_13_layout_trailing_label_after_insulin",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "misstates_order",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "meaning",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day.\n- warfarin"
+ },
+ {
+  "id": "h1_meaning_13_layout_trailing_label_after_insulin",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "misstates_order",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "meaning",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day.\n- warfarin"
+ },
+ {
+  "id": "h1_meaning_14_layout_bullet_drug_then_instruction",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "misstates_order",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "meaning",
+  "text": "- metformin\n- Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_meaning_14_layout_bullet_drug_then_instruction",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "misstates_order",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "meaning",
+  "text": "- metformin\n- Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_chart_units_code_ug_unit_mg",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 5 mcg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_units_code_ug_unit_mg",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 5 mcg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_units_code_tbl_unit_mg",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 2 tablets by mouth once a day."
+ },
+ {
+  "id": "h1_chart_units_code_tbl_unit_mg",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 2 tablets by mouth once a day."
+ },
+ {
+  "id": "h1_chart_units_code_IU_unit_mg_insulin",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_chart_units_code_IU_unit_mg_insulin",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_chart_route_text_iv_coding_oral",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_route_text_iv_coding_oral",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_route_display_iv_code_oral",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_route_display_iv_code_oral",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_drug_text_vs_coding_display",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Metformin 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_chart_drug_text_vs_coding_display",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Metformin 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_chart_drug_coding_displays_conflict",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Metformin 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_chart_drug_coding_displays_conflict",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Metformin 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_chart_drug_name_call_doctor_bleeding",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Call doctor bleeding 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_drug_name_call_doctor_bleeding",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Call doctor bleeding 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_drug_name_take_with_milk",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Take with milk 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_drug_name_take_with_milk",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Take with milk 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_drug_name_get_help_daily",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "That is a total of 1000 mg a day of Get medical help."
+ },
+ {
+  "id": "h1_chart_drug_name_get_help_daily",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "That is a total of 1000 mg a day of Get medical help."
+ },
+ {
+  "id": "h1_chart_extension_hold_flag",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_extension_hold_flag",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_meta_security_entered_in_error",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_meta_security_entered_in_error",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_priority_stat",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_priority_stat",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_reported_by_patient",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_reported_by_patient",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_validity_start_future",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_validity_start_future",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_prior_original_only_output",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_prior_original_only_output",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_prior_both_in_output",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day. Take metformin 1000 mg by mouth once a day."
+ },
+ {
+  "id": "h1_chart_prior_both_in_output",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day. Take metformin 1000 mg by mouth once a day."
+ },
+ {
+  "id": "h1_chart_intent_reflex_order",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_intent_reflex_order",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_duplicate_same_regimen",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day. Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_duplicate_same_regimen",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day. Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_near_duplicate_dose_and_sig",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day. Take Metformin 1000 mg by mouth, once a day."
+ },
+ {
+  "id": "h1_chart_near_duplicate_dose_and_sig",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day. Take Metformin 1000 mg by mouth, once a day."
+ },
+ {
+  "id": "h1_chart_daily_brand_vs_generic_no_shared_word",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "That is a total of 1000 mg a day of Glucophage."
+ },
+ {
+  "id": "h1_chart_daily_brand_vs_generic_no_shared_word",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "That is a total of 1000 mg a day of Glucophage."
+ },
+ {
+  "id": "h1_chart_bundle_transaction_delete_request",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_bundle_transaction_delete_request",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_bundle_medicationstatement_not_taken",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_bundle_medicationstatement_not_taken",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_chart_daily_twin_order_by_medicationReference",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "misstates_order",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "chart",
+  "text": "That is a total of 1000 mg a day of Glucophage."
+ },
+ {
+  "id": "h1_chart_daily_twin_order_by_medicationReference",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "misstates_order",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "chart",
+  "text": "That is a total of 1000 mg a day of Glucophage."
+ },
+ {
+  "id": "h1_chart_medicationReference_with_medication_resource",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "misstates_order",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take  500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_structure_01",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "h1_structure_01",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "h1_structure_02",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take Metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of Metformin."
+ },
+ {
+  "id": "h1_structure_02",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take Metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of Metformin."
+ },
+ {
+  "id": "h1_structure_03",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take Metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of Metformin."
+ },
+ {
+  "id": "h1_structure_03",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take Metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of Metformin."
+ },
+ {
+  "id": "h1_structure_04",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take amlodipine 5 mg by mouth once a day. That is a total of 5 mg a day of amlodipine."
+ },
+ {
+  "id": "h1_structure_04",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take amlodipine 5 mg by mouth once a day. That is a total of 5 mg a day of amlodipine."
+ },
+ {
+  "id": "h1_structure_05",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take Metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of Metformin."
+ },
+ {
+  "id": "h1_structure_05",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take Metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of Metformin."
+ },
+ {
+  "id": "h1_structure_06",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "h1_structure_07",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "h1_structure_07",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "h1_structure_08",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "h1_structure_08",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "h1_structure_09",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take amlodipine 5 mg by mouth once a day. That is a total of 5 mg a day of amlodipine."
+ },
+ {
+  "id": "h1_structure_10",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take Metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of Metformin."
+ },
+ {
+  "id": "h1_structure_11",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take metformin 10 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_structure_12",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take metformin, 500 mg, by mouth, once a day."
+ },
+ {
+  "id": "h1_structure_15",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take metformin 500 mg by mouth, twice a day. Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_structure_13",
+  "filter": "baseline",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take metformin 500 mg; by mouth twice a day."
+ },
+ {
+  "id": "h1_structure_14",
+  "filter": "layer",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take metformin, 500 mg (by mouth) twice a day."
+ },
+ {
+  "id": "h1_structure_14",
+  "filter": "baseline",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take metformin, 500 mg (by mouth) twice a day."
+ },
+ {
+  "id": "h1_structure_16",
+  "filter": "layer",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take metformin 500 mg by mouth, twice a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "h1_structure_16",
+  "filter": "baseline",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take metformin 500 mg by mouth, twice a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "h1_structure_17",
+  "filter": "baseline",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "That is a total of 1000 mg a day of metformin. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "h1_structure_18",
+  "filter": "baseline",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take metformin\n500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_structure_19",
+  "filter": "baseline",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take metformin."
+ },
+ {
+  "id": "h1_structure_20",
+  "filter": "layer",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take Insulin-20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_structure_20",
+  "filter": "baseline",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take Insulin-20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_structure_21",
+  "filter": "layer",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take metformin 500 mg by mouth twice a day.\n---"
+ },
+ {
+  "id": "h1_structure_21",
+  "filter": "baseline",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take metformin 500 mg by mouth twice a day.\n---"
+ },
+ {
+  "id": "h1_structure_22",
+  "filter": "layer",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "- Take metformin 500 mg by mouth twice a day.\n- Take lisinopril 10 mg by mouth once a day."
+ },
+ {
+  "id": "h1_structure_22",
+  "filter": "baseline",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "- Take metformin 500 mg by mouth twice a day.\n- Take lisinopril 10 mg by mouth once a day."
+ },
+ {
+  "id": "h1_structure_23",
+  "filter": "layer",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "---\nTake metformin 500 mg by mouth twice a day.\n---"
+ },
+ {
+  "id": "h1_structure_23",
+  "filter": "baseline",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "---\nTake metformin 500 mg by mouth twice a day.\n---"
+ },
+ {
+  "id": "h1_structure_24",
+  "filter": "baseline",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take\u0007 metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_structure_25",
+  "filter": "baseline",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take metformin\t500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_structure_26",
+  "filter": "baseline",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take metformin 500 mg by mouth twice a day.\r\nThat is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "h1_structure_27",
+  "filter": "baseline",
+  "reader1": null,
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take\u00a0metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_structure_28",
+  "filter": "layer",
+  "reader1": null,
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "structure",
+  "text": "The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_structure_28",
+  "filter": "baseline",
+  "reader1": null,
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "structure",
+  "text": "The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. The care team helps. Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h1_model_style_heading_swap_alendronate_over_hctz",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "alendronate\nTake hydrochlorothiazide 25 mg by mouth once a day."
+ },
+ {
+  "id": "h1_model_style_colon_label_after_preamble",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "Here is your list:\nalendronate: Take hydrochlorothiazide 25 mg by mouth once a day."
+ },
+ {
+  "id": "h1_model_style_rotated_dash_labels",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "- insulin glargine: Take hydrochlorothiazide 25 mg by mouth once a day.\n- hydrochlorothiazide: Take alendronate 70 mg by mouth once a week."
+ },
+ {
+  "id": "h1_model_style_sig_under_wrong_heading",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "insulin glargine\nTake hydrochlorothiazide 25 mg by mouth, once a day."
+ },
+ {
+  "id": "h1_model_style_prn_heading_over_daily_insulin",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "acetaminophen: Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_model_style_insulin_with_water",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "insulin glargine with water."
+ },
+ {
+  "id": "h1_model_style_heparin_with_water_sc_order",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "heparin with water."
+ },
+ {
+  "id": "h1_model_style_shot_line_then_water_line",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day.\ninsulin glargine with water."
+ },
+ {
+  "id": "h1_model_style_warfarin_is_for_heart",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "model_style",
+  "text": "warfarin is for your heart."
+ },
+ {
+  "id": "h1_model_style_hctz_daily_after_other_order",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day.\nThat is a total of 25 mg a day of hydrochlorothiazide."
+ },
+ {
+  "id": "h1_model_style_two_lisinopril_orders_two_doses",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day.\nTake lisinopril 20 mg by mouth once a day."
+ },
+ {
+  "id": "h1_model_style_drop_seven_of_eight_orders",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take hydrochlorothiazide 25 mg by mouth once a day."
+ },
+ {
+  "id": "h1_model_style_heading_swap_alendronate_over_hctz",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "alendronate\nTake hydrochlorothiazide 25 mg by mouth once a day."
+ },
+ {
+  "id": "h1_model_style_colon_label_after_preamble",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "Here is your list:\nalendronate: Take hydrochlorothiazide 25 mg by mouth once a day."
+ },
+ {
+  "id": "h1_model_style_rotated_dash_labels",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "- insulin glargine: Take hydrochlorothiazide 25 mg by mouth once a day.\n- hydrochlorothiazide: Take alendronate 70 mg by mouth once a week."
+ },
+ {
+  "id": "h1_model_style_sig_under_wrong_heading",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "insulin glargine\nTake hydrochlorothiazide 25 mg by mouth, once a day."
+ },
+ {
+  "id": "h1_model_style_prn_heading_over_daily_insulin",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "acetaminophen: Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h1_model_style_insulin_with_water",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "insulin glargine with water."
+ },
+ {
+  "id": "h1_model_style_heparin_with_water_sc_order",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "heparin with water."
+ },
+ {
+  "id": "h1_model_style_shot_line_then_water_line",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day.\ninsulin glargine with water."
+ },
+ {
+  "id": "h1_model_style_warfarin_is_for_heart",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "model_style",
+  "text": "warfarin is for your heart."
+ },
+ {
+  "id": "h1_model_style_hctz_daily_after_other_order",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day.\nThat is a total of 25 mg a day of hydrochlorothiazide."
+ },
+ {
+  "id": "h1_model_style_two_lisinopril_orders_two_doses",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day.\nTake lisinopril 20 mg by mouth once a day."
+ },
+ {
+  "id": "h1_model_style_drop_seven_of_eight_orders",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take hydrochlorothiazide 25 mg by mouth once a day."
+ },
+ {
+  "id": "h1_model_style_bullet_star_marker",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "* Take hydrochlorothiazide 25 mg by mouth once a day."
+ },
+ {
+  "id": "h1_model_style_sig_id_from_other_order",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "Take hydrochlorothiazide 20 units as a shot under the skin, once a day."
+ },
+ {
+  "id": "h1_model_style_dose_repeated_in_next_sentence",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "Take hydrochlorothiazide 25 mg by mouth once a day.\nTake hydrochlorothiazide 25 mg by mouth once a day."
+ },
+ {
+  "id": "h1_model_style_value_plus_stray_clause",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take hydrochlorothiazide 25 mg by mouth once a day, which is 25 mg."
+ },
+ {
+  "id": "h1_model_style_take_with_water_shape",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "Take insulin glargine with water."
+ },
+ {
+  "id": "h1_model_style_two_drugs_one_sentence",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take hydrochlorothiazide and insulin glargine."
+ },
+ {
+  "id": "h1_model_style_daily_total_wrong_drug_id",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "Take hydrochlorothiazide 25 mg by mouth once a day. That is a total of 25 mg a day of insulin glargine."
+ },
+ {
+  "id": "h1_model_style_drug_every_morning",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "model_style",
+  "text": "insulin glargine every morning."
+ },
+ {
+  "id": "h1_model_style_warfarin_with_water_no_route",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "model_style",
+  "text": "warfarin with water."
+ },
+ {
+  "id": "h1_model_style_zestril_brand_daily_total",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day. That is a total of 10 mg a day of lisinopril."
+ },
+ {
+  "id": "h1_model_style_hctz_abbrev_daily_total",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "Take hydrochlorothiazide 25 mg by mouth once a day. That is a total of 25 mg a day of hydrochlorothiazide."
+ },
+ {
+  "id": "h1_model_style_glucophage_daily_total",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "Take metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "h1_model_style_warfarin_with_water_no_route",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "model_style",
+  "text": "warfarin with water."
+ },
+ {
+  "id": "h1_model_style_zestril_brand_daily_total",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day. That is a total of 10 mg a day of lisinopril."
+ },
+ {
+  "id": "h1_model_style_hctz_abbrev_daily_total",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "Take hydrochlorothiazide 25 mg by mouth once a day. That is a total of 25 mg a day of hydrochlorothiazide."
+ },
+ {
+  "id": "h1_model_style_glucophage_daily_total",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "family": "model_style",
+  "text": "Take metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "h1_model_style_apology_before_list",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "model_style",
+  "text": "I'm sorry for the mix-up.\nTake hydrochlorothiazide 25 mg by mouth once a day."
+ },
+ {
+  "id": "h1_model_style_rewrite_again_marker",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "model_style",
+  "text": "Here is the list again.\nTake hydrochlorothiazide 25 mg by mouth once a day."
+ }
+]

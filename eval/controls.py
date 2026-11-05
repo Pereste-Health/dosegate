@@ -74,10 +74,12 @@ def mutate(text, ords, kind):
 
 
 def main():
+    tag = os.environ.get("TAG", "")
+    suffix = f"_{tag}" if tag else ""
     cases = {json.loads(l)["case_id"]: json.loads(l) for l in open(os.path.join(DATA, "cases.jsonl"))}
-    gens = [json.loads(l) for l in open(os.path.join(DATA, "generations.jsonl"))]
+    gens = [json.loads(l) for l in open(os.path.join(DATA, f"generations{suffix}.jsonl"))]
     final = {(d["case_id"], d["condition"], d["sample"], d["attempt"]): d["gate"]
-             for d in json.load(open(os.path.join(DATA, "final_gate_decisions.json")))}
+             for d in json.load(open(os.path.join(DATA, f"final_gate_decisions{suffix}.json")))}
     last = {}
     for g in gens:
         k = (g["case_id"], g["condition"], g["sample"])
@@ -118,7 +120,7 @@ def main():
     cls = collections.Counter(w for b in base_only for ws in b["model_words"].values() for w in ws)
     report["baseline_only_word_counts"] = dict(cls.most_common())
     report["baseline_released_with_audit_error"] = len(base_errors)
-    json.dump(base_only, open(os.path.join(DATA, "baseline_only_released.json"), "w"), indent=1)
+    json.dump(base_only, open(os.path.join(DATA, f"baseline_only_released{suffix}.json"), "w"), indent=1)
 
     mut = {}
     for kind in ("dose_x10", "daily_as_dose", "frequency_swap"):
@@ -149,7 +151,7 @@ def main():
     report["attack"] = {"outputs": len(attack), "state_doubled_first_dose_mg": doubled,
                         "cases_first_order_twice_daily": twice_daily_first,
                         "of_those_state_doubled": doubled_equals_daily}
-    json.dump(report, open(os.path.join(DATA, "controls.json"), "w"), indent=1)
+    json.dump(report, open(os.path.join(DATA, f"controls{suffix}.json"), "w"), indent=1)
     print(json.dumps(report, indent=1))
 
 

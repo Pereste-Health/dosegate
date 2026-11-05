@@ -143,14 +143,16 @@ def pct(a, b):
 
 def main():
     cases = {c["case_id"]: c for c in map(json.loads, open(os.path.join(DATA, "cases.jsonl")))}
-    gens = [json.loads(l) for l in open(os.path.join(DATA, "generations.jsonl"))]
+    tag = os.environ.get("TAG", "")
+    suffix = f"_{tag}" if tag else ""
+    gens = [json.loads(l) for l in open(os.path.join(DATA, f"generations{suffix}.jsonl"))]
     final_gate = os.environ.get("FINAL_GATE", os.path.join(HERE, "..", ".lake", "build", "bin", "dosegate"))
     if final_gate:
         regate(gens, cases, final_gate)
         changed = sum(g["gate"]["status"] != g["provisional_gate"]["status"] for g in gens)
         print(f"re-gated {len(gens)} outputs with the final gate; {changed} decisions differ from the provisional gate")
         json.dump([{k: g[k] for k in ("case_id", "condition", "sample", "attempt", "gate", "provisional_gate")} for g in gens],
-                  open(os.path.join(DATA, "final_gate_decisions.json"), "w"))
+                  open(os.path.join(DATA, f"final_gate_decisions{suffix}.json"), "w"))
     report, rows = {}, []
     groups = collections.defaultdict(list)
     for g in gens:
@@ -206,7 +208,7 @@ def main():
                         "raw_model_text": raw, "raw_by_variant": dict(by_variant), "text_shown_after_gate": shown}
     ms = [g["gate"]["gate_ms"] for g in gens if "gate_ms" in g["gate"]]
     report["gate_ms"] = {"n": len(ms), "median": statistics.median(ms), "p99": sorted(ms)[int(0.99 * (len(ms) - 1))], "max": max(ms)}
-    json.dump(report, open(os.path.join(DATA, f"results_{half or 'all'}.json"), "w"), indent=1)
+    json.dump(report, open(os.path.join(DATA, f"results_{half or 'all'}{suffix}.json"), "w"), indent=1)
     for name, r in report.items():
         if name == "gate_ms":
             continue

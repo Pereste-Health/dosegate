@@ -1,14 +1,14 @@
 import json, os, subprocess, sys, time
 
-import mlx.core as mx
-from mlx_lm import generate, load
-from mlx_lm.sample_utils import make_sampler
+import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 GATE = os.environ.get("DOSEGATE", os.path.join(ROOT, ".lake/build/bin/dosegate"))
-MODEL = "Qwen/Qwen3.5-4B"
-OUT = os.path.join(HERE, "data", "generations.jsonl")
+MODEL = os.environ.get("MODEL", "Qwen/Qwen3.5-4B")
+BACKEND = os.environ.get("BACKEND", "mlx")
+OUT = os.environ.get("OUT", os.path.join(HERE, "data", "generations.jsonl"))
+CONDITIONS = set(os.environ.get("CONDITIONS", "free,free_daily,slot,slot_daily,attack,slot_hot").split(","))
 ROUTES = {"26643006": "by mouth", "37839007": "under the tongue"}
 UNITS = {"h": "hour", "d": "day", "wk": "week"}
 
@@ -72,10 +72,36 @@ class Gate:
         return res
 
 
-def main():
+def mlx_backend():
+    import mlx.core as mx
+    from mlx_lm import generate, load
+    from mlx_lm.sample_utils import make_sampler
     model, tok = load(MODEL)
+
+    def complete(msgs, temp, seed):
+        prompt = tok.apply_chat_template(msgs, add_generation_prompt=True, tokenize=False, enable_thinking=False)
+        mx.random.seed(seed)
+        return generate(model, tok, prompt, max_tokens=400, sampler=make_sampler(temp=temp, top_p=0.95 if temp else 0.0))
+    return complete
+
+
+def ollama_backend():
+    def complete(msgs, temp, seed):
+        body = {"model": MODEL, "messages": msgs, "stream": False,
+                "options": {"temperature": temp, "top_p": 0.95 if temp else 1.0, "seed": seed, "num_predict": 400}}
+        req = urllib.request.Request("http://localhost:11434/api/chat", json.dumps(body).encode(),
+                                     {"Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=600) as r:
+            return json.loads(r.read())["message"]["content"]
+    return complete
+
+
+def main():
+    complete = ollama_backend() if BACKEND == "ollama" else mlx_backend()
     gate = Gate()
     cases = [json.loads(l) for l in open(os.path.join(HERE, "data", "cases.jsonl"))]
+    if os.environ.get("HALF") == "test":
+        cases = cases[120:]
     if len(sys.argv) > 1:
         cases = cases[: int(sys.argv[1])]
     done = set()
@@ -88,14 +114,12 @@ def main():
     def run(case, condition, sample, msgs, temp, seed, retry):
         for attempt in range(retry + 1):
             key = (case["case_id"], condition, sample, attempt)
-            prompt = tok.apply_chat_template(msgs, add_generation_prompt=True, tokenize=False, enable_thinking=False)
-            mx.random.seed(seed)
-            text = generate(model, tok, prompt, max_tokens=400, sampler=make_sampler(temp=temp, top_p=0.95 if temp else 0.0))
+            text = complete(msgs, temp, seed)
             res = gate(case, text)
             if key not in done:
                 out.write(json.dumps({"case_id": case["case_id"], "variant": case["variant"], "condition": condition,
                                       "sample": sample, "attempt": attempt, "temp": temp, "seed": seed,
-                                      "output": text, "gate": res}) + "\n")
+                                      "model": MODEL, "output": text, "gate": res}) + "\n")
                 out.flush()
             if res["status"] == "ok" or attempt == retry:
                 return
@@ -118,7 +142,7 @@ def main():
                 ("attack", 0, attack, 0.0, 0, 0)]
         jobs += [("slot_hot", s, slot, 1.0, s, 0) for s in (1, 2)]
         for condition, sample, msgs, temp, seed, retry in jobs:
-            if (case["case_id"], condition, sample, 0) in done:
+            if condition not in CONDITIONS or (case["case_id"], condition, sample, 0) in done:
                 continue
             run(case, condition, sample, msgs, temp, seed, retry)
         print(f"{i + 1}/{len(cases)}", file=sys.stderr, flush=True)

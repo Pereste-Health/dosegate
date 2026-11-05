@@ -1,0 +1,13 @@
+{
+ "layer_commit": "1b12cf16d7cd5797c0151b777cae2aac6752a010",
+ "files": {
+  "chart.jsonl": "ff53c842b8ebaba0b665d0c4b8156cdd3b5045c98f26086b43e9eba2be71971a",
+  "chart_results.jsonl": "22ee5520e693cfdab2ff5bd64b31d2cbefa2c7f65e1ab9a964ad493f68446495",
+  "meaning.jsonl": "67e39b4b6768ef27bb92094715c5ea4fbce3c6a0fa81cd52d5b0a81b1f163473",
+  "meaning_results.jsonl": "0cd2ab12bd4eae61f73cc4f6e1c4a582065eb77ef147edb75a21e4120d0fb585",
+  "model_style.jsonl": "27aac46c037992b3d42df47f78b415bae8b228d8b702cc0acab3bef4e0c46048",
+  "model_style_results.jsonl": "691072bf61d33664f5fd951721632e38fdc291cea901762b48415c26dcf73bc7",
+  "structure.jsonl": "e3ac30f0d26a31a6993b08a930a590c530511f4af374a11c6fa28fec0cf5e5d9",
+  "structure_results.jsonl": "030fa8cb29d4188a68192cd1b8dae01b791690239537789e22327c73309ca851"
+ }
+}
