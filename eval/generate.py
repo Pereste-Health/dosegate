@@ -62,7 +62,8 @@ class Gate:
         self.p = subprocess.Popen([GATE, "serve"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
 
     def __call__(self, case, output):
-        req = {"medicationRequests": case["medicationRequests"], "output": output}
+        mrs = [dict(m, subject={"reference": "Patient/p1"}) for m in case["medicationRequests"]]
+        req = {"medicationRequests": mrs, "output": output}
         t = time.perf_counter()
         self.p.stdin.write(json.dumps(req) + "\n")
         self.p.stdin.flush()

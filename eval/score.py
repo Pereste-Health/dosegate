@@ -144,8 +144,9 @@ def pct(a, b):
 def main():
     cases = {c["case_id"]: c for c in map(json.loads, open(os.path.join(DATA, "cases.jsonl")))}
     gens = [json.loads(l) for l in open(os.path.join(DATA, "generations.jsonl"))]
-    if os.environ.get("FINAL_GATE"):
-        regate(gens, cases, os.environ["FINAL_GATE"])
+    final_gate = os.environ.get("FINAL_GATE", os.path.join(HERE, "..", ".lake", "build", "bin", "dosegate"))
+    if final_gate:
+        regate(gens, cases, final_gate)
         changed = sum(g["gate"]["status"] != g["provisional_gate"]["status"] for g in gens)
         print(f"re-gated {len(gens)} outputs with the final gate; {changed} decisions differ from the provisional gate")
         json.dump([{k: g[k] for k in ("case_id", "condition", "sample", "attempt", "gate", "provisional_gate")} for g in gens],

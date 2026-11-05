@@ -12,6 +12,8 @@ DoseGate is a small program, written in Lean 4 and proved to meet a written spec
 - `eval/`: the evaluation with Qwen3.5-4B on Synthea patients (`build_cases.py`, `generate.py`, `score.py`), the comparison filter and mutation test (`controls.py`), the adversarial corpus run (`attacks.py`), and their data in `eval/data/`.
 - `paper/`: the manuscript.
 
+The reported results are `eval/data/results_all.json` and `eval/data/results_test.json` (from `python3 eval/score.py`, which re-gates every stored output with the built binary), `eval/data/controls.json` (from `python3 eval/controls.py`), and `eval/data/attack_results.jsonl` with `eval/data/attack_labels.json` (from `python3 eval/attacks.py`). The model was Qwen/Qwen3.5-4B run with MLX LM 0.32.2. Files in `eval/data/pilot/` are from an earlier pilot and are not reported.
+
 ## Build
 
 Install Lean with elan (the toolchain, Lean 4.35.0, is pinned in `lean-toolchain`), then:

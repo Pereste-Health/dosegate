@@ -1,0 +1,651 @@
+{
+ "note": "Two independent Claude readings of every free-text output flagged by an earlier version of eval/score.py (34 outputs), without the script reasons. One further output flagged by the final script (a weekly dose stated as taken in one day) and the 10 unflagged free daily outputs with a weekly order were read in the main session; the first is an error and the 10 are correct.",
+ "labels": [
+  {
+   "case_id": "Marquitta546_Cormier289_d4b26646-6dd7-d885-6a96-61741881e94a:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 1,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "which means you take a total of 5 mg in one day",
+    "note": "Amlodipine is 5 mg once a week. Calling it a daily total is wrong. The hydrochlorothiazide and lisinopril statements are correct."
+   },
+   "reader2": {
+    "n": 1,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "which means you take a total of 5 mg in one day.",
+    "note": "Amlodipine 5 mg is ordered once a week, and the output gives it as a one-day total. The hydrochlorothiazide (75 mg a day) and lisinopril (30 mg a day) lines are correct."
+   },
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nYou take 37.5 mg of this medicine by mouth every 12 hours, which means you take a total of 75 mg in one day.\n\n**Lisinopril**\nYou take 30 mg of this medicine by mouth once a day, so you take a total of 30 mg in one day.\n\n**Amlodipine**\nYou take 5 mg of this medicine by mouth once a week, which means you take a total of 5 mg in one day."
+  },
+  {
+   "case_id": "Taina903_Tatyana394_Shields502_d1986c0f-c201-f0ff-aa05-ba477671095d:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 2,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "In total, you will take 5 mg of this medicine in one day.",
+    "note": "Amlodipine is 5 mg once a week, so the one-day total is wrong. The once-a-week frequency is stated correctly."
+   },
+   "reader2": {
+    "n": 2,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "In total, you will take 5 mg of this medicine in one day.",
+    "note": "Amlodipine 5 mg is ordered once a week. The output says once every week, then gives 5 mg as the total for one day."
+   },
+   "output": "You take Amlodipine, which is 5 mg, by putting it in your mouth, and you only need to take it once every week. In total, you will take 5 mg of this medicine in one day."
+  },
+  {
+   "case_id": "Roselle682_Little434_4514d1a6-aaa7-1c2a-c675-b51b30b8fc05:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 3,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "You take a total of 37.5 mg in one day.",
+    "note": "Hydrochlorothiazide is 37.5 mg once a week. The lisinopril and amlodipine daily totals (10 mg and 3.75 mg) are correct."
+   },
+   "reader2": {
+    "n": 3,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "Take 37.5 mg by mouth once a week. You take a total of 37.5 mg in one day.",
+    "note": "Hydrochlorothiazide 37.5 mg is ordered once a week, and the output gives it as a one-day total. The lisinopril (10 mg a day) and amlodipine (3.75 mg a day) lines are correct."
+   },
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nTake 37.5 mg by mouth once a week. You take a total of 37.5 mg in one day.\n\n**Lisinopril**\nTake 5 mg by mouth twice a day. You take a total of 10 mg in one day.\n\n**Amlodipine**\nTake 1.25 mg by mouth three times a day. You take a total of 3.75 mg in one day."
+  },
+  {
+   "case_id": "Ignacio928_Rogahn59_8f1c0895-a651-3a95-ad31-e0c4e7819c2b:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 4,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "You will take a total of 1.25 mg of this medicine in one day.",
+    "note": "Amlodipine is 1.25 mg once a week. The hydrochlorothiazide and lisinopril statements are correct."
+   },
+   "reader2": {
+    "n": 4,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "Take 1.25 mg by mouth once a week. You will take a total of 1.25 mg in one day.",
+    "note": "Amlodipine 1.25 mg is ordered once a week, and the output gives it as a one-day total. The hydrochlorothiazide (12.5 mg every 8 hours, 37.5 mg a day) and lisinopril (20 mg three times a day, 60 mg a day) lines are correct."
+   },
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nTake 12.5 mg by mouth every 8 hours. You will take a total of 37.5 mg of this medicine in one day.\n\n**Lisinopril**\nTake 20 mg by mouth three times a day. You will take a total of 60 mg of this medicine in one day.\n\n**Amlodipine**\nTake 1.25 mg by mouth once a week. You will take a total of 1.25 mg of this medicine in one day."
+  },
+  {
+   "case_id": "Doug189_Jerde200_ab1fc92f-d56d-40b5-e0d8-c80c19c7a741:natural",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 5,
+    "real_error": true,
+    "kind": "summed_different_drugs",
+    "quote": "you will take a total of 45 mg of medicine (25 mg + 10 mg + 10 mg)",
+    "note": "The output adds three different drugs into one 45 mg daily total. A patient could read this as one medicine taken at 45 mg per day. Each drug has its own daily amount."
+   },
+   "reader2": {
+    "n": 5,
+    "real_error": true,
+    "kind": "summed_different_drugs",
+    "quote": "In one day, you will take a total of 45 mg of medicine (25 mg + 10 mg + 10 mg).",
+    "note": "The output adds three different drugs (hydrochlorothiazide, oxycodone and lisinopril) into one milligram total. Each per-drug line is correct. The script flagged the lisinopril line for dose, but the lisinopril line (10 mg once a day) is correct."
+   },
+   "output": "Here is your medicine list to help you stay healthy:\n\n**Hydrochlorothiazide**\nTake 25 mg by mouth once a day. This is the same amount you take every single day.\n\n**Abuse-deterrent 12 hr oxycodone hydrochloride**\nTake 10 mg by mouth once a day. This is the same amount you take every single day.\n\n**Lisinopril**\nTake 10 mg by mouth once a day. This is the same amount you take every single day.\n\n**Total Daily Amount**\nIn one day, you will take a total of 45 mg of medicine (25 mg + 10 mg + 10 mg)."
+  },
+  {
+   "case_id": "Deedee112_Sunday568_Klein929_51471d9a-957e-bcfe-640e-74aa496c091f:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 6,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "You will take a total of 20 mg of this medicine in one day.",
+    "note": "Lisinopril is 20 mg once a week. The once-a-week frequency is stated correctly, but the one-day total is wrong."
+   },
+   "reader2": {
+    "n": 6,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "You will take a total of 20 mg of this medicine in one day.",
+    "note": "Lisinopril 20 mg is ordered once a week, and the output says the total for one day is 20 mg. The phrase \"once every week\" is correct, but the daily total is not."
+   },
+   "output": "Take one 20 mg pill of lisinopril by mouth once every week. You will take a total of 20 mg of this medicine in one day."
+  },
+  {
+   "case_id": "Wilford267_McKenzie376_9a82ff83-b4f1-f2d9-3517-1a44abc4f61b:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 7,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "so you will take a total of 1.25 mg in one day.",
+    "note": "Amlodipine is 1.25 mg once a week. The hydrochlorothiazide and lisinopril statements are correct."
+   },
+   "reader2": {
+    "n": 7,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "so you will take a total of 1.25 mg in one day.",
+    "note": "Amlodipine 1.25 mg is ordered once a week, and the output gives it as a one-day total. The hydrochlorothiazide and lisinopril lines (every 12 hours, 25 mg and 40 mg a day) are correct."
+   },
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nTake 12.5 mg by mouth every 12 hours, which means you will take a total of 25 mg in one day.\n\n**Lisinopril**\nTake 20 mg by mouth every 12 hours, which means you will take a total of 40 mg in one day.\n\n**Amlodipine**\nTake 1.25 mg by mouth once a week, so you will take a total of 1.25 mg in one day."
+  },
+  {
+   "case_id": "Karan473_Osinski784_ab4135f4-d61f-1c70-0e57-437d65b97d57:perturbed",
+   "condition": "free",
+   "reader1": {
+    "n": 8,
+    "real_error": false,
+    "kind": "none",
+    "quote": "",
+    "note": "Hydrochlorothiazide is 75 mg every 12 hours, and the output says twice a day, waiting 12 hours between doses. The dose and frequency are correct. The script flag for frequency is a false positive."
+   },
+   "reader2": {
+    "n": 8,
+    "real_error": false,
+    "kind": "none",
+    "quote": "",
+    "note": "The output says to take 75 mg twice a day, 12 hours apart, which matches the order. It states no daily total, so the script's 150 mg daily figure is not stated in the output. The script flag for frequency is a false positive."
+   },
+   "output": "Take your medicine called hydrochlorothiazide, which is 75 mg, by putting it in your mouth with water. You should take this dose twice a day, waiting 12 hours between each one."
+  },
+  {
+   "case_id": "Logan497_Cortney940_O'Conner199_80ed9a31-9a65-979d-684c-0f0b982b2a9d:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 9,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "which means you will take a total of 0.0375 mg of this medicine every day",
+    "note": "Levothyroxine is 0.0375 mg once a week. The same error repeats for lisinopril (\"a total of 20 mg of this medicine every day\"), which is also once a week."
+   },
+   "reader2": {
+    "n": 9,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "which means you will take a total of 0.0375 mg of this medicine every day.",
+    "note": "Levothyroxine 0.0375 mg is ordered once a week, and the output says it is taken every day. The lisinopril line (20 mg once a week) repeats the error with \"every day.\""
+   },
+   "output": "You need to take **Levothyroxine sodium** (0.0375 mg) by mouth once a week, which means you will take a total of 0.0375 mg of this medicine every day. You also need to take **Lisinopril** (20 mg) by mouth once a week, which means you will take a total of 20 mg of this medicine every day."
+  },
+  {
+   "case_id": "Faith802_Fisher429_7ab945ad-7bb4-10f6-fa5e-6d74284e6fa6:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 10,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "This means you will take a total of 7.5 mg in one day.",
+    "note": "Amlodipine is 7.5 mg once a week. The simvastatin statement (20 mg twice a day, 40 mg total) is correct."
+   },
+   "reader2": {
+    "n": 10,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "This means you will take a total of 7.5 mg in one day.",
+    "note": "Amlodipine 7.5 mg is ordered once a week, and the output gives it as a one-day total. The simvastatin line (20 mg twice a day, 40 mg a day) is correct."
+   },
+   "output": "Here is your medicine guide:\n\n**Amlodipine**\nYou take 7.5 mg of Amlodipine by mouth once a week. This means you will take a total of 7.5 mg in one day.\n\n**Simvastatin**\nYou take 20 mg of Simvastatin by mouth twice a day. This means you will take a total of 40 mg in one day."
+  },
+  {
+   "case_id": "Sallie654_Krystina167_Adams676_b590ffc4-a2d6-41bd-f240-3cdf78a678a2:perturbed",
+   "condition": "free",
+   "reader1": {
+    "n": 11,
+    "real_error": false,
+    "kind": "none",
+    "quote": "",
+    "note": "Hydrochlorothiazide is 50 mg every 8 hours, and the output says three times a day, waiting 8 hours between doses. The dose and frequency are correct. The script flag is a false positive."
+   },
+   "reader2": {
+    "n": 11,
+    "real_error": false,
+    "kind": "none",
+    "quote": "",
+    "note": "The output gives the dose and the frequency (three times a day, 8 hours apart), which match the order. It states no daily total, so there is no arithmetic to check. The script flag for frequency is a false positive."
+   },
+   "output": "Take Hydrochlorothiazide, which is 50 mg, by putting it in your mouth with water. You should take this medicine three times a day, waiting 8 hours between each dose."
+  },
+  {
+   "case_id": "Ryan260_Oberbrunner298_5c35250f-af44-e8f9-665c-4b847d9aa169:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 12,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "This means you will take a total of 75 mg in one day.",
+    "note": "Hydrochlorothiazide is 75 mg once a week. The lisinopril statement (30 mg every 8 hours, 90 mg per day) is correct."
+   },
+   "reader2": {
+    "n": 12,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "This means you will take a total of 75 mg in one day.",
+    "note": "Hydrochlorothiazide 75 mg is ordered once a week, and the output gives it as a one-day total. The lisinopril line (30 mg every 8 hours, 90 mg a day) is correct."
+   },
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nYou take 75 mg of this medicine by mouth once a week. This means you will take a total of 75 mg in one day.\n\n**Lisinopril**\nYou take 30 mg of this medicine by mouth every 8 hours. This means you will take a total of 90 mg in one day."
+  },
+  {
+   "case_id": "Laila673_Dannette613_Harvey63_d896130a-f09b-83e4-8331-49ff1e58f8d5:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 13,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "In total, you will take 15 mg of this medicine every day.",
+    "note": "Lisinopril is 15 mg once a week, so the every-day total is wrong. The hydrochlorothiazide and amlodipine totals (37.5 mg and 11.25 mg) are correct."
+   },
+   "reader2": {
+    "n": 13,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "In total, you will take 15 mg of this medicine every day.",
+    "note": "Lisinopril 15 mg is ordered once a week, and the output says 15 mg every day. The hydrochlorothiazide (37.5 mg a day) and amlodipine (11.25 mg a day) lines are correct."
+   },
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nYou take 12.5 mg of this medicine by mouth three times a day. In total, you will take 37.5 mg of this medicine every day.\n\n**Lisinopril**\nYou take 15 mg of this medicine by mouth just once a week. In total, you will take 15 mg of this medicine every day.\n\n**Amlodipine**\nYou take 3.75 mg of this medicine by mouth every 8 hours. In total, you will take 11.25 mg of this medicine every day."
+  },
+  {
+   "case_id": "Corrina72_Stoltenberg489_c06e6fa9-93dd-42fa-48ae-7b62b3f4397b:natural",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 14,
+    "real_error": true,
+    "kind": "wrong_daily_arithmetic",
+    "quote": "which means you will take a total of 150 mg in one day",
+    "note": "Meperidine is 50 mg every 4 hours, which is 6 doses and 300 mg per day. The output says 150 mg. The other three drugs are stated correctly."
+   },
+   "reader2": {
+    "n": 14,
+    "real_error": true,
+    "kind": "wrong_daily_arithmetic",
+    "quote": "which means you will take a total of 150 mg in one day.",
+    "note": "Meperidine 50 mg is ordered once every 4 hours, which is 6 doses a day, so the daily total is 300 mg (the script also lists 300 mg). The output says 150 mg, which is 3 doses. The other lines (hydrochlorothiazide 25 mg, hydrocodone 20 mg, lisinopril 10 mg) are correct."
+   },
+   "output": "Here is your medicine guide:\n\n**Meperidine Hydrochloride**\nYou take 50 mg by mouth every 4 hours, which means you will take a total of 150 mg in one day.\n\n**Hydrochlorothiazide**\nYou take 25 mg by mouth once a day, so you take a total of 25 mg in one day.\n\n**12 Hour Hydrocodone Bitartrate**\nYou take 10 mg by mouth twice a day, which adds up to 20 mg in one day.\n\n**Lisinopril**\nYou take 10 mg by mouth once a day, so you take a total of 10 mg in one day."
+  },
+  {
+   "case_id": "Daryl568_Hermiston71_812a8298-fc85-66d3-567e-2d93cc14a9b2:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 15,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "In one day, you take a total of 75 mg.",
+    "note": "Hydrochlorothiazide is 75 mg once a week. The lisinopril (15 mg per day) and amlodipine (7.5 mg per day) statements are correct."
+   },
+   "reader2": {
+    "n": 15,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "In one day, you take a total of 75 mg.",
+    "note": "Hydrochlorothiazide 75 mg is ordered once a week, and the output gives it as a one-day total. The lisinopril (15 mg three times a day) and amlodipine (3.75 mg every 12 hours) lines are correct."
+   },
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nYou take 75 mg of this medicine by mouth once a week. In one day, you take a total of 75 mg.\n\n**Lisinopril**\nYou take 5 mg of this medicine by mouth three times a day. In one day, you take a total of 15 mg.\n\n**Amlodipine**\nYou take 3.75 mg of this medicine by mouth every 12 hours. In one day, you take a total of 7.5 mg."
+  },
+  {
+   "case_id": "Tiesha180_Tracie996_Koss676_acb83afa-f98a-60ea-3030-3334d5877f84:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 16,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "so you will take a total of 20 mg of this medicine in one day.",
+    "note": "Lisinopril is 20 mg once a week. The hydrochlorothiazide statement (12.5 mg every 8 hours, 37.5 mg per day) is correct."
+   },
+   "reader2": {
+    "n": 16,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "so you will take a total of 20 mg of this medicine in one day.",
+    "note": "Lisinopril 20 mg is ordered once a week, and the output gives it as a one-day total. The hydrochlorothiazide line (12.5 mg every 8 hours, 37.5 mg a day) is correct."
+   },
+   "output": "You need to take **hydrochlorothiazide** (12.5 mg) by mouth every 8 hours, which means you will take a total of 37.5 mg of this medicine in one day. You also need to take **lisinopril** (20 mg) by mouth just once a week, so you will take a total of 20 mg of this medicine in one day."
+  },
+  {
+   "case_id": "Theron432_Hilll811_636dcf7e-777a-0c65-ffee-762c09574d7f:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 17,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "which means you take a total of 5 mg of this medicine in one day.",
+    "note": "Amlodipine is 5 mg once a week. The lisinopril statement (20 mg once a day) is correct."
+   },
+   "reader2": {
+    "n": 17,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "which means you take a total of 5 mg in one day.",
+    "note": "Amlodipine 5 mg is ordered once a week, and the output gives it as a one-day total. The lisinopril line (20 mg once a day) is correct."
+   },
+   "output": "Take **Lisinopril** by putting 20 mg in your mouth once every day, which means you take a total of 20 mg of this medicine in one day. Take **Amlodipine** by putting 5 mg in your mouth once every week, which means you take a total of 5 mg of this medicine in one day."
+  },
+  {
+   "case_id": "Arleen939_Matilde468_Ernser583_493ca389-2820-734d-249b-6fdc1346751e:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 18,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "This means you will take a total of 12.5 mg in one day.",
+    "note": "Hydrochlorothiazide is 12.5 mg once a week. The amlodipine statement (5 mg once a day) is correct."
+   },
+   "reader2": {
+    "n": 18,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "This means you will take a total of 12.5 mg in one day.",
+    "note": "Hydrochlorothiazide 12.5 mg is ordered once a week, and the output gives it as a one-day total. The amlodipine line (5 mg once a day) is correct."
+   },
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nYou take 12.5 mg of this medicine by mouth once a week. This means you will take a total of 12.5 mg in one day.\n\n**Amlodipine**\nYou take 5 mg of this medicine by mouth once a day. This means you will take a total of 5 mg in one day."
+  },
+  {
+   "case_id": "Blaine377_Gislason620_100923ab-7468-e1f0-91f4-d6d7f7cfe1b4:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 19,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "so you will take a total of 20 mg of this medicine in one day.",
+    "note": "Lisinopril is 20 mg once a week. The hydrochlorothiazide statement (37.5 mg every 12 hours, 75 mg per day) is correct."
+   },
+   "reader2": {
+    "n": 19,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "so you will take a total of 20 mg of this medicine in one day.",
+    "note": "Lisinopril 20 mg is ordered once a week, and the output gives it as a one-day total. The hydrochlorothiazide line (37.5 mg every 12 hours, 75 mg a day) is correct."
+   },
+   "output": "You need to take **hydrochlorothiazide** (37.5 mg) by mouth every 12 hours, which means you will take a total of 75 mg of this medicine in one day. You also need to take **lisinopril** (20 mg) by mouth just once a week, so you will take a total of 20 mg of this medicine in one day."
+  },
+  {
+   "case_id": "Claudio955_Stehr398_3caddd60-e99b-8f1e-c4a4-0ca62988d405:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 20,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "which means you take a total of 30 mg in one day.",
+    "note": "Lisinopril is 30 mg once a week. The output also says to take one pill once every week, which is correct, but the one-day total is wrong."
+   },
+   "reader2": {
+    "n": 20,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "which means you take a total of 30 mg in one day.",
+    "note": "Lisinopril 30 mg is ordered once a week. The output says \"once every week\" but then gives 30 mg as the total for one day."
+   },
+   "output": "You take one pill of Lisinopril that has 30 mg inside it by putting it in your mouth with water. You only need to take this one pill once every week, which means you take a total of 30 mg in one day."
+  },
+  {
+   "case_id": "Billi682_Emmy828_Hackett68_66bf5ca1-d575-32ec-1520-aeaa3596e8f4:perturbed",
+   "condition": "free",
+   "reader1": {
+    "n": 21,
+    "real_error": false,
+    "kind": "none",
+    "quote": "",
+    "note": "Amlodipine is 7.5 mg every 8 hours, and the output says three times a day, waiting 8 hours between doses. The dose and frequency are correct. The script flag is a false positive."
+   },
+   "reader2": {
+    "n": 21,
+    "real_error": false,
+    "kind": "none",
+    "quote": "",
+    "note": "Amlodipine 7.5 mg every 8 hours is three doses a day, so \"three times a day, waiting 8 hours between each one\" is correct. The script flag for frequency is a false positive, and the output gives no daily total that could be wrong."
+   },
+   "output": "Take Amlodipine, which is 7.5 mg, by putting it in your mouth with water. You should take this pill three times a day, waiting 8 hours between each one."
+  },
+  {
+   "case_id": "Tennille443_Sawayn19_2d26b428-b041-a4c7-889d-1995ecd57d5a:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 22,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "You take a total of 50 mg in one day.",
+    "note": "Hydrochlorothiazide is 50 mg once a week. The acetaminophen, lisinopril, and amlodipine statements are correct."
+   },
+   "reader2": {
+    "n": 22,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "Take 50 mg by mouth once a week. You take a total of 50 mg in one day.",
+    "note": "Hydrochlorothiazide 50 mg is ordered once a week, and the output gives it as a one-day total. The acetaminophen, lisinopril and amlodipine lines are correct."
+   },
+   "output": "Here is your medicine list to help you stay healthy:\n\n**Hydrochlorothiazide**\nTake 50 mg by mouth once a week. You take a total of 50 mg in one day.\n\n**Acetaminophen**\nTake 162.5 mg by mouth once a day. You take a total of 162.5 mg in one day.\n\n**Lisinopril**\nTake 15 mg by mouth every 12 hours. You take a total of 30 mg in one day.\n\n**Amlodipine**\nTake 3.75 mg by mouth twice a day. You take a total of 7.5 mg in one day."
+  },
+  {
+   "case_id": "Sunny31_Annette105_Boyle917_83d2af23-8365-629c-5396-0316c6137fb1:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 23,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "This means you will take a total of 75 mg in one day.",
+    "note": "Hydrochlorothiazide is 75 mg once a week. The lisinopril statement (15 mg three times a day, 45 mg per day) is correct."
+   },
+   "reader2": {
+    "n": 23,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "This means you will take a total of 75 mg in one day.",
+    "note": "Hydrochlorothiazide 75 mg is ordered once a week, and the output gives it as a one-day total. The lisinopril line (15 mg three times a day, 45 mg a day) is correct."
+   },
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nYou take 75 mg of this medicine by mouth once a week. This means you will take a total of 75 mg in one day.\n\n**Lisinopril**\nYou take 15 mg of this medicine by mouth three times a day. This means you will take a total of 45 mg in one day."
+  },
+  {
+   "case_id": "Faustino767_Simonis280_fe28c5f4-9e31-c83c-9ec1-30893eca4a3b:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 24,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "You will take a total of 20 mg of this medicine in one day.",
+    "note": "Lisinopril is 20 mg once a week. The hydrochlorothiazide and amlodipine statements are correct."
+   },
+   "reader2": {
+    "n": 24,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "You will take a total of 20 mg of this medicine in one day.",
+    "note": "Lisinopril 20 mg is ordered once a week, and the output gives it as a one-day total. The hydrochlorothiazide (12.5 mg every 8 hours, 37.5 mg a day) and amlodipine (7.5 mg daily) lines are correct."
+   },
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nTake 12.5 mg by mouth every 8 hours. You will take a total of 37.5 mg of this medicine in one day.\n\n**Lisinopril**\nTake 20 mg by mouth once a week. You will take a total of 20 mg of this medicine in one day.\n\n**Amlodipine**\nTake 7.5 mg by mouth once a day. You will take a total of 7.5 mg of this medicine in one day."
+  },
+  {
+   "case_id": "Ester635_Casanova632_e5cffcc4-9157-9d90-6ab1-7b75be39acb6:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 25,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "which means you take a total of 75 mg in one day.",
+    "note": "Hydrochlorothiazide is 75 mg once a week. The lisinopril sentence has the same error (\"a total of 30 mg in one day\"), and that drug is also once a week."
+   },
+   "reader2": {
+    "n": 25,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "which means you take a total of 75 mg in one day.",
+    "note": "Hydrochlorothiazide 75 mg is ordered once a week, and the output gives it as a one-day total. The lisinopril line (30 mg once a week) has the same error with \"a total of 30 mg in one day.\""
+   },
+   "output": "You will take **hydrochlorothiazide** (75 mg) by mouth once a week, which means you take a total of 75 mg in one day. You will also take **lisinopril** (30 mg) by mouth once a week, which means you take a total of 30 mg in one day."
+  },
+  {
+   "case_id": "Kendrick479_Roob72_c96b4a20-8b91-0caa-a419-a35551de3711:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 26,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "This means you take a total of 37.5 mg in one day.",
+    "note": "Hydrochlorothiazide is 37.5 mg once a week. Lisinopril (5 mg once a week, \"a total of 5 mg in one day\") and simvastatin (15 mg once a week, \"a total of 15 mg in one day\") repeat the same error. The amlodipine statement (7.5 mg three times a day, 22.5 mg per day) is correct."
+   },
+   "reader2": {
+    "n": 26,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "This means you take a total of 37.5 mg in one day.",
+    "note": "Hydrochlorothiazide 37.5 mg is ordered once a week, and the output gives it as a one-day total. The lisinopril (5 mg) and simvastatin (15 mg) lines repeat the same weekly-as-daily error. The amlodipine line (7.5 mg three times a day, 22.5 mg) is correct."
+   },
+   "output": "Here is your medicine plan:\n\n**Hydrochlorothiazide**\nYou take 37.5 mg of this medicine by mouth once a week. This means you take a total of 37.5 mg in one day.\n\n**Lisinopril**\nYou take 5 mg of this medicine by mouth once a week. This means you take a total of 5 mg in one day.\n\n**Amlodipine**\nYou take 7.5 mg of this medicine by mouth three times a day. This means you take a total of 22.5 mg in one day.\n\n**Simvastatin**\nYou take 15 mg of this medicine by mouth once a week. This means you take a total of 15 mg in one day."
+  },
+  {
+   "case_id": "Ignacio928_Gutmann970_e76b0686-5c57-c9d5-ce4b-50c47a2bf334:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 27,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "so you will take a total of 1.25 mg in one day.",
+    "note": "Amlodipine is 1.25 mg once a week. The once-a-week frequency is stated correctly, but the one-day total is wrong."
+   },
+   "reader2": {
+    "n": 27,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "so you will take a total of 1.25 mg in one day.",
+    "note": "Amlodipine 1.25 mg is ordered once a week. The output says one pill is the total for one day. The phrase \"once every week\" is correct, but the daily total is not."
+   },
+   "output": "Take one pill of Amlodipine, which is 1.25 mg, by putting it in your mouth with water. You only need to take this one pill once every week, so you will take a total of 1.25 mg in one day."
+  },
+  {
+   "case_id": "Major265_Walter473_911c3bfd-618a-e4ee-9bcb-af60461e9155:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 28,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "You will take a total of 50 mg in one day.",
+    "note": "Hydrochlorothiazide is 50 mg once a week. The lisinopril (60 mg per day) and amlodipine (3.75 mg per day) statements are correct."
+   },
+   "reader2": {
+    "n": 28,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "You will take a total of 50 mg in one day.",
+    "note": "Hydrochlorothiazide 50 mg is ordered once a week, and the output gives it as the total for one day. The lisinopril and amlodipine lines are correct."
+   },
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nTake 50 mg by mouth once a week. You will take a total of 50 mg in one day.\n\n**Lisinopril**\nTake 20 mg by mouth three times a day. You will take a total of 60 mg in one day.\n\n**Amlodipine**\nTake 1.25 mg by mouth three times a day. You will take a total of 3.75 mg in one day."
+  },
+  {
+   "case_id": "Esteban536_Bogisich202_18b4c619-9002-dad1-0daf-33e508bb2445:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 29,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "for a total of 1.25 mg in one day.",
+    "note": "Amlodipine is 1.25 mg once a week. The sentence says \"only one time a week\" correctly, then gives a one-day total. The hydrochlorothiazide, hydrocodone, and lisinopril statements are correct."
+   },
+   "reader2": {
+    "n": 29,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "You will take this medicine only one time a week, for a total of 1.25 mg in one day.",
+    "note": "Amlodipine 1.25 mg is ordered once a week, and the output says the total for one day is 1.25 mg. The hydrochlorothiazide, hydrocodone and lisinopril lines are correct."
+   },
+   "output": "Here is your medicine list explained in simple words:\n\n**Hydrochlorothiazide**\nTake 50 mg by mouth every 12 hours. You will take this medicine twice a day, for a total of 100 mg in one day.\n\n**12 hr Hydrocodone Bitartrate**\nTake 15 mg by mouth three times a day. You will take this medicine three times a day, for a total of 45 mg in one day.\n\n**Lisinopril**\nTake 15 mg by mouth every 12 hours. You will take this medicine twice a day, for a total of 30 mg in one day.\n\n**Amlodipine**\nTake 1.25 mg by mouth once a week. You will take this medicine only one time a week, for a total of 1.25 mg in one day."
+  },
+  {
+   "case_id": "Preston275_Emard19_72716d53-6bd7-0b99-3468-f4561eb14b2a:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 30,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "You take a total of 487.5 mg in one day.",
+    "note": "Acetaminophen is 487.5 mg once a week. The hydrochlorothiazide, lisinopril, and amlodipine statements are correct."
+   },
+   "reader2": {
+    "n": 30,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "You take a total of 487.5 mg in one day.",
+    "note": "Acetaminophen 487.5 mg is ordered once a week, and the output says it is the total for one day. The hydrochlorothiazide, lisinopril and amlodipine lines are correct."
+   },
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nTake 50 mg by mouth every 12 hours. You take a total of 100 mg in one day.\n\n**Acetaminophen**\nTake 487.5 mg by mouth once a week. You take a total of 487.5 mg in one day.\n\n**Lisinopril**\nTake 20 mg by mouth twice a day. You take a total of 40 mg in one day.\n\n**Amlodipine**\nTake 1.25 mg by mouth every 12 hours. You take a total of 2.5 mg in one day."
+  },
+  {
+   "case_id": "Fermin479_Dare640_00022071-35f9-627e-63e6-98cd3a601185:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 31,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "You will take a total of 975 mg in one day.",
+    "note": "Acetaminophen is 975 mg once a week. The hydrochlorothiazide and lisinopril statements are correct."
+   },
+   "reader2": {
+    "n": 31,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "You will take a total of 975 mg in one day.",
+    "note": "Acetaminophen 975 mg is ordered once a week, and the output says it is the total for one day. The hydrochlorothiazide and lisinopril lines (every 12 hours, 25 mg and 60 mg a day) are correct."
+   },
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nTake 12.5 mg by mouth every 12 hours. You will take a total of 25 mg in one day.\n\n**Acetaminophen**\nTake 975 mg by mouth once a week. You will take a total of 975 mg in one day.\n\n**Lisinopril**\nTake 30 mg by mouth every 12 hours. You will take a total of 60 mg in one day."
+  },
+  {
+   "case_id": "Harold594_Heaney114_409c7bbc-8c42-ee5d-2375-8de2bb678160:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 32,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "This means you will take a total of 37.5 mg in one day.",
+    "note": "Hydrochlorothiazide is 37.5 mg once a week. The amlodipine statement (1.25 mg three times a day, 3.75 mg per day) is correct."
+   },
+   "reader2": {
+    "n": 32,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "This means you will take a total of 37.5 mg in one day.",
+    "note": "Hydrochlorothiazide is ordered once a week, but the output gives 37.5 mg as the total for one day. The amlodipine line (1.25 mg three times a day, 3.75 mg a day) is correct."
+   },
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nYou take 37.5 mg of this medicine by mouth once a week. This means you will take a total of 37.5 mg in one day.\n\n**Amlodipine**\nYou take 1.25 mg of this medicine by mouth three times a day. This means you will take a total of 3.75 mg in one day."
+  },
+  {
+   "case_id": "Wyatt967_Williamson769_07c35e7d-c000-a930-ee5a-bbf0e94af0eb:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 33,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "so you will take a total of 37.5 mg of this medicine in one day.",
+    "note": "Hydrochlorothiazide is 37.5 mg once a week. The simvastatin statement (15 mg every 12 hours, 30 mg per day) is correct."
+   },
+   "reader2": {
+    "n": 33,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "so you will take a total of 37.5 mg of this medicine in one day.",
+    "note": "Hydrochlorothiazide 37.5 mg is ordered once a week, and the output calls it a one-day total. The simvastatin line (15 mg every 12 hours, 30 mg a day) is correct."
+   },
+   "output": "Take 15 mg of simvastatin by mouth every 12 hours, which means you will take a total of 30 mg of this medicine in one day. Take 37.5 mg of hydrochlorothiazide by mouth once a week, so you will take a total of 37.5 mg of this medicine in one day."
+  },
+  {
+   "case_id": "Melida518_Salina386_Brekke496_7f3c8e30-c7ef-a0b5-64b9-2167dd2b2a69:perturbed",
+   "condition": "free_daily",
+   "reader1": {
+    "n": 34,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "This means you will take a total of 50 mg in one day.",
+    "note": "Hydrochlorothiazide is 50 mg once a week. The lisinopril sentence has the same error (\"a total of 15 mg in one day\"), and that drug is also once a week. The amlodipine statement (7.5 mg per day) is correct."
+   },
+   "reader2": {
+    "n": 34,
+    "real_error": true,
+    "kind": "weekly_as_daily",
+    "quote": "This means you will take a total of 50 mg in one day.",
+    "note": "Hydrochlorothiazide is ordered once every week, but the output presents 50 mg as the total for one day. The lisinopril line has the same error (\"a total of 15 mg in one day\"). Amlodipine (7.5 mg once a day) is correct."
+   },
+   "output": "Here is your medicine plan:\n\n**Hydrochlorothiazide**\nYou take 50 mg of this medicine by mouth once a week. This means you will take a total of 50 mg in one day.\n\n**Lisinopril**\nYou take 15 mg of this medicine by mouth once a week. This means you will take a total of 15 mg in one day.\n\n**Amlodipine**\nYou take 7.5 mg of this medicine by mouth once a day. This means you will take a total of 7.5 mg in one day."
+  }
+ ]
+}
