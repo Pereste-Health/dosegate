@@ -85,37 +85,45 @@ def handle (policy : Policy) (req : Lean.Json) : Lean.Json × UInt8 :=
   | some out =>
       if out.length > maxOutput then
         (errorJson s!"the output is longer than {maxOutput} characters", 1)
+      else if (out.splitOn "{{").length - 1 > maxSlots then
+        (errorJson s!"the output has more than {maxSlots} slots", 1)
       else
         match patientOf req with
         | .error e => (errorJson e, 1)
         | .ok patient =>
-            if patient.isNone && (orderSubjects req).length > 1 then
-              (errorJson "the orders reference more than one subject, so the request needs a patient field", 1)
-            else
-              match chartOf patient req with
-              | none => (errorJson "request has neither bundle nor medicationRequests", 1)
-              | some chart =>
-                  if chart.length > maxOrders then
-                    (errorJson s!"the request has more than {maxOrders} MedicationRequests", 1)
-                  else
-                    match render policy chart out.toList with
-                    | .ok text =>
-                        if text.length > maxOutput then
-                          (errorJson s!"the rendered text is longer than {maxOutput} characters", 1)
-                        else (okJson (String.ofList text), 0)
-                    | .error b => (blockedJson b (blockDetail policy out b), 2)
+            match subjectProblem patient req with
+            | some e => (errorJson e, 1)
+            | none =>
+                match chartOf patient req with
+                | none => (errorJson "request has neither bundle nor medicationRequests", 1)
+                | some chart =>
+                    if chart.length > maxOrders then
+                      (errorJson s!"the request has more than {maxOrders} MedicationRequests", 1)
+                    else
+                      match render policy chart out.toList with
+                      | .ok text =>
+                          if text.length > maxOutput then
+                            (errorJson s!"the rendered text is longer than {maxOutput} characters", 1)
+                          else (okJson (String.ofList text), 0)
+                      | .error b => (blockedJson b (blockDetail policy out b), 2)
 
 def respondLine (policy : Policy) (line : String) : Lean.Json × UInt8 :=
-  match requestProblem line with
-  | some problem => (errorJson problem, 1)
-  | none =>
-      match Lean.Json.parse line with
-      | .error e => (errorJson ("invalid JSON: " ++ e), 1)
-      | .ok req => handle policy req
+  if line.utf8ByteSize > maxRequestBytes then
+    (errorJson s!"the request is larger than {maxRequestBytes} bytes", 1)
+  else
+    match requestProblem line with
+    | some problem => (errorJson problem, 1)
+    | none =>
+        match Lean.Json.parse line with
+        | .error e => (errorJson ("invalid JSON: " ++ e), 1)
+        | .ok req => handle policy req
 
 partial def readAll (h : IO.FS.Stream) (acc : String := "") : IO String := do
   let line ← h.getLine
-  if line.isEmpty then pure acc else readAll h (acc ++ line)
+  if line.isEmpty then pure acc
+  else
+    let acc := acc ++ line
+    if acc.utf8ByteSize > maxRequestBytes then pure acc else readAll h acc
 
 partial def serveLoop (policy : Policy) (stdin stdout : IO.FS.Stream) : IO Unit := do
   let line ← stdin.getLine

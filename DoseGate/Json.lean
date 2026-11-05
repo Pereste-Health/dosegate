@@ -17,6 +17,8 @@ def maxDepth : Nat := 64
 def maxCount : Nat := 1000
 def maxOrders : Nat := 5000
 def maxOutput : Nat := 65536
+def maxSlots : Nat := 400
+def maxRequestBytes : Nat := 2000000
 def reservedKeys : List String := ["allow", "extraWords"]
 def orderIntents : List String :=
   ["order", "original-order", "reflex-order", "filler-order", "instance-order"]
@@ -192,13 +194,16 @@ def isActive (patient : Option String) (mr : Json) : Bool :=
       | none => false) &&
     !doNotPerform mr && subjectMatches patient mr
 
+def hasValidityEnd (mr : Json) : Bool :=
+  hasAny ((jField? mr "dispenseRequest").bind (jField? · "validityPeriod")) ["end"]
+
 def medReqOfJson (patient : Option String) (mr : Json) : Option MedReq := do
   let id ← jStr? mr "id"
   let active := isActive patient mr
   let drug := jDrug mr
   match jArr? mr "dosageInstruction" with
   | [d] =>
-      if failsClosed d then
+      if failsClosed d || hasValidityEnd mr then
         pure { id := id.toList, active, drug, dose := none, timing := none, route := none, asNeeded := false }
       else
         let dose := ((jArr? d "doseAndRate").head?.bind (jField? · "doseQuantity")).bind jDose?
@@ -214,13 +219,23 @@ def bundleResources (b : Json) : List Json :=
 def bundleChart (patient : Option String) (b : Json) : List MedReq :=
   (bundleResources b).filterMap (medReqOfJson patient)
 
-def orderSubjects (req : Json) : List String :=
-  let orders :=
-    match jField? req "bundle" with
-    | some b => bundleResources b
-    | none => jArr? req "medicationRequests"
-  ((orders.filter fun mr => (jStr? mr "id").isSome).filterMap fun mr =>
-    (jField? mr "subject").bind (jStr? · "reference")).eraseDups
+def orderResources (req : Json) : List Json :=
+  match jField? req "bundle" with
+  | some b => bundleResources b
+  | none => jArr? req "medicationRequests"
+
+def subjectRef (mr : Json) : Option String :=
+  ((jField? mr "subject").bind (jStr? · "reference")).filter fun r => !r.isEmpty
+
+def subjectProblem (patient : Option String) (req : Json) : Option String :=
+  if patient.isSome then none
+  else
+    let refs := (orderResources req).map subjectRef
+    if refs.any Option.isNone then
+      some "every MedicationRequest needs a subject.reference string when the request has no patient field"
+    else if (refs.filterMap id).eraseDups.length > 1 then
+      some "the orders reference more than one subject, so the request needs a patient field"
+    else none
 
 def patientOf (req : Json) : Except String (Option String) :=
   match jField? req "patient" with

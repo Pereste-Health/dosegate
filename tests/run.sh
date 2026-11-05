@@ -52,7 +52,7 @@ else
     fail=$((fail + 1))
 fi
 
-python3 -c 'import json; m = [{"resourceType": "MedicationRequest", "id": "x%d" % i, "status": "active", "intent": "order", "medicationCodeableConcept": {"text": "aspirin"}} for i in range(5001)]; print(json.dumps({"medicationRequests": m, "output": "Take {{drug:x1}}."}))' > "$out/many_orders.json"
+python3 -c 'import json; m = [{"resourceType": "MedicationRequest", "id": "x%d" % i, "status": "active", "intent": "order", "medicationCodeableConcept": {"text": "aspirin"}, "subject": {"reference": "Patient/pat1"}} for i in range(5001)]; print(json.dumps({"medicationRequests": m, "output": "Take {{drug:x1}}."}))' > "$out/many_orders.json"
 echo '{"status": "error", "message": "the request has more than 5000 MedicationRequests"}' > "$out/many_orders.expected.json"
 "$bin" render < "$out/many_orders.json" > "$out/actual.json"
 code=$?
@@ -60,6 +60,39 @@ if python3 tests/check.py case "$out/actual.json" "$code" "$out/many_orders.expe
     pass=$((pass + 1))
 else
     echo "FAIL order count limit"
+    fail=$((fail + 1))
+fi
+
+python3 -c 'import json; print(json.dumps({"output": "a" * 2000000}))' > "$out/big_request.json"
+echo '{"status": "error", "message": "the request is larger than 2000000 bytes"}' > "$out/big_request.expected.json"
+"$bin" render < "$out/big_request.json" > "$out/actual.json"
+code=$?
+if python3 tests/check.py case "$out/actual.json" "$code" "$out/big_request.expected.json"; then
+    pass=$((pass + 1))
+else
+    echo "FAIL request size limit"
+    fail=$((fail + 1))
+fi
+
+python3 -c 'import json; print(json.dumps({"medicationRequests": [], "output": "{{drug:m1}} " * 401}))' > "$out/slots_401.json"
+echo '{"status": "error", "message": "the output has more than 400 slots"}' > "$out/slots_401.expected.json"
+"$bin" render < "$out/slots_401.json" > "$out/actual.json"
+code=$?
+if python3 tests/check.py case "$out/actual.json" "$code" "$out/slots_401.expected.json"; then
+    pass=$((pass + 1))
+else
+    echo "FAIL slot count limit"
+    fail=$((fail + 1))
+fi
+
+python3 -c 'import json; m = [{"resourceType": "MedicationRequest", "id": "m1", "status": "active", "intent": "order", "medicationCodeableConcept": {"text": "aspirin"}, "subject": {"reference": "Patient/pat1"}}]; print(json.dumps({"medicationRequests": m, "output": " ".join(["{{drug:m1}}"] * 400) + "."}))' > "$out/slots_400.json"
+python3 -c 'import json; print(json.dumps({"status": "ok", "text": " ".join(["aspirin"] * 400) + "."}))' > "$out/slots_400.expected.json"
+"$bin" render < "$out/slots_400.json" > "$out/actual.json"
+code=$?
+if python3 tests/check.py case "$out/actual.json" "$code" "$out/slots_400.expected.json"; then
+    pass=$((pass + 1))
+else
+    echo "FAIL 400 slots accepted"
     fail=$((fail + 1))
 fi
 

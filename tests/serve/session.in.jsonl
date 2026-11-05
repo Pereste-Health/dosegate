@@ -1,9 +1,9 @@
-{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "s1", "status": "active", "intent": "order", "medicationCodeableConcept": {"text": "aspirin"}, "dosageInstruction": [{"doseAndRate": [{"doseQuantity": {"value": 81, "unit": "mg", "code": "mg"}}], "timing": {"repeat": {"frequency": 1, "period": 1, "periodUnit": "d"}}, "route": {"coding": [{"system": "http://snomed.info/sct", "code": "26643006"}]}}]}], "output": "Take {{drug:s1}} {{dose:s1}} {{route:s1}} {{frequency:s1}}."}
+{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "s1", "subject": {"reference": "Patient/pat1"}, "status": "active", "intent": "order", "medicationCodeableConcept": {"text": "aspirin"}, "dosageInstruction": [{"doseAndRate": [{"doseQuantity": {"value": 81, "unit": "mg", "code": "mg"}}], "timing": {"repeat": {"frequency": 1, "period": 1, "periodUnit": "d"}}, "route": {"coding": [{"system": "http://snomed.info/sct", "code": "26643006"}]}}]}], "output": "Take {{drug:s1}} {{dose:s1}} {{route:s1}} {{frequency:s1}}."}
 {not json
 {"medicationRequests": []}
 {"output": "Take x."}
 {"medicationRequests": [], "output": "Your medicine is 2 pills."}
 
-{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "s1", "status": "active", "intent": "order", "medicationCodeableConcept": {"text": "aspirin"}}], "output": "Your medicine is {{drug:s1}}."}
+{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "s1", "subject": {"reference": "Patient/pat1"}, "status": "active", "intent": "order", "medicationCodeableConcept": {"text": "aspirin"}}], "output": "Your medicine is {{drug:s1}}."}
 {"allow": [], "output": "Take x."}
 {"output": "a", "output": "b"}

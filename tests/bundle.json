@@ -12,7 +12,7 @@
     {
       "resource": {
         "resourceType": "MedicationRequest",
-        "id": "m1",
+        "id": "m1", "subject": {"reference": "Patient/pat1"},
         "status": "active",
         "intent": "order",
         "medicationCodeableConcept": {
@@ -37,7 +37,7 @@
     {
       "resource": {
         "resourceType": "MedicationRequest",
-        "id": "m2",
+        "id": "m2", "subject": {"reference": "Patient/pat1"},
         "status": "active",
         "intent": "order",
         "medicationCodeableConcept": {
@@ -62,7 +62,7 @@
     {
       "resource": {
         "resourceType": "MedicationRequest",
-        "id": "m3",
+        "id": "m3", "subject": {"reference": "Patient/pat1"},
         "status": "stopped",
         "intent": "order",
         "medicationCodeableConcept": {
