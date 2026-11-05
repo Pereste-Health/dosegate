@@ -140,6 +140,7 @@ def handleFallback (o : Opts) (req : Lean.Json) : Lean.Json × UInt8 :=
   | .error r => r
   | .ok chart =>
       let out := fallbackTemplate chart
+      if out.isEmpty then (errorJson "the request has no active MedicationRequest", 1) else
       match outputProblem out with
       | some e => (errorJson e, 1)
       | none => renderChart o chart out

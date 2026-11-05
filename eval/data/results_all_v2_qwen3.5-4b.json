@@ -187,9 +187,9 @@
  },
  "slot_daily_after_retries": {
   "n": 120,
-  "passed": 119,
+  "passed": 118,
   "block_reasons": {
-   "missingField": 1
+   "omittedOrder": 2
   },
   "raw_model_text": {
    "orders": 268,
@@ -218,10 +218,10 @@
    }
   },
   "text_shown_after_gate": {
-   "orders": 264,
+   "orders": 260,
    "dose_wrong": 0,
    "freq_wrong": 0,
-   "missing": 1,
+   "missing": 0,
    "outputs_unsupported": 0,
    "outputs_any_error": 0
   }
@@ -230,7 +230,7 @@
   "n": 240,
   "passed": 176,
   "block_reasons": {
-   "unknownRef": 22,
+   "omittedOrder": 22,
    "missingField": 42
   },
   "raw_model_text": {
@@ -313,7 +313,7 @@
  "gate_ms": {
   "n": 768,
   "median": 0.165,
-  "p99": 0.445,
-  "max": 22.26
+  "p99": 0.449,
+  "max": 21.007
  }
 }

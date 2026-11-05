@@ -2,11 +2,11 @@
  "outputs": 768,
  "runs": 5,
  "mean_ms_per_output_each_run": [
-  0.197,
-  0.196,
-  0.191,
-  0.191,
-  0.198
+  0.202,
+  0.199,
+  0.199,
+  0.2,
+  0.199
  ],
- "process_start_ms_median": 23.3
+ "process_start_ms_median": 22.82
 }

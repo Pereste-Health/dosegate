@@ -58,19 +58,19 @@
    "slot_daily_after_retries": {
     "label": "Slot daily, after rewrites",
     "n": 120,
-    "released": 119,
-    "pct": 99.2,
+    "released": 118,
+    "pct": 98.3,
     "ci": [
-     95.4,
-     99.9
+     94.1,
+     99.5
     ],
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "missingField": 1
+     "omittedOrder": 2
     },
     "released_outputs_with_error": 0,
-    "released_orders": 264,
+    "released_orders": 260,
     "raw_outputs_with_error": 0
    },
    "slot_hot": {
@@ -85,7 +85,7 @@
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "unknownRef": 22,
+     "omittedOrder": 22,
      "missingField": 42
     },
     "released_outputs_with_error": 0,
@@ -130,7 +130,7 @@
     "raw_outputs_with_error": 79
    }
   },
-  "released_total": 413,
+  "released_total": 412,
   "released_with_error": 0,
   "error_ci": [
    0.0,
@@ -139,8 +139,8 @@
   "gate_ms": {
    "n": 768,
    "median": 0.165,
-   "p99": 0.445,
-   "max": 22.26
+   "p99": 0.449,
+   "max": 21.007
   }
  },
  "MedGemma 4B": {
@@ -281,9 +281,9 @@
   ],
   "gate_ms": {
    "n": 804,
-   "median": 0.158,
-   "p99": 0.403,
-   "max": 20.946
+   "median": 0.157,
+   "p99": 0.402,
+   "max": 22.346
   }
  },
  "Llama 3.2 3B": {
@@ -426,9 +426,9 @@
   ],
   "gate_ms": {
    "n": 1192,
-   "median": 0.119,
-   "p99": 0.373,
-   "max": 21.849
+   "median": 0.128,
+   "p99": 0.374,
+   "max": 21.026
   }
  }
 }

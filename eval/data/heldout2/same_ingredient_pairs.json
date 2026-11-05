@@ -1,0 +1,21 @@
+[
+ "h2_chart_same_drug_asa_aspirin",
+ "h2_chart_same_drug_lantus_glargine",
+ "h2_chart_same_drug_toprol_metoprolol",
+ "h2_chart_same_drug_zestoretic_lisinopril",
+ "h2_clinical_10",
+ "h2_clinical_13",
+ "h2_clinical_15",
+ "h2_clinical_20",
+ "h2_clinical_29",
+ "h2_meaning_01_brand_lantus_glargine",
+ "h2_meaning_02_brand_synthroid_levothyroxine",
+ "h2_meaning_03_brand_glucophage_metformin",
+ "h2_meaning_04_abbrev_asa_aspirin",
+ "h2_meaning_05_abbrev_apap_acetaminophen",
+ "h2_meaning_06_hyphen_split_met_formin",
+ "h2_model_style_p04_brand_generic_pair_full",
+ "h2_model_style_p19_brand_generic_pair_sig",
+ "h2_structure_28",
+ "h2_structure_29"
+]
