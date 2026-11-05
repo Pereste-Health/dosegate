@@ -11,6 +11,10 @@ Free text written by the model may use only words from `vocab`, a fixed list of
 common words, together with any extra words a deployment adds. A forbidden
 token is rejected even if a deployment adds it. `vocab_clean` in
 `DoseGate/Proofs/Vocab.lean` checks that no vocabulary word is forbidden.
+
+Two drug names are related when a reader could mistake one for the other, for
+example when they differ only in case, share a word, or one word begins with
+another. `relatedDrug` decides this conservatively.
 -/
 namespace DoseGate
 
@@ -69,29 +73,47 @@ def negationWords : List String :=
    "around", "roughly", "usual", "normal", "other", "else", "same", "replace"]
 
 def vocab : List String :=
-  ["a", "an", "the", "and", "to", "of", "for", "on", "at", "with", "by", "from", "this",
-   "that", "these", "those", "its", "they", "them", "their", "you", "your", "yours", "we",
-   "our", "us", "is", "are", "be", "been", "being", "was", "were", "will", "also", "so",
-   "because", "which", "who", "what", "how", "why", "here", "there", "help", "helps",
-   "helping", "control", "controls", "controlling", "prevent", "prevents", "preventing",
-   "protect", "protects", "protecting", "relax", "relaxes", "relaxing", "manage", "manages",
-   "managing", "treat", "treats", "treating", "support", "supports", "medicine", "medicines",
-   "medication", "medications", "heart", "blood", "pressure", "sugar", "cholesterol", "pain",
-   "breathing", "swelling", "fluid", "water", "salt", "health", "doctor", "nurse",
-   "pharmacist", "care", "team", "question", "questions", "side", "effect", "effects",
-   "stroke", "strokes", "attack", "attacks", "infection", "infections", "thyroid", "mood",
-   "condition", "conditions", "level", "levels", "risk", "plan", "list", "clots", "clot",
-   "inflammation", "fever", "allergies", "anxiety", "depression", "seizures", "diabetes",
-   "asthma", "healthy", "important", "symptoms", "symptom", "life"]
+  ["a", "an", "the", "and", "to", "of", "for", "on", "at", "by", "from", "here", "there",
+   "this", "that", "these", "those", "its", "they", "them", "their", "you", "your",
+   "yours", "we", "our", "us", "is", "are", "be", "been", "being", "was", "were", "will",
+   "also", "so", "ask", "have", "has", "medicine", "medicines", "medication", "medications",
+   "list", "doctor", "doctors", "nurse", "nurses", "pharmacist", "pharmacists", "care", "team",
+   "question", "questions", "health", "plan", "please", "thank", "thanks", "hello", "hi",
+   "important", "information", "read", "carefully", "what", "who", "how", "why"]
 
 def instrWords : List String := ["take"]
 
-def totalWords : List String := ["that", "is", "a", "total", "of"]
+def totalWords : List String := ["which", "is"]
+
+def nameStopWords : List String :=
+  ["see", "call", "get", "help", "helps", "medical", "first", "milk", "water", "bleeding",
+   "sliding", "scale", "taper", "tapering", "titrate", "titration", "protocol", "per", "until",
+   "then", "do", "does", "go", "contact", "emergency", "urgent", "check", "monitor", "wait",
+   "give", "use", "instructions", "instruction", "note", "refer", "label", "package", "insert",
+   "phone", "office", "clinic", "hospital", "appointment", "visit", "start", "starting", "begin",
+   "increase", "decrease", "reduce", "change", "switch", "new", "old", "prior", "previous",
+   "replace", "replaced", "discontinue", "discontinued", "cancel", "cancelled", "canceled",
+   "error", "wrong", "void", "sample", "placeholder", "unknown", "other", "misc", "test",
+   "result", "results", "inr", "level", "levels"]
 
 def wordIn (ws : List String) (tok : List Char) : Bool := ws.contains (String.ofList tok)
 
 def isForbidden (tok : List Char) : Bool :=
   tok.any Char.isDigit || wordIn numberWords tok || wordIn unitWords tok ||
   wordIn routeWords tok || wordIn frequencyWords tok || wordIn negationWords tok
+
+def isNameWord (tok : List Char) : Bool :=
+  wordIn vocab tok || wordIn instrWords tok || wordIn totalWords tok || wordIn nameStopWords tok
+
+def asciiLetterToken (tok : List Char) : Bool := tok.all Char.isAlpha
+
+def nonAsciiChar (c : Char) : Bool := c.toNat ≥ 128
+
+def relatedDrug (a b : List Char) : Bool :=
+  !(tokens a).any asciiLetterToken || !(tokens b).any asciiLetterToken ||
+  a.any nonAsciiChar || b.any nonAsciiChar ||
+  a.map Char.toLower == b.map Char.toLower ||
+  (tokens a).any fun u => (tokens b).any fun v =>
+    u == v || (4 ≤ u.length && u.isPrefixOf v) || (4 ≤ v.length && v.isPrefixOf u)
 
 end DoseGate

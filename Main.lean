@@ -16,7 +16,7 @@ def blockName : Block → String
   | .unseparated => "unseparated"
   | .unbound => "unbound"
   | .repeatedValue => "repeatedValue"
-  | .ambiguousDaily _ => "ambiguousDaily"
+  | .ambiguousDrug _ => "ambiguousDrug"
 
 def slotText (f : Field) (id : List Char) : String :=
   "{{" ++ String.ofList f.name ++ ":" ++ String.ofList id ++ "}}"
@@ -25,15 +25,13 @@ def shapeOf (g : List Seg) : String :=
   let sl := slotsOf g
   let fs := sl.map (·.1)
   let id := (sl.head?.map (·.2)).getD []
-  if fs.contains .daily then
-    "A sentence with a daily slot must take this shape, with no other words: That is a total of "
-      ++ slotText .daily id ++ " of " ++ slotText .drug id ++ "."
-  else if fs.any isValueField then
-    "A sentence with a dose, route, frequency, or sig slot must take one of these shapes, with no other words and each field once: Take "
+  if fs.any isValueField then
+    "A sentence with a dose, route, frequency, sig, or daily slot must take one of these shapes, with no other words and each field once: Take "
       ++ slotText .drug id ++ " " ++ slotText .dose id ++ " " ++ slotText .route id ++ " "
-      ++ slotText .frequency id ++ ". Or: Take " ++ slotText .drug id ++ " " ++ slotText .sig id ++ "."
+      ++ slotText .frequency id ++ ". Or: Take " ++ slotText .drug id ++ " " ++ slotText .sig id
+      ++ ". A daily total may only end either shape, as: which is " ++ slotText .daily id ++ "."
   else
-    "A sentence with no dose, route, frequency, sig, or daily slot must use only common words, and may name its drug with a drug slot."
+    "A sentence with no dose, route, frequency, sig, or daily slot must use only common words and no slot, so a drug name needs a sentence with its dose, route, and frequency or its sig."
 
 def sentenceDetail (i : Nat) (g : List Seg) (problem : String) : String :=
   let text := (String.ofList (unparse g)).trimAscii.toString
@@ -69,8 +67,8 @@ def blockDetail (p : Policy) (out : String) : Block → String
         "a sentence does not match a valid sentence shape"
   | .repeatedValue =>
       "a value slot (dose, route, frequency, sig, or daily) appears twice for one order, or sig appears with dose, route, or frequency for one order"
-  | .ambiguousDaily _ =>
-      "another active order has the same drug name or shares a word with it, so a daily total for one order might not be the drug's total"
+  | .ambiguousDrug _ =>
+      "another active order has the same or a related drug name, so the instructions could be confused"
 
 def okJson (text : String) : Lean.Json :=
   Lean.Json.mkObj [("status", Lean.Json.str "ok"), ("text", Lean.Json.str text)]

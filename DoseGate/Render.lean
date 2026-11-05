@@ -24,7 +24,7 @@ inductive Block where
   | unseparated
   | unbound
   | repeatedValue
-  | ambiguousDaily (id : List Char)
+  | ambiguousDrug (id : List Char)
   deriving Repr, DecidableEq, Inhabited
 
 def allowedWord (p : Policy) (tok : List Char) : Bool :=
@@ -43,9 +43,6 @@ def checkText (p : Policy) (t : List Char) : Except Block Unit :=
       | some tok => .error (.unknownWord tok)
       | none => .ok ()
 
-def sameDrug (a b : List Char) : Bool :=
-  a == b || (tokens a).any fun t => (tokens b).contains t
-
 def renderSeg (p : Policy) (chart : List MedReq) : Seg → Except Block (List Char)
   | .text t => do checkText p t; pure t
   | .slot f id =>
@@ -53,8 +50,8 @@ def renderSeg (p : Policy) (chart : List MedReq) : Seg → Except Block (List Ch
       | none => .error (.unknownRef id)
       | some m =>
           if !m.active then .error (.inactiveOrder id)
-          else if f == .daily && (chart.filter fun m' => m'.active && sameDrug m'.drug m.drug).length > 1 then
-            .error (.ambiguousDaily id)
+          else if (chart.filter fun m' => m'.active && relatedDrug m'.drug m.drug).length > 1 then
+            .error (.ambiguousDrug id)
           else match fmtField f m with
             | none => .error (.missingField id f)
             | some piece => .ok piece
@@ -120,17 +117,20 @@ def instrShape : List Item := [.w "take".toList, .s .drug, .s .dose, .s .route, 
 
 def sigShape : List Item := [.w "take".toList, .s .drug, .s .sig]
 
-def totalShape : List Item :=
-  [.w "that".toList, .w "is".toList, .w "a".toList, .w "total".toList, .w "of".toList, .s .daily,
-   .w "of".toList, .s .drug]
+def instrDailyShape : List Item :=
+  instrShape ++ [.w "which".toList, .w "is".toList, .s .daily]
+
+def sigDailyShape : List Item :=
+  sigShape ++ [.w "which".toList, .w "is".toList, .s .daily]
 
 def sentenceOk (p : Policy) (g : List Seg) : Bool :=
   let sl := slotsOf g
   let ids := sl.map (·.2)
   ids.all (· == ids.headD []) &&
   (if sl.any (isValueField ·.1) then
-    itemsOf g == instrShape || itemsOf g == sigShape || itemsOf g == totalShape
-  else (wordsOf g).all (fun w => wordIn vocab w || wordIn p.extraWords w))
+    itemsOf g == instrShape || itemsOf g == sigShape || itemsOf g == instrDailyShape ||
+      itemsOf g == sigDailyShape
+  else sl.isEmpty && (wordsOf g).all (fun w => wordIn vocab w || wordIn p.extraWords w))
 
 def valueSlots (segs : List Seg) : List (Field × List Char) :=
   (slotsOf segs).filter (isValueField ·.1)

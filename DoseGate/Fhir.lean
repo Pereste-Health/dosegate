@@ -121,6 +121,7 @@ def unitWord : PeriodUnit → Bool → List Char
 
 def fmtTiming (t : Timing) : Option (List Char) :=
   if t.frequency = 0 ∨ t.period = 0 then none
+  else if t.periodUnit = .h ∧ 1 < t.frequency then none
   else if t.period = 1 then
     if t.frequency = 1 ∧ t.periodUnit = .h then some ("every hour".toList)
     else some (timesWord t.frequency ++ " a ".toList ++ unitWord t.periodUnit true)
@@ -145,13 +146,16 @@ def dosesPerDay? (t : Timing) : Option Nat :=
 def dailyDose? (m : MedReq) : Option Dose :=
   if m.asNeeded then none
   else match m.dose, m.timing with
-    | some d, some t => (dosesPerDay? t).map fun k => ⟨⟨d.amount.mant * k, d.amount.scale⟩, d.unit⟩
+    | some d, some t =>
+      if fmtTiming t = none then none
+      else (dosesPerDay? t).map fun k => ⟨⟨d.amount.mant * k, d.amount.scale⟩, d.unit⟩
     | _, _ => none
 
 def drugNameChar (c : Char) : Bool := c.isAlpha || c == ' ' || c == '-'
 
 def drugNameOk (cs : List Char) : Bool :=
-  cs.any Char.isAlpha && cs.length ≤ 60 && (tokens cs).length ≤ 5 && cs.all drugNameChar && !(tokens cs).any isForbidden
+  cs.any Char.isAlpha && cs.length ≤ 60 && (tokens cs).length ≤ 5 && cs.all drugNameChar &&
+    !(tokens cs).any isForbidden && !(tokens cs).any isNameWord
 
 def fmtField (f : Field) (m : MedReq) : Option (List Char) :=
   match f with

@@ -1,1 +1,1 @@
-{"output": "Your medicine is {{drug:pat1}}."}
+{"output": "Take {{drug:pat1}} {{dose:pat1}} {{route:pat1}} {{frequency:pat1}}."}

@@ -54,7 +54,8 @@ theorem dosesPerDay_none_long {t : Timing} (h : t.periodUnit = .wk ∨ t.periodU
 
 theorem dailyDose_spec {m : MedReq} {dd : Dose} (h : dailyDose? m = some dd) :
     ∃ d t k, m.asNeeded = false ∧ m.dose = some d ∧ m.timing = some t ∧ dosesPerDay? t = some k ∧
-      dd.unit = d.unit ∧ ∀ q, toQty d.amount d.unit = some q → toQty dd.amount dd.unit = some ⟨q.dim, k * q.base⟩ := by
+      fmtTiming t ≠ none ∧ dd.unit = d.unit ∧
+      ∀ q, toQty d.amount d.unit = some q → toQty dd.amount dd.unit = some ⟨q.dim, k * q.base⟩ := by
   have hn : m.asNeeded = false := by
     cases ha : m.asNeeded
     · rfl
@@ -65,11 +66,14 @@ theorem dailyDose_spec {m : MedReq} {dd : Dose} (h : dailyDose? m = some dd) :
   · cases h
   · cases h
   · cases h
+  split at h
+  · cases h
+  rename_i hne
   rcases hk : dosesPerDay? t with _ | k
   · simp [hk] at h
   simp only [hk, Option.map_some] at h
   obtain rfl := Option.some.inj h
-  refine ⟨d, t, k, hn, rfl, rfl, hk, rfl, ?_⟩
+  refine ⟨d, t, k, hn, rfl, rfl, hk, hne, rfl, ?_⟩
   intro q hq
   obtain ⟨hmod, rfl⟩ := (toQty_eq_some _ _ _).1 hq
   have e : d.amount.mant * k * d.unit.factor = d.amount.mant * d.unit.factor * k :=
@@ -91,7 +95,7 @@ theorem dailyDose_none_prn {m : MedReq} (h : m.asNeeded = true) : dailyDose? m =
 
 theorem dailyDose_exact {m : MedReq} {dd : Dose} (h : dailyDose? m = some dd) :
     ∃ d t k, m.asNeeded = false ∧ m.dose = some d ∧ m.timing = some t ∧ dosesPerDay? t = some k ∧
-      dd = ⟨⟨d.amount.mant * k, d.amount.scale⟩, d.unit⟩ := by
+      fmtTiming t ≠ none ∧ dd = ⟨⟨d.amount.mant * k, d.amount.scale⟩, d.unit⟩ := by
   have hn : m.asNeeded = false := by
     cases ha : m.asNeeded
     · rfl
@@ -102,10 +106,33 @@ theorem dailyDose_exact {m : MedReq} {dd : Dose} (h : dailyDose? m = some dd) :
   · cases h
   · cases h
   · cases h
+  split at h
+  · cases h
+  rename_i hne
   rcases hk : dosesPerDay? t with _ | k
   · simp [hk] at h
   simp only [hk, Option.map_some] at h
   obtain rfl := Option.some.inj h
-  exact ⟨d, t, k, hn, rfl, rfl, hk, rfl⟩
+  exact ⟨d, t, k, hn, rfl, rfl, hk, hne, rfl⟩
+
+theorem fmtTiming_hourly_none {t : Timing} (hu : t.periodUnit = .h) (hf : 1 < t.frequency) :
+    fmtTiming t = none := by
+  unfold fmtTiming
+  split
+  · rfl
+  · rw [if_pos ⟨hu, hf⟩]
+
+theorem dailyDose_none_of_fmtTiming {m : MedReq} {t : Timing} (ht : m.timing = some t)
+    (hf : fmtTiming t = none) : dailyDose? m = none := by
+  unfold dailyDose?
+  by_cases hn : m.asNeeded = true
+  · simp [hn]
+  · simp only [Bool.not_eq_true] at hn
+    simp only [hn, Bool.false_eq_true, ↓reduceIte]
+    rcases hd : m.dose with _ | d <;> simp [ht, hf]
+
+theorem dailyDose_none_hourly {m : MedReq} {t : Timing} (ht : m.timing = some t)
+    (hu : t.periodUnit = .h) (hf : 1 < t.frequency) : dailyDose? m = none :=
+  dailyDose_none_of_fmtTiming ht (fmtTiming_hourly_none hu hf)
 
 end DoseGate

@@ -1,1 +1,1 @@
-{"output": "Your medicine is {{drug:m1}}. Please call your doctor."}
+{"output": "Take {{drug:m1}} {{dose:m1}} {{route:m1}} {{frequency:m1}}. Please call your doctor."}

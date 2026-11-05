@@ -1,0 +1,1 @@
+{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "m1", "status": "active", "intent": "order", "subject": {"reference": "Patient/pat1"}, "medicationCodeableConcept": {"text": "heparin"}}], "output": "{{drug:m1}} with water. Ask your doctor."}

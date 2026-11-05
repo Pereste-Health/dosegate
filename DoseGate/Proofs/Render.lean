@@ -200,6 +200,20 @@ theorem text_no_forbidden {p : Policy} {t : List Char}
   intro tok htok
   simp [allowedWord_not_forbidden (List.all_eq_true.mp hall tok htok)]
 
+theorem drugName_printed {m : MedReq} {x : List Char} (h : fmtField .drug m = some x) :
+    drugNameOk x = true ∧ (tokens x).all (fun tok => !isNameWord tok) = true := by
+  by_cases hk : drugNameOk m.drug = true
+  · have hx : m.drug = x := by simpa [fmtField, hk] using h
+    subst hx
+    refine ⟨hk, ?_⟩
+    simp only [drugNameOk, Bool.and_eq_true, Bool.not_eq_true'] at hk
+    rw [List.all_eq_true]
+    intro tok htok
+    have hany := hk.2
+    simp only [List.any_eq_false] at hany
+    simpa using hany tok htok
+  · simp [fmtField, hk] at h
+
 theorem drug_no_forbidden {m : MedReq} {x : List Char} (h : fmtField .drug m = some x) :
     (tokens x).filter isForbidden = [] := by
   by_cases hk : drugNameOk m.drug = true
@@ -208,7 +222,7 @@ theorem drug_no_forbidden {m : MedReq} {x : List Char} (h : fmtField .drug m = s
     simp only [drugNameOk, Bool.and_eq_true, Bool.not_eq_true'] at hk
     rw [List.filter_eq_nil_iff]
     intro tok htok
-    have hany := hk.2
+    have hany := hk.1.2
     simp only [List.any_eq_false] at hany
     simpa using hany tok htok
   · simp [fmtField, hk] at h
@@ -577,10 +591,10 @@ theorem renderSeg_inactive {p : Policy} {chart : List MedReq} {f : Field} {id : 
 
 theorem renderSeg_missing {p : Policy} {chart : List MedReq} {f : Field} {id : List Char} {m : MedReq}
     (hf : chart.find? (·.id == id) = some m) (ha : m.active = true) (hm : fmtField f m = none)
-    (hd : f = .daily → (chart.filter fun m' => m'.active && sameDrug m'.drug m.drug).length ≤ 1) :
+    (hd : (chart.filter fun m' => m'.active && relatedDrug m'.drug m.drug).length ≤ 1) :
     renderSeg p chart (.slot f id) = .error (.missingField id f) := by
-  simp [renderSeg, hf, ha, hm]
-  exact hd
+  have hn : ¬ ((chart.filter fun m' => m'.active && relatedDrug m'.drug m.drug).length > 1) := by omega
+  simp [renderSeg, hf, ha, hm, hn]
 
 theorem dose_piece_readback {chart : List MedReq} {id piece : List Char}
     (h : SegRendersTo chart (.slot .dose id) piece) :
@@ -600,28 +614,71 @@ theorem eq_of_mem_of_length_le_one {α : Type} : ∀ {l : List α}, l.length ≤
   | [x], _, _, _, ha, hb => by simp_all
   | _ :: _ :: _, hl, _, _, _, _ => by simp at hl
 
-theorem renderSeg_daily_len {p : Policy} {chart : List MedReq} {id piece : List Char} {m : MedReq}
-    (h : renderSeg p chart (.slot .daily id) = .ok piece)
+theorem relatedDrug_self (a : List Char) : relatedDrug a a = true := by
+  simp [relatedDrug]
+
+theorem two_le_filter {α : Type} (P : α → Bool) : ∀ (l : List α) {a b : α}, a ∈ l → b ∈ l →
+    a ≠ b → P a = true → P b = true → 2 ≤ (l.filter P).length
+  | [], _, _, ha, _, _, _, _ => by simp at ha
+  | x :: xs, a, b, ha, hb, hab, hPa, hPb => by
+      rw [List.filter_cons]
+      by_cases hx : P x = true
+      · rw [if_pos hx, List.length_cons]
+        have hy : ∃ y ∈ xs, P y = true := by
+          rcases List.mem_cons.mp ha with rfl | ha'
+          · rcases List.mem_cons.mp hb with rfl | hb'
+            · exact absurd rfl hab
+            · exact ⟨b, hb', hPb⟩
+          · exact ⟨a, ha', hPa⟩
+        obtain ⟨y, hy1, hy2⟩ := hy
+        have := List.length_pos_of_mem (List.mem_filter.mpr ⟨hy1, hy2⟩)
+        omega
+      · rw [if_neg hx]
+        have ha' : a ∈ xs := by
+          rcases List.mem_cons.mp ha with rfl | ha'
+          · exact absurd hPa hx
+          · exact ha'
+        have hb' : b ∈ xs := by
+          rcases List.mem_cons.mp hb with rfl | hb'
+          · exact absurd hPb hx
+          · exact hb'
+        exact two_le_filter P xs ha' hb' hab hPa hPb
+
+theorem renderSeg_related_len {p : Policy} {chart : List MedReq} {f : Field} {id piece : List Char}
+    {m : MedReq} (h : renderSeg p chart (.slot f id) = .ok piece)
     (hfind : chart.find? (·.id == id) = some m) (hact : m.active = true) :
-    (chart.filter fun m' => m'.active && sameDrug m'.drug m.drug).length ≤ 1 := by
+    (chart.filter fun m' => m'.active && relatedDrug m'.drug m.drug).length ≤ 1 := by
   simp only [renderSeg, hfind, hact] at h
   split at h
   · cases h
   · split at h
     · cases h
-    · simp_all
+    · rename_i hc
+      omega
 
-theorem renderSeg_daily_unique {p : Policy} {chart : List MedReq} {id piece : List Char}
-    (h : renderSeg p chart (.slot .daily id) = .ok piece) :
-    ∃ m ∈ chart, m.id = id ∧ m.active = true ∧ fmtField .daily m = some piece ∧
-      ∀ m' ∈ chart, m'.active = true → sameDrug m'.drug m.drug = true → m' = m := by
+theorem renderSeg_unique_related {p : Policy} {chart : List MedReq} {f : Field} {id piece : List Char}
+    (h : renderSeg p chart (.slot f id) = .ok piece) :
+    ∃ m ∈ chart, m.id = id ∧ m.active = true ∧ fmtField f m = some piece ∧
+      ∀ m' ∈ chart, m'.active = true → relatedDrug m'.drug m.drug = true → m' = m := by
   obtain ⟨m, hfind, hact, hf⟩ := renderSeg_slot_spec h
   have hm := List.mem_of_find?_eq_some hfind
   have hid : m.id = id := by simpa using List.find?_some hfind
-  have hlen := renderSeg_daily_len h hfind hact
+  have hlen := renderSeg_related_len h hfind hact
   refine ⟨m, hm, hid, hact, hf, fun m' hm' ha' hd' => ?_⟩
   exact eq_of_mem_of_length_le_one hlen
     (List.mem_filter.mpr ⟨hm', by simp [ha', hd']⟩)
-    (List.mem_filter.mpr ⟨hm, by simp [hact, sameDrug]⟩)
+    (List.mem_filter.mpr ⟨hm, by simp [hact, relatedDrug_self]⟩)
+
+theorem renderSeg_related_blocked {p : Policy} {chart : List MedReq} {f : Field} {id : List Char}
+    {m m' : MedReq} (hf : chart.find? (·.id == id) = some m) (ha : m.active = true)
+    (hm' : m' ∈ chart) (ha' : m'.active = true) (hr : relatedDrug m'.drug m.drug = true)
+    (hne : m' ≠ m) :
+    renderSeg p chart (.slot f id) = .error (.ambiguousDrug id) := by
+  have hm := List.mem_of_find?_eq_some hf
+  have h2 := two_le_filter (fun m'' => m''.active && relatedDrug m''.drug m.drug) chart hm' hm hne
+    (by simp [ha', hr]) (by simp [ha, relatedDrug_self])
+  have hgt : (chart.filter fun m'' => m''.active && relatedDrug m''.drug m.drug).length > 1 := by
+    omega
+  simp [renderSeg, hf, ha, hgt]
 
 end DoseGate

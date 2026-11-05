@@ -87,8 +87,25 @@ else
     fail=$((fail + 1))
 fi
 
-python3 -c 'import json; m = [{"resourceType": "MedicationRequest", "id": "m1", "status": "active", "intent": "order", "medicationCodeableConcept": {"text": "aspirin"}, "subject": {"reference": "Patient/pat1"}}]; print(json.dumps({"medicationRequests": m, "output": " ".join(["{{drug:m1}}"] * 400) + "."}))' > "$out/slots_400.json"
-python3 -c 'import json; print(json.dumps({"status": "ok", "text": " ".join(["aspirin"] * 400) + "."}))' > "$out/slots_400.expected.json"
+python3 - "$out/slots_400.json" "$out/slots_400.expected.json" <<'EOF'
+import itertools, json, string, sys
+reserved = {"ac", "an", "as", "at", "be", "by", "cc", "do", "gm", "go", "hi", "hs", "if", "ii", "im", "is", "it", "iu", "iv", "kg", "mg", "ml", "no", "of", "on", "or", "oz", "pc", "po", "pr", "pv", "qd", "qw", "sc", "sl", "so", "sq", "to", "ug", "up", "us", "vi", "we"}
+names = ["".join(p) for p in itertools.product(string.ascii_lowercase, repeat=2)]
+names = [n for n in names if n not in reserved][:100]
+route = {"coding": [{"system": "http://snomed.info/sct", "code": "26643006", "display": "Oral route"}]}
+orders = []
+for n in names:
+    orders.append({"resourceType": "MedicationRequest", "id": "o" + n, "status": "active", "intent": "order",
+                   "medicationCodeableConcept": {"text": n}, "subject": {"reference": "Patient/pat1"},
+                   "dosageInstruction": [{"timing": {"repeat": {"frequency": 1, "period": 1, "periodUnit": "d"}},
+                                          "route": route,
+                                          "doseAndRate": [{"doseQuantity": {"value": 81, "unit": "mg",
+                                                           "system": "http://unitsofmeasure.org", "code": "mg"}}]}]})
+output = " ".join("Take {{drug:o%s}} {{dose:o%s}} {{route:o%s}} {{frequency:o%s}}." % (n, n, n, n) for n in names)
+text = " ".join("Take %s 81 mg by mouth once a day." % n for n in names)
+json.dump({"medicationRequests": orders, "output": output}, open(sys.argv[1], "w"))
+json.dump({"status": "ok", "text": text}, open(sys.argv[2], "w"))
+EOF
 "$bin" render < "$out/slots_400.json" > "$out/actual.json"
 code=$?
 if python3 tests/check.py case "$out/actual.json" "$code" "$out/slots_400.expected.json"; then

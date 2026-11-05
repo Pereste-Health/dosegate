@@ -1,0 +1,1 @@
+{"detail": "sentence 1, \"Warfarin controls your blood sugar\", does not match a valid sentence shape. A sentence with no dose, route, frequency, sig, or daily slot must use only common words and no slot, so a drug name needs a sentence with its dose, route, and frequency or its sig.", "reason": "unbound", "status": "blocked"}

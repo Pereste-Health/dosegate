@@ -273,6 +273,10 @@ theorem timing_form (t : Timing) (s : List Char) (h : fmtTiming t = some s) :
   · rw [if_pos h0] at h
     cases h
   rw [if_neg h0] at h
+  by_cases hh : t.periodUnit = .h ∧ 1 < t.frequency
+  · rw [if_pos hh] at h
+    cases h
+  rw [if_neg hh] at h
   have hf0 : t.frequency ≠ 0 := fun e => h0 (Or.inl e)
   have hp0 : t.period ≠ 0 := fun e => h0 (Or.inr e)
   by_cases hp : t.period = 1
