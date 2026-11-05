@@ -145,11 +145,26 @@ def jRoute? (d : Json) : Option Route :=
     | _ => none
   else none
 
+def trimmed (s : String) : String := s.trimAscii.toString
+
+def sameName (a b : String) : Bool := (trimmed a).toLower == (trimmed b).toLower
+
+def displaysOf (cc : Json) : List String :=
+  ((jArr? cc "coding").filterMap fun c => (jStr? c "display").map trimmed).filter (!·.isEmpty)
+
 def jDrug (mr : Json) : List Char :=
-  let cc := jField? mr "medicationCodeableConcept"
-  let text := cc.bind (jStr? · "text")
-  let display := cc.bind fun c => (jArr? c "coding").head?.bind (jStr? · "display")
-  ((text <|> display).getD "").toList
+  let name : String :=
+    match jField? mr "medicationCodeableConcept" with
+    | none => ""
+    | some cc =>
+        let displays := displaysOf cc
+        let common := match displays with
+          | d :: ds => if ds.all (sameName · d) then d else ""
+          | [] => ""
+        match (jStr? cc "text").map trimmed with
+        | some t => if t.isEmpty then common else if displays.all (sameName · t) then t else ""
+        | none => common
+  name.toList
 
 def jAsNeeded (d : Json) : Bool :=
   match jField? d "asNeededBoolean" with
@@ -194,19 +209,96 @@ def isActive (patient : Option String) (mr : Json) : Bool :=
       | none => false) &&
     !doNotPerform mr && subjectMatches patient mr
 
-def hasValidityEnd (mr : Json) : Bool :=
-  hasAny ((jField? mr "dispenseRequest").bind (jField? · "validityPeriod")) ["end"]
+def nonEmptyJson : Json → Bool
+  | .null => false
+  | .arr a => !a.isEmpty
+  | .obj kvs => !kvs.isEmpty
+  | .str s => !s.isEmpty
+  | _ => true
+
+def routeTerms : List (String × String) :=
+  [("26643006", "Oral route"), ("26643006", "Oral use"), ("37839007", "Sublingual route"),
+   ("34206005", "Subcutaneous route"), ("78421000", "Intramuscular route"),
+   ("47625008", "Intravenous route"), ("447694001", "Inhalation route"), ("6064005", "Topical route"),
+   ("45890007", "Transdermal route"), ("37161004", "Rectal route"), ("54485002", "Ophthalmic route"),
+   ("10547007", "Otic route"), ("46713006", "Nasal route")]
+
+def routeNames (code : String) : List String :=
+  (routeTerms.filter (·.1 == code)).map (·.2) ++
+    ((Route.ofSnomed? code).map fun r => String.ofList r.phrase).toList
+
+def routeTextsOk (route : Json) : Bool :=
+  let codings := jArr? route "coding"
+  let codes := codings.filterMap fun c => if jStr? c "system" = some snomedSystem then jStr? c "code" else none
+  let accepted := codes.flatMap routeNames
+  let texts := (jField? route "text").toList ++ codings.filterMap (jField? · "display")
+  texts.all fun t =>
+    match t with
+    | .str s => accepted.any (sameName · s)
+    | _ => false
+
+def unitsOfMeasure : String := "http://unitsofmeasure.org"
+
+def standardAbbreviations : DoseUnit → List String
+  | .mcg => ["ug"]
+  | .unit => ["u", "iu"]
+  | .tablet => ["tab", "tabs"]
+  | .capsule => ["cap", "caps"]
+  | .drop => ["gtt", "gtts"]
+  | _ => []
+
+def unitAccepted (code unit : String) : Bool :=
+  let u := (trimmed unit).toLower
+  match DoseUnit.ofCode? code with
+  | none => u == code.toLower
+  | some d =>
+      u == code.toLower || u == (String.ofList (d.name true)).toLower
+        || u == (String.ofList (d.name false)).toLower || (standardAbbreviations d).contains u
+
+def doseQuantityOk (q : Json) : Bool :=
+  (match jField? q "system" with
+    | none => true
+    | some (.str s) => s == unitsOfMeasure
+    | some _ => false) &&
+  (match jField? q "unit", jField? q "code" with
+    | some (.str u), some (.str c) => unitAccepted c u
+    | some _, some _ => false
+    | _, _ => true)
+
+def failsCheck (o : Option Json) (ok : Json → Bool) : Bool :=
+  match o with
+  | some v => !ok v
+  | none => false
+
+def priorRefs (orders : List Json) : List String :=
+  orders.filterMap fun mr => (jField? mr "priorPrescription").bind (jStr? · "reference")
+
+def closedOrder (mr : Json) (id : String) (refs : List String) : Bool :=
+  hasAny (some mr) ["extension", "modifierExtension", "priorPrescription"]
+  || hasAny (jField? mr "medicationCodeableConcept") ["extension", "modifierExtension"]
+  || refs.contains ("MedicationRequest/" ++ id)
+  || ((jField? mr "meta").bind (jField? · "security")).any nonEmptyJson
+  || ((jField? mr "dispenseRequest").bind (jField? · "validityPeriod")).isSome
+
+def closedDosage (d : Json) : Bool :=
+  let rate := (jArr? d "doseAndRate").head?
+  hasAny (some d) ["extension", "modifierExtension", "site", "method"]
+  || hasAny (jField? d "timing") ["extension", "modifierExtension"]
+  || hasAny (jField? d "route") ["extension", "modifierExtension"]
+  || failsCheck (jField? d "route") routeTextsOk
+  || hasAny rate ["extension", "modifierExtension", "rateQuantity", "rateRatio", "rateRange", "type"]
+  || failsCheck (rate.bind (jField? · "doseQuantity")) doseQuantityOk
 
 def hasFreeText (mr d : Json) : Bool :=
   hasAny (some d) ["text", "additionalInstruction", "patientInstruction"] || hasAny (some mr) ["note"]
 
-def medReqOfJson (ignoreFreeText : Bool) (patient : Option String) (mr : Json) : Option MedReq := do
+def medReqOfJson (ignoreFreeText : Bool) (patient : Option String) (refs : List String) (mr : Json) : Option MedReq := do
   let id ← jStr? mr "id"
   let active := isActive patient mr
   let drug := jDrug mr
   match jArr? mr "dosageInstruction" with
   | [d] =>
-      if failsClosed d || hasValidityEnd mr || (!ignoreFreeText && hasFreeText mr d) then
+      if failsClosed d || closedOrder mr id refs || closedDosage d || (!ignoreFreeText && hasFreeText mr d) then
         pure { id := id.toList, active, drug, dose := none, timing := none, route := none, asNeeded := false }
       else
         let dose := ((jArr? d "doseAndRate").head?.bind (jField? · "doseQuantity")).bind jDose?
@@ -219,8 +311,11 @@ def bundleResources (b : Json) : List Json :=
     (jField? e "resource").bind fun r =>
       if jStr? r "resourceType" = some "MedicationRequest" then some r else none
 
+def chartFrom (ignoreFreeText : Bool) (patient : Option String) (orders : List Json) : List MedReq :=
+  orders.filterMap (medReqOfJson ignoreFreeText patient (priorRefs orders))
+
 def bundleChart (ignoreFreeText : Bool) (patient : Option String) (b : Json) : List MedReq :=
-  (bundleResources b).filterMap (medReqOfJson ignoreFreeText patient)
+  chartFrom ignoreFreeText patient (bundleResources b)
 
 def orderResources (req : Json) : List Json :=
   match jField? req "bundle" with
@@ -254,8 +349,20 @@ def medicationRequestsShapeBad (req : Json) : Bool :=
   | .ok (.arr _) => false
   | .ok _ => true
 
+def bundleTypeBad (req : Json) : Bool :=
+  match (jField? req "bundle").bind (jField? · "type") with
+  | none => false
+  | some (.str "searchset") => false
+  | some (.str "collection") => false
+  | some _ => true
+
+def bundleRequestBad (req : Json) : Bool :=
+  (((jField? req "bundle").map fun b => jArr? b "entry").getD []).any fun e => (jField? e "request").isSome
+
 def shapeProblem (req : Json) : Option String :=
   if bundleShapeBad req then some "bundle must be an object with an entry array"
+  else if bundleTypeBad req then some "bundle type must be searchset or collection"
+  else if bundleRequestBad req then some "a bundle entry has a request key, which the gate does not accept"
   else if medicationRequestsShapeBad req then some "medicationRequests must be an array"
   else if (orderResources req).any (fun mr => (jStr? mr "id").isNone) then
     some "every MedicationRequest needs an id string"
@@ -270,7 +377,7 @@ def patientOf (req : Json) : Except String (Option String) :=
 def chartOf (ignoreFreeText : Bool) (patient : Option String) (req : Json) : Option (List MedReq) :=
   match jField? req "bundle", jField? req "medicationRequests" with
   | some b, _ => some (bundleChart ignoreFreeText patient b)
-  | none, some _ => some ((jArr? req "medicationRequests").filterMap (medReqOfJson ignoreFreeText patient))
+  | none, some _ => some (chartFrom ignoreFreeText patient (jArr? req "medicationRequests"))
   | none, none => none
 
 end DoseGate
