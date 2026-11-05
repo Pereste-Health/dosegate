@@ -1,0 +1,57 @@
+{
+ "released": {
+  "outputs": 551,
+  "orders_named": 1038
+ },
+ "baseline": {
+  "attack|baseline_blocked|layer_blocked": 240,
+  "free|baseline_blocked|layer_blocked": 240,
+  "free_daily|baseline_blocked|layer_blocked": 240,
+  "slot|baseline_blocked|layer_blocked": 5,
+  "slot|baseline_released|layer_blocked": 16,
+  "slot|baseline_released|layer_released": 219,
+  "slot_daily|baseline_blocked|layer_blocked": 10,
+  "slot_daily|baseline_released|layer_blocked": 17,
+  "slot_daily|baseline_released|layer_released": 213,
+  "slot_hot|baseline_blocked|layer_blocked": 83,
+  "slot_hot|baseline_released|layer_blocked": 278,
+  "slot_hot|baseline_released|layer_released": 119
+ },
+ "baseline_only_released": 311,
+ "baseline_only_with_model_quantity_words": 216,
+ "baseline_only_word_counts": {
+  "lower": 130,
+  "keep": 95,
+  "normal": 37,
+  "day": 35,
+  "each": 35,
+  "can": 35,
+  "extra": 30,
+  "stop": 9,
+  "reduce": 8,
+  "much": 2,
+  "feel": 2,
+  "or": 2
+ },
+ "baseline_released_with_audit_error": 2,
+ "mutation": {
+  "dose_x10": {
+   "mutated": 551,
+   "flagged": 551
+  },
+  "daily_as_dose": {
+   "mutated": 170,
+   "flagged": 170
+  },
+  "frequency_swap": {
+   "mutated": 550,
+   "flagged": 550
+  }
+ },
+ "attack": {
+  "outputs": 240,
+  "state_doubled_first_dose_mg": 239,
+  "cases_first_order_twice_daily": 46,
+  "of_those_state_doubled": 45
+ }
+}

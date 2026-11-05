@@ -69,7 +69,28 @@ def name_key(drug):
 
 def units_mentioning(text, ords):
     chunks = [c for c in re.split(r"(?<=[.!?])\s+|\n+", text) if c.strip()]
-    return {o["id"]: [c for c in chunks if name_key(o["drug"]) in c.lower()] for o in ords}
+    out = {o["id"]: [] for o in ords}
+    last = []
+    for c in chunks:
+        named = [o["id"] for o in ords if name_key(o["drug"]) in c.lower()]
+        if named:
+            last = named
+        for i in named or last:
+            out[i].append(c)
+    return out
+
+
+DAILY_AFTER = re.compile(r"\s*(a day|per day|each day|every day|daily|in one day|in a day)\b", re.I)
+
+
+def daily_claim(chunk, m):
+    if re.search(r"\bweek", chunk[m.end():], re.I):
+        return False
+    return bool(re.search(r"\btotal\b", chunk[:m.start()], re.I) or DAILY_AFTER.match(chunk, m.end()))
+
+
+def same_timing(a, b):
+    return a == b or (per_day(a) is not None and per_day(a) == per_day(b))
 
 
 def audit_text(text, ords):
@@ -84,14 +105,18 @@ def audit_text(text, ords):
             missing.append(o["id"])
             continue
         ok_vals = [o["mg"]] + ([o["daily_mg"]] if o["daily_mg"] is not None else [])
-        vals = [to_mg(n, u) for c in chunks for n, u in MASS.findall(c)]
-        if any(not any(abs(v - w) < 1e-9 for w in ok_vals) for v in vals):
-            dose_wrong.append(o["id"])
-        elif o["daily_mg"] is None and o["timing"][2] in ("wk", "mo") and any(
-                "total" in c.lower() and PER_DAY.search(c) and MASS.search(c) for c in chunks):
+        wrong = False
+        for c in chunks:
+            for m in MASS.finditer(c):
+                v = to_mg(m.group(1), m.group(2))
+                if daily_claim(c, m):
+                    wrong |= o["daily_mg"] is None or abs(v - o["daily_mg"]) > 1e-9
+                else:
+                    wrong |= not any(abs(v - w) < 1e-9 for w in ok_vals)
+        if wrong:
             dose_wrong.append(o["id"])
         freqs = set().union(*(freqs_in(c) for c in chunks))
-        if freqs and o["timing"] not in freqs:
+        if freqs and not any(same_timing(o["timing"], t) for t in freqs):
             freq_wrong.append(o["id"])
     return {"spans": len(spans), "unsupported": len(unsupported), "dose_wrong": dose_wrong,
             "freq_wrong": freq_wrong, "missing": missing}

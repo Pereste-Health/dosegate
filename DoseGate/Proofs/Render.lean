@@ -577,7 +577,7 @@ theorem renderSeg_inactive {p : Policy} {chart : List MedReq} {f : Field} {id : 
 
 theorem renderSeg_missing {p : Policy} {chart : List MedReq} {f : Field} {id : List Char} {m : MedReq}
     (hf : chart.find? (·.id == id) = some m) (ha : m.active = true) (hm : fmtField f m = none)
-    (hd : f = .daily → (chart.filter fun m' => m'.active && m'.drug == m.drug).length ≤ 1) :
+    (hd : f = .daily → (chart.filter fun m' => m'.active && sameDrug m'.drug m.drug).length ≤ 1) :
     renderSeg p chart (.slot f id) = .error (.missingField id f) := by
   simp [renderSeg, hf, ha, hm]
   exact hd
@@ -603,7 +603,7 @@ theorem eq_of_mem_of_length_le_one {α : Type} : ∀ {l : List α}, l.length ≤
 theorem renderSeg_daily_len {p : Policy} {chart : List MedReq} {id piece : List Char} {m : MedReq}
     (h : renderSeg p chart (.slot .daily id) = .ok piece)
     (hfind : chart.find? (·.id == id) = some m) (hact : m.active = true) :
-    (chart.filter fun m' => m'.active && m'.drug == m.drug).length ≤ 1 := by
+    (chart.filter fun m' => m'.active && sameDrug m'.drug m.drug).length ≤ 1 := by
   simp only [renderSeg, hfind, hact] at h
   split at h
   · cases h
@@ -614,7 +614,7 @@ theorem renderSeg_daily_len {p : Policy} {chart : List MedReq} {id piece : List 
 theorem renderSeg_daily_unique {p : Policy} {chart : List MedReq} {id piece : List Char}
     (h : renderSeg p chart (.slot .daily id) = .ok piece) :
     ∃ m ∈ chart, m.id = id ∧ m.active = true ∧ fmtField .daily m = some piece ∧
-      ∀ m' ∈ chart, m'.active = true → m'.drug = m.drug → m' = m := by
+      ∀ m' ∈ chart, m'.active = true → sameDrug m'.drug m.drug = true → m' = m := by
   obtain ⟨m, hfind, hact, hf⟩ := renderSeg_slot_spec h
   have hm := List.mem_of_find?_eq_some hfind
   have hid : m.id = id := by simpa using List.find?_some hfind
@@ -622,6 +622,6 @@ theorem renderSeg_daily_unique {p : Policy} {chart : List MedReq} {id piece : Li
   refine ⟨m, hm, hid, hact, hf, fun m' hm' ha' hd' => ?_⟩
   exact eq_of_mem_of_length_le_one hlen
     (List.mem_filter.mpr ⟨hm', by simp [ha', hd']⟩)
-    (List.mem_filter.mpr ⟨hm, by simp [hact]⟩)
+    (List.mem_filter.mpr ⟨hm, by simp [hact, sameDrug]⟩)
 
 end DoseGate

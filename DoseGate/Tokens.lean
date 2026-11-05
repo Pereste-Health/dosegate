@@ -65,8 +65,8 @@ def negationWords : List String :=
    "hold", "pause", "quit", "avoid", "without", "instead", "only", "if", "unless", "except",
    "but", "or", "nor", "cancel", "discontinue", "discontinued", "restart", "resume", "change",
    "increase", "increased", "decrease", "decreased", "reduce", "more", "less", "fewer", "most",
-   "least", "max", "maximum", "min", "minimum", "up", "least", "approximately", "about",
-   "around", "roughly", "usual", "normal", "other", "else", "same", "instead", "replace"]
+   "least", "max", "maximum", "min", "minimum", "up", "approximately", "about",
+   "around", "roughly", "usual", "normal", "other", "else", "same", "replace"]
 
 def vocab : List String :=
   ["a", "an", "the", "and", "to", "of", "for", "on", "at", "with", "by", "from", "this",

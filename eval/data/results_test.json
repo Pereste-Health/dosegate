@@ -48,11 +48,11 @@
   },
   "raw_model_text": {
    "orders": 268,
-   "dose_wrong": 4,
+   "dose_wrong": 20,
    "freq_wrong": 0,
    "missing": 0,
    "outputs_unsupported": 0,
-   "outputs_any_error": 3
+   "outputs_any_error": 16
   },
   "raw_by_variant": {
    "natural": {
@@ -65,11 +65,11 @@
    },
    "perturbed": {
     "orders": 134,
-    "dose_wrong": 4,
+    "dose_wrong": 20,
     "freq_wrong": 0,
     "missing": 0,
     "outputs_unsupported": 0,
-    "outputs_any_error": 3
+    "outputs_any_error": 16
    }
   },
   "text_shown_after_gate": {
@@ -333,8 +333,8 @@
  },
  "gate_ms": {
   "n": 1822,
-  "median": 0.123,
-  "p99": 0.349,
-  "max": 21.375
+  "median": 0.122,
+  "p99": 0.347,
+  "max": 20.366
  }
 }

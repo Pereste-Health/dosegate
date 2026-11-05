@@ -48,16 +48,16 @@
   },
   "raw_model_text": {
    "orders": 502,
-   "dose_wrong": 8,
+   "dose_wrong": 37,
    "freq_wrong": 0,
    "missing": 0,
    "outputs_unsupported": 2,
-   "outputs_any_error": 8
+   "outputs_any_error": 32
   },
   "raw_by_variant": {
    "natural": {
     "orders": 251,
-    "dose_wrong": 0,
+    "dose_wrong": 2,
     "freq_wrong": 0,
     "missing": 0,
     "outputs_unsupported": 2,
@@ -65,11 +65,11 @@
    },
    "perturbed": {
     "orders": 251,
-    "dose_wrong": 8,
+    "dose_wrong": 35,
     "freq_wrong": 0,
     "missing": 0,
     "outputs_unsupported": 0,
-    "outputs_any_error": 6
+    "outputs_any_error": 30
    }
   },
   "text_shown_after_gate": {
@@ -298,7 +298,7 @@
   },
   "raw_model_text": {
    "orders": 502,
-   "dose_wrong": 29,
+   "dose_wrong": 30,
    "freq_wrong": 0,
    "missing": 471,
    "outputs_unsupported": 194,
@@ -315,7 +315,7 @@
    },
    "perturbed": {
     "orders": 251,
-    "dose_wrong": 0,
+    "dose_wrong": 1,
     "freq_wrong": 0,
     "missing": 249,
     "outputs_unsupported": 74,
@@ -333,8 +333,8 @@
  },
  "gate_ms": {
   "n": 1822,
-  "median": 0.121,
-  "p99": 0.348,
-  "max": 20.826
+  "median": 0.124,
+  "p99": 0.346,
+  "max": 19.989
  }
 }

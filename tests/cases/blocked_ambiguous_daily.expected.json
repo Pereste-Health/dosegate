@@ -1,1 +1,1 @@
-{"status": "blocked", "reason": "ambiguousDaily", "detail": "two active orders share this drug name, so a daily total for one order would not be the drug's total"}
+{"status": "blocked", "reason": "ambiguousDaily", "detail": "another active order has the same drug name or shares a word with it, so a daily total for one order might not be the drug's total"}

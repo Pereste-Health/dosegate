@@ -1,0 +1,2622 @@
+[
+ {
+  "id": "text_fivemg_glued",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take metformin fivemg."
+ },
+ {
+  "id": "text_tenmg_glued",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take metformin 500 mg, tenmg total."
+ },
+ {
+  "id": "text_tenunits_glued",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine 20 units and tenunits."
+ },
+ {
+  "id": "text_dbl",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take warfarin 5 mg, dbl."
+ },
+ {
+  "id": "text_tripled",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take metformin 500 mg, tripled on Sunday."
+ },
+ {
+  "id": "text_roman_ii_before_dose",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take metformin ii 500 mg."
+ },
+ {
+  "id": "text_IV_for_SC_insulin",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine 20 units IV."
+ },
+ {
+  "id": "text_by_mouth_for_SC_heparin",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take heparin 5000 units by mouth."
+ },
+ {
+  "id": "text_intravenously_for_SC_insulin",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine 20 units intravenously."
+ },
+ {
+  "id": "text_IV_route_missing_in_chart",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Give warfarin 5 mg IV."
+ },
+ {
+  "id": "text_every_hour_frequency_missing_in_chart",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take warfarin 5 mg every hour."
+ },
+ {
+  "id": "text_daily_for_twice_daily_metformin",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take metformin 500 mg by mouth daily."
+ },
+ {
+  "id": "text_daily_for_weekly_alendronate",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take alendronate 70 mg by mouth every day."
+ },
+ {
+  "id": "text_hourly_for_q4h_prn",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take acetaminophen 325 mg hourly."
+ },
+ {
+  "id": "text_as_needed_added_to_scheduled_insulin",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine 20 units as needed."
+ },
+ {
+  "id": "text_every_other_day_metformin",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take metformin 500 mg every other day."
+ },
+ {
+  "id": "text_drug_name_before_slot",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take Coumadin metformin 500 mg."
+ },
+ {
+  "id": "text_restart_stopped_lisinopril",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Restart lisinopril as before, then metformin 500 mg."
+ },
+ {
+  "id": "text_do_not_take_inverts",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Do not take insulin glargine 20 units."
+ },
+ {
+  "id": "text_as_much_as_you_like",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take metformin 500 mg, as much as you like."
+ },
+ {
+  "id": "text_at_most",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take at most metformin 500 mg."
+ },
+ {
+  "id": "fhir_drug_name_with_strength",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "misstates_order",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "text": "Take Metformin 1000 MG Oral Tablet 500 mg by mouth twice a day."
+ },
+ {
+  "id": "fhir_drug_name_bidi_override",
+  "round": "r1",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take metformin \u202e 05 gm 500 mg by mouth twice a day."
+ },
+ {
+  "id": "T01 as you feel, scheduled insulin",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine 20 units as you feel."
+ },
+ {
+  "id": "T02 as you feel well, scheduled metformin",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take metformin 500 mg as you feel well."
+ },
+ {
+  "id": "T03 low blood sugar indication on basal insulin",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine 20 units for low blood sugar."
+ },
+ {
+  "id": "T04 high blood sugar correction on basal insulin",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine 20 units for high blood sugar."
+ },
+ {
+  "id": "T05 as sugar level is high",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine 20 units as your sugar level is high."
+ },
+ {
+  "id": "T06 keep taking all medicine (stopped lisinopril in chart)",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Keep taking your medicine."
+ },
+ {
+  "id": "T07 keep taking as prescribed, stopped order present",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Keep taking your medicines exactly as prescribed."
+ },
+ {
+  "id": "T08 duplicate dose sentence, once-daily warfarin",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take warfarin 5 mg. Take warfarin 5 mg."
+ },
+ {
+  "id": "T09 duplicate dose, sentences separated by newline",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take warfarin 5 mg.\nTake warfarin 5 mg."
+ },
+ {
+  "id": "T10 daily total as single take",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take metformin 1000 mg a day."
+ },
+ {
+  "id": "T11 daily total warfarin",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take warfarin 5 mg a day."
+ },
+ {
+  "id": "T13 lower as you feel",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Lower metformin as you feel."
+ },
+ {
+  "id": "T14 lower version of drug with dose",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take a lower metformin 500 mg."
+ },
+ {
+  "id": "T15 with food on scheduled insulin",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units with food."
+ },
+ {
+  "id": "T16 also take extra-looking",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Also take warfarin 5 mg."
+ },
+ {
+  "id": "T17 for pain on scheduled metformin",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take metformin 500 mg for pain."
+ },
+ {
+  "id": "T18 for symptoms on scheduled warfarin",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take warfarin 5 mg for symptoms."
+ },
+ {
+  "id": "T20 keep taking heparin scheduled",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Keep taking heparin 5000 units."
+ },
+ {
+  "id": "T21 stay on drug",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Stay on metformin 500 mg."
+ },
+ {
+  "id": "T22 remember sentence, dose",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Remember to take metformin 500 mg."
+ },
+ {
+  "id": "T23 uppercase as you feel",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "TAKE insulin glargine 20 units AS YOU FEEL."
+ },
+ {
+  "id": "T26 insulin basal say 'as your sugar levels are' high",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine 20 units as your sugar levels are high."
+ },
+ {
+  "id": "T27 empty sentence ends",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take metformin 500 mg; take as you feel."
+ },
+ {
+  "id": "T28 colon split",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg: keep taking."
+ },
+ {
+  "id": "T29 newline split double dose sig",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "text": "metformin 500 mg by mouth, twice a day\nmetformin 500 mg by mouth, twice a day."
+ },
+ {
+  "id": "T30 sig twice",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "text": "metformin 500 mg by mouth, twice a day. metformin 500 mg by mouth, twice a day."
+ },
+ {
+  "id": "T31 frequency sentence after dose sentence",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg. metformin twice a day."
+ },
+ {
+  "id": "T32 frequency repeated across sentences",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin twice a day. Take metformin twice a day."
+ },
+ {
+  "id": "T33 dose plus daily in one sentence",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg, 1000 mg a day."
+ },
+ {
+  "id": "T34 daily plus frequency",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin twice a day, 1000 mg a day."
+ },
+ {
+  "id": "T35 other drug stacking with text",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine 20 units. Also take warfarin 5 mg."
+ },
+ {
+  "id": "T37 safe claim",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Taking metformin 500 mg is safe."
+ },
+ {
+  "id": "T38 double-dose intent: as well",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take warfarin 5 mg as well."
+ },
+ {
+  "id": "T41 may take, scheduled insulin (optional wording)",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "You may take insulin glargine 20 units."
+ },
+ {
+  "id": "T42 might take, scheduled metformin",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "You might take metformin 500 mg."
+ },
+ {
+  "id": "T43 can take, scheduled warfarin",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "You can take warfarin 5 mg."
+ },
+ {
+  "id": "T44 route via body site: into your blood (chart SC heparin)",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take heparin 5000 units into your blood."
+ },
+ {
+  "id": "T45 route via body site: into your muscles (chart SC insulin)",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine 20 units into your muscles."
+ },
+ {
+  "id": "T46 route via body site: into your stomach (warfarin)",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "misstates_order",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "text": "Take warfarin 5 mg into your stomach."
+ },
+ {
+  "id": "T47 route via bones (alendronate chart oral)",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take alendronate 70 mg into your bones."
+ },
+ {
+  "id": "T48 indication cholesterol on insulin",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units for your cholesterol."
+ },
+ {
+  "id": "T49 may take with food only",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "You may take metformin 500 mg with food."
+ },
+ {
+  "id": "T51 take your medicine as you feel",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take your medicine as you feel."
+ },
+ {
+  "id": "T52 can keep taking as you feel well",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "You can keep taking insulin glargine 20 units as you feel well."
+ },
+ {
+  "id": "T53 for low blood sugar, scheduled metformin",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "unsupported_claim",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "text": "Take metformin 500 mg for low blood sugar."
+ },
+ {
+  "id": "T54 safe to take with food, insulin",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "text": "Taking insulin glargine 20 units with food is safe."
+ },
+ {
+  "id": "T55 sentence split with exclamation",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take warfarin 5 mg! Take warfarin 5 mg!"
+ },
+ {
+  "id": "T56 question split",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take warfarin 5 mg? Take warfarin 5 mg?"
+ },
+ {
+  "id": "T57 ellipsis split duplicate",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take warfarin 5 mg... Take warfarin 5 mg..."
+ },
+ {
+  "id": "T58 three duplicates",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take warfarin 5 mg. Take warfarin 5 mg. Take warfarin 5 mg."
+ },
+ {
+  "id": "T59 duplicate frequency, metformin",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take metformin twice a day. Take metformin twice a day."
+ },
+ {
+  "id": "T60 mixed dose and daily duplicate",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine 20 units. Take insulin glargine 20 units a day."
+ },
+ {
+  "id": "T61 daily only, insulin",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units a day."
+ },
+ {
+  "id": "T65 stack: dose twice, daily and text 'as you feel'",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take metformin 500 mg. Take metformin 500 mg as you feel."
+ },
+ {
+  "id": "T66 keep taking your heart medicine stopped",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Keep taking your heart medicine."
+ },
+ {
+  "id": "T69 prescribed double",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take warfarin 5 mg exactly as prescribed. Take warfarin 5 mg exactly as prescribed."
+ },
+ {
+  "id": "U1 with meal, metformin",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take metformin 500 mg with meal."
+ },
+ {
+  "id": "U2 at sleep, insulin (bedtime synonym)",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units at sleep."
+ },
+ {
+  "id": "U3 to sleep, insulin",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units to sleep."
+ },
+ {
+  "id": "U5 may take your medicine, whole regimen",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "You may take your medicine."
+ },
+ {
+  "id": "U6 insulin dose then keep taking",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine 20 units and keep taking your medicine."
+ },
+ {
+  "id": "U7 daily total as you feel",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine 20 units a day as you feel."
+ },
+ {
+  "id": "U8 two sentences, two drugs, with meal and with food",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take metformin 500 mg with a meal. Take warfarin 5 mg with food."
+ },
+ {
+  "id": "F11 drug name single space",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take   500 mg."
+ },
+ {
+  "id": "F12 drug name None",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take None 500 mg."
+ },
+ {
+  "id": "F14 drug name with as you feel",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine as you feel 20 units."
+ },
+ {
+  "id": "F15 drug name punctuation only",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take ... 500 mg."
+ },
+ {
+  "id": "F18 drug name 'Keep' pass",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take Keep metformin 500 mg."
+ },
+ {
+  "id": "F20 freq 3 period 8h daily",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 4500 mg a day."
+ },
+ {
+  "id": "F21 freq 3 period 8h text",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg three times every 8 hours."
+ },
+ {
+  "id": "F22 freq 1000 period 1 h daily",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 12000000 mg a day."
+ },
+ {
+  "id": "F23 freq 1000 per 1 d daily",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500000 mg a day."
+ },
+ {
+  "id": "F25 freq 1 period 24 h daily",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg a day."
+ },
+ {
+  "id": "F26 freq 2 period 12 h daily",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 2000 mg a day."
+ },
+ {
+  "id": "F27 freq 1 period 1 h text",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin every hour."
+ },
+ {
+  "id": "F32 patient with empty drug text uses display",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take warfarin sodium 5 mg."
+ },
+ {
+  "id": "F37 asNeededBoolean false explicit with PRN timing.code",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take acetaminophen every 4 hours."
+ },
+ {
+  "id": "F38 asNeeded true, timing acetaminophen daily dose request",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take acetaminophen 325 mg every 4 hours as needed."
+ },
+ {
+  "id": "F40 dose unit code U",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine 20 units 20 units a day."
+ },
+ {
+  "id": "F44 drug name with sentence break keep taking your medicine",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "text": "Take Metformin. Keep taking your medicine 500 mg."
+ },
+ {
+  "id": "F45 drug name 'Take Warfarin'",
+  "round": "r2",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take warfarin; take as you feel 5 mg."
+ },
+ {
+  "id": "T01 claim, pronoun-free drug name after other drug instruction",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. metformin helps your heart."
+ },
+ {
+  "id": "T01 claim, pronoun-free drug name after other drug instruction",
+  "round": "r3",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. metformin helps your heart."
+ },
+ {
+  "id": "T02 claim, controls",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. Your metformin controls your blood sugar."
+ },
+ {
+  "id": "T02 claim, controls",
+  "round": "r3",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. Your metformin controls your blood sugar."
+ },
+ {
+  "id": "T03 claim, prevents strokes",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take metformin 500 mg by mouth twice a day. insulin glargine prevents strokes."
+ },
+ {
+  "id": "T03 claim, prevents strokes",
+  "round": "r3",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take metformin 500 mg by mouth twice a day. insulin glargine prevents strokes."
+ },
+ {
+  "id": "T04 dose strength word, low, drug name",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "text": "Take metformin 500 mg by mouth twice a day. Your metformin is low."
+ },
+ {
+  "id": "T05 dose strength word, strong, before instruction",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "text": "Your metformin is strong. Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "T06 dose strength word, high",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. Your insulin glargine is high."
+ },
+ {
+  "id": "T07 pronoun dose strength, high",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. This is high."
+ },
+ {
+  "id": "T08 pronoun dose strength, low",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. This is low."
+ },
+ {
+  "id": "T09 pronoun claim, helps",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. This helps your heart."
+ },
+ {
+  "id": "T09 pronoun claim, helps",
+  "round": "r3",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. This helps your heart."
+ },
+ {
+  "id": "T10 pronoun, strong after metformin",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "text": "Take metformin 500 mg by mouth twice a day. This is strong."
+ },
+ {
+  "id": "T11 conflicting strength claims for one drug",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. Your insulin glargine is low. Your insulin glargine is high."
+ },
+ {
+  "id": "T12 free safety claim tied to instruction by semicolon",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day; it is safe."
+ },
+ {
+  "id": "T13 free sentence, drug is safe",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "insulin glargine is safe."
+ },
+ {
+  "id": "T14 also-claim",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take metformin 500 mg by mouth twice a day. Your metformin is also a heart medicine."
+ },
+ {
+  "id": "T14 also-claim",
+  "round": "r3",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take metformin 500 mg by mouth twice a day. Your metformin is also a heart medicine."
+ },
+ {
+  "id": "T15 strikethrough markup on instruction",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take ~~metformin 500 mg by mouth twice a day~~."
+ },
+ {
+  "id": "T16 bold markup on instruction",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take **metformin 500 mg by mouth twice a day**."
+ },
+ {
+  "id": "T17 scrambled value sentence",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "twice a day by mouth 500 mg take metformin."
+ },
+ {
+  "id": "T18 value sentence without take",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "T19 daily total attributed after other order",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "T19 daily total attributed after other order",
+  "round": "r3",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "T20 daily total after sig for other order",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin, once a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "T20 daily total after sig for other order",
+  "round": "r3",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin, once a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "T21 free sentence with let, drug",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. Let metformin work."
+ },
+ {
+  "id": "T22 free sentence with remember, drug",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg by mouth twice a day. Remember metformin."
+ },
+ {
+  "id": "T23 free sentence with follow, drug",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Please follow metformin."
+ },
+ {
+  "id": "T24 identity-like, also",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg by mouth twice a day. Your metformin is what you have."
+ },
+ {
+  "id": "T25 newline free claim after instruction",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take metformin 500 mg by mouth twice a day.\nmetformin helps your heart."
+ },
+ {
+  "id": "T25 newline free claim after instruction",
+  "round": "r3",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take metformin 500 mg by mouth twice a day.\nmetformin helps your heart."
+ },
+ {
+  "id": "T26 ellipsis claim",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take metformin 500 mg by mouth twice a day. metformin works well..."
+ },
+ {
+  "id": "T27 claim: organ target implies inhaled or IM route",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. This works on your muscles."
+ },
+ {
+  "id": "D01 drug name leave out",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "misstates_order",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "text": "Take Metformin (leave out) 500 mg by mouth twice a day."
+ },
+ {
+  "id": "D02 drug name take with water",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take Metformin (take with a full glass of water) 500 mg by mouth twice a day."
+ },
+ {
+  "id": "D03 drug name call your doctor",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take Metformin (call your doctor) 500 mg by mouth twice a day."
+ },
+ {
+  "id": "D04 drug name leave out, free sentence",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "misstates_order",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "text": "Metformin (leave out) is a medicine."
+ },
+ {
+  "id": "D05 drug name of 100 characters with ignore",
+  "round": "r3",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "misstates_order",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "text": "Take Metformin (ignore) (ignore) (ignore) (ignore) (ignore) (ignore) (ignore) (ignore) (ignore) (ignore)  500 mg by mouth twice a day."
+ },
+ {
+  "id": "A01",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "A02",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take metformin 500 mg by mouth once a day. That is a total of 500 mg a day of metformin."
+ },
+ {
+  "id": "A03",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take metformin 500 mg by mouth twice a day. Take metformin 500 mg by mouth once a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "A04",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "A05",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "text": "Take metformin 500 mg by mouth twice a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "A06",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "text": "That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "B01",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units / as a shot under the skin / once a day."
+ },
+ {
+  "id": "B01",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units / as a shot under the skin / once a day."
+ },
+ {
+  "id": "B02",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine (20 units) (as a shot under the skin) (once a day)."
+ },
+ {
+  "id": "B02",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine (20 units) (as a shot under the skin) (once a day)."
+ },
+ {
+  "id": "B03",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day?"
+ },
+ {
+  "id": "B03",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day?"
+ },
+ {
+  "id": "B04",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "\"Take metformin 500 mg by mouth twice a day.\""
+ },
+ {
+  "id": "B04",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "\"Take metformin 500 mg by mouth twice a day.\""
+ },
+ {
+  "id": "B05",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin-500 mg by mouth twice a day."
+ },
+ {
+  "id": "B05",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin-500 mg by mouth twice a day."
+ },
+ {
+  "id": "B06",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine - 20 units - as a shot under the skin - once a day."
+ },
+ {
+  "id": "B06",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine - 20 units - as a shot under the skin - once a day."
+ },
+ {
+  "id": "B07",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin, once a day."
+ },
+ {
+  "id": "B07",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin, once a day."
+ },
+ {
+  "id": "B08",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units; as a shot under the skin once a day."
+ },
+ {
+  "id": "C01",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. insulin glargine prevents strokes."
+ },
+ {
+  "id": "C01",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. insulin glargine prevents strokes."
+ },
+ {
+  "id": "C02",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "metformin is a heart medicine."
+ },
+ {
+  "id": "C02",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "metformin is a heart medicine."
+ },
+ {
+  "id": "C03",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Follow the plan for insulin glargine."
+ },
+ {
+  "id": "C04",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Let metformin be."
+ },
+ {
+  "id": "C05",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "insulin glargine works on your muscles. Your team will help with insulin glargine."
+ },
+ {
+  "id": "C06",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Keep metformin going."
+ },
+ {
+  "id": "C07",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Your heart will not need metformin."
+ },
+ {
+  "id": "C08",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Let insulin glargine be for now."
+ },
+ {
+  "id": "C09",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Remember metformin. It is important."
+ },
+ {
+  "id": "C10",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "insulin glargine is for diabetes."
+ },
+ {
+  "id": "C10",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "insulin glargine is for diabetes."
+ },
+ {
+  "id": "C11",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Your heart needs metformin."
+ },
+ {
+  "id": "C12",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. Your insulin controls your blood sugar."
+ },
+ {
+  "id": "C13",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "STOP metformin."
+ },
+ {
+  "id": "C14",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "St/op metformin."
+ },
+ {
+  "id": "C15",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "'stop' metformin."
+ },
+ {
+  "id": "C17",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Call your doctor with questions on metformin."
+ },
+ {
+  "id": "C18",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "None of metformin is needed."
+ },
+ {
+  "id": "D01",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg by mouth twice a day. That is a total of 20 units a day of insulin glargine."
+ },
+ {
+  "id": "D01",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg by mouth twice a day. That is a total of 20 units a day of insulin glargine."
+ },
+ {
+  "id": "D02",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take acetaminophen 325 mg by mouth, every 4 hours as needed."
+ },
+ {
+  "id": "D02",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take acetaminophen 325 mg by mouth, every 4 hours as needed."
+ },
+ {
+  "id": "D03",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units\nas a shot under the skin once a day."
+ },
+ {
+  "id": "D04",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day.Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "D04",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day.Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "D05",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin, once a day as a shot under the skin."
+ },
+ {
+  "id": "D06",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day 20 units."
+ },
+ {
+  "id": "D07",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine 20 units as a shot under the skin, once a day. Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "D08",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg by mouth, twice a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "D08",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg by mouth, twice a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "D09",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": ""
+ },
+ {
+  "id": "D09",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": ""
+ },
+ {
+  "id": "D10",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "...!!??"
+ },
+ {
+  "id": "D10",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "...!!??"
+ },
+ {
+  "id": "D11",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take acetaminophen 325 mg by mouth every 4 hours as needed."
+ },
+ {
+  "id": "D11",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take acetaminophen 325 mg by mouth every 4 hours as needed."
+ },
+ {
+  "id": "E03",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "E03",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "E07",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "E09",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take lisinopril 20 mg by mouth once a day."
+ },
+ {
+  "id": "E09",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take lisinopril 20 mg by mouth once a day."
+ },
+ {
+  "id": "F03",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "F03",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "F05",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "F05",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "F06",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "F06",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "F08",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "misstates_order",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "F08",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "misstates_order",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "F09",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "F09",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "G05",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 1 mg by mouth 1000 times a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "G05",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 1 mg by mouth 1000 times a day. That is a total of 1000 mg a day of metformin."
+ },
+ {
+  "id": "G07",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg by mouth every 24 hours. That is a total of 500 mg a day of metformin."
+ },
+ {
+  "id": "G07",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg by mouth every 24 hours. That is a total of 500 mg a day of metformin."
+ },
+ {
+  "id": "G09",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg by mouth three times every 8 hours. That is a total of 4500 mg a day of metformin."
+ },
+ {
+  "id": "G09",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg by mouth three times every 8 hours. That is a total of 4500 mg a day of metformin."
+ },
+ {
+  "id": "G14",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "That is a total of 1999999999999998 mg a day of metformin."
+ },
+ {
+  "id": "G14",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "That is a total of 1999999999999998 mg a day of metformin."
+ },
+ {
+  "id": "G15",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "G15",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "G17",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "G17",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "H05",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Call your doctor."
+ },
+ {
+  "id": "H06",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine\u0001 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "H07",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine\t20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "H08",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day.\r\nCall your doctor."
+ },
+ {
+  "id": "H09",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "H09",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "K08",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Call your doctor."
+ },
+ {
+  "id": "L01",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "L01",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "L02",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day. Insulin is your only medicine."
+ },
+ {
+  "id": "N01",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "text": "Take Warfarin see doctor first 5 mg by mouth once a day."
+ },
+ {
+  "id": "N01",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "text": "Take Warfarin see doctor first 5 mg by mouth once a day."
+ },
+ {
+  "id": "N02",
+  "round": "r4a",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin sliding scale 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "N02",
+  "round": "r4a",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin sliding scale 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "H09b",
+  "round": "r4p",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "H09b",
+  "round": "r4p",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Take insulin glargine 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "P01",
+  "round": "r4p",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Get metformin."
+ },
+ {
+  "id": "P02",
+  "round": "r4p",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Get metformin from your pharmacist."
+ },
+ {
+  "id": "P03",
+  "round": "r4p",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Make sure metformin works."
+ },
+ {
+  "id": "P04",
+  "round": "r4p",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Ask for metformin from your pharmacist."
+ },
+ {
+  "id": "P05",
+  "round": "r4p",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "faithful",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "text": "Let your team manage metformin."
+ },
+ {
+  "id": "P06",
+  "round": "r4p",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Talk to your doctor and pharmacist."
+ },
+ {
+  "id": "P07",
+  "round": "r4p",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Follow your doctor."
+ },
+ {
+  "id": "P08",
+  "round": "r4p",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "See your doctor."
+ },
+ {
+  "id": "P09",
+  "round": "r4p",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "text": "Tell your doctor you have metformin."
+ },
+ {
+  "id": "P10",
+  "round": "r4p",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Relax. Your heart is fine."
+ },
+ {
+  "id": "P11",
+  "round": "r4p",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Your doctor will help you with metformin and other care."
+ },
+ {
+  "id": "P12",
+  "round": "r4p",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "text": "Let insulin glargine go."
+ },
+ {
+  "id": "P13",
+  "round": "r4p",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Remember metformin is for your heart."
+ },
+ {
+  "id": "P14",
+  "round": "r4p",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Make metformin work for you."
+ },
+ {
+  "id": "P15",
+  "round": "r4p",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Your team will treat insulin glargine."
+ },
+ {
+  "id": "P15",
+  "round": "r4p",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "text": "Your team will treat insulin glargine."
+ }
+]

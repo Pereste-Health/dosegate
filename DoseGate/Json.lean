@@ -197,13 +197,16 @@ def isActive (patient : Option String) (mr : Json) : Bool :=
 def hasValidityEnd (mr : Json) : Bool :=
   hasAny ((jField? mr "dispenseRequest").bind (jField? · "validityPeriod")) ["end"]
 
-def medReqOfJson (patient : Option String) (mr : Json) : Option MedReq := do
+def hasFreeText (mr d : Json) : Bool :=
+  hasAny (some d) ["text", "additionalInstruction", "patientInstruction"] || hasAny (some mr) ["note"]
+
+def medReqOfJson (ignoreFreeText : Bool) (patient : Option String) (mr : Json) : Option MedReq := do
   let id ← jStr? mr "id"
   let active := isActive patient mr
   let drug := jDrug mr
   match jArr? mr "dosageInstruction" with
   | [d] =>
-      if failsClosed d || hasValidityEnd mr then
+      if failsClosed d || hasValidityEnd mr || (!ignoreFreeText && hasFreeText mr d) then
         pure { id := id.toList, active, drug, dose := none, timing := none, route := none, asNeeded := false }
       else
         let dose := ((jArr? d "doseAndRate").head?.bind (jField? · "doseQuantity")).bind jDose?
@@ -216,8 +219,8 @@ def bundleResources (b : Json) : List Json :=
     (jField? e "resource").bind fun r =>
       if jStr? r "resourceType" = some "MedicationRequest" then some r else none
 
-def bundleChart (patient : Option String) (b : Json) : List MedReq :=
-  (bundleResources b).filterMap (medReqOfJson patient)
+def bundleChart (ignoreFreeText : Bool) (patient : Option String) (b : Json) : List MedReq :=
+  (bundleResources b).filterMap (medReqOfJson ignoreFreeText patient)
 
 def orderResources (req : Json) : List Json :=
   match jField? req "bundle" with
@@ -264,10 +267,10 @@ def patientOf (req : Json) : Except String (Option String) :=
   | some (.str p) => if p.isEmpty then .error "patient must be a non-empty string" else .ok (some p)
   | some _ => .error "patient must be a string"
 
-def chartOf (patient : Option String) (req : Json) : Option (List MedReq) :=
+def chartOf (ignoreFreeText : Bool) (patient : Option String) (req : Json) : Option (List MedReq) :=
   match jField? req "bundle", jField? req "medicationRequests" with
-  | some b, _ => some (bundleChart patient b)
-  | none, some _ => some ((jArr? req "medicationRequests").filterMap (medReqOfJson patient))
+  | some b, _ => some (bundleChart ignoreFreeText patient b)
+  | none, some _ => some ((jArr? req "medicationRequests").filterMap (medReqOfJson ignoreFreeText patient))
   | none, none => none
 
 end DoseGate

@@ -43,6 +43,9 @@ def checkText (p : Policy) (t : List Char) : Except Block Unit :=
       | some tok => .error (.unknownWord tok)
       | none => .ok ()
 
+def sameDrug (a b : List Char) : Bool :=
+  a == b || (tokens a).any fun t => (tokens b).contains t
+
 def renderSeg (p : Policy) (chart : List MedReq) : Seg → Except Block (List Char)
   | .text t => do checkText p t; pure t
   | .slot f id =>
@@ -50,7 +53,7 @@ def renderSeg (p : Policy) (chart : List MedReq) : Seg → Except Block (List Ch
       | none => .error (.unknownRef id)
       | some m =>
           if !m.active then .error (.inactiveOrder id)
-          else if f == .daily && (chart.filter fun m' => m'.active && m'.drug == m.drug).length > 1 then
+          else if f == .daily && (chart.filter fun m' => m'.active && sameDrug m'.drug m.drug).length > 1 then
             .error (.ambiguousDaily id)
           else match fmtField f m with
             | none => .error (.missingField id f)

@@ -8,3 +8,7 @@ name = "DoseGate"
 [[lean_exe]]
 name = "dosegate"
 root = "Main"
+
+[[lean_exe]]
+name = "dosegate-baseline"
+root = "Baseline"

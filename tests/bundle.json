@@ -6,29 +6,11 @@
       "resource": {
         "resourceType": "Patient",
         "id": "pat1",
-        "name": [{"family": "Example", "given": ["Pat"]}]
-      }
-    },
-    {
-      "resource": {
-        "resourceType": "MedicationRequest",
-        "id": "m1", "subject": {"reference": "Patient/pat1"},
-        "status": "active",
-        "intent": "order",
-        "medicationCodeableConcept": {
-          "coding": [
-            {"system": "http://www.nlm.nih.gov/research/umls/rxnorm", "code": "860975", "display": "Metformin"}
-          ]
-        },
-        "dosageInstruction": [
+        "name": [
           {
-            "text": "1 tablet by mouth twice daily",
-            "timing": {"repeat": {"frequency": 2, "period": 1, "periodUnit": "d"}},
-            "route": {
-              "coding": [{"system": "http://snomed.info/sct", "code": "26643006", "display": "Oral route"}]
-            },
-            "doseAndRate": [
-              {"doseQuantity": {"value": 500, "unit": "mg", "system": "http://unitsofmeasure.org", "code": "mg"}}
+            "family": "Example",
+            "given": [
+              "Pat"
             ]
           }
         ]
@@ -37,23 +19,99 @@
     {
       "resource": {
         "resourceType": "MedicationRequest",
-        "id": "m2", "subject": {"reference": "Patient/pat1"},
+        "id": "m1",
+        "subject": {
+          "reference": "Patient/pat1"
+        },
+        "status": "active",
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "860975",
+              "display": "Metformin"
+            }
+          ]
+        },
+        "dosageInstruction": [
+          {
+            "timing": {
+              "repeat": {
+                "frequency": 2,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            },
+            "route": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "26643006",
+                  "display": "Oral route"
+                }
+              ]
+            },
+            "doseAndRate": [
+              {
+                "doseQuantity": {
+                  "value": 500,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "m2",
+        "subject": {
+          "reference": "Patient/pat1"
+        },
         "status": "active",
         "intent": "order",
         "medicationCodeableConcept": {
           "text": "insulin glargine",
           "coding": [
-            {"system": "http://www.nlm.nih.gov/research/umls/rxnorm", "code": "261542", "display": "Insulin Glargine 100 UNT/ML Injectable Solution"}
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "261542",
+              "display": "Insulin Glargine 100 UNT/ML Injectable Solution"
+            }
           ]
         },
         "dosageInstruction": [
           {
-            "timing": {"repeat": {"frequency": 1, "period": 1, "periodUnit": "d"}},
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            },
             "route": {
-              "coding": [{"system": "http://snomed.info/sct", "code": "34206005", "display": "Subcutaneous route"}]
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "34206005",
+                  "display": "Subcutaneous route"
+                }
+              ]
             },
             "doseAndRate": [
-              {"doseQuantity": {"value": 20, "unit": "units", "system": "http://unitsofmeasure.org", "code": "[iU]"}}
+              {
+                "doseQuantity": {
+                  "value": 20,
+                  "unit": "units",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "[iU]"
+                }
+              }
             ]
           }
         ]
@@ -62,7 +120,10 @@
     {
       "resource": {
         "resourceType": "MedicationRequest",
-        "id": "m3", "subject": {"reference": "Patient/pat1"},
+        "id": "m3",
+        "subject": {
+          "reference": "Patient/pat1"
+        },
         "status": "stopped",
         "intent": "order",
         "medicationCodeableConcept": {
@@ -70,12 +131,31 @@
         },
         "dosageInstruction": [
           {
-            "timing": {"repeat": {"frequency": 1, "period": 1, "periodUnit": "d"}},
+            "timing": {
+              "repeat": {
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "d"
+              }
+            },
             "route": {
-              "coding": [{"system": "http://snomed.info/sct", "code": "26643006", "display": "Oral route"}]
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "26643006",
+                  "display": "Oral route"
+                }
+              ]
             },
             "doseAndRate": [
-              {"doseQuantity": {"value": 10, "unit": "mg", "system": "http://unitsofmeasure.org", "code": "mg"}}
+              {
+                "doseQuantity": {
+                  "value": 10,
+                  "unit": "mg",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "mg"
+                }
+              }
             ]
           }
         ]

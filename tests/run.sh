@@ -17,6 +17,8 @@ for request in tests/cases/*.request.json; do
     words="$root/tests/cases/$name.words"
     extra=""
     [ -f "$words" ] && extra="--extra-words $words"
+    flags="$root/tests/cases/$name.flags"
+    [ -f "$flags" ] && extra="$extra $(cat "$flags")"
     python3 tests/check.py merge "$request" tests/bundle.json > "$out/in.json"
     "$bin" render $extra < "$out/in.json" > "$out/actual.json"
     code=$?
