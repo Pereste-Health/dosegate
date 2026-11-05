@@ -45,7 +45,7 @@ def mul(dec, factor):
 def to_fhir(oid, o, dose_mg, timing):
     f, p, u = timing
     return {
-        "resourceType": "MedicationRequest", "id": oid, "status": "active",
+        "resourceType": "MedicationRequest", "id": oid, "status": "active", "intent": "order",
         "medicationCodeableConcept": {"text": o["drug"]},
         "dosageInstruction": [{
             "route": {"coding": [o["route"]]},
