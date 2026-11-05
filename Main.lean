@@ -72,7 +72,7 @@ def blockDetail (p : Policy) (out : String) : Block → String
   | .ambiguousDrug _ =>
       "another active order has the same or a related drug name, so the instructions could be confused"
   | .signBeforeSlot =>
-      "a text segment directly before a slot ends with - or +, ignoring trailing spaces, which would put a sign in front of a filled value"
+      "a text segment directly before a slot ends with a run of non-letter, non-digit characters that contains - or +, which would put a sign in front of a filled value"
   | .omittedOrder id =>
       "MedicationRequest " ++ String.ofList id ++ " is active but no dose, route, frequency, sig, or daily slot names it"
 

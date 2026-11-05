@@ -753,6 +753,15 @@ def separated_all(pieces):
 ASCII_ALNUM = set(string.ascii_letters + string.digits)
 
 
+def ends_sign(text):
+    run = []
+    for c in reversed(text):
+        if c in ASCII_ALNUM:
+            break
+        run.append(c)
+    return any(c in "-+" for c in run)
+
+
 def render(chart, out, cfg):
     ids = [built["id"] for built in chart]
     if len(set(ids)) != len(ids):
@@ -764,7 +773,7 @@ def render(chart, out, cfg):
         return ("blocked", "unbound")
     if not no_repeated_value(segs):
         return ("blocked", "repeatedValue")
-    if cfg["gate_2_1"] and any(segs[i][0] == "text" and segs[i][1].rstrip(" ").endswith(("-", "+"))
+    if cfg["gate_2_1"] and any(segs[i][0] == "text" and ends_sign(segs[i][1])
                                and segs[i + 1][0] == "slot" for i in range(len(segs) - 1)):
         return ("blocked", "signBeforeSlot")
     if cfg["require_all"] and any(

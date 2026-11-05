@@ -144,10 +144,8 @@ def noRepeatedValue (segs : List Seg) : Bool :=
   vs.all fun fi => fi.1 != .sig ||
     !vs.any fun gj => gj.2 == fi.2 && (gj.1 == .dose || gj.1 == .route || gj.1 == .frequency)
 
-def dropTrailingSpaces (t : List Char) : List Char := (t.reverse.dropWhile (· == ' ')).reverse
-
 def endsSign (t : List Char) : Bool :=
-  ((dropTrailingSpaces t).getLast?.map fun c => c == '-' || c == '+').getD false
+  (t.reverse.takeWhile (fun c => !c.isAlphanum)).any (fun c => c == '-' || c == '+')
 
 def hasSignBeforeSlot : List Seg → Bool
   | .text t :: .slot f id :: rest => endsSign t || hasSignBeforeSlot (.slot f id :: rest)
