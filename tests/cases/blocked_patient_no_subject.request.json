@@ -1,1 +1,1 @@
-{"patient": "pat1", "medicationRequests": [{"resourceType": "MedicationRequest", "id": "u3", "status": "active", "intent": "order", "medicationCodeableConcept": {"text": "aspirin"}}], "output": "Take {{drug:u3}}."}
+{"patient": "pat1", "medicationRequests": [{"resourceType": "MedicationRequest", "id": "u3", "status": "active", "intent": "order", "medicationCodeableConcept": {"text": "aspirin"}}], "output": "Your medicine is {{drug:u3}}."}

@@ -1,1 +1,1 @@
-{"status": "blocked", "reason": "missingField", "detail": "MedicationRequest b1 has no usable dose"}
+{"detail": "MedicationRequest b1 has no usable dose", "reason": "missingField", "status": "blocked"}

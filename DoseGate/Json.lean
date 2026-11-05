@@ -1,4 +1,5 @@
 import Lean.Data.Json
+import Std.Data.HashSet
 import DoseGate.Fhir
 
 namespace DoseGate
@@ -7,10 +8,11 @@ open Lean (Json)
 
 inductive Frame where
   | arr
-  | obj (keys : List String)
+  | obj (keys : Std.HashSet String)
 
 def maxLiteral : Nat := 1000
-def maxExponentDigits : Nat := 6
+def maxExponentDigits : Nat := 2
+def maxNumbers : Nat := 20000
 def maxDepth : Nat := 64
 def maxCount : Nat := 1000
 def maxOrders : Nat := 5000
@@ -39,10 +41,10 @@ def numberTooBig (lit : List Char) : Bool :=
     ((lit.dropWhile (fun c => c != 'e' && c != 'E')).drop 1
       |>.dropWhile (fun c => c == '+' || c == '-')).length > maxExponentDigits
 
-def scanAux : Nat → List Char → List Frame → Char → Option String
-  | 0, _, _, _ => none
-  | _ + 1, [], _, _ => none
-  | fuel + 1, '"' :: rest, stack, prev =>
+def scanAux : Nat → Nat → List Char → List Frame → Char → Option String
+  | 0, _, _, _, _ => none
+  | _ + 1, _, [], _, _ => none
+  | fuel + 1, nums, '"' :: rest, stack, prev =>
       match lexString [] rest with
       | none => none
       | some (raw, after) =>
@@ -54,28 +56,31 @@ def scanAux : Nat → List Char → List Frame → Char → Option String
                   some ("request key " ++ key ++ " is not accepted")
                 else if keys.contains key then
                   some ("a JSON object repeats the key " ++ key)
-                else scanAux fuel after (.obj (key :: keys) :: frames) '"'
-              else scanAux fuel after stack '"'
-          | _ => scanAux fuel after stack '"'
-  | fuel + 1, '{' :: rest, stack, _ =>
+                else scanAux fuel nums after (.obj (keys.insert key) :: frames) '"'
+              else scanAux fuel nums after stack '"'
+          | _ => scanAux fuel nums after stack '"'
+  | fuel + 1, nums, '{' :: rest, stack, _ =>
       if stack.length ≥ maxDepth then some "the JSON nests more than 64 levels deep"
-      else scanAux fuel rest (.obj [] :: stack) '{'
-  | fuel + 1, '[' :: rest, stack, _ =>
+      else scanAux fuel nums rest (.obj (∅ : Std.HashSet String) :: stack) '{'
+  | fuel + 1, nums, '[' :: rest, stack, _ =>
       if stack.length ≥ maxDepth then some "the JSON nests more than 64 levels deep"
-      else scanAux fuel rest (.arr :: stack) '['
-  | fuel + 1, '}' :: rest, stack, _ => scanAux fuel rest stack.tail '}'
-  | fuel + 1, ']' :: rest, stack, _ => scanAux fuel rest stack.tail ']'
-  | fuel + 1, c :: rest, stack, prev =>
+      else scanAux fuel nums rest (.arr :: stack) '['
+  | fuel + 1, nums, '}' :: rest, stack, _ => scanAux fuel nums rest stack.tail '}'
+  | fuel + 1, nums, ']' :: rest, stack, _ => scanAux fuel nums rest stack.tail ']'
+  | fuel + 1, nums, c :: rest, stack, prev =>
       if c.isDigit || c == '-' then
-        let lit := ((c :: rest).take (maxLiteral + 1)).takeWhile numChar
-        if numberTooBig lit then
-          some "a number is longer than 1000 characters or has an exponent of more than 6 digits"
-        else scanAux fuel ((c :: rest).drop lit.length) stack '0'
-      else scanAux fuel rest stack (if c.isWhitespace then prev else c)
+        if nums ≥ maxNumbers then
+          some "the request has more than 20000 numeric literals"
+        else
+          let lit := ((c :: rest).take (maxLiteral + 1)).takeWhile numChar
+          if numberTooBig lit then
+            some "a number is longer than 1000 characters or has an exponent of 3 or more digits"
+          else scanAux fuel (nums + 1) ((c :: rest).drop lit.length) stack '0'
+      else scanAux fuel nums rest stack (if c.isWhitespace then prev else c)
 
 def requestProblem (text : String) : Option String :=
   let cs := text.toList
-  scanAux (cs.length + 1) cs [] ' '
+  scanAux (cs.length + 1) 0 cs [] ' '
 
 def jField? (j : Json) (k : String) : Option Json :=
   match j.getObjVal? k with
@@ -125,13 +130,18 @@ def jTiming? (r : Json) : Option Timing := do
   let periodUnit ← (jStr? r "periodUnit").bind PeriodUnit.ofCode?
   pure ⟨frequency, period, periodUnit⟩
 
+def snomedSystem : String := "http://snomed.info/sct"
+
 def jRoute? (d : Json) : Option Route :=
-  let routes := (jArr? ((jField? d "route").getD .null) "coding").filterMap fun c =>
-    if jStr? c "system" = some "http://snomed.info/sct" then (jStr? c "code").bind Route.ofSnomed?
+  let codings := jArr? ((jField? d "route").getD .null) "coding"
+  let routes := codings.map fun c =>
+    if jStr? c "system" = some snomedSystem then (jStr? c "code").bind Route.ofSnomed?
     else none
-  match routes.eraseDups with
-  | [r] => some r
-  | _ => none
+  if routes.all Option.isSome then
+    match (routes.filterMap id).eraseDups with
+    | [r] => some r
+    | _ => none
+  else none
 
 def jDrug (mr : Json) : List Char :=
   let cc := jField? mr "medicationCodeableConcept"
@@ -145,10 +155,13 @@ def jAsNeeded (d : Json) : Bool :=
   | _ => false
 
 def failsClosed (d : Json) : Bool :=
-  let repeatOf := (jField? d "timing").bind (jField? · "repeat")
+  let timing := jField? d "timing"
+  let repeatOf := timing.bind (jField? · "repeat")
   let doseRates := jArr? d "doseAndRate"
   let first := doseRates.head?
-  hasAny repeatOf ["frequencyMax", "periodMax", "boundsDuration", "boundsPeriod", "count",
+  hasAny timing ["code"]
+  || hasAny repeatOf ["frequencyMax", "periodMax", "duration", "durationMax", "durationUnit",
+      "countMax", "boundsDuration", "boundsRange", "boundsPeriod", "count", "offset",
       "dayOfWeek", "timeOfDay", "when"]
   || hasAny (some d) ["maxDosePerPeriod", "maxDosePerAdministration", "maxDosePerLifetime",
       "asNeededCodeableConcept"]
@@ -193,10 +206,21 @@ def medReqOfJson (patient : Option String) (mr : Json) : Option MedReq := do
         pure { id := id.toList, active, drug, dose, timing, route := jRoute? d, asNeeded := jAsNeeded d }
   | _ => pure { id := id.toList, active, drug, dose := none, timing := none, route := none, asNeeded := false }
 
-def bundleChart (patient : Option String) (b : Json) : List MedReq :=
+def bundleResources (b : Json) : List Json :=
   (jArr? b "entry").filterMap fun e =>
     (jField? e "resource").bind fun r =>
-      if jStr? r "resourceType" = some "MedicationRequest" then medReqOfJson patient r else none
+      if jStr? r "resourceType" = some "MedicationRequest" then some r else none
+
+def bundleChart (patient : Option String) (b : Json) : List MedReq :=
+  (bundleResources b).filterMap (medReqOfJson patient)
+
+def orderSubjects (req : Json) : List String :=
+  let orders :=
+    match jField? req "bundle" with
+    | some b => bundleResources b
+    | none => jArr? req "medicationRequests"
+  ((orders.filter fun mr => (jStr? mr "id").isSome).filterMap fun mr =>
+    (jField? mr "subject").bind (jStr? · "reference")).eraseDups
 
 def patientOf (req : Json) : Except String (Option String) :=
   match jField? req "patient" with

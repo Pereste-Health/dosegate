@@ -91,6 +91,21 @@ theorem dailyDose_none_prn {m : MedReq} (h : m.asNeeded = true) : dailyDose? m =
 
 theorem dailyDose_exact {m : MedReq} {dd : Dose} (h : dailyDose? m = some dd) :
     ∃ d t k, m.asNeeded = false ∧ m.dose = some d ∧ m.timing = some t ∧ dosesPerDay? t = some k ∧
-      dd = ⟨⟨d.amount.mant * k, d.amount.scale⟩, d.unit⟩ := sorry
+      dd = ⟨⟨d.amount.mant * k, d.amount.scale⟩, d.unit⟩ := by
+  have hn : m.asNeeded = false := by
+    cases ha : m.asNeeded
+    · rfl
+    · simp [dailyDose?, ha] at h
+  unfold dailyDose? at h
+  simp only [hn, Bool.false_eq_true, ↓reduceIte] at h
+  rcases hd : m.dose with _ | d <;> rcases ht : m.timing with _ | t <;> simp only [hd, ht] at h
+  · cases h
+  · cases h
+  · cases h
+  rcases hk : dosesPerDay? t with _ | k
+  · simp [hk] at h
+  simp only [hk, Option.map_some] at h
+  obtain rfl := Option.some.inj h
+  exact ⟨d, t, k, hn, rfl, rfl, hk, rfl⟩
 
 end DoseGate

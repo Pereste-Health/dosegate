@@ -1,1 +1,1 @@
-{"status": "blocked", "reason": "forbiddenWord", "detail": "free text contains the forbidden word 3"}
+{"detail": "sentence 1, \"Take {{drug:m1}} for 3 days\", does not match a valid sentence shape. A sentence with no dose, route, frequency, sig, or daily slot must use only common words, and may name its drug with a drug slot.", "reason": "unbound", "status": "blocked"}

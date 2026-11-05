@@ -431,7 +431,61 @@ theorem fmtDec_eq_iff (a b : Dec) : fmtDec a = fmtDec b ↔ Dec.Eqv a b := by
   · intro h
     rw [← fmtDec_normalize a, ← fmtDec_normalize b, normalize_eq_of_eqv h]
 
+theorem digitsOf_length_le (k : Nat) : ∀ m, 0 < m → m < 10 ^ k → (digitsOf m).length ≤ k := by
+  induction k with
+  | zero =>
+    intro m h0 h1
+    rw [Nat.pow_zero] at h1
+    omega
+  | succ k ih =>
+    intro m h0 h1
+    by_cases h : m < 10
+    · rw [digitsOf_small m h]
+      simp
+    · rw [digitsOf_succ_eq m h, List.length_append, List.length_singleton]
+      have e : 10 ^ (k + 1) = 10 ^ k * 10 := Nat.pow_succ 10 k
+      have := ih (m / 10) (by omega) (by omega)
+      omega
+
+theorem below_one_aux (m s : Nat) (hn : IsNormal ⟨m, s⟩) (h0 : 0 < m) (h1 : m < 10 ^ s) :
+    ∃ rest, fmtDec ⟨m, s⟩ = '0' :: '.' :: rest := by
+  have hs : s ≠ 0 := by
+    rintro rfl
+    rw [Nat.pow_zero] at h1
+    omega
+  have hlen := digitsOf_length_le s m h0 h1
+  have hL : (padDigits m s).length = s + 1 := by
+    unfold padDigits
+    simp only [List.length_append, List.length_replicate]
+    omega
+  obtain ⟨k, hk⟩ : ∃ k, s + 1 - (digitsOf m).length = k + 1 := ⟨s - (digitsOf m).length, by omega⟩
+  have ht : padDigits m s = 0 :: (List.replicate k 0 ++ digitsOf m) := by
+    unfold padDigits
+    rw [hk, List.replicate_succ, List.cons_append]
+  refine ⟨((padDigits m s).map digitChar).drop 1, ?_⟩
+  rw [fmtDec_normal m s hn, if_neg hs, hL, show s + 1 - s = 1 by omega, ht]
+  simp [digitChar_zero]
+
+theorem below_one_of_eqv (d n : Dec) (hE : Dec.Eqv d n) (h0 : 0 < d.mant) (h1 : d.mant < 10 ^ d.scale) :
+    0 < n.mant ∧ n.mant < 10 ^ n.scale := by
+  unfold Dec.Eqv at hE
+  have hP : 0 < 10 ^ n.scale := Nat.pow_pos (by decide)
+  refine ⟨?_, ?_⟩
+  · rcases Nat.eq_zero_or_pos n.mant with hz | hz
+    · have hm := Nat.mul_pos h0 hP
+      rw [hE, hz, Nat.zero_mul] at hm
+      exact absurd hm (Nat.lt_irrefl 0)
+    · exact hz
+  · have h2 : n.mant * 10 ^ d.scale < 10 ^ n.scale * 10 ^ d.scale := by
+      rw [← hE]
+      calc d.mant * 10 ^ n.scale = 10 ^ n.scale * d.mant := Nat.mul_comm _ _
+        _ < 10 ^ n.scale * 10 ^ d.scale := Nat.mul_lt_mul_of_pos_left h1 hP
+    exact Nat.lt_of_mul_lt_mul_right h2
+
 theorem fmtDec_below_one (d : Dec) (h0 : 0 < d.mant) (h1 : d.mant < 10 ^ d.scale) :
-    ∃ rest, fmtDec d = '0' :: '.' :: rest := sorry
+    ∃ rest, fmtDec d = '0' :: '.' :: rest := by
+  obtain ⟨hp, hl⟩ := below_one_of_eqv d d.normalize (normalize_eqv d) h0 h1
+  rw [← fmtDec_normalize d]
+  exact below_one_aux d.normalize.mant d.normalize.scale (normalize_isNormal d) hp hl
 
 end DoseGate

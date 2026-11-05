@@ -1,8 +1,8 @@
-{"status": "ok", "text": "Take aspirin 81 mg."}
-{"status": "error", "message": "invalid JSON: offset 1: expected \""}
-{"status": "error", "message": "request has no output string"}
-{"status": "error", "message": "request has neither bundle nor medicationRequests"}
-{"status": "blocked", "reason": "forbiddenWord", "detail": "free text contains the forbidden word 2"}
-{"status": "ok", "text": "Take aspirin."}
-{"status": "error", "message": "request key allow is not accepted"}
-{"status": "error", "message": "a JSON object repeats the key output"}
+{"status":"ok","text":"Take aspirin 81 mg by mouth once a day."}
+{"message":"invalid JSON: offset 1: expected \"","status":"error"}
+{"message":"request has no output string","status":"error"}
+{"message":"request has neither bundle nor medicationRequests","status":"error"}
+{"detail":"sentence 1, \"Your medicine is 2 pills\", does not match a valid sentence shape. A sentence with no dose, route, frequency, sig, or daily slot must use only common words, and may name its drug with a drug slot.","reason":"unbound","status":"blocked"}
+{"status":"ok","text":"Your medicine is aspirin."}
+{"message":"request key allow is not accepted","status":"error"}
+{"message":"a JSON object repeats the key output","status":"error"}

@@ -13,6 +13,7 @@ theorem allowed_not_forbidden {p : Policy} {tok : List Char} (h : allowedWord p 
   · simp [hf] at h
 
 theorem instr_total_clean :
-    (instrWords ++ totalWords).all (fun w => !isForbidden w.toList) = true := sorry
+    (instrWords ++ totalWords).all (fun w => !isForbidden w.toList) = true := by
+  decide +kernel
 
 end DoseGate

@@ -1,0 +1,1 @@
+{"detail": "a value slot (dose, route, frequency, sig, or daily) appears twice for one order, or sig appears with dose, route, or frequency for one order", "reason": "repeatedValue", "status": "blocked"}

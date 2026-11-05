@@ -15,25 +15,66 @@ def blockName : Block → String
   | .missingField _ _ => "missingField"
   | .unseparated => "unseparated"
   | .unbound => "unbound"
+  | .repeatedValue => "repeatedValue"
 
-def blockDetail : Block → String
+def slotText (f : Field) (id : List Char) : String :=
+  "{{" ++ String.ofList f.name ++ ":" ++ String.ofList id ++ "}}"
+
+def shapeOf (g : List Seg) : String :=
+  let sl := slotsOf g
+  let fs := sl.map (·.1)
+  let id := (sl.head?.map (·.2)).getD []
+  if fs.contains .daily then
+    "A sentence with a daily slot must take this shape, with no other words: That is a total of "
+      ++ slotText .daily id ++ " of " ++ slotText .drug id ++ "."
+  else if fs.any isValueField then
+    "A sentence with a dose, route, frequency, or sig slot must take one of these shapes, with no other words and each field once: Take "
+      ++ slotText .drug id ++ " " ++ slotText .dose id ++ " " ++ slotText .route id ++ " "
+      ++ slotText .frequency id ++ ". Or: Take " ++ slotText .drug id ++ " " ++ slotText .sig id ++ "."
+  else
+    "A sentence with no dose, route, frequency, sig, or daily slot must use only common words, and may name its drug with a drug slot."
+
+def sentenceDetail (i : Nat) (g : List Seg) (problem : String) : String :=
+  let text := (String.ofList (unparse g)).trimAscii.toString
+  "sentence " ++ toString i ++ ", \"" ++ text ++ "\", " ++ problem ++ ". " ++ shapeOf g
+
+def firstSentence (pred : List Seg → Bool) : Nat → List (List Seg) → Option (Nat × List Seg)
+  | _, [] => none
+  | i, g :: gs => if pred g then some (i, g) else firstSentence pred (i + 1) gs
+
+def locateDetail (out : String) (pred : List Seg → Bool) (problem fallback : String) : String :=
+  match parseTemplate out.toList with
+  | none => fallback
+  | some segs =>
+      match firstSentence pred 1 (sentences segs) with
+      | some (i, g) => sentenceDetail i g problem
+      | none => fallback
+
+def blockDetail (p : Policy) (out : String) : Block → String
   | .malformed => "output has an unclosed, stray, or unrecognized brace"
   | .duplicateIds => "two MedicationRequests share one id"
   | .nonAscii => "output contains a non-ASCII character"
   | .forbiddenWord tok => "free text contains the forbidden word " ++ String.ofList tok
-  | .unknownWord tok => "free text contains the word " ++ String.ofList tok ++ ", which is not in the vocabulary"
+  | .unknownWord tok =>
+      locateDetail out (fun g => (wordsOf g).contains tok)
+        ("uses the word " ++ String.ofList tok ++ ", which is not in the vocabulary")
+        ("free text contains the word " ++ String.ofList tok ++ ", which is not in the vocabulary")
   | .unknownRef id => "no MedicationRequest has id " ++ String.ofList id
   | .inactiveOrder id => "MedicationRequest " ++ String.ofList id ++ " is not active"
   | .missingField id f => "MedicationRequest " ++ String.ofList id ++ " has no usable " ++ String.ofList f.name
   | .unseparated => "two filled slots touch without a space or punctuation between them"
-  | .unbound => "a sentence mixes orders, repeats a field, combines sig with other dose fields, or lacks its drug"
+  | .unbound =>
+      locateDetail out (fun g => !sentenceOk p g) "does not match a valid sentence shape"
+        "a sentence does not match a valid sentence shape"
+  | .repeatedValue =>
+      "a value slot (dose, route, frequency, sig, or daily) appears twice for one order, or sig appears with dose, route, or frequency for one order"
 
 def okJson (text : String) : Lean.Json :=
   Lean.Json.mkObj [("status", Lean.Json.str "ok"), ("text", Lean.Json.str text)]
 
-def blockedJson (b : Block) : Lean.Json :=
+def blockedJson (b : Block) (detail : String) : Lean.Json :=
   Lean.Json.mkObj [("status", Lean.Json.str "blocked"), ("reason", Lean.Json.str (blockName b)),
-    ("detail", Lean.Json.str (blockDetail b))]
+    ("detail", Lean.Json.str detail)]
 
 def errorJson (message : String) : Lean.Json :=
   Lean.Json.mkObj [("status", Lean.Json.str "error"), ("message", Lean.Json.str message)]
@@ -48,15 +89,21 @@ def handle (policy : Policy) (req : Lean.Json) : Lean.Json × UInt8 :=
         match patientOf req with
         | .error e => (errorJson e, 1)
         | .ok patient =>
-            match chartOf patient req with
-            | none => (errorJson "request has neither bundle nor medicationRequests", 1)
-            | some chart =>
-                if chart.length > maxOrders then
-                  (errorJson s!"the request has more than {maxOrders} MedicationRequests", 1)
-                else
-                  match render policy chart out.toList with
-                  | .ok text => (okJson (String.ofList text), 0)
-                  | .error b => (blockedJson b, 2)
+            if patient.isNone && (orderSubjects req).length > 1 then
+              (errorJson "the orders reference more than one subject, so the request needs a patient field", 1)
+            else
+              match chartOf patient req with
+              | none => (errorJson "request has neither bundle nor medicationRequests", 1)
+              | some chart =>
+                  if chart.length > maxOrders then
+                    (errorJson s!"the request has more than {maxOrders} MedicationRequests", 1)
+                  else
+                    match render policy chart out.toList with
+                    | .ok text =>
+                        if text.length > maxOutput then
+                          (errorJson s!"the rendered text is longer than {maxOutput} characters", 1)
+                        else (okJson (String.ofList text), 0)
+                    | .error b => (blockedJson b (blockDetail policy out b), 2)
 
 def respondLine (policy : Policy) (line : String) : Lean.Json × UInt8 :=
   match requestProblem line with

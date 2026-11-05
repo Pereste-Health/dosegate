@@ -1,1 +1,1 @@
-{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "p1", "status": "active", "intent": "proposal", "medicationCodeableConcept": {"text": "aspirin"}}], "output": "Take {{drug:p1}}."}
+{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "p1", "status": "active", "intent": "proposal", "medicationCodeableConcept": {"text": "aspirin"}}], "output": "Your medicine is {{drug:p1}}."}

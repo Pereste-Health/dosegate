@@ -1,1 +1,1 @@
-{"output": "{{drug:m1}} {{daily:m1}}."}
+{"output": "That is a total of {{daily:m1}} of {{drug:m1}}."}

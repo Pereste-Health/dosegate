@@ -1,4 +1,5 @@
 import DoseGate.Spec
+import DoseGate.Proofs.Dec
 
 namespace DoseGate
 
@@ -264,40 +265,51 @@ theorem render_malformed_eq {p : Policy} {chart : List MedReq} {out : List Char}
 
 theorem render_unbound_eq {p : Policy} {chart : List MedReq} {out : List Char} {segs : List Seg}
     (hn : (chart.map (·.id)).Nodup) (hp : parseTemplate out = some segs)
-    (hu : (sentenceGroups segs []).all groupBound = false) :
+    (hu : (sentences segs).all (sentenceOk p) = false) :
     render p chart out = .error .unbound := by
   unfold render
   simp only [hn, hp, hu]
   dsimp only [bind, Except.bind, pure, Except.pure, throw]
   simp <;> rfl
 
+theorem render_repeated_eq {p : Policy} {chart : List MedReq} {out : List Char} {segs : List Seg}
+    (hn : (chart.map (·.id)).Nodup) (hp : parseTemplate out = some segs)
+    (hu : (sentences segs).all (sentenceOk p) = true) (hr : noRepeatedValue segs = false) :
+    render p chart out = .error .repeatedValue := by
+  unfold render
+  simp only [hn, hp, hu, hr]
+  dsimp only [bind, Except.bind, pure, Except.pure, throw]
+  simp <;> rfl
+
 theorem render_mapM_eq {p : Policy} {chart : List MedReq} {out : List Char} {segs : List Seg}
     (hn : (chart.map (·.id)).Nodup) (hp : parseTemplate out = some segs)
-    (hu : (sentenceGroups segs []).all groupBound = true) (e : Block)
-    (hm : segs.mapM (renderSeg p chart) = .error e) :
+    (hu : (sentences segs).all (sentenceOk p) = true) (hr : noRepeatedValue segs = true)
+    (e : Block) (hm : segs.mapM (renderSeg p chart) = .error e) :
     render p chart out = .error e := by
   unfold render
-  simp only [hn, hp, hu, hm]
+  simp only [hn, hp, hu, hr, hm]
   dsimp only [bind, Except.bind, pure, Except.pure, throw]
   simp <;> rfl
 
 theorem render_unseparated_eq {p : Policy} {chart : List MedReq} {out : List Char} {segs : List Seg}
     (hn : (chart.map (·.id)).Nodup) (hp : parseTemplate out = some segs)
-    (hu : (sentenceGroups segs []).all groupBound = true) (pieces : List (List Char))
+    (hu : (sentences segs).all (sentenceOk p) = true) (hr : noRepeatedValue segs = true)
+    (pieces : List (List Char))
     (hm : segs.mapM (renderSeg p chart) = .ok pieces) (hsep : ¬ allSeparated pieces = true) :
     render p chart out = .error .unseparated := by
   unfold render
-  simp only [hn, hp, hu, hm]
+  simp only [hn, hp, hu, hr, hm]
   dsimp only [bind, Except.bind, pure, Except.pure, throw]
   simp [hsep] <;> rfl
 
 theorem render_ok_eq {p : Policy} {chart : List MedReq} {out : List Char} {segs : List Seg}
     (hn : (chart.map (·.id)).Nodup) (hp : parseTemplate out = some segs)
-    (hu : (sentenceGroups segs []).all groupBound = true) (pieces : List (List Char))
+    (hu : (sentences segs).all (sentenceOk p) = true) (hr : noRepeatedValue segs = true)
+    (pieces : List (List Char))
     (hm : segs.mapM (renderSeg p chart) = .ok pieces) (hsep : allSeparated pieces = true) :
     render p chart out = .ok pieces.flatten := by
   unfold render
-  simp only [hn, hp, hu, hm]
+  simp only [hn, hp, hu, hr, hm]
   dsimp only [bind, Except.bind, pure, Except.pure, throw]
   simp [hsep] <;> rfl
 
@@ -306,7 +318,7 @@ theorem render_decomp {p : Policy} {chart : List MedReq} {out r : List Char}
     (chart.map (·.id)).Nodup ∧ ∃ segs pieces, parseTemplate out = some segs ∧
       Forall₂ (fun s x => renderSeg p chart s = .ok x) segs pieces ∧
       allSeparated pieces = true ∧ r = pieces.flatten ∧
-      (sentenceGroups segs []).all groupBound = true := by
+      (∀ g ∈ sentences segs, sentenceOk p g = true) ∧ noRepeatedValue segs = true := by
   have hn : (chart.map (·.id)).Nodup := by
     by_cases hn : (chart.map (·.id)).Nodup
     · exact hn
@@ -315,17 +327,21 @@ theorem render_decomp {p : Policy} {chart : List MedReq} {out r : List Char}
   rcases hp : parseTemplate out with _ | segs
   · rw [render_malformed_eq hn hp] at h
     cases h
-  rcases hu : (sentenceGroups segs []).all groupBound with _ | _
+  cases hu : (sentences segs).all (sentenceOk p)
   · rw [render_unbound_eq hn hp hu] at h
     cases h
+  cases hr : noRepeatedValue segs
+  · rw [render_repeated_eq hn hp hu hr] at h
+    cases h
   rcases hm : segs.mapM (renderSeg p chart) with e | pieces
-  · rw [render_mapM_eq hn hp hu e hm] at h
+  · rw [render_mapM_eq hn hp hu hr e hm] at h
     cases h
   by_cases hsep : allSeparated pieces = true
-  · refine ⟨hn, segs, pieces, rfl, mapM_forall₂ segs pieces hm, hsep, ?_, hu⟩
-    rw [render_ok_eq hn hp hu pieces hm hsep] at h
-    exact (Except.ok.inj h).symm
-  · rw [render_unseparated_eq hn hp hu pieces hm hsep] at h
+  · have hr' := render_ok_eq hn hp hu hr pieces hm hsep
+    rw [hr'] at h
+    exact ⟨hn, segs, pieces, rfl, mapM_forall₂ segs pieces hm, hsep, (Except.ok.inj h).symm,
+      List.all_eq_true.mp hu, hr⟩
+  · rw [render_unseparated_eq hn hp hu hr pieces hm hsep] at h
     cases h
 
 theorem dose_key (p : Policy) (chart : List MedReq) : ∀ (segs : List Seg) (pieces : List (List Char)),
@@ -356,7 +372,7 @@ theorem render_fidelity {p : Policy} {chart : List MedReq} {out r : List Char}
     (h : render p chart out = .ok r) :
     ∃ segs pieces, parseTemplate out = some segs ∧
       Forall₂ (SegRendersTo chart) segs pieces ∧ r = pieces.flatten := by
-  obtain ⟨hn, segs, pieces, hp, hF, -, hr, -⟩ := render_decomp h
+  obtain ⟨hn, segs, pieces, hp, hF, -, hr, -, -⟩ := render_decomp h
   exact ⟨segs, pieces, hp, forall₂_spec hn hF, hr⟩
 
 theorem render_forbidden_tokens_from_value_slots {p : Policy} {chart : List MedReq} {out r : List Char}
@@ -364,7 +380,7 @@ theorem render_forbidden_tokens_from_value_slots {p : Policy} {chart : List MedR
     ∃ segs pieces, parseTemplate out = some segs ∧
       Forall₂ (SegRendersTo chart) segs pieces ∧
       (tokens r).filter isForbidden = valueSlotTokens segs pieces := by
-  obtain ⟨hn, segs, pieces, hp, hF, hsep, hr, -⟩ := render_decomp h
+  obtain ⟨hn, segs, pieces, hp, hF, hsep, hr, -, -⟩ := render_decomp h
   refine ⟨segs, pieces, hp, forall₂_spec hn hF, ?_⟩
   rw [hr, tokens_flatten_filter_eq hsep]
   exact dose_key p chart segs pieces hF
@@ -373,7 +389,7 @@ theorem render_text_clean {p : Policy} {chart : List MedReq} {out r t : List Cha
     (h : render p chart out = .ok r) (hp : parseTemplate out = some segs) (ht : Seg.text t ∈ segs) :
     (tokens t).all (allowedWord p) = true ∧ (tokens t).all (fun tok => !isForbidden tok) = true ∧
       t.all isTextChar = true := by
-  obtain ⟨-, segs', pieces, hp', hF, -, -, -⟩ := render_decomp h
+  obtain ⟨-, segs', pieces, hp', hF, -, -, -, -⟩ := render_decomp h
   have e : segs' = segs := Option.some.inj (hp'.symm.trans hp)
   subst e
   obtain ⟨x, hx⟩ := forall₂_mem hF _ ht
@@ -397,7 +413,7 @@ theorem render_no_active_order {p : Policy} {chart : List MedReq} {out id : List
   | .error b => exact ⟨b, by first | exact hr | rfl⟩
   | .ok r =>
     exfalso
-    obtain ⟨-, segs', pieces, hp', hF, -, -, -⟩ := render_decomp hr
+    obtain ⟨-, segs', pieces, hp', hF, -, -, -, -⟩ := render_decomp hr
     have e : segs' = segs := Option.some.inj (hp'.symm.trans hp)
     subst e
     obtain ⟨x, hx⟩ := forall₂_mem hF _ hs
@@ -414,7 +430,7 @@ theorem render_missing_field {p : Policy} {chart : List MedReq} {out id : List C
   | .error b => exact ⟨b, by first | exact hr | rfl⟩
   | .ok r =>
     exfalso
-    obtain ⟨-, segs', pieces, hp', hF, -, -, -⟩ := render_decomp hr
+    obtain ⟨-, segs', pieces, hp', hF, -, -, -, -⟩ := render_decomp hr
     have e : segs' = segs := Option.some.inj (hp'.symm.trans hp)
     subst e
     obtain ⟨x, hx⟩ := forall₂_mem hF _ hs
@@ -426,27 +442,148 @@ theorem render_duplicate_ids {p : Policy} {chart : List MedReq} {out : List Char
     (h : ¬ (chart.map (·.id)).Nodup) : ∃ b, render p chart out = .error b :=
   ⟨.duplicateIds, render_dup h⟩
 
+theorem isSentenceEnd_nonalnum {c : Char} (h : isSentenceEnd c = true) : c.isAlphanum = false := by
+  unfold isSentenceEnd at h
+  simp only [Bool.or_eq_true, beq_iff_eq] at h
+  rcases h with ((((rfl | rfl) | rfl) | rfl) | rfl) | rfl <;> decide
+
+theorem splitEnds_cons (c : Char) (cs : List Char) :
+    splitEnds (c :: cs) = if isSentenceEnd c then [] :: splitEnds cs else
+      match splitEnds cs with
+      | q :: qs => (c :: q) :: qs
+      | [] => [[c]] := by
+  unfold splitEnds
+  rw [List.foldr_cons]
+  rfl
+
+theorem splitEnds_exists : ∀ t : List Char, ∃ q qs, splitEnds t = q :: qs
+  | [] => ⟨[], [], rfl⟩
+  | c :: cs => by
+      rw [splitEnds_cons]
+      split
+      · exact ⟨[], _, rfl⟩
+      · obtain ⟨q, qs, h⟩ := splitEnds_exists cs
+        rw [h]
+        exact ⟨c :: q, qs, rfl⟩
+
+theorem splitEnds_tokensAux : ∀ (t cur q : List Char) (qs : List (List Char)),
+    splitEnds t = q :: qs → tokensAux t cur = tokensAux q cur ++ qs.flatMap tokens
+  | [], cur, q, qs, h => by
+      simp [splitEnds] at h
+      obtain ⟨rfl, rfl⟩ := h
+      simp [tokensAux]
+  | c :: cs, cur, q, qs, h => by
+      obtain ⟨q', qs', hs⟩ := splitEnds_exists cs
+      rw [splitEnds_cons, hs] at h
+      by_cases hc : isSentenceEnd c = true
+      · simp only [hc, ↓reduceIte, List.cons.injEq] at h
+        obtain ⟨rfl, rfl⟩ := h
+        rw [tokensAux_sep c cs cur (isSentenceEnd_nonalnum hc), splitEnds_tokensAux cs [] _ _ hs]
+        simp [tokensAux, tokens]
+      · simp only [hc] at h
+        obtain ⟨rfl, rfl⟩ := h
+        by_cases ha : c.isAlphanum = true
+        · rw [tokensAux_alnum c cs cur ha, tokensAux_alnum c q' cur ha]
+          exact splitEnds_tokensAux cs (c.toLower :: cur) _ _ hs
+        · have ha' : c.isAlphanum = false := by simpa using ha
+          rw [tokensAux_sep c cs cur ha', tokensAux_sep c q' cur ha',
+            splitEnds_tokensAux cs [] _ _ hs, List.append_assoc]
+
+theorem splitEnds_flatMap {t q : List Char} {qs : List (List Char)} (h : splitEnds t = q :: qs) :
+    (q :: qs).flatMap tokens = tokens t := by
+  have e := splitEnds_tokensAux t [] q qs h
+  rw [List.flatMap_cons]
+  show tokens q ++ qs.flatMap tokens = tokensAux t []
+  rw [e]
+  rfl
+
+theorem tokens_split_last (q : List Char) (qs : List (List Char)) (h : qs ≠ []) (t : List Char)
+    (ht : splitEnds t = q :: qs) :
+    tokens q ++ qs.dropLast.flatMap tokens ++ tokens (qs.getLast?.getD []) = tokens t := by
+  have hw := splitEnds_flatMap ht
+  have hd := congrArg (fun l => l.flatMap tokens) (List.dropLast_concat_getLast h)
+  have hl : qs.getLast?.getD [] = qs.getLast h := by
+    rw [List.getLast?_eq_some_getLast h]
+    rfl
+  simp only [List.flatMap_append, List.flatMap_singleton] at hd
+  rw [hl, ← hw, List.flatMap_cons, ← hd, List.append_assoc]
+
+theorem wordsOf_text_map : ∀ L : List (List Char),
+    (L.map fun r => [Seg.text r]).flatMap wordsOf = L.flatMap tokens
+  | [] => rfl
+  | r :: L => by simp [wordsOf, wordsOf_text_map L]
+
+theorem sentencesAux_words : ∀ (segs cur : List Seg),
+    (sentencesAux segs cur).flatMap wordsOf = wordsOf cur ++ wordsOf segs
+  | [], cur => by simp [sentencesAux, wordsOf]
+  | .slot f id :: rest, cur => by
+      simp only [sentencesAux]
+      rw [sentencesAux_words rest]
+      simp [wordsOf]
+  | .text t :: rest, cur => by
+      obtain ⟨q, qs, hs⟩ := splitEnds_exists t
+      cases qs with
+      | nil =>
+          have e : sentencesAux (.text t :: rest) cur = sentencesAux rest (cur ++ [Seg.text q]) := by
+            simp [sentencesAux, hs]
+          have ht : tokens q = tokens t := by simpa using splitEnds_flatMap hs
+          rw [e, sentencesAux_words rest (cur ++ [Seg.text q])]
+          simp [wordsOf, ht]
+      | cons q2 qs2 =>
+          have hne : q2 :: qs2 ≠ [] := by simp
+          have hk := tokens_split_last q (q2 :: qs2) hne t hs
+          have e : sentencesAux (.text t :: rest) cur =
+              (cur ++ [Seg.text q]) :: (((q2 :: qs2).dropLast).map fun r => [Seg.text r]) ++
+                sentencesAux rest [Seg.text ((q2 :: qs2).getLast?.getD [])] := by
+            simp [sentencesAux, hs]
+          rw [e, List.flatMap_append, List.flatMap_cons, wordsOf_text_map,
+            sentencesAux_words rest]
+          simp only [wordsOf, List.flatMap_append, List.flatMap_cons, List.flatMap_nil,
+            List.append_nil]
+          rw [← hk]
+          simp [List.append_assoc]
+
+theorem sentences_words (segs : List Seg) : (sentences segs).flatMap wordsOf = wordsOf segs := by
+  unfold sentences
+  rw [sentencesAux_words segs []]
+  simp [wordsOf]
+
 theorem render_sentences {p : Policy} {chart : List MedReq} {out r : List Char} {segs : List Seg}
     (h : render p chart out = .ok r) (hp : parseTemplate out = some segs) :
-    (∀ g ∈ sentences segs, sentenceOk p g = true) ∧ noRepeatedValue segs = true := sorry
-
-theorem sentences_words (segs : List Seg) : (sentences segs).flatMap wordsOf = wordsOf segs := sorry
+    (∀ g ∈ sentences segs, sentenceOk p g = true) ∧ noRepeatedValue segs = true := by
+  obtain ⟨-, segs', pieces, hp', -, -, -, hs, hr⟩ := render_decomp h
+  have e : segs' = segs := Option.some.inj (hp'.symm.trans hp)
+  subst e
+  exact ⟨hs, hr⟩
 
 theorem renderSeg_unknownRef {p : Policy} {chart : List MedReq} {f : Field} {id : List Char}
-    (h : ∀ m ∈ chart, m.id ≠ id) : renderSeg p chart (.slot f id) = .error (.unknownRef id) := sorry
+    (h : ∀ m ∈ chart, m.id ≠ id) : renderSeg p chart (.slot f id) = .error (.unknownRef id) := by
+  have hf : chart.find? (·.id == id) = none := by
+    rw [List.find?_eq_none]
+    intro m hm
+    simpa using h m hm
+  simp [renderSeg, hf]
 
 theorem renderSeg_inactive {p : Policy} {chart : List MedReq} {f : Field} {id : List Char} {m : MedReq}
     (hf : chart.find? (·.id == id) = some m) (ha : m.active = false) :
-    renderSeg p chart (.slot f id) = .error (.inactiveOrder id) := sorry
+    renderSeg p chart (.slot f id) = .error (.inactiveOrder id) := by
+  simp [renderSeg, hf, ha]
 
 theorem renderSeg_missing {p : Policy} {chart : List MedReq} {f : Field} {id : List Char} {m : MedReq}
     (hf : chart.find? (·.id == id) = some m) (ha : m.active = true) (hm : fmtField f m = none) :
-    renderSeg p chart (.slot f id) = .error (.missingField id f) := sorry
+    renderSeg p chart (.slot f id) = .error (.missingField id f) := by
+  simp [renderSeg, hf, ha, hm]
 
 theorem dose_piece_readback {chart : List MedReq} {id piece : List Char}
     (h : SegRendersTo chart (.slot .dose id) piece) :
     ∃ m ∈ chart, ∃ d, m.id = id ∧ m.active = true ∧ m.dose = some d ∧
       (∃ one, piece = fmtDec d.amount ++ ' ' :: d.unit.name one) ∧
-      parseDec? (fmtDec d.amount) = some d.amount.normalize := sorry
+      parseDec? (fmtDec d.amount) = some d.amount.normalize := by
+  obtain ⟨m, hm, hid, hact, hf, -⟩ := h
+  cases hd : m.dose with
+  | none => simp [fmtField, hd] at hf
+  | some d =>
+      simp [fmtField, hd] at hf
+      exact ⟨m, hm, d, hid, hact, hd, ⟨_, hf.symm⟩, parseDec_fmtDec d.amount⟩
 
 end DoseGate

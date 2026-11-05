@@ -1,1 +1,1 @@
-{"status": "error", "message": "a JSON object repeats the key id"}
+{"message": "a JSON object repeats the key id", "status": "error"}
