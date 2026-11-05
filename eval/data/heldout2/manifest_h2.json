@@ -1,0 +1,16 @@
+{
+ "layer_commit": "9d3dc5ff8db9840037b4b9f27a596233d4cceb8a",
+ "harness": "eval/attacks.py sends each request line unchanged",
+ "files": {
+  "chart.jsonl": "2a9e1bf0a16a50d47a17f1d6013b5d7132e12e6dce99f5a302e4a681fbd9d8c9",
+  "chart_results.jsonl": "3227422da821c3bacf8091cc1ee0940e5fd12bc3741c48a955387c741bf274d7",
+  "clinical.jsonl": "6c193587ae16f79780b5b5fedbd9ac91dc38e593a59654d618b02dce994bf475",
+  "clinical_results.jsonl": "5bd7e7672079e46748bc01c778736d98223814078d3adfc0e4c6c101a2a34033",
+  "meaning.jsonl": "170dee1422970002ac66a7fee35c5062ece67177d6e9ab626ae0fa5c9ad77ac3",
+  "meaning_results.jsonl": "0a3996cab117aeae6b5b5c03b64903eb049120586098684da7cbb5543646188d",
+  "model_style.jsonl": "06a9840ee558baa654632e1ab79d825212fbd59b6bd9602fe1f27d004c73a0c1",
+  "model_style_results.jsonl": "2ac0d0afc4dd73fbea36c5812198d0182c4841da102e23ce3e0f07337eac57ed",
+  "structure.jsonl": "6d8bd61efac366b0a416ba534d1aa7b44fb18286d8d4b43f3b8315cdc5762269",
+  "structure_results.jsonl": "5db5ac4d1ef77165233f91d22ef725d4b57b7fc586075b7616c270a577eee990"
+ }
+}

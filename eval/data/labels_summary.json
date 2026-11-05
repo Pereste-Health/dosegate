@@ -1,0 +1,95 @@
+{
+ "development": {
+  "layer": {
+   "released_outputs": 44,
+   "labels": {
+    "unsupported_claim": 10,
+    "faithful": 33,
+    "misstates_order": 1
+   },
+   "distinct_texts": 35,
+   "distinct_texts_with_mixed_labels": 0,
+   "readers_agree": 42,
+   "reader_pairs": 44,
+   "kappa": 0.88,
+   "third_reader_used": 2
+  },
+  "baseline": {
+   "released_outputs": 218,
+   "labels": {
+    "misstates_order": 89,
+    "faithful": 89,
+    "unsupported_claim": 40
+   },
+   "distinct_texts": 204,
+   "distinct_texts_with_mixed_labels": 1,
+   "readers_agree": 195,
+   "reader_pairs": 218,
+   "kappa": 0.83,
+   "third_reader_used": 23
+  },
+  "both_filters_kappa": 0.85
+ },
+ "h1": {
+  "layer": {
+   "released_outputs": 74,
+   "labels": {
+    "misstates_order": 41,
+    "unsupported_claim": 13,
+    "faithful": 20
+   },
+   "distinct_texts": 55,
+   "distinct_texts_with_mixed_labels": 3,
+   "readers_agree": 60,
+   "reader_pairs": 67,
+   "kappa": 0.81,
+   "third_reader_used": 14
+  },
+  "baseline": {
+   "released_outputs": 104,
+   "labels": {
+    "misstates_order": 54,
+    "unsupported_claim": 17,
+    "faithful": 33
+   },
+   "distinct_texts": 82,
+   "distinct_texts_with_mixed_labels": 3,
+   "readers_agree": 79,
+   "reader_pairs": 89,
+   "kappa": 0.8,
+   "third_reader_used": 25
+  },
+  "both_filters_kappa": 0.8
+ },
+ "h2": {
+  "layer": {
+   "released_outputs": 86,
+   "labels": {
+    "faithful": 73,
+    "unsupported_claim": 4,
+    "misstates_order": 9
+   },
+   "distinct_texts": 78,
+   "distinct_texts_with_mixed_labels": 1,
+   "readers_agree": 74,
+   "reader_pairs": 86,
+   "kappa": 0.5,
+   "third_reader_used": 12
+  },
+  "baseline": {
+   "released_outputs": 128,
+   "labels": {
+    "faithful": 100,
+    "unsupported_claim": 6,
+    "misstates_order": 22
+   },
+   "distinct_texts": 117,
+   "distinct_texts_with_mixed_labels": 2,
+   "readers_agree": 106,
+   "reader_pairs": 128,
+   "kappa": 0.49,
+   "third_reader_used": 22
+  },
+  "both_filters_kappa": 0.5
+ }
+}

@@ -3,12 +3,13 @@ import collections, json, os, subprocess, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 DATA = os.path.join(HERE, "data")
-BIN = {"layer": [os.path.join(ROOT, ".lake/build/bin/dosegate"), "serve"],
-       "baseline": [os.path.join(ROOT, ".lake/build/bin/dosegate-baseline")]}
+BINDIR = os.environ.get("BINDIR", os.path.join(ROOT, ".lake/build/bin"))
+BIN = {"layer": [os.path.join(BINDIR, "dosegate"), "serve"],
+       "baseline": [os.path.join(BINDIR, "dosegate-baseline")]}
 
 
 def run(cmd, requests):
-    p = subprocess.run(cmd, input="".join(json.dumps(json.loads(r)) + "\n" for r in requests),
+    p = subprocess.run(cmd, input="".join(r.replace("\r", " ").replace("\n", " ") + "\n" for r in requests),
                        capture_output=True, text=True)
     return [json.loads(l) for l in p.stdout.splitlines()]
 
