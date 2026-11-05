@@ -376,14 +376,13 @@ def subjectRef (mr : Json) : Option String :=
   ((jField? mr "subject").bind (jStr? · "reference")).filter fun r => !r.isEmpty
 
 def subjectProblem (patient : Option String) (req : Json) : Option String :=
-  if patient.isSome then none
-  else
-    let refs := (orderResources req).map subjectRef
-    if refs.any Option.isNone then
-      some "every MedicationRequest needs a subject.reference string when the request has no patient field"
-    else if (refs.filterMap id).eraseDups.length > 1 then
-      some "the orders reference more than one subject, so the request needs a patient field"
-    else none
+  let refs := (orderResources req).map subjectRef
+  if refs.any Option.isNone then
+    if patient.isSome then some "every MedicationRequest needs a subject.reference string"
+    else some "every MedicationRequest needs a subject.reference string when the request has no patient field"
+  else if patient.isNone && (refs.filterMap id).eraseDups.length > 1 then
+    some "the orders reference more than one subject, so the request needs a patient field"
+  else none
 
 def bundleShapeBad (req : Json) : Bool :=
   match req.getObjVal? "bundle" with

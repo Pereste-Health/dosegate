@@ -847,10 +847,9 @@ def predict(line, core):
     patient = request.get("patient")
     if patient is not None and (not isinstance(patient, str) or patient == ""):
         return ("error",)
-    if patient is None:
-        refs = [subject_ref(order) for order in orders]
-        if None in refs or len(set(refs)) > 1:
-            return ("error",)
+    refs = [subject_ref(order) for order in orders]
+    if None in refs or (patient is None and len(set(refs)) > 1):
+        return ("error",)
     if len(orders) > MAX_ORDERS:
         return ("error",)
     prior = {order["priorPrescription"]["reference"] for order in orders
