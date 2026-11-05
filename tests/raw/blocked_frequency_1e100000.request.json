@@ -1,0 +1,1 @@
+{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "n2", "status": "active", "intent": "order", "medicationCodeableConcept": {"text": "aspirin"}, "dosageInstruction": [{"timing": {"repeat": {"frequency": 1e100000, "period": 1, "periodUnit": "d"}}}]}], "output": "{{drug:n2}} {{frequency:n2}}."}

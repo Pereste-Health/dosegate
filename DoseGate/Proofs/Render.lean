@@ -158,20 +158,28 @@ theorem nodup_map_eq {α β : Type} (f : α → β) : ∀ (l : List α), (l.map 
           exact absurd (by rw [← hab]; exact List.mem_map_of_mem ha') hn.1
         · exact nodup_map_eq f xs hn.2 a ha' b hb' hab
 
+theorem allowedWord_not_forbidden {p : Policy} {tok : List Char} (h : allowedWord p tok = true) :
+    isForbidden tok = false := by
+  unfold allowedWord at h
+  cases hf : isForbidden tok <;> simp_all
+
 theorem checkText_ok {p : Policy} {t : List Char} (h : checkText p t = .ok ()) :
-    t.all (·.toNat < 128) = true ∧ (tokens t).all (fun tok => !blockedToken p tok) = true := by
+    t.all isTextChar = true ∧ (tokens t).all (allowedWord p) = true := by
   unfold checkText at h
   split at h
   · simp at h
   · rename_i hall
     split at h
     · simp at h
-    · rename_i hfind
-      refine ⟨by simpa using hall, ?_⟩
-      rw [List.all_eq_true]
-      intro tok htok
-      have := List.find?_eq_none.mp hfind tok htok
-      simpa using this
+    · rename_i hforb
+      split at h
+      · simp at h
+      · rename_i hfind
+        refine ⟨by simpa using hall, ?_⟩
+        rw [List.all_eq_true]
+        intro tok htok
+        have := List.find?_eq_none.mp hfind tok htok
+        simpa using this
 
 theorem renderSeg_text {p : Policy} {chart : List MedReq} {t x : List Char}
     (h : renderSeg p chart (.text t) = .ok x) : checkText p t = .ok () ∧ x = t := by
@@ -184,19 +192,25 @@ theorem renderSeg_text {p : Policy} {chart : List MedReq} {t x : List Char}
     cases h
     exact ⟨rfl, rfl⟩
 
-theorem text_no_blocked {p : Policy} {t : List Char}
-    (h : checkText p t = .ok ()) : (tokens t).filter (blockedToken p) = [] := by
-  unfold checkText at h
-  split at h
-  · simp at h
-  · rename_i hall
-    split at h
-    · simp at h
-    · rename_i hfind
-      rw [List.filter_eq_nil_iff]
-      intro tok htok
-      have := List.find?_eq_none.mp hfind tok htok
-      simpa using this
+theorem text_no_forbidden {p : Policy} {t : List Char}
+    (h : checkText p t = .ok ()) : (tokens t).filter isForbidden = [] := by
+  obtain ⟨-, hall⟩ := checkText_ok h
+  rw [List.filter_eq_nil_iff]
+  intro tok htok
+  simp [allowedWord_not_forbidden (List.all_eq_true.mp hall tok htok)]
+
+theorem drug_no_forbidden {m : MedReq} {x : List Char} (h : fmtField .drug m = some x) :
+    (tokens x).filter isForbidden = [] := by
+  by_cases hk : drugNameOk m.drug = true
+  · have hx : m.drug = x := by simpa [fmtField, hk] using h
+    subst hx
+    simp only [drugNameOk, Bool.and_eq_true, Bool.not_eq_true'] at hk
+    rw [List.filter_eq_nil_iff]
+    intro tok htok
+    have hany := hk.2
+    simp only [List.any_eq_false] at hany
+    simpa using hany tok htok
+  · simp [fmtField, hk] at h
 
 theorem renderSeg_slot_find {p : Policy} {chart : List MedReq} {f : Field} {id x : List Char}
     (h : renderSeg p chart (.slot f id) = .ok x) :
@@ -316,20 +330,26 @@ theorem render_decomp {p : Policy} {chart : List MedReq} {out r : List Char}
 
 theorem dose_key (p : Policy) (chart : List MedReq) : ∀ (segs : List Seg) (pieces : List (List Char)),
     Forall₂ (fun s x => renderSeg p chart s = .ok x) segs pieces →
-    pieces.flatMap (fun pc => (tokens pc).filter (blockedToken p)) = slotDoseTokens p segs pieces
-  | _, _, .nil => by simp [slotDoseTokens]
+    pieces.flatMap (fun pc => (tokens pc).filter isForbidden) = valueSlotTokens segs pieces
+  | _, _, .nil => by simp [valueSlotTokens]
   | s :: segs, x :: pieces, .cons hR hF => by
       have ih := dose_key p chart segs pieces hF
-      unfold slotDoseTokens at ih ⊢
+      unfold valueSlotTokens at ih ⊢
       cases s with
       | text t =>
         obtain ⟨hc, rfl⟩ := renderSeg_text hR
-        simp [List.zip_cons_cons, Seg.isSlot, ih, text_no_blocked hc]
+        simp [List.zip_cons_cons, Seg.isValueSlot, ih, text_no_forbidden hc]
       | slot f id =>
-        simp [List.zip_cons_cons, Seg.isSlot, ih]
+        by_cases hd : f = .drug
+        · subst hd
+          obtain ⟨m, -, -, -, hf⟩ := renderSeg_slot_find hR
+          simp [List.zip_cons_cons, Seg.isValueSlot, ih, drug_no_forbidden hf]
+        · have hv : (Seg.slot f id).isValueSlot = true := by
+            cases f <;> simp_all [Seg.isValueSlot]
+          simp [List.zip_cons_cons, hv, ih]
 
-theorem tokens_flatten_filter_eq {p : Policy} {pieces : List (List Char)} (hsep : allSeparated pieces = true) :
-    (tokens pieces.flatten).filter (blockedToken p) = pieces.flatMap (fun pc => (tokens pc).filter (blockedToken p)) := by
+theorem tokens_flatten_filter_eq {pieces : List (List Char)} (hsep : allSeparated pieces = true) :
+    (tokens pieces.flatten).filter isForbidden = pieces.flatMap (fun pc => (tokens pc).filter isForbidden) := by
   rw [tokens_flatten hsep, List.filter_flatMap]
 
 theorem render_fidelity {p : Policy} {chart : List MedReq} {out r : List Char}
@@ -358,7 +378,9 @@ theorem render_text_clean {p : Policy} {chart : List MedReq} {out r t : List Cha
   subst e
   obtain ⟨x, hx⟩ := forall₂_mem hF _ ht
   obtain ⟨hc, -⟩ := renderSeg_text hx
-  exact ⟨(checkText_ok hc).2, (checkText_ok hc).1⟩
+  obtain ⟨hchar, hallowed⟩ := checkText_ok hc
+  refine ⟨hallowed, List.all_eq_true.mpr fun tok htok => ?_, hchar⟩
+  simp [allowedWord_not_forbidden (p := p) (List.all_eq_true.mp hallowed tok htok)]
 
 theorem render_malformed {p : Policy} {chart : List MedReq} {out : List Char}
     (h : parseTemplate out = none) : ∃ b, render p chart out = .error b := by

@@ -1,0 +1,1 @@
+{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "a", "id": "b", "status": "active", "medicationCodeableConcept": {"text": "aspirin"}}], "output": "Take {{drug:a}}."}

@@ -1,0 +1,1 @@
+{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "l1", "status": "active", "intent": "order", "medicationCodeableConcept": {"text": "Lisinopril 10 MG Oral Tablet"}}], "output": "Take {{drug:l1}}."}

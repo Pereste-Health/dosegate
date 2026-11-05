@@ -1,0 +1,1 @@
+{"patient": "pat1", "medicationRequests": [{"resourceType": "MedicationRequest", "id": "u1", "status": "active", "intent": "order", "medicationCodeableConcept": {"text": "aspirin"}, "subject": {"reference": "urn:uuid:pat1"}}], "output": "Take {{drug:u1}}."}

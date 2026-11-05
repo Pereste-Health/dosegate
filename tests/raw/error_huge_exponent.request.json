@@ -1,0 +1,1 @@
+{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "b1", "status": "active", "intent": "order", "medicationCodeableConcept": {"text": "aspirin"}, "dosageInstruction": [{"doseAndRate": [{"doseQuantity": {"value": 1e9999999, "unit": "mg", "code": "mg"}}]}]}], "output": "Take {{drug:b1}} {{dose:b1}}."}

@@ -1,7 +1,9 @@
-{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "s1", "status": "active", "medicationCodeableConcept": {"text": "aspirin"}, "dosageInstruction": [{"doseAndRate": [{"doseQuantity": {"value": 81, "unit": "mg", "code": "mg"}}]}]}], "output": "Take {{drug:s1}} {{dose:s1}}."}
+{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "s1", "status": "active", "intent": "order", "medicationCodeableConcept": {"text": "aspirin"}, "dosageInstruction": [{"doseAndRate": [{"doseQuantity": {"value": 81, "unit": "mg", "code": "mg"}}]}]}], "output": "Take {{drug:s1}} {{dose:s1}}."}
 {not json
 {"medicationRequests": []}
 {"output": "Take x."}
 {"medicationRequests": [], "output": "Take 2 pills."}
 
-{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "s1", "status": "active", "medicationCodeableConcept": {"text": "aspirin"}}], "output": "Take {{drug:s1}}."}
+{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "s1", "status": "active", "intent": "order", "medicationCodeableConcept": {"text": "aspirin"}}], "output": "Take {{drug:s1}}."}
+{"allow": [], "output": "Take x."}
+{"output": "a", "output": "b"}

@@ -1,0 +1,1 @@
+{"medicationRequests": [{"resourceType": "MedicationRequest", "id": "r1", "status": "active", "intent": "order", "medicationCodeableConcept": {"text": "metformin"}, "dosageInstruction": [{"doseAndRate": [{"doseRange": {"low": {"value": 250, "unit": "mg", "code": "mg"}, "high": {"value": 500, "unit": "mg", "code": "mg"}}}]}]}], "output": "{{drug:r1}} {{dose:r1}}."}

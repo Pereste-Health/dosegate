@@ -1,1 +1,1 @@
-{"status": "blocked", "reason": "doseTokenInText", "detail": "free text contains the dose token pill"}
+{"status": "blocked", "reason": "forbiddenWord", "detail": "free text contains the forbidden word pill"}
