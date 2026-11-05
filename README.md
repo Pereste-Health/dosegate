@@ -37,7 +37,7 @@ The reply is `{"status":"ok","text":...}`, `{"status":"blocked","reason":...,"de
 Options:
 
 - By default the layer blocks any output that does not give an instruction for every active order. `--allow-omissions` turns this off.
-- `--extra-words FILE` adds lowercase words, one per line, to the vocabulary for framing sentences. Forbidden words stay forbidden.
+- `--extra-words FILE` adds lowercase words, one per line, to the vocabulary for framing sentences. Forbidden words stay forbidden. The guarantees about framing sentences hold for the default vocabulary only: added words can be medical (for example "treats" or "diabetes"), and the layer does not check them, so the deployment must keep them free of medication names, indications, and quantities.
 - `--ignore-free-text` reads the dose, timing, and route of an order even when the order has a `note` or its dosage has `text`, `additionalInstruction`, or `patientInstruction`. By default such an order has no usable dose, timing, or route, because free text can hold or limit the structured dose. Use this option only when the free text is generated from the structured fields.
 
 When the layer blocks, the application must show something else and must never show the block detail to a patient, because it can quote model text. `dosegate fallback` reads a request like `render`, ignores its output, and renders one instruction per active order through the same proved code.

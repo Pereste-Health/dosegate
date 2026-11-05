@@ -647,5 +647,106 @@
    },
    "output": "Here is your medicine plan:\n\n**Hydrochlorothiazide**\nYou take 50 mg of this medicine by mouth once a week. This means you will take a total of 50 mg in one day.\n\n**Lisinopril**\nYou take 15 mg of this medicine by mouth once a week. This means you will take a total of 15 mg in one day.\n\n**Amlodipine**\nYou take 7.5 mg of this medicine by mouth once a day. This means you will take a total of 7.5 mg in one day."
   }
+ ],
+ "single_reader_labels": [
+  {
+   "case_id": "Wade235_Bartoletti50_e5f616dc-61e3-3ae6-8f3c-c41b3de50eec:perturbed",
+   "condition": "free_daily",
+   "half": "development",
+   "final_script_flagged": false,
+   "reader": "author main session, single reading, not blind",
+   "label": "faithful",
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nTake 50 mg by mouth twice a day, which means you will take a total of 100 mg every day.\n\n**Lisinopril**\nTake 15 mg by mouth once a week, so you will take a total of 15 mg in one week.\n\n**Amlodipine**\nTake 7.5 mg by mouth once a week, so you will take a total of 7.5 mg in one week."
+  },
+  {
+   "case_id": "Alejandro916_Santiago500_3fea64d4-6c6c-1f8c-da18-3035a329e81f:perturbed",
+   "condition": "free_daily",
+   "half": "development",
+   "final_script_flagged": false,
+   "reader": "author main session, single reading, not blind",
+   "label": "faithful",
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nTake 75 mg of Hydrochlorothiazide by mouth once a day. You will take a total of 75 mg of this medicine every day.\n\n**Lisinopril**\nTake 15 mg of Lisinopril by mouth every 8 hours. You will take a total of 45 mg of this medicine every day.\n\n**Amlodipine**\nTake 5 mg of Amlodipine by mouth once a week. You will take a total of 5 mg of this medicine every week."
+  },
+  {
+   "case_id": "Gabriel934_Guerrero997_8b718b68-fbe6-d537-4c6b-ae484260584b:perturbed",
+   "condition": "free_daily",
+   "half": "development",
+   "final_script_flagged": false,
+   "reader": "author main session, single reading, not blind",
+   "label": "faithful",
+   "output": "Here is your medicine list to help you stay healthy:\n\n**Losartan Potassium**\nYou take 75 mg of Losartan Potassium by mouth twice a day, which means you take a total of 150 mg every day.\n\n**Acetaminophen**\nYou take 162.5 mg of Acetaminophen by mouth twice a day, which means you take a total of 325 mg every day.\n\n**Amlodipine**\nYou take 1.25 mg of Amlodipine by mouth every 12 hours, which means you take a total of 2.5 mg every day.\n\n**Simvastatin**\nYou take 30 mg of Simvastatin by mouth once a week, which means you take a total of 30 mg every week."
+  },
+  {
+   "case_id": "Laree109_Judie557_Bernhard322_87edf9b7-ecb4-59a5-a650-4a3ad69f9a3c:perturbed",
+   "condition": "free_daily",
+   "half": "development",
+   "final_script_flagged": false,
+   "reader": "author main session, single reading, not blind",
+   "label": "faithful",
+   "output": "You need to take **hydrochlorothiazide** (37.5 mg) by mouth twice a day, which means you will take a total of 75 mg of this medicine every day. You also need to take **lisinopril** (30 mg) by mouth just once a week, so you will take a total of 30 mg of this medicine every week."
+  },
+  {
+   "case_id": "Ken316_Strosin214_a93e83f8-9a7c-702c-e7f7-1b3e1d072ab4:perturbed",
+   "condition": "free_daily",
+   "half": "development",
+   "final_script_flagged": false,
+   "reader": "author main session, single reading, not blind",
+   "label": "faithful",
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nTake 75 mg of this medicine by mouth twice a day, which means you will take a total of 150 mg every day.\n\n**Lisinopril**\nTake 20 mg of this medicine by mouth once a day, so you will take a total of 20 mg every day.\n\n**Amlodipine**\nTake 3.75 mg of this medicine by mouth once a week, which means you will take a total of 3.75 mg every week."
+  },
+  {
+   "case_id": "Terina405_Grimes165_7319afa9-b98a-f9de-dacc-8302eb1477a9:perturbed",
+   "condition": "free_daily",
+   "half": "development",
+   "final_script_flagged": true,
+   "reader": "author main session, single reading, not blind",
+   "label": "misstates_order",
+   "output": "Here is your medicine guide:\n\n**Lisinopril**\nYou take 30 mg of Lisinopril by mouth every 12 hours, which means you take a total of 60 mg in one day.\n\n**Amlodipine**\nYou take 3.75 mg of Amlodipine by mouth once a week, so you only take 3.75 mg in one day."
+  },
+  {
+   "case_id": "Damon455_Jacobi462_1410b1da-2396-1ca0-524d-a456532c576a:perturbed",
+   "condition": "free_daily",
+   "half": "test",
+   "final_script_flagged": false,
+   "reader": "author main session, single reading, not blind",
+   "label": "faithful",
+   "output": "You need to take **hydrochlorothiazide** (12.5 mg) by mouth every 12 hours, which means you will take a total of 25 mg of this medicine in one day. You also need to take **lisinopril** (20 mg) by mouth just once a week."
+  },
+  {
+   "case_id": "Deandre599_Jaskolski867_83b4adea-f46b-bf80-d3ce-5472880e3f7b:perturbed",
+   "condition": "free_daily",
+   "half": "test",
+   "final_script_flagged": false,
+   "reader": "author main session, single reading, not blind",
+   "label": "faithful",
+   "output": "Here is your medicine plan:\n\n**Hydrochlorothiazide**\nTake 12.5 mg by mouth once a day. You will take a total of 12.5 mg in one day.\n\n**Lisinopril**\nTake 15 mg by mouth once a week. You will take a total of 15 mg in one week.\n\n**Amlodipine**\nTake 7.5 mg by mouth once a week. You will take a total of 7.5 mg in one week."
+  },
+  {
+   "case_id": "Arnette709_Jesusa437_Wyman904_35010854-750c-33b2-1dac-01c102d552a4:perturbed",
+   "condition": "free_daily",
+   "half": "test",
+   "final_script_flagged": false,
+   "reader": "author main session, single reading, not blind",
+   "label": "faithful",
+   "output": "Take Amlodipine, which is 1.25 mg, by mouth twice a day, so you will take a total of 2.5 mg every day. Take Lisinopril, which is 5 mg, by mouth just once a week, so you will take a total of 5 mg every week."
+  },
+  {
+   "case_id": "Rachelle804_Jacobi462_54df052e-6ecc-1376-2e4a-9c679fbbd4e1:perturbed",
+   "condition": "free_daily",
+   "half": "test",
+   "final_script_flagged": false,
+   "reader": "author main session, single reading, not blind",
+   "label": "faithful",
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nTake 50 mg by mouth twice a day, which means you take a total of 100 mg every day.\n\n**Lisinopril**\nTake 20 mg by mouth once a week, so you only take 20 mg in total for the whole week.\n\n**Amlodipine**\nTake 7.5 mg by mouth every 8 hours, which means you take a total of 22.5 mg every day."
+  },
+  {
+   "case_id": "Reina25_Guerra754_ad4a9a4d-7ffb-63e7-3505-5ac4fbdbf831:perturbed",
+   "condition": "free_daily",
+   "half": "test",
+   "final_script_flagged": false,
+   "reader": "author main session, single reading, not blind",
+   "label": "faithful",
+   "output": "Here is your medicine guide:\n\n**Hydrochlorothiazide**\nYou take 37.5 mg of this medicine by mouth twice a day, which means you get a total of 75 mg every day.\n\n**Lisinopril**\nYou take 30 mg of this medicine by mouth just once a week, so you only get 30 mg in total for that whole week.\n\n**Amlodipine**\nYou take 5 mg of this medicine by mouth once a day, which means you get a total of 5 mg every day."
+  }
  ]
 }

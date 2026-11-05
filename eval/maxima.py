@@ -2,7 +2,7 @@ import collections, json, os, re
 
 from score import DATA, orders
 
-MAX_MG_PER_DAY = {"amlodipine": 10, "simvastatin": 40, "hydrochlorothiazide": 50, "lisinopril": 80}
+MAX_MG_PER_DAY = {"amlodipine": 10, "simvastatin": 40, "hydrochlorothiazide": 50, "lisinopril": 40}
 TAGS = ["v2_qwen3.5-4b", "v2_medgemma-4b", "v2_llama3.2-3b"]
 
 

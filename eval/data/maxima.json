@@ -3,21 +3,21 @@
   "amlodipine": 10,
   "simvastatin": 40,
   "hydrochlorothiazide": 50,
-  "lisinopril": 80
+  "lisinopril": 40
  },
  "released": {
   "natural": 499,
   "perturbed": 368
  },
  "released_above_threshold": {
-  "perturbed": 205,
-  "daily_total_printed": 122,
-  "daily_total_implied_by_dose_and_frequency": 83
+  "perturbed": 221,
+  "daily_total_printed": 134,
+  "daily_total_implied_by_dose_and_frequency": 87
  },
  "by_drug": {
+  "lisinopril": 48,
   "hydrochlorothiazide": 113,
   "amlodipine": 79,
-  "lisinopril": 23,
   "simvastatin": 24
  }
 }

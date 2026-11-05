@@ -1,0 +1,18 @@
+# Response to the fifth round of review
+
+## Required items
+
+- Reason for the 22 placeholder-ID outputs (all three reviewers): the Results now give the version 2.1 reason, omittedOrder, explain that the completeness check runs before slot identifiers are resolved, and give version 2's reason, unknownRef, for comparison.
+- Fallback description (health literacy): the line form now has the comma ("Take metformin 500 mg by mouth, twice a day."); the Design and Discussion say that two orders with related names, as in a split regimen, block the whole fallback with ambiguousDrug, while unrelated names such as Lantus and insulin glargine remain two lines; the Discussion says the deployment can show the fallback only where it prints.
+- Lisinopril threshold (health literacy): changed to 40 mg, the top of the usual range in the label ("The usual dosage range is 20 mg to 40 mg per day"), in eval/maxima.py and the paper. The counts are now 221 releases (hydrochlorothiazide 113, amlodipine 79, lisinopril 48, simvastatin 24), 134 printing the daily total and 87 implying it, matching the reviewer's recount. The Limits sentence gives the same split.
+- Omissions in round h2 (math): the paragraph now reports that version 2.1, which blocks omitted orders, blocks 25 of version 2's 86 round-h2 releases for that reason, and that the readers had labeled those 25 as 20 faithful, 2 unsupported, and 3 misstatements, only one for the omission itself. This count uses the layer's own definition of an active order (status, intent, subject, doNotPerform, and patient) by replay, which is why it differs from a count based on status alone.
+- "Exactly as the order named" (math): the Abstract now says drug names are printed as the order gives them and doses, routes, frequencies, and totals as the same quantity or coded route, in fixed wording.
+- Drug names printed as written (computer science): the Limits paragraph says the layer prints each drug name as the record gives it, subject only to the drug-name rule, so "Lantus" or "Metformin treats diabetes" is released as written and must be checked against a clinical list.
+- Single-read labels (computer science): the 11 single-read judgments (one flagged development-half output and 10 unflagged weekly outputs, 5 in the test half) are now in eval/data/free_text_labels.json under single_reader_labels with their half and reader; the Methods say all 16 test-half flags were read by two blind readers.
+- README and extra words (computer science): the README now says the framing guarantees hold for the default vocabulary only and that added words can be medical; the Abstract says "with the default vocabulary".
+
+## Recommended items applied
+
+Amlodipine quotation corrected; free daily reading grades described as the text written before the block; request-level errors listed in the Table 3 caption; replay labels described (byte-identical round-h2 texts, separately labeled development and round-h1 replay texts); Llama 3.2 3B error types recounted (5, 4, 4, 2, 1, 3); label-limit checks described as labeled limits, not clinical reasonableness; weekly methotrexate example; "once a day as needed" caveat; pharmacist-approved display names; "unit" for a dose of one; drug-name fallback to an agreeing display; SNOMED and unit tables named as trusted; the Qwen3.5-4B flags all classed as weekly-as-daily by both readers; patient-level upper bound (6.0%); model-output rubric added to eval/labeling_protocol.md; --core v2 explained; Llama 3.2 3B drug-name typing counted (858 of 913); latency without the process start (about 0.17 ms).
+
+Not done: an allow-list baseline and a Med-PaLM paragraph in Related work (both recommended, not required).
