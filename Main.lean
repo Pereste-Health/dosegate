@@ -17,6 +17,8 @@ def blockName : Block → String
   | .unbound => "unbound"
   | .repeatedValue => "repeatedValue"
   | .ambiguousDrug _ => "ambiguousDrug"
+  | .signBeforeSlot => "signBeforeSlot"
+  | .omittedOrder _ => "omittedOrder"
 
 def slotText (f : Field) (id : List Char) : String :=
   "{{" ++ String.ofList f.name ++ ":" ++ String.ofList id ++ "}}"
@@ -52,7 +54,7 @@ def locateDetail (out : String) (pred : List Seg → Bool) (problem fallback : S
 def blockDetail (p : Policy) (out : String) : Block → String
   | .malformed => "output has an unclosed, stray, or unrecognized brace"
   | .duplicateIds => "two MedicationRequests share one id"
-  | .nonAscii => "output contains a non-ASCII character"
+  | .nonAscii => "output contains a character that model text may not use: only letters, digits, spaces, line breaks, and . , ; : ( ) ' \" - /"
   | .forbiddenWord tok => "free text contains the forbidden word " ++ String.ofList tok
   | .unknownWord tok =>
       locateDetail out (fun g => (wordsOf g).contains tok)
@@ -69,6 +71,10 @@ def blockDetail (p : Policy) (out : String) : Block → String
       "a value slot (dose, route, frequency, sig, or daily) appears twice for one order, or sig appears with dose, route, or frequency for one order"
   | .ambiguousDrug _ =>
       "another active order has the same or a related drug name, so the instructions could be confused"
+  | .signBeforeSlot =>
+      "a text segment directly before a slot ends with - or +, which would put a sign in front of a filled value"
+  | .omittedOrder id =>
+      "MedicationRequest " ++ String.ofList id ++ " is active but no dose, route, frequency, sig, or daily slot names it"
 
 def okJson (text : String) : Lean.Json :=
   Lean.Json.mkObj [("status", Lean.Json.str "ok"), ("text", Lean.Json.str text)]
@@ -142,12 +148,14 @@ partial def serveLoop (o : Opts) (stdin stdout : IO.FS.Stream) : IO Unit := do
     stdout.flush
   serveLoop o stdin stdout
 
-def parseOptions : List String → Option (Option String × Bool)
-  | [] => some (none, false)
+def parseOptions : List String → Option (Option String × Bool × Bool)
+  | [] => some (none, false, false)
   | "--extra-words" :: path :: rest =>
-      (parseOptions rest).bind fun (f, i) => if f.isSome then none else some (some path, i)
+      (parseOptions rest).bind fun (f, i, a) => if f.isSome then none else some (some path, i, a)
   | "--ignore-free-text" :: rest =>
-      (parseOptions rest).bind fun (f, i) => if i then none else some (f, true)
+      (parseOptions rest).bind fun (f, i, a) => if i then none else some (f, true, a)
+  | "--require-all-orders" :: rest =>
+      (parseOptions rest).bind fun (f, i, a) => if a then none else some (f, i, true)
   | _ => none
 
 def loadExtraWords (path : String) : IO (List String) := do
@@ -163,7 +171,7 @@ def policyOf : Option String → IO Policy
       pure { extraWords := words }
 
 def usage : IO UInt32 := do
-  IO.eprintln "usage: dosegate render|serve [--extra-words FILE] [--ignore-free-text]"
+  IO.eprintln "usage: dosegate render|serve [--extra-words FILE] [--ignore-free-text] [--require-all-orders]"
   pure 1
 
 def main (args : List String) : IO UInt32 := do
@@ -173,14 +181,16 @@ def main (args : List String) : IO UInt32 := do
     | c :: r => (c, r)
     | [] => ("", [])
   match cmd, parseOptions rest with
-  | "render", some (file?, ign) =>
-      let o : Opts := { policy := ← policyOf file?, ignoreFreeText := ign }
+  | "render", some (file?, ign, all) =>
+      let pol ← policyOf file?
+      let o : Opts := { policy := { pol with requireAll := all }, ignoreFreeText := ign }
       let (resp, code) := respondLine o (← readAll stdin)
       stdout.putStrLn resp.compress
       stdout.flush
       pure code.toUInt32
-  | "serve", some (file?, ign) =>
-      let o : Opts := { policy := ← policyOf file?, ignoreFreeText := ign }
+  | "serve", some (file?, ign, all) =>
+      let pol ← policyOf file?
+      let o : Opts := { policy := { pol with requireAll := all }, ignoreFreeText := ign }
       serveLoop o stdin stdout
       pure 0
   | _, _ => usage

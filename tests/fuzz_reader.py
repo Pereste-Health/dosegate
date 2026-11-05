@@ -7,8 +7,8 @@ orders and output templates are mutated, sent as one JSON request per line throu
 a single serve process, and each reply is compared with the prediction: the status,
 and the reason for a block or the text for an ok. An error reply must be an error.
 
---core v2 (default) judges the binary against version 2 of the layer.
---core v1 judges it against the layer before version 2.
+--core v2 (default) judges the binary against version 2.1, the current layer.
+--core v1 judges it against the layer before version 2 (no 2.1 rules).
 --pre-merge accepts a disagreement when the reply matches the version 1 prediction
 exactly: the binary still has the version 1 core, and the difference comes from a
 version 2 core change. Without it, every disagreement fails the run.
@@ -147,15 +147,18 @@ V2_SHAPES = [
     (("w", "take"), ("s", "drug"), ("s", "sig"), ("w", "which"), ("w", "is"), ("s", "daily")),
 ]
 
+TEXT_CHARS_V1 = set(string.ascii_letters + string.digits + " \n.,;:!?()'\"-/")
+TEXT_CHARS_V2 = set(string.ascii_letters + string.digits + " \n.,;:()'\"-/")
 CORES = {
     "v1": {"vocab": VOCAB_V1, "total": TOTAL_WORDS_V1, "shapes": V1_SHAPES, "free_drug_slot": True,
            "related": "token", "ambiguity_all_fields": False, "name_rules": "v1", "hours_rule": False,
-           "daily_needs_timing": False, "ambiguous_reason": "ambiguousDaily"},
+           "daily_needs_timing": False, "ambiguous_reason": "ambiguousDaily",
+           "gate_2_1": False, "text_chars": TEXT_CHARS_V1},
     "v2": {"vocab": VOCAB_V2, "total": TOTAL_WORDS_V2, "shapes": V2_SHAPES, "free_drug_slot": False,
            "related": "conservative", "ambiguity_all_fields": True, "name_rules": "v2", "hours_rule": True,
-           "daily_needs_timing": True, "ambiguous_reason": "ambiguousDrug"},
+           "daily_needs_timing": True, "ambiguous_reason": "ambiguousDrug",
+           "gate_2_1": True, "text_chars": TEXT_CHARS_V2},
 }
-TEXT_CHARS = set(string.ascii_letters + string.digits + " \n.,;:!?()'\"-/")
 ASCII_LETTERS = set(string.ascii_letters)
 SLOT = re.compile(r"\{\{(drug|dose|frequency|route|sig|daily):([A-Za-z0-9.\-]+)\}\}")
 SENTENCE_END = re.compile(r"[.!?;:\n]")
@@ -422,11 +425,69 @@ def fails_closed(dosage):
     return len(rates) > 1
 
 
-def order_closed(order, oid, refs):
-    if any(present(order, k) for k in ("extension", "modifierExtension", "priorPrescription")):
+def has_extension_key(value):
+    if isinstance(value, dict):
+        return any(key in ("extension", "modifierExtension") or has_extension_key(item)
+                   for key, item in value.items())
+    if isinstance(value, list):
+        return any(has_extension_key(item) for item in value)
+    return False
+
+
+def within(value, allowed):
+    return isinstance(value, dict) and set(value) <= set(allowed)
+
+
+def optional_within(value, allowed):
+    return value is None or within(value, allowed)
+
+
+DOSAGE_KEYS = ("timing", "route", "doseAndRate", "asNeededBoolean", "sequence", "text",
+               "additionalInstruction", "patientInstruction")
+CODING_KEYS = ("system", "code", "display", "version", "userSelected")
+
+
+def dosage_keys_ok(dosage):
+    if not within(dosage, DOSAGE_KEYS):
+        return False
+    timing = dosage.get("timing")
+    if not optional_within(timing, ("repeat", "code")):
+        return False
+    if isinstance(timing, dict) and not optional_within(timing.get("repeat"), ("frequency", "period", "periodUnit")):
+        return False
+    route = dosage.get("route")
+    if not optional_within(route, ("coding", "text")):
+        return False
+    if isinstance(route, dict) and isinstance(route.get("coding"), list) and \
+            not all(within(coding, CODING_KEYS) for coding in route["coding"]):
+        return False
+    rates = dosage.get("doseAndRate")
+    for rate in rates if isinstance(rates, list) else []:
+        if not within(rate, ("doseQuantity",)):
+            return False
+        if not optional_within(rate.get("doseQuantity"), ("value", "unit", "code", "system")):
+            return False
+    return True
+
+
+def course_of_therapy_ok(order):
+    course = order.get("courseOfTherapyType")
+    if course is None:
         return True
-    if any(present(order.get("medicationCodeableConcept"), k) for k in ("extension", "modifierExtension")):
-        return True
+    codings = course.get("coding") if isinstance(course, dict) else None
+    return isinstance(codings, list) and len(codings) > 0 and \
+        all(isinstance(coding, dict) and coding.get("code") == "continuous" for coding in codings)
+
+
+def order_closed(order, oid, refs, cfg):
+    if cfg["gate_2_1"]:
+        if has_extension_key(order) or present(order, "priorPrescription") or not course_of_therapy_ok(order):
+            return True
+    else:
+        if any(present(order, k) for k in ("extension", "modifierExtension", "priorPrescription")):
+            return True
+        if any(present(order.get("medicationCodeableConcept"), k) for k in ("extension", "modifierExtension")):
+            return True
     if f"MedicationRequest/{oid}" in refs:
         return True
     meta = order.get("meta")
@@ -436,25 +497,31 @@ def order_closed(order, oid, refs):
     return isinstance(request, dict) and present(request, "validityPeriod")
 
 
-def dosage_closed(dosage):
-    if any(present(dosage, k) for k in ("extension", "modifierExtension", "site", "method")):
-        return True
-    if any(present(dosage.get("timing"), k) for k in ("extension", "modifierExtension")):
-        return True
+def dosage_closed(dosage, cfg):
+    if cfg["gate_2_1"]:
+        if any(present(dosage, k) for k in ("site", "method")):
+            return True
+    else:
+        if any(present(dosage, k) for k in ("extension", "modifierExtension", "site", "method")):
+            return True
+        if any(present(dosage.get("timing"), k) for k in ("extension", "modifierExtension")):
+            return True
+        if any(present(dosage.get("route"), k) for k in ("extension", "modifierExtension")):
+            return True
     route = dosage.get("route")
-    if any(present(route, k) for k in ("extension", "modifierExtension")):
-        return True
     if isinstance(route, dict) and not route_texts_ok(route):
         return True
     rates = dosage.get("doseAndRate")
     first = rates[0] if isinstance(rates, list) and rates else None
     if isinstance(first, dict):
-        if any(present(first, k) for k in ("extension", "modifierExtension", "rateQuantity", "rateRatio",
-                                            "rateRange", "type")):
+        extension_keys = () if cfg["gate_2_1"] else ("extension", "modifierExtension")
+        if any(present(first, k) for k in extension_keys + ("rateQuantity", "rateRatio", "rateRange", "type")):
             return True
         quantity = first.get("doseQuantity")
         if isinstance(quantity, dict) and not quantity_ok(quantity):
             return True
+    if cfg["gate_2_1"] and not dosage_keys_ok(dosage):
+        return True
     return False
 
 
@@ -463,14 +530,14 @@ def free_text_closed(order, dosage):
         present(order, "note")
 
 
-def build_order(order, patient, refs):
+def build_order(order, patient, refs, cfg):
     built = {"id": order["id"], "active": is_active(order, patient), "drug": drug_of(order),
              "dose": None, "timing": None, "route": None, "as_needed": False}
     dosages = order.get("dosageInstruction")
     if not isinstance(dosages, list) or len(dosages) != 1 or not isinstance(dosages[0], dict):
         return built
     dosage = dosages[0]
-    if fails_closed(dosage) or order_closed(order, order["id"], refs) or dosage_closed(dosage) \
+    if fails_closed(dosage) or order_closed(order, order["id"], refs, cfg) or dosage_closed(dosage, cfg) \
             or free_text_closed(order, dosage):
         return built
     built["dose"] = dose_of(dosage)
@@ -660,7 +727,7 @@ def no_repeated_value(segs):
 
 
 def check_text(text, cfg):
-    if any(c not in TEXT_CHARS for c in text):
+    if any(c not in cfg["text_chars"] for c in text):
         return "nonAscii"
     words = tokens(text)
     if any(is_forbidden(w) for w in words):
@@ -689,6 +756,9 @@ def render(chart, out, cfg):
         return ("blocked", "unbound")
     if not no_repeated_value(segs):
         return ("blocked", "repeatedValue")
+    if cfg["gate_2_1"] and any(segs[i][0] == "text" and segs[i][1][-1] in "-+" and segs[i + 1][0] == "slot"
+                               for i in range(len(segs) - 1)):
+        return ("blocked", "signBeforeSlot")
     pieces = []
     for seg in segs:
         if seg[0] == "text":
@@ -730,6 +800,8 @@ def predict(line, core):
     out = request.get("output")
     if not isinstance(out, str) or len(out) > MAX_OUTPUT or out.count("{{") > MAX_SLOTS:
         return ("error",)
+    if cfg["gate_2_1"] and request.get("bundle") is not None and request.get("medicationRequests") is not None:
+        return ("error",)
     if "bundle" in request:
         bundle = request["bundle"]
         if not isinstance(bundle, dict) or not isinstance(bundle.get("entry"), list):
@@ -762,7 +834,7 @@ def predict(line, core):
     prior = {order["priorPrescription"]["reference"] for order in orders
              if isinstance(order.get("priorPrescription"), dict)
              and isinstance(order["priorPrescription"].get("reference"), str)}
-    chart = [build_order(order, patient, prior) for order in orders]
+    chart = [build_order(order, patient, prior, cfg) for order in orders]
     result = render(chart, out, cfg)
     if result[0] == "ok" and len(result[1]) > MAX_OUTPUT:
         return ("error",)
@@ -938,7 +1010,7 @@ DRUG_NAMES = ["metformin hydrochloride", "Metformin", "aspirin mg", "naproxen so
 ID_VALUES = ["m2", "m3", "M1", "m 1", "", "m.1", "m-1", "m1", None, Lit("1")]
 ID_EXTRA = ["m9", "M1", "m 1", "m.1", "", "m-1", "x"]
 NOISE = ["{", "}", "é", "*", "two", "5", "medicine", "x", "\n", "%", "now", "mg", " ", ".", "is", "your",
-         "take", "Take", "tablet", "every", "which", "daily", "about", "or", "ask"]
+         "take", "Take", "tablet", "every", "which", "daily", "about", "or", "ask", "?", "!", "-", "+"]
 ROUTE_CODES = [code for code, _ in ROUTE_TERMS]
 ROUTE_TEXT_VALUES = ["by mouth", "Oral route", "ORAL USE", "Oral use", "under the tongue", "Sublingual route", "",
                      " by mouth ", None, 5, "Oral", "oral route", "into a vein", "Intravenous route"]
@@ -951,7 +1023,7 @@ ADD_KEYS = ["note", "text", "additionalInstruction", "patientInstruction", "doNo
             "timing", "repeat", "extra", "status", "intent", "boundsRange", "frequencyMax", "count", "when",
             "periodMax", "durationUnit", "subject", "id", "resourceType", "patient", "pad2", "x", "meta",
             "priorPrescription", "extension", "modifierExtension", "site", "method", "rateQuantity", "type",
-            "system", "unit", "code", "request"]
+            "system", "unit", "code", "request", "courseOfTherapyType", "sequence", "event"]
 KEY_NAMES = ("status", "intent", "id", "subject", "reference", "medicationCodeableConcept", "dosageInstruction",
              "doseAndRate", "doseQuantity", "value", "unit", "code", "system", "coding", "text", "display",
              "timing", "repeat", "frequency", "period", "periodUnit", "route", "resourceType", "entry", "resource",
@@ -975,6 +1047,10 @@ TEMPLATES = [
     "Please read carefully: take {{drug:ID}} {{sig:ID}}.",
     "Take {{drug:ID}} {{dose:ID}}, {{route:ID}}, {{frequency:ID}}.",
     "Take {{drug:ID}} {{dose:ID}} {{route:ID}} {{frequency:ID}} {{daily:ID}}.",
+    "Take {{drug:ID}} -{{dose:ID}} {{route:ID}} {{frequency:ID}}.",
+    "Take {{drug:ID}} {{dose:ID}} {{route:ID}} {{frequency:ID}}, which is -{{daily:ID}}.",
+    "Take {{drug:ID}} +{{dose:ID}} {{route:ID}} {{frequency:ID}}.",
+    "- Take {{drug:ID}} {{dose:ID}} {{route:ID}} {{frequency:ID}}!",
 ]
 VALUE_TEMPLATES = TEMPLATES[:4] + TEMPLATES[6:9] + TEMPLATES[10:11] + TEMPLATES[14:16]
 RAW_CHARS = '{}[],:"\\0123456789eE+-. tfn'

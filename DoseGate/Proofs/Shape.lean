@@ -196,4 +196,29 @@ theorem checkText_forbidden {p : Policy} {t tok : List Char} (hc : t.all isTextC
   unfold checkText
   simp [hc, hf]
 
+theorem render_all_orders_named {p : Policy} {chart : List MedReq} {out r : List Char}
+    (hreq : p.requireAll = true) (h : render p chart out = .ok r) :
+    ∃ segs, parseTemplate out = some segs ∧
+      ∀ m ∈ chart, m.active = true → ∃ f, f ≠ .drug ∧ Seg.slot f m.id ∈ segs := by
+  obtain ⟨-, segs, -, hp, -, -, -, -, -, -, hom⟩ := render_decomp_full h
+  refine ⟨segs, hp, fun m hm ha => ?_⟩
+  unfold unnamedOrder at hom
+  simp only [hreq, ↓reduceIte] at hom
+  have hfind : chart.find? (fun m => m.active && !(valueSlots segs).any (·.2 == m.id)) = none := by
+    cases hf : chart.find? (fun m => m.active && !(valueSlots segs).any (·.2 == m.id)) with
+    | none => rfl
+    | some x => simp [hf] at hom
+  have hnot := List.find?_eq_none.mp hfind m hm
+  have hany : (valueSlots segs).any (·.2 == m.id) = true := by
+    simpa [ha] using hnot
+  obtain ⟨⟨f, id⟩, hs, hid⟩ := List.any_eq_true.mp hany
+  unfold valueSlots at hs
+  rw [List.mem_filter] at hs
+  have hid' : id = m.id := beq_iff_eq.mp hid
+  refine ⟨f, ?_, ?_⟩
+  · have hv := hs.2
+    cases f <;> simp [isValueField] at hv ⊢
+  · rw [← hid']
+    exact mem_of_mem_slotsOf segs f id hs.1
+
 end DoseGate

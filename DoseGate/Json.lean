@@ -278,21 +278,57 @@ def failsCheck (o : Option Json) (ok : Json → Bool) : Bool :=
 def priorRefs (orders : List Json) : List String :=
   orders.filterMap fun mr => (jField? mr "priorPrescription").bind (jStr? · "reference")
 
+partial def hasExtensionKey : Json → Bool
+  | .obj kvs => kvs.any fun k v => k == "extension" || k == "modifierExtension" || hasExtensionKey v
+  | .arr a => a.any hasExtensionKey
+  | _ => false
+
+def keysWithin (ks : List String) : Json → Bool
+  | .obj kvs => kvs.all fun k _ => ks.contains k
+  | _ => false
+
+def allowedIfPresent (ks : List String) (j : Option Json) : Bool :=
+  match j with
+  | some v => keysWithin ks v
+  | none => true
+
+def dosageKeys : List String :=
+  ["timing", "route", "doseAndRate", "asNeededBoolean", "sequence", "text", "additionalInstruction",
+   "patientInstruction"]
+
+def dosageAllowed (d : Json) : Bool :=
+  keysWithin dosageKeys d
+  && allowedIfPresent ["repeat", "code"] (jField? d "timing")
+  && allowedIfPresent ["frequency", "period", "periodUnit"] ((jField? d "timing").bind (jField? · "repeat"))
+  && allowedIfPresent ["coding", "text"] (jField? d "route")
+  && (((jField? d "route").map fun r => jArr? r "coding").getD []).all
+      (keysWithin ["system", "code", "display", "version", "userSelected"])
+  && (jArr? d "doseAndRate").all fun r =>
+      keysWithin ["doseQuantity"] r
+      && allowedIfPresent ["value", "unit", "code", "system"] (jField? r "doseQuantity")
+
+def courseOfTherapyOk (mr : Json) : Bool :=
+  match jField? mr "courseOfTherapyType" with
+  | none => true
+  | some cc =>
+      let codings := jArr? cc "coding"
+      !codings.isEmpty && codings.all fun c => jStr? c "code" == some "continuous"
+
 def closedOrder (mr : Json) (id : String) (refs : List String) : Bool :=
-  hasAny (some mr) ["extension", "modifierExtension", "priorPrescription"]
-  || hasAny (jField? mr "medicationCodeableConcept") ["extension", "modifierExtension"]
+  hasExtensionKey mr
+  || hasAny (some mr) ["priorPrescription"]
+  || !courseOfTherapyOk mr
   || refs.contains ("MedicationRequest/" ++ id)
   || ((jField? mr "meta").bind (jField? · "security")).any nonEmptyJson
   || ((jField? mr "dispenseRequest").bind (jField? · "validityPeriod")).isSome
 
 def closedDosage (d : Json) : Bool :=
   let rate := (jArr? d "doseAndRate").head?
-  hasAny (some d) ["extension", "modifierExtension", "site", "method"]
-  || hasAny (jField? d "timing") ["extension", "modifierExtension"]
-  || hasAny (jField? d "route") ["extension", "modifierExtension"]
+  hasAny (some d) ["site", "method"]
   || failsCheck (jField? d "route") routeTextsOk
-  || hasAny rate ["extension", "modifierExtension", "rateQuantity", "rateRatio", "rateRange", "type"]
+  || hasAny rate ["rateQuantity", "rateRatio", "rateRange", "type"]
   || failsCheck (rate.bind (jField? · "doseQuantity")) doseQuantityOk
+  || !dosageAllowed d
 
 def hasFreeText (mr d : Json) : Bool :=
   hasAny (some d) ["text", "additionalInstruction", "patientInstruction"] || hasAny (some mr) ["note"]
@@ -365,7 +401,9 @@ def bundleRequestBad (req : Json) : Bool :=
   (((jField? req "bundle").map fun b => jArr? b "entry").getD []).any fun e => (jField? e "request").isSome
 
 def shapeProblem (req : Json) : Option String :=
-  if bundleShapeBad req then some "bundle must be an object with an entry array"
+  if (jField? req "bundle").isSome && (jField? req "medicationRequests").isSome then
+    some "the request has both bundle and medicationRequests, so it is ambiguous; send only one of them"
+  else if bundleShapeBad req then some "bundle must be an object with an entry array"
   else if bundleTypeBad req then some "bundle type must be searchset or collection"
   else if bundleRequestBad req then some "a bundle entry has a request key, which the gate does not accept"
   else if medicationRequestsShapeBad req then some "medicationRequests must be an array"

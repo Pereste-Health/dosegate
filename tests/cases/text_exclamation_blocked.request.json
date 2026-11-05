@@ -1,0 +1,44 @@
+{
+  "medicationRequests": [
+    {
+      "resourceType": "MedicationRequest",
+      "id": "m1",
+      "status": "active",
+      "intent": "order",
+      "medicationCodeableConcept": {
+        "text": "Metformin"
+      },
+      "subject": {
+        "reference": "Patient/pat1"
+      },
+      "dosageInstruction": [
+        {
+          "doseAndRate": [
+            {
+              "doseQuantity": {
+                "value": 500,
+                "code": "mg"
+              }
+            }
+          ],
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "26643006"
+              }
+            ]
+          },
+          "timing": {
+            "repeat": {
+              "frequency": 2,
+              "period": 1,
+              "periodUnit": "d"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "output": "Take {{drug:m1}} {{dose:m1}} {{route:m1}} {{frequency:m1}}!"
+}

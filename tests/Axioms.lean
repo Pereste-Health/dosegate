@@ -191,3 +191,5 @@ open DoseGate
 #print axioms DoseGate.vocab_clean
 #print axioms DoseGate.allowed_not_forbidden
 #print axioms DoseGate.instr_total_clean
+#print axioms DoseGate.render_no_sign_before_slot
+#print axioms DoseGate.render_all_orders_named

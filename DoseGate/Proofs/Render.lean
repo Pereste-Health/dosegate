@@ -304,41 +304,92 @@ theorem render_repeated_eq {p : Policy} {chart : List MedReq} {out : List Char} 
 theorem render_mapM_eq {p : Policy} {chart : List MedReq} {out : List Char} {segs : List Seg}
     (hn : (chart.map (·.id)).Nodup) (hp : parseTemplate out = some segs)
     (hu : (sentences segs).all (sentenceOk p) = true) (hr : noRepeatedValue segs = true)
+    (hs : hasSignBeforeSlot segs = false) (ho : unnamedOrder p chart segs = none)
     (e : Block) (hm : segs.mapM (renderSeg p chart) = .error e) :
     render p chart out = .error e := by
   unfold render
-  simp only [hn, hp, hu, hr, hm]
+  simp only [hn, hp, hu, hr, hs, ho, hm]
   dsimp only [bind, Except.bind, pure, Except.pure, throw]
   simp <;> rfl
 
 theorem render_unseparated_eq {p : Policy} {chart : List MedReq} {out : List Char} {segs : List Seg}
     (hn : (chart.map (·.id)).Nodup) (hp : parseTemplate out = some segs)
     (hu : (sentences segs).all (sentenceOk p) = true) (hr : noRepeatedValue segs = true)
+    (hs : hasSignBeforeSlot segs = false) (ho : unnamedOrder p chart segs = none)
     (pieces : List (List Char))
     (hm : segs.mapM (renderSeg p chart) = .ok pieces) (hsep : ¬ allSeparated pieces = true) :
     render p chart out = .error .unseparated := by
   unfold render
-  simp only [hn, hp, hu, hr, hm]
+  simp only [hn, hp, hu, hr, hs, ho, hm]
   dsimp only [bind, Except.bind, pure, Except.pure, throw]
   simp [hsep] <;> rfl
 
 theorem render_ok_eq {p : Policy} {chart : List MedReq} {out : List Char} {segs : List Seg}
     (hn : (chart.map (·.id)).Nodup) (hp : parseTemplate out = some segs)
     (hu : (sentences segs).all (sentenceOk p) = true) (hr : noRepeatedValue segs = true)
+    (hs : hasSignBeforeSlot segs = false) (ho : unnamedOrder p chart segs = none)
     (pieces : List (List Char))
     (hm : segs.mapM (renderSeg p chart) = .ok pieces) (hsep : allSeparated pieces = true) :
     render p chart out = .ok pieces.flatten := by
   unfold render
-  simp only [hn, hp, hu, hr, hm]
+  simp only [hn, hp, hu, hr, hs, ho, hm]
   dsimp only [bind, Except.bind, pure, Except.pure, throw]
   simp [hsep] <;> rfl
 
-theorem render_decomp {p : Policy} {chart : List MedReq} {out r : List Char}
+theorem render_sign_eq {p : Policy} {chart : List MedReq} {out : List Char} {segs : List Seg}
+    (hn : (chart.map (·.id)).Nodup) (hp : parseTemplate out = some segs)
+    (hu : (sentences segs).all (sentenceOk p) = true) (hr : noRepeatedValue segs = true)
+    (hsg : hasSignBeforeSlot segs = true) :
+    render p chart out = .error .signBeforeSlot := by
+  unfold render
+  simp only [hn, hp, hu, hr, hsg]
+  dsimp only [bind, Except.bind, pure, Except.pure, throw]
+  simp <;> rfl
+
+theorem render_unnamed_eq {p : Policy} {chart : List MedReq} {out : List Char} {segs : List Seg}
+    {id : List Char}
+    (hn : (chart.map (·.id)).Nodup) (hp : parseTemplate out = some segs)
+    (hu : (sentences segs).all (sentenceOk p) = true) (hr : noRepeatedValue segs = true)
+    (hs : hasSignBeforeSlot segs = false) (ho : unnamedOrder p chart segs = some id) :
+    render p chart out = .error (.omittedOrder id) := by
+  unfold render
+  simp only [hn, hp, hu, hr, hs, ho]
+  dsimp only [bind, Except.bind, pure, Except.pure, throw]
+  simp <;> rfl
+
+theorem hasSignBeforeSlot_cons {x : Seg} {L : List Seg} (h : hasSignBeforeSlot (x :: L) = false) :
+    hasSignBeforeSlot L = false := by
+  cases L with
+  | nil => rfl
+  | cons y L' =>
+    cases x with
+    | text t =>
+      cases y with
+      | text t' => simpa [hasSignBeforeSlot] using h
+      | slot f id =>
+        simp only [hasSignBeforeSlot, Bool.or_eq_false_iff] at h
+        exact h.2
+    | slot f id => simpa [hasSignBeforeSlot] using h
+
+theorem hasSignBeforeSlot_split : ∀ (s u : List Seg) (t : List Char) (f : Field) (id : List Char),
+    hasSignBeforeSlot (s ++ Seg.text t :: Seg.slot f id :: u) = false → endsSign t = false
+  | [], u, t, f, id, h => by
+      simp only [List.nil_append, hasSignBeforeSlot, Bool.or_eq_false_iff] at h
+      exact h.1
+  | x :: s, u, t, f, id, h =>
+      hasSignBeforeSlot_split s u t f id (hasSignBeforeSlot_cons (x := x) (by simpa using h))
+
+theorem endsSign_false {t : List Char} (h : endsSign t = false) :
+    t.getLast? ≠ some '-' ∧ t.getLast? ≠ some '+' := by
+  constructor <;> intro heq <;> simp [endsSign, heq] at h
+
+theorem render_decomp_full {p : Policy} {chart : List MedReq} {out r : List Char}
     (h : render p chart out = .ok r) :
     (chart.map (·.id)).Nodup ∧ ∃ segs pieces, parseTemplate out = some segs ∧
       Forall₂ (fun s x => renderSeg p chart s = .ok x) segs pieces ∧
       allSeparated pieces = true ∧ r = pieces.flatten ∧
-      (∀ g ∈ sentences segs, sentenceOk p g = true) ∧ noRepeatedValue segs = true := by
+      (∀ g ∈ sentences segs, sentenceOk p g = true) ∧ noRepeatedValue segs = true ∧
+      hasSignBeforeSlot segs = false ∧ unnamedOrder p chart segs = none := by
   have hn : (chart.map (·.id)).Nodup := by
     by_cases hn : (chart.map (·.id)).Nodup
     · exact hn
@@ -353,16 +404,47 @@ theorem render_decomp {p : Policy} {chart : List MedReq} {out r : List Char}
   cases hr : noRepeatedValue segs
   · rw [render_repeated_eq hn hp hu hr] at h
     cases h
+  have hs : hasSignBeforeSlot segs = false := by
+    cases hs' : hasSignBeforeSlot segs with
+    | false => rfl
+    | true => rw [render_sign_eq hn hp hu hr hs'] at h; cases h
+  have ho : unnamedOrder p chart segs = none := by
+    cases ho' : unnamedOrder p chart segs with
+    | none => rfl
+    | some id => rw [render_unnamed_eq hn hp hu hr hs ho'] at h; cases h
   rcases hm : segs.mapM (renderSeg p chart) with e | pieces
-  · rw [render_mapM_eq hn hp hu hr e hm] at h
+  · rw [render_mapM_eq hn hp hu hr hs ho e hm] at h
     cases h
   by_cases hsep : allSeparated pieces = true
-  · have hr' := render_ok_eq hn hp hu hr pieces hm hsep
+  · have hr' := render_ok_eq hn hp hu hr hs ho pieces hm hsep
     rw [hr'] at h
     exact ⟨hn, segs, pieces, rfl, mapM_forall₂ segs pieces hm, hsep, (Except.ok.inj h).symm,
-      List.all_eq_true.mp hu, hr⟩
-  · rw [render_unseparated_eq hn hp hu hr pieces hm hsep] at h
+      List.all_eq_true.mp hu, hr, hs, ho⟩
+  · rw [render_unseparated_eq hn hp hu hr hs ho pieces hm hsep] at h
     cases h
+
+theorem render_decomp {p : Policy} {chart : List MedReq} {out r : List Char}
+    (h : render p chart out = .ok r) :
+    (chart.map (·.id)).Nodup ∧ ∃ segs pieces, parseTemplate out = some segs ∧
+      Forall₂ (fun s x => renderSeg p chart s = .ok x) segs pieces ∧
+      allSeparated pieces = true ∧ r = pieces.flatten ∧
+      (∀ g ∈ sentences segs, sentenceOk p g = true) ∧ noRepeatedValue segs = true := by
+  obtain ⟨hn, segs, pieces, hp, hF, hsep, hr, hs, hrep, -, -⟩ := render_decomp_full h
+  exact ⟨hn, segs, pieces, hp, hF, hsep, hr, hs, hrep⟩
+
+theorem render_no_sign_before_slot {p : Policy} {chart : List MedReq} {out r : List Char}
+    (h : render p chart out = .ok r) :
+    ∃ segs pieces, parseTemplate out = some segs ∧ Forall₂ (SegRendersTo chart) segs pieces ∧
+      r = pieces.flatten ∧
+      ∀ (s u : List Seg) (t : List Char) (f : Field) (id : List Char),
+        segs = s ++ Seg.text t :: Seg.slot f id :: u → t.getLast? ≠ some '-' ∧ t.getLast? ≠ some '+' := by
+  obtain ⟨hn, segs, pieces, hp, hF, -, hr, -, -, hs, -⟩ := render_decomp_full h
+  refine ⟨segs, pieces, hp, forall₂_spec hn hF, hr, ?_⟩
+  intro s u t f id hsplit
+  apply endsSign_false
+  apply hasSignBeforeSlot_split s u t f id
+  rw [← hsplit]
+  exact hs
 
 theorem dose_key (p : Policy) (chart : List MedReq) : ∀ (segs : List Seg) (pieces : List (List Char)),
     Forall₂ (fun s x => renderSeg p chart s = .ok x) segs pieces →

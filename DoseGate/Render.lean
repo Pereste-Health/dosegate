@@ -10,6 +10,7 @@ namespace DoseGate
 
 structure Policy where
   extraWords : List String := []
+  requireAll : Bool := false
   deriving Repr, Inhabited
 
 inductive Block where
@@ -25,6 +26,8 @@ inductive Block where
   | unbound
   | repeatedValue
   | ambiguousDrug (id : List Char)
+  | signBeforeSlot
+  | omittedOrder (id : List Char)
   deriving Repr, DecidableEq, Inhabited
 
 def allowedWord (p : Policy) (tok : List Char) : Bool :=
@@ -32,8 +35,8 @@ def allowedWord (p : Policy) (tok : List Char) : Bool :=
     (wordIn vocab tok || wordIn instrWords tok || wordIn totalWords tok || wordIn p.extraWords tok)
 
 def isTextChar (c : Char) : Bool :=
-  c.isAlphanum || c == ' ' || c == '\n' || c == '.' || c == ',' || c == ';' || c == ':' || c == '!' ||
-    c == '?' || c == '(' || c == ')' || c == '\'' || c == '"' || c == '-' || c == '/'
+  c.isAlphanum || c == ' ' || c == '\n' || c == '.' || c == ',' || c == ';' || c == ':' ||
+    c == '(' || c == ')' || c == '\'' || c == '"' || c == '-' || c == '/'
 
 def checkText (p : Policy) (t : List Char) : Except Block Unit :=
   if !t.all isTextChar then .error .nonAscii
@@ -141,11 +144,28 @@ def noRepeatedValue (segs : List Seg) : Bool :=
   vs.all fun fi => fi.1 != .sig ||
     !vs.any fun gj => gj.2 == fi.2 && (gj.1 == .dose || gj.1 == .route || gj.1 == .frequency)
 
+def endsSign (t : List Char) : Bool :=
+  (t.getLast?.map fun c => c == '-' || c == '+').getD false
+
+def hasSignBeforeSlot : List Seg → Bool
+  | .text t :: .slot f id :: rest => endsSign t || hasSignBeforeSlot (.slot f id :: rest)
+  | _ :: rest => hasSignBeforeSlot rest
+  | [] => false
+
+def unnamedOrder (p : Policy) (chart : List MedReq) (segs : List Seg) : Option (List Char) :=
+  if p.requireAll then
+    (chart.find? fun m => m.active && !(valueSlots segs).any (·.2 == m.id)).map (·.id)
+  else none
+
 def render (p : Policy) (chart : List MedReq) (out : List Char) : Except Block (List Char) := do
   if !(chart.map (·.id)).Nodup then throw .duplicateIds
   let some segs := parseTemplate out | throw .malformed
   if !(sentences segs).all (sentenceOk p) then throw .unbound
   if !noRepeatedValue segs then throw .repeatedValue
+  if hasSignBeforeSlot segs then throw .signBeforeSlot
+  match unnamedOrder p chart segs with
+  | some id => throw (.omittedOrder id)
+  | none => pure ()
   let pieces ← segs.mapM (renderSeg p chart)
   if !allSeparated pieces then throw .unseparated
   pure pieces.flatten
