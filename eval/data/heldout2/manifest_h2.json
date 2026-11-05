@@ -1,5 +1,5 @@
 {
- "layer_commit": "9d3dc5ff8db9840037b4b9f27a596233d4cceb8a",
+ "layer_commit": "ef2cc987e5e349baa2278adf73d53d8036c1d3bf",
  "harness": "eval/attacks.py sends each request line unchanged",
  "files": {
   "chart.jsonl": "2a9e1bf0a16a50d47a17f1d6013b5d7132e12e6dce99f5a302e4a681fbd9d8c9",
@@ -12,5 +12,7 @@
   "model_style_results.jsonl": "2ac0d0afc4dd73fbea36c5812198d0182c4841da102e23ce3e0f07337eac57ed",
   "structure.jsonl": "6d8bd61efac366b0a416ba534d1aa7b44fb18286d8d4b43f3b8315cdc5762269",
   "structure_results.jsonl": "5db5ac4d1ef77165233f91d22ef725d4b57b7fc586075b7616c270a577eee990"
- }
+ },
+ "layer_commit_before_history_rewrite": "9d3dc5ff8db9840037b4b9f27a596233d4cceb8a",
+ "note": "Commit messages were rewritten on 2026-11-05 to remove co-author lines; file contents are unchanged, so the layer at layer_commit is identical to the one tested."
 }

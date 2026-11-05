@@ -1,6 +1,6 @@
 # Response to the second round of review
 
-Code changes (commits 6c129fb and 8504e34), all with regression tests, re-proved theorems, and a 20,000-request fuzz run in agreement:
+Code changes (commits 9f756f5 and d9cacde), all with regression tests, re-proved theorems, and a 20,000-request fuzz run in agreement:
 
 - Sign rule: a slot is blocked when the model's text before it, with trailing spaces removed, ends in a minus or plus sign (`render_no_sign_before_slot` restated). "Take metformin - 500 mg" and "which is - 1000 mg a day" are now blocked.
 - Vocabulary: "health", "important", and "plan" removed (67 words). "They are important for your health." is blocked.

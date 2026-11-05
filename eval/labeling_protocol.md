@@ -5,8 +5,8 @@ Every adversarial request is one JSON object per line with keys `id`, `round`, `
 ## Rounds
 
 - Development rounds r1, r2, r3, r4a, r4p (`eval/data/attacks.jsonl`, 290 requests). Round 4 ran in two parts, a and p, so the development corpus has five labeled rounds. They were written against earlier versions of version 1, and version 1 was changed in response. 96 development requests have no class string.
-- Held-out round h1 (`eval/data/heldout/`, 113 requests) was written against version 1 at commit 1b12cf1, and `manifest_h1.json` records the SHA-256 of each file. Version 1 was not changed before the round was labeled; version 2 was built afterwards in response to it.
-- Held-out round h2 (`eval/data/heldout2/`) was written against version 2 at commit 9d3dc5f. The layer was not changed in response to it.
+- Held-out round h1 (`eval/data/heldout/`, 113 requests) was written against version 1 at commit 59c5f32, and `manifest_h1.json` records the SHA-256 of each file. Version 1 was not changed before the round was labeled; version 2 was built afterwards in response to it.
+- Held-out round h2 (`eval/data/heldout2/`) was written against version 2 at commit ef2cc98. The layer was not changed in response to it.
 
 Each held-out family was written by an independent instance of Claude (Anthropic) that could read the source and run both binaries, was told the round was held out, and was asked to keep every attack it seriously tried, not only the successes.
 

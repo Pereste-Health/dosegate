@@ -1,5 +1,5 @@
 {
- "layer_commit": "1b12cf16d7cd5797c0151b777cae2aac6752a010",
+ "layer_commit": "59c5f324c632fad63a29aadc3321066d9c22473e",
  "files": {
   "chart.jsonl": "ff53c842b8ebaba0b665d0c4b8156cdd3b5045c98f26086b43e9eba2be71971a",
   "chart_results.jsonl": "22ee5520e693cfdab2ff5bd64b31d2cbefa2c7f65e1ab9a964ad493f68446495",
@@ -9,5 +9,7 @@
   "model_style_results.jsonl": "691072bf61d33664f5fd951721632e38fdc291cea901762b48415c26dcf73bc7",
   "structure.jsonl": "e3ac30f0d26a31a6993b08a930a590c530511f4af374a11c6fa28fec0cf5e5d9",
   "structure_results.jsonl": "030fa8cb29d4188a68192cd1b8dae01b791690239537789e22327c73309ca851"
- }
+ },
+ "layer_commit_before_history_rewrite": "1b12cf16d7cd5797c0151b777cae2aac6752a010",
+ "note": "Commit messages were rewritten on 2026-11-05 to remove co-author lines; file contents are unchanged, so the layer at layer_commit is identical to the one tested."
 }

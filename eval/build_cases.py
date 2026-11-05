@@ -1,6 +1,6 @@
 import hashlib, json, os, random, re, sys
 
-SRC = "/Volumes/T7/hearth-datasets/synthea/bundles_v1/fhir"
+SRC = os.environ.get("SYNTHEA_FHIR_DIR", "")
 OUT = os.path.join(os.path.dirname(__file__), "data")
 N_PATIENTS = 120
 MAX_ORDERS = 4

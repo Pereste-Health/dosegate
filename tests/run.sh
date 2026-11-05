@@ -5,7 +5,7 @@ root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$root" || exit 1
 lake build dosegate >/dev/null || { echo "build failed"; exit 1; }
 bin="$root/.lake/build/bin/dosegate"
-out="$(mktemp -d)"
+out="$(mktemp -d "${TMPDIR:-/tmp}/dosegate-tests.XXXXXX")"
 trap 'rm -rf "$out"' EXIT
 
 pass=0

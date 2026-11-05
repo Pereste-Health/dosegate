@@ -1,0 +1,21 @@
+{
+ "thresholds_mg_per_day": {
+  "amlodipine": 10,
+  "simvastatin": 40,
+  "hydrochlorothiazide": 50,
+  "lisinopril": 80
+ },
+ "released": {
+  "natural": 499,
+  "perturbed": 368
+ },
+ "released_above_threshold": {
+  "perturbed": 205
+ },
+ "by_drug": {
+  "hydrochlorothiazide": 113,
+  "amlodipine": 79,
+  "lisinopril": 23,
+  "simvastatin": 24
+ }
+}

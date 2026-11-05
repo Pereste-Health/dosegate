@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use DoseGate, please cite it as below."
+title: "DoseGate: a model-agnostic, formally verified output layer that keeps language model medication instructions faithful to medication orders"
+version: "2.1.0"
+license: Apache-2.0
+repository-code: "https://github.com/Pereste-Health/dosegate"
+authors:
+  - family-names: Smith
+    given-names: Parker
+    affiliation: Pereste Health
