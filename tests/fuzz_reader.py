@@ -445,6 +445,13 @@ def optional_within(value, allowed):
 DOSAGE_KEYS = ("timing", "route", "doseAndRate", "asNeededBoolean", "sequence", "text",
                "additionalInstruction", "patientInstruction")
 CODING_KEYS = ("system", "code", "display", "version", "userSelected")
+ORDER_KEYS = ("resourceType", "id", "meta", "implicitRules", "language", "identifier", "status", "intent",
+              "category", "priority", "doNotPerform", "reportedBoolean", "reportedReference",
+              "medicationCodeableConcept", "medicationReference", "subject", "encounter",
+              "supportingInformation", "authoredOn", "requester", "performer", "performerType", "recorder",
+              "reasonCode", "reasonReference", "instantiatesCanonical", "instantiatesUri", "basedOn",
+              "groupIdentifier", "insurance", "dispenseRequest", "substitution", "eventHistory",
+              "dosageInstruction", "note", "courseOfTherapyType", "priorPrescription")
 
 
 def dosage_keys_ok(dosage):
@@ -481,7 +488,8 @@ def course_of_therapy_ok(order):
 
 def order_closed(order, oid, refs, cfg):
     if cfg["gate_2_1"]:
-        if has_extension_key(order) or present(order, "priorPrescription") or not course_of_therapy_ok(order):
+        if has_extension_key(order) or not within(order, ORDER_KEYS) or present(order, "priorPrescription") \
+                or not course_of_therapy_ok(order):
             return True
     else:
         if any(present(order, k) for k in ("extension", "modifierExtension", "priorPrescription")):
@@ -1455,6 +1463,43 @@ def m_reserved_key(rng, root):
     return True
 
 
+ORDER_KEYS_ALLOWED_EXTRA = ["identifier", "category", "authoredOn", "requester", "reasonCode", "encounter",
+                            "priority", "basedOn", "reasonReference", "performer", "recorder", "note", "meta",
+                            "insurance", "groupIdentifier", "supportingInformation", "instantiatesUri",
+                            "language", "implicitRules"]
+ORDER_KEYS_NOT_ALLOWED = ["statusReason", "detectedIssue", "text", "contained", "patientInstruction",
+                          "instruction", "reason", "dose", "route", "timing", "frequency", "sig", "daily",
+                          "explanation", "comment", "unknownKey"]
+
+
+def order_nodes(root):
+    return [node for node in objects(root)
+            if has_key(node, "medicationCodeableConcept") or has_key(node, "dosageInstruction")
+            or has_key(node, "status") or has_key(node, "intent")]
+
+
+def add_order_key(rng, root, names):
+    if rng.random() < 0.85:
+        return False
+    orders = order_nodes(root)
+    if not orders:
+        return False
+    obj = rng.choice(orders)
+    fresh = [name for name in names if not has_key(obj, name)]
+    if not fresh:
+        return False
+    obj.insert(rng.randint(0, len(obj)), (rng.choice(fresh), random_value(rng)))
+    return True
+
+
+def m_order_allowed_key(rng, root):
+    return add_order_key(rng, root, ORDER_KEYS_ALLOWED_EXTRA)
+
+
+def m_order_disallowed_key(rng, root):
+    return add_order_key(rng, root, ORDER_KEYS_NOT_ALLOWED)
+
+
 def m_nest(rng, root):
     inner = Lit("1")
     for _ in range(rng.choice([10, 62, 63, 64, 65, 70])):
@@ -1553,6 +1598,7 @@ MUTATIONS = [
     ("escape_key", m_escape_key), ("reorder_keys", m_reorder), ("duplicate_entry", m_duplicate_entry),
     ("order_id", m_order_id), ("output_noise", m_output_noise), ("output_retarget", m_output_retarget),
     ("output_long", m_output_long), ("reserved_key", m_reserved_key),
+    ("order_allowed_key", m_order_allowed_key), ("order_disallowed_key", m_order_disallowed_key),
 ]
 
 

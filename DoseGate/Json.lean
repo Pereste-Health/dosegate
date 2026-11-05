@@ -314,8 +314,17 @@ def courseOfTherapyOk (mr : Json) : Bool :=
       let codings := jArr? cc "coding"
       !codings.isEmpty && codings.all fun c => jStr? c "code" == some "continuous"
 
+def orderKeys : List String :=
+  ["resourceType", "id", "meta", "implicitRules", "language", "identifier", "status", "intent", "category",
+   "priority", "doNotPerform", "reportedBoolean", "reportedReference", "medicationCodeableConcept",
+   "medicationReference", "subject", "encounter", "supportingInformation", "authoredOn", "requester",
+   "performer", "performerType", "recorder", "reasonCode", "reasonReference", "instantiatesCanonical",
+   "instantiatesUri", "basedOn", "groupIdentifier", "insurance", "dispenseRequest", "substitution",
+   "eventHistory", "dosageInstruction", "note", "courseOfTherapyType", "priorPrescription"]
+
 def closedOrder (mr : Json) (id : String) (refs : List String) : Bool :=
   hasExtensionKey mr
+  || !keysWithin orderKeys mr
   || hasAny (some mr) ["priorPrescription"]
   || !courseOfTherapyOk mr
   || refs.contains ("MedicationRequest/" ++ id)
