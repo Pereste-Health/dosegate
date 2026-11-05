@@ -164,12 +164,12 @@ def render (p : Policy) (chart : List MedReq) (out : List Char) : Except Block (
   if !(sentences segs).all (sentenceOk p) then throw .unbound
   if !noRepeatedValue segs then throw .repeatedValue
   if hasSignBeforeSlot segs then throw .signBeforeSlot
-  if p.requireAll && chart.all (!·.active) then throw .noActiveOrder
   match unnamedOrder p chart segs with
   | some id => throw (.omittedOrder id)
   | none => pure ()
   let pieces ← segs.mapM (renderSeg p chart)
   if !allSeparated pieces then throw .unseparated
+  if p.requireAll && chart.all (!·.active) then throw .noActiveOrder
   pure pieces.flatten
 
 end DoseGate

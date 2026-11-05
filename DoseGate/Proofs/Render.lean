@@ -305,11 +305,11 @@ theorem render_mapM_eq {p : Policy} {chart : List MedReq} {out : List Char} {seg
     (hn : (chart.map (·.id)).Nodup) (hp : parseTemplate out = some segs)
     (hu : (sentences segs).all (sentenceOk p) = true) (hr : noRepeatedValue segs = true)
     (hs : hasSignBeforeSlot segs = false)
-    (hna : (p.requireAll && chart.all (!·.active)) = false) (ho : unnamedOrder p chart segs = none)
+    (ho : unnamedOrder p chart segs = none)
     (e : Block) (hm : segs.mapM (renderSeg p chart) = .error e) :
     render p chart out = .error e := by
   unfold render
-  simp only [hn, hp, hu, hr, hs, hna, ho, hm]
+  simp only [hn, hp, hu, hr, hs, ho, hm]
   dsimp only [bind, Except.bind, pure, Except.pure, throw]
   simp <;> rfl
 
@@ -317,12 +317,12 @@ theorem render_unseparated_eq {p : Policy} {chart : List MedReq} {out : List Cha
     (hn : (chart.map (·.id)).Nodup) (hp : parseTemplate out = some segs)
     (hu : (sentences segs).all (sentenceOk p) = true) (hr : noRepeatedValue segs = true)
     (hs : hasSignBeforeSlot segs = false)
-    (hna : (p.requireAll && chart.all (!·.active)) = false) (ho : unnamedOrder p chart segs = none)
+    (ho : unnamedOrder p chart segs = none)
     (pieces : List (List Char))
     (hm : segs.mapM (renderSeg p chart) = .ok pieces) (hsep : ¬ allSeparated pieces = true) :
     render p chart out = .error .unseparated := by
   unfold render
-  simp only [hn, hp, hu, hr, hs, hna, ho, hm]
+  simp only [hn, hp, hu, hr, hs, ho, hm]
   dsimp only [bind, Except.bind, pure, Except.pure, throw]
   simp [hsep] <;> rfl
 
@@ -350,24 +350,27 @@ theorem render_sign_eq {p : Policy} {chart : List MedReq} {out : List Char} {seg
   simp <;> rfl
 
 theorem render_noActive_eq {p : Policy} {chart : List MedReq} {out : List Char} {segs : List Seg}
+    {pieces : List (List Char)}
     (hn : (chart.map (·.id)).Nodup) (hp : parseTemplate out = some segs)
     (hu : (sentences segs).all (sentenceOk p) = true) (hr : noRepeatedValue segs = true)
-    (hs : hasSignBeforeSlot segs = false) (hb : (p.requireAll && chart.all (!·.active)) = true) :
+    (hs : hasSignBeforeSlot segs = false) (ho : unnamedOrder p chart segs = none)
+    (hm : segs.mapM (renderSeg p chart) = .ok pieces) (hsep : allSeparated pieces = true)
+    (hb : (p.requireAll && chart.all (!·.active)) = true) :
     render p chart out = .error .noActiveOrder := by
   unfold render
-  simp only [hn, hp, hu, hr, hs, hb]
+  simp only [hn, hp, hu, hr, hs, ho, hm, hb]
   dsimp only [bind, Except.bind, pure, Except.pure, throw]
-  simp <;> rfl
+  simp [hsep] <;> rfl
 
 theorem render_unnamed_eq {p : Policy} {chart : List MedReq} {out : List Char} {segs : List Seg}
     {id : List Char}
     (hn : (chart.map (·.id)).Nodup) (hp : parseTemplate out = some segs)
     (hu : (sentences segs).all (sentenceOk p) = true) (hr : noRepeatedValue segs = true)
     (hs : hasSignBeforeSlot segs = false)
-    (hna : (p.requireAll && chart.all (!·.active)) = false) (ho : unnamedOrder p chart segs = some id) :
+    (ho : unnamedOrder p chart segs = some id) :
     render p chart out = .error (.omittedOrder id) := by
   unfold render
-  simp only [hn, hp, hu, hr, hs, hna, ho]
+  simp only [hn, hp, hu, hr, hs, ho]
   dsimp only [bind, Except.bind, pure, Except.pure, throw]
   simp <;> rfl
 
@@ -419,23 +422,23 @@ theorem render_decomp_full {p : Policy} {chart : List MedReq} {out r : List Char
     cases hs' : hasSignBeforeSlot segs with
     | false => rfl
     | true => rw [render_sign_eq hn hp hu hr hs'] at h; cases h
-  have hna : (p.requireAll && chart.all (!·.active)) = false := by
-    cases hb : (p.requireAll && chart.all (!·.active)) with
-    | false => rfl
-    | true => rw [render_noActive_eq hn hp hu hr hs hb] at h; cases h
   have ho : unnamedOrder p chart segs = none := by
     cases ho' : unnamedOrder p chart segs with
     | none => rfl
-    | some id => rw [render_unnamed_eq hn hp hu hr hs hna ho'] at h; cases h
+    | some id => rw [render_unnamed_eq hn hp hu hr hs ho'] at h; cases h
   rcases hm : segs.mapM (renderSeg p chart) with e | pieces
-  · rw [render_mapM_eq hn hp hu hr hs hna ho e hm] at h
+  · rw [render_mapM_eq hn hp hu hr hs ho e hm] at h
     cases h
   by_cases hsep : allSeparated pieces = true
-  · have hr' := render_ok_eq hn hp hu hr hs hna ho pieces hm hsep
+  · have hna : (p.requireAll && chart.all (!·.active)) = false := by
+      cases hb : (p.requireAll && chart.all (!·.active)) with
+      | false => rfl
+      | true => rw [render_noActive_eq hn hp hu hr hs ho hm hsep hb] at h; cases h
+    have hr' := render_ok_eq hn hp hu hr hs hna ho pieces hm hsep
     rw [hr'] at h
     exact ⟨hn, segs, pieces, rfl, mapM_forall₂ segs pieces hm, hsep, (Except.ok.inj h).symm,
       List.all_eq_true.mp hu, hr, hs, hna, ho⟩
-  · rw [render_unseparated_eq hn hp hu hr hs hna ho pieces hm hsep] at h
+  · rw [render_unseparated_eq hn hp hu hr hs ho pieces hm hsep] at h
     cases h
 
 theorem render_decomp {p : Policy} {chart : List MedReq} {out r : List Char}
