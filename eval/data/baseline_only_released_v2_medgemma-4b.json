@@ -1,0 +1,34 @@
+[
+ {
+  "case_id": "Esteban536_Bogisich202_18b4c619-9002-dad1-0daf-33e508bb2445:natural",
+  "condition": "slot",
+  "sample": 0,
+  "model_words": {},
+  "layer_reason": "missingField",
+  "text": "Here is your medicine list. Take hydrochlorothiazide 25 mg by mouth once a day, which is 25 mg a day. Take 12 hr hydrocodone bitartrate 10 mg by mouth, twice a day. Take lisinopril 10 mg by mouth once a day, which is 10 mg a day. Take amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day.\n"
+ },
+ {
+  "case_id": "Esteban536_Bogisich202_18b4c619-9002-dad1-0daf-33e508bb2445:natural",
+  "condition": "slot_daily",
+  "sample": 0,
+  "model_words": {},
+  "layer_reason": "missingField",
+  "text": "Here is your medicine list. Take hydrochlorothiazide 25 mg by mouth once a day, which is 25 mg a day. Take 12 hr hydrocodone bitartrate 10 mg by mouth, twice a day. Take lisinopril 10 mg by mouth once a day, which is 10 mg a day. Take amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day.\n"
+ },
+ {
+  "case_id": "Esteban536_Bogisich202_18b4c619-9002-dad1-0daf-33e508bb2445:natural",
+  "condition": "slot_hot",
+  "sample": 1,
+  "model_words": {},
+  "layer_reason": "missingField",
+  "text": "Here is your medicine list. Take hydrochlorothiazide 25 mg by mouth once a day, which is 25 mg a day. Take 12 hr hydrocodone bitartrate 10 mg by mouth, twice a day. Take lisinopril 10 mg by mouth once a day, which is 10 mg a day. Take amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day.\n"
+ },
+ {
+  "case_id": "Esteban536_Bogisich202_18b4c619-9002-dad1-0daf-33e508bb2445:natural",
+  "condition": "slot_hot",
+  "sample": 2,
+  "model_words": {},
+  "layer_reason": "missingField",
+  "text": "Here is your medicine list. Take hydrochlorothiazide 25 mg by mouth once a day, which is 25 mg a day.\nTake 12 hr hydrocodone bitartrate 10 mg by mouth, twice a day.\nTake lisinopril 10 mg by mouth once a day, which is 10 mg a day.\nTake amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day.\n"
+ }
+]

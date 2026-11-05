@@ -2,7 +2,7 @@ import json, math, os
 
 from score import DATA
 
-MODELS = [("", "Qwen3.5-4B"), ("medgemma-4b", "MedGemma 4B"), ("llama3.2-3b", "Llama 3.2 3B")]
+MODELS = [("v2_qwen3.5-4b", "Qwen3.5-4B"), ("v2_medgemma-4b", "MedGemma 4B"), ("v2_llama3.2-3b", "Llama 3.2 3B")]
 ROWS = [("slot_first_attempt", "Slot, first attempt"), ("slot_after_retries", "Slot, after rewrites"),
         ("slot_daily_first_attempt", "Slot daily, first attempt"), ("slot_daily_after_retries", "Slot daily, after rewrites"),
         ("slot_hot", "Slot, temperature 1.0"), ("free", "Free"), ("free_daily", "Free daily"), ("attack", "Attack")]

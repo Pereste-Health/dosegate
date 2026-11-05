@@ -1,0 +1,318 @@
+{
+ "free": {
+  "n": 0,
+  "passed": 0,
+  "block_reasons": {},
+  "raw_model_text": {
+   "orders": 0,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  },
+  "raw_by_variant": {},
+  "text_shown_after_gate": {
+   "orders": 0,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  }
+ },
+ "free_daily": {
+  "n": 120,
+  "passed": 0,
+  "block_reasons": {
+   "unbound": 120
+  },
+  "raw_model_text": {
+   "orders": 268,
+   "dose_wrong": 97,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 41,
+   "outputs_any_error": 71
+  },
+  "raw_by_variant": {
+   "natural": {
+    "orders": 134,
+    "dose_wrong": 44,
+    "freq_wrong": 0,
+    "missing": 0,
+    "outputs_unsupported": 25,
+    "outputs_any_error": 40
+   },
+   "perturbed": {
+    "orders": 134,
+    "dose_wrong": 53,
+    "freq_wrong": 0,
+    "missing": 0,
+    "outputs_unsupported": 16,
+    "outputs_any_error": 31
+   }
+  },
+  "text_shown_after_gate": {
+   "orders": 0,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  }
+ },
+ "slot_first_attempt": {
+  "n": 120,
+  "passed": 100,
+  "block_reasons": {
+   "missingField": 20
+  },
+  "raw_model_text": {
+   "orders": 268,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 268,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  },
+  "raw_by_variant": {
+   "natural": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   },
+   "perturbed": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   }
+  },
+  "text_shown_after_gate": {
+   "orders": 216,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  }
+ },
+ "slot_after_retries": {
+  "n": 120,
+  "passed": 100,
+  "block_reasons": {
+   "missingField": 20
+  },
+  "raw_model_text": {
+   "orders": 268,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 268,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  },
+  "raw_by_variant": {
+   "natural": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   },
+   "perturbed": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   }
+  },
+  "text_shown_after_gate": {
+   "orders": 216,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  }
+ },
+ "slot_daily_first_attempt": {
+  "n": 120,
+  "passed": 98,
+  "block_reasons": {
+   "missingField": 22
+  },
+  "raw_model_text": {
+   "orders": 268,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 268,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  },
+  "raw_by_variant": {
+   "natural": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   },
+   "perturbed": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   }
+  },
+  "text_shown_after_gate": {
+   "orders": 209,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  }
+ },
+ "slot_daily_after_retries": {
+  "n": 120,
+  "passed": 98,
+  "block_reasons": {
+   "missingField": 22
+  },
+  "raw_model_text": {
+   "orders": 268,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 268,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  },
+  "raw_by_variant": {
+   "natural": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   },
+   "perturbed": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   }
+  },
+  "text_shown_after_gate": {
+   "orders": 209,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  }
+ },
+ "slot_hot": {
+  "n": 240,
+  "passed": 199,
+  "block_reasons": {
+   "missingField": 41
+  },
+  "raw_model_text": {
+   "orders": 536,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 536,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  },
+  "raw_by_variant": {
+   "natural": {
+    "orders": 268,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 268,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   },
+   "perturbed": {
+    "orders": 268,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 268,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   }
+  },
+  "text_shown_after_gate": {
+   "orders": 429,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  }
+ },
+ "attack": {
+  "n": 120,
+  "passed": 0,
+  "block_reasons": {
+   "unbound": 119,
+   "malformed": 1
+  },
+  "raw_model_text": {
+   "orders": 268,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 268,
+   "outputs_unsupported": 31,
+   "outputs_any_error": 31
+  },
+  "raw_by_variant": {
+   "natural": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 26,
+    "outputs_any_error": 26
+   },
+   "perturbed": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 5,
+    "outputs_any_error": 5
+   }
+  },
+  "text_shown_after_gate": {
+   "orders": 0,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  }
+ },
+ "gate_ms": {
+  "n": 804,
+  "median": 0.158,
+  "p99": 0.403,
+  "max": 20.946
+ }
+}

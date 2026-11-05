@@ -193,3 +193,9 @@ open DoseGate
 #print axioms DoseGate.instr_total_clean
 #print axioms DoseGate.render_no_sign_before_slot
 #print axioms DoseGate.render_all_orders_named
+#print axioms DoseGate.endsSign_false
+#print axioms DoseGate.hasSignBeforeSlot_cons
+#print axioms DoseGate.hasSignBeforeSlot_split
+#print axioms DoseGate.render_decomp_full
+#print axioms DoseGate.render_sign_eq
+#print axioms DoseGate.render_unnamed_eq

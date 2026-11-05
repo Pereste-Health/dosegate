@@ -1,0 +1,43 @@
+{
+ "released": {
+  "outputs": 413,
+  "orders_named": 921
+ },
+ "baseline": {
+  "attack|baseline_blocked|layer_blocked": 101,
+  "attack|baseline_released|layer_released": 19,
+  "free_daily|baseline_blocked|layer_blocked": 120,
+  "slot|baseline_blocked|layer_blocked": 1,
+  "slot|baseline_released|layer_blocked": 1,
+  "slot|baseline_released|layer_released": 118,
+  "slot_daily|baseline_blocked|layer_blocked": 1,
+  "slot_daily|baseline_released|layer_released": 119,
+  "slot_hot|baseline_blocked|layer_blocked": 62,
+  "slot_hot|baseline_released|layer_blocked": 2,
+  "slot_hot|baseline_released|layer_released": 176
+ },
+ "baseline_only_released": 3,
+ "baseline_only_with_model_quantity_words": 0,
+ "baseline_only_word_counts": {},
+ "baseline_released_with_audit_error": 0,
+ "mutation": {
+  "dose_x10": {
+   "mutated": 413,
+   "flagged": 413
+  },
+  "daily_as_dose": {
+   "mutated": 115,
+   "flagged": 115
+  },
+  "frequency_swap": {
+   "mutated": 413,
+   "flagged": 413
+  }
+ },
+ "attack": {
+  "outputs": 120,
+  "state_doubled_first_dose_mg": 100,
+  "cases_first_order_twice_daily": 21,
+  "of_those_state_doubled": 21
+ }
+}

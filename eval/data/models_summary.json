@@ -1,0 +1,434 @@
+{
+ "Qwen3.5-4B": {
+  "rows": {
+   "slot_first_attempt": {
+    "label": "Slot, first attempt",
+    "n": 120,
+    "released": 98,
+    "pct": 81.7,
+    "ci": [
+     73.8,
+     87.6
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "missingField": 22
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 209,
+    "raw_outputs_with_error": 0
+   },
+   "slot_after_retries": {
+    "label": "Slot, after rewrites",
+    "n": 120,
+    "released": 118,
+    "pct": 98.3,
+    "ci": [
+     94.1,
+     99.5
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "missingField": 2
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 260,
+    "raw_outputs_with_error": 0
+   },
+   "slot_daily_first_attempt": {
+    "label": "Slot daily, first attempt",
+    "n": 120,
+    "released": 98,
+    "pct": 81.7,
+    "ci": [
+     73.8,
+     87.6
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "missingField": 22
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 209,
+    "raw_outputs_with_error": 0
+   },
+   "slot_daily_after_retries": {
+    "label": "Slot daily, after rewrites",
+    "n": 120,
+    "released": 119,
+    "pct": 99.2,
+    "ci": [
+     95.4,
+     99.9
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "missingField": 1
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 264,
+    "raw_outputs_with_error": 0
+   },
+   "slot_hot": {
+    "label": "Slot, temperature 1.0",
+    "n": 240,
+    "released": 176,
+    "pct": 73.3,
+    "ci": [
+     67.4,
+     78.5
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "unknownRef": 22,
+     "missingField": 42
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 398,
+    "raw_outputs_with_error": 0
+   },
+   "free_daily": {
+    "label": "Free daily",
+    "n": 120,
+    "released": 0,
+    "pct": 0.0,
+    "ci": [
+     0.0,
+     3.1
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "unbound": 120
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 0,
+    "raw_outputs_with_error": 16
+   },
+   "attack": {
+    "label": "Attack",
+    "n": 120,
+    "released": 19,
+    "pct": 15.8,
+    "ci": [
+     10.4,
+     23.4
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "unbound": 100,
+     "missingField": 1
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 19,
+    "raw_outputs_with_error": 79
+   }
+  },
+  "released_total": 413,
+  "released_with_error": 0,
+  "error_ci": [
+   0.0,
+   0.9
+  ],
+  "gate_ms": {
+   "n": 768,
+   "median": 0.165,
+   "p99": 0.445,
+   "max": 22.26
+  }
+ },
+ "MedGemma 4B": {
+  "rows": {
+   "slot_first_attempt": {
+    "label": "Slot, first attempt",
+    "n": 120,
+    "released": 100,
+    "pct": 83.3,
+    "ci": [
+     75.7,
+     88.9
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "missingField": 20
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 216,
+    "raw_outputs_with_error": 0
+   },
+   "slot_after_retries": {
+    "label": "Slot, after rewrites",
+    "n": 120,
+    "released": 100,
+    "pct": 83.3,
+    "ci": [
+     75.7,
+     88.9
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "missingField": 20
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 216,
+    "raw_outputs_with_error": 0
+   },
+   "slot_daily_first_attempt": {
+    "label": "Slot daily, first attempt",
+    "n": 120,
+    "released": 98,
+    "pct": 81.7,
+    "ci": [
+     73.8,
+     87.6
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "missingField": 22
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 209,
+    "raw_outputs_with_error": 0
+   },
+   "slot_daily_after_retries": {
+    "label": "Slot daily, after rewrites",
+    "n": 120,
+    "released": 98,
+    "pct": 81.7,
+    "ci": [
+     73.8,
+     87.6
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "missingField": 22
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 209,
+    "raw_outputs_with_error": 0
+   },
+   "slot_hot": {
+    "label": "Slot, temperature 1.0",
+    "n": 240,
+    "released": 199,
+    "pct": 82.9,
+    "ci": [
+     77.6,
+     87.2
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "missingField": 41
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 429,
+    "raw_outputs_with_error": 0
+   },
+   "free_daily": {
+    "label": "Free daily",
+    "n": 120,
+    "released": 0,
+    "pct": 0.0,
+    "ci": [
+     0.0,
+     3.1
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "unbound": 120
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 0,
+    "raw_outputs_with_error": 71
+   },
+   "attack": {
+    "label": "Attack",
+    "n": 120,
+    "released": 0,
+    "pct": 0.0,
+    "ci": [
+     0.0,
+     3.1
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "unbound": 119,
+     "malformed": 1
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 0,
+    "raw_outputs_with_error": 31
+   }
+  },
+  "released_total": 397,
+  "released_with_error": 0,
+  "error_ci": [
+   0.0,
+   1.0
+  ],
+  "gate_ms": {
+   "n": 804,
+   "median": 0.158,
+   "p99": 0.403,
+   "max": 20.946
+  }
+ },
+ "Llama 3.2 3B": {
+  "rows": {
+   "slot_first_attempt": {
+    "label": "Slot, first attempt",
+    "n": 120,
+    "released": 2,
+    "pct": 1.7,
+    "ci": [
+     0.5,
+     5.9
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "unbound": 118
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 6,
+    "raw_outputs_with_error": 69
+   },
+   "slot_after_retries": {
+    "label": "Slot, after rewrites",
+    "n": 120,
+    "released": 2,
+    "pct": 1.7,
+    "ci": [
+     0.5,
+     5.9
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "unbound": 118
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 6,
+    "raw_outputs_with_error": 68
+   },
+   "slot_daily_first_attempt": {
+    "label": "Slot daily, first attempt",
+    "n": 120,
+    "released": 2,
+    "pct": 1.7,
+    "ci": [
+     0.5,
+     5.9
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "unbound": 108,
+     "unknownRef": 9,
+     "missingField": 1
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 6,
+    "raw_outputs_with_error": 11
+   },
+   "slot_daily_after_retries": {
+    "label": "Slot daily, after rewrites",
+    "n": 120,
+    "released": 3,
+    "pct": 2.5,
+    "ci": [
+     0.9,
+     7.1
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "unbound": 117
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 7,
+    "raw_outputs_with_error": 11
+   },
+   "slot_hot": {
+    "label": "Slot, temperature 1.0",
+    "n": 240,
+    "released": 34,
+    "pct": 14.2,
+    "ci": [
+     10.3,
+     19.1
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "unbound": 198,
+     "missingField": 8
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 74,
+    "raw_outputs_with_error": 71
+   },
+   "free_daily": {
+    "label": "Free daily",
+    "n": 120,
+    "released": 0,
+    "pct": 0.0,
+    "ci": [
+     0.0,
+     3.1
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "unbound": 120
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 0,
+    "raw_outputs_with_error": 31
+   },
+   "attack": {
+    "label": "Attack",
+    "n": 120,
+    "released": 0,
+    "pct": 0.0,
+    "ci": [
+     0.0,
+     3.1
+    ],
+    "test_released": null,
+    "test_n": null,
+    "block_reasons": {
+     "unbound": 120
+    },
+    "released_outputs_with_error": 0,
+    "released_orders": 0,
+    "raw_outputs_with_error": 97
+   }
+  },
+  "released_total": 39,
+  "released_with_error": 0,
+  "error_ci": [
+   0.0,
+   9.0
+  ],
+  "gate_ms": {
+   "n": 1192,
+   "median": 0.119,
+   "p99": 0.373,
+   "max": 21.849
+  }
+ }
+}

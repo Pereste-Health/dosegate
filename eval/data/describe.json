@@ -1,0 +1,126 @@
+{
+ "cases": {
+  "cases": 240,
+  "orders": 502,
+  "names": {
+   "lisinopril": 162,
+   "hydrochlorothiazide": 148,
+   "amlodipine": 126,
+   "simvastatin": 28,
+   "acetaminophen": 16,
+   "losartan potassium": 6,
+   "12 hr hydrocodone bitartrate": 6,
+   "abuse-deterrent 12 hr oxycodone hydrochloride": 4,
+   "levothyroxine sodium": 2,
+   "meperidine hydrochloride": 2,
+   "dolutegravir": 2
+  },
+  "routes": {
+   "26643006": 502
+  }
+ },
+ "readability": {
+  "v2_qwen3.5-4b": {
+   "free_daily": {
+    "n": 120,
+    "median_grade": 3.8,
+    "iqr": [
+     3.0,
+     6.2
+    ]
+   },
+   "slot": {
+    "n": 118,
+    "median_grade": 3.6,
+    "iqr": [
+     2.9,
+     4.2
+    ]
+   },
+   "slot_daily": {
+    "n": 119,
+    "median_grade": 3.6,
+    "iqr": [
+     2.9,
+     4.2
+    ]
+   },
+   "slot_hot": {
+    "n": 176,
+    "median_grade": 3.4,
+    "iqr": [
+     2.9,
+     3.7
+    ]
+   }
+  },
+  "v2_medgemma-4b": {
+   "free_daily": {
+    "n": 120,
+    "median_grade": 5.5,
+    "iqr": [
+     4.5,
+     6.2
+    ]
+   },
+   "slot": {
+    "n": 100,
+    "median_grade": 3.1,
+    "iqr": [
+     2.5,
+     4.1
+    ]
+   },
+   "slot_daily": {
+    "n": 98,
+    "median_grade": 3.1,
+    "iqr": [
+     2.5,
+     4.1
+    ]
+   },
+   "slot_hot": {
+    "n": 199,
+    "median_grade": 3.1,
+    "iqr": [
+     2.5,
+     4.1
+    ]
+   }
+  },
+  "v2_llama3.2-3b": {
+   "free_daily": {
+    "n": 120,
+    "median_grade": 6.0,
+    "iqr": [
+     5.3,
+     6.7
+    ]
+   },
+   "slot": {
+    "n": 2,
+    "median_grade": 3.0,
+    "iqr": [
+     2.9,
+     3.1
+    ]
+   },
+   "slot_daily": {
+    "n": 3,
+    "median_grade": 3.1,
+    "iqr": [
+     2.9,
+     3.2
+    ]
+   },
+   "slot_hot": {
+    "n": 34,
+    "median_grade": 3.4,
+    "iqr": [
+     2.3,
+     4.1
+    ]
+   }
+  }
+ }
+}
