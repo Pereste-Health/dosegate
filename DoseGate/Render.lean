@@ -23,10 +23,12 @@ inductive Block where
   | missingField (id : List Char) (f : Field)
   | unseparated
   | unbound
+  | repeatedValue
   deriving Repr, DecidableEq, Inhabited
 
 def allowedWord (p : Policy) (tok : List Char) : Bool :=
-  !isForbidden tok && (wordIn vocab tok || wordIn p.extraWords tok)
+  !isForbidden tok &&
+    (wordIn vocab tok || wordIn instrWords tok || wordIn totalWords tok || wordIn p.extraWords tok)
 
 def isTextChar (c : Char) : Bool := (c.toNat ≥ 32 && c.toNat < 127) || c == '\n'
 
@@ -63,25 +65,69 @@ def allSeparated (ps : List (List Char)) : Bool := sepChain (ps.filter (!·.isEm
 def isSentenceEnd (c : Char) : Bool :=
   c == '.' || c == '!' || c == '?' || c == ';' || c == ':' || c == '\n'
 
-def sentenceGroups : List Seg → List (Field × List Char) → List (List (Field × List Char))
-  | [], cur => [cur]
-  | .text t :: rest, cur =>
-      if t.any isSentenceEnd then cur :: sentenceGroups rest [] else sentenceGroups rest cur
-  | .slot f id :: rest, cur => sentenceGroups rest ((f, id) :: cur)
+def splitEnds (t : List Char) : List (List Char) :=
+  t.foldr (fun c acc => if isSentenceEnd c then [] :: acc else
+    match acc with
+    | q :: qs => (c :: q) :: qs
+    | [] => [[c]]) [[]]
 
-def groupBound (g : List (Field × List Char)) : Bool :=
-  let fs := g.map (·.1)
-  let ids := g.map (·.2)
-  ids.all (· == (ids.headD [])) &&
-  fs.Nodup &&
-  (!fs.contains .sig || !(fs.contains .dose || fs.contains .frequency || fs.contains .route)) &&
-  (!(fs.contains .dose || fs.contains .frequency || fs.contains .route || fs.contains .sig ||
-      fs.contains .daily) || fs.contains .drug)
+def sentencesAux : List Seg → List Seg → List (List Seg)
+  | [], cur => [cur]
+  | .slot f id :: rest, cur => sentencesAux rest (cur ++ [.slot f id])
+  | .text t :: rest, cur =>
+      match splitEnds t with
+      | [] => sentencesAux rest cur
+      | [q] => sentencesAux rest (cur ++ [.text q])
+      | q :: qs =>
+          (cur ++ [.text q]) :: (qs.dropLast.map fun r => [Seg.text r]) ++
+            sentencesAux rest [.text (qs.getLast?.getD [])]
+
+def sentences (segs : List Seg) : List (List Seg) := sentencesAux segs []
+
+def slotsOf (g : List Seg) : List (Field × List Char) :=
+  g.filterMap fun
+    | .slot f id => some (f, id)
+    | .text _ => none
+
+def wordsOf (g : List Seg) : List (List Char) :=
+  g.flatMap fun
+    | .text t => tokens t
+    | .slot _ _ => []
+
+def isValueField : Field → Bool
+  | .drug => false
+  | _ => true
+
+def sentenceOk (p : Policy) (g : List Seg) : Bool :=
+  let sl := slotsOf g
+  let fs := sl.map (·.1)
+  let ids := sl.map (·.2)
+  let ws := wordsOf g
+  ids.all (· == ids.headD []) && fs.Nodup &&
+  (if fs.any isValueField then
+    fs.contains .drug &&
+    (if fs.contains .daily then
+      fs.all (fun f => f == .drug || f == .daily) && ws.all (wordIn totalWords)
+    else
+      ((fs.contains .sig && fs.all (fun f => f == .drug || f == .sig)) ||
+        (!fs.contains .sig && fs.contains .dose && fs.contains .route && fs.contains .frequency)) &&
+      ws.all (wordIn instrWords))
+  else ws.all (fun w => wordIn vocab w || wordIn p.extraWords w))
+
+def valueSlots (segs : List Seg) : List (Field × List Char) :=
+  (slotsOf segs).filter (isValueField ·.1)
+
+def noRepeatedValue (segs : List Seg) : Bool :=
+  let vs := valueSlots segs
+  vs.Nodup &&
+  vs.all fun fi => fi.1 != .sig ||
+    !vs.any fun gj => gj.2 == fi.2 && (gj.1 == .dose || gj.1 == .route || gj.1 == .frequency)
 
 def render (p : Policy) (chart : List MedReq) (out : List Char) : Except Block (List Char) := do
   if !(chart.map (·.id)).Nodup then throw .duplicateIds
   let some segs := parseTemplate out | throw .malformed
-  if !(sentenceGroups segs []).all groupBound then throw .unbound
+  if !(sentences segs).all (sentenceOk p) then throw .unbound
+  if !noRepeatedValue segs then throw .repeatedValue
   let pieces ← segs.mapM (renderSeg p chart)
   if !allSeparated pieces then throw .unseparated
   pure pieces.flatten

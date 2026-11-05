@@ -426,13 +426,27 @@ theorem render_duplicate_ids {p : Policy} {chart : List MedReq} {out : List Char
     (h : ¬ (chart.map (·.id)).Nodup) : ∃ b, render p chart out = .error b :=
   ⟨.duplicateIds, render_dup h⟩
 
-theorem render_binding {p : Policy} {chart : List MedReq} {out r : List Char} {segs : List Seg}
+theorem render_sentences {p : Policy} {chart : List MedReq} {out r : List Char} {segs : List Seg}
     (h : render p chart out = .ok r) (hp : parseTemplate out = some segs) :
-    ∀ g ∈ sentenceGroups segs [], groupBound g = true := by
-  obtain ⟨-, segs', pieces, hp', -, -, -, hu⟩ := render_decomp h
-  have e : segs' = segs := Option.some.inj (hp'.symm.trans hp)
-  subst e
-  intro g hg
-  exact List.all_eq_true.mp hu g hg
+    (∀ g ∈ sentences segs, sentenceOk p g = true) ∧ noRepeatedValue segs = true := sorry
+
+theorem sentences_words (segs : List Seg) : (sentences segs).flatMap wordsOf = wordsOf segs := sorry
+
+theorem renderSeg_unknownRef {p : Policy} {chart : List MedReq} {f : Field} {id : List Char}
+    (h : ∀ m ∈ chart, m.id ≠ id) : renderSeg p chart (.slot f id) = .error (.unknownRef id) := sorry
+
+theorem renderSeg_inactive {p : Policy} {chart : List MedReq} {f : Field} {id : List Char} {m : MedReq}
+    (hf : chart.find? (·.id == id) = some m) (ha : m.active = false) :
+    renderSeg p chart (.slot f id) = .error (.inactiveOrder id) := sorry
+
+theorem renderSeg_missing {p : Policy} {chart : List MedReq} {f : Field} {id : List Char} {m : MedReq}
+    (hf : chart.find? (·.id == id) = some m) (ha : m.active = true) (hm : fmtField f m = none) :
+    renderSeg p chart (.slot f id) = .error (.missingField id f) := sorry
+
+theorem dose_piece_readback {chart : List MedReq} {id piece : List Char}
+    (h : SegRendersTo chart (.slot .dose id) piece) :
+    ∃ m ∈ chart, ∃ d, m.id = id ∧ m.active = true ∧ m.dose = some d ∧
+      (∃ one, piece = fmtDec d.amount ++ ' ' :: d.unit.name one) ∧
+      parseDec? (fmtDec d.amount) = some d.amount.normalize := sorry
 
 end DoseGate

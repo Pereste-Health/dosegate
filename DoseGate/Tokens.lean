@@ -33,7 +33,7 @@ def numberWords : List String :=
    "ii", "iii", "iv", "vi", "x", "tenfold", "extra", "another", "all", "some", "any"]
 
 def unitWords : List String :=
-  ["mg", "mgs", "mcg", "ug", "g", "gm", "gms", "gram", "grams", "milligram", "milligrams",
+  ["mcgs", "oz", "ounce", "ounces", "gtt", "gtts", "mg", "mgs", "mcg", "ug", "g", "gm", "gms", "gram", "grams", "milligram", "milligrams",
    "microgram", "micrograms", "kg", "ml", "mls", "milliliter", "milliliters", "millilitre",
    "millilitres", "l", "liter", "liters", "litre", "litres", "cc", "u", "iu", "ius", "unit",
    "units", "meq", "mmol", "tablet", "tablets", "tab", "tabs", "pill", "pills", "capsule",
@@ -43,7 +43,7 @@ def unitWords : List String :=
    "dosage", "amount", "amounts", "strength", "strengths"]
 
 def routeWords : List String :=
-  ["mouth", "oral", "orally", "po", "tongue", "sublingual", "sublingually", "skin",
+  ["sl", "pr", "pv", "it", "intrathecal", "intranasal", "into", "mouth", "oral", "orally", "po", "tongue", "sublingual", "sublingually", "skin",
    "subcutaneous", "subcutaneously", "sc", "sq", "subq", "shot", "shots", "inject",
    "injected", "injection", "injections", "needle", "vein", "iv", "intravenous",
    "intravenously", "muscle", "im", "intramuscular", "intramuscularly", "inhale",
@@ -52,7 +52,7 @@ def routeWords : List String :=
    "chew", "crush", "dissolve", "apply", "rub", "tube", "drip", "infusion", "route"]
 
 def frequencyWords : List String :=
-  ["daily", "day", "days", "nightly", "night", "nights", "morning", "mornings", "evening",
+  ["qam", "qpm", "qw", "stat", "immediately", "promptly", "asap", "sleep", "sleeping", "meal", "meals", "food", "feel", "feeling", "daily", "day", "days", "nightly", "night", "nights", "morning", "mornings", "evening",
    "evenings", "noon", "bedtime", "breakfast", "lunch", "dinner", "supper", "hour", "hours",
    "hourly", "minute", "minutes", "week", "weeks", "weekly", "month", "months", "monthly",
    "year", "every", "each", "per", "times", "bid", "tid", "qid", "qd", "qod", "qhs", "prn",
@@ -61,7 +61,7 @@ def frequencyWords : List String :=
    "before", "after", "while", "during", "when", "whenever", "then", "later", "now"]
 
 def negationWords : List String :=
-  ["not", "no", "never", "don", "dont", "doesn", "t", "stop", "stopped", "skip", "skipped",
+  ["may", "might", "can", "could", "should", "would", "as", "keep", "keeping", "continue", "lower", "lowered", "raise", "adjust", "exactly", "not", "no", "never", "don", "dont", "doesn", "t", "stop", "stopped", "skip", "skipped",
    "hold", "pause", "quit", "avoid", "without", "instead", "only", "if", "unless", "except",
    "but", "or", "nor", "cancel", "discontinue", "discontinued", "restart", "resume", "change",
    "increase", "increased", "decrease", "decreased", "reduce", "more", "less", "fewer", "most",
@@ -69,28 +69,30 @@ def negationWords : List String :=
    "around", "roughly", "usual", "normal", "other", "else", "same", "instead", "replace"]
 
 def vocab : List String :=
-  ["a", "an", "the", "and", "to", "of", "for", "in", "on", "at", "with", "by", "from", "into",
-   "this", "that", "these", "those", "it", "its", "they", "them", "their", "you", "your",
-   "yours", "we", "our", "us", "is", "are", "be", "been", "being", "was", "were", "will", "can",
-   "may", "might", "should", "could", "would", "do", "does", "also", "so", "because", "which",
-   "who", "what", "how", "why", "here", "there", "please", "thank", "thanks", "as",
-   "take", "taking", "takes", "keep", "keeps", "keeping", "help", "helps", "helping", "work",
-   "works", "working", "lower", "lowers", "lowering", "control", "controls", "controlling",
-   "prevent", "prevents", "preventing", "protect", "protects", "protecting", "relax", "relaxes",
-   "relaxing", "manage", "manages", "managing", "treat", "treats", "treating", "ease", "eases",
-   "support", "supports", "feel", "feeling", "remember", "follow", "ask", "call", "tell", "talk",
-   "get", "stay", "make", "makes", "let", "have", "has", "see", "use", "using",
-   "medicine", "medicines", "medication", "medications", "heart", "blood", "pressure", "sugar",
-   "cholesterol", "pain", "body", "kidney", "kidneys", "liver", "lungs", "lung", "breathing",
-   "vessels", "vessel", "arteries", "artery", "muscles", "swelling", "fluid", "water", "salt",
-   "health", "doctor", "nurse", "pharmacist", "care", "team", "question", "questions", "side",
-   "effect", "effects", "stroke", "strokes", "attack", "attacks", "infection", "infections",
-   "thyroid", "mood", "sleep", "stomach", "food", "meal", "glass", "condition", "conditions",
-   "level", "levels", "risk", "plan", "list", "clots", "clot", "bones", "bone", "joints",
-   "inflammation", "fever", "allergies", "anxiety", "depression", "seizures", "diabetes",
-   "asthma", "healthy", "well", "better", "steady", "stable", "high", "low", "strong", "safe",
-   "safely", "important", "good", "exactly", "prescribed", "calm", "comfortable",
-   "relaxed", "open", "clear", "flowing", "smoothly", "properly", "symptoms", "symptom", "life"]
+  ["a", "an", "the", "and", "to", "of", "for", "on", "at", "with", "by", "from", "this",
+   "that", "these", "those", "its", "they", "them", "their", "you", "your", "yours",
+   "we", "our", "us", "is", "are", "be", "been", "being", "was", "were", "will", "do", "does",
+   "also", "so", "because", "which", "who", "what", "how", "why", "here", "there", "please",
+   "thank", "thanks", "help", "helps", "helping", "work", "works", "working", "control",
+   "controls", "controlling", "prevent", "prevents", "preventing", "protect", "protects",
+   "protecting", "relax", "relaxes", "relaxing", "manage", "manages", "managing", "treat",
+   "treats", "treating", "support", "supports", "remember", "follow", "ask", "call", "tell",
+   "talk", "get", "make", "makes", "let", "have", "has", "see", "medicine", "medicines",
+   "medication", "medications", "heart", "blood", "pressure", "sugar", "cholesterol", "pain",
+   "body", "kidney", "kidneys", "liver", "lungs", "lung", "breathing", "vessels", "vessel",
+   "arteries", "artery", "muscles", "swelling", "fluid", "water", "salt", "health", "doctor",
+   "nurse", "pharmacist", "care", "team", "question", "questions", "side", "effect", "effects",
+   "stroke", "strokes", "attack", "attacks", "infection", "infections", "thyroid", "mood",
+   "stomach", "condition", "conditions", "level", "levels", "risk", "plan", "list", "clots",
+   "clot", "bones", "bone", "joints", "inflammation", "fever", "allergies", "anxiety",
+   "depression", "seizures", "diabetes", "asthma", "healthy", "well", "better", "steady",
+   "stable", "high", "low", "strong", "safe", "safely", "important", "good", "calm",
+   "comfortable", "relaxed", "open", "clear", "flowing", "smoothly", "properly", "symptoms",
+   "symptom", "life"]
+
+def instrWords : List String := ["take"]
+
+def totalWords : List String := ["that", "is", "a", "total", "of"]
 
 def wordIn (ws : List String) (tok : List Char) : Bool := ws.contains (String.ofList tok)
 

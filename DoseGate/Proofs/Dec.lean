@@ -431,4 +431,7 @@ theorem fmtDec_eq_iff (a b : Dec) : fmtDec a = fmtDec b ↔ Dec.Eqv a b := by
   · intro h
     rw [← fmtDec_normalize a, ← fmtDec_normalize b, normalize_eq_of_eqv h]
 
+theorem fmtDec_below_one (d : Dec) (h0 : 0 < d.mant) (h1 : d.mant < 10 ^ d.scale) :
+    ∃ rest, fmtDec d = '0' :: '.' :: rest := sorry
+
 end DoseGate

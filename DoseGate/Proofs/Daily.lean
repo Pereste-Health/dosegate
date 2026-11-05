@@ -89,4 +89,8 @@ theorem dailyDose_none_prn {m : MedReq} (h : m.asNeeded = true) : dailyDose? m =
   unfold dailyDose?
   simp [h]
 
+theorem dailyDose_exact {m : MedReq} {dd : Dose} (h : dailyDose? m = some dd) :
+    ∃ d t k, m.asNeeded = false ∧ m.dose = some d ∧ m.timing = some t ∧ dosesPerDay? t = some k ∧
+      dd = ⟨⟨d.amount.mant * k, d.amount.scale⟩, d.unit⟩ := sorry
+
 end DoseGate
