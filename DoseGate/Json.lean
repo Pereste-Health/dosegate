@@ -26,6 +26,11 @@ def statusCodes : List String :=
   ["active", "on-hold", "cancelled", "completed", "entered-in-error", "stopped", "draft", "unknown"]
 def intentCodes : List String :=
   ["proposal", "plan", "order", "original-order", "reflex-order", "filler-order", "instance-order", "option"]
+def periodUnitCodes : List String := ["s", "min", "h", "d", "wk", "mo", "a"]
+def requestKeys : List String := ["output", "bundle", "medicationRequests", "patient"]
+def bundleKeys : List String := ["resourceType", "id", "meta", "implicitRules", "language", "identifier", "type",
+  "timestamp", "total", "link", "entry", "signature", "extension"]
+def entryKeys : List String := ["fullUrl", "resource", "search", "response", "link", "extension"]
 
 def decodeKey (raw : List Char) : String :=
   match Lean.Json.parse ("\"" ++ String.ofList raw ++ "\"") with
@@ -388,12 +393,115 @@ def orderResources (req : Json) : List Json :=
   | some b => bundleResources b
   | none => jArr? req "medicationRequests"
 
+def isObj : Json → Bool
+  | .obj _ => true
+  | _ => false
+
+def isStr : Json → Bool
+  | .str s => !(trimmed s).isEmpty
+  | _ => false
+
+def isBool : Json → Bool
+  | .bool _ => true
+  | _ => false
+
+def isNum : Json → Bool
+  | .num _ => true
+  | _ => false
+
+def isWhole : Json → Bool
+  | .num n => if n.mantissa < 0 then false else decide (n.mantissa.toNat % 10 ^ n.exponent = 0)
+  | _ => false
+
+def isMedicationRequest : Json → Bool
+  | .str s => s == "MedicationRequest"
+  | _ => false
+
+def isBundle : Json → Bool
+  | .str s => s == "Bundle"
+  | _ => false
+
+def isPeriodUnit : Json → Bool
+  | .str s => periodUnitCodes.contains s
+  | _ => false
+
+def fieldOk (j : Json) (k : String) (ok : Json → Bool) : Bool :=
+  match jField? j k with
+  | none => true
+  | some v => ok v
+
+def arrOk (ok : Json → Bool) : Json → Bool
+  | .arr a => a.all ok
+  | _ => false
+
+def codingOk (c : Json) : Bool :=
+  isObj c && fieldOk c "system" isStr && fieldOk c "code" isStr && fieldOk c "display" isStr
+
+def conceptOk (cc : Json) : Bool :=
+  isObj cc && fieldOk cc "text" isStr && fieldOk cc "coding" (arrOk codingOk)
+
+def repeatOk (r : Json) : Bool :=
+  isObj r && fieldOk r "frequency" isWhole && fieldOk r "period" isWhole && fieldOk r "periodUnit" isPeriodUnit
+
+def timingOk (t : Json) : Bool :=
+  isObj t && fieldOk t "repeat" repeatOk
+
+def quantityOk (q : Json) : Bool :=
+  isObj q && fieldOk q "value" isNum && fieldOk q "unit" isStr && fieldOk q "code" isStr
+    && fieldOk q "system" isStr
+
+def rateOk (r : Json) : Bool :=
+  isObj r && fieldOk r "doseQuantity" quantityOk
+
+def dosageOk (d : Json) : Bool :=
+  isObj d && fieldOk d "timing" timingOk && fieldOk d "route" conceptOk
+    && fieldOk d "doseAndRate" (arrOk rateOk) && fieldOk d "asNeededBoolean" isBool
+
+def orderShapeProblem (id : String) (mr : Json) : Option String :=
+  let checks : List (Bool × String) :=
+    [(fieldOk mr "resourceType" isMedicationRequest, "needs resourceType to be MedicationRequest when present"),
+     (fieldOk mr "doNotPerform" isBool, "needs doNotPerform to be true or false when present"),
+     ((jField? mr "medicationCodeableConcept").isSome || (jField? mr "medicationReference").isSome,
+      "needs a medicationCodeableConcept or medicationReference"),
+     (fieldOk mr "medicationCodeableConcept" conceptOk, "needs a valid medicationCodeableConcept"),
+     (fieldOk mr "dosageInstruction" (arrOk dosageOk), "needs a valid dosageInstruction"),
+     (fieldOk mr "dispenseRequest" isObj, "needs dispenseRequest to be an object"),
+     (fieldOk mr "meta" isObj, "needs meta to be an object")]
+  (checks.find? (fun c => !c.1)).map fun c => "MedicationRequest " ++ id ++ " " ++ c.2
+
+def keyError (allowed : List String) (what k : String) (v : Json) : Option String :=
+  match v with
+  | .null => none
+  | _ => if allowed.contains k then none else some (what ++ " key " ++ k ++ " is not accepted")
+
+def keyProblem (allowed : List String) (what : String) (j : Json) : Option String :=
+  match j with
+  | .obj kvs => kvs.toList.findSome? fun kv => keyError allowed what kv.1 kv.2
+  | _ => none
+
+def resourceProblem (e : Json) : Option String :=
+  match jField? e "resource" with
+  | none => some "a bundle entry has no resource"
+  | some r =>
+      if (jField? r "resourceType").any isStr then none
+      else some "a bundle entry resource has no string resourceType"
+
+def entryProblem (e : Json) : Option String :=
+  if !isObj e then some "a bundle entry is not an object"
+  else keyProblem entryKeys "bundle entry" e <|> resourceProblem e
+
+def bundleEntriesProblem (req : Json) : Option String :=
+  match jField? req "bundle" with
+  | none => none
+  | some b => keyProblem bundleKeys "bundle" b <|> (jArr? b "entry").findSome? entryProblem
+
 def orderProblem (patient : Option String) (mr : Json) : Option String :=
   let id := (jStr? mr "id").getD ""
   if !((jStr? mr "status").any statusCodes.contains) then
     some ("MedicationRequest " ++ id ++ " needs a status string that is one of " ++ ", ".intercalate statusCodes)
   else if !((jStr? mr "intent").any intentCodes.contains) then
     some ("MedicationRequest " ++ id ++ " needs an intent string that is one of " ++ ", ".intercalate intentCodes)
+  else if let some e := orderShapeProblem id mr then some e
   else match patient with
     | some _ =>
         if ((subjectRef mr).bind patientIdOf?).isSome then none
@@ -436,15 +544,25 @@ def bundleTypeBad (req : Json) : Bool :=
 def bundleRequestBad (req : Json) : Bool :=
   (((jField? req "bundle").map fun b => jArr? b "entry").getD []).any fun e => (jField? e "request").isSome
 
+def bundleResourceTypeBad (req : Json) : Bool :=
+  match jField? req "bundle" with
+  | some b => !fieldOk b "resourceType" isBundle
+  | none => false
+
 def shapeProblem (req : Json) : Option String :=
   if (jField? req "bundle").isSome && (jField? req "medicationRequests").isSome then
     some "the request has both bundle and medicationRequests, so it is ambiguous; send only one of them"
+  else if let some e := keyProblem requestKeys "request" req then some e
   else if bundleShapeBad req then some "bundle must be an object with an entry array"
   else if bundleTypeBad req then some "bundle type must be searchset or collection"
+  else if bundleResourceTypeBad req then some "bundle resourceType must be Bundle when present"
   else if bundleRequestBad req then some "a bundle entry has a request key, which the gate does not accept"
+  else if let some e := bundleEntriesProblem req then some e
   else if medicationRequestsShapeBad req then some "medicationRequests must be an array"
   else if (orderResources req).any (fun mr => (jStr? mr "id").isNone) then
     some "every MedicationRequest needs an id string"
+  else if (orderResources req).any (fun mr => (jStr? mr "id").any fun s => (trimmed s).isEmpty) then
+    some "every MedicationRequest needs an id that is not empty"
   else none
 
 def patientOf (req : Json) : Except String (Option String) :=
