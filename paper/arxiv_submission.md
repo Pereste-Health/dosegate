@@ -16,7 +16,7 @@ These notes are for the arXiv form. They are not part of the paper.
 - Authors: Parker Smith (Pereste Health)
 - Primary category: cs.LO (Logic in Computer Science)
 - Cross-lists: cs.CL (Computation and Language), cs.AI (Artificial Intelligence)
-- Comments: @@PAGES pages, 4 tables. Code, data, and model outputs: https://github.com/Pereste-Health/dosegate
+- Comments: 36 pages, 4 tables. Code, data, and model outputs: https://github.com/Pereste-Health/dosegate
 - License: CC BY 4.0 for the paper (the code is Apache-2.0 in the repository)
 
 ## Abstract (1,917 characters, under the 1,920-character limit)
