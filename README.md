@@ -7,7 +7,7 @@ This is version 2.1. The history of versions 1, 2, and 2.1, and the held-out adv
 ## Layout
 
 - `DoseGate/*.lean`: definitions (exact decimals, units, the FHIR subset, the slot parser, word classes, the renderer, the specification).
-- `DoseGate/Proofs/*.lean`: the proofs. `lake build DoseGate.Proofs` checks all 200 theorems.
+- `DoseGate/Proofs/*.lean`: the proofs. `lake build DoseGate.Proofs` checks all 201 theorems.
 - `DoseGate/Json.lean`, `Main.lean`: the FHIR input reader and command-line tool. This code is tested, not proved.
 - `Baseline.lean`: the comparison filter used in the evaluation. It uses the same input reader and slot formatting but checks model text only for braces, digits, and unit words.
 - `tests/`: regression tests (`bash tests/run.sh`), the differential fuzz test of the input reader (`python3 tests/fuzz_reader.py --core v2 --seed 7 --count 20000`), and `tests/Axioms.lean`, which prints the axioms of every theorem (`lake env lean tests/Axioms.lean`).
@@ -61,6 +61,8 @@ All commands run from the repository root with Python 3 (standard library) after
 - `python3 eval/maxima.py` writes the label-limit counts to `eval/data/maxima.json`.
 - `python3 eval/fallback_rate.py` writes the fallback counts to `eval/data/fallback_rate.json`. It runs the binary at `.lake/build/bin/dosegate` unless the environment variable `DOSEGATE` names another binary.
 - `python3 eval/label_rule_sweep.py` scans the labeled outputs for the two patterns of the labeling rule and writes `eval/data/label_rule_sweep.json`.
+- `python3 eval/label_change_counts.py` recomputes the misstatement counts with and without each label change (Table 2A) from the label files.
+- `python3 eval/vocab_rxnorm_check.py` looks up the vocabulary and name stop words in RxNorm (needs network access) and writes `eval/data/vocab_rxnorm_check.json`.
 - `python3 eval/omissions.py` prints the omitted-order counts in Table 2 (6 of 23, 11 of 36, 19 of 54, and 33 of 80 faithful outputs).
 - `eval/coded_timing_check.py` needs the raw Synthea bundles, read from the folder named by `SYNTHEA_FHIR_DIR`, and writes `eval/data/coded_timing_check.json`.
 

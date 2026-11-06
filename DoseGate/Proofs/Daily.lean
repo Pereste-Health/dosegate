@@ -52,6 +52,15 @@ theorem dosesPerDay_none_long {t : Timing} (h : t.periodUnit = .wk ∨ t.periodU
   unfold dosesPerDay?
   rcases h with h | h <;> simp [h]
 
+theorem dailyDose_none_long {m : MedReq} {t : Timing} (ht : m.timing = some t)
+    (h : t.periodUnit = .wk ∨ t.periodUnit = .mo) : dailyDose? m = none := by
+  unfold dailyDose?
+  by_cases hn : m.asNeeded = true
+  · simp [hn]
+  · simp only [Bool.not_eq_true] at hn
+    simp only [hn, Bool.false_eq_true, ↓reduceIte]
+    rcases hd : m.dose with _ | d <;> simp [ht, dosesPerDay_none_long h]
+
 theorem dailyDose_spec {m : MedReq} {dd : Dose} (h : dailyDose? m = some dd) :
     ∃ d t k, m.asNeeded = false ∧ m.dose = some d ∧ m.timing = some t ∧ dosesPerDay? t = some k ∧
       fmtTiming t ≠ none ∧ dd.unit = d.unit ∧

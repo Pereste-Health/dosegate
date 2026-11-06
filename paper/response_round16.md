@@ -14,7 +14,7 @@ Required items:
 Recommended items, all made:
 
 - Regular insulin timing: the sentence now cites the Humulin R U-100 label for the 30-minute timing and tells the deployment to check the label for the product and concentration it dispenses, instead of stating the timing for all regular insulin.
-- Insulin concentration: Exact quantities now gives the size of the difference: 20 units of U-500 contains as much insulin as 100 units of U-100.
+- Insulin concentration: Exact quantities now gives the size of the difference: 20 units of U-500 contains as much insulin as 100 units of U-100 (wrong; corrected in the Round 21 note below).
 - Same-ingredient pairs: "so they show the size of the harm" became "so a deployment that does not check for duplicate therapy would send them to patients".
 - Superseded orders: Limits now says that a deployment using `--allow-omissions` must rewrite every priorPrescription reference to the exact form, or block any output that names a superseded order.
 - Conclusion scope: the release range now says it is the share of slot outputs released after rewrites, on 120 normalized synthetic test cases, across three small open models.
@@ -28,3 +28,7 @@ The recommended items are noted for a later revision. The proposed theorem `dail
 - paper/paper.md: Abstract, Table 1 drug-name row, Exact quantities, Limits (insulin timing, same-ingredient pairs, superseded orders), Conclusion.
 - paper/arxiv_submission.md: Abstract (identical to paper.md, 1,914 characters) and step 4.
 - paper/response_round15.md: two corrected statements about the tagged commit.
+
+## Correction, round 21
+
+The insulin sentence in Exact quantities that this section lists as made (the item on insulin concentration) says that 20 units of U-500 insulin contains as much insulin as 100 units of U-100. That is wrong. A unit is the same amount of insulin at either concentration, and only the volume differs: 20 units is 0.2 mL of U-100 and 0.04 mL of U-500. Round 21 replaces the sentences, and paper/response_round21.md gives the details.

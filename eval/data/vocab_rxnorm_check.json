@@ -1,0 +1,2520 @@
+{
+  "rxnorm_version": "02-Nov-2026",
+  "rxnav_api_version": "3.1.357",
+  "access_date": "2026-11-06",
+  "endpoints": [
+    "https://rxnav.nlm.nih.gov/REST/version.json",
+    "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=<word>&search=2",
+    "https://rxnav.nlm.nih.gov/REST/drugs.json?name=<word>",
+    "https://rxnav.nlm.nih.gov/REST/rxcui/<rxcui>/properties.json"
+  ],
+  "pause_seconds_between_requests": 0.1,
+  "source_file": "DoseGate/Tokens.lean",
+  "lists": {
+    "vocab": {
+      "group": "framing",
+      "count": 67
+    },
+    "instrWords": {
+      "group": "shape",
+      "count": 1
+    },
+    "totalWords": {
+      "group": "shape",
+      "count": 2
+    },
+    "nameStopWords": {
+      "group": "name_stop",
+      "count": 77
+    }
+  },
+  "unique_words_checked": 146,
+  "counts": {
+    "words_checked": 146,
+    "words_with_hit": 3,
+    "words_without_hit": 143,
+    "words_with_error": 0,
+    "words_hit_by_rxcui_json": 3,
+    "words_hit_by_drugs_json": 2,
+    "distinct_rxcuis_in_hits": 22,
+    "by_group": {
+      "framing": {
+        "words_checked": 67,
+        "words_with_hit": 1,
+        "words_with_error": 0
+      },
+      "shape": {
+        "words_checked": 3,
+        "words_with_hit": 0,
+        "words_with_error": 0
+      },
+      "name_stop": {
+        "words_checked": 77,
+        "words_with_hit": 2,
+        "words_with_error": 0
+      }
+    }
+  },
+  "hits": [
+    {
+      "word": "hi",
+      "groups": [
+        "framing"
+      ],
+      "concepts": [
+        {
+          "rxcui": "5340",
+          "name": "histidine",
+          "tty": "IN",
+          "found_by": [
+            "rxcui.json"
+          ]
+        }
+      ]
+    },
+    {
+      "word": "milk",
+      "groups": [
+        "name_stop"
+      ],
+      "concepts": [
+        {
+          "rxcui": "892665",
+          "name": "cow milk allergenic extract",
+          "tty": "IN",
+          "found_by": [
+            "rxcui.json"
+          ]
+        },
+        {
+          "rxcui": "892668",
+          "name": "cow milk allergenic extract 50 MG/ML Injectable Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "904806",
+          "name": "cow milk allergenic extract 100 MG/ML Injectable Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        }
+      ]
+    },
+    {
+      "word": "water",
+      "groups": [
+        "name_stop"
+      ],
+      "concepts": [
+        {
+          "rxcui": "11295",
+          "name": "water",
+          "tty": "IN",
+          "found_by": [
+            "rxcui.json"
+          ]
+        },
+        {
+          "rxcui": "1424605",
+          "name": "water 983 MG/ML Ophthalmic Irrigation Solution [Pur-Wash]",
+          "tty": "SBD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1425978",
+          "name": "water 985 MG/ML Ophthalmic Irrigation Solution [Opticlear]",
+          "tty": "SBD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1489378",
+          "name": "water 988 MG/ML Ophthalmic Irrigation Solution [OcuFresh]",
+          "tty": "SBD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1549855",
+          "name": "water 986 MG/ML Ophthalmic Irrigation Solution [Eye Stream]",
+          "tty": "SBD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1053148",
+          "name": "water 980 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1053154",
+          "name": "water 951 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1053173",
+          "name": "water 986 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1053429",
+          "name": "water 991 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1151101",
+          "name": "water 983 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1235499",
+          "name": "water 984 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1423321",
+          "name": "water 985 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1489376",
+          "name": "water 988 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "150985",
+          "name": "water 1000 MG/ML Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1539535",
+          "name": "water 1000 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1923420",
+          "name": "water 987 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "204918",
+          "name": "water 1000 MG/ML Inhalation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "2704856",
+          "name": "water 921 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        }
+      ]
+    }
+  ],
+  "words": [
+    {
+      "word": "a",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "an",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "the",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "and",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "to",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "of",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "for",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "on",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "at",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "by",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "from",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "here",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "there",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "this",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "that",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "these",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "those",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "its",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "they",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "them",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "their",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "you",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "your",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "yours",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "we",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "our",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "us",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "is",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing",
+        "shape"
+      ],
+      "lean_lists": [
+        "vocab",
+        "totalWords"
+      ]
+    },
+    {
+      "word": "are",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "be",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "been",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "being",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "was",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "were",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "will",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "also",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "so",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "ask",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "have",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "has",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "medicine",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "medicines",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "medication",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "medications",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "list",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "doctor",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "doctors",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "nurse",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "nurses",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "pharmacist",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "pharmacists",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "care",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "team",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "question",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "questions",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "please",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "thank",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "thanks",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "hello",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "hi",
+      "rxcui_json": [
+        "5340"
+      ],
+      "drugs_json": [],
+      "concepts": [
+        {
+          "rxcui": "5340",
+          "name": "histidine",
+          "tty": "IN",
+          "found_by": [
+            "rxcui.json"
+          ]
+        }
+      ],
+      "error": null,
+      "hit": true,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "information",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "read",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "carefully",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "what",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "who",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "how",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "why",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "framing"
+      ],
+      "lean_lists": [
+        "vocab"
+      ]
+    },
+    {
+      "word": "take",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "shape"
+      ],
+      "lean_lists": [
+        "instrWords"
+      ]
+    },
+    {
+      "word": "which",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "shape"
+      ],
+      "lean_lists": [
+        "totalWords"
+      ]
+    },
+    {
+      "word": "see",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "call",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "get",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "help",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "helps",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "medical",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "first",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "milk",
+      "rxcui_json": [
+        "892665"
+      ],
+      "drugs_json": [
+        "892668",
+        "904806"
+      ],
+      "concepts": [
+        {
+          "rxcui": "892665",
+          "name": "cow milk allergenic extract",
+          "tty": "IN",
+          "found_by": [
+            "rxcui.json"
+          ]
+        },
+        {
+          "rxcui": "892668",
+          "name": "cow milk allergenic extract 50 MG/ML Injectable Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "904806",
+          "name": "cow milk allergenic extract 100 MG/ML Injectable Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        }
+      ],
+      "error": null,
+      "hit": true,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "water",
+      "rxcui_json": [
+        "11295"
+      ],
+      "drugs_json": [
+        "1424605",
+        "1425978",
+        "1489378",
+        "1549855",
+        "1053148",
+        "1053154",
+        "1053173",
+        "1053429",
+        "1151101",
+        "1235499",
+        "1423321",
+        "1489376",
+        "150985",
+        "1539535",
+        "1923420",
+        "204918",
+        "2704856"
+      ],
+      "concepts": [
+        {
+          "rxcui": "11295",
+          "name": "water",
+          "tty": "IN",
+          "found_by": [
+            "rxcui.json"
+          ]
+        },
+        {
+          "rxcui": "1424605",
+          "name": "water 983 MG/ML Ophthalmic Irrigation Solution [Pur-Wash]",
+          "tty": "SBD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1425978",
+          "name": "water 985 MG/ML Ophthalmic Irrigation Solution [Opticlear]",
+          "tty": "SBD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1489378",
+          "name": "water 988 MG/ML Ophthalmic Irrigation Solution [OcuFresh]",
+          "tty": "SBD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1549855",
+          "name": "water 986 MG/ML Ophthalmic Irrigation Solution [Eye Stream]",
+          "tty": "SBD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1053148",
+          "name": "water 980 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1053154",
+          "name": "water 951 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1053173",
+          "name": "water 986 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1053429",
+          "name": "water 991 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1151101",
+          "name": "water 983 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1235499",
+          "name": "water 984 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1423321",
+          "name": "water 985 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1489376",
+          "name": "water 988 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "150985",
+          "name": "water 1000 MG/ML Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1539535",
+          "name": "water 1000 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "1923420",
+          "name": "water 987 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "204918",
+          "name": "water 1000 MG/ML Inhalation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        },
+        {
+          "rxcui": "2704856",
+          "name": "water 921 MG/ML Ophthalmic Irrigation Solution",
+          "tty": "SCD",
+          "found_by": [
+            "drugs.json"
+          ]
+        }
+      ],
+      "error": null,
+      "hit": true,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "bleeding",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "sliding",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "scale",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "taper",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "tapering",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "titrate",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "titration",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "protocol",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "per",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "until",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "then",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "do",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "does",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "go",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "contact",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "emergency",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "urgent",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "check",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "monitor",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "wait",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "give",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "use",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "instructions",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "instruction",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "note",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "refer",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "label",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "package",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "insert",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "phone",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "office",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "clinic",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "hospital",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "appointment",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "visit",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "start",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "starting",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "begin",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "increase",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "decrease",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "reduce",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "change",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "switch",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "new",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "old",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "prior",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "previous",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "replace",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "replaced",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "discontinue",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "discontinued",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "cancel",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "cancelled",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "canceled",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "error",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "wrong",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "void",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "sample",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "placeholder",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "unknown",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "other",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "misc",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "test",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "result",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "results",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "inr",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "level",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    },
+    {
+      "word": "levels",
+      "rxcui_json": [],
+      "drugs_json": [],
+      "concepts": [],
+      "error": null,
+      "hit": false,
+      "groups": [
+        "name_stop"
+      ],
+      "lean_lists": [
+        "nameStopWords"
+      ]
+    }
+  ],
+  "notes": [
+    "The United States Pharmacopeia (USP) drug name list is not freely available, so the words were not checked against it. This check uses RxNorm only.",
+    "Each hit is reported as RxNorm returns it. The script does not remove any word from DoseGate/Tokens.lean; the paper reports the hits and the authors' reading of them.",
+    "A word is a hit when rxcui.json (name search with search=2, the normalized match this check requests) or drugs.json (name search) returns at least one RXCUI, the RxNorm concept identifier.",
+    "Concept names and term types come from rxcui/<rxcui>/properties.json. Term types follow RxNorm, for example IN (ingredient), BN (brand name), SCD (clinical drug)."
+  ]
+}

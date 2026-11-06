@@ -5,6 +5,7 @@ open DoseGate
 #print axioms DoseGate.dosesPerDay_spec
 #print axioms DoseGate.dosesPerDay_pos
 #print axioms DoseGate.dosesPerDay_none_long
+#print axioms DoseGate.dailyDose_none_long
 #print axioms DoseGate.dailyDose_spec
 #print axioms DoseGate.dailyDose_none_prn
 #print axioms DoseGate.dailyDose_exact
