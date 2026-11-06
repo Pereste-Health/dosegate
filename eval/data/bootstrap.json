@@ -3,6 +3,244 @@
  "seed": 20261105,
  "method": "percentile bootstrap resampling patients with replacement",
  "rows": {
+  "v2_qwen3.5-4b": {
+   "slot_first_attempt": {
+    "released": 98,
+    "n": 120,
+    "pct": 81.7,
+    "patients": 60,
+    "cluster_ci": [
+     75.0,
+     87.5
+    ]
+   },
+   "slot_after_retries": {
+    "released": 118,
+    "n": 120,
+    "pct": 98.3,
+    "patients": 60,
+    "cluster_ci": [
+     95.0,
+     100.0
+    ]
+   },
+   "slot_daily_first_attempt": {
+    "released": 98,
+    "n": 120,
+    "pct": 81.7,
+    "patients": 60,
+    "cluster_ci": [
+     75.0,
+     88.3
+    ]
+   },
+   "slot_daily_after_retries": {
+    "released": 118,
+    "n": 120,
+    "pct": 98.3,
+    "patients": 60,
+    "cluster_ci": [
+     95.0,
+     100.0
+    ]
+   },
+   "slot_hot": {
+    "released": 176,
+    "n": 240,
+    "pct": 73.3,
+    "patients": 60,
+    "cluster_ci": [
+     66.2,
+     80.0
+    ]
+   },
+   "attack": {
+    "released": 19,
+    "n": 120,
+    "pct": 15.8,
+    "patients": 60,
+    "cluster_ci": [
+     8.3,
+     23.3
+    ]
+   }
+  },
+  "v2_medgemma-4b": {
+   "slot_first_attempt": {
+    "released": 100,
+    "n": 120,
+    "pct": 83.3,
+    "patients": 60,
+    "cluster_ci": [
+     76.7,
+     89.2
+    ]
+   },
+   "slot_after_retries": {
+    "released": 100,
+    "n": 120,
+    "pct": 83.3,
+    "patients": 60,
+    "cluster_ci": [
+     76.7,
+     89.2
+    ]
+   },
+   "slot_daily_first_attempt": {
+    "released": 98,
+    "n": 120,
+    "pct": 81.7,
+    "patients": 60,
+    "cluster_ci": [
+     75.0,
+     88.3
+    ]
+   },
+   "slot_daily_after_retries": {
+    "released": 98,
+    "n": 120,
+    "pct": 81.7,
+    "patients": 60,
+    "cluster_ci": [
+     75.0,
+     88.3
+    ]
+   },
+   "slot_hot": {
+    "released": 199,
+    "n": 240,
+    "pct": 82.9,
+    "patients": 60,
+    "cluster_ci": [
+     76.2,
+     89.2
+    ]
+   },
+   "attack": {
+    "released": 0,
+    "n": 120,
+    "pct": 0.0,
+    "patients": 60,
+    "cluster_ci": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "v2_llama3.2-3b": {
+   "slot_first_attempt": {
+    "released": 2,
+    "n": 120,
+    "pct": 1.7,
+    "patients": 60,
+    "cluster_ci": [
+     0.0,
+     5.0
+    ]
+   },
+   "slot_after_retries": {
+    "released": 2,
+    "n": 120,
+    "pct": 1.7,
+    "patients": 60,
+    "cluster_ci": [
+     0.0,
+     5.0
+    ]
+   },
+   "slot_daily_first_attempt": {
+    "released": 2,
+    "n": 120,
+    "pct": 1.7,
+    "patients": 60,
+    "cluster_ci": [
+     0.0,
+     5.0
+    ]
+   },
+   "slot_daily_after_retries": {
+    "released": 3,
+    "n": 120,
+    "pct": 2.5,
+    "patients": 60,
+    "cluster_ci": [
+     0.0,
+     6.7
+    ]
+   },
+   "slot_hot": {
+    "released": 34,
+    "n": 240,
+    "pct": 14.2,
+    "patients": 60,
+    "cluster_ci": [
+     9.2,
+     19.6
+    ]
+   },
+   "attack": {
+    "released": 0,
+    "n": 120,
+    "pct": 0.0,
+    "patients": 60,
+    "cluster_ci": [
+     0.0,
+     0.0
+    ]
+   }
+  },
+  "v2_claude-haiku-5-5": {
+   "slot_first_attempt": {
+    "released": 112,
+    "n": 120,
+    "pct": 93.3,
+    "patients": 60,
+    "cluster_ci": [
+     88.3,
+     97.5
+    ]
+   },
+   "slot_after_retries": {
+    "released": 118,
+    "n": 120,
+    "pct": 98.3,
+    "patients": 60,
+    "cluster_ci": [
+     95.0,
+     100.0
+    ]
+   },
+   "slot_daily_first_attempt": {
+    "released": 99,
+    "n": 120,
+    "pct": 82.5,
+    "patients": 60,
+    "cluster_ci": [
+     75.8,
+     89.2
+    ]
+   },
+   "slot_daily_after_retries": {
+    "released": 115,
+    "n": 120,
+    "pct": 95.8,
+    "patients": 60,
+    "cluster_ci": [
+     90.8,
+     99.2
+    ]
+   },
+   "attack": {
+    "released": 0,
+    "n": 120,
+    "pct": 0.0,
+    "patients": 60,
+    "cluster_ci": [
+     0.0,
+     0.0
+    ]
+   }
+  },
   "v2_claude-sonnet-5-5": {
    "slot_first_attempt": {
     "released": 111,

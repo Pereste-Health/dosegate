@@ -50,12 +50,17 @@ All commands run from the repository root with Python 3 (standard library) after
 
 - `eval/build_cases.py` rebuilds `eval/data/cases.jsonl` from the Synthea bundles (not distributed).
 - `python3 eval/free_text_share.py` counts the active MedicationRequests and their free-text fields in the raw Synthea bundles, read in place from `SYNTHEA_FHIR_DIR`, and writes `eval/data/free_text_share.json`.
-- `eval/generate.py` generates model outputs. Version 2 runs used `HALF=test` with `MODEL`, `BACKEND`, `OUT`, and `CONDITIONS` set as in the paper; outputs are `eval/data/generations_v2_*.jsonl`.
+- `eval/generate.py` generates model outputs. Version 2 runs used `HALF=test` with `MODEL`, `BACKEND`, `OUT`, and `CONDITIONS` set as in the paper, and the two Claude runs used `BACKEND=anthropic`, which sends no temperature; outputs are `eval/data/generations_v2_*.jsonl`.
 - `TAG=v2_qwen3.5-4b python3 eval/score.py` (and likewise for `v2_medgemma-4b` and `v2_llama3.2-3b`) re-gates every stored output with the built binary and writes `results_all_<tag>.json` and `final_gate_decisions_<tag>.json`.
 - `TAG=<tag> python3 eval/controls.py` runs the comparison filter, the planted-error test, and the attack counts (`controls_<tag>.json`).
-- `python3 eval/models.py` writes the cross-model table (`models_summary.json`); `python3 eval/describe.py v2_qwen3.5-4b v2_medgemma-4b v2_llama3.2-3b` writes case counts and reading grades (`describe.json`); `python3 eval/latency.py v2_qwen3.5-4b` times the binary.
+- `python3 eval/models.py` writes a five-model summary (`models_summary.json`), covering the three open models and the two Claude runs (Table 2 shows only the open models); `python3 eval/describe.py v2_qwen3.5-4b v2_medgemma-4b v2_llama3.2-3b` writes case counts and reading grades (`describe.json`); `python3 eval/latency.py v2_qwen3.5-4b` times the binary.
 - `python3 eval/attacks.py IN OUT` runs an adversarial corpus through both filters. Corpora: `eval/data/attacks.jsonl` (development), `eval/data/heldout/` (round h1, against version 1), `eval/data/heldout2/` (round h2, against version 2), and `eval/data/replay_v21/` (all corpora replayed through version 2.1; each results file is the output of `python3 eval/attacks.py` on the `.jsonl` file beside it). `python3 eval/labels.py` summarizes the labels. The protocol is in `eval/labeling_protocol.md`.
 - `eval/data/v2_review/` holds the blinded reader labels of model outputs.
+- `python3 eval/bootstrap.py v2_qwen3.5-4b v2_medgemma-4b v2_llama3.2-3b v2_claude-haiku-5-5 v2_claude-sonnet-5-5` writes the patient-cluster intervals to `eval/data/bootstrap.json`.
+- `python3 eval/maxima.py` writes the label-limit counts to `eval/data/maxima.json`.
+- `python3 eval/fallback_rate.py` writes the fallback counts to `eval/data/fallback_rate.json`. It runs the binary at `.lake/build/bin/dosegate` unless the environment variable `DOSEGATE` names another binary.
+- `python3 eval/label_rule_sweep.py` scans the labeled outputs for the two patterns of the labeling rule and writes `eval/data/label_rule_sweep.json`.
+- `eval/coded_timing_check.py` needs the raw Synthea bundles, read from the folder named by `SYNTHEA_FHIR_DIR`, and writes `eval/data/coded_timing_check.json`.
 
 Files without a `v2` tag (`generations.jsonl`, `results_all.json`, and so on) are the version 1 study; files in `eval/data/pilot/` are from an earlier pilot and are not reported.
 

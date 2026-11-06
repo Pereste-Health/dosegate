@@ -12,7 +12,7 @@
    "readers_agree": 42,
    "reader_pairs": 44,
    "kappa": 0.88,
-   "third_reader_used": 2
+   "third_reader_used": 3
   },
   "baseline": {
    "released_outputs": 218,
@@ -26,7 +26,7 @@
    "readers_agree": 195,
    "reader_pairs": 218,
    "kappa": 0.83,
-   "third_reader_used": 23
+   "third_reader_used": 24
   },
   "both_filters_kappa": 0.85
  },
@@ -43,7 +43,7 @@
    "readers_agree": 60,
    "reader_pairs": 67,
    "kappa": 0.81,
-   "third_reader_used": 14
+   "third_reader_used": 17
   },
   "baseline": {
    "released_outputs": 104,
@@ -57,7 +57,7 @@
    "readers_agree": 79,
    "reader_pairs": 89,
    "kappa": 0.8,
-   "third_reader_used": 25
+   "third_reader_used": 28
   },
   "both_filters_kappa": 0.8
  },
@@ -88,7 +88,7 @@
    "readers_agree": 106,
    "reader_pairs": 128,
    "kappa": 0.49,
-   "third_reader_used": 22
+   "third_reader_used": 23
   },
   "both_filters_kappa": 0.5
  },
