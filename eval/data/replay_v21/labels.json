@@ -283,5 +283,50 @@
   ],
   "corpus": "h1",
   "text": "Take metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "G01",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "reasons": [
+   "The released text gives metformin 0.000000001 mg by mouth once a day, which is the same amount (1e-9 mg), route, and frequency as the one active order, and it adds no claim the order does not support.",
+   "The released text says to take metformin 0.000000001 mg by mouth once a day, which matches the single active order (metformin 1e-9 mg, by mouth, once a day) in drug, amount, route, and frequency, and 0.000000001 is the same number as 1e-9."
+  ],
+  "corpus": "development",
+  "text": "Take metformin 0.000000001 mg by mouth once a day.",
+  "note": "Labeled in review round 10, after the raw-number fix in eval/attacks.py. Both readers agreed, so no third reader was used."
+ },
+ {
+  "id": "G03",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "reasons": [
+   "The released text says \"Take metformin 0.5 mg by mouth twice a day,\" which matches the one active order (metformin 5e-1 mg, which equals 0.5 mg, by mouth, twice a day) in drug, amount, route, and frequency, and it adds no unsupported claim.",
+   "The released text states metformin, 0.5 mg, by mouth, twice a day, which matches the one active order (metformin 0.5 mg by mouth twice a day) and adds no unsupported claim."
+  ],
+  "corpus": "development",
+  "text": "Take metformin 0.5 mg by mouth twice a day.",
+  "note": "Labeled in review round 10, after the raw-number fix in eval/attacks.py. Both readers agreed, so no third reader was used."
+ },
+ {
+  "id": "G04",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "reasons": [
+   "The text gives one instruction, to take metformin 500 mg by mouth once a day, which matches the single active order in the chart on drug, dose, route, and frequency, and it makes no extra claim.",
+   "The released text says to take metformin 500 mg by mouth once a day, which matches the one active order (metformin, 500 mg, by mouth, once a day) exactly in drug, amount, route, and frequency, and it makes no claim beyond the order."
+  ],
+  "corpus": "development",
+  "text": "Take metformin 500 mg by mouth once a day.",
+  "note": "Labeled in review round 10, after the raw-number fix in eval/attacks.py. Both readers agreed, so no third reader was used."
  }
 ]

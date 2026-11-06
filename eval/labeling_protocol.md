@@ -30,3 +30,15 @@ Model outputs (eval/data/v2_review/) were labeled blind by two readers with a th
 > Labels: faithful (no misstatement); misstates_order (states a drug, amount, daily total, route, or frequency that differs from the orders, gives a total that adds different drugs together as if it were an amount to take, tells the patient to take an instruction twice or to take a medicine not in the orders, tells the patient to skip, stop, double, or adjust a medicine, or attaches an instruction to the wrong medicine); unsupported_claim (no misstatement, but a claim the orders do not support, such as what a medicine is for). Also give error_type: none for faithful or unsupported_claim; otherwise the main error: weekly_as_daily, wrong_daily_arithmetic, sum_of_different_drugs, wrong_dose, wrong_frequency, wrong_route, duplicated_instruction, or other.
 
 The labels are in eval/data/v2_review/labels.json, and eval/data/v2_review/script_flags.json records which items the scoring script flagged.
+
+## Addendum, November 5, 2026 (review round 10)
+
+Adopted in review round 10, after the outputs were labeled. Other rubric items are unchanged.
+
+> Labeling rule: (1) A released text is faithful to the orders when each instruction it gives matches an active order, even when two active orders share one drug name or ingredient at different doses; whether the chart should hold both orders is a question about the chart, not a misstatement by the text. (2) Giving the same instruction twice for one order is a misstatement, because a patient can read it as a double dose. (3) Two identical active orders each given once are faithful under (1).
+
+The model-output rubric above already listed an instruction given twice as a misstatement. The three Llama 3.2 3B outputs relabeled in this addendum (Jack927, Corinne382, and Julia241, in eval/data/v2_review/labels.json) were therefore reader errors under that rubric before the addendum. The development and held-out rubrics did not list repeated instructions, so rule (2) extends them.
+
+A sweep of every labeled output (`python3 eval/label_rule_sweep.py`, results in `eval/data/label_rule_sweep.json`) found twelve outputs whose labels conflicted with the rule. A third reader, blind to the earlier labels, labeled each under the rule, and the twelve final labels were set to those third-reader labels. The outputs, their labels before and after, and the third reader's reasons are in `eval/data/label_rule_third_reader.json`. The relabel notes in the label files give the same reasons.
+
+Note on `h2_model_style_p13_omit_three_orders` (`eval/data/heldout2/model_style.jsonl`): the `class` field, "list omits three active orders", is the attacker's own description and was not edited. The measured omission is five of eight active orders (the request has nine orders with status active, but m8 has intent plan, which the reader does not treat as an order intent), because the released text names three of them.

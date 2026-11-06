@@ -1,0 +1,78 @@
+{
+  "source_directory": "fhir",
+  "template": "Take {{drug:m1}} {{dose:m1}} {{route:m1}} {{frequency:m1}}, which is {{daily:m1}}.",
+  "flags": "--ignore-free-text (structured orders also tested without the flag)",
+  "one_order_per_request": true,
+  "raw_orders_as_recorded": {
+    "Every four to six hours (qualifier value)": {
+      "orders": 1069,
+      "printed": 0,
+      "blocked_by_reason": {
+        "missingField": 1069
+      }
+    },
+    "Every seventy two hours (qualifier value)": {
+      "orders": 221,
+      "printed": 0,
+      "blocked_by_reason": {
+        "missingField": 221
+      }
+    },
+    "Every six hours (qualifier value)": {
+      "orders": 323,
+      "printed": 0,
+      "blocked_by_reason": {
+        "missingField": 323
+      }
+    },
+    "Every four hours (qualifier value)": {
+      "orders": 140,
+      "printed": 0,
+      "blocked_by_reason": {
+        "missingField": 140
+      }
+    },
+    "Every twelve hours as required (qualifier value)": {
+      "orders": 193,
+      "printed": 0,
+      "blocked_by_reason": {
+        "missingField": 193
+      }
+    }
+  },
+  "structured_orders_with_one_strength_in_mg": {
+    "Every seventy two hours (qualifier value)": {
+      "orders": 221,
+      "printed": 0,
+      "blocked_by_reason": {
+        "missingField": 221
+      },
+      "printed_without_flag": 0,
+      "printed_phrases_after_route": {}
+    },
+    "Every four to six hours (qualifier value)": {
+      "orders": 455,
+      "printed": 455,
+      "blocked_by_reason": {},
+      "printed_without_flag": 0,
+      "printed_phrases_after_route": {
+        "four times a day, which is 1300 mg a day.": 376,
+        "four times a day, which is 1600 mg a day.": 79
+      }
+    },
+    "Every twelve hours as required (qualifier value)": {
+      "orders": 193,
+      "printed": 0,
+      "blocked_by_reason": {
+        "missingField": 193
+      },
+      "printed_without_flag": 0,
+      "printed_phrases_after_route": {}
+    }
+  },
+  "structured_orders_not_normalizable": {
+    "Every four to six hours (qualifier value)": 614,
+    "Every six hours (qualifier value)": 323,
+    "Every four hours (qualifier value)": 140
+  }
+}

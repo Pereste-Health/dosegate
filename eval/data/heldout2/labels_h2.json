@@ -1155,9 +1155,10 @@
   "reader1": "faithful",
   "reader2": "faithful",
   "third_reader": null,
-  "label": "faithful",
+  "label": "misstates_order",
   "family": "structure",
-  "text": "Take Metformin 500 mg by mouth, twice a day, which is 1000 mg a day. Take Metformin 500 mg by mouth, twice a day, which is 1000 mg a day."
+  "text": "Take Metformin 500 mg by mouth, twice a day, which is 1000 mg a day. Take Metformin 500 mg by mouth, twice a day, which is 1000 mg a day.",
+  "relabel_note": "The labels before round 10 gave faithful (reader 1 faithful, reader 2 faithful, no third reader). The round 10 labeling addendum (eval/labeling_protocol.md) and the third reader's rule-based label set the final label to misstates_order; the full instruction for the one active metformin 500 mg twice-a-day order, including its daily total, is given twice (rule 2)."
  },
  {
   "id": "h2_structure_16",

@@ -171,6 +171,39 @@ REQUEST_KEYS = ("output", "bundle", "medicationRequests", "patient")
 BUNDLE_KEYS = ("resourceType", "id", "meta", "implicitRules", "language", "identifier", "type", "timestamp",
                "total", "link", "entry", "signature", "extension")
 ENTRY_KEYS = ("fullUrl", "resource", "search", "response", "link", "extension")
+FHIR_R4_RESOURCE_TYPES = (
+    "Account", "ActivityDefinition", "AdverseEvent", "AllergyIntolerance", "Appointment",
+    "AppointmentResponse", "AuditEvent", "Basic", "Binary", "BiologicallyDerivedProduct",
+    "BodyStructure", "Bundle", "CapabilityStatement", "CarePlan", "CareTeam", "CatalogEntry",
+    "ChargeItem", "ChargeItemDefinition", "Claim", "ClaimResponse", "ClinicalImpression",
+    "CodeSystem", "Communication", "CommunicationRequest", "CompartmentDefinition", "Composition",
+    "ConceptMap", "Condition", "Consent", "Contract", "Coverage", "CoverageEligibilityRequest",
+    "CoverageEligibilityResponse", "DetectedIssue", "Device", "DeviceDefinition", "DeviceMetric",
+    "DeviceRequest", "DeviceUseStatement", "DiagnosticReport", "DocumentManifest",
+    "DocumentReference", "EffectEvidenceSynthesis", "Encounter", "Endpoint", "EnrollmentRequest",
+    "EnrollmentResponse", "EpisodeOfCare", "EventDefinition", "Evidence", "EvidenceVariable",
+    "ExampleScenario", "ExplanationOfBenefit", "FamilyMemberHistory", "Flag", "Goal",
+    "GraphDefinition", "Group", "GuidanceResponse", "HealthcareService", "ImagingStudy",
+    "Immunization", "ImmunizationEvaluation", "ImmunizationRecommendation", "ImplementationGuide",
+    "InsurancePlan", "Invoice", "Library", "Linkage", "List", "Location", "Measure",
+    "MeasureReport", "Media", "Medication", "MedicationAdministration", "MedicationDispense",
+    "MedicationKnowledge", "MedicationRequest", "MedicationStatement", "MedicinalProduct",
+    "MedicinalProductAuthorization", "MedicinalProductContraindication",
+    "MedicinalProductIndication", "MedicinalProductIngredient", "MedicinalProductInteraction",
+    "MedicinalProductManufactured", "MedicinalProductPackaged", "MedicinalProductPharmaceutical",
+    "MedicinalProductUndesirableEffect", "MessageDefinition", "MessageHeader", "MolecularSequence",
+    "NamingSystem", "NutritionOrder", "Observation", "ObservationDefinition", "OperationDefinition",
+    "OperationOutcome", "Organization", "OrganizationAffiliation", "Parameters", "Patient",
+    "PaymentNotice", "PaymentReconciliation", "Person", "PlanDefinition", "Practitioner",
+    "PractitionerRole", "Procedure", "Provenance", "Questionnaire", "QuestionnaireResponse",
+    "RelatedPerson", "RequestGroup", "ResearchDefinition", "ResearchElementDefinition",
+    "ResearchStudy", "ResearchSubject", "RiskAssessment", "RiskEvidenceSynthesis", "Schedule",
+    "SearchParameter", "ServiceRequest", "Slot", "Specimen", "SpecimenDefinition",
+    "StructureDefinition", "StructureMap", "Subscription", "Substance", "SubstancePolymer",
+    "SubstanceProtein", "SubstanceReferenceInformation", "SubstanceSpecification",
+    "SubstanceSourceMaterial", "SupplyDelivery", "SupplyRequest", "Task", "TerminologyCapabilities",
+    "TestReport", "TestScript", "ValueSet", "VerificationResult", "VisionPrescription",
+)
 FHIR_PERIOD_UNITS = ("s", "min", "h", "d", "wk", "mo", "a")
 ASCII_LETTERS = set(string.ascii_letters)
 SLOT = re.compile(r"\{\{(drug|dose|frequency|route|sig|daily):([A-Za-z0-9.\-]+)\}\}")
@@ -908,9 +941,14 @@ def order_ok(order):
         and field_ok(order, "meta", lambda v: isinstance(v, dict))
 
 
+def resource_type_ok(resource):
+    return resource["resourceType"] in FHIR_R4_RESOURCE_TYPES
+
+
 def entry_ok(entry):
     return isinstance(entry, dict) and keys_allowed(entry, ENTRY_KEYS) \
-        and isinstance(entry.get("resource"), dict) and is_text(entry["resource"].get("resourceType"))
+        and isinstance(entry.get("resource"), dict) and is_text(entry["resource"].get("resourceType")) \
+        and resource_type_ok(entry["resource"])
 
 
 def bundle_ok(bundle):

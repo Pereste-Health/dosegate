@@ -1,0 +1,2085 @@
+{
+ "script": "eval/label_rule_sweep.py",
+ "rule": "Round 10 addendum: (1) a text is faithful when each instruction matches an active order, even if two active orders share a drug name or ingredient at different doses; (2) giving the same instruction twice for one order is a misstatement; (3) two identical active orders each given once are faithful.",
+ "files_scanned": [
+  "attack_labels.json",
+  "attacks.jsonl",
+  "cases.jsonl",
+  "free_text_labels.json",
+  "heldout/chart.jsonl",
+  "heldout/labels_h1.json",
+  "heldout/meaning.jsonl",
+  "heldout/model_style.jsonl",
+  "heldout/structure.jsonl",
+  "heldout2/chart.jsonl",
+  "heldout2/clinical.jsonl",
+  "heldout2/labels_h2.json",
+  "heldout2/meaning.jsonl",
+  "heldout2/model_style.jsonl",
+  "heldout2/same_ingredient_pairs.json",
+  "heldout2/structure.jsonl",
+  "replay_v21/development.jsonl",
+  "replay_v21/h1.jsonl",
+  "replay_v21/h2.jsonl",
+  "replay_v21/labels.json",
+  "v2_review/items.jsonl",
+  "v2_review/labels.json"
+ ],
+ "outputs_scanned": 1109,
+ "matches": [
+  {
+   "file": "eval/data/attack_labels.json",
+   "id": "T08 duplicate dose sentence, once-daily warfarin",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take warfarin 5 mg",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
+   "text": "Take warfarin 5 mg. Take warfarin 5 mg.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/attack_labels.json",
+   "id": "T09 duplicate dose, sentences separated by newline",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take warfarin 5 mg",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
+   "text": "Take warfarin 5 mg.\nTake warfarin 5 mg.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/attack_labels.json",
+   "id": "T29 newline split double dose sig",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "metformin 500 mg by mouth twice a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
+   "text": "metformin 500 mg by mouth, twice a day\nmetformin 500 mg by mouth, twice a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/attack_labels.json",
+   "id": "T30 sig twice",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "metformin 500 mg by mouth twice a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
+   "text": "metformin 500 mg by mouth, twice a day. metformin 500 mg by mouth, twice a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/attack_labels.json",
+   "id": "T55 sentence split with exclamation",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take warfarin 5 mg",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
+   "text": "Take warfarin 5 mg! Take warfarin 5 mg!",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/attack_labels.json",
+   "id": "T56 question split",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take warfarin 5 mg",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
+   "text": "Take warfarin 5 mg? Take warfarin 5 mg?",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/attack_labels.json",
+   "id": "T57 ellipsis split duplicate",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take warfarin 5 mg",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
+   "text": "Take warfarin 5 mg... Take warfarin 5 mg...",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/attack_labels.json",
+   "id": "T58 three duplicates",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take warfarin 5 mg",
+    "count": 3,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
+   "text": "Take warfarin 5 mg. Take warfarin 5 mg. Take warfarin 5 mg.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/attack_labels.json",
+   "id": "T69 prescribed double",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take warfarin 5 mg exactly as prescribed",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
+   "text": "Take warfarin 5 mg exactly as prescribed. Take warfarin 5 mg exactly as prescribed.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/attack_labels.json",
+   "id": "A03",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "same name",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": null
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 metformin 500, 1 per 1 d",
+   "text": "Take metformin 500 mg by mouth twice a day. Take metformin 500 mg by mouth once a day. That is a total of 1000 mg a day of metformin.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": "That is a total of 1000 mg a day of metformin.",
+   "review_note": "Two metformin 500 mg orders, twice a day and once a day. Both instructions are given, but the daily total of 1000 mg is not the 1500 mg the orders add up to, so the implied label stays misstates_order."
+  },
+  {
+   "file": "eval/data/attack_labels.json",
+   "id": "D07",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take insulin glargine 20 units as a shot under the skin once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
+   "text": "Take insulin glargine 20 units as a shot under the skin, once a day. Take insulin glargine 20 units as a shot under the skin once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout/labels_h1.json",
+   "id": "h1_meaning_20_same_name_two_metformin_orders",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m9"
+    ],
+    "reason": "same name",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": null
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk; m9 metformin 1000, 1 per 1 d",
+   "text": "Take metformin 500 mg by mouth twice a day. Take metformin 1000 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout/labels_h1.json",
+   "id": "h1_meaning_20_same_name_two_metformin_orders",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m9"
+    ],
+    "reason": "same name",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": null
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk; m9 metformin 1000, 1 per 1 d",
+   "text": "Take metformin 500 mg by mouth twice a day. Take metformin 1000 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout/labels_h1.json",
+   "id": "h1_chart_prior_both_in_output",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "same name",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": null
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 metformin 1000, 1 per 1 d",
+   "text": "Take metformin 500 mg by mouth twice a day. Take metformin 1000 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": "Both orders are active (m1 has intent original-order, which the reader treats as an order intent). The text gives an instruction for each, so rule 1 makes it faithful."
+  },
+  {
+   "file": "eval/data/heldout/labels_h1.json",
+   "id": "h1_chart_prior_both_in_output",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "same name",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": null
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 metformin 1000, 1 per 1 d",
+   "text": "Take metformin 500 mg by mouth twice a day. Take metformin 1000 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": "Both orders are active (m1 has intent original-order, which the reader treats as an order intent). The text gives an instruction for each, so rule 1 makes it faithful."
+  },
+  {
+   "file": "eval/data/heldout/labels_h1.json",
+   "id": "h1_chart_duplicate_same_regimen",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "same name",
+    "identical_orders": true,
+    "instructions_for_each": [
+     2,
+     2
+    ],
+    "shared_ingredient_listed": null
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 metformin 500, 2 per 1 d",
+   "text": "Take metformin 500 mg by mouth twice a day. Take metformin 500 mg by mouth twice a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": "Two identical active orders, metformin 500 mg twice a day. The instruction is given once per order, so rule 3 makes it faithful."
+  },
+  {
+   "file": "eval/data/heldout/labels_h1.json",
+   "id": "h1_chart_duplicate_same_regimen",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "same name",
+    "identical_orders": true,
+    "instructions_for_each": [
+     2,
+     2
+    ],
+    "shared_ingredient_listed": null
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 metformin 500, 2 per 1 d",
+   "text": "Take metformin 500 mg by mouth twice a day. Take metformin 500 mg by mouth twice a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": "Two identical active orders, metformin 500 mg twice a day. The instruction is given once per order, so rule 3 makes it faithful."
+  },
+  {
+   "file": "eval/data/heldout/labels_h1.json",
+   "id": "h1_chart_near_duplicate_dose_and_sig",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "same name",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": null
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 Metformin 1000, 1 per 1 d",
+   "text": "Take metformin 500 mg by mouth twice a day. Take Metformin 1000 mg by mouth, once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": "Metformin 500 mg twice a day and metformin 1000 mg once a day, both active. The text gives both, so rule 1 makes it faithful."
+  },
+  {
+   "file": "eval/data/heldout/labels_h1.json",
+   "id": "h1_chart_near_duplicate_dose_and_sig",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "same name",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": null
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 Metformin 1000, 1 per 1 d",
+   "text": "Take metformin 500 mg by mouth twice a day. Take Metformin 1000 mg by mouth, once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": "Metformin 500 mg twice a day and metformin 1000 mg once a day, both active. The text gives both, so rule 1 makes it faithful."
+  },
+  {
+   "file": "eval/data/heldout/labels_h1.json",
+   "id": "h1_structure_15",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take metformin 500 mg by mouth twice a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 metformin 500, 2 per 1 d",
+   "text": "Take metformin 500 mg by mouth, twice a day. Take metformin 500 mg by mouth twice a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout/labels_h1.json",
+   "id": "h1_model_style_two_lisinopril_orders_two_doses",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "same name",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": null
+   },
+   "chart": "m1 lisinopril 10, 1 per 1 d; m2 lisinopril 20, 1 per 1 d",
+   "text": "Take lisinopril 10 mg by mouth once a day.\nTake lisinopril 20 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout/labels_h1.json",
+   "id": "h1_model_style_two_lisinopril_orders_two_doses",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "same name",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": null
+   },
+   "chart": "m1 lisinopril 10, 1 per 1 d; m2 lisinopril 20, 1 per 1 d",
+   "text": "Take lisinopril 10 mg by mouth once a day.\nTake lisinopril 20 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout/labels_h1.json",
+   "id": "h1_model_style_dose_repeated_in_next_sentence",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take hydrochlorothiazide 25 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 hydrochlorothiazide 25, 1 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
+   "text": "Take hydrochlorothiazide 25 mg by mouth once a day.\nTake hydrochlorothiazide 25 mg by mouth once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_meaning_01_brand_lantus_glargine",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Lantus 20, 1 per 1 d; m2 insulin glargine 10, 1 per 1 d",
+   "text": "Take Lantus 20 units as a shot under the skin once a day.\nTake insulin glargine 10 units as a shot under the skin once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_meaning_01_brand_lantus_glargine",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Lantus 20, 1 per 1 d; m2 insulin glargine 10, 1 per 1 d",
+   "text": "Take Lantus 20 units as a shot under the skin once a day.\nTake insulin glargine 10 units as a shot under the skin once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_meaning_02_brand_synthroid_levothyroxine",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Synthroid 50, 1 per 1 d; m2 levothyroxine 75, 1 per 1 d",
+   "text": "Take Synthroid 50 mcg by mouth once a day. Take levothyroxine 75 mcg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_meaning_02_brand_synthroid_levothyroxine",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Synthroid 50, 1 per 1 d; m2 levothyroxine 75, 1 per 1 d",
+   "text": "Take Synthroid 50 mcg by mouth once a day. Take levothyroxine 75 mcg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_meaning_03_brand_glucophage_metformin",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Glucophage 500, 2 per 1 d; m2 metformin 1000, 1 per 1 d",
+   "text": "Take Glucophage 500 mg by mouth twice a day.\nTake metformin 1000 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_meaning_03_brand_glucophage_metformin",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Glucophage 500, 2 per 1 d; m2 metformin 1000, 1 per 1 d",
+   "text": "Take Glucophage 500 mg by mouth twice a day.\nTake metformin 1000 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_meaning_04_abbrev_asa_aspirin",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 ASA 81, 1 per 1 d; m2 aspirin 325, 1 per 1 d",
+   "text": "Take ASA 81 mg by mouth once a day.\nTake aspirin 325 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_meaning_04_abbrev_asa_aspirin",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 ASA 81, 1 per 1 d; m2 aspirin 325, 1 per 1 d",
+   "text": "Take ASA 81 mg by mouth once a day.\nTake aspirin 325 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_meaning_05_abbrev_apap_acetaminophen",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 APAP 500, 1 per 1 d; m2 acetaminophen 1000, 1 per 1 d",
+   "text": "Take APAP 500 mg by mouth once a day.\nTake acetaminophen 1000 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_meaning_05_abbrev_apap_acetaminophen",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 APAP 500, 1 per 1 d; m2 acetaminophen 1000, 1 per 1 d",
+   "text": "Take APAP 500 mg by mouth once a day.\nTake acetaminophen 1000 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_meaning_06_hyphen_split_met_formin",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "same name",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": null
+   },
+   "chart": "m1 Met-formin 500, 2 per 1 d; m2 Metformin 1000, 1 per 1 d",
+   "text": "Take Met-formin 500 mg by mouth twice a day.\nTake Metformin 1000 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_meaning_06_hyphen_split_met_formin",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "same name",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": null
+   },
+   "chart": "m1 Met-formin 500, 2 per 1 d; m2 Metformin 1000, 1 per 1 d",
+   "text": "Take Met-formin 500 mg by mouth twice a day.\nTake Metformin 1000 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_meaning_07_control_case_metformin",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "same name",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": null
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 Metformin 1000, 1 per 1 d",
+   "text": "Take metformin 500 mg by mouth twice a day.\nTake Metformin 1000 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_meaning_23_repeat_same_shape_control",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take insulin glargine 20 units as a shot under the skin once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d",
+   "text": "Take insulin glargine 20 units as a shot under the skin once a day. Take insulin glargine 20 units as a shot under the skin once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_meaning_24_dose_then_sig_same_order_control",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take metformin 500 mg by mouth twice a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d",
+   "text": "Take metformin 500 mg by mouth, twice a day.\nTake metformin 500 mg by mouth twice a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_chart_same_drug_asa_aspirin",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 ASA 81, 1 per 1 d; m2 aspirin 325, 1 per 1 d",
+   "text": "Take ASA 81 mg by mouth once a day. Take aspirin 325 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_chart_same_drug_lantus_glargine",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Lantus 20, 1 per 1 d; m2 insulin glargine 10, 1 per 1 d",
+   "text": "Take Lantus 20 units as a shot under the skin once a day. Take insulin glargine 10 units as a shot under the skin once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_chart_same_drug_zestoretic_lisinopril",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Zestoretic 20, 1 per 1 d; m2 lisinopril 10, 1 per 1 d",
+   "text": "Take Zestoretic 20 mg by mouth once a day. Take lisinopril 10 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_chart_same_drug_toprol_metoprolol",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Toprol-XL 100, 1 per 1 d; m2 metoprolol tartrate 25, 2 per 1 d",
+   "text": "Take Toprol-XL 100 mg by mouth once a day. Take metoprolol tartrate 25 mg by mouth twice a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_chart_same_drug_asa_aspirin",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 ASA 81, 1 per 1 d; m2 aspirin 325, 1 per 1 d",
+   "text": "Take ASA 81 mg by mouth once a day. Take aspirin 325 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_chart_same_drug_lantus_glargine",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Lantus 20, 1 per 1 d; m2 insulin glargine 10, 1 per 1 d",
+   "text": "Take Lantus 20 units as a shot under the skin once a day. Take insulin glargine 10 units as a shot under the skin once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_chart_same_drug_zestoretic_lisinopril",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Zestoretic 20, 1 per 1 d; m2 lisinopril 10, 1 per 1 d",
+   "text": "Take Zestoretic 20 mg by mouth once a day. Take lisinopril 10 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_chart_same_drug_toprol_metoprolol",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Toprol-XL 100, 1 per 1 d; m2 metoprolol tartrate 25, 2 per 1 d",
+   "text": "Take Toprol-XL 100 mg by mouth once a day. Take metoprolol tartrate 25 mg by mouth twice a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_structure_28",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "same name",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": null
+   },
+   "chart": "m1 Metformin 500, 2 per 1 d; m2 Met formin 1000, 1 per 1 d",
+   "text": "Take Metformin 500 mg by mouth twice a day. Take Met formin 1000 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_structure_29",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Lisinopril 10, 1 per 1 d; m2 LisinopriI 20, 1 per 1 d",
+   "text": "Take Lisinopril 10 mg by mouth once a day. Take LisinopriI 20 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_structure_15",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take metformin 500 mg by mouth twice a day which is 1000 mg a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 Metformin 500, 2 per 1 d; m2 Lisinopril 10, 1 per 1 d; m3 Warfarin 5, 1 per 1 d",
+   "text": "Take Metformin 500 mg by mouth, twice a day, which is 1000 mg a day. Take Metformin 500 mg by mouth, twice a day, which is 1000 mg a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": "One metformin 500 mg order, twice a day. The full instruction, with its daily total, is given twice for that one order (rule 2). Lisinopril and warfarin orders are not given in the text."
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_structure_28",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "same name",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": null
+   },
+   "chart": "m1 Metformin 500, 2 per 1 d; m2 Met formin 1000, 1 per 1 d",
+   "text": "Take Metformin 500 mg by mouth twice a day. Take Met formin 1000 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_structure_29",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Lisinopril 10, 1 per 1 d; m2 LisinopriI 20, 1 per 1 d",
+   "text": "Take Lisinopril 10 mg by mouth once a day. Take LisinopriI 20 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_model_style_p04_brand_generic_pair_full",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m6"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 metoprolol tartrate 25, 2 per 1 d; m2 levothyroxine 50, 1 per 1 d; m4 metformin 500, 2 per 1 d; m5 enoxaparin 40, 1 per 1 d; m6 Toprol-XL 50, 1 per 1 d; m7 albuterol 2, 1 per 4 h; m9 heparin 5000, no frequency; m10 warfarin 5, 1 per 1 d",
+   "text": "Take metoprolol tartrate 25 mg by mouth twice a day.\nTake Toprol-XL 50 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_model_style_p19_brand_generic_pair_sig",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m6"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 metoprolol tartrate 25, 2 per 1 d; m2 levothyroxine 50, 1 per 1 d; m4 metformin 500, 2 per 1 d; m5 enoxaparin 40, 1 per 1 d; m6 Toprol-XL 50, 1 per 1 d; m7 albuterol 2, 1 per 4 h; m9 heparin 5000, no frequency; m10 warfarin 5, 1 per 1 d",
+   "text": "Take metoprolol tartrate 25 mg by mouth, twice a day.\nTake Toprol-XL 50 mg by mouth, once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_model_style_p04_brand_generic_pair_full",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m6"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 metoprolol tartrate 25, 2 per 1 d; m2 levothyroxine 50, 1 per 1 d; m4 metformin 500, 2 per 1 d; m5 enoxaparin 40, 1 per 1 d; m6 Toprol-XL 50, 1 per 1 d; m7 albuterol 2, 1 per 4 h; m9 heparin 5000, no frequency; m10 warfarin 5, 1 per 1 d",
+   "text": "Take metoprolol tartrate 25 mg by mouth twice a day.\nTake Toprol-XL 50 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_model_style_p19_brand_generic_pair_sig",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m6"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 metoprolol tartrate 25, 2 per 1 d; m2 levothyroxine 50, 1 per 1 d; m4 metformin 500, 2 per 1 d; m5 enoxaparin 40, 1 per 1 d; m6 Toprol-XL 50, 1 per 1 d; m7 albuterol 2, 1 per 4 h; m9 heparin 5000, no frequency; m10 warfarin 5, 1 per 1 d",
+   "text": "Take metoprolol tartrate 25 mg by mouth, twice a day.\nTake Toprol-XL 50 mg by mouth, once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_clinical_10",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Prednisone 20, 1 per 1 d; m2 Deltasone 40, 1 per 1 d",
+   "text": "Take Prednisone 20 mg by mouth once a day. Take Deltasone 40 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_clinical_13",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Synthroid 75, 1 per 1 d; m2 Levothyroxine 25, 1 per 1 d",
+   "text": "Take Synthroid 75 mcg by mouth once a day. Take Levothyroxine 25 mcg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_clinical_15",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Lantus 20, 1 per 1 d; m2 Insulin glargine 10, 1 per 1 d",
+   "text": "Take Lantus 20 units as a shot under the skin once a day. Take Insulin glargine 10 units as a shot under the skin once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_clinical_20",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Acetaminophen 500, 1 per 6 h; m2 Tylenol 650, 1 per 4 h",
+   "text": "Take Acetaminophen 500 mg by mouth every 6 hours. Take Tylenol 650 mg by mouth every 4 hours as needed.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": "Acetaminophen 500 mg every 6 hours and Tylenol 650 mg every 4 hours as needed (as-needed flag set on the order). The text gives both instructions, so the pair is faithful."
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_clinical_29",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Percocet 1, 4 per 1 d; m2 Acetaminophen 650, 1 per 4 h",
+   "text": "Take Percocet 1 tablet by mouth four times a day. Take Acetaminophen 650 mg by mouth every 4 hours.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": "Percocet is ordered as one tablet four times a day (a count dose), and acetaminophen 650 mg every 4 hours. The text gives both instructions, so the pair is faithful under rule 1. The count dose is outside this rule."
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_clinical_09",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "same name",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": null
+   },
+   "chart": "m1 Prednisone 40, 1 per 1 d; m2 Prednisone 20, 1 per 1 d",
+   "text": "Take Prednisone 40 mg by mouth once a day. Take Prednisone 20 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_clinical_10",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Prednisone 20, 1 per 1 d; m2 Deltasone 40, 1 per 1 d",
+   "text": "Take Prednisone 20 mg by mouth once a day. Take Deltasone 40 mg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_clinical_12",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "same name",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": null
+   },
+   "chart": "m1 Levothyroxine 25, 1 per 1 d; m2 Levothyroxine 50, 1 per 1 d",
+   "text": "Take Levothyroxine 25 mcg by mouth once a day. Take Levothyroxine 50 mcg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_clinical_13",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Synthroid 75, 1 per 1 d; m2 Levothyroxine 25, 1 per 1 d",
+   "text": "Take Synthroid 75 mcg by mouth once a day. Take Levothyroxine 25 mcg by mouth once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_clinical_15",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Lantus 20, 1 per 1 d; m2 Insulin glargine 10, 1 per 1 d",
+   "text": "Take Lantus 20 units as a shot under the skin once a day. Take Insulin glargine 10 units as a shot under the skin once a day.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_clinical_20",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Acetaminophen 500, 1 per 6 h; m2 Tylenol 650, 1 per 4 h",
+   "text": "Take Acetaminophen 500 mg by mouth every 6 hours. Take Tylenol 650 mg by mouth every 4 hours as needed.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": "Acetaminophen 500 mg every 6 hours and Tylenol 650 mg every 4 hours as needed (as-needed flag set on the order). The text gives both instructions, so the pair is faithful."
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_clinical_29",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "pattern_detail": {
+    "pair": [
+     "m1",
+     "m2"
+    ],
+    "reason": "shared ingredient",
+    "identical_orders": false,
+    "instructions_for_each": [
+     1,
+     1
+    ],
+    "shared_ingredient_listed": true
+   },
+   "chart": "m1 Percocet 1, 4 per 1 d; m2 Acetaminophen 650, 1 per 4 h",
+   "text": "Take Percocet 1 tablet by mouth four times a day. Take Acetaminophen 650 mg by mouth every 4 hours.",
+   "current_label": "faithful",
+   "rule_label": "faithful",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": "Percocet is ordered as one tablet four times a day (a count dose), and acetaminophen 650 mg every 4 hours. The text gives both instructions, so the pair is faithful under rule 1. The count dose is outside this rule."
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Jack927_Greenholt190_b6c63f21-259f-77f7-2007-e48b3d110cdd:natural|slot_daily|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take lisinopril 10 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 lisinopril 10, 1 per 1 d",
+   "text": "Here is your medicine list. Take lisinopril 10 mg by mouth once a day. Take lisinopril 10 mg by mouth, once a day. which is 10 mg a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Gustavo235_Durgan499_3adfd08e-91b7-a75b-2e8f-a14e146dd6ec:perturbed|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take lisinopril 30 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 lisinopril 30, 1 per 1 d",
+   "text": "Here is your medicine list. Take lisinopril 30 mg by mouth once a day. Take lisinopril 30 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Billi682_Emmy828_Hackett68_66bf5ca1-d575-32ec-1520-aeaa3596e8f4:natural|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 2.5 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 amlodipine 2.5, 1 per 1 d",
+   "text": "Here is your medicine list. Take amlodipine 2.5 mg by mouth once a day. Take amlodipine 2.5 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Chung121_Kimberlee228_Mertz280_dff3abd0-62a6-3a19-fe0a-b07e93c217f3:perturbed|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 7.5 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 amlodipine 7.5, 1 per 1 d",
+   "text": "Here is your medicine list. Take amlodipine 7.5 mg by mouth once a day. Take amlodipine 7.5 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Jack927_Greenholt190_b6c63f21-259f-77f7-2007-e48b3d110cdd:perturbed|slot_daily|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take lisinopril 15 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 lisinopril 15, 1 per 1 d",
+   "text": "Here is your medicine list. Take lisinopril 15 mg by mouth once a day. Take lisinopril 15 mg by mouth, once a day. which is 15 mg a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Corinne382_Addie421_Kuhn96_4cf1ed22-b07e-e03c-d128-800f4d686830:perturbed|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 1.25 mg by mouth three times a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 amlodipine 1.25, 3 per 1 d",
+   "text": "Here is your medicine list. Take amlodipine 1.25 mg by mouth three times a day. Take amlodipine 1.25 mg by mouth, three times a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Julia241_Rosenbaum794_c5edbad6-1a56-66da-2595-78815cd0e69e:perturbed|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 5 mg by mouth three times a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 amlodipine 5, 3 per 1 d",
+   "text": "Here is your medicine list. Take amlodipine 5 mg by mouth three times a day. Take amlodipine 5 mg by mouth, three times a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Billi682_Emmy828_Hackett68_66bf5ca1-d575-32ec-1520-aeaa3596e8f4:perturbed|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 7.5 mg by mouth every 8 hours",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 amlodipine 7.5, 1 per 8 h",
+   "text": "Here is your medicine list. Take amlodipine 7.5 mg by mouth every 8 hours. Take amlodipine 7.5 mg by mouth, every 8 hours.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Karina848_Rippin620_7df7a529-c31d-ea05-9747-ca8ef0a05d01:perturbed|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take lisinopril 30 mg by mouth three times a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 lisinopril 30, 3 per 1 d",
+   "text": "Here is your medicine list. Take lisinopril 30 mg by mouth three times a day. Take lisinopril 30 mg by mouth, three times a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Corinne382_Addie421_Kuhn96_4cf1ed22-b07e-e03c-d128-800f4d686830:natural|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 2.5 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 amlodipine 2.5, 1 per 1 d",
+   "text": "Here is your medicine list. Take amlodipine 2.5 mg by mouth once a day. Take amlodipine 2.5 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Gustavo235_Durgan499_3adfd08e-91b7-a75b-2e8f-a14e146dd6ec:natural|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take lisinopril 10 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 lisinopril 10, 1 per 1 d",
+   "text": "Here is your medicine list. Take lisinopril 10 mg by mouth once a day. Take lisinopril 10 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Ignacio928_Gutmann970_e76b0686-5c57-c9d5-ce4b-50c47a2bf334:natural|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 2.5 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 amlodipine 2.5, 1 per 1 d",
+   "text": "Here is your medicine list. Take amlodipine 2.5 mg by mouth once a day. Take amlodipine 2.5 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Lelah386_Wiza601_0419b9d5-3a77-a94e-9dab-58fe9606edec:perturbed|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take lisinopril 15 mg by mouth twice a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 lisinopril 15, 2 per 1 d",
+   "text": "Here is your medicine list. Take lisinopril 15 mg by mouth twice a day. Take lisinopril 15 mg by mouth, twice a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Claudio955_Stehr398_3caddd60-e99b-8f1e-c4a4-0ca62988d405:perturbed|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take lisinopril 30 mg by mouth once a week",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 lisinopril 30, 1 per 1 wk",
+   "text": "Here is your medicine list. Take lisinopril 30 mg by mouth once a week. Take lisinopril 30 mg by mouth, once a week.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Jack927_Greenholt190_b6c63f21-259f-77f7-2007-e48b3d110cdd:natural|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take lisinopril 10 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 lisinopril 10, 1 per 1 d",
+   "text": "Here is your medicine list. Take lisinopril 10 mg by mouth once a day. Take lisinopril 10 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Claudio955_Stehr398_3caddd60-e99b-8f1e-c4a4-0ca62988d405:natural|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take lisinopril 10 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 lisinopril 10, 1 per 1 d",
+   "text": "Here is your medicine list. Take lisinopril 10 mg by mouth once a day. Take lisinopril 10 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Julia241_Rosenbaum794_c5edbad6-1a56-66da-2595-78815cd0e69e:natural|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 2.5 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 amlodipine 2.5, 1 per 1 d",
+   "text": "Here is your medicine list. Take amlodipine 2.5 mg by mouth once a day. Take amlodipine 2.5 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Lelah386_Wiza601_0419b9d5-3a77-a94e-9dab-58fe9606edec:natural|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take lisinopril 10 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 lisinopril 10, 1 per 1 d",
+   "text": "Here is your medicine list. Take lisinopril 10 mg by mouth once a day. Take lisinopril 10 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Lindsey52_Lehner980_558237e2-1461-2893-9b6a-b64fb4144156:natural|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take lisinopril 10 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 lisinopril 10, 1 per 1 d",
+   "text": "Here is your medicine list. Take lisinopril 10 mg by mouth once a day. Take lisinopril 10 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Ignacio928_Gutmann970_e76b0686-5c57-c9d5-ce4b-50c47a2bf334:perturbed|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 1.25 mg by mouth once a week",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 amlodipine 1.25, 1 per 1 wk",
+   "text": "Here is your medicine list. Take amlodipine 1.25 mg by mouth once a week. Take amlodipine 1.25 mg by mouth, once a week.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Karina848_Rippin620_7df7a529-c31d-ea05-9747-ca8ef0a05d01:natural|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take lisinopril 10 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 lisinopril 10, 1 per 1 d",
+   "text": "Here is your medicine list. Take lisinopril 10 mg by mouth once a day. Take lisinopril 10 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Jack927_Greenholt190_b6c63f21-259f-77f7-2007-e48b3d110cdd:perturbed|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take lisinopril 15 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 lisinopril 15, 1 per 1 d",
+   "text": "Here is your medicine list. Take lisinopril 15 mg by mouth once a day. Take lisinopril 15 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Lindsey52_Lehner980_558237e2-1461-2893-9b6a-b64fb4144156:perturbed|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take lisinopril 5 mg by mouth twice a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 lisinopril 5, 2 per 1 d",
+   "text": "Here is your medicine list. Take lisinopril 5 mg by mouth twice a day. Take lisinopril 5 mg by mouth, twice a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Chung121_Kimberlee228_Mertz280_dff3abd0-62a6-3a19-fe0a-b07e93c217f3:natural|slot|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 2.5 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1
+   },
+   "chart": "m1 amlodipine 2.5, 1 per 1 d",
+   "text": "Here is your medicine list. Take amlodipine 2.5 mg by mouth once a day. Take amlodipine 2.5 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  }
+ ]
+}

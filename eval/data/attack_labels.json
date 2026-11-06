@@ -475,9 +475,11 @@
   "filter": "baseline",
   "reader1": "misstates_order",
   "reader2": "faithful",
-  "third_reader": "faithful",
-  "label": "faithful",
-  "text": "metformin 500 mg by mouth, twice a day\nmetformin 500 mg by mouth, twice a day."
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "text": "metformin 500 mg by mouth, twice a day\nmetformin 500 mg by mouth, twice a day.",
+  "relabel_note": "The labels before round 10 gave faithful (reader 1 misstates_order, reader 2 faithful, third reader faithful). The round 10 labeling addendum (eval/labeling_protocol.md) and the third reader's rule-based label set the final label to misstates_order; the same instruction is given twice for the one active metformin 500 mg twice-a-day order (rule 2). In this file, third_reader is the third reader's label from round 10, and third_reader_before_round10 is the value that field held before round 10.",
+  "third_reader_before_round10": "faithful"
  },
  {
   "id": "T30 sig twice",
@@ -485,9 +487,11 @@
   "filter": "baseline",
   "reader1": "misstates_order",
   "reader2": "faithful",
-  "third_reader": "faithful",
-  "label": "faithful",
-  "text": "metformin 500 mg by mouth, twice a day. metformin 500 mg by mouth, twice a day."
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "text": "metformin 500 mg by mouth, twice a day. metformin 500 mg by mouth, twice a day.",
+  "relabel_note": "The labels before round 10 gave faithful (reader 1 misstates_order, reader 2 faithful, third reader faithful). The round 10 labeling addendum (eval/labeling_protocol.md) and the third reader's rule-based label set the final label to misstates_order; the same instruction is given twice for the one active metformin 500 mg twice-a-day order (rule 2). In this file, third_reader is the third reader's label from round 10, and third_reader_before_round10 is the value that field held before round 10.",
+  "third_reader_before_round10": "faithful"
  },
  {
   "id": "T31 frequency sentence after dose sentence",

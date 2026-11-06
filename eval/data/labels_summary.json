@@ -17,8 +17,8 @@
   "baseline": {
    "released_outputs": 218,
    "labels": {
-    "misstates_order": 90,
-    "faithful": 88,
+    "misstates_order": 92,
+    "faithful": 86,
     "unsupported_claim": 40
    },
    "distinct_texts": 204,
@@ -34,12 +34,12 @@
   "layer": {
    "released_outputs": 74,
    "labels": {
-    "misstates_order": 41,
+    "misstates_order": 38,
     "unsupported_claim": 13,
-    "faithful": 20
+    "faithful": 23
    },
    "distinct_texts": 55,
-   "distinct_texts_with_mixed_labels": 3,
+   "distinct_texts_with_mixed_labels": 2,
    "readers_agree": 60,
    "reader_pairs": 67,
    "kappa": 0.81,
@@ -48,12 +48,12 @@
   "baseline": {
    "released_outputs": 104,
    "labels": {
-    "misstates_order": 54,
+    "misstates_order": 51,
     "unsupported_claim": 17,
-    "faithful": 33
+    "faithful": 36
    },
    "distinct_texts": 82,
-   "distinct_texts_with_mixed_labels": 3,
+   "distinct_texts_with_mixed_labels": 2,
    "readers_agree": 79,
    "reader_pairs": 89,
    "kappa": 0.8,
@@ -79,9 +79,9 @@
   "baseline": {
    "released_outputs": 128,
    "labels": {
-    "faithful": 100,
+    "faithful": 99,
     "unsupported_claim": 6,
-    "misstates_order": 22
+    "misstates_order": 23
    },
    "distinct_texts": 117,
    "distinct_texts_with_mixed_labels": 2,
@@ -91,5 +91,32 @@
    "third_reader_used": 22
   },
   "both_filters_kappa": 0.5
+ },
+ "v2_review": {
+  "llama_comparison_filter": {
+   "released_outputs": 171,
+   "labels": {
+    "misstates_order": 51,
+    "faithful": 120
+   },
+   "misstates_order": 51,
+   "misstates_order_before_round10": 48,
+   "relabeled_to_misstates_order": 3,
+   "misstates_order_duplicated_instruction": 44
+  },
+  "free_daily_check": {
+   "MedGemma 4B": {
+    "flagged": 71,
+    "flagged_misstates_order": 69,
+    "unflagged": 20,
+    "unflagged_misstates_order": 2
+   },
+   "Llama 3.2 3B": {
+    "flagged": 31,
+    "flagged_misstates_order": 19,
+    "unflagged": 20,
+    "unflagged_misstates_order": 1
+   }
+  }
  }
 }

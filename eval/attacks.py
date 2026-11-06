@@ -1,4 +1,4 @@
-import collections, json, os, subprocess, sys
+import collections, json, os, re, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -6,6 +6,13 @@ DATA = os.path.join(HERE, "data")
 BINDIR = os.environ.get("BINDIR", os.path.join(ROOT, ".lake/build/bin"))
 BIN = {"layer": [os.path.join(BINDIR, "dosegate"), "serve"],
        "baseline": [os.path.join(BINDIR, "dosegate-baseline")]}
+
+
+RAW_NUMBER = re.compile(r'"\\u0000NUM(.*?)\\u0000NUM"')
+
+
+def raw_numbers(request):
+    return RAW_NUMBER.sub(lambda m: m.group(1), request)
 
 
 def run(cmd, requests):
@@ -18,7 +25,7 @@ def main():
     src = sys.argv[1] if len(sys.argv) > 1 else os.path.join(DATA, "attacks.jsonl")
     dst = sys.argv[2] if len(sys.argv) > 2 else os.path.join(DATA, "attack_results.jsonl")
     attacks = [json.loads(l) for l in open(src)]
-    reqs = [a["request"] for a in attacks]
+    reqs = [raw_numbers(a["request"]) for a in attacks]
     res = {k: run(v, reqs) for k, v in BIN.items()}
     out = []
     for a, l, b in zip(attacks, res["layer"], res["baseline"]):

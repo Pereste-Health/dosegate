@@ -775,9 +775,10 @@
   "reader1": "misstates_order",
   "reader2": "misstates_order",
   "third_reader": null,
-  "label": "misstates_order",
+  "label": "faithful",
   "family": "chart",
-  "text": "Take metformin 500 mg by mouth twice a day. Take metformin 1000 mg by mouth once a day."
+  "text": "Take metformin 500 mg by mouth twice a day. Take metformin 1000 mg by mouth once a day.",
+  "relabel_note": "The labels before round 10 gave misstates_order (reader 1 misstates_order, reader 2 misstates_order, no third reader). The round 10 labeling addendum (eval/labeling_protocol.md) and the third reader's rule-based label set the final label to faithful; the chart has two active metformin orders at different doses (500 mg twice a day and 1000 mg once a day), and the text gives one instruction for each (rule 1)."
  },
  {
   "id": "h1_chart_prior_both_in_output",
@@ -785,9 +786,10 @@
   "reader1": "misstates_order",
   "reader2": "misstates_order",
   "third_reader": null,
-  "label": "misstates_order",
+  "label": "faithful",
   "family": "chart",
-  "text": "Take metformin 500 mg by mouth twice a day. Take metformin 1000 mg by mouth once a day."
+  "text": "Take metformin 500 mg by mouth twice a day. Take metformin 1000 mg by mouth once a day.",
+  "relabel_note": "The labels before round 10 gave misstates_order (reader 1 misstates_order, reader 2 misstates_order, no third reader). The round 10 labeling addendum (eval/labeling_protocol.md) and the third reader's rule-based label set the final label to faithful; the chart has two active metformin orders at different doses (500 mg twice a day and 1000 mg once a day), and the text gives one instruction for each (rule 1)."
  },
  {
   "id": "h1_chart_intent_reflex_order",
@@ -815,9 +817,10 @@
   "reader1": "misstates_order",
   "reader2": "misstates_order",
   "third_reader": null,
-  "label": "misstates_order",
+  "label": "faithful",
   "family": "chart",
-  "text": "Take metformin 500 mg by mouth twice a day. Take metformin 500 mg by mouth twice a day."
+  "text": "Take metformin 500 mg by mouth twice a day. Take metformin 500 mg by mouth twice a day.",
+  "relabel_note": "The labels before round 10 gave misstates_order (reader 1 misstates_order, reader 2 misstates_order, no third reader). The round 10 labeling addendum (eval/labeling_protocol.md) and the third reader's rule-based label set the final label to faithful; the chart has two identical active metformin 500 mg twice-a-day orders, and the text gives each order its instruction once (rule 3)."
  },
  {
   "id": "h1_chart_duplicate_same_regimen",
@@ -825,9 +828,10 @@
   "reader1": "misstates_order",
   "reader2": "misstates_order",
   "third_reader": null,
-  "label": "misstates_order",
+  "label": "faithful",
   "family": "chart",
-  "text": "Take metformin 500 mg by mouth twice a day. Take metformin 500 mg by mouth twice a day."
+  "text": "Take metformin 500 mg by mouth twice a day. Take metformin 500 mg by mouth twice a day.",
+  "relabel_note": "The labels before round 10 gave misstates_order (reader 1 misstates_order, reader 2 misstates_order, no third reader). The round 10 labeling addendum (eval/labeling_protocol.md) and the third reader's rule-based label set the final label to faithful; the chart has two identical active metformin 500 mg twice-a-day orders, and the text gives each order its instruction once (rule 3)."
  },
  {
   "id": "h1_chart_near_duplicate_dose_and_sig",
@@ -835,9 +839,10 @@
   "reader1": "misstates_order",
   "reader2": "misstates_order",
   "third_reader": null,
-  "label": "misstates_order",
+  "label": "faithful",
   "family": "chart",
-  "text": "Take metformin 500 mg by mouth twice a day. Take Metformin 1000 mg by mouth, once a day."
+  "text": "Take metformin 500 mg by mouth twice a day. Take Metformin 1000 mg by mouth, once a day.",
+  "relabel_note": "The labels before round 10 gave misstates_order (reader 1 misstates_order, reader 2 misstates_order, no third reader). The round 10 labeling addendum (eval/labeling_protocol.md) and the third reader's rule-based label set the final label to faithful; the chart has two active metformin orders at different doses, and the text gives one instruction for each (rule 1)."
  },
  {
   "id": "h1_chart_near_duplicate_dose_and_sig",
@@ -845,9 +850,10 @@
   "reader1": "misstates_order",
   "reader2": "misstates_order",
   "third_reader": null,
-  "label": "misstates_order",
+  "label": "faithful",
   "family": "chart",
-  "text": "Take metformin 500 mg by mouth twice a day. Take Metformin 1000 mg by mouth, once a day."
+  "text": "Take metformin 500 mg by mouth twice a day. Take Metformin 1000 mg by mouth, once a day.",
+  "relabel_note": "The labels before round 10 gave misstates_order (reader 1 misstates_order, reader 2 misstates_order, no third reader). The round 10 labeling addendum (eval/labeling_protocol.md) and the third reader's rule-based label set the final label to faithful; the chart has two active metformin orders at different doses, and the text gives one instruction for each (rule 1)."
  },
  {
   "id": "h1_chart_daily_brand_vs_generic_no_shared_word",

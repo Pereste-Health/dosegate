@@ -1,0 +1,1 @@
+{"status": "error", "message": "a bundle entry resource with id m1 has resourceType MedicationRequests, which is not a FHIR R4 resource type"}

@@ -859,9 +859,11 @@
   "item": "bo|v2_llama3.2-3b|Jack927_Greenholt190_b6c63f21-259f-77f7-2007-e48b3d110cdd:perturbed|slot_daily|0",
   "reader1": "faithful",
   "reader2": "misstates_order",
-  "third_reader": "faithful",
-  "label": "faithful",
-  "error_type": "none"
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "error_type": "duplicated_instruction",
+  "relabel_note": "The labels before round 10 gave faithful (reader 1 faithful, reader 2 misstates_order, third reader faithful). The round 10 labeling addendum (eval/labeling_protocol.md) and the third reader's rule-based label set the final label to misstates_order; the one active order (lisinopril 15 mg once a day) is given twice in the released text (rule 2). The error type changed from none to duplicated_instruction. In this file, third_reader is the third reader's label from round 10, and third_reader_before_round10 is the value that field held before round 10.",
+  "third_reader_before_round10": "faithful"
  },
  {
   "item": "fd|v2_llama3.2-3b|Fermin479_Dare640_00022071-35f9-627e-63e6-98cd3a601185:perturbed",
@@ -875,9 +877,11 @@
   "item": "bo|v2_llama3.2-3b|Corinne382_Addie421_Kuhn96_4cf1ed22-b07e-e03c-d128-800f4d686830:perturbed|slot|0",
   "reader1": "faithful",
   "reader2": "misstates_order",
-  "third_reader": "faithful",
-  "label": "faithful",
-  "error_type": "none"
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "error_type": "duplicated_instruction",
+  "relabel_note": "The labels before round 10 gave faithful (reader 1 faithful, reader 2 misstates_order, third reader faithful). The round 10 labeling addendum (eval/labeling_protocol.md) and the third reader's rule-based label set the final label to misstates_order; the one active order (amlodipine 1.25 mg three times a day) is given twice in the released text (rule 2). The error type changed from none to duplicated_instruction. In this file, third_reader is the third reader's label from round 10, and third_reader_before_round10 is the value that field held before round 10.",
+  "third_reader_before_round10": "faithful"
  },
  {
   "item": "bo|v2_llama3.2-3b|King743_Hane680_821825dc-ca43-4db9-6a79-4b3584f14aae:natural|slot_daily|0",
@@ -891,9 +895,11 @@
   "item": "bo|v2_llama3.2-3b|Julia241_Rosenbaum794_c5edbad6-1a56-66da-2595-78815cd0e69e:perturbed|slot|0",
   "reader1": "faithful",
   "reader2": "misstates_order",
-  "third_reader": "faithful",
-  "label": "faithful",
-  "error_type": "none"
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "error_type": "duplicated_instruction",
+  "relabel_note": "The labels before round 10 gave faithful (reader 1 faithful, reader 2 misstates_order, third reader faithful). The round 10 labeling addendum (eval/labeling_protocol.md) and the third reader's rule-based label set the final label to misstates_order; the one active order (amlodipine 5 mg three times a day) is given twice in the released text (rule 2). The error type changed from none to duplicated_instruction. In this file, third_reader is the third reader's label from round 10, and third_reader_before_round10 is the value that field held before round 10.",
+  "third_reader_before_round10": "faithful"
  },
  {
   "item": "bo|v2_llama3.2-3b|Latonya462_Angelia425_Feil794_d4ce2bae-8174-454f-ca04-68c695aad3e0:perturbed|slot_daily|0",

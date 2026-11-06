@@ -1,0 +1,126 @@
+{
+ "description": "Fresh third reader, blind to the earlier labels, labeled each output that the rule sweep (eval/label_rule_sweep.py) found in conflict with the round 10 labeling addendum. Each final label was set to the third reader's label. The sweep runs on the updated labels, so its conflict count after this change is zero by construction; it does not test whether the rule is consistent with every possible output. The sweep checks two patterns only: two active orders for one drug name or ingredient, and a repeated instruction.",
+ "rule": "eval/labeling_protocol.md, addendum adopted in review round 10 (November 5, 2026)",
+ "outputs": [
+  {
+   "file": "eval/data/attack_labels.json",
+   "id": "T29 newline split double dose sig",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "label_before_round10": "faithful",
+   "label_after_round10": "misstates_order",
+   "third_reader_label": "misstates_order",
+   "third_reader_reason": "The text gives the single active metformin 500 mg twice-a-day order's instruction twice, so a patient could read it as a double dose, which the addendum's rule 2 treats as a misstatement."
+  },
+  {
+   "file": "eval/data/attack_labels.json",
+   "id": "T30 sig twice",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "label_before_round10": "faithful",
+   "label_after_round10": "misstates_order",
+   "third_reader_label": "misstates_order",
+   "third_reader_reason": "The text tells the patient to take metformin 500 mg twice a day twice, so a patient can read it as a double dose, and under the addendum's rule 2 that repeats one order's instruction and misstates the order."
+  },
+  {
+   "file": "eval/data/heldout/labels_h1.json",
+   "id": "h1_chart_prior_both_in_output",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "label_before_round10": "misstates_order",
+   "label_after_round10": "faithful",
+   "third_reader_label": "faithful",
+   "third_reader_reason": "The text gives one instruction for each active metformin order (500 mg twice a day for m1 and 1000 mg once a day for m2), and under the addendum's rule 1 two active orders sharing a drug name at different doses are still faithful, with no instruction given twice for one order."
+  },
+  {
+   "file": "eval/data/heldout/labels_h1.json",
+   "id": "h1_chart_prior_both_in_output",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "label_before_round10": "misstates_order",
+   "label_after_round10": "faithful",
+   "third_reader_label": "faithful",
+   "third_reader_reason": "Each instruction in the released text matches an active order (metformin 500 mg twice a day and metformin 1000 mg once a day), and no instruction is given twice for one order, so under the addendum's rule 1 the text is faithful even though the two active metformin orders at different doses are a chart question."
+  },
+  {
+   "file": "eval/data/heldout/labels_h1.json",
+   "id": "h1_chart_duplicate_same_regimen",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "label_before_round10": "misstates_order",
+   "label_after_round10": "faithful",
+   "third_reader_label": "faithful",
+   "third_reader_reason": "The two active metformin 500 mg twice-a-day orders each correspond to one of the two identical instructions in the text, so each order is given exactly once, which the addendum's rule 3 treats as faithful."
+  },
+  {
+   "file": "eval/data/heldout/labels_h1.json",
+   "id": "h1_chart_duplicate_same_regimen",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "label_before_round10": "misstates_order",
+   "label_after_round10": "faithful",
+   "third_reader_label": "faithful",
+   "third_reader_reason": "Each of the two identical active metformin 500 mg twice-a-day orders is given its instruction exactly once, so under addendum rule 3 the text matches the orders and the earlier misstates_order label should be replaced."
+  },
+  {
+   "file": "eval/data/heldout/labels_h1.json",
+   "id": "h1_chart_near_duplicate_dose_and_sig",
+   "filter": "layer",
+   "pattern": "same_drug_two_active_orders",
+   "label_before_round10": "misstates_order",
+   "label_after_round10": "faithful",
+   "third_reader_label": "faithful",
+   "third_reader_reason": "Each instruction in the released text matches one active order (metformin 500 mg twice a day and metformin 1000 mg once a day), and each is given once, so under addendum rule 1 and rule 3 the text does not misstate either order and the earlier misstates_order label should be replaced with faithful."
+  },
+  {
+   "file": "eval/data/heldout/labels_h1.json",
+   "id": "h1_chart_near_duplicate_dose_and_sig",
+   "filter": "baseline",
+   "pattern": "same_drug_two_active_orders",
+   "label_before_round10": "misstates_order",
+   "label_after_round10": "faithful",
+   "third_reader_label": "faithful",
+   "third_reader_reason": "Each instruction in the released text matches one active order, metformin 500 mg twice a day and metformin 1000 mg once a day, and neither instruction is given twice, so under the addendum's rule 1 and rule 3 the text does not misstate an order even though the chart holds two metformin orders at different doses."
+  },
+  {
+   "file": "eval/data/heldout2/labels_h2.json",
+   "id": "h2_structure_15",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "label_before_round10": "faithful",
+   "label_after_round10": "misstates_order",
+   "third_reader_label": "misstates_order",
+   "third_reader_reason": "The text gives the full instruction for the single metformin 500 mg twice-a-day order twice, so a patient could read it as two doses (1000 mg each time, 2000 mg a day), which the addendum's rule 2 treats as a misstatement even though each instruction matches the active order."
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Jack927_Greenholt190_b6c63f21-259f-77f7-2007-e48b3d110cdd:perturbed|slot_daily|0",
+   "filter": "comparison filter (Llama 3.2 3B)",
+   "pattern": "repeated_instruction",
+   "label_before_round10": "faithful",
+   "label_after_round10": "misstates_order",
+   "third_reader_label": "misstates_order",
+   "third_reader_reason": "The text tells the patient twice to take lisinopril 15 mg once a day, which a patient could read as a double dose, so under addendum rule 2 it misstates the single active order even though the dose and frequency themselves match the chart."
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Corinne382_Addie421_Kuhn96_4cf1ed22-b07e-e03c-d128-800f4d686830:perturbed|slot|0",
+   "filter": "comparison filter (Llama 3.2 3B)",
+   "pattern": "repeated_instruction",
+   "label_before_round10": "faithful",
+   "label_after_round10": "misstates_order",
+   "third_reader_label": "misstates_order",
+   "third_reader_reason": "The released text gives the single active order's instruction twice (amlodipine 1.25 mg three times a day, stated in two sentences), which under addendum rule 2 a patient could read as a double dose."
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Julia241_Rosenbaum794_c5edbad6-1a56-66da-2595-78815cd0e69e:perturbed|slot|0",
+   "filter": "comparison filter (Llama 3.2 3B)",
+   "pattern": "repeated_instruction",
+   "label_before_round10": "faithful",
+   "label_after_round10": "misstates_order",
+   "third_reader_label": "misstates_order",
+   "third_reader_reason": "The chart has one active order for amlodipine 5 mg three times a day, but the released text gives that same instruction twice, which under rule (2) a patient could read as a double dose, so the text misstates the order."
+  }
+ ]
+}
