@@ -2,7 +2,7 @@
 
 Pattern a: the chart has two or more active orders with the same drug name (ignoring case and spaces), or a shared ingredient for the charts listed in heldout2/same_ingredient_pairs.json, and the text gives an instruction for each of the two orders.
 
-Pattern b: the text gives the same instruction (drug, dose, route, frequency; case, commas, and line breaks ignored) more often than the chart has active orders that the instruction fits.
+Pattern b: the text gives two or more instructions to take the same order. An instruction is a clause that starts with "take" or a dosing line that starts with the drug name and states a route or frequency, and that names an active order and states its dose. Extra words after the dose do not change this, and a clause that only states a daily total or restates the dose is not an instruction. Pattern b fires when the instructions for a group of orders outnumber the group's orders, where the group is the set of active orders that one instruction fits.
 
 Each match records the label the rule implies. Pattern a implies faithful unless the text also states a number that no active order has. Pattern b implies misstates_order. A match conflicts when the implied label differs from the current label.
 
@@ -297,22 +297,51 @@ def unknown_number(orders, text):
     return None
 
 
+CLAUSE_SPLIT = re.compile(r"(?<=[,;:])\s+(?=take\b)|\s+and\s+(?=take\b)", re.IGNORECASE)
+SIG_WORDS = re.compile(
+    r"\b(by mouth|under the skin|as a shot|once a day|twice a day|three times a day|four times a day"
+    r"|once daily|twice daily|every day|daily|once a week|weekly|every \d+ hours?)\b"
+)
+
+
+def clauses(segment):
+    return [c.strip() for c in CLAUSE_SPLIT.split(segment) if c.strip()]
+
+
+def clause_fits(clause, order):
+    if not has_dose(clause, order):
+        return False
+    if re.match(r"take\b", clause, re.IGNORECASE):
+        return names_order(clause, order)
+    low = clause.lower()
+    if not SIG_WORDS.search(low):
+        return False
+    return any(re.match(p + r"\s+" + dose_pattern(v), low) for p in term_patterns(order) for v in order["doses"])
+
+
 def pattern_b(orders, text):
-    active = [o for o in orders if o["active"]]
-    hits = []
-    seen = set()
+    active = [i for i, o in enumerate(orders) if o["active"]]
+    best = {}
     for segs in segment_sets(text):
-        counts = collections.Counter(norm_key(s) for s in segs if is_instruction(s))
-        for key, c in counts.items():
-            if c < 2 or key in seen:
-                continue
-            named = [o for o in active if names_order(key, o)]
-            if not named:
-                continue
-            k = sum(1 for o in named if has_dose(key, o))
-            if c > k:
-                seen.add(key)
-                hits.append({"instruction": key, "count": c, "active_orders_it_fits": k})
+        found = collections.defaultdict(list)
+        for seg in segs:
+            for clause in clauses(seg):
+                fit = frozenset(i for i in active if clause_fits(clause, orders[i]))
+                if fit:
+                    found[fit].append(clause)
+        for fit, group in found.items():
+            if fit not in best or len(group) > len(best[fit]):
+                best[fit] = group
+    hits = []
+    for fit, group in best.items():
+        if len(group) > len(fit):
+            hits.append({
+                "instruction": norm_key(group[0]),
+                "count": len(group),
+                "active_orders_it_fits": len(fit),
+                "order_ids": sorted(orders[i]["id"] for i in fit),
+                "clauses": group,
+            })
     return hits
 
 

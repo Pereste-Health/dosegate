@@ -96,13 +96,13 @@
   "llama_comparison_filter": {
    "released_outputs": 171,
    "labels": {
-    "misstates_order": 51,
-    "faithful": 120
+    "misstates_order": 56,
+    "faithful": 115
    },
-   "misstates_order": 51,
+   "misstates_order": 56,
    "misstates_order_before_round10": 48,
-   "relabeled_to_misstates_order": 3,
-   "misstates_order_duplicated_instruction": 44
+   "relabeled_to_misstates_order": 8,
+   "misstates_order_duplicated_instruction": 49
   },
   "free_daily_check": {
    "MedGemma 4B": {

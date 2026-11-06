@@ -34,7 +34,8 @@ def tally(bundles):
          "active_single_dosage_mr_with_free_text": 0,
          "active_mr_by_field": {f: 0 for f in FIELDS},
          "flagged_orders_with_more_than_one_dosage_instruction": 0,
-         "flagged_orders_with_as_needed_phrase_without_flag": 0}
+         "flagged_orders_with_as_needed_phrase_without_flag": 0,
+         "active_mr_with_route": 0}
     rows = {}
     for bundle in bundles:
         t["bundles"] += 1
@@ -44,6 +45,7 @@ def tally(bundles):
             if mr.get("resourceType") != "MedicationRequest" or mr.get("status") != "active":
                 continue
             t["active_mr"] += 1
+            t["active_mr_with_route"] += any("route" in d for d in mr.get("dosageInstruction", []))
             found = free_text(mr)
             for f in FIELDS:
                 t["active_mr_by_field"][f] += found[f]

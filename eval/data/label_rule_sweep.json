@@ -35,7 +35,14 @@
    "pattern_detail": {
     "instruction": "take warfarin 5 mg",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m5"
+    ],
+    "clauses": [
+     "Take warfarin 5 mg.",
+     "Take warfarin 5 mg."
+    ]
    },
    "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
    "text": "Take warfarin 5 mg. Take warfarin 5 mg.",
@@ -53,7 +60,14 @@
    "pattern_detail": {
     "instruction": "take warfarin 5 mg",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m5"
+    ],
+    "clauses": [
+     "Take warfarin 5 mg.",
+     "Take warfarin 5 mg."
+    ]
    },
    "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
    "text": "Take warfarin 5 mg.\nTake warfarin 5 mg.",
@@ -71,7 +85,14 @@
    "pattern_detail": {
     "instruction": "metformin 500 mg by mouth twice a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "metformin 500 mg by mouth, twice a day",
+     "metformin 500 mg by mouth, twice a day."
+    ]
    },
    "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
    "text": "metformin 500 mg by mouth, twice a day\nmetformin 500 mg by mouth, twice a day.",
@@ -89,7 +110,14 @@
    "pattern_detail": {
     "instruction": "metformin 500 mg by mouth twice a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "metformin 500 mg by mouth, twice a day.",
+     "metformin 500 mg by mouth, twice a day."
+    ]
    },
    "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
    "text": "metformin 500 mg by mouth, twice a day. metformin 500 mg by mouth, twice a day.",
@@ -107,7 +135,14 @@
    "pattern_detail": {
     "instruction": "take warfarin 5 mg",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m5"
+    ],
+    "clauses": [
+     "Take warfarin 5 mg!",
+     "Take warfarin 5 mg!"
+    ]
    },
    "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
    "text": "Take warfarin 5 mg! Take warfarin 5 mg!",
@@ -125,7 +160,14 @@
    "pattern_detail": {
     "instruction": "take warfarin 5 mg",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m5"
+    ],
+    "clauses": [
+     "Take warfarin 5 mg?",
+     "Take warfarin 5 mg?"
+    ]
    },
    "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
    "text": "Take warfarin 5 mg? Take warfarin 5 mg?",
@@ -143,7 +185,14 @@
    "pattern_detail": {
     "instruction": "take warfarin 5 mg",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m5"
+    ],
+    "clauses": [
+     "Take warfarin 5 mg...",
+     "Take warfarin 5 mg..."
+    ]
    },
    "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
    "text": "Take warfarin 5 mg... Take warfarin 5 mg...",
@@ -161,10 +210,68 @@
    "pattern_detail": {
     "instruction": "take warfarin 5 mg",
     "count": 3,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m5"
+    ],
+    "clauses": [
+     "Take warfarin 5 mg.",
+     "Take warfarin 5 mg.",
+     "Take warfarin 5 mg."
+    ]
    },
    "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
    "text": "Take warfarin 5 mg. Take warfarin 5 mg. Take warfarin 5 mg.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/attack_labels.json",
+   "id": "T60 mixed dose and daily duplicate",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take insulin glargine 20 units",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m2"
+    ],
+    "clauses": [
+     "Take insulin glargine 20 units.",
+     "Take insulin glargine 20 units a day."
+    ]
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
+   "text": "Take insulin glargine 20 units. Take insulin glargine 20 units a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/attack_labels.json",
+   "id": "T65 stack: dose twice, daily and text 'as you feel'",
+   "filter": "baseline",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take metformin 500 mg",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take metformin 500 mg.",
+     "Take metformin 500 mg as you feel."
+    ]
+   },
+   "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
+   "text": "Take metformin 500 mg. Take metformin 500 mg as you feel.",
    "current_label": "misstates_order",
    "rule_label": "misstates_order",
    "conflicts": false,
@@ -179,7 +286,14 @@
    "pattern_detail": {
     "instruction": "take warfarin 5 mg exactly as prescribed",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m5"
+    ],
+    "clauses": [
+     "Take warfarin 5 mg exactly as prescribed.",
+     "Take warfarin 5 mg exactly as prescribed."
+    ]
    },
    "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
    "text": "Take warfarin 5 mg exactly as prescribed. Take warfarin 5 mg exactly as prescribed.",
@@ -223,7 +337,14 @@
    "pattern_detail": {
     "instruction": "take insulin glargine 20 units as a shot under the skin once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m2"
+    ],
+    "clauses": [
+     "Take insulin glargine 20 units as a shot under the skin, once a day.",
+     "Take insulin glargine 20 units as a shot under the skin once a day."
+    ]
    },
    "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
    "text": "Take insulin glargine 20 units as a shot under the skin, once a day. Take insulin glargine 20 units as a shot under the skin once a day.",
@@ -449,7 +570,14 @@
    "pattern_detail": {
     "instruction": "take metformin 500 mg by mouth twice a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take metformin 500 mg by mouth, twice a day.",
+     "Take metformin 500 mg by mouth twice a day."
+    ]
    },
    "chart": "m1 metformin 500, 2 per 1 d",
    "text": "Take metformin 500 mg by mouth, twice a day. Take metformin 500 mg by mouth twice a day.",
@@ -519,7 +647,14 @@
    "pattern_detail": {
     "instruction": "take hydrochlorothiazide 25 mg by mouth once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take hydrochlorothiazide 25 mg by mouth once a day.",
+     "Take hydrochlorothiazide 25 mg by mouth once a day."
+    ]
    },
    "chart": "m1 hydrochlorothiazide 25, 1 per 1 d; m2 insulin glargine 20, 1 per 1 d; m4 acetaminophen 325, 1 per 4 h; m5 warfarin 5, 1 per 1 d; m6 heparin 5000, no frequency; m7 potassium chloride 20, 1 per 1 d; m8 alendronate 70, 1 per 1 wk",
    "text": "Take hydrochlorothiazide 25 mg by mouth once a day.\nTake hydrochlorothiazide 25 mg by mouth once a day.",
@@ -875,7 +1010,14 @@
    "pattern_detail": {
     "instruction": "take insulin glargine 20 units as a shot under the skin once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m2"
+    ],
+    "clauses": [
+     "Take insulin glargine 20 units as a shot under the skin once a day.",
+     "Take insulin glargine 20 units as a shot under the skin once a day."
+    ]
    },
    "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d",
    "text": "Take insulin glargine 20 units as a shot under the skin once a day. Take insulin glargine 20 units as a shot under the skin once a day.",
@@ -893,7 +1035,14 @@
    "pattern_detail": {
     "instruction": "take metformin 500 mg by mouth twice a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take metformin 500 mg by mouth, twice a day.",
+     "Take metformin 500 mg by mouth twice a day."
+    ]
    },
    "chart": "m1 metformin 500, 2 per 1 d; m2 insulin glargine 20, 1 per 1 d",
    "text": "Take metformin 500 mg by mouth, twice a day.\nTake metformin 500 mg by mouth twice a day.",
@@ -1171,7 +1320,14 @@
    "pattern_detail": {
     "instruction": "take metformin 500 mg by mouth twice a day which is 1000 mg a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take Metformin 500 mg by mouth, twice a day, which is 1000 mg a day.",
+     "Take Metformin 500 mg by mouth, twice a day, which is 1000 mg a day."
+    ]
    },
    "chart": "m1 Metformin 500, 2 per 1 d; m2 Lisinopril 10, 1 per 1 d; m3 Warfarin 5, 1 per 1 d",
    "text": "Take Metformin 500 mg by mouth, twice a day, which is 1000 mg a day. Take Metformin 500 mg by mouth, twice a day, which is 1000 mg a day.",
@@ -1657,10 +1813,67 @@
    "pattern_detail": {
     "instruction": "take lisinopril 10 mg by mouth once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take lisinopril 10 mg by mouth once a day.",
+     "Take lisinopril 10 mg by mouth, once a day."
+    ]
    },
    "chart": "m1 lisinopril 10, 1 per 1 d",
    "text": "Here is your medicine list. Take lisinopril 10 mg by mouth once a day. Take lisinopril 10 mg by mouth, once a day. which is 10 mg a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Julia241_Rosenbaum794_c5edbad6-1a56-66da-2595-78815cd0e69e:perturbed|slot_hot|2",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 5 mg orally daily which is 15 mg a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 5 mg orally daily, which is 15 mg a day.",
+     "Take amlodipine 5 mg by mouth, three times a day."
+    ]
+   },
+   "chart": "m1 amlodipine 5, 3 per 1 d",
+   "text": "Here's the explanation for your medicine list:\n\nHere is your medicine list. Take amlodipine 5 mg orally daily, which is 15 mg a day. Take amlodipine 5 mg by mouth, three times a day. Please ask your doctor and pharmacist your questions.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Chung121_Kimberlee228_Mertz280_dff3abd0-62a6-3a19-fe0a-b07e93c217f3:natural|slot_daily|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 2.5 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 2.5 mg by mouth once a day.",
+     "Take amlodipine 2.5 mg by mouth, once a day which is 2.5 mg a day."
+    ]
+   },
+   "chart": "m1 amlodipine 2.5, 1 per 1 d",
+   "text": "Here is your medicine list. Take amlodipine 2.5 mg by mouth once a day. Take amlodipine 2.5 mg by mouth, once a day which is 2.5 mg a day.",
    "current_label": "misstates_order",
    "rule_label": "misstates_order",
    "conflicts": false,
@@ -1675,10 +1888,67 @@
    "pattern_detail": {
     "instruction": "take lisinopril 30 mg by mouth once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take lisinopril 30 mg by mouth once a day.",
+     "Take lisinopril 30 mg by mouth, once a day."
+    ]
    },
    "chart": "m1 lisinopril 30, 1 per 1 d",
    "text": "Here is your medicine list. Take lisinopril 30 mg by mouth once a day. Take lisinopril 30 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Billi682_Emmy828_Hackett68_66bf5ca1-d575-32ec-1520-aeaa3596e8f4:natural|slot_daily|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 2.5 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 2.5 mg by mouth once a day.",
+     "Take amlodipine 2.5 mg by mouth, once a day which is 2.5 mg a day."
+    ]
+   },
+   "chart": "m1 amlodipine 2.5, 1 per 1 d",
+   "text": "Here is your medicine list. Take amlodipine 2.5 mg by mouth once a day. Take amlodipine 2.5 mg by mouth, once a day which is 2.5 mg a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Chung121_Kimberlee228_Mertz280_dff3abd0-62a6-3a19-fe0a-b07e93c217f3:perturbed|slot_hot|2",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 7.5 mg orally daily which is 7.5 mg a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 7.5 mg orally daily, which is 7.5 mg a day.",
+     "Take amlodipine 7.5 mg by mouth, once a day."
+    ]
+   },
+   "chart": "m1 amlodipine 7.5, 1 per 1 d",
+   "text": "Here's the explanation for your medicine list:\n\nHere is your medicine list. Take amlodipine 7.5 mg orally daily, which is 7.5 mg a day. Take amlodipine 7.5 mg by mouth, once a day. Please ask your doctor and pharmacist your questions.",
    "current_label": "misstates_order",
    "rule_label": "misstates_order",
    "conflicts": false,
@@ -1693,10 +1963,42 @@
    "pattern_detail": {
     "instruction": "take amlodipine 2.5 mg by mouth once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 2.5 mg by mouth once a day.",
+     "Take amlodipine 2.5 mg by mouth, once a day."
+    ]
    },
    "chart": "m1 amlodipine 2.5, 1 per 1 d",
    "text": "Here is your medicine list. Take amlodipine 2.5 mg by mouth once a day. Take amlodipine 2.5 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Latonya462_Angelia425_Feil794_d4ce2bae-8174-454f-ca04-68c695aad3e0:natural|slot_daily|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take hydrochlorothiazide 25 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take hydrochlorothiazide 25 mg by mouth once a day.",
+     "Take hydrochlorothiazide 25 mg by mouth, once a day which is 25 mg a day."
+    ]
+   },
+   "chart": "m1 hydrochlorothiazide 25, 1 per 1 d",
+   "text": "Here is your medicine list. Take hydrochlorothiazide 25 mg by mouth once a day. Take hydrochlorothiazide 25 mg by mouth, once a day which is 25 mg a day.",
    "current_label": "misstates_order",
    "rule_label": "misstates_order",
    "conflicts": false,
@@ -1711,10 +2013,68 @@
    "pattern_detail": {
     "instruction": "take amlodipine 7.5 mg by mouth once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 7.5 mg by mouth once a day.",
+     "Take amlodipine 7.5 mg by mouth, once a day."
+    ]
    },
    "chart": "m1 amlodipine 7.5, 1 per 1 d",
    "text": "Here is your medicine list. Take amlodipine 7.5 mg by mouth once a day. Take amlodipine 7.5 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Louetta798_Shawnna218_Predovic534_3ca59c6b-763a-4d9a-2067-558ed1728bba:perturbed|slot_hot|2",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take simvastatin 30 mg",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take simvastatin 30 mg.",
+     "Take simvastatin 30 mg by mouth, every 12 hours, which is every 12 hours."
+    ]
+   },
+   "chart": "m1 simvastatin 30, 1 per 12 h",
+   "text": "Here's the explanation for the simvastatin medication:\n\nTake simvastatin 30 mg. Take simvastatin 30 mg by mouth, every 12 hours, which is every 12 hours. Take simvastatin 60 mg a day, which is every 12 hours.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Louetta798_Shawnna218_Predovic534_3ca59c6b-763a-4d9a-2067-558ed1728bba:natural|slot_hot|2",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take simvastatin 10 mg",
+    "count": 3,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take simvastatin 10 mg.",
+     "Take simvastatin 10 mg by mouth, once a day, which is once a day.",
+     "Take simvastatin 10 mg a day, which is once a day."
+    ]
+   },
+   "chart": "m1 simvastatin 10, 1 per 1 d",
+   "text": "Here's the explanation for the simvastatin medication:\n\nTake simvastatin 10 mg. Take simvastatin 10 mg by mouth, once a day, which is once a day. Take simvastatin 10 mg a day, which is once a day.",
    "current_label": "misstates_order",
    "rule_label": "misstates_order",
    "conflicts": false,
@@ -1729,7 +2089,14 @@
    "pattern_detail": {
     "instruction": "take lisinopril 15 mg by mouth once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take lisinopril 15 mg by mouth once a day.",
+     "Take lisinopril 15 mg by mouth, once a day."
+    ]
    },
    "chart": "m1 lisinopril 15, 1 per 1 d",
    "text": "Here is your medicine list. Take lisinopril 15 mg by mouth once a day. Take lisinopril 15 mg by mouth, once a day. which is 15 mg a day.",
@@ -1747,10 +2114,42 @@
    "pattern_detail": {
     "instruction": "take amlodipine 1.25 mg by mouth three times a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 1.25 mg by mouth three times a day.",
+     "Take amlodipine 1.25 mg by mouth, three times a day."
+    ]
    },
    "chart": "m1 amlodipine 1.25, 3 per 1 d",
    "text": "Here is your medicine list. Take amlodipine 1.25 mg by mouth three times a day. Take amlodipine 1.25 mg by mouth, three times a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|King743_Hane680_821825dc-ca43-4db9-6a79-4b3584f14aae:natural|slot_daily|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take hydrochlorothiazide 25 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take hydrochlorothiazide 25 mg by mouth once a day.",
+     "Take hydrochlorothiazide 25 mg by mouth, once a day which is 25 mg a day."
+    ]
+   },
+   "chart": "m1 hydrochlorothiazide 25, 1 per 1 d",
+   "text": "Here is your medicine list. Take hydrochlorothiazide 25 mg by mouth once a day. Take hydrochlorothiazide 25 mg by mouth, once a day which is 25 mg a day.",
    "current_label": "misstates_order",
    "rule_label": "misstates_order",
    "conflicts": false,
@@ -1765,10 +2164,67 @@
    "pattern_detail": {
     "instruction": "take amlodipine 5 mg by mouth three times a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 5 mg by mouth three times a day.",
+     "Take amlodipine 5 mg by mouth, three times a day."
+    ]
    },
    "chart": "m1 amlodipine 5, 3 per 1 d",
    "text": "Here is your medicine list. Take amlodipine 5 mg by mouth three times a day. Take amlodipine 5 mg by mouth, three times a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Latonya462_Angelia425_Feil794_d4ce2bae-8174-454f-ca04-68c695aad3e0:perturbed|slot_daily|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take hydrochlorothiazide 37.5 mg by mouth every 12 hours",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take hydrochlorothiazide 37.5 mg by mouth every 12 hours.",
+     "Take hydrochlorothiazide 37.5 mg by mouth, every 12 hours which is 75 mg a day."
+    ]
+   },
+   "chart": "m1 hydrochlorothiazide 37.5, 1 per 12 h",
+   "text": "Here is your medicine list. Take hydrochlorothiazide 37.5 mg by mouth every 12 hours. Take hydrochlorothiazide 37.5 mg by mouth, every 12 hours which is 75 mg a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Chung121_Kimberlee228_Mertz280_dff3abd0-62a6-3a19-fe0a-b07e93c217f3:perturbed|slot_daily|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 7.5 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 7.5 mg by mouth once a day.",
+     "Take amlodipine 7.5 mg by mouth, once a day which is 7.5 mg a day."
+    ]
+   },
+   "chart": "m1 amlodipine 7.5, 1 per 1 d",
+   "text": "Here is your medicine list. Take amlodipine 7.5 mg by mouth once a day. Take amlodipine 7.5 mg by mouth, once a day which is 7.5 mg a day.",
    "current_label": "misstates_order",
    "rule_label": "misstates_order",
    "conflicts": false,
@@ -1783,7 +2239,14 @@
    "pattern_detail": {
     "instruction": "take amlodipine 7.5 mg by mouth every 8 hours",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 7.5 mg by mouth every 8 hours.",
+     "Take amlodipine 7.5 mg by mouth, every 8 hours."
+    ]
    },
    "chart": "m1 amlodipine 7.5, 1 per 8 h",
    "text": "Here is your medicine list. Take amlodipine 7.5 mg by mouth every 8 hours. Take amlodipine 7.5 mg by mouth, every 8 hours.",
@@ -1801,10 +2264,42 @@
    "pattern_detail": {
     "instruction": "take lisinopril 30 mg by mouth three times a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take lisinopril 30 mg by mouth three times a day.",
+     "Take lisinopril 30 mg by mouth, three times a day."
+    ]
    },
    "chart": "m1 lisinopril 30, 3 per 1 d",
    "text": "Here is your medicine list. Take lisinopril 30 mg by mouth three times a day. Take lisinopril 30 mg by mouth, three times a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Corinne382_Addie421_Kuhn96_4cf1ed22-b07e-e03c-d128-800f4d686830:perturbed|slot_hot|2",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 1.25 mg orally daily which is 3.75 mg a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 1.25 mg orally daily, which is 3.75 mg a day.",
+     "Take amlodipine 1.25 mg by mouth, three times a day."
+    ]
+   },
+   "chart": "m1 amlodipine 1.25, 3 per 1 d",
+   "text": "Here's the explanation for your medicine list:\n\nHere is your medicine list. Take amlodipine 1.25 mg orally daily, which is 3.75 mg a day. Take amlodipine 1.25 mg by mouth, three times a day. Please ask your doctor and pharmacist your questions.",
    "current_label": "misstates_order",
    "rule_label": "misstates_order",
    "conflicts": false,
@@ -1819,10 +2314,67 @@
    "pattern_detail": {
     "instruction": "take amlodipine 2.5 mg by mouth once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 2.5 mg by mouth once a day.",
+     "Take amlodipine 2.5 mg by mouth, once a day."
+    ]
    },
    "chart": "m1 amlodipine 2.5, 1 per 1 d",
    "text": "Here is your medicine list. Take amlodipine 2.5 mg by mouth once a day. Take amlodipine 2.5 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Billi682_Emmy828_Hackett68_66bf5ca1-d575-32ec-1520-aeaa3596e8f4:perturbed|slot_daily|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 7.5 mg by mouth every 8 hours",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 7.5 mg by mouth every 8 hours.",
+     "Take amlodipine 7.5 mg by mouth, every 8 hours which is 22.5 mg a day."
+    ]
+   },
+   "chart": "m1 amlodipine 7.5, 1 per 8 h",
+   "text": "Here is your medicine list. Take amlodipine 7.5 mg by mouth every 8 hours. Take amlodipine 7.5 mg by mouth, every 8 hours which is 22.5 mg a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Ignacio928_Gutmann970_e76b0686-5c57-c9d5-ce4b-50c47a2bf334:natural|slot_daily|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 2.5 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 2.5 mg by mouth once a day.",
+     "Take amlodipine 2.5 mg by mouth, once a day which is 2.5 mg a day."
+    ]
+   },
+   "chart": "m1 amlodipine 2.5, 1 per 1 d",
+   "text": "Here is your medicine list. Take amlodipine 2.5 mg by mouth once a day. Take amlodipine 2.5 mg by mouth, once a day which is 2.5 mg a day.",
    "current_label": "misstates_order",
    "rule_label": "misstates_order",
    "conflicts": false,
@@ -1837,10 +2389,42 @@
    "pattern_detail": {
     "instruction": "take lisinopril 10 mg by mouth once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take lisinopril 10 mg by mouth once a day.",
+     "Take lisinopril 10 mg by mouth, once a day."
+    ]
    },
    "chart": "m1 lisinopril 10, 1 per 1 d",
    "text": "Here is your medicine list. Take lisinopril 10 mg by mouth once a day. Take lisinopril 10 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Ignacio928_Gutmann970_e76b0686-5c57-c9d5-ce4b-50c47a2bf334:natural|slot_hot|2",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 2.5 mg orally daily which is 2.5 mg a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 2.5 mg orally daily, which is 2.5 mg a day.",
+     "Take amlodipine 2.5 mg by mouth, once a day."
+    ]
+   },
+   "chart": "m1 amlodipine 2.5, 1 per 1 d",
+   "text": "Here's the explanation for your medicine list:\n\nHere is your medicine list. Take amlodipine 2.5 mg orally daily, which is 2.5 mg a day. Take amlodipine 2.5 mg by mouth, once a day. Please ask your doctor and pharmacist your questions.",
    "current_label": "misstates_order",
    "rule_label": "misstates_order",
    "conflicts": false,
@@ -1855,7 +2439,14 @@
    "pattern_detail": {
     "instruction": "take amlodipine 2.5 mg by mouth once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 2.5 mg by mouth once a day.",
+     "Take amlodipine 2.5 mg by mouth, once a day."
+    ]
    },
    "chart": "m1 amlodipine 2.5, 1 per 1 d",
    "text": "Here is your medicine list. Take amlodipine 2.5 mg by mouth once a day. Take amlodipine 2.5 mg by mouth, once a day.",
@@ -1873,10 +2464,42 @@
    "pattern_detail": {
     "instruction": "take lisinopril 15 mg by mouth twice a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take lisinopril 15 mg by mouth twice a day.",
+     "Take lisinopril 15 mg by mouth, twice a day."
+    ]
    },
    "chart": "m1 lisinopril 15, 2 per 1 d",
    "text": "Here is your medicine list. Take lisinopril 15 mg by mouth twice a day. Take lisinopril 15 mg by mouth, twice a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Kathrine376_Ila598_Keebler762_656afcd9-cb42-52d2-ab3d-465a13d72773:perturbed|slot_daily|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take hydrochlorothiazide 75 mg by mouth three times a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take hydrochlorothiazide 75 mg by mouth three times a day.",
+     "Take hydrochlorothiazide 75 mg by mouth, three times a day which is 225 mg a day."
+    ]
+   },
+   "chart": "m1 hydrochlorothiazide 75, 3 per 1 d",
+   "text": "Here is your medicine list. Take hydrochlorothiazide 75 mg by mouth three times a day. Take hydrochlorothiazide 75 mg by mouth, three times a day which is 225 mg a day.",
    "current_label": "misstates_order",
    "rule_label": "misstates_order",
    "conflicts": false,
@@ -1891,7 +2514,14 @@
    "pattern_detail": {
     "instruction": "take lisinopril 30 mg by mouth once a week",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take lisinopril 30 mg by mouth once a week.",
+     "Take lisinopril 30 mg by mouth, once a week."
+    ]
    },
    "chart": "m1 lisinopril 30, 1 per 1 wk",
    "text": "Here is your medicine list. Take lisinopril 30 mg by mouth once a week. Take lisinopril 30 mg by mouth, once a week.",
@@ -1909,7 +2539,14 @@
    "pattern_detail": {
     "instruction": "take lisinopril 10 mg by mouth once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take lisinopril 10 mg by mouth once a day.",
+     "Take lisinopril 10 mg by mouth, once a day."
+    ]
    },
    "chart": "m1 lisinopril 10, 1 per 1 d",
    "text": "Here is your medicine list. Take lisinopril 10 mg by mouth once a day. Take lisinopril 10 mg by mouth, once a day.",
@@ -1927,10 +2564,117 @@
    "pattern_detail": {
     "instruction": "take lisinopril 10 mg by mouth once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take lisinopril 10 mg by mouth once a day.",
+     "Take lisinopril 10 mg by mouth, once a day."
+    ]
    },
    "chart": "m1 lisinopril 10, 1 per 1 d",
    "text": "Here is your medicine list. Take lisinopril 10 mg by mouth once a day. Take lisinopril 10 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Kathrine376_Ila598_Keebler762_656afcd9-cb42-52d2-ab3d-465a13d72773:natural|slot_daily|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take hydrochlorothiazide 25 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take hydrochlorothiazide 25 mg by mouth once a day.",
+     "Take hydrochlorothiazide 25 mg by mouth, once a day which is 25 mg a day."
+    ]
+   },
+   "chart": "m1 hydrochlorothiazide 25, 1 per 1 d",
+   "text": "Here is your medicine list. Take hydrochlorothiazide 25 mg by mouth once a day. Take hydrochlorothiazide 25 mg by mouth, once a day which is 25 mg a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Corinne382_Addie421_Kuhn96_4cf1ed22-b07e-e03c-d128-800f4d686830:natural|slot_hot|2",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 2.5 mg orally daily which is 2.5 mg a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 2.5 mg orally daily, which is 2.5 mg a day.",
+     "Take amlodipine 2.5 mg by mouth, once a day."
+    ]
+   },
+   "chart": "m1 amlodipine 2.5, 1 per 1 d",
+   "text": "Here's the explanation for your medicine list:\n\nHere is your medicine list. Take amlodipine 2.5 mg orally daily, which is 2.5 mg a day. Take amlodipine 2.5 mg by mouth, once a day. Please ask your doctor and pharmacist your questions.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Julia241_Rosenbaum794_c5edbad6-1a56-66da-2595-78815cd0e69e:natural|slot_daily|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 2.5 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 2.5 mg by mouth once a day.",
+     "Take amlodipine 2.5 mg by mouth, once a day which is 2.5 mg a day."
+    ]
+   },
+   "chart": "m1 amlodipine 2.5, 1 per 1 d",
+   "text": "Here is your medicine list. Take amlodipine 2.5 mg by mouth once a day. Take amlodipine 2.5 mg by mouth, once a day which is 2.5 mg a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Corinne382_Addie421_Kuhn96_4cf1ed22-b07e-e03c-d128-800f4d686830:perturbed|slot_daily|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 1.25 mg by mouth three times a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 1.25 mg by mouth three times a day.",
+     "Take amlodipine 1.25 mg by mouth, three times a day which is 3.75 mg a day."
+    ]
+   },
+   "chart": "m1 amlodipine 1.25, 3 per 1 d",
+   "text": "Here is your medicine list. Take amlodipine 1.25 mg by mouth three times a day. Take amlodipine 1.25 mg by mouth, three times a day which is 3.75 mg a day.",
    "current_label": "misstates_order",
    "rule_label": "misstates_order",
    "conflicts": false,
@@ -1945,7 +2689,14 @@
    "pattern_detail": {
     "instruction": "take amlodipine 2.5 mg by mouth once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 2.5 mg by mouth once a day.",
+     "Take amlodipine 2.5 mg by mouth, once a day."
+    ]
    },
    "chart": "m1 amlodipine 2.5, 1 per 1 d",
    "text": "Here is your medicine list. Take amlodipine 2.5 mg by mouth once a day. Take amlodipine 2.5 mg by mouth, once a day.",
@@ -1963,7 +2714,14 @@
    "pattern_detail": {
     "instruction": "take lisinopril 10 mg by mouth once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take lisinopril 10 mg by mouth once a day.",
+     "Take lisinopril 10 mg by mouth, once a day."
+    ]
    },
    "chart": "m1 lisinopril 10, 1 per 1 d",
    "text": "Here is your medicine list. Take lisinopril 10 mg by mouth once a day. Take lisinopril 10 mg by mouth, once a day.",
@@ -1981,7 +2739,14 @@
    "pattern_detail": {
     "instruction": "take lisinopril 10 mg by mouth once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take lisinopril 10 mg by mouth once a day.",
+     "Take lisinopril 10 mg by mouth, once a day."
+    ]
    },
    "chart": "m1 lisinopril 10, 1 per 1 d",
    "text": "Here is your medicine list. Take lisinopril 10 mg by mouth once a day. Take lisinopril 10 mg by mouth, once a day.",
@@ -1999,10 +2764,42 @@
    "pattern_detail": {
     "instruction": "take amlodipine 1.25 mg by mouth once a week",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 1.25 mg by mouth once a week.",
+     "Take amlodipine 1.25 mg by mouth, once a week."
+    ]
    },
    "chart": "m1 amlodipine 1.25, 1 per 1 wk",
    "text": "Here is your medicine list. Take amlodipine 1.25 mg by mouth once a week. Take amlodipine 1.25 mg by mouth, once a week.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Corinne382_Addie421_Kuhn96_4cf1ed22-b07e-e03c-d128-800f4d686830:natural|slot_daily|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 2.5 mg by mouth once a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 2.5 mg by mouth once a day.",
+     "Take amlodipine 2.5 mg by mouth, once a day which is 2.5 mg a day."
+    ]
+   },
+   "chart": "m1 amlodipine 2.5, 1 per 1 d",
+   "text": "Here is your medicine list. Take amlodipine 2.5 mg by mouth once a day. Take amlodipine 2.5 mg by mouth, once a day which is 2.5 mg a day.",
    "current_label": "misstates_order",
    "rule_label": "misstates_order",
    "conflicts": false,
@@ -2017,10 +2814,67 @@
    "pattern_detail": {
     "instruction": "take lisinopril 10 mg by mouth once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take lisinopril 10 mg by mouth once a day.",
+     "Take lisinopril 10 mg by mouth, once a day."
+    ]
    },
    "chart": "m1 lisinopril 10, 1 per 1 d",
    "text": "Here is your medicine list. Take lisinopril 10 mg by mouth once a day. Take lisinopril 10 mg by mouth, once a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Billi682_Emmy828_Hackett68_66bf5ca1-d575-32ec-1520-aeaa3596e8f4:perturbed|slot_hot|2",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 7.5 mg orally daily which is 22.5 mg a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 7.5 mg orally daily, which is 22.5 mg a day.",
+     "Take amlodipine 7.5 mg by mouth, every 8 hours."
+    ]
+   },
+   "chart": "m1 amlodipine 7.5, 1 per 8 h",
+   "text": "Here's the explanation for your medicine list:\n\nHere is your medicine list. Take amlodipine 7.5 mg orally daily, which is 22.5 mg a day. Take amlodipine 7.5 mg by mouth, every 8 hours. Please ask your doctor and pharmacist your questions.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|King743_Hane680_821825dc-ca43-4db9-6a79-4b3584f14aae:perturbed|slot_daily|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take hydrochlorothiazide 50 mg by mouth every 12 hours",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take hydrochlorothiazide 50 mg by mouth every 12 hours.",
+     "Take hydrochlorothiazide 50 mg by mouth, every 12 hours which is 100 mg a day."
+    ]
+   },
+   "chart": "m1 hydrochlorothiazide 50, 1 per 12 h",
+   "text": "Here is your medicine list. Take hydrochlorothiazide 50 mg by mouth every 12 hours. Take hydrochlorothiazide 50 mg by mouth, every 12 hours which is 100 mg a day.",
    "current_label": "misstates_order",
    "rule_label": "misstates_order",
    "conflicts": false,
@@ -2035,7 +2889,14 @@
    "pattern_detail": {
     "instruction": "take lisinopril 15 mg by mouth once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take lisinopril 15 mg by mouth once a day.",
+     "Take lisinopril 15 mg by mouth, once a day."
+    ]
    },
    "chart": "m1 lisinopril 15, 1 per 1 d",
    "text": "Here is your medicine list. Take lisinopril 15 mg by mouth once a day. Take lisinopril 15 mg by mouth, once a day.",
@@ -2053,10 +2914,117 @@
    "pattern_detail": {
     "instruction": "take lisinopril 5 mg by mouth twice a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take lisinopril 5 mg by mouth twice a day.",
+     "Take lisinopril 5 mg by mouth, twice a day."
+    ]
    },
    "chart": "m1 lisinopril 5, 2 per 1 d",
    "text": "Here is your medicine list. Take lisinopril 5 mg by mouth twice a day. Take lisinopril 5 mg by mouth, twice a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Julia241_Rosenbaum794_c5edbad6-1a56-66da-2595-78815cd0e69e:perturbed|slot_daily|0",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 5 mg by mouth three times a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 5 mg by mouth three times a day.",
+     "Take amlodipine 5 mg by mouth, three times a day which is 15 mg a day."
+    ]
+   },
+   "chart": "m1 amlodipine 5, 3 per 1 d",
+   "text": "Here is your medicine list. Take amlodipine 5 mg by mouth three times a day. Take amlodipine 5 mg by mouth, three times a day which is 15 mg a day.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Julia241_Rosenbaum794_c5edbad6-1a56-66da-2595-78815cd0e69e:natural|slot_hot|2",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 2.5 mg orally daily which is 2.5 mg a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 2.5 mg orally daily, which is 2.5 mg a day.",
+     "Take amlodipine 2.5 mg by mouth, once a day."
+    ]
+   },
+   "chart": "m1 amlodipine 2.5, 1 per 1 d",
+   "text": "Here's the explanation for your medicine list:\n\nHere is your medicine list. Take amlodipine 2.5 mg orally daily, which is 2.5 mg a day. Take amlodipine 2.5 mg by mouth, once a day. Please ask your doctor and pharmacist your questions.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Billi682_Emmy828_Hackett68_66bf5ca1-d575-32ec-1520-aeaa3596e8f4:natural|slot_hot|2",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 2.5 mg orally daily which is 2.5 mg a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 2.5 mg orally daily, which is 2.5 mg a day.",
+     "Take amlodipine 2.5 mg by mouth, once a day."
+    ]
+   },
+   "chart": "m1 amlodipine 2.5, 1 per 1 d",
+   "text": "Here's the explanation for your medicine list:\n\nHere is your medicine list. Take amlodipine 2.5 mg orally daily, which is 2.5 mg a day. Take amlodipine 2.5 mg by mouth, once a day. Please ask your doctor and pharmacist your questions.",
+   "current_label": "misstates_order",
+   "rule_label": "misstates_order",
+   "conflicts": false,
+   "unknown_number_segment": null,
+   "review_note": ""
+  },
+  {
+   "file": "eval/data/v2_review/labels.json",
+   "id": "bo|v2_llama3.2-3b|Chung121_Kimberlee228_Mertz280_dff3abd0-62a6-3a19-fe0a-b07e93c217f3:natural|slot_hot|2",
+   "filter": "Llama 3.2 3B",
+   "pattern": "repeated_instruction",
+   "pattern_detail": {
+    "instruction": "take amlodipine 2.5 mg orally daily which is 2.5 mg a day",
+    "count": 2,
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 2.5 mg orally daily, which is 2.5 mg a day.",
+     "Take amlodipine 2.5 mg by mouth, once a day."
+    ]
+   },
+   "chart": "m1 amlodipine 2.5, 1 per 1 d",
+   "text": "Here's the explanation for your medicine list:\n\nHere is your medicine list. Take amlodipine 2.5 mg orally daily, which is 2.5 mg a day. Take amlodipine 2.5 mg by mouth, once a day. Please ask your doctor and pharmacist your questions.",
    "current_label": "misstates_order",
    "rule_label": "misstates_order",
    "conflicts": false,
@@ -2071,7 +3039,14 @@
    "pattern_detail": {
     "instruction": "take amlodipine 2.5 mg by mouth once a day",
     "count": 2,
-    "active_orders_it_fits": 1
+    "active_orders_it_fits": 1,
+    "order_ids": [
+     "m1"
+    ],
+    "clauses": [
+     "Take amlodipine 2.5 mg by mouth once a day.",
+     "Take amlodipine 2.5 mg by mouth, once a day."
+    ]
    },
    "chart": "m1 amlodipine 2.5, 1 per 1 d",
    "text": "Here is your medicine list. Take amlodipine 2.5 mg by mouth once a day. Take amlodipine 2.5 mg by mouth, once a day.",
