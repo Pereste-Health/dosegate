@@ -547,10 +547,14 @@ def course_of_therapy_ok(order):
         all(isinstance(coding, dict) and coding.get("code") == "continuous" for coding in codings)
 
 
+def reported_by_other(order):
+    return order.get("reportedBoolean") is True or "reportedReference" in order
+
+
 def order_closed(order, oid, refs, cfg):
     if cfg["gate_2_1"]:
         if has_extension_key(order) or not within(order, ORDER_KEYS) or present(order, "priorPrescription") \
-                or not course_of_therapy_ok(order):
+                or not course_of_therapy_ok(order) or reported_by_other(order):
             return True
     else:
         if any(present(order, k) for k in ("extension", "modifierExtension", "priorPrescription")):
@@ -934,6 +938,7 @@ def dosage_ok(dosage):
 def order_ok(order):
     return field_ok(order, "resourceType", lambda v: v == "MedicationRequest") \
         and field_ok(order, "doNotPerform", lambda v: isinstance(v, bool)) \
+        and field_ok(order, "reportedBoolean", lambda v: isinstance(v, bool)) \
         and (order.get("medicationCodeableConcept") is not None or order.get("medicationReference") is not None) \
         and field_ok(order, "medicationCodeableConcept", concept_ok) \
         and field_ok(order, "dosageInstruction", list_of(dosage_ok)) \
@@ -1169,6 +1174,9 @@ STATUSES = ["active"] * 8 + ["completed", "on-hold", "entered-in-error", "stoppe
 INTENTS = ["order"] * 6 + ["original-order", "reflex-order", "filler-order", "instance-order", "proposal",
                            "plan", "Order", None, Lit("1")]
 DNP_VALUES = [False, False, True, None, "no", Lit("0")]
+REPORTED_BOOLEAN_VALUES = [True, True, False, None, "yes", Lit("1")]
+REPORTED_REFERENCE_VALUES = [O([("reference", "Patient/pat1")]), O([("reference", "RelatedPerson/rp1")]), None,
+                             "Patient/pat1"]
 AS_NEEDED_VALUES = [True, False, False, "yes", None, Lit("1")]
 UNIT_VALUES = ["mg"] * 5 + ["mcg", "ug", "g", "mL", "ml", "L", "U", "[iU]", "[IU]", "units", "unit", "{tbl}",
                             "TAB", "tablet", "{cap}", "CAP", "capsule", "{puff}", "puff", "[drp]", "drop", "MG",
@@ -1322,6 +1330,18 @@ def m_intent(rng, root):
 
 def m_do_not_perform(rng, root):
     return set_some(rng, root, "doNotPerform", DNP_VALUES)
+
+
+def m_reported(rng, root):
+    orders = order_nodes(root)
+    if not orders:
+        return False
+    if rng.random() < 0.5:
+        key, values = "reportedBoolean", REPORTED_BOOLEAN_VALUES
+    else:
+        key, values = "reportedReference", REPORTED_REFERENCE_VALUES
+    set_key_in(rng.choice(orders), key, rng.choice(values))
+    return True
 
 
 def m_as_needed(rng, root):
@@ -1756,7 +1776,7 @@ MUTATIONS = [
     ("drop_pair", m_drop_pair), ("drop_known_key", m_drop_known_key), ("duplicate_pair", m_duplicate_pair),
     ("add_key", m_add_key), ("retype_value", m_retype_value), ("string_edge", m_string_edge),
     ("number_edge", m_number_edge), ("number_respell", m_number_respell), ("status", m_status),
-    ("intent", m_intent), ("do_not_perform", m_do_not_perform), ("as_needed", m_as_needed),
+    ("intent", m_intent), ("do_not_perform", m_do_not_perform), ("reported", m_reported), ("as_needed", m_as_needed),
     ("subject", m_subject), ("patient", m_patient), ("resource_type", m_resource_type),
     ("dose_unit", m_dose_unit), ("unit_pair", m_unit_pair), ("quantity_system", m_quantity_system),
     ("route", m_route), ("route_text", m_route_text), ("timing_repeat", m_timing_repeat),

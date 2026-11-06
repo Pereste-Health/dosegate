@@ -281,6 +281,7 @@
    "The released text says take metformin 500 mg by mouth twice a day, which matches the order m1 (500 mg oral, 2 per day). The reportedBoolean flag does not change the dose, route, or frequency.",
    "The released text reads \"Take metformin 500 mg by mouth twice a day.\" The only MedicationRequest (m1) is active, metformin, 500 mg, route SNOMED 26643006 (oral route), frequency 2 times per 1 day. Drug, dose, route, and frequency all match. The request marks the medicine as reportedBoolean true, but the released text does not misstate the order, and it makes no indication or other unsupported claim."
   ],
+  "relabel_note": "Version 2.1 blocks this request with missingField under its reported-order rule, so no version 2.1 output carries this label. The text is the one that version 1 and the baseline released. In the replay relabeling, the first labeler gave unsupported_claim and a third labeler gave faithful, so the final label is faithful. The replay labelers' identities and their exposure to the version 2.1 output are not recorded in the repository.",
   "corpus": "h1",
   "text": "Take metformin 500 mg by mouth twice a day."
  },

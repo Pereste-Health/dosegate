@@ -1,0 +1,142 @@
+{
+  "fields_compared": [
+    "layer.status",
+    "layer.text",
+    "layer.reason",
+    "layer.detail",
+    "layer.message",
+    "baseline.status",
+    "baseline.text",
+    "baseline.reason",
+    "baseline.detail",
+    "baseline.message"
+  ],
+  "rounds": {
+    "h1": {
+      "version": 1,
+      "commit": "59c5f324c632fad63a29aadc3321066d9c22473e",
+      "corpus_files": [
+        "eval/data/heldout/chart.jsonl",
+        "eval/data/heldout/meaning.jsonl",
+        "eval/data/heldout/model_style.jsonl",
+        "eval/data/heldout/structure.jsonl"
+      ],
+      "records": 113,
+      "records_compared": 113,
+      "layer_releases": 74,
+      "baseline_releases": 104,
+      "stored_layer_releases": 74,
+      "stored_baseline_releases": 104,
+      "paper_layer_releases": 74,
+      "paper_baseline_releases": 104,
+      "mismatch_count": 0,
+      "mismatches": [],
+      "per_file": {
+        "chart": {
+          "records": 28,
+          "records_compared": 28,
+          "layer_releases": 24,
+          "baseline_releases": 25,
+          "stored_layer_releases": 24,
+          "stored_baseline_releases": 25,
+          "mismatches": 0
+        },
+        "meaning": {
+          "records": 26,
+          "records_compared": 26,
+          "layer_releases": 20,
+          "baseline_releases": 25,
+          "stored_layer_releases": 20,
+          "stored_baseline_releases": 25,
+          "mismatches": 0
+        },
+        "model_style": {
+          "records": 30,
+          "records_compared": 30,
+          "layer_releases": 16,
+          "baseline_releases": 26,
+          "stored_layer_releases": 16,
+          "stored_baseline_releases": 26,
+          "mismatches": 0
+        },
+        "structure": {
+          "records": 29,
+          "records_compared": 29,
+          "layer_releases": 14,
+          "baseline_releases": 28,
+          "stored_layer_releases": 14,
+          "stored_baseline_releases": 28,
+          "mismatches": 0
+        }
+      }
+    },
+    "h2": {
+      "version": 2,
+      "commit": "ef2cc987e5e349baa2278adf73d53d8036c1d3bf",
+      "corpus_files": [
+        "eval/data/heldout2/chart.jsonl",
+        "eval/data/heldout2/clinical.jsonl",
+        "eval/data/heldout2/meaning.jsonl",
+        "eval/data/heldout2/model_style.jsonl",
+        "eval/data/heldout2/structure.jsonl"
+      ],
+      "records": 138,
+      "records_compared": 138,
+      "layer_releases": 86,
+      "baseline_releases": 128,
+      "stored_layer_releases": 86,
+      "stored_baseline_releases": 128,
+      "paper_layer_releases": 86,
+      "paper_baseline_releases": 128,
+      "mismatch_count": 0,
+      "mismatches": [],
+      "per_file": {
+        "chart": {
+          "records": 25,
+          "records_compared": 25,
+          "layer_releases": 19,
+          "baseline_releases": 21,
+          "stored_layer_releases": 19,
+          "stored_baseline_releases": 21,
+          "mismatches": 0
+        },
+        "clinical": {
+          "records": 30,
+          "records_compared": 30,
+          "layer_releases": 22,
+          "baseline_releases": 27,
+          "stored_layer_releases": 22,
+          "stored_baseline_releases": 27,
+          "mismatches": 0
+        },
+        "meaning": {
+          "records": 28,
+          "records_compared": 28,
+          "layer_releases": 16,
+          "baseline_releases": 28,
+          "stored_layer_releases": 16,
+          "stored_baseline_releases": 28,
+          "mismatches": 0
+        },
+        "model_style": {
+          "records": 26,
+          "records_compared": 26,
+          "layer_releases": 8,
+          "baseline_releases": 23,
+          "stored_layer_releases": 8,
+          "stored_baseline_releases": 23,
+          "mismatches": 0
+        },
+        "structure": {
+          "records": 29,
+          "records_compared": 29,
+          "layer_releases": 21,
+          "baseline_releases": 29,
+          "stored_layer_releases": 21,
+          "stored_baseline_releases": 29,
+          "mismatches": 0
+        }
+      }
+    }
+  }
+}

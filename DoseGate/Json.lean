@@ -343,10 +343,17 @@ def orderKeys : List String :=
    "instantiatesUri", "basedOn", "groupIdentifier", "insurance", "dispenseRequest", "substitution",
    "eventHistory", "dosageInstruction", "note", "courseOfTherapyType", "priorPrescription"]
 
+def reportedByOther (mr : Json) : Bool :=
+  (match jField? mr "reportedBoolean" with
+    | some (.bool b) => b
+    | _ => false)
+  || (mr.getObjVal? "reportedReference").toOption.isSome
+
 def closedOrder (mr : Json) (id : String) (refs : List String) : Bool :=
   hasExtensionKey mr
   || !keysWithin orderKeys mr
   || hasAny (some mr) ["priorPrescription"]
+  || reportedByOther mr
   || !courseOfTherapyOk mr
   || refs.contains ("MedicationRequest/" ++ id)
   || ((jField? mr "meta").bind (jField? · "security")).any nonEmptyJson
@@ -461,6 +468,7 @@ def orderShapeProblem (id : String) (mr : Json) : Option String :=
   let checks : List (Bool × String) :=
     [(fieldOk mr "resourceType" isMedicationRequest, "needs resourceType to be MedicationRequest when present"),
      (fieldOk mr "doNotPerform" isBool, "needs doNotPerform to be true or false when present"),
+     (fieldOk mr "reportedBoolean" isBool, "needs reportedBoolean to be true or false when present"),
      ((jField? mr "medicationCodeableConcept").isSome || (jField? mr "medicationReference").isSome,
       "needs a medicationCodeableConcept or medicationReference"),
      (fieldOk mr "medicationCodeableConcept" conceptOk, "needs a valid medicationCodeableConcept"),
