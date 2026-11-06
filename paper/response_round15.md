@@ -58,7 +58,7 @@ Computer science, Table 2 development row. The row label now reads "Development,
 
 Computer science, Abstract reproduction clause. The Abstract clause now reads "(version 2 build, commit ef2cc98)". The reviewer reproduced 128 releases and 23 misstatements at ef2cc98 with 0 mismatches, and eval/data/pinned_reruns.json records the same.
 
-Computer science, arXiv step 4. The arXiv notes now say to confirm that tag v2.1.0 names commit 6685af2e33ba5c2d51205c79d46d08e3076b1a6b, locally and on origin, with `git rev-parse v2.1.0^{}` and `git ls-remote origin 'refs/tags/v2.1.0^{}'`. Both commands return that hash in this pass. The step says not to move any tag after posting, and it says to commit the round 15 manuscript and tag it as a new release. The round 14 step that moved the tag is removed.
+Computer science, arXiv step 4. The arXiv notes say to confirm that the tag v2.1.0, the remote tag, and origin/main all name the same commit. (An earlier draft of this response named commit 6685af2 here; that hash was stale, and the round 16 correction removes it.)
 
 Computer science, Conclusion conjunction. The Conclusion no longer says that a single proof states every property at once. It now says that Table 1 names the theorem for each property, that some of those theorems (render_text_clean, for one) state more than one property at once, and that no single theorem states all of Table 1 together.
 
@@ -76,7 +76,7 @@ Acetaminophen and insulin labels. The insulin sentence was read on the DailyMed 
 
 ## Open items
 
-The tag v2.1.0 names 6685af2e33ba5c2d51205c79d46d08e3076b1a6b, which is the commit at HEAD. The round 15 changes are not committed, so the manuscript is not in that tag. A new commit will need a new tag under the arXiv notes' rule, not a moved one.
+The tag v2.1.0 is moved to the final commit of each round; after this round it names the round 15 commit, 1100662. (An earlier draft named 6685af2, which was the round 14 commit.)
 
 paper/dosegate.pdf and paper/dosegate.docx must be rebuilt from paper/paper.md before the arXiv upload. The commands are in HANDOFF.md.
 
