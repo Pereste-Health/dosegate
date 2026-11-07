@@ -1,0 +1,587 @@
+{
+ "round": "h3",
+ "requests": 156,
+ "layer": {
+  "requests": 156,
+  "released": 91,
+  "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+  "misstates_order": 35,
+  "one_ingredient_two_names": 10,
+  "one_ingredient_two_names_faithful": 9,
+  "unsupported_claim": 3,
+  "faithful": 53,
+  "faithful_not_one_ingredient_two_names": 44,
+  "one_ingredient_two_names_and_misstates_order": 1,
+  "one_ingredient_two_names_and_unsupported_claim": 0,
+  "refused_as_error": 2,
+  "blocked": 63,
+  "block_reasons": {
+   "missingField": 26,
+   "omittedOrder": 4,
+   "unbound": 16,
+   "repeatedValue": 4,
+   "ambiguousDrug": 4,
+   "disallowedCharacter": 1,
+   "signBeforeSlot": 2,
+   "malformed": 4,
+   "inactiveOrder": 1,
+   "unknownRef": 1
+  },
+  "released_without_label": [],
+  "readers_agree": 77,
+  "reader_pairs": 91,
+  "kappa": 0.71,
+  "third_reader_used": 14
+ },
+ "baseline": {
+  "requests": 156,
+  "released": 130,
+  "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+  "misstates_order": 53,
+  "one_ingredient_two_names": 12,
+  "one_ingredient_two_names_faithful": 11,
+  "unsupported_claim": 5,
+  "faithful": 72,
+  "faithful_not_one_ingredient_two_names": 61,
+  "one_ingredient_two_names_and_misstates_order": 1,
+  "one_ingredient_two_names_and_unsupported_claim": 0,
+  "refused_as_error": 1,
+  "blocked": 25,
+  "block_reasons": {
+   "missingField": 16,
+   "malformed": 4,
+   "numberOrUnitWord": 3,
+   "inactiveOrder": 1,
+   "unknownRef": 1
+  },
+  "released_without_label": [],
+  "readers_agree": 116,
+  "reader_pairs": 130,
+  "kappa": 0.8,
+  "third_reader_used": 14
+ },
+ "by_family": {
+  "chart": {
+   "layer": {
+    "requests": 30,
+    "released": 21,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 15,
+    "one_ingredient_two_names": 1,
+    "one_ingredient_two_names_faithful": 1,
+    "unsupported_claim": 0,
+    "faithful": 6,
+    "faithful_not_one_ingredient_two_names": 5,
+    "one_ingredient_two_names_and_misstates_order": 0,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 0,
+    "blocked": 9,
+    "block_reasons": {
+     "missingField": 9
+    },
+    "released_without_label": [],
+    "readers_agree": 18,
+    "reader_pairs": 21,
+    "kappa": 0.62,
+    "third_reader_used": 3
+   },
+   "baseline": {
+    "requests": 30,
+    "released": 28,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 20,
+    "one_ingredient_two_names": 1,
+    "one_ingredient_two_names_faithful": 1,
+    "unsupported_claim": 0,
+    "faithful": 8,
+    "faithful_not_one_ingredient_two_names": 7,
+    "one_ingredient_two_names_and_misstates_order": 0,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 0,
+    "blocked": 2,
+    "block_reasons": {
+     "missingField": 2
+    },
+    "released_without_label": [],
+    "readers_agree": 25,
+    "reader_pairs": 28,
+    "kappa": 0.72,
+    "third_reader_used": 3
+   }
+  },
+  "clinical": {
+   "layer": {
+    "requests": 30,
+    "released": 16,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 8,
+    "one_ingredient_two_names": 0,
+    "one_ingredient_two_names_faithful": 0,
+    "unsupported_claim": 0,
+    "faithful": 8,
+    "faithful_not_one_ingredient_two_names": 8,
+    "one_ingredient_two_names_and_misstates_order": 0,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 0,
+    "blocked": 14,
+    "block_reasons": {
+     "missingField": 11,
+     "omittedOrder": 1,
+     "unbound": 1,
+     "repeatedValue": 1
+    },
+    "released_without_label": [],
+    "readers_agree": 14,
+    "reader_pairs": 16,
+    "kappa": 0.75,
+    "third_reader_used": 2
+   },
+   "baseline": {
+    "requests": 30,
+    "released": 22,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 11,
+    "one_ingredient_two_names": 0,
+    "one_ingredient_two_names_faithful": 0,
+    "unsupported_claim": 0,
+    "faithful": 11,
+    "faithful_not_one_ingredient_two_names": 11,
+    "one_ingredient_two_names_and_misstates_order": 0,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 0,
+    "blocked": 8,
+    "block_reasons": {
+     "missingField": 8
+    },
+    "released_without_label": [],
+    "readers_agree": 20,
+    "reader_pairs": 22,
+    "kappa": 0.82,
+    "third_reader_used": 2
+   }
+  },
+  "meaning": {
+   "layer": {
+    "requests": 30,
+    "released": 25,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 4,
+    "one_ingredient_two_names": 4,
+    "one_ingredient_two_names_faithful": 4,
+    "unsupported_claim": 1,
+    "faithful": 20,
+    "faithful_not_one_ingredient_two_names": 16,
+    "one_ingredient_two_names_and_misstates_order": 0,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 0,
+    "blocked": 5,
+    "block_reasons": {
+     "unbound": 4,
+     "missingField": 1
+    },
+    "released_without_label": [],
+    "readers_agree": 21,
+    "reader_pairs": 25,
+    "kappa": 0.59,
+    "third_reader_used": 4
+   },
+   "baseline": {
+    "requests": 30,
+    "released": 29,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 6,
+    "one_ingredient_two_names": 4,
+    "one_ingredient_two_names_faithful": 4,
+    "unsupported_claim": 3,
+    "faithful": 20,
+    "faithful_not_one_ingredient_two_names": 16,
+    "one_ingredient_two_names_and_misstates_order": 0,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 0,
+    "blocked": 1,
+    "block_reasons": {
+     "missingField": 1
+    },
+    "released_without_label": [],
+    "readers_agree": 25,
+    "reader_pairs": 29,
+    "kappa": 0.73,
+    "third_reader_used": 4
+   }
+  },
+  "model_style": {
+   "layer": {
+    "requests": 30,
+    "released": 14,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 7,
+    "one_ingredient_two_names": 4,
+    "one_ingredient_two_names_faithful": 3,
+    "unsupported_claim": 0,
+    "faithful": 7,
+    "faithful_not_one_ingredient_two_names": 4,
+    "one_ingredient_two_names_and_misstates_order": 1,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 0,
+    "blocked": 16,
+    "block_reasons": {
+     "ambiguousDrug": 1,
+     "missingField": 3,
+     "unbound": 5,
+     "disallowedCharacter": 1,
+     "signBeforeSlot": 1,
+     "repeatedValue": 2,
+     "malformed": 1,
+     "inactiveOrder": 1,
+     "omittedOrder": 1
+    },
+    "released_without_label": [],
+    "readers_agree": 11,
+    "reader_pairs": 14,
+    "kappa": 0.57,
+    "third_reader_used": 3
+   },
+   "baseline": {
+    "requests": 30,
+    "released": 23,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 12,
+    "one_ingredient_two_names": 4,
+    "one_ingredient_two_names_faithful": 3,
+    "unsupported_claim": 0,
+    "faithful": 11,
+    "faithful_not_one_ingredient_two_names": 8,
+    "one_ingredient_two_names_and_misstates_order": 1,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 0,
+    "blocked": 7,
+    "block_reasons": {
+     "missingField": 3,
+     "malformed": 1,
+     "numberOrUnitWord": 2,
+     "inactiveOrder": 1
+    },
+    "released_without_label": [],
+    "readers_agree": 20,
+    "reader_pairs": 23,
+    "kappa": 0.74,
+    "third_reader_used": 3
+   }
+  },
+  "structure": {
+   "layer": {
+    "requests": 36,
+    "released": 15,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 1,
+    "one_ingredient_two_names": 1,
+    "one_ingredient_two_names_faithful": 1,
+    "unsupported_claim": 2,
+    "faithful": 12,
+    "faithful_not_one_ingredient_two_names": 11,
+    "one_ingredient_two_names_and_misstates_order": 0,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 2,
+    "blocked": 19,
+    "block_reasons": {
+     "malformed": 3,
+     "omittedOrder": 2,
+     "unknownRef": 1,
+     "unbound": 6,
+     "repeatedValue": 1,
+     "signBeforeSlot": 1,
+     "ambiguousDrug": 3,
+     "missingField": 2
+    },
+    "released_without_label": [],
+    "readers_agree": 13,
+    "reader_pairs": 15,
+    "kappa": 0.42,
+    "third_reader_used": 2
+   },
+   "baseline": {
+    "requests": 36,
+    "released": 28,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 4,
+    "one_ingredient_two_names": 3,
+    "one_ingredient_two_names_faithful": 3,
+    "unsupported_claim": 2,
+    "faithful": 22,
+    "faithful_not_one_ingredient_two_names": 19,
+    "one_ingredient_two_names_and_misstates_order": 0,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 1,
+    "blocked": 7,
+    "block_reasons": {
+     "malformed": 3,
+     "unknownRef": 1,
+     "missingField": 2,
+     "numberOrUnitWord": 1
+    },
+    "released_without_label": [],
+    "readers_agree": 26,
+    "reader_pairs": 28,
+    "kappa": 0.77,
+    "third_reader_used": 2
+   }
+  }
+ },
+ "discordant_misstatements": {
+  "comparison_filter_only": 18,
+  "layer_only": 0,
+  "both": 35,
+  "comparison_filter_only_ids": [
+   "h3_chart_12_control_name_hold_warfarin",
+   "h3_chart_13_control_name_sliding_lispro",
+   "h3_chart_14_control_name_taper_prednisone",
+   "h3_chart_29_control_display_not_prefix_hold",
+   "h3_chart_30_control_name_weekly_methotrexate",
+   "h3_clinical_19_warfarin_sig_wrong_medicine",
+   "h3_clinical_20_warfarin_repeated_instruction",
+   "h3_clinical_21_insulin_lispro_sliding_name_no_text",
+   "h3_meaning_23_skip_instruction_baseline_only",
+   "h3_meaning_24_double_instruction_baseline_only",
+   "h3_model_style_alternating_warfarin_two_orders",
+   "h3_model_style_daily_total_names_other_order",
+   "h3_model_style_dose_then_sig_same_order",
+   "h3_model_style_partial_list_three_of_eight",
+   "h3_model_style_whole_list_repeated",
+   "h3_structure_12_daily_only_names_second_order",
+   "h3_structure_13_identical_instruction_twice",
+   "h3_structure_33_list_framing_order_intent_omitted_control"
+  ],
+  "layer_only_ids": [],
+  "exact_two_sided_sign_test_p": 7.62939453125e-06
+ },
+ "both_filters_kappa": 0.76,
+ "layer_released_misstatements": [
+  {
+   "id": "h3_chart_03_name_slidingscale_joined_lispro",
+   "family": "chart",
+   "text": "Take Insulin lispro SlidingScale 4 units as a shot under the skin three times a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_chart_04_name_correction_aspart",
+   "family": "chart",
+   "text": "Take Insulin aspart correction 4 units as a shot under the skin three times a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_chart_05_name_ssi_regular",
+   "family": "chart",
+   "text": "Take Regular insulin SSI 4 units as a shot under the skin three times a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_chart_07_name_tapered_prednisone",
+   "family": "chart",
+   "text": "Take Prednisone tapered 10 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_chart_08_name_weight_based_heparin",
+   "family": "chart",
+   "text": "Take Heparin weight based 1000 units into a vein every 6 hours.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_chart_09_name_mondays_methotrexate",
+   "family": "chart",
+   "text": "Take Methotrexate Mondays 15 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_chart_10_name_eod_warfarin",
+   "family": "chart",
+   "text": "Take Warfarin EOD 5 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_chart_15_display_hold_inr_warfarin",
+   "family": "chart",
+   "text": "Take Warfarin 5 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_chart_16_display_sliding_lispro",
+   "family": "chart",
+   "text": "Take Insulin lispro 4 units as a shot under the skin three times a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_chart_17_display_taper_prednisone",
+   "family": "chart",
+   "text": "Take Prednisone 10 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_chart_21_instantiates_uri_sliding_lispro",
+   "family": "chart",
+   "text": "Take Insulin lispro 4 units as a shot under the skin three times a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_chart_22_medref_conflict_lisinopril",
+   "family": "chart",
+   "text": "Take Lisinopril 10 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_chart_24_reasoncode_hold_lispro",
+   "family": "chart",
+   "text": "Take Insulin lispro 4 units as a shot under the skin three times a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_chart_25_nested_bundle_list_framing",
+   "family": "chart",
+   "text": "Here is your medicine list. Take Metformin 500 mg by mouth twice a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_chart_26_other_server_same_patient_id",
+   "family": "chart",
+   "text": "Take Metformin 500 mg by mouth twice a day. Take Lisinopril 10 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_clinical_01_insulin_lispro_reason_scale_daily",
+   "family": "clinical",
+   "text": "Take Insulin lispro 4 units as a shot under the skin three times a day, which is 12 units a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_clinical_02_insulin_lispro_display_scale",
+   "family": "clinical",
+   "text": "Take Insulin lispro 4 units as a shot under the skin three times a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_clinical_03_methylprednisolone_dosepak_display",
+   "family": "clinical",
+   "text": "Take Methylprednisolone 4 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_clinical_04_metoprolol_hold_reason",
+   "family": "clinical",
+   "text": "Take Metoprolol tartrate 25 mg by mouth twice a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_clinical_05_prednisone_taper_identifier",
+   "family": "clinical",
+   "text": "Take Prednisone 20 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_clinical_07_lisinopril_discontinue_reason_code",
+   "family": "clinical",
+   "text": "Take Lisinopril 10 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_clinical_12_oxycodone_prn_display_scheduled",
+   "family": "clinical",
+   "text": "Take Oxycodone 5 mg by mouth every 4 hours.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_clinical_15_acetaminophen_max_reason_code_scheduled",
+   "family": "clinical",
+   "text": "Take Acetaminophen 650 mg by mouth every 4 hours.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_meaning_01_held_name_list_frame",
+   "family": "meaning",
+   "text": "Here is the list of your medicines.\nTake Warfarin Held 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_meaning_03_tapered_name_fixed_dose",
+   "family": "meaning",
+   "text": "Take Methylprednisolone Tapered 4 mg by mouth once a day.\nTake Lisinopril 10 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_meaning_04_titrated_name_sig_shape",
+   "family": "meaning",
+   "text": "Take Insulin Glargine Titrated 20 units as a shot under the skin, once a day.\nTake Metformin 500 mg by mouth, twice a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_meaning_16_discontinued_reason_list_frame",
+   "family": "meaning",
+   "text": "Here is the list of your medicines.\nTake Metformin 500 mg by mouth twice a day.\nTake Warfarin 5 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_model_style_as_needed_in_reason_code_scheduled",
+   "family": "model_style",
+   "text": "Take acetaminophen 650 mg by mouth every 4 hours which is 3900 mg a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_model_style_coumadin_and_warfarin_alternating_split",
+   "family": "model_style",
+   "text": "Take Coumadin 5 mg by mouth once a day.\nTake warfarin 2.5 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_model_style_hold_parameter_in_reason_code",
+   "family": "model_style",
+   "text": "Take metoprolol tartrate 25 mg by mouth twice a day which is 50 mg a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_model_style_sliding_scale_in_coding_display",
+   "family": "model_style",
+   "text": "Take insulin lispro 2 units as a shot under the skin every 6 hours.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_model_style_sliding_scale_in_reason_code",
+   "family": "model_style",
+   "text": "Take insulin lispro 2 units as a shot under the skin every 6 hours which is 8 units a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_model_style_taper_in_reason_code",
+   "family": "model_style",
+   "text": "Take prednisone 20 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_model_style_warfarin_inr_dose_in_reason_code",
+   "family": "model_style",
+   "text": "Take warfarin 5 mg by mouth, once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h3_structure_29_statement_in_bundle_completeness",
+   "family": "structure",
+   "text": "Here is the list of your medicines. Take Lantus 10 units as a shot under the skin once a day.",
+   "comparison_filter_released_same_text": true
+  }
+ ],
+ "layer_released_unsupported_claims": [
+  {
+   "id": "h3_meaning_15_doctor_heading_attribution",
+   "family": "meaning",
+   "text": "Doctor:\nTake Metformin 500 mg by mouth twice a day.\nTake Warfarin 5 mg by mouth once a day."
+  },
+  {
+   "id": "h3_structure_09_colon_frame_then_take",
+   "family": "structure",
+   "text": "Ask your pharmacist: take Lantus 10 units as a shot under the skin once a day."
+  },
+  {
+   "id": "h3_structure_26_output_exactly_at_limit",
+   "family": "structure",
+   "text": "Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Ask your care team. Take Metformin 500 mg by mouth twice a day.                 "
+  }
+ ]
+}

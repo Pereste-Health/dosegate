@@ -1,0 +1,364 @@
+{
+ "note": "The round runner's reading of why each of the 35 texts the layer released and the labelers labeled misstates_order passed version 2.1. These are not blind labels. In every case the printed dose, route, and frequency match the order's structured fields; the misstatement is a condition, schedule, status, or second order that the input reader does not read, a drug-name word the name rule does not list, or an order outside the chart the reader builds.",
+ "counts_by_cause": {
+  "chart_scope": 3,
+  "coding_display": 7,
+  "drug_name_word": 10,
+  "identifier": 1,
+  "instantiates_uri": 1,
+  "medication_reference": 1,
+  "reason_code": 12
+ },
+ "misstatements": [
+  {
+   "id": "h3_chart_03_name_slidingscale_joined_lispro",
+   "family": "chart",
+   "cause": "drug_name_word",
+   "detail": "the drug name is Insulin lispro SlidingScale; the name rule lists sliding and scale only as separate words",
+   "text": "Take Insulin lispro SlidingScale 4 units as a shot under the skin three times a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_chart_04_name_correction_aspart",
+   "family": "chart",
+   "cause": "drug_name_word",
+   "detail": "the drug name is Insulin aspart correction; correction is in no word list",
+   "text": "Take Insulin aspart correction 4 units as a shot under the skin three times a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_chart_05_name_ssi_regular",
+   "family": "chart",
+   "cause": "drug_name_word",
+   "detail": "the drug name is Regular insulin SSI; SSI is in no word list",
+   "text": "Take Regular insulin SSI 4 units as a shot under the skin three times a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_chart_07_name_tapered_prednisone",
+   "family": "chart",
+   "cause": "drug_name_word",
+   "detail": "the drug name is Prednisone tapered; the name rule lists taper and tapering, not tapered",
+   "text": "Take Prednisone tapered 10 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_chart_08_name_weight_based_heparin",
+   "family": "chart",
+   "cause": "drug_name_word",
+   "detail": "the drug name is Heparin weight based; neither word is listed",
+   "text": "Take Heparin weight based 1000 units into a vein every 6 hours.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_chart_09_name_mondays_methotrexate",
+   "family": "chart",
+   "cause": "drug_name_word",
+   "detail": "the drug name is Methotrexate Mondays and the order is coded once a day; Mondays is in no word list",
+   "text": "Take Methotrexate Mondays 15 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_chart_10_name_eod_warfarin",
+   "family": "chart",
+   "cause": "drug_name_word",
+   "detail": "the drug name is Warfarin EOD and the order is coded once a day; EOD is in no word list",
+   "text": "Take Warfarin EOD 5 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_chart_15_display_hold_inr_warfarin",
+   "family": "chart",
+   "cause": "coding_display",
+   "detail": "the coding display reads Warfarin, hold if INR above 3 or any bleeding; the reader accepts a display that begins with the text name and reads no further",
+   "text": "Take Warfarin 5 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_chart_16_display_sliding_lispro",
+   "family": "chart",
+   "cause": "coding_display",
+   "detail": "the coding display reads Insulin lispro sliding scale, 4 units per 50 above 150",
+   "text": "Take Insulin lispro 4 units as a shot under the skin three times a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_chart_17_display_taper_prednisone",
+   "family": "chart",
+   "cause": "coding_display",
+   "detail": "the coding display reads Prednisone taper: 20 mg, then 10 mg, then 5 mg",
+   "text": "Take Prednisone 10 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_chart_21_instantiates_uri_sliding_lispro",
+   "family": "chart",
+   "cause": "instantiates_uri",
+   "detail": "instantiatesUri names an insulin sliding-scale protocol; the reader allows the key and does not read it",
+   "text": "Take Insulin lispro 4 units as a shot under the skin three times a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_chart_22_medref_conflict_lisinopril",
+   "family": "chart",
+   "cause": "medication_reference",
+   "detail": "medicationReference displays Warfarin 5 mg tablet while the codeable concept text is Lisinopril; the reader uses the codeable concept",
+   "text": "Take Lisinopril 10 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_chart_24_reasoncode_hold_lispro",
+   "family": "chart",
+   "cause": "reason_code",
+   "detail": "reasonCode reads Hold if blood glucose is below 70",
+   "text": "Take Insulin lispro 4 units as a shot under the skin three times a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_chart_25_nested_bundle_list_framing",
+   "family": "chart",
+   "cause": "chart_scope",
+   "detail": "a second active order sits inside a Bundle nested in a bundle entry, which the reader does not descend into; the text claims a medicine list and names one order",
+   "text": "Here is your medicine list. Take Metformin 500 mg by mouth twice a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_chart_26_other_server_same_patient_id",
+   "family": "chart",
+   "cause": "chart_scope",
+   "detail": "the second order's subject is an https URL on another server ending in Patient/p1; the reader accepts any http or https URL ending in Patient/<id> as the request's patient",
+   "text": "Take Metformin 500 mg by mouth twice a day. Take Lisinopril 10 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_clinical_01_insulin_lispro_reason_scale_daily",
+   "family": "clinical",
+   "cause": "reason_code",
+   "detail": "reasonCode gives a sliding-scale correction for glucose above 150 mg/dL; the text adds a daily total of 12 units",
+   "text": "Take Insulin lispro 4 units as a shot under the skin three times a day, which is 12 units a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_clinical_02_insulin_lispro_display_scale",
+   "family": "clinical",
+   "cause": "coding_display",
+   "detail": "the coding display reads Insulin lispro sliding scale correction",
+   "text": "Take Insulin lispro 4 units as a shot under the skin three times a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_clinical_03_methylprednisolone_dosepak_display",
+   "family": "clinical",
+   "cause": "coding_display",
+   "detail": "the coding display names the Medrol Dosepak and dispenseRequest gives 21 tablets for a 6-day supply; the text prints 4 mg once a day",
+   "text": "Take Methylprednisolone 4 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_clinical_04_metoprolol_hold_reason",
+   "family": "clinical",
+   "cause": "reason_code",
+   "detail": "reasonCode gives hold parameters for heart rate and systolic blood pressure",
+   "text": "Take Metoprolol tartrate 25 mg by mouth twice a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_clinical_05_prednisone_taper_identifier",
+   "family": "clinical",
+   "cause": "identifier",
+   "detail": "an identifier value reads prednisone-taper-step-3-of-4",
+   "text": "Take Prednisone 20 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_clinical_07_lisinopril_discontinue_reason_code",
+   "family": "clinical",
+   "cause": "reason_code",
+   "detail": "reasonCode reads Discontinue: angioedema reported at last visit while status is active",
+   "text": "Take Lisinopril 10 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_clinical_12_oxycodone_prn_display_scheduled",
+   "family": "clinical",
+   "cause": "coding_display",
+   "detail": "the coding display reads Oxycodone 5 MG Oral Tablet as needed for pain while asNeededBoolean is not set, so the text prints every 4 hours as a schedule",
+   "text": "Take Oxycodone 5 mg by mouth every 4 hours.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_clinical_15_acetaminophen_max_reason_code_scheduled",
+   "family": "clinical",
+   "cause": "reason_code",
+   "detail": "reasonCode sets a maximum of 3000 mg in 24 hours; the text prints 650 mg every 4 hours, which allows 3900 mg",
+   "text": "Take Acetaminophen 650 mg by mouth every 4 hours.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_meaning_01_held_name_list_frame",
+   "family": "meaning",
+   "cause": "drug_name_word",
+   "detail": "the drug name is Warfarin Held, under list framing; the name rule lists hold, not held",
+   "text": "Here is the list of your medicines.\nTake Warfarin Held 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_meaning_03_tapered_name_fixed_dose",
+   "family": "meaning",
+   "cause": "drug_name_word",
+   "detail": "the drug name is Methylprednisolone Tapered",
+   "text": "Take Methylprednisolone Tapered 4 mg by mouth once a day.\nTake Lisinopril 10 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_meaning_04_titrated_name_sig_shape",
+   "family": "meaning",
+   "cause": "drug_name_word",
+   "detail": "the drug name is Insulin Glargine Titrated; the name rule lists titrate and titration, not titrated",
+   "text": "Take Insulin Glargine Titrated 20 units as a shot under the skin, once a day.\nTake Metformin 500 mg by mouth, twice a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_meaning_16_discontinued_reason_list_frame",
+   "family": "meaning",
+   "cause": "reason_code",
+   "detail": "reasonCode reads Discontinued due to adverse reaction while status is active, under list framing",
+   "text": "Here is the list of your medicines.\nTake Metformin 500 mg by mouth twice a day.\nTake Warfarin 5 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_model_style_as_needed_in_reason_code_scheduled",
+   "family": "model_style",
+   "cause": "reason_code",
+   "detail": "reasonCode reads as needed for pain; the text prints every 4 hours with a daily total of 3900 mg (third labeler)",
+   "text": "Take acetaminophen 650 mg by mouth every 4 hours which is 3900 mg a day.",
+   "reader1": "misstates_order",
+   "reader2": "faithful",
+   "third_reader": "misstates_order"
+  },
+  {
+   "id": "h3_model_style_coumadin_and_warfarin_alternating_split",
+   "family": "model_style",
+   "cause": "reason_code",
+   "detail": "reasonCode on a Coumadin order and a warfarin order gives alternating weekdays; the text prints both once a day; also flagged as one ingredient under two names",
+   "text": "Take Coumadin 5 mg by mouth once a day.\nTake warfarin 2.5 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_model_style_hold_parameter_in_reason_code",
+   "family": "model_style",
+   "cause": "reason_code",
+   "detail": "reasonCode reads hold for heart rate below 55; the text adds a daily total",
+   "text": "Take metoprolol tartrate 25 mg by mouth twice a day which is 50 mg a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_model_style_sliding_scale_in_coding_display",
+   "family": "model_style",
+   "cause": "coding_display",
+   "detail": "the coding display reads insulin lispro sliding scale",
+   "text": "Take insulin lispro 2 units as a shot under the skin every 6 hours.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_model_style_sliding_scale_in_reason_code",
+   "family": "model_style",
+   "cause": "reason_code",
+   "detail": "reasonCode reads sliding scale correction for high glucose; the text adds a daily total",
+   "text": "Take insulin lispro 2 units as a shot under the skin every 6 hours which is 8 units a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_model_style_taper_in_reason_code",
+   "family": "model_style",
+   "cause": "reason_code",
+   "detail": "reasonCode reads taper over ten days, step two of three",
+   "text": "Take prednisone 20 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h3_model_style_warfarin_inr_dose_in_reason_code",
+   "family": "model_style",
+   "cause": "reason_code",
+   "detail": "reasonCode reads dose adjusted by INR result (third labeler)",
+   "text": "Take warfarin 5 mg by mouth, once a day.",
+   "reader1": "misstates_order",
+   "reader2": "faithful",
+   "third_reader": "misstates_order"
+  },
+  {
+   "id": "h3_structure_29_statement_in_bundle_completeness",
+   "family": "structure",
+   "cause": "chart_scope",
+   "detail": "the bundle holds an active MedicationStatement, which the reader skips; the text claims a medicine list and names the one MedicationRequest (third labeler)",
+   "text": "Here is the list of your medicines. Take Lantus 10 units as a shot under the skin once a day.",
+   "reader1": "faithful",
+   "reader2": "unsupported_claim",
+   "third_reader": "misstates_order"
+  }
+ ]
+}

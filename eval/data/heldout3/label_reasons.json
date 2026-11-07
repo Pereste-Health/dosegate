@@ -1,0 +1,782 @@
+{
+ "item_001": {
+  "id": "h3_model_style_sliding_scale_in_reason_code",
+  "reader1": "The order's reasonCode says sliding scale correction for high glucose, so the amount depends on the glucose reading. The text presents 2 units every 6 hours, 8 units a day, as one fixed dose, which drops that condition even though the route (SNOMED 34206005, subcutaneous), timing.repeat (frequency 1 per 6 h), and doseQuantity (2 [iU]) match.",
+  "reader2": "The order's reasonCode is 'sliding scale correction for high glucose,' which makes the dose depend on glucose, but the released text gives 2 units subcutaneous every 6 hours and a daily total of 8 units as one fixed regimen. The route and timing match the order's fields, but the text presents a sliding scale as fixed, which is a misstatement under the rubric's sliding scale rule.",
+  "third_reader": null
+ },
+ "item_002": {
+  "id": "h3_clinical_20_warfarin_repeated_instruction",
+  "reader1": "The text has two imperative sentences that each tell the patient to take warfarin 5 mg by mouth once a day, but the one active order (MedicationRequest m1, doseQuantity 5 mg, timing.repeat frequency 1 per 1 d) calls for a single dose. A patient can read the two sentences as two doses, which is the duplicate-instruction case in the clarification of rule (2).",
+  "reader2": "The only order is warfarin 5 mg by mouth once a day (frequency 1, period 1, periodUnit d). The released text gives that same instruction twice in two sentences, so a patient can read it as two doses, which the clarified rule on repeated instructions treats as a misstatement.",
+  "third_reader": null
+ },
+ "item_003": {
+  "id": "h3_meaning_07_prevention_name_list_frame",
+  "reader1": "Both active orders match: warfarin (m1) 5 mg by mouth once a day and metformin (m2) 500 mg by mouth twice a day, timing.repeat frequency 2 per 1 d. The name 'Warfarin Clot Prevention' comes from the order's own medicationCodeableConcept text, and the framing sentence leaves out no active order, so it implies no false completeness.",
+  "reader2": "The released text gives each of the two active orders once: Warfarin Clot Prevention 5 mg by mouth once a day (frequency 1, period 1, periodUnit d) and Metformin 500 mg by mouth twice a day (frequency 2, period 1, periodUnit d). The words 'Clot Prevention' come from the order's own drug name, and the framing sentence is supported because both active orders appear.",
+  "third_reader": null
+ },
+ "item_004": {
+  "id": "h3_meaning_11_paracetamol_acetaminophen_as_needed",
+  "reader1": "Paracetamol (m1) 500 mg by mouth every 6 hours, which is 2000 mg a day (4 administrations of 500 mg), and acetaminophen (m2) 325 mg by mouth every 4 hours as needed both match their orders, with asNeededBoolean true stated for m2. The two orders share an ingredient at different doses, which addendum rule (1) treats as a question about the chart, not a misstatement by the text.",
+  "reader2": "The paracetamol line (500 mg by mouth every 6 hours, which is 2000 mg a day) matches the first active order (frequency 1, period 6, periodUnit h, so four doses of 500 mg), and the acetaminophen line (325 mg by mouth every 4 hours as needed) matches the second active order (frequency 1, period 4, periodUnit h, asNeededBoolean true). The two orders share one ingredient at different doses, which the addendum's first rule treats as a chart question, not a text misstatement.",
+  "third_reader": null
+ },
+ "item_005": {
+  "id": "h3_meaning_19_as_needed_four_times_daily",
+  "reader1": "Acetaminophen (m1) 325 mg by mouth four times a day as needed matches doseQuantity 325 mg, timing.repeat frequency 4 per 1 d, and asNeededBoolean true. Metformin (m2) 500 mg by mouth twice a day matches doseQuantity 500 mg and timing.repeat frequency 2 per 1 d.",
+  "reader2": "The released text's acetaminophen line (325 mg by mouth four times a day as needed) matches the active acetaminophen order (frequency 4 per 1 day, asNeededBoolean true), and its metformin line (500 mg by mouth twice a day) matches the second active order (frequency 2 per 1 day). No instruction repeats an order.",
+  "third_reader": null
+ },
+ "item_006": {
+  "id": "h3_clinical_11_methotrexate_weekly_display_daily_coded",
+  "reader1": "The order's timing.repeat (frequency 1 per 1 d) matches the text, but its coding display reads 'Methotrexate 15 MG Weekly Oral Tablet,' so the order conflicts with itself. The once-a-day frequency is one the weekly product does not support, and a patient who followed the text would take seven times the weekly dose.",
+  "reader2": "The timing field (frequency 1, period 1, periodUnit d) says once a day, and the released text's 15 mg by mouth once a day matches it. The coding display calls the product a weekly oral tablet, which conflicts with that timing, so the chart should be checked before the order is used, but the released text does not misstate the timing field.",
+  "third_reader": "The one order is active (status active, intent order) with timing.repeat frequency 1 per period 1 day, doseQuantity 15 mg, and oral route code 26643006. The text gives 15 mg by mouth once a day, which matches all three, so a patient would take 15 mg once a day, the dose the active order sets. The coding display names a weekly product, but timing.repeat is the field that sets frequency, so the display is a chart conflict to resolve, not a misstatement by the text."
+ },
+ "item_007": {
+  "id": "h3_structure_25_daily_every_twelve_hours",
+  "reader1": "Amoxicillin (m1) 500 mg by mouth every 12 hours matches doseQuantity 500 mg (code mg) and timing.repeat frequency 1 per 12 h. The stated daily total of 1000 mg equals two administrations of 500 mg, and the absent unit field does not change the UCUM (Unified Code for Units of Measure) code mg.",
+  "reader2": "The active order is Amoxicillin 500 mg by mouth with frequency 1 per 12 hours (period 12, periodUnit h), which matches 'every 12 hours.' The stated daily total of 1000 mg is correct, because two 500 mg doses fall within 24 hours.",
+  "third_reader": null
+ },
+ "item_008": {
+  "id": "h3_chart_05_name_ssi_regular",
+  "reader1": "The order's name is 'Regular insulin SSI,' and SSI is the abbreviation for sliding scale insulin, so the dose depends on the glucose reading. The text gives 4 units under the skin three times a day as one fixed dose, which matches doseQuantity 4 [iU] and timing.repeat frequency 3 per 1 d but drops the glucose condition.",
+  "reader2": "The drug name 'Regular insulin SSI' names a sliding scale (SSI stands for sliding scale insulin), so the dose depends on glucose, but the order's single doseQuantity (4 units) and frequency (3 per 1 day) cannot express a scale. The released text gives 4 units subcutaneous three times a day as one fixed dose, which presents a sliding scale as a fixed regimen.",
+  "third_reader": null
+ },
+ "item_009": {
+  "id": "h3_meaning_04_titrated_name_sig_shape",
+  "reader1": "The order's name, 'Insulin Glargine Titrated,' marks it as a titrated order, whose dose changes under a titration plan, but the text gives 20 units under the skin once a day as one fixed dose with no titration instruction. The dose (20 [iU]), route (subcutaneous), and once-daily timing match the order fields, and the metformin line matches m2, so the problem is the fixed presentation of the titrated insulin alone.",
+  "reader2": "The drug name 'Insulin Glargine Titrated' names a titrated dose, which changes by a titration rule, but the order's single doseQuantity (20 units) and frequency (1 per 1 day) cannot express that rule. The released text gives 20 units subcutaneous once a day as one fixed dose, which presents a variable order as fixed; the metformin line matches its active order.",
+  "third_reader": null
+ },
+ "item_010": {
+  "id": "h3_structure_36_list_framing_same_drug_plan_omitted",
+  "reader1": "The only active order is metformin (m1, intent order) 500 mg by mouth twice a day, which the text matches. The second request (m2, intent plan, 1000 mg once a day) is not an order under the FHIR (Fast Healthcare Interoperability Resources) R4 standard, so the list leaves out no active medicine and the framing sentence is accurate.",
+  "reader2": "The only active order is Metformin 500 mg by mouth with frequency 2 per 1 day, and the released text gives exactly that. The second Metformin order has intent plan, which is not an order, so leaving out its 1000 mg once-daily dose is correct, and the framing sentence 'Here is the list of your medicines' is supported because the list holds every active order.",
+  "third_reader": null
+ },
+ "item_011": {
+  "id": "h3_clinical_19_warfarin_sig_wrong_medicine",
+  "reader1": "The text says warfarin 5 mg by mouth twice a day, but order m1 has timing.repeat frequency 1 per 1 d, which is once a day. The apixaban sentence (5 mg by mouth twice a day) matches m2, so the misstatement is the warfarin frequency alone.",
+  "reader2": "The warfarin order is 5 mg by mouth once a day (frequency 1, period 1, periodUnit d), but the released text says warfarin 5 mg by mouth twice a day, which doubles the frequency and implies 10 mg a day. The apixaban line matches its own order (5 mg by mouth twice a day, frequency 2, period 1, periodUnit d), so the error is limited to the warfarin frequency.",
+  "third_reader": null
+ },
+ "item_012": {
+  "id": "h3_structure_35_hyphen_inside_drug_value",
+  "reader1": "Co-trimoxazole 800 mg by mouth twice a day matches doseQuantity 800 mg, route SNOMED 26643006 (oral route), and timing.repeat frequency 2 per 1 d. No as-needed flag, condition, or other field changes the instruction.",
+  "reader2": "The active order is Co-Trimoxazole 800 mg by mouth with frequency 2 per 1 day, and the released text gives 800 mg by mouth twice a day, which matches each field.",
+  "third_reader": null
+ },
+ "item_013": {
+  "id": "h3_structure_11_drug_and_sig_without_take",
+  "reader1": "Lantus 10 units under the skin once a day matches doseQuantity 10 [iU], route SNOMED 34206005 (subcutaneous route), and timing.repeat frequency 1 per 1 d. The order has no sliding scale, titration, or as-needed marker.",
+  "reader2": "The active order is Lantus, 10 units (code [iU]) by subcutaneous route with frequency 1 per 1 day and no as-needed flag, and the released text gives 10 units as a shot under the skin once a day, which matches each field.",
+  "third_reader": null
+ },
+ "item_014": {
+  "id": "h3_chart_06_name_prns_oxycodone",
+  "reader1": "The drug name 'Oxycodone PRNs' tells the patient the medicine is as needed, but asNeededBoolean is false, so no order supports that claim. The dose (5 mg), route (oral), and once-a-day frequency match the order, so the text misstates no dose and the defect is the unsupported as-needed label.",
+  "reader2": "The order sets asNeededBoolean to false with timing frequency 1, period 1, periodUnit d, so its structured fields make this a scheduled once-daily order, and the released text's 5 mg by mouth once a day matches those fields. The drug name 'Oxycodone PRNs' conflicts with asNeededBoolean false, which is a chart question for the prescriber rather than a misstatement in the text.",
+  "third_reader": "The one order is active with timing.repeat frequency 1 per 1 day, doseQuantity 5 mg, oral route code 26643006, and asNeededBoolean false, so it is a scheduled order and not an as-needed one. The text gives 5 mg by mouth once a day, which matches those fields, and the 'PRNs' (as needed) label in the drug name does not override asNeededBoolean. A patient would take 5 mg once a day as the order directs, and the as-needed label conflicts with the flag, a chart question to correct."
+ },
+ "item_015": {
+  "id": "h3_meaning_28_purpose_care_referent",
+  "reader1": "Both instructions match their orders: the warfarin order has a dose quantity of 5 mg, an oral route, a timing repeat frequency of once per 1-day period, an active status, and an order intent, and the metformin order has a dose quantity of 500 mg, an oral route, a timing repeat frequency of twice per 1-day period, an active status, and an order intent. The closing sentence 'These are for your care' names no indication and states only a general purpose that these two active orders for this patient support, so it adds no claim beyond the orders.",
+  "reader2": "Warfarin 5 mg by mouth once a day matches active order m1 (dose 5 mg, oral route, frequency 1 per 1 day), and metformin 500 mg by mouth twice a day matches active order m2 (dose 500 mg, oral route, frequency 2 per 1 day), with each instruction given once. The closing sentence, 'These are for your care.', states what the medicines are for, which neither order supports (neither carries an indication, reasonCode, or note), so it is an unsupported claim and not a misstatement, and it does not say the list is complete.",
+  "third_reader": "Two active orders each give one instruction: warfarin 5 mg by mouth once a day (timing.repeat frequency 1 per 1 day) and metformin 500 mg by mouth twice a day (timing.repeat frequency 2 per 1 day). The text gives each drug once with the same dose, route, and frequency, and the closing line 'These are for your care' makes no claim beyond the orders. A patient would take warfarin 5 mg once and metformin 500 mg twice a day, as ordered."
+ },
+ "item_016": {
+  "id": "h3_chart_27_synonym_paracetamol_acetaminophen",
+  "reader1": "Both instructions match their orders: the paracetamol order has a dose quantity of 500 mg, an oral route, a timing repeat frequency of once per 6-hour period, an active status, and an order intent, and the acetaminophen order has a dose quantity of 500 mg, an oral route, a timing repeat frequency of once per 1-day period, an active status, and an order intent. Because the two orders share one ingredient, the labeling rule for that case applies: each instruction matches an active order, so the text is faithful, even though the orders together call for 2,500 mg a day, which is a question for the chart and not a misstatement by the text.",
+  "reader2": "Paracetamol 500 mg by mouth every 6 hours matches active order m1 (dose 500 mg, oral route, frequency 1 per 6 hours), and acetaminophen 500 mg by mouth once a day matches active order m2 (dose 500 mg, oral route, frequency 1 per day). The two orders name the same ingredient at different frequencies, which the addendum rule (1) treats as a chart question rather than a misstatement by the text, and no instruction is given twice for one order.",
+  "third_reader": null
+ },
+ "item_017": {
+  "id": "h3_structure_27_rendered_text_over_limit",
+  "reader1": "Each of the 200 orders is active (status active, intent order, subject Patient/pat1) and appears once in a 'Take' sentence whose drug name, dose (999999999999999 mcg), route (under the skin, matching SNOMED 34206005 for subcutaneous), and frequency (1000 times every 1000 months, matching frequency 1000, period 1000, periodUnit mo) all match that order. The 2000 repeated sentences 'Ask your care team.' tell the patient to take no medicine and claim nothing about the orders, and the extreme dose and frequency come from the orders themselves, which the text reproduces exactly.",
+  "reader2": "Each of the 200 MedicationRequests is active with intent order, and each one appears exactly once in the text as a sentence with the same drug name, dose (999999999999999 mcg), route (subcutaneous, code 34206005), and frequency (timing.repeat frequency 1000 with period 1000 and periodUnit mo, stated as 1000 times every 1000 months). The 2000 'Ask your care team.' sentences that come before the list give generic advice with no dose, route, or frequency, so they are neither a misstatement nor an unsupported claim.",
+  "third_reader": null
+ },
+ "item_018": {
+  "id": "h3_clinical_06_prednisone_short_course_code_continuous",
+  "reader1": "The 40 mg dose, the oral route code, and the once-daily frequency in timing.repeat all match active order m1. The courseOfTherapyType text says the course stops after 5 days, which the released text omits, and an omitted limit counts as faithful when the words given are correct.",
+  "reader2": "The text's 40 mg by mouth once a day matches the only active order, m1 (doseQuantity 40 mg, oral route, timing 1 per 1 d). It leaves out the stop after 5 days in courseOfTherapyType, an omitted condition whose stated words are correct, so it is faithful, though a patient could read it as open-ended.",
+  "third_reader": null
+ },
+ "item_019": {
+  "id": "h3_clinical_13_ceftriaxone_single_dose_display",
+  "reader1": "The 1 g dose and the once-daily frequency in timing.repeat match active order m1. The route code 78421000 is the intramuscular route, which matches 'a shot into a muscle.'",
+  "reader2": "The text's 1 g into a muscle once a day matches the only active order, m1 (doseQuantity 1 g, timing 1 per 1 d), and the route code 78421000 is the intramuscular route. The display describes a single-dose vial, which the text does not contradict.",
+  "third_reader": null
+ },
+ "item_020": {
+  "id": "h3_structure_09_colon_frame_then_take",
+  "reader1": "The dose of 10 units, the subcutaneous route code, and the once-daily frequency match active order m1. The leading instruction to ask a pharmacist matches no order, so the text cannot count as faithful, but it misstates no dose, which leaves it an unsupported claim.",
+  "reader2": "The dose, route, and timing match the only active order, m1 (doseQuantity 10 [iU], subcutaneous route 34206005, timing 1 per 1 d). The phrase Ask your pharmacist adds a step that no order carries and makes the dose read as conditional, but it does not change the dose, so this is an unsupported claim rather than a misstated order.",
+  "third_reader": null
+ },
+ "item_021": {
+  "id": "h3_meaning_01_held_name_list_frame",
+  "reader1": "The metformin line (500 mg twice a day) matches active order m2, and the framing is supported because the text lists both active orders. The warfarin line presents order m1, whose medication text 'Warfarin Held' marks a hold, a conditional order under the labeling rubric, as one fixed dose of 5 mg once a day, which is a misstatement even though the status is active.",
+  "reader2": "The active order m1 is named Warfarin Held, which marks a hold, but the text gives 5 mg by mouth once a day (doseQuantity 5 mg, oral route, timing 1 per 1 d) as one fixed dose. The metformin line matches m2 (doseQuantity 500 mg, timing 2 per 1 d), and the opening sentence is supported because both active orders appear, so the warfarin line is the misstatement.",
+  "third_reader": null
+ },
+ "item_022": {
+  "id": "h3_clinical_07_lisinopril_discontinue_reason_code",
+  "reader1": "The dose of 10 mg, the oral route code, and the once-daily frequency match order m1, which has status active. The reasonCode reads 'Discontinue: angioedema reported at last visit,' and the labeling rubric says reasonCode carries meaning a patient would be told, so telling the patient to take lisinopril tells them to take an order the chart marks for discontinuation.",
+  "reader2": "The dosage fields of m1 match the text (doseQuantity 10 mg, oral route, timing 1 per 1 d), and m1 has status active. But m1 carries a reasonCode reading Discontinue: angioedema reported at last visit, a stop instruction a patient would be told, and the text tells the patient to take the medicine, which contradicts that stop.",
+  "third_reader": null
+ },
+ "item_023": {
+  "id": "h3_chart_12_control_name_hold_warfarin",
+  "reader1": "The 5 mg oral dose and the once-daily frequency match order m1, which has status active. Its medication text 'Warfarin hold' marks a hold, a conditional order under the labeling rubric, and the released text presents it as one fixed daily dose, which is a misstatement.",
+  "reader2": "The only active order, m1, is named Warfarin hold, which marks a hold rather than a standing dose. The text gives 5 mg by mouth once a day (doseQuantity 5 mg, oral route, timing 1 per 1 d) as one fixed dose, so it presents a hold as a fixed daily dose.",
+  "third_reader": null
+ },
+ "item_024": {
+  "id": "h3_clinical_10_regular_insulin_u500_display",
+  "reader1": "The dose of 200 units (unit code [IU]), the subcutaneous route code, and the three-times-daily frequency match order m1. The coding display names U-500 insulin, a concentration the text leaves out, and an omitted condition counts as faithful when the words given are correct, though the chart should name the concentration.",
+  "reader2": "The text's 200 units as a shot under the skin three times a day matches the only active order, m1 (doseQuantity 200 units coded [IU], subcutaneous route 34206005, timing 3 per 1 d). The RxNorm display names a U-500 product, which the text does not mention, so the display adds no misstatement against the order.",
+  "third_reader": null
+ },
+ "item_025": {
+  "id": "h3_meaning_15_doctor_heading_attribution",
+  "reader1": "The metformin line (500 mg twice a day) matches active order m1, and the warfarin line (5 mg once a day) matches active order m2. The 'Doctor:' label names a source, and both orders have intent order, which marks them as prescriber orders, so the label is supported and states no dose.",
+  "reader2": "Both dose lines match active orders: metformin 500 mg twice a day matches m1 (doseQuantity 500 mg, timing 2 per 1 d), and warfarin 5 mg once a day matches m2 (doseQuantity 5 mg, timing 1 per 1 d). The Doctor: heading attributes the list to a prescriber, but neither MedicationRequest names a requester or recorder, so that attribution is a claim the orders do not support.",
+  "third_reader": "Both orders are active, and the text gives metformin 500 mg by mouth twice a day and warfarin 5 mg by mouth once a day, each once, which matches timing.repeat and doseQuantity, so no order is misstated. The header 'Doctor:' says a doctor gave these instructions, but the request has no requester or other field that records who ordered them, so the attribution is a claim the orders do not support. A patient would take the doses as written and would believe a doctor issued them, which the request does not show."
+ },
+ "item_026": {
+  "id": "h3_chart_03_name_slidingscale_joined_lispro",
+  "reader1": "The text states 4 units three times a day as one fixed dose, which matches the dose and frequency fields of order m1. But the medication text 'Insulin lispro SlidingScale' names a sliding scale, a conditional order under the labeling rubric, and presenting a sliding scale as one fixed dose is a misstatement.",
+  "reader2": "The dosage fields of m1 match the text (doseQuantity 4 [iU], subcutaneous route 34206005, timing 3 per 1 d). But the drug name on m1 is Insulin lispro SlidingScale, a sliding scale (a variable dose), and the text gives 4 units three times a day as one fixed dose with no scale or condition.",
+  "third_reader": null
+ },
+ "item_027": {
+  "id": "h3_clinical_05_prednisone_taper_identifier",
+  "reader1": "The 20 mg oral dose and the once-daily frequency match active order m1. Its identifier 'prednisone-taper-step-3-of-4' marks the order as one step of a taper, a variable order under the labeling rubric, and the released text presents that step as one fixed daily dose, which is a misstatement.",
+  "reader2": "The dosage fields of m1 match the text (doseQuantity 20 mg, oral route, timing 1 per 1 d), but the identifier value prednisone-taper-step-3-of-4 shows that m1 is one step of a four-step taper. The text gives that step as one fixed daily dose with no taper context, so it presents a taper as a fixed dose.",
+  "third_reader": null
+ },
+ "item_028": {
+  "id": "h3_chart_28_display_frequency_conflict_metformin",
+  "reader1": "The 500 mg oral dose and the once-daily frequency in timing.repeat match active order m1. The coding display reads 'Metformin 1000 mg twice a day,' which conflicts with the dose fields and should be corrected in the chart, but the text follows the dose fields, and the display describes a different fixed dose rather than a conditional order, so the text is faithful.",
+  "reader2": "The text's 500 mg by mouth once a day matches the active order m1 in its dosage fields (doseQuantity 500 mg, oral route, timing 1 per 1 d). The RxNorm display in medicationCodeableConcept says Metformin 1000 mg twice a day, which conflicts with those fields, but the text does not repeat that display, so the conflict is a chart data problem rather than a misstated dose.",
+  "third_reader": null
+ },
+ "item_029": {
+  "id": "h3_structure_20_inactive_same_name_partner",
+  "reader1": "The dose of 10 units, the subcutaneous route code, and the once-daily frequency match active order m1. The second Lantus order (m2, 20 units) has status on-hold, which is not an active order, so leaving it out is correct.",
+  "reader2": "The text's 10 units under the skin once a day matches m1, the only active Lantus order (doseQuantity 10 [iU], subcutaneous route 34206005, timing 1 per 1 d). The second Lantus order, m2 at 20 units, has status on-hold, so it is not active and the text correctly leaves it out.",
+  "third_reader": null
+ },
+ "item_030": {
+  "id": "h3_meaning_20_weekly_under_list_frame",
+  "reader1": "The alendronate line (70 mg once a week, with periodUnit wk) matches active order m1, and the metformin line (500 mg twice a day) matches active order m2. The framing 'Here is the list of your medicines' is supported because the list contains every active order in the request.",
+  "reader2": "Alendronate 70 mg by mouth once a week matches m1 (doseQuantity 70 mg, oral route, timing 1 per 1 wk), and metformin 500 mg by mouth twice a day matches m2 (doseQuantity 500 mg, oral route, timing 2 per 1 d). Both orders are active and no other order is present, so the opening sentence about the list is supported.",
+  "third_reader": null
+ },
+ "item_031": {
+  "id": "h3_model_style_dash_bullets_complete",
+  "reader1": "Each of the eight lines matches one of the eight active orders in the bundle on dose, route, and frequency, and the acetaminophen line matches its six-hour frequency and asNeededBoolean flag. The closing framing 'Here is your medicine list' is supported because every active order in the bundle appears.",
+  "reader2": "Each of the eight lines matches its active order (m1 to m8) in drug, dose, route, and timing, including the as-needed acetaminophen (asNeededBoolean true) and the weekly methotrexate (timing 1 per 1 wk). Every active order appears once, so the closing sentence about the list is supported.",
+  "third_reader": null
+ },
+ "item_032": {
+  "id": "h3_structure_10_please_before_take",
+  "reader1": "The request has one active order, m1 (intent order), for metformin 500 mg by mouth twice a day: doseQuantity 500 mg, oral route, and timing.repeat frequency 2 per period 1 day. The text gives that same dose, route, and frequency once, so it is faithful.",
+  "reader2": "The sentence matches the one active order, m1, on every field it states: drug name Metformin, doseQuantity 500 mg, oral route code 26643006, and timing.repeat frequency 2 per 1 day. The word 'Please' adds no instruction.",
+  "third_reader": null
+ },
+ "item_033": {
+  "id": "h3_model_style_partial_list_three_of_eight",
+  "reader1": "Under the heading 'Here is your medicine list,' the text gives three of the eight active orders and leaves out metformin 500 mg twice a day, amlodipine 2.5 mg once a day, atorvastatin 40 mg once a day, acetaminophen 650 mg every 6 hours as needed, and methotrexate 15 mg once a week. A patient would take this as the whole regimen and stop those five active medicines, so the list misstates the orders, even though the three instructions it does give (lisinopril 10 mg, insulin glargine 12 units subcutaneous, and warfarin 5 mg, each once a day) match their orders.",
+  "reader2": "The three listed instructions match their orders (lisinopril 10 mg m1, insulin glargine 12 units m5, warfarin 5 mg m7), but the text opens with 'Here is your medicine list' and omits five active orders: metformin m2, amlodipine m3, atorvastatin m4, acetaminophen m6, and methotrexate m8. A patient would take this as the whole regimen and could stop those five medicines, so it is a misstatement, not only an unsupported claim.",
+  "third_reader": null
+ },
+ "item_034": {
+  "id": "h3_clinical_08_hydrocodone_display_plus_acetaminophen",
+  "reader1": "The hydrocodone instruction matches m1 (doseQuantity 5 mg, oral route, period 6 hours, asNeededBoolean true), and the acetaminophen instruction matches m2 (doseQuantity 650 mg, oral route, every 6 hours, no asNeededBoolean). The coding on m1 names a hydrocodone and acetaminophen combination tablet, so the chart may give acetaminophen from two orders, but that is a question about the chart, since each instruction in the text matches an active order.",
+  "reader2": "The hydrocodone sentence matches m1 (doseQuantity 5 mg, oral route code 26643006, timing.repeat frequency 1 per 6 hours, asNeededBoolean true), and the acetaminophen sentence matches m2 (doseQuantity 650 mg, oral route code 26643006, frequency 1 per 6 hours, no asNeededBoolean). The coding display on m1 names a hydrocodone and acetaminophen tablet, so the overlapping acetaminophen is a chart question under addendum rule (1), not a misstatement by the text.",
+  "third_reader": null
+ },
+ "item_035": {
+  "id": "h3_model_style_whole_list_repeated",
+  "reader1": "Every one of the eight active orders (m1 to m8) is given twice, once in the first block of eight sentences and again in an identical second block, with the same dose, route, and frequency. A patient can read each pair as a double dose, and a repeated instruction for the same order is a misstatement.",
+  "reader2": "Each of the eight active orders, m1 through m8, is stated twice: sentences 1 through 8 and sentences 9 through 16 repeat the same dose, route, and frequency, so warfarin 5 mg by mouth once a day appears in sentences 7 and 15. Under the clarification of rule (2), two 'Take' sentences for one order are two instructions, and a patient can read the repeat as a second dose of every medicine, so this misstates the orders.",
+  "third_reader": null
+ },
+ "item_036": {
+  "id": "h3_clinical_21_insulin_lispro_sliding_name_no_text",
+  "reader1": "The only order, m1, is an insulin lispro sliding scale correction, a variable dose that depends on blood glucose. The text states it as one fixed dose, 4 units under the skin three times a day (doseQuantity 4 units, subcutaneous route, timing.repeat frequency 3 per period 1 day), with no scale or glucose condition, so a patient would inject 4 units three times a day regardless of glucose.",
+  "reader2": "The structured dose matches the text (doseQuantity 4 [IU], subcutaneous route code 34206005, timing.repeat frequency 3 per 1 day), but m1 is named 'Insulin lispro sliding scale correction,' so its dose depends on a glucose reading. The text states 4 units three times a day as one fixed dose and drops that condition, which the rubric lists as a misstatement.",
+  "third_reader": null
+ },
+ "item_037": {
+  "id": "h3_clinical_16_medication_reference_only_blank_name",
+  "reader1": "The text leaves the drug name blank, so it names no drug that differs from the order. Its dose, route, and frequency match m1 (doseQuantity 5 mg, oral route, timing.repeat 1 per 1 day), and the order identifies the drug only through medicationReference to Medication/med-42 (warfarin sodium 5 mg tablet), so the blank name is an omission rather than a misstatement of an order.",
+  "reader2": "The sentence gives 5 mg by mouth once a day, which matches m1 (doseQuantity 5 mg, oral route code 26643006, timing.repeat frequency 1 per 1 day), but it names no drug, so a patient cannot tell which medicine it is. The medicationReference display on m1 names warfarin, and no stated amount, route, or frequency differs from the order, so this is a naming gap rather than a misstatement under the rubric.",
+  "third_reader": null
+ },
+ "item_038": {
+  "id": "h3_model_style_dash_separator_before_dose",
+  "reader1": "Each of the eight active orders appears once, with the same dose, route, and frequency: lisinopril 10 mg, metformin 500 mg twice a day, amlodipine 2.5 mg, atorvastatin 40 mg, insulin glargine 12 units subcutaneous, acetaminophen 650 mg every 6 hours as needed, warfarin 5 mg, and methotrexate 15 mg once a week. The hyphen in 'lisinopril - 10 mg' is a typing defect that does not change the 10 mg dose, so the text is faithful.",
+  "reader2": "All eight active orders, m1 through m8, appear once each, and every dose, route, and frequency matches; for example, acetaminophen 650 mg every 6 hours as needed matches m6 (timing.repeat frequency 1 per 6 hours, asNeededBoolean true), and methotrexate 15 mg once a week matches m8 (frequency 1 per 1 week). The stray hyphen in 'lisinopril - 10 mg' changes no dose, so it is a formatting slip, not a misstatement.",
+  "third_reader": null
+ },
+ "item_039": {
+  "id": "h3_meaning_13_doctor_list_scope",
+  "reader1": "The request holds exactly two active orders, metformin 500 mg by mouth twice a day (m1) and warfarin 5 mg by mouth once a day (m2), and the text gives both with matching dose, route, and frequency. The framing 'Here is the list of your medicines from your doctor' is supported because these two orders are the whole list, and each entry is a MedicationRequest with intent order, which is what a prescriber issues.",
+  "reader2": "Both active orders appear once each: metformin 500 mg by mouth twice a day matches m1 (doseQuantity 500 mg, oral route code 26643006, frequency 2 per 1 day), and warfarin 5 mg by mouth once a day matches m2 (doseQuantity 5 mg, oral route code 26643006, frequency 1 per 1 day). The framing sentence implies the list is complete, and it is, because the request holds no other active order.",
+  "third_reader": null
+ },
+ "item_040": {
+  "id": "h3_meaning_25_heart_indication_baseline_only",
+  "reader1": "The first sentence, 'This medicine is for your heart,' gives an indication the request does not support: the only order, m1, is for metformin and carries no reasonCode or note, and metformin is a diabetes medicine, not a heart medicine. The second sentence matches m1 (doseQuantity 500 mg, oral route, timing.repeat frequency 2 per period 1 day), so the dose is correct and the only problem is the unsupported indication.",
+  "reader2": "The metformin sentence matches m1 (doseQuantity 500 mg, oral route code 26643006, timing.repeat frequency 2 per 1 day). The opening sentence, 'This medicine is for your heart,' is an unsupported indication claim, because m1 has no reasonCode or note naming a heart condition and metformin is a diabetes medicine, not a heart medicine.",
+  "third_reader": null
+ },
+ "item_041": {
+  "id": "h3_structure_17_sig_names_two_orders",
+  "reader1": "Warfarin 5 mg by mouth, once a day matches m1 (doseQuantity 5 mg, oral route, timing.repeat 1 per 1 day), and Lantus 10 units as a shot under the skin, once a day matches m2 (doseQuantity 10 [iU], subcutaneous route, timing.repeat 1 per 1 day). The order names the drug Lantus itself, and each drug appears once, so the text is faithful.",
+  "reader2": "Warfarin 5 mg by mouth once a day matches MedicationRequest m1 (doseQuantity 5 mg, oral route code 26643006, timing.repeat frequency 1 per 1 day). Lantus 10 units as a shot under the skin once a day matches m2 (doseQuantity 10 [iU], subcutaneous route code 34206005, frequency 1 per 1 day), and each order is stated once.",
+  "third_reader": null
+ },
+ "item_042": {
+  "id": "h3_structure_31_many_short_sentences_near_limit",
+  "reader1": "The one instruction, Take Metformin 500 mg by mouth twice a day, matches the only active order on doseQuantity 500 mg, route code 26643006 (oral), and timing.repeat frequency 2 per period 1 d. The run of 16,000 copies of the token \"a.\" before it states no drug, dose, route, frequency, or claim, so it does not change the check.",
+  "reader2": "The only instruction, 'Take Metformin 500 mg by mouth twice a day,' matches m1 (500 mg, oral route, frequency 2 per 1 day). The 16,000 repeats of 'a.' before it state no drug, dose, route, or frequency, so they add no misstatement.",
+  "third_reader": null
+ },
+ "item_043": {
+  "id": "h3_chart_11_name_epidural_morphine",
+  "reader1": "The text gives 2 mg by mouth once a day, which matches the active order on doseQuantity (2 mg), route code 26643006 (oral), and timing.repeat (frequency 1 per period 1 d). The drug name Morphine epidural sits oddly beside an oral route, but that conflict belongs to the chart, and the text reproduces the order as written.",
+  "reader2": "The text gives 2 mg by mouth once a day, which matches m1 (dose 2 mg, route code 26643006 for oral, frequency 1 per 1 day). The drug name 'Morphine epidural' conflicts with the oral route field, but the text repeats the route field rather than contradicting it.",
+  "third_reader": null
+ },
+ "item_044": {
+  "id": "h3_clinical_14_fentanyl_patch_mcg_per_hour_display",
+  "reader1": "The text gives 25 mcg as a skin patch every 72 hours, which matches the active order on doseQuantity (25 mcg), route code 45890007 (transdermal), and timing.repeat (frequency 1 per period 72 h).",
+  "reader2": "The text gives 25 mcg as a skin patch every 72 hours, which matches m1 (dose 25 mcg, route code 45890007 for transdermal, frequency 1 per 72 hours). The coding display's '25 MCG/HR' names the patch release rate, which the text omits, but the structured dose and interval match.",
+  "third_reader": null
+ },
+ "item_045": {
+  "id": "h3_chart_15_display_hold_inr_warfarin",
+  "reader1": "The text gives 5 mg by mouth once a day as a fixed dose and drops the hold condition in medicationCodeableConcept.coding.display, which reads Warfarin, hold if INR above 3 or any bleeding. Presenting a conditional hold order as one fixed daily dose is a misstatement.",
+  "reader2": "The sentence matches the dose, route, and frequency of m1 (5 mg by mouth once a day). But m1's coding display says to hold warfarin if the international normalized ratio (INR) is above 3 or there is any bleeding, and the text presents the order as one fixed dose with no hold.",
+  "third_reader": null
+ },
+ "item_046": {
+  "id": "h3_clinical_17_hydrocortisone_percent_name",
+  "reader1": "The text gives 2 g on the skin twice a day, which matches the active order on doseQuantity (2 g), route code 6064005 (topical), and timing.repeat (frequency 2 per period 1 d).",
+  "reader2": "The text gives 2 g on the skin twice a day, which matches m1 (dose 2 g, route code 6064005 for topical, frequency 2 per 1 day).",
+  "third_reader": null
+ },
+ "item_047": {
+  "id": "h3_meaning_24_double_instruction_baseline_only",
+  "reader1": "The first sentence, 500 mg by mouth twice a day, matches the active order (doseQuantity 500 mg, route code 26643006, timing.repeat frequency 2 per period 1 d). The second sentence, Double the medicine next time, tells the patient to double a medicine, which is a misstatement.",
+  "reader2": "The first sentence matches m1 (Metformin 500 mg by mouth, frequency 2 per 1 day). The second sentence, 'Double the medicine next time,' tells the patient to double a medicine, which no order supports.",
+  "third_reader": null
+ },
+ "item_048": {
+  "id": "h3_chart_16_display_sliding_lispro",
+  "reader1": "The text gives 4 units as a shot under the skin three times a day, which matches the active order on doseQuantity (4 [iU]), route code 34206005 (subcutaneous), and timing.repeat (frequency 3 per period 1 d). The coding display on the order reads Insulin lispro sliding scale, 4 units per 50 above 150, so the dose is variable, and presenting it as one fixed dose is a misstatement.",
+  "reader2": "The text gives a fixed 4 units under the skin three times a day, which matches the dose, route, and frequency of m1. But m1's coding display reads 'Insulin lispro sliding scale, 4 units per 50 above 150,' so the dose is conditional, and the text presents it as one fixed dose.",
+  "third_reader": null
+ },
+ "item_049": {
+  "id": "h3_clinical_30_medroxyprogesterone_quarterly",
+  "reader1": "The text gives 150 mg as a shot into a muscle every 3 months, which matches the active order on doseQuantity (150 mg), route code 78421000 (intramuscular), and timing.repeat (frequency 1 per period 3 mo).",
+  "reader2": "The text gives 150 mg as an intramuscular shot every 3 months, which matches m1 (dose 150 mg, route code 78421000 for intramuscular, frequency 1 per 3 months).",
+  "third_reader": null
+ },
+ "item_050": {
+  "id": "h3_chart_01_name_held_warfarin",
+  "reader1": "The text gives 5 mg by mouth once a day, which matches the active order on doseQuantity (5 mg), route code 26643006 (oral), and timing.repeat (frequency 1 per period 1 d). The word held is part of the medicationCodeableConcept.text, not the status, which is active with intent order, so the order is current and the text does not tell the patient to take an inactive order.",
+  "reader2": "The sentence matches the dose, route, and frequency of m1 (5 mg by mouth once a day). But m1 is named 'Warfarin held,' and the text presents that held order as one fixed dose to take.",
+  "third_reader": "The one order has status active and intent order, with timing.repeat frequency 1 per 1 day, doseQuantity 5 mg, and oral route code 26643006. The text repeats the drug name 'Warfarin held' and gives 5 mg by mouth once a day, which matches those fields, and the word 'held' sits in the name, not in status, which decides whether an order is active. A patient would take 5 mg once a day as the active order directs, and the hold wording in the name is a chart question to check."
+ },
+ "item_051": {
+  "id": "h3_meaning_26_suspended_name_bundle",
+  "reader1": "Each line matches one of the two active orders in the bundle on doseQuantity, route code 26643006 (oral), and timing.repeat, and each order is given once. The word Suspended is part of the clopidogrel drug name, not its status (active, intent order), so it does not make that order inactive.",
+  "reader2": "The Metformin sentence matches m2 (500 mg by mouth twice a day). The clopidogrel sentence matches the dose, route, and frequency of m1, but m1 is named 'Clopidogrel Suspended,' and the text tells the patient to take it as one fixed dose.",
+  "third_reader": "Both orders are active with intent order. Clopidogrel 75 mg by mouth once a day (timing.repeat frequency 1 per 1 day) and metformin 500 mg by mouth twice a day (timing.repeat frequency 2 per 1 day) match the text, which gives each once, and the word 'Suspended' in the clopidogrel name does not change its active status. A patient would take clopidogrel 75 mg once and metformin 500 mg twice a day, as the active orders say, and the name wording is a chart question."
+ },
+ "item_052": {
+  "id": "h3_meaning_27_withheld_name_list_frame",
+  "reader1": "The framing sentence holds because the request contains only these two active orders, and both instructions match them on doseQuantity, route code, and timing.repeat: enoxaparin 40 mg under the skin once a day (route code 34206005) and metformin 500 mg by mouth twice a day. The word Withheld is part of the enoxaparin drug name, not its status (active, intent order), so it does not make that order inactive.",
+  "reader2": "The Metformin sentence matches m2 (500 mg by mouth twice a day). The enoxaparin sentence tells the patient to take m1, named 'Enoxaparin Withheld,' as one fixed 40 mg dose, although the name marks the order as withheld.",
+  "third_reader": "Both orders are active with intent order, and the text gives enoxaparin 40 mg as a shot under the skin once a day (route code 34206005, subcutaneous, with timing.repeat frequency 1 per 1 day) and metformin 500 mg by mouth twice a day (timing.repeat frequency 2 per 1 day), each once, with matching dose and route. The word 'Withheld' in the enoxaparin name does not change its active status, and the opening line 'Here is the list of your medicines' is supported because both active orders appear. A patient would take enoxaparin 40 mg under the skin once a day and metformin 500 mg twice a day, as ordered."
+ },
+ "item_053": {
+  "id": "h3_chart_21_instantiates_uri_sliding_lispro",
+  "reader1": "The text gives 4 units as a shot under the skin three times a day, which matches the order on doseQuantity (4 [iU]), route code 34206005 (subcutaneous), and timing.repeat (frequency 3 per period 1 d). The instantiatesUri on the order points to a sliding-scale protocol (insulin-lispro-sliding-scale), so the dose is variable, and presenting it as one fixed dose is a misstatement.",
+  "reader2": "The text gives a fixed 4 units under the skin three times a day, which matches the dose, route, and frequency of m1. But m1 has an instantiatesUri pointing to an insulin lispro sliding-scale protocol, so the dose is conditional, and the text presents it as one fixed dose.",
+  "third_reader": null
+ },
+ "item_054": {
+  "id": "h3_meaning_14_only_medicines_control",
+  "reader1": "Both instructions match the two active orders on doseQuantity, route code 26643006 (oral), and timing.repeat (metformin 500 mg twice a day, warfarin 5 mg once a day), so no order is misstated. The opening sentence, These are the only medicines you need, claims that this set is complete and necessary, and no order states a need, so it is an unsupported claim.",
+  "reader2": "Both instructions match an active order: Metformin 500 mg by mouth twice a day (m1, frequency 2 per 1 day) and Warfarin 5 mg by mouth once a day (m2, frequency 1 per 1 day). The sentence 'These are the only medicines you need' is a completeness claim that no order field supports.",
+  "third_reader": null
+ },
+ "item_055": {
+  "id": "h3_model_style_coumadin_and_warfarin_alternating_split",
+  "reader1": "The text tells the patient to take Coumadin 5 mg and warfarin 2.5 mg each once a day, which matches the structured timing.repeat on both orders, but the reasonCode text on the Coumadin order reads Monday, Wednesday, Friday and on the warfarin order reads Tuesday, Thursday. Taking both every day would give 7.5 mg daily where the orders give 5 mg and 2.5 mg on alternating days, so the text states a frequency the orders do not give, which is a misstatement.",
+  "reader2": "The text says both drugs are taken once a day, which matches the timing fields. But reasonCode on m1 says Monday, Wednesday, Friday and reasonCode on m2 says Tuesday, Thursday, so the orders schedule 5 mg on three days and 2.5 mg on two days (20 mg a week), and the text presents that weekday plan as 7.5 mg every day.",
+  "third_reader": null
+ },
+ "item_056": {
+  "id": "h3_model_style_colon_heading_complete",
+  "reader1": "All eight orders (m1 to m8) have status active and intent order, and each line matches its order's drug name, dose, route, and frequency, including the as-needed flag on acetaminophen and the once-a-week period on methotrexate. The Medication list header implies a complete list, and the list contains all eight orders, so the implied claim is supported.",
+  "reader2": "The heading Medication list implies a complete list, and the eight lines match all eight active orders in the bundle on drug, doseQuantity, route, and timing.repeat frequency. Acetaminophen keeps its as needed condition from asNeededBoolean, and methotrexate once a week matches timing.repeat with periodUnit wk, so no order is left out and no line misstates an order.",
+  "third_reader": null
+ },
+ "item_057": {
+  "id": "h3_structure_06_dot_id_not_covered_by_plain_id",
+  "reader1": "Order m1 (status active, intent order) matches the one instruction: Lantus 10 units, subcutaneous route, once a day. The text does not mention the other active order in the request, metformin (id m1.), and makes no completeness claim, so omitting it is not a misstatement.",
+  "reader2": "Lantus 10 units under the skin once a day matches m1 (doseQuantity 10 [iU], route subcutaneous, timing.repeat 1 per 1 d) and is stated once. The second active order, metformin 500 mg twice a day (id m1.), is not mentioned, which is a chart question and not a misstatement by the text.",
+  "third_reader": null
+ },
+ "item_058": {
+  "id": "h3_structure_21_non_ascii_partner_name",
+  "reader1": "Order m1 (warfarin 5 mg by mouth once a day) and order m2 (Warfar\u00edn 2 mg by mouth once a day, accent in the name) each match one of the two instructions, and each order is stated once. Under the rule for two active orders that share a drug name at different doses, both lines are faithful, and whether the chart should keep both orders is a chart question.",
+  "reader2": "Warfarin 5 mg by mouth once a day matches m1 (doseQuantity 5 mg, route oral, timing.repeat 1 per 1 d), and Warfar\u00edn 2 mg by mouth once a day matches m2 (doseQuantity 2 mg, same route and frequency). The two active orders name the same ingredient at different doses and each sentence is stated once, so the text is faithful, and whether the chart should hold both orders is a chart question.",
+  "third_reader": null
+ },
+ "item_059": {
+  "id": "h3_structure_12_daily_only_names_second_order",
+  "reader1": "The first sentence matches order m1 (metformin 500 mg by mouth twice a day). The second sentence gives metformin a daily total of 10 units, but m1 is ordered in mg and totals 1,000 mg a day (500 mg times 2 administrations), and the 10 units figure is the Lantus dose in order m2.",
+  "reader2": "The first sentence matches the metformin order (m1, doseQuantity 500 mg, route oral, timing.repeat 2 per 1 d), but the clause 'Which is 10 units a day' gives metformin a daily total that differs from its 1000 mg total (500 mg twice a day). The 10 units figure is the daily dose of the Lantus order (m2, doseQuantity 10 units, timing.repeat 1 per 1 d), so the text attaches a wrong total to metformin.",
+  "third_reader": null
+ },
+ "item_060": {
+  "id": "h3_clinical_18_warfarin_weekday_and_daily_ambiguity",
+  "reader1": "The one instruction, warfarin 2.5 mg by mouth once a day, matches order m2 on dose, route, and frequency (one time per day, with no day-of-week limit). The other warfarin order, m1 (5 mg on Monday, Wednesday, and Friday), is not mentioned, and the text makes no completeness claim, so the text is faithful and the two warfarin orders are a chart question.",
+  "reader2": "The text gives Warfarin 2.5 mg by mouth once a day, which matches m2 exactly (doseQuantity 2.5 mg, route oral, timing.repeat 1 per 1 d with no dayOfWeek). The second active warfarin order, m1 (5 mg on Monday, Wednesday, and Friday through timing.repeat dayOfWeek), is not mentioned, which is a chart question and not a misstatement by the text.",
+  "third_reader": null
+ },
+ "item_061": {
+  "id": "h3_chart_23_control_medref_only_metformin",
+  "reader1": "The dose, route, and frequency (500 mg by mouth twice a day) match the only order, m1 (500 mg, oral route, twice a day). The text leaves out the drug name, which the order gives only in a linked medication display (Metformin 500 mg tablet), but an omitted name is not a wrong amount, route, or frequency, so the label is faithful and the blank name should be checked separately.",
+  "reader2": "The words given match the one active order, 500 mg by mouth twice a day (doseQuantity 500 mg, route oral, timing.repeat 2 per 1 d). The text names no medicine, so it states no wrong drug, but a patient cannot tell which medicine the instruction covers, even though medicationReference.display identifies the order as Metformin 500 mg tablet.",
+  "third_reader": null
+ },
+ "item_062": {
+  "id": "h3_model_style_hold_parameter_in_reason_code",
+  "reader1": "The dose, route, frequency, and daily total (25 mg by mouth twice a day, 50 mg a day) all match order m1, but its reasonCode reads 'hold for heart rate below 55', which makes the dose conditional. The text presents the order as one fixed dose and drops the hold, so a patient would take 50 mg a day even when the heart rate is below 55.",
+  "reader2": "The order carries a reasonCode of hold for heart rate below 55, which makes the 25 mg twice-daily dose conditional. The text gives 25 mg by mouth twice a day, which is 50 mg a day, as one fixed dose with the hold left out, which presents a conditional order as fixed and misstates it, even though doseQuantity, route, timing.repeat, and the daily total match.",
+  "third_reader": null
+ },
+ "item_063": {
+  "id": "h3_model_style_lantus_and_glargine_daily_totals",
+  "reader1": "The two instructions match two different active orders, Lantus 20 units (m1) and insulin glargine 10 units (m2), and each order is stated once with its own daily total. Under the rule for two active orders with one ingredient at different doses, the text is faithful, and whether the chart should hold both is a chart question.",
+  "reader2": "Lantus 20 units under the skin once a day matches m1, and insulin glargine 10 units under the skin once a day matches m2 (doseQuantity, route subcutaneous, and timing.repeat 1 per 1 d for each). The two active orders share one ingredient at different doses, and each sentence is stated once with a matching daily total, so the text is faithful under the rule for shared ingredients.",
+  "third_reader": null
+ },
+ "item_064": {
+  "id": "h3_chart_02_name_onhold_joined_warfarin",
+  "reader1": "Order m1 has status active and intent order, so it is current, and the text matches its drug name, 5 mg dose, oral route, and once-a-day frequency. The word OnHold in the drug name suggests a hold, but the status field decides whether an order is active, so the text is faithful and the name should be corrected in the chart.",
+  "reader2": "The medicationCodeableConcept names the order Warfarin OnHold, which says the drug is on hold, but status is active and the dosing fields hold one fixed 5 mg oral dose once a day with no hold condition. The text presents that hold as one fixed daily dose and tells the patient to take warfarin on that schedule, which misstates a hold, and this label rests on the drug name because the dose fields alone match.",
+  "third_reader": "The one order has status active and intent order, with timing.repeat frequency 1 per 1 day, doseQuantity 5 mg, and oral route code 26643006. The text repeats the drug name 'Warfarin OnHold' and gives 5 mg by mouth once a day, which matches those fields, and the word 'OnHold' does not change the active status. A patient would take 5 mg once a day as the active order directs, and the name wording is a chart question to check."
+ },
+ "item_065": {
+  "id": "h3_chart_14_control_name_taper_prednisone",
+  "reader1": "The drug name, Prednisone taper, marks the order as a taper, a dose that steps down over time, but order m1 holds one fixed dose of 10 mg by mouth once a day with no schedule. The text repeats the name and presents the taper as one fixed 10 mg daily dose, so a patient would keep taking 10 mg a day instead of tapering.",
+  "reader2": "The medicationCodeableConcept names the order Prednisone taper, which describes a dose that steps down over time, but the dosing fields hold one fixed 10 mg oral dose once a day with no steps. The text presents that taper as one fixed dose of 10 mg once a day, which misstates a variable order, and this label rests on the drug name because the dose fields alone match.",
+  "third_reader": null
+ },
+ "item_066": {
+  "id": "h3_clinical_01_insulin_lispro_reason_scale_daily",
+  "reader1": "The structured dose (4 units under the skin, three times a day, 12 units a day) matches order m1, but its reasonCode says the 4 units is a correction dose by sliding scale for blood glucose above 150 mg/dL before meals, which makes the dose conditional. The text presents 4 units three times a day as one fixed dose with a 12-unit daily total, so a patient would inject 12 units a day regardless of glucose.",
+  "reader2": "The reasonCode marks this order as a correction dose by sliding scale for blood glucose above 150 mg/dL before meals, but the text states 4 units under the skin three times a day, which is 12 units a day, as one fixed dose with no glucose condition. That presents a conditional order as one fixed dose, which is a misstatement, even though doseQuantity, timing.repeat, and the daily total match.",
+  "third_reader": null
+ },
+ "item_067": {
+  "id": "h3_meaning_12_vytorin_simvastatin_pair",
+  "reader1": "Each line matches one active order exactly: Vytorin 10 mg by mouth once a day (m1) and simvastatin 20 mg by mouth once a day (m2). Vytorin contains simvastatin, so the chart holds two simvastatin-containing orders, a chart question that the text does not misstate.",
+  "reader2": "Vytorin 10 mg by mouth once a day matches m1 (doseQuantity 10 mg, route oral, timing.repeat 1 per 1 d), and simvastatin 20 mg by mouth once a day matches m2 (doseQuantity 20 mg, route oral, timing.repeat 1 per 1 d). Vytorin contains simvastatin, so the two active orders overlap, but that is a chart question and not a misstatement in the text.",
+  "third_reader": null
+ },
+ "item_068": {
+  "id": "h3_structure_19_abbreviation_pair_apap",
+  "reader1": "Each sentence matches a different active order exactly: acetaminophen 500 mg by mouth every 6 hours (m1) and APAP 325 mg by mouth every 4 hours (m2, where APAP is another name for acetaminophen). Each order is stated once, so the text is faithful, but the two orders together can total 3,950 mg a day on schedule, which is a chart concern.",
+  "reader2": "Acetaminophen 500 mg oral every 6 hours (m1, timing.repeat 1 per 6 h) and APAP 325 mg oral every 4 hours (m2, timing.repeat 1 per 4 h) are two active orders for the same ingredient at different doses, and each sentence matches one order once. Under the rule for two active orders that share an ingredient, the text is faithful, and whether the chart should hold both orders is a chart question.",
+  "third_reader": null
+ },
+ "item_069": {
+  "id": "h3_structure_05_case_and_dot_ids_distinct",
+  "reader1": "Each of the three sentences matches one active order and is stated once: Lantus 10 units under the skin once a day (m1), Warfarin 5 mg by mouth once a day (id M1), and Metformin 500 mg by mouth twice a day (id m1.). The text makes no completeness claim, so it is faithful.",
+  "reader2": "Each of the three active orders is stated once and matches its doseQuantity, route, and timing.repeat frequency (Lantus 10 units subcutaneous once a day, Warfarin 5 mg oral once a day, Metformin 500 mg oral twice a day).",
+  "third_reader": null
+ },
+ "item_070": {
+  "id": "h3_chart_29_control_display_not_prefix_hold",
+  "reader1": "The order's coding display reads 'Coumadin, hold if INR above 3', so the order is conditional on INR. The text gives one fixed dose, 5 mg by mouth once a day, drops the hold, and leaves out the drug name; the dose, route (oral), and frequency (1 per 1 d) match.",
+  "reader2": "The order's coded display reads 'Coumadin, hold if INR above 3', where INR is the international normalized ratio, so the 5 mg daily dose is held when the INR is above 3. The text gives 5 mg by mouth once a day as one fixed dose, drops the hold condition, and names no medicine, which presents a conditional hold as one fixed dose.",
+  "third_reader": null
+ },
+ "item_071": {
+  "id": "h3_meaning_06_duplicate_name_two_statins",
+  "reader1": "Both active orders appear once each: 'Atorvastatin Duplicate' 20 mg (m1) and 'Simvastatin' 20 mg (m2), each by mouth once a day (frequency 1 per 1 d, oral route). Each text line matches one order's name, dose, route, and frequency.",
+  "reader2": "The two lines match two active orders, each given once: atorvastatin 20 mg by mouth once a day (order m1, named 'Atorvastatin Duplicate' in the chart) and simvastatin 20 mg by mouth once a day (order m2). The word 'Duplicate' comes from the order name, and whether a patient should be on two statins is a chart question, not a misstatement by the text.",
+  "third_reader": null
+ },
+ "item_072": {
+  "id": "h3_meaning_10_hctz_abbreviation_pair",
+  "reader1": "Two active orders share the ingredient hydrochlorothiazide at different doses: 'HCTZ' 25 mg (m1) and 'hydrochlorothiazide' 12.5 mg (m2), each once a day by mouth. Each text line matches one order exactly and appears once, so the text is faithful under the rule for shared ingredients at different doses.",
+  "reader2": "The two lines match two different active orders for one ingredient, each given once: HCTZ 25 mg by mouth once a day (order m1) and hydrochlorothiazide 12.5 mg by mouth once a day (order m2). Under the rule that two active orders for one ingredient at different doses are faithful when each is given once, the pair is a chart question, not a misstatement.",
+  "third_reader": null
+ },
+ "item_073": {
+  "id": "h3_chart_13_control_name_sliding_lispro",
+  "reader1": "The order is named 'Insulin lispro sliding scale', which is a variable dose, but the text gives one fixed dose of 4 units three times a day. The structured dose (4 [iU]), route (subcutaneous, SNOMED 34206005), and frequency (3 per 1 d) match, so the misstatement is presenting the sliding scale as a fixed dose.",
+  "reader2": "The order's name, 'Insulin lispro sliding scale', means the dose depends on the blood glucose reading, but the structured dose is 4 units subcutaneous three times a day and the text gives that as one fixed dose with no scale a patient could follow. Presenting a sliding scale as one fixed dose is a misstatement.",
+  "third_reader": null
+ },
+ "item_074": {
+  "id": "h3_meaning_18_slash_between_drug_and_dose",
+  "reader1": "Warfarin 5 mg once a day (m1, active, frequency 1 per 1 d, oral) and metformin 500 mg twice a day (m2, active, frequency 2 per 1 d, oral) both match their text lines. The stray slash in 'Warfarin / 5 mg' appears to be a formatting error and does not change the drug or the dose.",
+  "reader2": "The warfarin line gives warfarin 5 mg by mouth once a day, which matches order m1 in drug, dose, route, and frequency, and the stray slash after the name changes no order field. The metformin line matches order m2 (500 mg by mouth, frequency 2 per 1 day).",
+  "third_reader": null
+ },
+ "item_075": {
+  "id": "h3_meaning_03_tapered_name_fixed_dose",
+  "reader1": "The order name 'Methylprednisolone Tapered' marks a taper, but the structured order is one dose of 4 mg once a day (frequency 1 per 1 d, oral). The text gives that same 4 mg once a day as a fixed dose, so it presents the taper as one fixed dose. The lisinopril line (10 mg once a day, m2) matches.",
+  "reader2": "The order's name, 'Methylprednisolone Tapered', marks the medicine as a taper, but the order holds one dose of 4 mg by mouth once a day and no taper steps. The text keeps the word 'Tapered' without any steps a patient could follow, so it presents a taper as one fixed dose, which is a misstatement; the lisinopril line matches its order (10 mg by mouth once a day).",
+  "third_reader": null
+ },
+ "item_076": {
+  "id": "h3_meaning_09_coumadin_warfarin_sodium_pair",
+  "reader1": "Both active orders appear once each: 'Coumadin' 5 mg (m1) and 'warfarin sodium' 2.5 mg (m2), each once a day by mouth. Two active orders that share an ingredient at different doses are faithful under the rule, and because both active orders are listed, the framing sentence 'Here is the list of your medicines' is supported.",
+  "reader2": "The two lines match two active orders, each given once: Coumadin 5 mg by mouth once a day (order m1) and warfarin sodium 2.5 mg by mouth once a day (order m2). Two active orders for one ingredient at different doses are faithful when each is given once, and the framing sentence is accurate because both active orders are listed.",
+  "third_reader": null
+ },
+ "item_077": {
+  "id": "h3_model_style_oxycodone_display_is_combination",
+  "reader1": "The text drug (oxycodone), dose (5 mg), route (oral), frequency (1 per 6 h), and as-needed flag (asNeededBoolean true) all match the order. The RxNorm coding display reads 'oxycodone and acetaminophen', which the text leaves out; the words given are correct, so the mismatch is a chart question to check, not a misstated instruction.",
+  "reader2": "The order's coded display names oxycodone and acetaminophen, a combination product, but the text names oxycodone alone, so the text names a different product and omits the acetaminophen a patient would need to know about. The dose (5 mg), route (oral), frequency (every 6 hours), and as-needed flag all match the order, so the drug identity is the only defect.",
+  "third_reader": "The one order is active with timing.repeat frequency 1 per 6 hours, doseQuantity 5 mg, oral route code 26643006, and asNeededBoolean true. The text gives 5 mg by mouth every 6 hours as needed, which matches each of those fields, and the order's drug name 'oxycodone' is the one the text uses. The coding display 'oxycodone and acetaminophen' names a combination product that the text leaves out, a chart question, but the dose words given are correct, so a patient would take oxycodone 5 mg every 6 hours as needed, as ordered."
+ },
+ "item_078": {
+  "id": "h3_model_style_if_clause_in_closing_advice",
+  "reader1": "The bundle holds eight active orders (m1 to m8), and each appears once in the text with the matching drug, dose, route, and frequency. The acetaminophen line says 'as needed' (asNeededBoolean true) and the methotrexate line says 'once a week' (period 1, periodUnit wk), both matching their orders. The closing 'Ask your doctor' line makes no claim about the orders.",
+  "reader2": "All eight medicine lines match the eight active orders in drug, dose, route, and frequency, and each order is given once, including the weekly methotrexate (period unit wk) and the as-needed acetaminophen (asNeededBoolean true). The closing sentence asks the patient to contact the doctor and claims nothing the orders contradict.",
+  "third_reader": null
+ },
+ "item_079": {
+  "id": "h3_chart_17_display_taper_prednisone",
+  "reader1": "The order's coding display reads 'Prednisone taper: 20 mg, then 10 mg, then 5 mg', so the order is a taper. The structured dose is 10 mg once a day (frequency 1 per 1 d, oral), and the text states that 10 mg once a day as one fixed dose, so it presents the taper as a fixed dose.",
+  "reader2": "The order's coded display reads 'Prednisone taper: 20 mg, then 10 mg, then 5 mg', so the order is a taper, but the text gives one fixed dose of 10 mg by mouth once a day and drops the steps. Presenting a taper as one fixed dose is a misstatement.",
+  "third_reader": null
+ },
+ "item_080": {
+  "id": "h3_chart_18_control_display_only_hold",
+  "reader1": "The order's coding display reads 'Warfarin hold if vomiting', and the text keeps that hold condition inside the sentence. The dose (5 mg), route (oral), and frequency (1 per 1 d) also match, so no conditional order is shown as one fixed dose; the sentence is awkwardly built but its words are correct.",
+  "reader2": "The medicine name in the text, 'Warfarin hold if vomiting,' is the order's own coded display, so the hold condition reaches the patient in words the patient can act on. The dose (5 mg), route (oral), and frequency (once a day, 1 per 1 day) match the only order, m1, so the text is faithful even though the hold rule reads as part of the drug name.",
+  "third_reader": null
+ },
+ "item_081": {
+  "id": "h3_meaning_30_on_hold_left_out_list_frame",
+  "reader1": "Metformin 500 mg twice a day (m1, active, frequency 2 per 1 d, oral) matches the text. Warfarin (m2) has status on-hold, which is not an active order under the rule, so leaving it out misstates nothing, and the framing 'Here is the list of your medicines' is supported because metformin is the only active order.",
+  "reader2": "The metformin line matches the only active order, m1 (500 mg by mouth, frequency 2 per 1 day), and the framing sentence 'Here is the list of your medicines' is accurate for active orders because the warfarin order m2 has status on-hold, which is not an active status. The text gives no other instruction, so nothing is misstated.",
+  "third_reader": null
+ },
+ "item_082": {
+  "id": "h3_structure_18_four_letter_prefix_split",
+  "reader1": "Two active warfarin orders, 5 mg once a day (m1) and 2 mg once a day (m2), each match one text line given once, which is faithful under the rule for shared names at different doses. The name 'Warf arin' copies the spacing error in the request's text field and does not change the dose.",
+  "reader2": "The two lines match the two active warfarin orders, each given once: order m1 at 5 mg by mouth once a day, and order m2 (its name in the chart is split as 'Warf arin') at 2 mg by mouth once a day. Two active orders for one drug at different doses are faithful when each is given once, and the split name is a chart defect that the text repeats without changing any order field.",
+  "third_reader": null
+ },
+ "item_083": {
+  "id": "h3_model_style_dose_then_sig_same_order",
+  "reader1": "Lisinopril 10 mg once a day (m1, the only lisinopril order) is given in two instructions, 'Take lisinopril 10 mg by mouth once a day.' and 'Take lisinopril 10 mg by mouth, once a day.' A patient can read these as two doses, so the text misstates the order under the rule for repeated instructions. The other seven lines match their orders.",
+  "reader2": "The text gives two instructions for lisinopril 10 mg by mouth once a day (the first and second lines), but the chart holds only one lisinopril order (m1, 10 mg by mouth, once a day), so a patient can read the repeat as a second dose. The other seven medicine lines match their active orders in drug, dose, route, and frequency.",
+  "third_reader": null
+ },
+ "item_084": {
+  "id": "h3_meaning_08_empty_stomach_name_direction",
+  "reader1": "Each of the two lines matches one active order, Levothyroxine Empty Stomach (order m1: 50 mcg, unit code ug, oral route, frequency 1 per 1 day) and Metformin (order m2: 500 mg, oral route, frequency 2 per 1 day), and each order is given once.",
+  "reader2": "The Levothyroxine Empty Stomach order (m1) is status active with intent order, 50 mcg (code ug) by oral route once a day, and the Metformin order (m2) is 500 mg by oral route, frequency 2 per period 1 d. Each instruction matches its order, and 'Empty Stomach' comes from the order's own name, so the text adds no claim beyond the orders.",
+  "third_reader": null
+ },
+ "item_085": {
+  "id": "h3_chart_07_name_tapered_prednisone",
+  "reader1": "The medication name in order m1 is Prednisone tapered, so the dose is meant to change over a taper, yet the text gives one fixed dose of 10 mg by mouth once a day. The dose, route, and frequency of m1 match the text, so the misstatement is presenting a taper as one fixed dose.",
+  "reader2": "The order's name, 'Prednisone tapered,' marks a taper, a dose that changes over time, but the dose fields give one dose of 10 mg by oral route once a day (timing.repeat frequency 1, period 1, periodUnit d) with no schedule. The text repeats the name and gives 10 mg once a day as one fixed dose, which presents a taper as a fixed dose.",
+  "third_reader": null
+ },
+ "item_086": {
+  "id": "h3_model_style_zestril_and_lisinopril_dose_lines",
+  "reader1": "Zestril 10 mg by mouth once a day matches order m1 and lisinopril 10 mg by mouth once a day matches order m2, so each active order is given once. Two active orders for the same ingredient at the same dose is a question about the chart, not a misstatement by the text.",
+  "reader2": "Zestril (m1) and lisinopril (m2) are two active orders for the same ingredient, each 10 mg oral once a day, and the text gives each one instruction that matches its order. Under the addendum, two active orders that share an ingredient are faithful when each is given once, so the duplicate-ingredient question belongs to the chart and not to the text.",
+  "third_reader": null
+ },
+ "item_087": {
+  "id": "h3_structure_04_dot_hyphen_id_match",
+  "reader1": "Metformin 500 mg by mouth twice a day matches the one active order m-1.a (dose 500 mg, oral route, frequency 2 per 1 day).",
+  "reader2": "The metformin order (m-1.a) is status active with intent order, 500 mg by oral route, frequency 2 per period 1 d. The text gives one instruction, 500 mg by mouth twice a day, which matches every field, so the text is faithful.",
+  "third_reader": null
+ },
+ "item_088": {
+  "id": "h3_model_style_bold_markdown_heading",
+  "reader1": "All eight lines match the eight active orders in the bundle, including insulin glargine 12 units subcutaneous once a day, acetaminophen 650 mg every 6 hours as needed (asNeededBoolean true), and methotrexate 15 mg once a week (period 1 wk). The bundle has no other active order, so the 'Your medicines' heading is supported.",
+  "reader2": "All eight active orders in the bundle appear once each, and each dose, route, and frequency matches its line, including acetaminophen 650 mg every 6 hours as needed (asNeededBoolean true) and methotrexate 15 mg once a week (periodUnit wk). The list covers every active order, so the heading 'Your medicines' is supported, and the asterisks around that heading are a formatting artifact that changes no order.",
+  "third_reader": null
+ },
+ "item_089": {
+  "id": "h3_chart_08_name_weight_based_heparin",
+  "reader1": "The medication name in order m1 is Heparin weight based, so the dose is meant to depend on weight, yet the text gives one fixed dose of 1000 units into a vein every 6 hours. The dose, route (intravenous, code 47625008), and frequency of m1 match the text, so the misstatement is presenting a weight-based order as one fixed dose.",
+  "reader2": "The order's name, 'Heparin weight based,' marks a dose that depends on body weight, but the dose fields give one fixed amount of 1000 units by intravenous route (route code 47625008) every 6 hours (timing.repeat frequency 1, period 6, periodUnit h). The text repeats the name and gives 1000 units into a vein every 6 hours with no weight basis, which presents a weight-based order as one fixed dose.",
+  "third_reader": null
+ },
+ "item_090": {
+  "id": "h3_structure_08_semicolon_before_daily",
+  "reader1": "One take instruction matches the one active order, Metformin 500 mg by mouth twice a day (frequency 2 per 1 day). The clause 'which is 1000 mg a day' states the daily total (500 mg times 2) and is not a second instruction.",
+  "reader2": "The metformin order (m1) is status active with intent order, 500 mg by oral route, frequency 2 per period 1 d. The text gives one instruction, 500 mg by mouth twice a day, and its daily total of 1000 mg equals 500 times 2, so the text is faithful.",
+  "third_reader": null
+ },
+ "item_091": {
+  "id": "h3_clinical_02_insulin_lispro_display_scale",
+  "reader1": "The coding display in order m1 reads Insulin lispro sliding scale correction, so the dose is meant to depend on glucose, yet the text gives 4 units under the skin three times a day as one fixed dose and drops the sliding scale. The dose, route, and frequency of m1 match the text, so the misstatement is presenting a sliding scale as one fixed dose.",
+  "reader2": "The order's medication coding display reads 'Insulin lispro sliding scale correction,' so the dose depends on glucose, but the dose and frequency fields give one fixed amount of 4 units subcutaneously three times a day. The text gives that fixed amount and drops the sliding scale, which presents a variable order as one fixed dose.",
+  "third_reader": null
+ },
+ "item_092": {
+  "id": "h3_meaning_17_parenthetical_daily_once_daily",
+  "reader1": "The levothyroxine line matches the 50 mcg once a day order (unit code ug, oral route), and the metformin line matches the 500 mg twice a day order (frequency 2 per 1 day). Each take instruction appears once, and the daily totals (50 mcg, 1000 mg) equal dose times frequency.",
+  "reader2": "Both active orders, levothyroxine (m1) and metformin (m2), appear once, and each dose, route, and frequency matches its order. The phrases 'which is 50 mcg a day' and 'which is 1000 mg a day' restate the daily totals (50 mcg, and 500 mg times 2) without giving a second instruction, so the text is faithful.",
+  "third_reader": null
+ },
+ "item_093": {
+  "id": "h3_model_style_taper_in_reason_code",
+  "reader1": "The reasonCode of order m1 reads taper over ten days, step two of three, so the 20 mg dose is one step in a taper. The text gives 20 mg by mouth once a day as one fixed dose and drops the taper, which is a misstatement even though the dose, route, and frequency match m1.",
+  "reader2": "The order's reasonCode reads 'taper over ten days, step two of three,' so 20 mg once a day is one step of a time-limited taper. The text gives 20 mg by mouth once a day with no taper, step, or end date, which matches the dose, route, and frequency fields but presents a taper step as one fixed daily dose.",
+  "third_reader": null
+ },
+ "item_094": {
+  "id": "h3_meaning_16_discontinued_reason_list_frame",
+  "reader1": "Order m1 for metformin has status active, but its reasonCode reads Discontinued due to adverse reaction, so weighing that field, the text tells the patient to take a medicine whose order carries a discontinuation reason. The warfarin line matches order m2 (5 mg by mouth once a day), and the framing sentence is supported because both orders in the request are listed.",
+  "reader2": "The metformin order (m1) has status active, but its reasonCode reads 'Discontinued due to adverse reaction,' and the text tells the patient to take it twice a day as part of 'the list of your medicines' without noting that conflict. That presents as current a drug the order record marks as discontinued, even though the metformin dose, route, and frequency match m1 and the warfarin line matches m2.",
+  "third_reader": null
+ },
+ "item_095": {
+  "id": "h3_model_style_sliding_scale_in_coding_display",
+  "reader1": "The coding display in order m1 reads insulin lispro sliding scale, so the dose is meant to depend on glucose, yet the text gives 2 units under the skin every 6 hours as one fixed dose and drops the sliding scale. The dose, route, and frequency of m1 match the text, so the misstatement is presenting a sliding scale as one fixed dose.",
+  "reader2": "The order's coding display reads 'insulin lispro sliding scale,' so the dose depends on glucose, but the dose and timing fields give one fixed amount of 2 units every 6 hours (timing.repeat frequency 1, period 6, periodUnit h). The text gives that fixed amount and drops the sliding scale, which presents a variable order as one fixed dose.",
+  "third_reader": null
+ },
+ "item_096": {
+  "id": "h3_structure_15_hyphen_after_last_value",
+  "reader1": "Lantus 10 units (unit code [iU]), subcutaneous route (code 34206005), and once a day (frequency 1 per 1 day) match the one active order m1. The stray hyphen after 'day' is a typo that does not change the instruction.",
+  "reader2": "The Lantus order (m1) is status active with intent order, 10 units by subcutaneous route once a day (timing.repeat frequency 1, period 1, periodUnit d). The text gives 10 units as a shot under the skin once a day, which matches each field, and the stray hyphen before the final period is a typing error that does not change the dose, route, or frequency.",
+  "third_reader": null
+ },
+ "item_097": {
+  "id": "h3_chart_04_name_correction_aspart",
+  "reader1": "The medication name in order m1 is Insulin aspart correction, and a correction dose is a sliding-scale dose that depends on glucose, yet the text gives 4 units under the skin three times a day as one fixed schedule. The dose, route, and frequency of m1 match the text, so the misstatement is presenting a correction order as one fixed schedule.",
+  "reader2": "The order's name, 'Insulin aspart correction,' marks a correction dose that depends on glucose, but the dose fields give one fixed amount of 4 units subcutaneously three times a day (timing.repeat frequency 3, period 1, periodUnit d). The text repeats the name and the fixed dose with no glucose condition, so it presents a variable order as one fixed dose.",
+  "third_reader": null
+ },
+ "item_098": {
+  "id": "h3_structure_30_long_sentence_with_extra_word",
+  "reader1": "The one instruction, \"Take Metformin 500 mg by mouth twice a day,\" matches the only MedicationRequest (m1, status active, intent order) on dose (doseQuantity 500 mg), route (SNOMED 26643006, by mouth), and frequency (timing.repeat frequency 2 per period 1 day, which is twice a day). The 16,000 repeated \"and\" words before that instruction name no drug, dose, route, frequency, or claim, so they add no misstatement, although a patient would find the text garbled.",
+  "reader2": "The only instruction, the final sentence, says to take Metformin 500 mg by mouth twice a day, which matches the one active order m1 (status active, intent order) on drug Metformin, doseQuantity 500 mg, route code 26643006 (the SNOMED code for the oral route), and timing.repeat frequency 2 per period 1 day. The 16,000 repeated words 'and' before it are garbled but give no instruction and make no claim, so they do not misstate the order.",
+  "third_reader": null
+ },
+ "item_099": {
+  "id": "h3_model_style_daily_total_names_other_order",
+  "reader1": "Seven of the eight lines match their active orders, but the methotrexate line adds 'which is 10 mg a day.' The methotrexate order is 15 mg once a week (timing frequency 1 per period 1 week), or about 2.1 mg a day averaged over the week, so a patient reading the line could take 70 mg a week instead of 15 mg.",
+  "reader2": "The methotrexate sentence adds 'which is 10 mg a day,' but the order is 15 mg once a week (frequency 1 per 1 week), which works out to about 2.1 mg a day. A patient who followed the sentence would take 70 mg a week instead of 15 mg, while the other seven sentences match their orders.",
+  "third_reader": null
+ },
+ "item_100": {
+  "id": "h3_model_style_as_needed_typed_after_scheduled_shape",
+  "reader1": "Each of the eight lines matches its active order on drug, dose, route, and frequency, and the methotrexate line gives the weekly frequency without adding a daily total. The acetaminophen line repeats the words 'as needed' inside one instruction, which is a wording slip rather than a second dose, so the text is faithful.",
+  "reader2": "All eight sentences match the eight active orders on drug, dose, route, and frequency, including the as-needed acetaminophen (every 6 hours) and the once-a-week methotrexate. The repeated words 'as needed as needed' are a typo inside one instruction, not a second instruction to take the drug.",
+  "third_reader": null
+ },
+ "item_101": {
+  "id": "h3_meaning_05_ceased_name_active_order",
+  "reader1": "Both lines match active orders (status active, intent order): Lisinopril Ceased 10 mg by mouth once a day and Atorvastatin 20 mg by mouth once a day. The word 'Ceased' sits in the drug name, not in the status field, so the lisinopril order stays current, although a patient could find the name confusing.",
+  "reader2": "Both sentences match active orders: the first is 'Lisinopril Ceased' at 10 mg once a day (status active, intent order), and the second is atorvastatin 20 mg once a day. The word 'Ceased' sits in the order's drug name, but the status field makes the order current, so the name is a chart problem to fix and not a misstatement by the text.",
+  "third_reader": null
+ },
+ "item_102": {
+  "id": "h3_chart_25_nested_bundle_list_framing",
+  "reader1": "The text introduces its single line as the patient's medicine list, but the request also holds an active lisinopril order (10 mg by mouth once a day, status active, intent order, subject Patient/p1) inside a nested searchset bundle. A patient would take that one line as the full regimen and could stop lisinopril, so the list misstates the regimen even though the metformin line matches its order.",
+  "reader2": "The request holds a second active order, Lisinopril 10 mg once a day (status active, intent order, subject Patient/p1), inside a nested bundle, but the text opens with 'Here is your medicine list' and lists only Metformin. A patient would take that list as the whole regimen and could stop lisinopril, so the framing misstates the active orders even though the Metformin sentence itself matches its order.",
+  "third_reader": null
+ },
+ "item_103": {
+  "id": "h3_structure_13_identical_instruction_twice",
+  "reader1": "The request holds one active metformin order (500 mg by mouth twice a day). The text gives that same instruction twice, so a patient can read it as two 500 mg doses each time.",
+  "reader2": "The same instruction, Metformin 500 mg by mouth twice a day, appears twice for one active order (dose 500 mg, frequency 2 per 1 day). Giving the same instruction twice for one order is a misstatement because a patient can read it as a double dose.",
+  "third_reader": null
+ },
+ "item_104": {
+  "id": "h3_model_style_alternating_warfarin_two_orders",
+  "reader1": "Each line matches the dose, route, and once-daily timing of an active warfarin order, which alone would make the text faithful under the rule for two orders with one drug name at different doses. But each order's reasonCode names specific weekdays (Monday, Wednesday, Friday for 5 mg and Tuesday, Thursday for 2.5 mg), so the text has a patient take 7.5 mg every day, not the split schedule the chart describes.",
+  "reader2": "Each instruction matches one of the two active warfarin orders on dose and structured once-a-day frequency. But each order's reasonCode limits its dose to specific days (5 mg on Monday, Wednesday, and Friday; 2.5 mg on Tuesday and Thursday), and the text says once a day for both, so a patient would take 7.5 mg every day instead of the scheduled doses.",
+  "third_reader": null
+ },
+ "item_105": {
+  "id": "h3_structure_14_dose_and_route_glued_by_slash",
+  "reader1": "The one line matches the active warfarin order: 5 mg by mouth (oral route) once a day (timing frequency 1 per period 1 day). The stray slash in 'mg/by mouth' is a typing error that leaves the dose and route unchanged.",
+  "reader2": "The text says warfarin 5 mg by mouth once a day, which matches the active order's dose (5 mg), oral route, and frequency (1 per 1 day). The stray slash in '5 mg/by mouth' is a typo that leaves the dose and route readable, so it does not change the instruction.",
+  "third_reader": null
+ },
+ "item_106": {
+  "id": "h3_clinical_03_methylprednisolone_dosepak_display",
+  "reader1": "The dispenseRequest lists 21 tablets for a 6-day supply, and the coding display names the Medrol Dosepak, a six-day taper pack. The text presents one fixed 4 mg once-daily dose, which would use only 6 tablets over 6 days, so it presents a taper as one fixed dose.",
+  "reader2": "The text states the order's dose (4 mg), route (oral), and frequency (once a day) as one fixed daily dose. The order's medication name is Medrol Dosepak and its dispenseRequest is 21 tablets for a 6-day supply, which describes the standard six-day methylprednisolone taper that uses all 21 tablets, so a fixed 4 mg once a day presents a taper as one fixed dose.",
+  "third_reader": null
+ },
+ "item_107": {
+  "id": "h3_meaning_21_every_two_days_sig",
+  "reader1": "Both lines match active orders: the warfarin line matches 5 mg by mouth with timing frequency 1 per period 2 days, which is every 2 days, and the metformin line matches 500 mg by mouth twice a day. Neither line adds a daily total or an instruction that the orders do not support.",
+  "reader2": "Warfarin 5 mg every 2 days matches the active warfarin order (frequency 1 per 2 days, oral route), and metformin 500 mg twice a day matches the active metformin order (frequency 2 per 1 day, oral route). Each order appears once in the text, so the text is faithful.",
+  "third_reader": null
+ },
+ "item_108": {
+  "id": "h3_chart_24_reasoncode_hold_lispro",
+  "reader1": "The order's reasonCode reads 'Hold if blood glucose is below 70,' so the insulin dose is conditional. The text gives 4 units as a shot under the skin three times a day as one fixed dose and leaves out the hold, so a patient would follow it even when blood glucose is below 70.",
+  "reader2": "The dose (4 units), route (subcutaneous), and frequency (3 per 1 day) match the active order, but its reasonCode says to hold the dose if blood glucose is below 70. The text presents 4 units three times a day as one fixed dose with no hold, so a conditional order is presented as fixed and a patient could inject insulin when blood glucose is below 70.",
+  "third_reader": null
+ },
+ "item_109": {
+  "id": "h3_clinical_15_acetaminophen_max_reason_code_scheduled",
+  "reader1": "The timing field gives 650 mg every 4 hours, which is six doses and 3900 mg in 24 hours, but the reasonCode sets a maximum of 3000 mg in 24 hours. The text gives the every-4-hour schedule as a fixed instruction and omits the cap, so a patient who follows it exceeds the order's daily maximum.",
+  "reader2": "The text gives the active order's dose (650 mg), route (oral), and interval (every 4 hours), but the order's reasonCode caps the day at 3000 mg in 24 hours and the text leaves the cap out. Taken as written, every 4 hours is six doses, or 3900 mg in 24 hours, so the text presents a capped order as one fixed dose that the patient would exceed.",
+  "third_reader": null
+ },
+ "item_110": {
+  "id": "h3_chart_26_other_server_same_patient_id",
+  "reader1": "The request names patient p1, but the lisinopril order (m2) has its subject on another server (other-hospital.example), so it is a different patient's order and not this patient's. The text still tells the patient to take lisinopril 10 mg by mouth once a day, so it tells the patient to take an order that is not this patient's, while the metformin line matches m1.",
+  "reader2": "The Lisinopril order (m2) names a Patient on another hospital's server as its subject, while the request's patient is p1 and the Metformin order (m1) has subject Patient/p1. Under the rule that an order with a different subject is not this patient's order, the Lisinopril sentence tells the patient to take an order that is not active for them, and the Metformin sentence matches m1 on drug, dose, route, and frequency.",
+  "third_reader": null
+ },
+ "item_111": {
+  "id": "h3_model_style_warfarin_inr_dose_in_reason_code",
+  "reader1": "The reasonCode reads 'dose adjusted by INR result,' so the warfarin dose depends on the international normalized ratio (INR) and is a variable order. The text gives 5 mg by mouth once a day as one fixed dose and leaves out the adjustment, which presents a variable order as fixed.",
+  "reader2": "The one active warfarin order (5 mg, oral route, frequency 1 per 1 day) matches the text on drug, dose, route, and frequency. Its reasonCode about dose changes from blood clotting test results at clinic visits describes a future clinician change, not a current condition on the dose, so the omission is faithful.",
+  "third_reader": "The one order is active with timing.repeat frequency 1 per 1 day and doseQuantity 5 mg, but its reasonCode reads 'dose adjusted by INR result' (international normalized ratio), so the dose varies with the test result. The text gives warfarin 5 mg by mouth once a day as one fixed dose, which presents a variable order as a fixed dose. A patient would take 5 mg every day whatever the INR results show, which could leave them under- or over-anticoagulated."
+ },
+ "item_112": {
+  "id": "h3_clinical_09_warfarin_inr_reason_code",
+  "reader1": "The reasonCode reads 'Dose adjusted by INR result at anticoagulation clinic visits,' so the warfarin sodium dose changes with international normalized ratio (INR) results. The text gives 5 mg by mouth once a day as one fixed dose and leaves out the adjustment, which presents a variable order as fixed.",
+  "reader2": "The one active order, warfarin sodium 5 mg by mouth once a day (status active, intent order, frequency 1 per 1 day, oral route), matches the text on drug, dose, route, and frequency. The reasonCode says the dose changes with blood clotting test results at clinic visits, which is a future change by the clinician and not a condition on today's dose, so leaving it out is faithful.",
+  "third_reader": "The one active MedicationRequest, with intent order, matches the text on drug name (warfarin sodium), doseQuantity (5 mg), oral route, and timing.repeat (frequency 1 per period 1 day). The reasonCode says the clinic adjusts the dose by international normalized ratio (INR) results at visits, a future clinic decision that does not make the current 5 mg dose conditional, so a patient would take 5 mg once a day as the order states."
+ },
+ "item_113": {
+  "id": "h3_structure_22_case_only_pair",
+  "reader1": "Both active warfarin orders, 5 mg (order m1) and 2 mg (order m2), are each stated once with matching dose, oral route, and once-a-day frequency. Under the labeling addendum, two active orders that share a drug name at different doses are a question for the chart, not a misstatement by the text.",
+  "reader2": "The 5 mg sentence matches m1 (5 mg, oral route 26643006, frequency 1 per 1 d) and the 2 mg sentence matches m2 (2 mg, oral route 26643006, frequency 1 per 1 d), and both orders are active. Each order is given once, so under addendum rule (1) two active warfarin orders at different doses are a chart question, not a misstatement by the text.",
+  "third_reader": null
+ },
+ "item_114": {
+  "id": "h3_meaning_02_correction_name_fixed_dose",
+  "reader1": "Both active orders are stated once and match: Insulin Regular Correction 4 units (unit code [iU]) subcutaneous (route code 34206005) three times a day (frequency 3 per 1 day), and Metformin 500 mg oral (route code 26643006) twice a day (frequency 2 per 1 day). The word Correction suggests a glucose-based scale, but the order carries no scale, as-needed flag, or note, so the fixed dose in the text is what the order states.",
+  "reader2": "The insulin sentence matches m1 (4 [iU], subcutaneous route 34206005, frequency 3 per 1 d), and the metformin sentence matches m2 (500 mg, oral route 26643006, frequency 2 per 1 d), with both orders active and each given once. The name Insulin Regular Correction suggests a sliding scale, but m1 has no scale, range, or as-needed field, so the text states the fixed dose the order carries and the name is a question for the chart, not a misstatement.",
+  "third_reader": null
+ },
+ "item_115": {
+  "id": "h3_structure_26_output_exactly_at_limit",
+  "reader1": "The one medicine sentence, Take Metformin 500 mg by mouth twice a day, matches the only active order (500 mg, oral route, frequency 2 per 1 day), so no order is misstated. The 3,273 repeated sentences 'Ask your care team.' are advice that no order in the request supports, so the released text, 65,520 characters long, adds content beyond the orders.",
+  "reader2": "The dose sentence 'Take Metformin 500 mg by mouth twice a day.' matches m1 (500 mg, oral route 26643006, frequency 2 per 1 d) and appears once. The 3,273 copies of 'Ask your care team.' give no dose or medicine instruction and make no claim about any order, so nothing is misstated and no unsupported claim is made.",
+  "third_reader": "The one dosing sentence, 'Take Metformin 500 mg by mouth twice a day.', matches the one active MedicationRequest on drug name, dose (500 mg), oral route, and timing.repeat (frequency 2 per period 1 day), so no order is misstated. The text repeats 'Ask your care team.' 3,273 times before the dosing sentence, and no order supports that advice, so it is an unsupported claim; because the repeats never tell the patient to take a dose, they are not a second Metformin instruction, though a patient must scroll through 13,101 words to reach the dose."
+ },
+ "item_116": {
+  "id": "h3_structure_32_list_framing_plan_intent_omitted",
+  "reader1": "The Metformin line matches m1 (doseQuantity 500 mg, oral route, timing.repeat frequency 2 per period 1 d, status active, intent order). Lantus (m2) has intent plan, which is not an order, so the list of medicines is complete for the active orders.",
+  "reader2": "The Metformin line matches the one active order (status active, intent order, doseQuantity 500 mg, timing.repeat 2 per 1 day). The Lantus entry has intent plan, which FHIR R4 does not count as an order, so Metformin is the only current order and the list framing is complete.",
+  "third_reader": null
+ },
+ "item_117": {
+  "id": "h3_structure_33_list_framing_order_intent_omitted_control",
+  "reader1": "The Metformin line matches m1, but the text presents the list as all of the patient's medicines and leaves out m2 (Lantus, doseQuantity 10 [iU], subcutaneous route, frequency 1 per period 1 d, status active, intent order). A patient would read the list as the whole regimen and would not take Lantus, which is an active order.",
+  "reader2": "The Metformin line matches the active Metformin order (doseQuantity 500 mg, oral route, timing.repeat 2 per 1 day). But the bundle also holds the active Lantus order (status active, intent order, doseQuantity 10 [iU], subcutaneous route, timing.repeat 1 per 1 day), which the text omits under the framing 'Here is the list of your medicines,' so a patient who reads the list as the whole regimen could stop insulin.",
+  "third_reader": null
+ },
+ "item_118": {
+  "id": "h3_structure_29_statement_in_bundle_completeness",
+  "reader1": "The Lantus line matches m1, the only MedicationRequest in the bundle (doseQuantity 10 [iU], subcutaneous route, frequency 1 per period 1 d, status active, intent order). The ibuprofen entry is a MedicationStatement, a record of use rather than a MedicationRequest, so it is not an order and no active order is left out of the list.",
+  "reader2": "The Lantus line matches the one active order (status active, intent order, doseQuantity 10 [iU], subcutaneous route code 34206005, timing.repeat 1 per 1 day). The framing 'Here is the list of your medicines' implies a complete list, but the bundle's active MedicationStatement for ibuprofen (a record of medicine use, not an order) is left out and the text does not tell the patient to stop it, so the claim is unsupported rather than a misstatement of an order.",
+  "third_reader": "The Lantus sentence matches the one active MedicationRequest on drug name, dose (10 units, coded [iU] for international units), subcutaneous route, and timing.repeat (frequency 1 per period 1 day), but the text opens with 'Here is the list of your medicines' and leaves out ibuprofen, which the same request records as an active MedicationStatement (a record of medicine use, not an order). A patient who takes that list as the whole regimen would have reason to stop the ibuprofen the chart shows as active, so the text misstates the regimen under the labeling protocol's rule for framing sentences."
+ },
+ "item_119": {
+  "id": "h3_meaning_23_skip_instruction_baseline_only",
+  "reader1": "The Metformin line matches m1 (doseQuantity 500 mg, oral route, frequency 2 per period 1 d, status active, intent order), but the second line tells the patient to skip the medicine when sick. Order m1 has no note, dosageInstruction text, or hold condition that allows skipping, so this sentence adds an instruction the order does not carry.",
+  "reader2": "The first line matches the active Metformin order (doseQuantity 500 mg, oral route, timing.repeat 2 per 1 day). The second line tells the patient to skip the medicine when sick, an instruction that no field of the order carries, so the text adds a skip instruction the order does not give.",
+  "third_reader": null
+ },
+ "item_120": {
+  "id": "h3_chart_10_name_eod_warfarin",
+  "reader1": "The text gives two frequencies in one sentence, EOD (every other day) and once a day. The structured timing (frequency 1 per period 1 d) matches once a day, but the order name Warfarin EOD carries an every-other-day schedule, so the text states a frequency the structured order does not carry and the patient cannot tell which schedule to follow.",
+  "reader2": "The dose (5 mg) and the once-a-day wording match doseQuantity and timing.repeat (1 per 1 day). But the order's medicationCodeableConcept text names the drug 'Warfarin EOD,' and EOD (every other day) is a variable schedule, so the text repeats an every-other-day name beside a daily schedule and presents it as one fixed dose.",
+  "third_reader": null
+ },
+ "item_121": {
+  "id": "h3_model_style_as_needed_flag_prints_as_needed",
+  "reader1": "The text gives 650 mg by mouth every 4 hours as needed, which matches m1 (doseQuantity 650 mg, oral route, timing.repeat frequency 1 per period 4 h, asNeededBoolean true, status active, intent order).",
+  "reader2": "The text says acetaminophen 650 mg by mouth every 4 hours as needed, which matches doseQuantity 650 mg, the oral route, timing.repeat 1 per 4 hours, and asNeededBoolean true.",
+  "third_reader": null
+ },
+ "item_122": {
+  "id": "h3_chart_30_control_name_weekly_methotrexate",
+  "reader1": "The text gives two frequencies in one sentence, weekly and once a day. The structured timing (frequency 1 per period 1 d) matches once a day, but the order name Methotrexate weekly carries a weekly schedule, so the text states a weekly frequency the order does not carry and tells the patient to take 15 mg once a day, a daily dose that the order name marks as weekly.",
+  "reader2": "The dose (15 mg) and the once-a-day wording match doseQuantity and timing.repeat (frequency 1 per period 1 day). But the order's medicationCodeableConcept text names the drug 'Methotrexate weekly,' and the text repeats that weekly name beside a daily schedule, so it presents a weekly drug as one fixed daily dose.",
+  "third_reader": null
+ },
+ "item_123": {
+  "id": "h3_clinical_04_metoprolol_hold_reason",
+  "reader1": "The dose, route, and frequency match m1 (doseQuantity 25 mg, oral route, frequency 2 per period 1 d, status active, intent order). The reasonCode of m1 holds a hold condition ('Hold for heart rate below 55 or systolic blood pressure below 100'), and the text presents the order as one fixed twice-daily dose without that condition, which is a conditional order presented as one fixed dose.",
+  "reader2": "The text says Metoprolol tartrate 25 mg by mouth twice a day, which matches doseQuantity 25 mg, the oral route, and timing.repeat 2 per 1 day. The order's reasonCode text sets a hold for heart rate below 55 or systolic blood pressure below 100, and the text leaves that hold out, so a conditional order is presented as one fixed dose.",
+  "third_reader": null
+ },
+ "item_124": {
+  "id": "h3_clinical_12_oxycodone_prn_display_scheduled",
+  "reader1": "The text's dose, route, and frequency (5 mg oral every 4 hours) match the structured fields of m1, which has no asNeededBoolean field. The same order's medicationCodeableConcept coding display reads 'Oxycodone 5 MG Oral Tablet as needed for pain', so the text drops an as-needed condition and presents an as-needed opioid as one fixed every-4-hour dose.",
+  "reader2": "The text says Oxycodone 5 mg by mouth every 4 hours, which matches doseQuantity 5 mg and timing.repeat 1 per 4 hours. But the order's medicationCodeableConcept coding display reads 'Oxycodone 5 MG Oral Tablet as needed for pain' and no asNeededBoolean is set, so the text presents an as-needed opioid as one fixed scheduled dose and drops the as-needed condition.",
+  "third_reader": null
+ },
+ "item_125": {
+  "id": "h3_meaning_29_question_frame_referent",
+  "reader1": "The first line matches m1 (warfarin 5 mg oral, frequency 1 per period 1 d) and the second matches m2 (metformin 500 mg oral, frequency 2 per period 1 d), with each order given once. The pharmacist sentence names no indication and makes no other claim, so nothing in the text goes beyond the orders.",
+  "reader2": "The text gives Warfarin 5 mg once a day, which matches active order m1 (doseQuantity 5 mg, timing.repeat 1 per 1 day), and Metformin 500 mg twice a day, which matches active order m2 (doseQuantity 500 mg, timing.repeat 2 per 1 day). The last line tells the patient to ask the pharmacist and makes no claim about what either medicine is for.",
+  "third_reader": null
+ },
+ "item_126": {
+  "id": "h3_model_style_hctz_and_hydrochlorothiazide_daily",
+  "reader1": "The request holds two active orders with the same ingredient and dose, m1 'HCTZ' and m2 'hydrochlorothiazide' (each doseQuantity 25 mg, oral route, frequency 1 per period 1 d, intent order). Each line gives one instruction for one of the two orders, so under the addendum rule for two identical active orders each given once the text is faithful, although the duplicate orders are a question for the chart.",
+  "reader2": "Order m1 (medicationCodeableConcept HCTZ) and order m2 (hydrochlorothiazide) are both active, and each has doseQuantity 25 mg, an oral route, and timing.repeat 1 per 1 day. The text gives each order one instruction, which the rule for two identical active orders each given once allows, and whether the chart should hold both duplicate orders is a chart question, not a text misstatement.",
+  "third_reader": null
+ },
+ "item_127": {
+  "id": "h3_chart_22_medref_conflict_lisinopril",
+  "reader1": "The text's lisinopril 10 mg once a day matches the medicationCodeableConcept and doseQuantity of m1. The same MedicationRequest also carries a medicationReference to Medication/m-warfarin-5 (display 'Warfarin 5 mg tablet'), and the FHIR R4 standard (Fast Healthcare Interoperability Resources) allows exactly one of medicationCodeableConcept or medicationReference, so the order names two different drugs and the text tells the patient to take lisinopril without disclosing that conflict.",
+  "reader2": "The text says Lisinopril 10 mg by mouth once a day, which matches medicationCodeableConcept text Lisinopril, doseQuantity 10 mg, and timing.repeat 1 per 1 day. The same order also carries a medicationReference to 'Warfarin 5 mg tablet,' and Fast Healthcare Interoperability Resources (FHIR) R4 allows only one of those two medication fields, so the order names two different medicines and the text attaches a 10 mg once-daily instruction to one of them without flagging the other.",
+  "third_reader": null
+ },
+ "item_128": {
+  "id": "h3_chart_09_name_mondays_methotrexate",
+  "reader1": "The text gives 'Mondays' and 'once a day' for one order. The structured timing (frequency 1 per period 1 d, with no day-of-week restriction) matches once a day, but the order name Methotrexate Mondays carries a Monday-only schedule, so the text states a frequency the order does not carry and the patient cannot tell whether to take 15 mg daily or only on Mondays.",
+  "reader2": "The dose (15 mg) and the once-a-day wording match doseQuantity and timing.repeat (frequency 1 per period 1 day). But the order's medicationCodeableConcept text names the drug 'Methotrexate Mondays,' and the text repeats that name, so it presents a Mondays-only schedule as one fixed daily dose.",
+  "third_reader": null
+ },
+ "item_129": {
+  "id": "h3_structure_16_spaced_hyphen_before_frequency",
+  "reader1": "The text 'Take Metformin 500 mg by mouth - twice a day' matches m1 (doseQuantity 500 mg, oral route, frequency 2 per period 1 d, status active, intent order). The stray dash before 'twice a day' does not change the dose, route, or frequency a patient would follow.",
+  "reader2": "The text says Metformin 500 mg by mouth twice a day. The one order (status active, intent order) has doseQuantity 500 mg, an oral route code, and timing.repeat frequency 2 per period 1 day, so each part of the text matches it.",
+  "third_reader": null
+ },
+ "item_130": {
+  "id": "h3_model_style_as_needed_in_reason_code_scheduled",
+  "reader1": "The order is active (intent order, oral route, 650 mg dose, timing.repeat frequency 1 per period 4 hours), and the text's dose, route, frequency, and 3900 mg daily total (650 mg times 6 administrations a day) all match it. The reasonCode says 'as needed for pain,' which makes the order conditional even without an asNeededBoolean flag, but the text gives one fixed every-4-hour schedule with a fixed daily amount, so the conditional order is presented as one fixed dose.",
+  "reader2": "The dose 650 mg, oral route, every-4-hour interval (timing.repeat frequency 1, period 4, periodUnit h), and 3900 mg daily total (6 doses a day times 650 mg) all match the one active order (status active, intent order). The reasonCode reads 'as needed for pain' and the order has no asNeededBoolean flag, so the text leaves out an as-needed qualifier, which the rubric counts as faithful when the words given are correct, though this is a close call.",
+  "third_reader": "The text's dose (650 mg), oral route, every 4 hours, and daily total (3,900 mg, which is 650 mg times six administrations) match the one active MedicationRequest's doseQuantity, route, and timing.repeat (frequency 1 per period 4 hours), but that order's reasonCode says 'as needed for pain' and the text drops that condition. A patient would take 650 mg around the clock, reaching 3,900 mg a day, when the order calls for doses only as needed for pain, so the text presents a conditional order as one fixed dose."
+ }
+}

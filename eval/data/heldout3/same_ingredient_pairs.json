@@ -1,0 +1,14 @@
+[
+ "h3_chart_27_synonym_paracetamol_acetaminophen",
+ "h3_meaning_09_coumadin_warfarin_sodium_pair",
+ "h3_meaning_10_hctz_abbreviation_pair",
+ "h3_meaning_11_paracetamol_acetaminophen_as_needed",
+ "h3_meaning_12_vytorin_simvastatin_pair",
+ "h3_model_style_coumadin_and_warfarin_alternating_split",
+ "h3_model_style_hctz_and_hydrochlorothiazide_daily",
+ "h3_model_style_lantus_and_glargine_daily_totals",
+ "h3_model_style_zestril_and_lisinopril_dose_lines",
+ "h3_structure_18_four_letter_prefix_split",
+ "h3_structure_19_abbreviation_pair_apap",
+ "h3_structure_21_non_ascii_partner_name"
+]

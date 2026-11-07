@@ -1,0 +1,33 @@
+{
+ "layer_commit": "3211c7f19b02edfb350ad7cd8e133b88de0bb8ee",
+ "layer_tag": "v2.1.0 at 3cd6ec0515382a91e20642da473622c5da5c67c9 (Lean source identical at layer_commit; only paper files differ)",
+ "harness": "eval/attacks.py sends each request line unchanged (raw-number placeholders restored, line breaks inside a request replaced by spaces)",
+ "binaries": {
+  "dosegate": "a08c75fad841e58197a60aada670fd6ef94a1186ebb739961e0502dfed285c55",
+  "dosegate-baseline": "77afa012137466eb2608fea72ce18c1ec7815722941651b80add9bf32bad72f1"
+ },
+ "files": {
+  "chart.jsonl": "5ffc882d16c63c304522c621525999955f49d6670f3adc076ace55e558684a89",
+  "chart_results.jsonl": "d384a3ee7339c7e757e57b7240bde90bb83b2cb3a05be86b46d16b6d9b01e45c",
+  "clinical.jsonl": "8616337b94d478dd0df5f9bb1385372ad9e461b62d826865362dd9a5b4bb2278",
+  "clinical_results.jsonl": "3e0f883c0b40d2a7385f40469449c1463c7840dd0c625f877f505d84591f7547",
+  "meaning.jsonl": "b89a465b8e86ebe72b14bdccb44055c0ebaa7b57e265854fb7972238b9741038",
+  "meaning_results.jsonl": "5ad657d6022537fafa109c67bb332c6216bc4ca2b8ae5c34e80e49789ec8cab2",
+  "model_style.jsonl": "e67766e7d27079e4603b0a77a9e8adf66738883163fb3bf2cfaf0a2c391aeee7",
+  "model_style_results.jsonl": "e471b4b1af791712c6d52302a8ad1819e29a2661442d54b744cc5dd491a65174",
+  "structure.jsonl": "1089aeee56ce5b88ad24908ac2ac58e38c5c9e5a20840225ba3a5bd483cdec11",
+  "structure_results.jsonl": "776579747e8fe059474dba9d34663f8f6d32ee99ee49312a55c9456642b321c7"
+ },
+ "requests": {
+  "chart": 30,
+  "clinical": 30,
+  "meaning": 30,
+  "model_style": 30,
+  "structure": 36
+ },
+ "recorded": "2026-11-07T17:30:30-06:00",
+ "note": "Recorded before any request file was run through eval/attacks.py; the *_results.jsonl hashes are appended after the run.",
+ "build_commit": "3cd6ec0515382a91e20642da473622c5da5c67c9",
+ "commit_note": "HEAD advanced from 3cd6ec0 (when the binaries were built and hashed, 17:02 CST) to 3211c7f (layer_commit, HEAD when this manifest was recorded, 17:30 CST) through a commit by the manuscript session that touched no file under DoseGate/, Main.lean, Baseline.lean, the lake files, eval/attacks.py, or the earlier rounds; the Lean source at both commits is identical to tag v2.1.0 (git diff --quiet v2.1.0 HEAD -- DoseGate DoseGate.lean Main.lean Baseline.lean). These two provenance fields were added after the run; the file hashes and the recorded time are as first written.",
+ "amended": "2026-11-07T17:31:21-06:00"
+}

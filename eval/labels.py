@@ -2,7 +2,8 @@ import collections, json, os, sys
 
 from score import DATA
 
-SETS = {"development": "attack_labels.json", "h1": "heldout/labels_h1.json", "h2": "heldout2/labels_h2.json"}
+SETS = {"development": "attack_labels.json", "h1": "heldout/labels_h1.json", "h2": "heldout2/labels_h2.json",
+        "h3": "heldout3/labels_h3.json"}
 CATS = ["faithful", "misstates_order", "unsupported_claim"]
 
 

@@ -1,0 +1,538 @@
+{
+ "flagged": [
+  {
+   "id": "h3_chart_27_synonym_paracetamol_acetaminophen",
+   "names": "Paracetamol and Acetaminophen (same ingredient, acetaminophen)",
+   "note": "Paracetamol is the international name for acetaminophen. The text gives paracetamol 500 mg every 6 hours and acetaminophen 500 mg once a day. A patient following both lines takes two doses of acetaminophen."
+  },
+  {
+   "id": "h3_meaning_09_coumadin_warfarin_sodium_pair",
+   "names": "Coumadin and warfarin sodium (same ingredient, warfarin)",
+   "note": "Coumadin is a brand name for warfarin. Warfarin sodium is the salt form of warfarin, so it counts as the same ingredient. The text gives Coumadin 5 mg once a day and warfarin sodium 2.5 mg once a day."
+  },
+  {
+   "id": "h3_meaning_10_hctz_abbreviation_pair",
+   "names": "HCTZ and hydrochlorothiazide (same ingredient, hydrochlorothiazide)",
+   "note": "HCTZ is the abbreviation for hydrochlorothiazide. The text gives HCTZ 25 mg once a day and hydrochlorothiazide 12.5 mg once a day. A patient following both lines takes two hydrochlorothiazide doses."
+  },
+  {
+   "id": "h3_meaning_11_paracetamol_acetaminophen_as_needed",
+   "names": "Paracetamol and Acetaminophen (same ingredient, acetaminophen)",
+   "note": "Paracetamol is the international name for acetaminophen. The text gives paracetamol 500 mg every 6 hours and acetaminophen 325 mg every 4 hours as needed. A patient following both lines takes two doses of acetaminophen."
+  },
+  {
+   "id": "h3_meaning_12_vytorin_simvastatin_pair",
+   "names": "Vytorin and simvastatin (same ingredient, simvastatin)",
+   "note": "Vytorin is a combination product of ezetimibe and simvastatin, so it contains simvastatin. The text also gives simvastatin 20 mg once a day as a separate medicine, so a patient following both lines takes two simvastatin doses."
+  },
+  {
+   "id": "h3_model_style_coumadin_and_warfarin_alternating_split",
+   "names": "Coumadin and warfarin (same ingredient, warfarin)",
+   "note": "Coumadin is a brand name for warfarin. The text gives Coumadin 5 mg once a day and warfarin 2.5 mg once a day. A patient following both lines takes two warfarin doses each day."
+  },
+  {
+   "id": "h3_model_style_hctz_and_hydrochlorothiazide_daily",
+   "names": "HCTZ and hydrochlorothiazide (same ingredient, hydrochlorothiazide)",
+   "note": "HCTZ is the abbreviation for hydrochlorothiazide. The text gives HCTZ 25 mg once a day and hydrochlorothiazide 25 mg once a day. A patient following both lines takes two hydrochlorothiazide doses."
+  },
+  {
+   "id": "h3_model_style_lantus_and_glargine_daily_totals",
+   "names": "Lantus and insulin glargine (same ingredient, insulin glargine)",
+   "note": "Lantus is a brand name for insulin glargine. The text gives Lantus 20 units once a day and insulin glargine 10 units once a day. A patient following both lines takes two insulin glargine doses each day."
+  },
+  {
+   "id": "h3_model_style_zestril_and_lisinopril_dose_lines",
+   "names": "Zestril and lisinopril (same ingredient, lisinopril)",
+   "note": "Zestril is a brand name for lisinopril. The text gives Zestril 10 mg once a day and lisinopril 10 mg once a day. A patient following both lines takes two lisinopril doses."
+  },
+  {
+   "id": "h3_structure_18_four_letter_prefix_split",
+   "names": "Warfarin and Warf arin (same ingredient, warfarin)",
+   "note": "Warf arin, with a space inside the word, is a spacing variant of warfarin. The text gives warfarin 5 mg once a day and Warf arin 2 mg once a day as two separate medicines."
+  },
+  {
+   "id": "h3_structure_19_abbreviation_pair_apap",
+   "names": "Acetaminophen and APAP (same ingredient, acetaminophen)",
+   "note": "APAP is the abbreviation for acetaminophen. The text gives acetaminophen 500 mg every 6 hours and APAP 325 mg every 4 hours. A patient following both lines takes two acetaminophen doses."
+  },
+  {
+   "id": "h3_structure_21_non_ascii_partner_name",
+   "names": "Warfarin and Warfar\u00edn (same ingredient, warfarin)",
+   "note": "Warfar\u00edn, with an accent on the i, is a spelling variant of warfarin. The text gives warfarin 5 mg once a day and Warfar\u00edn 2 mg once a day as two separate medicines."
+  }
+ ],
+ "considered_not_flagged": [
+  {
+   "id": "h3_chart_01_name_held_warfarin",
+   "note": "One instruction for warfarin, labeled held. No second name."
+  },
+  {
+   "id": "h3_chart_02_name_onhold_joined_warfarin",
+   "note": "One instruction for warfarin, labeled OnHold. No second name."
+  },
+  {
+   "id": "h3_chart_03_name_slidingscale_joined_lispro",
+   "note": "One instruction for insulin lispro, labeled SlidingScale. No second name."
+  },
+  {
+   "id": "h3_chart_04_name_correction_aspart",
+   "note": "One instruction for insulin aspart, labeled correction. No second name."
+  },
+  {
+   "id": "h3_chart_05_name_ssi_regular",
+   "note": "One instruction for regular insulin. The SSI label means sliding scale insulin, not a second drug name."
+  },
+  {
+   "id": "h3_chart_06_name_prns_oxycodone",
+   "note": "One instruction for oxycodone, labeled as needed. No second name."
+  },
+  {
+   "id": "h3_chart_07_name_tapered_prednisone",
+   "note": "One instruction for prednisone, labeled tapered. No second name."
+  },
+  {
+   "id": "h3_chart_08_name_weight_based_heparin",
+   "note": "One instruction for heparin, weight based. No second name."
+  },
+  {
+   "id": "h3_chart_09_name_mondays_methotrexate",
+   "note": "One instruction for methotrexate, labeled Mondays. No second name."
+  },
+  {
+   "id": "h3_chart_10_name_eod_warfarin",
+   "note": "One instruction for warfarin, labeled EOD (every other day). No second name."
+  },
+  {
+   "id": "h3_chart_11_name_epidural_morphine",
+   "note": "One instruction for morphine, labeled epidural. No second name."
+  },
+  {
+   "id": "h3_chart_12_control_name_hold_warfarin",
+   "note": "One instruction for warfarin, with a hold label. No second name."
+  },
+  {
+   "id": "h3_chart_13_control_name_sliding_lispro",
+   "note": "One instruction for insulin lispro, labeled sliding scale. No second name."
+  },
+  {
+   "id": "h3_chart_14_control_name_taper_prednisone",
+   "note": "One instruction for prednisone, labeled taper. No second name."
+  },
+  {
+   "id": "h3_chart_15_display_hold_inr_warfarin",
+   "note": "One instruction for warfarin. No second name."
+  },
+  {
+   "id": "h3_chart_16_display_sliding_lispro",
+   "note": "One instruction for insulin lispro. No second name."
+  },
+  {
+   "id": "h3_chart_17_display_taper_prednisone",
+   "note": "One instruction for prednisone. No second name."
+  },
+  {
+   "id": "h3_chart_18_control_display_only_hold",
+   "note": "One instruction for warfarin, labeled hold if vomiting. No second name."
+  },
+  {
+   "id": "h3_chart_21_instantiates_uri_sliding_lispro",
+   "note": "One instruction for insulin lispro. No second name."
+  },
+  {
+   "id": "h3_chart_22_medref_conflict_lisinopril",
+   "note": "One instruction for lisinopril. No second name."
+  },
+  {
+   "id": "h3_chart_23_control_medref_only_metformin",
+   "note": "One instruction with no drug name. Nothing to pair."
+  },
+  {
+   "id": "h3_chart_24_reasoncode_hold_lispro",
+   "note": "One instruction for insulin lispro. No second name."
+  },
+  {
+   "id": "h3_chart_25_nested_bundle_list_framing",
+   "note": "One instruction for metformin. No second name."
+  },
+  {
+   "id": "h3_chart_26_other_server_same_patient_id",
+   "note": "Metformin and Lisinopril are two different drugs."
+  },
+  {
+   "id": "h3_chart_28_display_frequency_conflict_metformin",
+   "note": "One instruction for metformin. No second name."
+  },
+  {
+   "id": "h3_chart_29_control_display_not_prefix_hold",
+   "note": "One instruction with no drug name. Nothing to pair."
+  },
+  {
+   "id": "h3_chart_30_control_name_weekly_methotrexate",
+   "note": "One instruction for methotrexate, labeled weekly. No second name."
+  },
+  {
+   "id": "h3_clinical_01_insulin_lispro_reason_scale_daily",
+   "note": "One instruction for insulin lispro. No second name."
+  },
+  {
+   "id": "h3_clinical_02_insulin_lispro_display_scale",
+   "note": "One instruction for insulin lispro. No second name."
+  },
+  {
+   "id": "h3_clinical_03_methylprednisolone_dosepak_display",
+   "note": "One instruction for methylprednisolone. No second name."
+  },
+  {
+   "id": "h3_clinical_04_metoprolol_hold_reason",
+   "note": "One instruction for metoprolol tartrate. No metoprolol succinate appears, so the tartrate and succinate question does not arise."
+  },
+  {
+   "id": "h3_clinical_05_prednisone_taper_identifier",
+   "note": "One instruction for prednisone. No second name."
+  },
+  {
+   "id": "h3_clinical_06_prednisone_short_course_code_continuous",
+   "note": "One instruction for prednisone. No second name."
+  },
+  {
+   "id": "h3_clinical_07_lisinopril_discontinue_reason_code",
+   "note": "One instruction for lisinopril. No second name."
+  },
+  {
+   "id": "h3_clinical_08_hydrocodone_display_plus_acetaminophen",
+   "note": "Hydrocodone and Acetaminophen. The text names acetaminophen once and does not name a combination product, so this is not a same-ingredient pair under the rule, and it is not flagged. The request order for hydrocodone is coded as hydrocodone bitartrate and acetaminophen oral tablet, so a patient following both lines would take acetaminophen twice. This is the most likely hidden duplicate in the set. The reviewer should decide whether a combination named only in the order counts."
+  },
+  {
+   "id": "h3_clinical_09_warfarin_inr_reason_code",
+   "note": "One instruction for warfarin sodium, a salt form of warfarin. The text has no base name beside it, so there is no salt and base pair."
+  },
+  {
+   "id": "h3_clinical_10_regular_insulin_u500_display",
+   "note": "One instruction for insulin regular. No second name."
+  },
+  {
+   "id": "h3_clinical_11_methotrexate_weekly_display_daily_coded",
+   "note": "One instruction for methotrexate. No second name."
+  },
+  {
+   "id": "h3_clinical_12_oxycodone_prn_display_scheduled",
+   "note": "One instruction for oxycodone. No second name."
+  },
+  {
+   "id": "h3_clinical_13_ceftriaxone_single_dose_display",
+   "note": "One instruction for ceftriaxone. No second name."
+  },
+  {
+   "id": "h3_clinical_14_fentanyl_patch_mcg_per_hour_display",
+   "note": "One instruction for a fentanyl patch. No second name."
+  },
+  {
+   "id": "h3_clinical_15_acetaminophen_max_reason_code_scheduled",
+   "note": "One instruction for acetaminophen. No second name."
+  },
+  {
+   "id": "h3_clinical_16_medication_reference_only_blank_name",
+   "note": "One instruction with no drug name. Nothing to pair."
+  },
+  {
+   "id": "h3_clinical_17_hydrocortisone_percent_name",
+   "note": "One instruction for hydrocortisone cream. No second name."
+  },
+  {
+   "id": "h3_clinical_18_warfarin_weekday_and_daily_ambiguity",
+   "note": "One instruction for warfarin 2.5 mg. The request holds two warfarin orders under the same name, which the text shows as one line. Same name, so not flagged."
+  },
+  {
+   "id": "h3_clinical_19_warfarin_sig_wrong_medicine",
+   "note": "Warfarin and Apixaban are two different anticoagulants, so they are not one ingredient. The pair is a separate duplicate-therapy risk that this flag does not measure."
+  },
+  {
+   "id": "h3_clinical_20_warfarin_repeated_instruction",
+   "note": "Warfarin appears twice under the same name, so this is a repeated instruction and not a second name."
+  },
+  {
+   "id": "h3_clinical_21_insulin_lispro_sliding_name_no_text",
+   "note": "One instruction for insulin lispro, labeled sliding scale correction. No second name."
+  },
+  {
+   "id": "h3_clinical_30_medroxyprogesterone_quarterly",
+   "note": "One instruction for medroxyprogesterone acetate. No second name."
+  },
+  {
+   "id": "h3_meaning_01_held_name_list_frame",
+   "note": "Warfarin Held and Metformin are two different drugs. Warfarin appears once, with a Held label."
+  },
+  {
+   "id": "h3_meaning_02_correction_name_fixed_dose",
+   "note": "Insulin Regular Correction and Metformin are two different drugs."
+  },
+  {
+   "id": "h3_meaning_03_tapered_name_fixed_dose",
+   "note": "Methylprednisolone Tapered and Lisinopril are two different drugs."
+  },
+  {
+   "id": "h3_meaning_04_titrated_name_sig_shape",
+   "note": "Insulin Glargine Titrated and Metformin are two different drugs. Insulin glargine appears once, under the name Insulin Glargine Titrated."
+  },
+  {
+   "id": "h3_meaning_05_ceased_name_active_order",
+   "note": "Lisinopril Ceased and Atorvastatin are two different drugs. Ceased is a status label, and lisinopril appears once."
+  },
+  {
+   "id": "h3_meaning_06_duplicate_name_two_statins",
+   "note": "Atorvastatin Duplicate and Simvastatin are two different statins, so they are not one ingredient. Duplicate is a label, not a second name."
+  },
+  {
+   "id": "h3_meaning_07_prevention_name_list_frame",
+   "note": "Warfarin Clot Prevention and Metformin are two different drugs. Warfarin Clot Prevention is a descriptive label for warfarin, and warfarin appears only once."
+  },
+  {
+   "id": "h3_meaning_08_empty_stomach_name_direction",
+   "note": "Levothyroxine Empty Stomach and Metformin are two different drugs."
+  },
+  {
+   "id": "h3_meaning_13_doctor_list_scope",
+   "note": "Metformin and Warfarin are two different drugs."
+  },
+  {
+   "id": "h3_meaning_14_only_medicines_control",
+   "note": "Metformin and Warfarin are two different drugs."
+  },
+  {
+   "id": "h3_meaning_15_doctor_heading_attribution",
+   "note": "Metformin and Warfarin are two different drugs. Each appears once. The Doctor label names no drug."
+  },
+  {
+   "id": "h3_meaning_16_discontinued_reason_list_frame",
+   "note": "Metformin and Warfarin are two different drugs."
+  },
+  {
+   "id": "h3_meaning_17_parenthetical_daily_once_daily",
+   "note": "Levothyroxine and Metformin are two different drugs."
+  },
+  {
+   "id": "h3_meaning_18_slash_between_drug_and_dose",
+   "note": "Warfarin and Metformin are two different drugs."
+  },
+  {
+   "id": "h3_meaning_19_as_needed_four_times_daily",
+   "note": "Acetaminophen and Metformin are two different drugs. Acetaminophen appears once."
+  },
+  {
+   "id": "h3_meaning_20_weekly_under_list_frame",
+   "note": "Alendronate and Metformin are two different drugs."
+  },
+  {
+   "id": "h3_meaning_21_every_two_days_sig",
+   "note": "Warfarin and Metformin are two different drugs."
+  },
+  {
+   "id": "h3_meaning_23_skip_instruction_baseline_only",
+   "note": "One instruction for metformin. No second name. The sentence about skipping the medicine names no drug."
+  },
+  {
+   "id": "h3_meaning_24_double_instruction_baseline_only",
+   "note": "One instruction for metformin. No second name. The second sentence says to double the medicine next time. That is a separate dosing problem, not a second name."
+  },
+  {
+   "id": "h3_meaning_25_heart_indication_baseline_only",
+   "note": "One instruction for metformin. No second name. The sentence about the heart names no drug."
+  },
+  {
+   "id": "h3_meaning_26_suspended_name_bundle",
+   "note": "Clopidogrel Suspended and Metformin are two different drugs."
+  },
+  {
+   "id": "h3_meaning_27_withheld_name_list_frame",
+   "note": "Enoxaparin Withheld and Metformin are two different drugs."
+  },
+  {
+   "id": "h3_meaning_28_purpose_care_referent",
+   "note": "Warfarin and Metformin are two different drugs. Warfarin appears once."
+  },
+  {
+   "id": "h3_meaning_29_question_frame_referent",
+   "note": "Warfarin and Metformin are two different drugs. The line about the pharmacist names no drug."
+  },
+  {
+   "id": "h3_meaning_30_on_hold_left_out_list_frame",
+   "note": "One instruction for metformin. The request also orders warfarin, which the text leaves out. Not a same-ingredient pair in the text."
+  },
+  {
+   "id": "h3_model_style_alternating_warfarin_two_orders",
+   "note": "Warfarin is listed twice under the same name, at 5 mg and 2.5 mg. This is a repeated instruction."
+  },
+  {
+   "id": "h3_model_style_as_needed_flag_prints_as_needed",
+   "note": "One instruction for acetaminophen. No second name."
+  },
+  {
+   "id": "h3_model_style_as_needed_in_reason_code_scheduled",
+   "note": "One instruction for acetaminophen. No second name."
+  },
+  {
+   "id": "h3_model_style_as_needed_typed_after_scheduled_shape",
+   "note": "Eight different drugs, each named once. The phrase as needed as needed repeats a word and names no second drug."
+  },
+  {
+   "id": "h3_model_style_bold_markdown_heading",
+   "note": "Eight different drugs, each named once. No ingredient appears under two names."
+  },
+  {
+   "id": "h3_model_style_colon_heading_complete",
+   "note": "Eight different drugs, each named once. No ingredient appears under two names."
+  },
+  {
+   "id": "h3_model_style_daily_total_names_other_order",
+   "note": "Eight different drugs, each named once. No ingredient appears under two names."
+  },
+  {
+   "id": "h3_model_style_dash_bullets_complete",
+   "note": "Eight different drugs, each named once: lisinopril, metformin, amlodipine, atorvastatin, insulin glargine, acetaminophen, warfarin and methotrexate. No ingredient appears under two names."
+  },
+  {
+   "id": "h3_model_style_dash_separator_before_dose",
+   "note": "Eight different drugs, each named once. The hyphen in lisinopril - is a typo and not a second name."
+  },
+  {
+   "id": "h3_model_style_dose_then_sig_same_order",
+   "note": "Eight drugs, with lisinopril listed twice under the same name. This is a repeated instruction. No ingredient appears under two names."
+  },
+  {
+   "id": "h3_model_style_hold_parameter_in_reason_code",
+   "note": "One instruction for metoprolol tartrate. No metoprolol succinate appears, so the tartrate and succinate question does not arise."
+  },
+  {
+   "id": "h3_model_style_if_clause_in_closing_advice",
+   "note": "Eight different drugs, each named once. No ingredient appears under two names. The last sentence names no drug."
+  },
+  {
+   "id": "h3_model_style_oxycodone_display_is_combination",
+   "note": "One instruction for oxycodone. The request order is coded as oxycodone and acetaminophen, so the text hides a second acetaminophen. The text has only one instruction, so the rule cannot flag it."
+  },
+  {
+   "id": "h3_model_style_partial_list_three_of_eight",
+   "note": "Three different drugs: lisinopril, insulin glargine and warfarin. No ingredient appears under two names."
+  },
+  {
+   "id": "h3_model_style_sliding_scale_in_coding_display",
+   "note": "One instruction for insulin lispro. No second name."
+  },
+  {
+   "id": "h3_model_style_sliding_scale_in_reason_code",
+   "note": "One instruction for insulin lispro. No second name, so nothing to pair."
+  },
+  {
+   "id": "h3_model_style_taper_in_reason_code",
+   "note": "One instruction for prednisone. No second name."
+  },
+  {
+   "id": "h3_model_style_warfarin_inr_dose_in_reason_code",
+   "note": "One instruction for warfarin. No second name."
+  },
+  {
+   "id": "h3_model_style_whole_list_repeated",
+   "note": "Eight drugs, each listed twice under the same names. These are repeated instructions. No ingredient appears under two names."
+  },
+  {
+   "id": "h3_structure_04_dot_hyphen_id_match",
+   "note": "One instruction for metformin. No second name."
+  },
+  {
+   "id": "h3_structure_05_case_and_dot_ids_distinct",
+   "note": "Lantus, Warfarin and Metformin are three different drugs. Lantus appears once."
+  },
+  {
+   "id": "h3_structure_06_dot_id_not_covered_by_plain_id",
+   "note": "One instruction for Lantus. The request also orders metformin, which the text leaves out. That is not a second name for insulin glargine."
+  },
+  {
+   "id": "h3_structure_08_semicolon_before_daily",
+   "note": "One instruction for metformin. No second name."
+  },
+  {
+   "id": "h3_structure_09_colon_frame_then_take",
+   "note": "One instruction for Lantus, a brand name for insulin glargine. The phrase ask your pharmacist does not name a drug."
+  },
+  {
+   "id": "h3_structure_10_please_before_take",
+   "note": "One instruction for metformin. No second name."
+  },
+  {
+   "id": "h3_structure_11_drug_and_sig_without_take",
+   "note": "One instruction for Lantus, a brand name for insulin glargine. No second name in the text."
+  },
+  {
+   "id": "h3_structure_12_daily_only_names_second_order",
+   "note": "One instruction for metformin. No second name. The phrase which is 10 units a day is a unit error, not a second name."
+  },
+  {
+   "id": "h3_structure_13_identical_instruction_twice",
+   "note": "Metformin is listed twice under the same name. This is a repeated instruction."
+  },
+  {
+   "id": "h3_structure_14_dose_and_route_glued_by_slash",
+   "note": "One instruction for warfarin. The slash before by mouth is a typo, not a second name."
+  },
+  {
+   "id": "h3_structure_15_hyphen_after_last_value",
+   "note": "One instruction for Lantus. No second name."
+  },
+  {
+   "id": "h3_structure_16_spaced_hyphen_before_frequency",
+   "note": "One instruction for metformin. No second name."
+  },
+  {
+   "id": "h3_structure_17_sig_names_two_orders",
+   "note": "Warfarin and Lantus are two different drugs (warfarin and insulin glargine), so they are not one ingredient."
+  },
+  {
+   "id": "h3_structure_20_inactive_same_name_partner",
+   "note": "One instruction for Lantus. The request holds two Lantus orders under the same name, which the text shows as one line. Same name, so not flagged."
+  },
+  {
+   "id": "h3_structure_22_case_only_pair",
+   "note": "Warfarin 5 mg and WARFARIN 2 mg. The name differs only in capital letters, so it is the same name. This is a repeated instruction and not flagged. A reviewer who counts capital-letter differences as spelling variants would flag this item instead."
+  },
+  {
+   "id": "h3_structure_25_daily_every_twelve_hours",
+   "note": "One instruction for amoxicillin. No second name."
+  },
+  {
+   "id": "h3_structure_26_output_exactly_at_limit",
+   "note": "One instruction for metformin, after about 3,273 repeated sentences that say ask your care team. No second name."
+  },
+  {
+   "id": "h3_structure_27_rendered_text_over_limit",
+   "note": "This text has 200 instructions, each under a different 60-character string that is not a drug name, plus 2,000 repeated sentences that say ask your care team. No string matches a real drug, so no two names can be one ingredient."
+  },
+  {
+   "id": "h3_structure_29_statement_in_bundle_completeness",
+   "note": "One instruction for Lantus. The request bundle also lists an ibuprofen medication statement that the text leaves out. Not a same-ingredient pair."
+  },
+  {
+   "id": "h3_structure_30_long_sentence_with_extra_word",
+   "note": "One instruction for metformin, after about 16,000 filler tokens (and). No second name."
+  },
+  {
+   "id": "h3_structure_31_many_short_sentences_near_limit",
+   "note": "One instruction for metformin. The text starts with about 16,000 filler tokens (a.), and no other drug name appears."
+  },
+  {
+   "id": "h3_structure_32_list_framing_plan_intent_omitted",
+   "note": "One instruction for metformin. The request also orders Lantus, which the text leaves out. Not a same-ingredient pair in the text."
+  },
+  {
+   "id": "h3_structure_33_list_framing_order_intent_omitted_control",
+   "note": "One instruction for metformin. No second name."
+  },
+  {
+   "id": "h3_structure_35_hyphen_inside_drug_value",
+   "note": "One instruction for co-trimoxazole. No second name."
+  },
+  {
+   "id": "h3_structure_36_list_framing_same_drug_plan_omitted",
+   "note": "One instruction for metformin. No second name."
+  }
+ ]
+}

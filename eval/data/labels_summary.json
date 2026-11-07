@@ -92,6 +92,37 @@
   },
   "both_filters_kappa": 0.5
  },
+ "h3": {
+  "layer": {
+   "released_outputs": 91,
+   "labels": {
+    "faithful": 53,
+    "misstates_order": 35,
+    "unsupported_claim": 3
+   },
+   "distinct_texts": 86,
+   "distinct_texts_with_mixed_labels": 0,
+   "readers_agree": 77,
+   "reader_pairs": 91,
+   "kappa": 0.71,
+   "third_reader_used": 14
+  },
+  "baseline": {
+   "released_outputs": 130,
+   "labels": {
+    "faithful": 72,
+    "misstates_order": 53,
+    "unsupported_claim": 5
+   },
+   "distinct_texts": 122,
+   "distinct_texts_with_mixed_labels": 2,
+   "readers_agree": 116,
+   "reader_pairs": 130,
+   "kappa": 0.8,
+   "third_reader_used": 14
+  },
+  "both_filters_kappa": 0.76
+ },
  "v2_review": {
   "llama_comparison_filter": {
    "released_outputs": 171,
