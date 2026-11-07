@@ -8,7 +8,7 @@
   "comment": "Still open: JAMIA allows up to five keywords; change any? The title page also needs your credential as you want it printed, the affiliation line, and a decision on whether the clinical co-author placeholder stays until your mentor agrees."
  },
  {
-  "anchor": "3,994 on 2026-11-07",
+  "anchor": "3,959 on 2026-11-07",
   "comment": "Still open: the official JAMIA instructions page refuses my browser (HTTP 403 again today), so the 4,000-word and 250-word limits, the four-table limit, the preprint policy, and whether a blinded copy or double spacing is required all rest on secondary guides. One look by you at https://academic.oup.com/jamia/pages/General_Instructions settles them."
  },
  {
@@ -17,7 +17,7 @@
  },
  {
   "anchor": "On 138 adversarial requests, version 2 released 9 misstatements in 86 texts",
-  "comment": "Reply (remove version 1): version 1 and round h1 are out of the Abstract, Methods, Results, Table 2, and Conclusion. Their numbers now sit in Supplementary Section S5 and Supplementary Table S5a. The main text keeps two one-sentence mentions, one in Methods and one in Discussion, because the finding that correct proofs did not rescue a loose specification is the strongest argument for the adversarial testing we report. Say the word and those two go as well."
+  "comment": "Reply (remove version 1): version 1 and round h1 are out of the Abstract, Methods, Results, Discussion, Table 2, and Conclusion, as you asked. Their numbers sit in Supplementary Section S5 and Supplementary Table S5a, and the Methods keep one pointer to that section."
  },
  {
   "anchor": "After rewrites it released 98.3% of slot outputs from Qwen3.5-4B, Claude Haiku 5.5, and Claude Sonnet 5.5",
@@ -60,8 +60,8 @@
   "comment": "Reply (explain again): the reader is the code that turns the patient's FHIR orders into the values the proofs reason about. It is not proved, so it is tested two ways: 270 regression tests, each a fixed request with a known expected reply, and a fuzz test that mutates requests 20,000 times and checks that the Lean reader and a separate Python program written from the same rules give the same answer. That shows the reader follows its rules, not that the rules are right. The Methods paragraph before Table 1 now says this in those words."
  },
  {
-  "anchor": "An earlier version failed a held-out round (Supplementary Section S5)",
-  "comment": "Reply (publish the working system): this sentence and one in Discussion are all that remains of version 1 in the main text; the rest is in Supplementary Section S5."
+  "anchor": "the development rounds are in Supplementary Section S5",
+  "comment": "Reply (publish the working system): done. Version 1 and round h1 no longer appear in the main text; this pointer is all that remains, and Supplementary Section S5 and Table S5a hold the development rounds, the held-out round h1, and the lesson that correct proofs did not rescue a loose specification."
  },
  {
   "anchor": "every label was assigned by an instance of Claude, and no clinician labeled any output",
