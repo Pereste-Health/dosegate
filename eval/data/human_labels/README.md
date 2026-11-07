@@ -1,0 +1,1 @@
+Human labels of the blind sample go here as `parker_labels.json`, exported from the labeling page (`eval/labeling/label_tool.html` or the private artifact) or collected from the artifact's database with `eval/labeling/collect_db_labels.py`. `python3 eval/human_agreement.py` reads this file.

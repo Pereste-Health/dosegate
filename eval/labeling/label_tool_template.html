@@ -1,0 +1,778 @@
+<title>DoseGate Labels</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: a sticky progress bar, one item card per screen, a sticky Back/Next bar, and the rubric as a right column on wide screens or a full sheet on phones. */
+:root {
+  --bg: #f4f3ef;
+  --panel: #ffffff;
+  --fg: #1c1e21;
+  --muted: #60656d;
+  --line: #d6d3cb;
+  --accent: #1d5c78;
+  --accent-fg: #ffffff;
+  --accent-soft: #e2eef3;
+  --note: #fff5d9;
+  --note-line: #d7a12f;
+  --chip: #ebe9e3;
+  --done: #2e7d4f;
+  --done-fg: #ffffff;
+  --partial: #c98a1a;
+  --partial-fg: #1c1e21;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141618; --panel: #1d2024; --fg: #e9e7e2; --muted: #a2a7ae; --line: #343941;
+    --accent: #7dbcd8; --accent-fg: #0f2530; --accent-soft: #1f333d; --note: #352c15; --note-line: #c9a24a;
+    --chip: #2a2f36; --done: #5fbf86; --done-fg: #0f2530; --partial: #e0a94a; --partial-fg: #0f2530; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141618; --panel: #1d2024; --fg: #e9e7e2; --muted: #a2a7ae; --line: #343941;
+  --accent: #7dbcd8; --accent-fg: #0f2530; --accent-soft: #1f333d; --note: #352c15; --note-line: #c9a24a;
+  --chip: #2a2f36; --done: #5fbf86; --done-fg: #0f2530; --partial: #e0a94a; --partial-fg: #0f2530; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+html { scroll-padding-top: calc(76px + env(safe-area-inset-top, 0px)); scroll-padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 var(--font); -webkit-text-size-adjust: 100%; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--panel); }
+button { font: inherit; color: inherit; }
+h2 { font: 600 12px/1.3 var(--font); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--panel); border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; gap: 8px; padding-block: 8px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.bar .brand { font-weight: 600; white-space: nowrap; }
+.bar .progress { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.bar .progress .text { font-size: 13px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-variant-numeric: tabular-nums; }
+.bar .progress .track { height: 4px; background: var(--chip); border-radius: 2px; overflow: hidden; }
+.bar .progress .fill { height: 100%; width: 0; background: var(--done); }
+.bar .tools { display: flex; gap: 6px; }
+.tool { border: 1px solid var(--line); background: var(--panel); border-radius: 6px; padding: 6px 10px; cursor: pointer; font-size: 13px; }
+.tool:hover { background: var(--chip); }
+.tool.on { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+.shell { display: flex; align-items: flex-start; gap: 20px; max-width: 1240px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 16px 100px; }
+.main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.item-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.item-head .counter { font-weight: 600; font-size: 17px; font-variant-numeric: tabular-nums; }
+.item-head .qid { color: var(--muted); font-family: var(--mono); font-size: 13px; }
+.state { font-size: 12px; padding: 2px 8px; border-radius: 10px; background: var(--chip); color: var(--muted); }
+.state.done { background: var(--done); color: var(--done-fg); }
+.state.partial { background: var(--partial); color: var(--partial-fg); }
+.block { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; overflow-wrap: anywhere; }
+.context { margin: 0 0 10px; padding: 8px 10px; border-left: 3px solid var(--note-line); background: var(--note); border-radius: 0 6px 6px 0; font-size: 14px; }
+.order { border-top: 1px solid var(--line); padding: 10px 0; }
+.order:first-of-type { border-top: 0; padding-top: 2px; }
+.order-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.oid { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.oname { font-weight: 600; font-size: 16px; }
+.chip { font-size: 12px; padding: 1px 8px; border-radius: 10px; background: var(--chip); color: var(--fg); }
+.chip.notable { background: var(--note); border: 1px solid var(--note-line); font-weight: 600; }
+.detail { color: var(--muted); font-size: 13px; margin-top: 2px; }
+.dose { margin-top: 6px; font-size: 15px; }
+.dose b { font-weight: 600; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; margin-right: 4px; }
+.dose .sep { color: var(--line); margin: 0 6px; }
+.dose.notable, .line.notable { background: var(--note); border-left: 3px solid var(--note-line); padding: 6px 10px; border-radius: 0 6px 6px 0; }
+.line { font-size: 13px; margin-top: 6px; font-family: var(--mono); word-break: break-word; }
+.line.plain { font-family: var(--font); color: var(--muted); }
+details.raw { margin-top: 10px; }
+details.raw summary { cursor: pointer; color: var(--accent); font-size: 14px; }
+details.raw pre { margin: 8px 0 0; padding: 10px; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; font: 12px/1.45 var(--mono); overflow-x: auto; max-height: 60vh; max-height: 60dvh; }
+.released { font: 16px/1.55 var(--serif); white-space: pre-wrap; word-break: break-word; }
+.released.long { max-height: 70vh; max-height: 70dvh; overflow: auto; border: 1px solid var(--line); border-radius: 6px; padding: 10px; }
+.length-note { color: var(--muted); font-size: 13px; margin-top: 6px; }
+.choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+.choice { border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 12px 10px; cursor: pointer; text-align: left; display: flex; flex-direction: column; gap: 2px; }
+.choice .k { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.choice .t { font-weight: 600; }
+.choice:hover { background: var(--accent-soft); }
+.choice[aria-pressed="true"] { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+.choice[aria-pressed="true"] .k { color: var(--accent-fg); opacity: 0.8; }
+.sub { margin-top: 12px; }
+.sub .q { font-weight: 600; margin: 0 0 6px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chipbtn { border: 1px solid var(--line); background: var(--panel); border-radius: 16px; padding: 6px 12px; cursor: pointer; font-size: 14px; }
+.chipbtn .k { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-right: 4px; }
+.chipbtn:hover { background: var(--accent-soft); }
+.chipbtn[aria-pressed="true"] { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+.chipbtn[aria-pressed="true"] .k { color: var(--accent-fg); opacity: 0.8; }
+.row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+textarea { width: 100%; min-height: 64px; margin-top: 12px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--fg); font: 14px/1.4 var(--font); resize: vertical; }
+textarea:focus, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.meta { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; color: var(--muted); font-size: 12px; margin-top: 8px; }
+.linkbtn { background: none; border: 0; color: var(--accent); cursor: pointer; padding: 0; font-size: 12px; text-decoration: underline; }
+.navbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; background: var(--panel); border-top: 1px solid var(--line);
+  display: flex; gap: 8px; padding-block: 10px calc(10px + env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.navbar button { flex: 1; border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 12px 8px; cursor: pointer; font-weight: 600; }
+.navbar button.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); flex: 1.6; }
+.navbar button:disabled { opacity: 0.4; cursor: default; }
+.rubric { width: 360px; flex: none; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 68px); max-height: calc(100vh - 180px); max-height: calc(100dvh - 180px); overflow: auto;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; font-size: 14px; overflow-wrap: anywhere; }
+.rubric h3 { font-size: 14px; margin: 14px 0 4px; }
+.rubric h3:first-of-type { margin-top: 0; }
+.rubric p { margin: 0 0 8px; }
+.rubric dl { margin: 0; }
+.rubric dt { font-family: var(--mono); font-size: 13px; margin-top: 6px; }
+.rubric dd { margin: 0 0 2px; color: var(--muted); }
+.rubric .close { display: none; }
+.sheet { position: fixed; inset: 0; z-index: 20; background: var(--bg); overflow: auto; padding-block: calc(16px + env(safe-area-inset-top, 0px)) calc(24px + env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.sheet .inner { max-width: 760px; margin: 0 auto; }
+.sheet-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; }
+.sheet-head h2 { font-size: 16px; text-transform: none; letter-spacing: 0; color: var(--fg); margin: 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(54px, 1fr)); gap: 6px; }
+.cell { border: 1px solid var(--line); border-radius: 6px; padding: 6px 2px; font: 12px var(--mono); background: var(--panel); cursor: pointer; text-align: center; }
+.cell.done { background: var(--done); color: var(--done-fg); border-color: var(--done); }
+.cell.partial { background: var(--partial); color: var(--partial-fg); border-color: var(--partial); }
+.cell.current { outline: 2px solid var(--accent); outline-offset: 1px; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; color: var(--muted); font-size: 13px; margin: 10px 0 14px; }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: 4px; border: 1px solid var(--line); background: var(--panel); }
+.legend i.done { background: var(--done); border-color: var(--done); }
+.legend i.partial { background: var(--partial); border-color: var(--partial); }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+.actions button { border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 10px 14px; cursor: pointer; font-weight: 600; font-size: 14px; }
+.actions .primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+.actions input[type=file] { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.status { color: var(--muted); font-size: 14px; }
+code { font-family: var(--mono); font-size: 13px; background: var(--chip); padding: 1px 4px; border-radius: 3px; }
+.toast { position: fixed; left: 50%; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 30;
+  background: var(--fg); color: var(--bg); padding: 8px 14px; border-radius: 8px; font-size: 14px; max-width: 90vw; }
+.kbd { font-family: var(--mono); font-size: 12px; background: var(--chip); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; }
+.shortcuts { margin-top: 14px; font-size: 13px; color: var(--muted); }
+.shortcuts div { margin-top: 3px; }
+@media (max-width: 1099px) {
+  .rubric { position: fixed; inset: 0; width: auto; max-height: none; border-radius: 0; border: 0; z-index: 20; padding-block: calc(16px + env(safe-area-inset-top, 0px)) calc(24px + env(safe-area-inset-bottom, 0px));
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .rubric .close { display: inline-block; float: right; }
+}
+@media (max-width: 640px) {
+  .bar .brand { display: none; }
+  .tool { padding: 6px 8px; }
+  .block { padding: 12px; }
+  .released { font-size: 17px; }
+}
+@media (prefers-reduced-motion: no-preference) { .bar .progress .fill { transition: width 0.2s; } }
+</style>
+
+<header class="bar">
+  <span class="brand">DoseGate labels</span>
+  <div class="progress"><div class="text" id="progress-text">Loading</div><div class="track"><div class="fill" id="progress-fill"></div></div></div>
+  <div class="tools">
+    <button class="tool" id="btn-queue" type="button" title="Queue (g)">Queue</button>
+    <button class="tool" id="btn-rubric" type="button" title="Rubric (r)">Rubric</button>
+    <button class="tool" id="btn-export" type="button" title="Export">Export</button>
+  </div>
+</header>
+<div class="visually-hidden" id="live" aria-live="polite"></div>
+
+<div class="shell">
+  <main class="main" id="main"></main>
+  <aside class="rubric" id="rubric" hidden>
+    <button class="tool close" id="btn-rubric-close" type="button">Close</button>
+    <div id="rubric-body"></div>
+    <div class="shortcuts" id="shortcuts"></div>
+  </aside>
+</div>
+
+<nav class="navbar">
+  <button type="button" id="btn-back">Back</button>
+  <button type="button" id="btn-next-open">Next unlabeled</button>
+  <button type="button" class="primary" id="btn-next">Next</button>
+</nav>
+
+<div class="sheet" id="queue-sheet" hidden>
+  <div class="inner">
+    <div class="sheet-head"><h2>Queue</h2><button class="tool" type="button" data-close="queue-sheet">Close</button></div>
+    <div class="legend"><span><i></i>not labeled</span><span><i class="partial"></i>started</span><span><i class="done"></i>labeled</span></div>
+    <div class="grid" id="queue-grid"></div>
+  </div>
+</div>
+
+<div class="sheet" id="export-sheet" hidden>
+  <div class="inner">
+    <div class="sheet-head"><h2>Export</h2><button class="tool" type="button" data-close="export-sheet">Close</button></div>
+    <p class="status" id="export-status"></p>
+    <p class="status" id="storage-note"></p>
+    <div class="actions">
+      <button type="button" class="primary" id="btn-download">Save parker_labels.json</button>
+      <button type="button" id="btn-copy">Copy JSON</button>
+      <button type="button" id="btn-import">Import a saved file</button><input type="file" id="import-file" accept="application/json,.json" tabindex="-1" aria-hidden="true">
+    </div>
+    <p class="status">Put the file at <code>eval/data/human_labels/parker_labels.json</code>, then run <code>python3 eval/human_agreement.py</code>, which joins your labels to the source data by item id.</p>
+    <p class="status" id="export-detail"></p>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+
+<script type="application/json" id="queue-data">/*__QUEUE_JSON__*/</script>
+<script>
+(function () {
+  "use strict";
+  var DATA = JSON.parse(document.getElementById("queue-data").textContent);
+  var ITEMS = DATA.items;
+  var ITEM_BY_ID = {};
+  ITEMS.forEach(function (it) { ITEM_BY_ID[it.id] = it; });
+  var ERROR_TYPES = DATA.error_types;
+  var STORE_KEY = "dosegate_human_labels_v1";
+  var POS_KEY = "dosegate_human_labels_pos_v1";
+  var LABELS = [
+    ["faithful", "1", "Faithful"],
+    ["misstates_order", "2", "Misstates an order"],
+    ["unsupported_claim", "3", "Unsupported claim"]
+  ];
+  var YNU = [["yes", "Yes"], ["no", "No"], ["unsure", "Unsure"]];
+  var HOSTED = !!(window.claude && typeof window.claude.use === "function");
+  var labels = {};
+  var idx = 0;
+  var store = { db: null, status: "local", readOnly: false, writing: {}, pending: {}, note: "", confirmed: false, resubscribed: false, chain: Promise.resolve() };
+  var noteTimer = null;
+  var noteDraft = null;
+
+  function $(id) { return document.getElementById(id); }
+  function el(tag, attrs, children) {
+    var node = document.createElement(tag);
+    if (attrs) {
+      Object.keys(attrs).forEach(function (k) {
+        if (k === "class") node.className = attrs[k];
+        else if (k === "text") node.textContent = attrs[k];
+        else if (k.slice(0, 2) === "on") node.addEventListener(k.slice(2), attrs[k]);
+        else if (attrs[k] !== null && attrs[k] !== undefined) node.setAttribute(k, attrs[k]);
+      });
+    }
+    (children || []).forEach(function (c) {
+      if (c === null || c === undefined) return;
+      node.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+    });
+    return node;
+  }
+  function toast(msg) {
+    var t = $("toast");
+    t.textContent = msg;
+    t.hidden = false;
+    clearTimeout(t._timer);
+    t._timer = setTimeout(function () { t.hidden = true; }, 2600);
+  }
+
+  function loadLocal() {
+    var raw = null;
+    try { raw = localStorage.getItem(STORE_KEY); } catch (e) { raw = null; }
+    if (raw) {
+      try { labels = JSON.parse(raw) || {}; }
+      catch (e) {
+        labels = {};
+        try { localStorage.setItem(STORE_KEY + "_unreadable_" + Date.now(), raw); } catch (e2) { /* ignore */ }
+      }
+    }
+    try {
+      var pos = parseInt(localStorage.getItem(POS_KEY), 10);
+      if (!isNaN(pos) && pos >= 0 && pos < ITEMS.length) idx = pos;
+    } catch (e) { /* ignore */ }
+  }
+  function saveLocal() {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(labels)); } catch (e) { /* storage may be unavailable */ }
+  }
+  function savePos() {
+    try { localStorage.setItem(POS_KEY, String(idx)); } catch (e) { /* ignore */ }
+  }
+
+  function cur() { return ITEMS[idx]; }
+  function record(id) { return labels[id] || null; }
+  function isEmpty(r) {
+    return !r || (!r.label && !r.error_type && !r.same_ingredient && !r.double_dose_risk && !r.note && r.confidence !== "unsure");
+  }
+  function complete(r) {
+    if (!r || !r.label) return false;
+    var it = ITEM_BY_ID[r.item_id];
+    if (r.label === "misstates_order" && !r.error_type) return false;
+    if (it && it.kind === "pair" && (!r.same_ingredient || !r.double_dose_risk)) return false;
+    return true;
+  }
+  function stateOf(id) {
+    var r = record(id);
+    if (isEmpty(r)) return "";
+    return complete(r) ? "done" : "partial";
+  }
+  function countDone() {
+    var n = 0;
+    ITEMS.forEach(function (it) { if (complete(record(it.id))) n++; });
+    return n;
+  }
+
+  function blank(it) {
+    return { item_id: it.id, kind: it.kind, label: null, error_type: null, same_ingredient: null, double_dose_risk: null,
+      confidence: "sure", note: "", labeled_at: null };
+  }
+  function setField(field, value, itemId) {
+    var it = ITEM_BY_ID[itemId] || cur();
+    var r = labels[it.id] ? Object.assign({}, labels[it.id]) : blank(it);
+    if (r[field] === value) return;
+    r[field] = value;
+    if (field === "label" && value !== "misstates_order") r.error_type = null;
+    r.labeled_at = new Date().toISOString();
+    r.cleared = isEmpty(r) ? true : undefined;
+    if (!r.cleared) delete r.cleared;
+    labels[it.id] = r;
+    saveLocal();
+    writeDoc(it.id);
+    if (it.id === cur().id) {
+      if (field !== "note") renderLabelPanel();
+      renderMeta();
+      renderState();
+    }
+    renderProgress();
+  }
+  function flushNote() {
+    if (!noteTimer) return;
+    clearTimeout(noteTimer);
+    noteTimer = null;
+    if (noteDraft) setField("note", noteDraft.value, noteDraft.id);
+    noteDraft = null;
+  }
+  function clearLabel() {
+    flushNote();
+    var it = cur();
+    if (!labels[it.id]) return;
+    var r = blank(it);
+    r.labeled_at = new Date().toISOString();
+    r.cleared = true;
+    labels[it.id] = r;
+    saveLocal();
+    writeDoc(it.id);
+    render();
+  }
+
+  function renderProgress() {
+    var done = countDone();
+    var started = 0;
+    ITEMS.forEach(function (it) { if (stateOf(it.id) === "partial") started++; });
+    var text = done + " of " + ITEMS.length + " labeled";
+    if (started) text += ", " + started + " started";
+    $("progress-text").textContent = text;
+    $("progress-fill").style.width = (100 * done / ITEMS.length).toFixed(1) + "%";
+    document.title = done === ITEMS.length ? "DoseGate Labels (done)" : "DoseGate Labels";
+  }
+  function stateText(st) { return st === "done" ? "Labeled" : st === "partial" ? "Started" : "Not labeled"; }
+  function renderState() {
+    var chip = document.querySelector(".item-head .state");
+    if (!chip) return;
+    var st = stateOf(cur().id);
+    chip.className = "state " + st;
+    chip.textContent = stateText(st);
+  }
+
+  function orderNode(o) {
+    var top = el("div", { class: "order-top" }, [
+      o.id ? el("span", { class: "oid", text: o.id }) : null,
+      el("span", { class: "oname", text: o.name }),
+      el("span", { class: "chip" + (o.status_notable ? " notable" : ""), text: "status: " + o.status }),
+      el("span", { class: "chip" + (o.intent_notable ? " notable" : ""), text: "intent: " + o.intent })
+    ]);
+    var kids = [top];
+    if (o.name_detail) kids.push(el("div", { class: "detail", text: "coding: " + o.name_detail }));
+    o.doses.forEach(function (d) {
+      var parts = [];
+      if (d.n) parts.push(el("b", { text: "dosage " + d.n }), el("span", { class: "sep", text: "|" }));
+      parts.push(el("b", { text: "dose" }), d.dose, el("span", { class: "sep", text: "|" }));
+      parts.push(el("b", { text: "route" }), d.route || "(none)", el("span", { class: "sep", text: "|" }));
+      parts.push(el("b", { text: "timing" }), d.timing || "(none)");
+      kids.push(el("div", { class: "dose" + (d.notable ? " notable" : "") }, parts));
+      d.lines.forEach(function (line) { kids.push(el("div", { class: "line notable", text: line })); });
+    });
+    o.notable_lines.forEach(function (line) { kids.push(el("div", { class: "line notable", text: line })); });
+    if (o.subject) kids.push(el("div", { class: "line notable", text: "subject: " + o.subject }));
+    return el("div", { class: "order" }, kids);
+  }
+
+  function choiceButton(cls, pressed, key, label, focusKey, onclick) {
+    var kids = [];
+    if (key) kids.push(el("span", { class: "k", text: key }));
+    kids.push(cls === "choice" ? el("span", { class: "t", text: label }) : label);
+    return el("button", { class: cls, type: "button", "aria-pressed": pressed ? "true" : "false", "data-key": focusKey, onclick: onclick }, kids);
+  }
+
+  function renderLabelPanel() {
+    var it = cur();
+    var r = record(it.id) || blank(it);
+    var panel = $("label-panel");
+    var active = document.activeElement;
+    var focusKey = active && panel.contains(active) ? active.getAttribute("data-key") : null;
+    while (panel.firstChild) panel.removeChild(panel.firstChild);
+    panel.appendChild(el("h2", { text: "Your label" }));
+    panel.appendChild(el("div", { class: "choices" }, LABELS.map(function (L) {
+      return choiceButton("choice", r.label === L[0], L[1], L[2], "label:" + L[0], function () { setField("label", L[0]); });
+    })));
+    if (r.label === "misstates_order") {
+      panel.appendChild(el("div", { class: "sub" }, [
+        el("p", { class: "q", text: "Main error type" }),
+        el("div", { class: "chips" }, ERROR_TYPES.map(function (E) {
+          return choiceButton("chipbtn", r.error_type === E[0], E[1], E[0], "et:" + E[0], function () { setField("error_type", E[0]); });
+        }))
+      ]));
+    }
+    if (it.kind === "pair") {
+      panel.appendChild(el("div", { class: "sub" }, [
+        el("p", { class: "q", text: "Do two of these orders name one ingredient under two names?" }),
+        el("div", { class: "chips" }, YNU.map(function (Y, i) {
+          return choiceButton("chipbtn", r.same_ingredient === Y[0], String(7 + i), Y[1], "si:" + Y[0], function () { setField("same_ingredient", Y[0]); });
+        }))
+      ]));
+      panel.appendChild(el("div", { class: "sub" }, [
+        el("p", { class: "q", text: "Reading this text as the patient, could you take that ingredient twice when one dose was meant?" }),
+        el("div", { class: "chips" }, YNU.map(function (Y, i) {
+          return choiceButton("chipbtn", r.double_dose_risk === Y[0], ["y", "x", "z"][i], Y[1], "dd:" + Y[0], function () { setField("double_dose_risk", Y[0]); });
+        }))
+      ]));
+    }
+    panel.appendChild(el("div", { class: "row" }, [
+      el("span", { class: "q", text: "Confidence" }),
+      choiceButton("chipbtn", r.confidence !== "unsure", "", "Sure", "conf:sure", function () { setField("confidence", "sure"); }),
+      choiceButton("chipbtn", r.confidence === "unsure", "u", "Unsure", "conf:unsure", function () { setField("confidence", "unsure"); })
+    ]));
+    var ta = el("textarea", { id: "note", "data-key": "note", placeholder: "Note (optional): what is wrong, or anything a second reader should know" });
+    ta.value = r.note || "";
+    ta.addEventListener("input", function () {
+      clearTimeout(noteTimer);
+      noteDraft = { id: it.id, value: ta.value };
+      noteTimer = setTimeout(function () { noteTimer = null; var d = noteDraft; noteDraft = null; if (d) setField("note", d.value, d.id); }, 500);
+    });
+    ta.addEventListener("blur", flushNote);
+    panel.appendChild(ta);
+    panel.appendChild(el("div", { class: "meta", id: "meta" }));
+    renderMeta();
+    if (focusKey) {
+      var again = panel.querySelector('[data-key="' + focusKey + '"]');
+      if (again) again.focus();
+    }
+  }
+
+  function renderMeta() {
+    var meta = $("meta");
+    if (!meta) return;
+    var r = record(cur().id);
+    while (meta.firstChild) meta.removeChild(meta.firstChild);
+    var left = r && r.labeled_at && !isEmpty(r) ? "Saved " + new Date(r.labeled_at).toLocaleTimeString() + (complete(r) ? "" : " (not complete yet)") : "Not labeled yet";
+    meta.appendChild(el("span", { text: left }));
+    if (r && !isEmpty(r)) meta.appendChild(el("button", { class: "linkbtn", type: "button", text: "Clear this label", onclick: clearLabel }));
+  }
+
+  function render() {
+    flushNote();
+    var it = cur();
+    var main = $("main");
+    while (main.firstChild) main.removeChild(main.firstChild);
+    var st = stateOf(it.id);
+    main.appendChild(el("div", { class: "item-head" }, [
+      el("span", { class: "counter", text: "Item " + (idx + 1) + " of " + ITEMS.length }),
+      el("span", { class: "qid", text: it.id }),
+      el("span", { class: "state " + st, text: stateText(st) })
+    ]));
+    var orders = el("section", { class: "block" }, [el("h2", { text: "Orders in the request" })]);
+    it.context.forEach(function (c) { orders.appendChild(el("p", { class: "context", text: c })); });
+    it.orders.forEach(function (o) { orders.appendChild(orderNode(o)); });
+    if (!it.orders.length) orders.appendChild(el("p", { class: "context", text: "The request contains no MedicationRequest." }));
+    var pre = el("pre");
+    var details = el("details", { class: "raw", id: "raw" }, [el("summary", { text: "Raw FHIR JSON" }), pre]);
+    details.addEventListener("toggle", function () { if (details.open && !pre.textContent) pre.textContent = JSON.stringify(it.raw, null, 1); });
+    orders.appendChild(details);
+    main.appendChild(orders);
+    var released = el("div", { class: "released" + (it.text.length > 4000 ? " long" : ""), text: it.text });
+    var textBlock = el("section", { class: "block" }, [el("h2", { text: it.kind === "pair" ? "Released text (version 2.1)" : "Released text" }), released]);
+    if (it.text.length > 4000) textBlock.appendChild(el("p", { class: "length-note", text: "Long text: " + it.text.length + " characters. The box scrolls." }));
+    main.appendChild(textBlock);
+    main.appendChild(el("section", { class: "block", id: "label-panel" }));
+    renderLabelPanel();
+    $("btn-back").disabled = idx === 0;
+    $("btn-next").textContent = idx === ITEMS.length - 1 ? "Last item" : "Next";
+    $("btn-next").disabled = idx === ITEMS.length - 1;
+    $("live").textContent = "Item " + (idx + 1) + " of " + ITEMS.length + ", " + stateText(st);
+    renderProgress();
+    savePos();
+    window.scrollTo(0, 0);
+  }
+
+  function go(n) {
+    if (n < 0 || n >= ITEMS.length) return;
+    flushNote();
+    idx = n;
+    render();
+  }
+  function nextOpen() {
+    for (var k = 1; k <= ITEMS.length; k++) {
+      var n = (idx + k) % ITEMS.length;
+      if (!complete(record(ITEMS[n].id))) { go(n); return; }
+    }
+    toast("Every item is labeled. Export when you are ready.");
+  }
+
+  function renderRubric() {
+    var body = $("rubric-body");
+    DATA.rubric.forEach(function (s) {
+      body.appendChild(el("h3", { text: s.title }));
+      body.appendChild(el("p", { text: s.text }));
+    });
+    body.appendChild(el("h3", { text: "Error types" }));
+    body.appendChild(el("dl", null, ERROR_TYPES.reduce(function (acc, E) {
+      acc.push(el("dt", { text: E[0] }), el("dd", { text: E[2] }));
+      return acc;
+    }, [])));
+    body.appendChild(el("h3", { text: "Pair items" }));
+    body.appendChild(el("p", { text: "Some items carry two extra questions: whether two of the orders name one ingredient under two names (for example a brand and its generic), and whether a patient reading the text could take that ingredient twice when one dose was meant. Label the text itself with the rubric as usual." }));
+    var sc = $("shortcuts");
+    [["1 2 3", "label"], ["letters on the chips", "error type"], ["7 8 9", "same ingredient yes, no, unsure"], ["y x z", "double dose yes, no, unsure"], ["u", "toggle unsure"],
+      ["→ or j", "next"], ["← or k", "back"], ["n", "next unlabeled"], ["/", "write a note"], ["f", "raw FHIR"], ["r", "rubric"], ["g", "queue"], ["Esc", "close"]].forEach(function (p) {
+      sc.appendChild(el("div", null, [el("span", { class: "kbd", text: p[0] }), " " + p[1]]));
+    });
+  }
+  function toggleRubric(force) {
+    var open = typeof force === "boolean" ? force : $("rubric").hidden;
+    $("rubric").hidden = !open;
+    $("btn-rubric").className = "tool" + (open ? " on" : "");
+    try { localStorage.setItem("dosegate_rubric_open", open ? "1" : "0"); } catch (e) { /* ignore */ }
+  }
+
+  function renderQueue() {
+    var grid = $("queue-grid");
+    while (grid.firstChild) grid.removeChild(grid.firstChild);
+    ITEMS.forEach(function (it, n) {
+      var st = stateOf(it.id);
+      grid.appendChild(el("button", { class: "cell " + st + (n === idx ? " current" : ""), type: "button", text: String(n + 1),
+        title: it.id, onclick: function () { closeSheets(); go(n); } }));
+    });
+  }
+  function sheetOpen() { return !$("queue-sheet").hidden || !$("export-sheet").hidden; }
+  function openSheet(id) {
+    flushNote();
+    closeSheets();
+    if (id === "queue-sheet") renderQueue();
+    if (id === "export-sheet") renderExport();
+    $(id).hidden = false;
+  }
+  function closeSheets() {
+    $("queue-sheet").hidden = true;
+    $("export-sheet").hidden = true;
+    if (window.innerWidth < 1100) toggleRubric(false);
+  }
+
+  function exportObject() {
+    return {
+      schema: "dosegate-human-labels-1",
+      labeler: "Parker Smith",
+      exported_at: new Date().toISOString(),
+      source: store.status === "db" ? "artifact-db" : "browser",
+      n_items: ITEMS.length,
+      n_labeled: countDone(),
+      labels: ITEMS.map(function (it) { return labels[it.id]; }).filter(function (r) { return !isEmpty(r); })
+    };
+  }
+  function renderExport() {
+    var done = countDone();
+    var started = 0;
+    ITEMS.forEach(function (it) { if (stateOf(it.id) === "partial") started++; });
+    $("export-status").textContent = done + " of " + ITEMS.length + " items labeled" + (started > 0 ? ", " + started + " started but not complete" : "") + ".";
+    $("storage-note").textContent = store.note || (HOSTED ? "Checking the shared database." : "Labels are saved in this browser (localStorage). Export before clearing site data or switching browsers.");
+    $("export-detail").textContent = "";
+  }
+  function download() {
+    flushNote();
+    var text = JSON.stringify(exportObject(), null, 1);
+    if (HOSTED) {
+      window.claude.use("downloads").then(function (dl) {
+        if (!dl) { toast("Saving files is not available here. Use Copy JSON."); return; }
+        return dl.save({ filename: "parker_labels.json", data: text }).then(function () { toast("Saved parker_labels.json"); });
+      }).catch(function (e) {
+        if (e && e.code === "declined") return;
+        toast("Save failed (" + ((e && e.code) || "error") + "). Use Copy JSON.");
+      });
+      return;
+    }
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([text], { type: "application/json" }));
+    a.download = "parker_labels.json";
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+    toast("Downloaded parker_labels.json");
+  }
+  function copyJson() {
+    flushNote();
+    var text = JSON.stringify(exportObject(), null, 1);
+    var fallback = function () {
+      var ta = el("textarea");
+      ta.value = text;
+      ta.readOnly = true;
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.setSelectionRange(0, text.length);
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      ta.remove();
+      toast(ok ? "Copied " + text.length + " characters" : "Copy failed; select the text below.");
+      if (!ok) $("export-detail").textContent = text;
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { toast("Copied " + text.length + " characters"); }, fallback);
+    } else fallback();
+  }
+  function importFile(file) {
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      var list;
+      try {
+        var obj = JSON.parse(reader.result);
+        list = Array.isArray(obj) ? obj : Array.isArray(obj.labels) ? obj.labels : Object.keys(obj).map(function (k) { return obj[k]; });
+      } catch (e) { toast("That file is not a labels export."); return; }
+      var merged = [], skipped = 0;
+      list.forEach(function (r) {
+        if (!r || typeof r !== "object" || !ITEM_BY_ID[r.item_id]) { skipped++; return; }
+        var have = labels[r.item_id];
+        if (!have || (r.labeled_at || "") > (have.labeled_at || "")) { labels[r.item_id] = r; merged.push(r.item_id); }
+      });
+      saveLocal();
+      merged.forEach(function (id) { store.chain = store.chain.then(function () { return writeDoc(id); }); });
+      render();
+      renderExport();
+      toast("Imported " + merged.length + " labels" + (skipped ? ", skipped " + skipped + " records with unknown ids" : ""));
+    };
+    reader.readAsText(file);
+  }
+
+  function setNote(text) {
+    store.note = text;
+    if (!$("export-sheet").hidden) $("storage-note").textContent = text;
+  }
+  function delay(ms) { return new Promise(function (resolve) { setTimeout(resolve, ms); }); }
+  function writeDoc(id) {
+    if (!store.db || store.readOnly) return Promise.resolve();
+    if (store.writing[id]) { store.pending[id] = true; return Promise.resolve(); }
+    store.writing[id] = true;
+    var attempt = function (retried) {
+      store.pending[id] = false;
+      var body = labels[id];
+      if (!body) return Promise.resolve();
+      var p;
+      try { p = store.db.doc("labels/" + id).set(Object.assign({}, body)); } catch (e) { return Promise.reject(e); }
+      return p.catch(function (e) {
+        if (e && e.code === "unavailable" && !retried) return delay(300 + Math.random() * 1200).then(function () { return attempt(true); });
+        throw e;
+      }).then(function () { if (store.pending[id]) return attempt(false); });
+    };
+    return attempt(false).catch(function (e) {
+      var code = e && e.code;
+      if (code === "invalid_argument") { store.readOnly = true; setNote("This view cannot write to the shared database. Labels stay in this browser; export them."); }
+      else setNote("A save to the shared database failed (" + (code || "error") + "). Labels stay in this browser; export them.");
+    }).then(function () { store.writing[id] = false; });
+  }
+  function mergeFromDb(snap) {
+    var changed = [], seen = {};
+    snap.docs.forEach(function (d) {
+      if (!d.exists) return;
+      var r = d.data();
+      if (!r || !ITEM_BY_ID[d.id]) return;
+      seen[d.id] = true;
+      var local = labels[d.id];
+      if (!local || (r.labeled_at || "") > (local.labeled_at || "")) { labels[d.id] = Object.assign({}, r); changed.push(d.id); }
+      else if ((local.labeled_at || "") > (r.labeled_at || "")) writeDoc(d.id);
+    });
+    if (!snap.metadata.fromCache) Object.keys(labels).forEach(function (id) { if (!seen[id]) writeDoc(id); });
+    if (!changed.length) return;
+    saveLocal();
+    renderProgress();
+    renderState();
+    if (changed.indexOf(cur().id) >= 0 && document.activeElement !== $("note")) renderLabelPanel();
+    if (!$("queue-sheet").hidden) renderQueue();
+  }
+  function subscribe(db) {
+    var timer = setTimeout(function () { setNote("The shared database has not answered yet. Labels are saved in this browser and will sync when it does."); }, 10000);
+    db.collection("labels").onSnapshot(function (snap) {
+      if (!snap.metadata.fromCache && !store.confirmed) {
+        clearTimeout(timer);
+        store.confirmed = true;
+        store.status = "db";
+        if (!store.readOnly) setNote("Labels are saved to this page's shared database, so they follow you between your phone and your Mac.");
+      }
+      mergeFromDb(snap);
+    }, function (e) {
+      clearTimeout(timer);
+      if (e && e.code === "unavailable" && !store.resubscribed) {
+        store.resubscribed = true;
+        delay(2000 + Math.random() * 3000).then(function () { subscribe(db); });
+        return;
+      }
+      setNote("The shared database is unavailable (" + ((e && e.code) || "error") + "). Labels stay in this browser; export them.");
+    });
+  }
+  function initDb() {
+    if (!HOSTED) return;
+    window.claude.use("db").then(function (db) {
+      if (!db) { setNote("Labels are saved in this browser only (no shared database in this view). Export before leaving."); return; }
+      store.db = db;
+      window.claude.use("user").then(function (user) {
+        if (!user || typeof user.can !== "function") return null;
+        return Promise.resolve(user.can("data.write")).catch(function () { return null; });
+      }).then(function (ok) {
+        if (ok === false) { store.readOnly = true; setNote("This view can read the shared labels but cannot change them. Labels you make here stay in this browser; export them."); }
+      });
+      subscribe(db);
+    });
+  }
+
+  function keyHandler(e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var tag = (e.target && e.target.tagName) || "";
+    if (e.key === "Escape") { closeSheets(); if (tag === "TEXTAREA") e.target.blur(); return; }
+    if (tag === "TEXTAREA" || tag === "INPUT") return;
+    var k = e.key;
+    if (sheetOpen()) {
+      if (k === "g") closeSheets();
+      return;
+    }
+    var it = cur();
+    var r = record(it.id);
+    if (k === "ArrowRight" || k === "j") { go(idx + 1); }
+    else if (k === "ArrowLeft" || k === "k") { go(idx - 1); }
+    else if (k === "n") { nextOpen(); }
+    else if (k === "r") { toggleRubric(); }
+    else if (k === "g") { openSheet("queue-sheet"); }
+    else if (k === "f") { var d = $("raw"); if (d) { d.open = !d.open; if (d.open) d.scrollIntoView({ block: "start" }); } }
+    else if (k === "/") { e.preventDefault(); var ta = $("note"); if (ta) { ta.focus(); } }
+    else if (k === "u") { setField("confidence", r && r.confidence === "unsure" ? "sure" : "unsure"); }
+    else if (k === "1" || k === "2" || k === "3") { setField("label", LABELS[parseInt(k, 10) - 1][0]); }
+    else if (it.kind === "pair" && (k === "7" || k === "8" || k === "9")) { setField("same_ingredient", YNU[parseInt(k, 10) - 7][0]); }
+    else if (it.kind === "pair" && (k === "y" || k === "x" || k === "z")) { setField("double_dose_risk", YNU[["y", "x", "z"].indexOf(k)][0]); }
+    else if (r && r.label === "misstates_order") {
+      for (var i = 0; i < ERROR_TYPES.length; i++) if (ERROR_TYPES[i][1] === k) { setField("error_type", ERROR_TYPES[i][0]); return; }
+    }
+  }
+
+  function boot() {
+    loadLocal();
+    renderRubric();
+    try { if (localStorage.getItem("dosegate_rubric_open") === "1" && window.innerWidth >= 1100) toggleRubric(true); } catch (e) { /* ignore */ }
+    render();
+    $("btn-back").addEventListener("click", function () { go(idx - 1); });
+    $("btn-next").addEventListener("click", function () { go(idx + 1); });
+    $("btn-next-open").addEventListener("click", nextOpen);
+    $("btn-rubric").addEventListener("click", function () { toggleRubric(); });
+    $("btn-rubric-close").addEventListener("click", function () { toggleRubric(false); });
+    $("btn-queue").addEventListener("click", function () { openSheet("queue-sheet"); });
+    $("btn-export").addEventListener("click", function () { openSheet("export-sheet"); });
+    $("btn-download").addEventListener("click", download);
+    $("btn-copy").addEventListener("click", copyJson);
+    $("btn-import").addEventListener("click", function () { $("import-file").click(); });
+    $("import-file").addEventListener("change", function (e) { importFile(e.target.files[0]); e.target.value = ""; });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-close]"), function (b) { b.addEventListener("click", closeSheets); });
+    document.addEventListener("keydown", keyHandler);
+    window.addEventListener("pagehide", flushNote);
+    document.addEventListener("visibilitychange", function () { if (document.visibilityState === "hidden") flushNote(); });
+    initDb();
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot); else boot();
+})();
+</script>
