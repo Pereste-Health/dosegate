@@ -112,7 +112,10 @@ def anthropic_backend():
                                    output_config={"effort": EFFORT})
         complete.last = {"model": r.model, "stop_reason": r.stop_reason, "effort": EFFORT, "max_tokens": MAX_TOKENS,
                          "sampling": "api default (temperature not sent)",
-                         "input_tokens": r.usage.input_tokens, "output_tokens": r.usage.output_tokens}
+                         "input_tokens": r.usage.input_tokens, "output_tokens": r.usage.output_tokens,
+                         "date": time.strftime("%Y-%m-%d"), "client": f"anthropic-python {anthropic.__version__}"}
+        if r.stop_reason == "refusal":
+            complete.last["refusal_category"] = getattr(getattr(r, "stop_details", None), "category", None)
         return "".join(b.text for b in r.content if b.type == "text")
     return complete
 

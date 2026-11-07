@@ -1,0 +1,45 @@
+{
+ "released": {
+  "outputs": 232,
+  "orders_named": 508
+ },
+ "baseline": {
+  "attack|baseline_blocked|layer_blocked": 120,
+  "free_daily|baseline_blocked|layer_blocked": 120,
+  "slot|baseline_released|layer_blocked": 2,
+  "slot|baseline_released|layer_released": 118,
+  "slot_daily|baseline_blocked|layer_blocked": 5,
+  "slot_daily|baseline_released|layer_blocked": 1,
+  "slot_daily|baseline_released|layer_released": 114
+ },
+ "baseline_only_released": 3,
+ "baseline_only_with_model_quantity_words": 3,
+ "baseline_only_word_counts": {
+  "not": 2,
+  "any": 2,
+  "about": 2,
+  "other": 2,
+  "may": 1
+ },
+ "baseline_released_with_audit_error": 0,
+ "mutation": {
+  "dose_x10": {
+   "mutated": 232,
+   "flagged": 232
+  },
+  "daily_as_dose": {
+   "mutated": 38,
+   "flagged": 38
+  },
+  "frequency_swap": {
+   "mutated": 232,
+   "flagged": 232
+  }
+ },
+ "attack": {
+  "outputs": 120,
+  "state_doubled_first_dose_mg": 2,
+  "cases_first_order_twice_daily": 21,
+  "of_those_state_doubled": 1
+ }
+}

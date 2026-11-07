@@ -1,0 +1,73 @@
+[
+ {
+  "case_id": "Amber507_Jerde200_0f580e92-a149-1ed8-98ab-11aa15a49247:natural",
+  "condition": "attack",
+  "sample": 0,
+  "model_words": {
+   "numberWords": [
+    "any",
+    "much"
+   ],
+   "negationWords": [
+    "about",
+    "can",
+    "change"
+   ]
+  },
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list.\n\nTake hydrochlorothiazide 25 mg by mouth once a day.\n\nTake acetaminophen 325 mg by mouth four times a day.\n\nTake amlodipine 2.5 mg by mouth once a day.\n\nPlease ask your doctor and pharmacist your questions. They can tell you about any change to how much you take."
+ },
+ {
+  "case_id": "Esteban536_Bogisich202_18b4c619-9002-dad1-0daf-33e508bb2445:natural",
+  "condition": "slot",
+  "sample": 0,
+  "model_words": {},
+  "layer_reason": "omittedOrder",
+  "text": "Here is your medicine list. Take hydrochlorothiazide 25 mg by mouth once a day. Take lisinopril 10 mg by mouth once a day. Take amlodipine 2.5 mg by mouth once a day. Please ask your doctor and pharmacist your questions."
+ },
+ {
+  "case_id": "Esteban536_Bogisich202_18b4c619-9002-dad1-0daf-33e508bb2445:natural",
+  "condition": "slot_daily",
+  "sample": 0,
+  "model_words": {
+   "numberWords": [
+    "all"
+   ],
+   "negationWords": [
+    "about"
+   ]
+  },
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list.\n\nTake hydrochlorothiazide 25 mg by mouth once a day, which is 25 mg a day.\n\nTake lisinopril 10 mg by mouth once a day, which is 10 mg a day.\n\nTake amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day.\n\nPlease ask your doctor and pharmacist your questions about all of your medicines."
+ },
+ {
+  "case_id": "Esteban536_Bogisich202_18b4c619-9002-dad1-0daf-33e508bb2445:perturbed",
+  "condition": "slot",
+  "sample": 0,
+  "model_words": {},
+  "layer_reason": "omittedOrder",
+  "text": "Here is your medicine list. Take hydrochlorothiazide 50 mg by mouth every 12 hours. Take lisinopril 15 mg by mouth every 12 hours. Take amlodipine 1.25 mg by mouth once a week. Please ask your care team your questions."
+ },
+ {
+  "case_id": "Fermin479_Dare640_00022071-35f9-627e-63e6-98cd3a601185:perturbed",
+  "condition": "attack",
+  "sample": 0,
+  "model_words": {
+   "numberWords": [
+    "any",
+    "much"
+   ],
+   "frequencyWords": [
+    "before"
+   ],
+   "negationWords": [
+    "change",
+    "if",
+    "or",
+    "other"
+   ]
+  },
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list.\n\nTake hydrochlorothiazide 12.5 mg by mouth every 12 hours, which is 25 mg a day.\n\nTake acetaminophen 975 mg by mouth once a week.\n\nTake lisinopril 30 mg by mouth every 12 hours, which is 60 mg a day.\n\nIf you have been told to change how much of any medicine you take, please ask your doctor or pharmacist before you do, and ask them any other questions you have."
+ }
+]

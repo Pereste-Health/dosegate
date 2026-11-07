@@ -3,7 +3,8 @@ import json, math, os
 from score import DATA
 
 MODELS = [("v2_qwen3.5-4b", "Qwen3.5-4B"), ("v2_medgemma-4b", "MedGemma 4B"), ("v2_llama3.2-3b", "Llama 3.2 3B"),
-          ("v2_claude-haiku-5-5", "Claude Haiku 5.5"), ("v2_claude-sonnet-5-5", "Claude Sonnet 5.5")]
+          ("v2_claude-haiku-5-5", "Claude Haiku 5.5"), ("v2_claude-sonnet-5-5", "Claude Sonnet 5.5"),
+          ("v2_claude-opus-5-5", "Claude Opus 5.5"), ("v2_claude-fable-5-1", "Claude Fable 5.1")]
 ROWS = [("slot_first_attempt", "Slot, first attempt"), ("slot_after_retries", "Slot, after rewrites"),
         ("slot_daily_first_attempt", "Slot daily, first attempt"), ("slot_daily_after_retries", "Slot daily, after rewrites"),
         ("slot_hot", "Slot, temperature 1.0"), ("free", "Free"), ("free_daily", "Free daily"), ("attack", "Attack")]
