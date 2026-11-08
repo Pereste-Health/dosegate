@@ -8,8 +8,8 @@
   "comment": "Reply (keywords): I could not read JAMIA's own keyword traffic (the site blocks my browser), so I aligned the five with the Medical Subject Headings (MeSH) that indexers and searchers use: Large Language Models, Medication Errors, Patient Education as Topic, and Health Information Interoperability are MeSH descriptors (the last covers FHIR); formal verification is not a MeSH term (the nearest is Software Validation) but it is the phrase formal-methods readers search, so I kept it. Say if you prefer Software Validation or FHIR in its place. Still open: your credential and affiliation lines on the title page, and whether the clinical co-author placeholder stays."
  },
  {
-  "anchor": "3,962 on 2026-11-08",
-  "comment": "Still open: the official JAMIA instructions page refuses my browser, so the 4,000-word and 250-word limits, the four-table limit, the preprint policy, and whether a blinded copy or double spacing is required still rest on secondary guides. One look by you at https://academic.oup.com/jamia/pages/General_Instructions settles them. The main text is at 3,962 words before your human-label sentences go in, so those will need a cut elsewhere."
+  "anchor": "3,969 on 2026-11-08",
+  "comment": "Still open: the official JAMIA instructions page refuses my browser, so the 4,000-word and 250-word limits, the four-table limit, the preprint policy, and whether a blinded copy or double spacing is required still rest on secondary guides. One look by you at https://academic.oup.com/jamia/pages/General_Instructions settles them. The main text is at 3,969 words before your human-label sentences go in, so those will need a cut elsewhere."
  },
  {
   "anchor": "Round h2 (138 requests) tested version 2, h3 (156) version 2.1, h4 (145) version 2.2, and h5 (144) version 2.3",
