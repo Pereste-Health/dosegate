@@ -13,7 +13,8 @@
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "missingField": 22
+     "missingField": 20,
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
     "released_orders": 209,
@@ -31,7 +32,7 @@
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "missingField": 2
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
     "released_orders": 260,
@@ -49,7 +50,8 @@
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "missingField": 22
+     "missingField": 20,
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
     "released_orders": 209,
@@ -86,7 +88,8 @@
     "test_n": null,
     "block_reasons": {
      "omittedOrder": 22,
-     "missingField": 42
+     "missingField": 38,
+     "ambiguousDrug": 4
     },
     "released_outputs_with_error": 0,
     "released_orders": 398,
@@ -138,9 +141,9 @@
   ],
   "gate_ms": {
    "n": 768,
-   "median": 0.181,
-   "p99": 0.477,
-   "max": 23.2
+   "median": 0.1905,
+   "p99": 0.512,
+   "max": 278.531
   }
  },
  "MedGemma 4B": {
@@ -157,7 +160,8 @@
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "missingField": 20
+     "missingField": 18,
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
     "released_orders": 216,
@@ -175,7 +179,8 @@
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "missingField": 20
+     "missingField": 18,
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
     "released_orders": 216,
@@ -193,7 +198,8 @@
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "missingField": 22
+     "missingField": 20,
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
     "released_orders": 209,
@@ -211,7 +217,8 @@
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "missingField": 22
+     "missingField": 20,
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
     "released_orders": 209,
@@ -229,7 +236,8 @@
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "missingField": 41
+     "missingField": 37,
+     "ambiguousDrug": 4
     },
     "released_outputs_with_error": 0,
     "released_orders": 429,
@@ -281,9 +289,9 @@
   ],
   "gate_ms": {
    "n": 804,
-   "median": 0.185,
-   "p99": 0.476,
-   "max": 23.222
+   "median": 0.1755,
+   "p99": 0.463,
+   "max": 28.254
   }
  },
  "Llama 3.2 3B": {
@@ -426,9 +434,9 @@
   ],
   "gate_ms": {
    "n": 1192,
-   "median": 0.15,
-   "p99": 0.427,
-   "max": 22.693
+   "median": 0.1315,
+   "p99": 0.395,
+   "max": 28.275
   }
  },
  "Claude Haiku 5.5": {
@@ -445,7 +453,8 @@
     "test_released": 112,
     "test_n": 120,
     "block_reasons": {
-     "missingField": 8
+     "missingField": 6,
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
     "released_orders": 244,
@@ -481,7 +490,8 @@
     "test_released": 99,
     "test_n": 120,
     "block_reasons": {
-     "missingField": 21
+     "missingField": 19,
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
     "released_orders": 213,
@@ -551,9 +561,9 @@
   ],
   "gate_ms": {
    "n": 521,
-   "median": 0.182,
-   "p99": 0.539,
-   "max": 302.45
+   "median": 0.186,
+   "p99": 0.445,
+   "max": 31.089
   }
  },
  "Claude Sonnet 5.5": {
@@ -571,7 +581,8 @@
     "test_n": 120,
     "block_reasons": {
      "unbound": 6,
-     "missingField": 3
+     "ambiguousDrug": 2,
+     "missingField": 1
     },
     "released_outputs_with_error": 0,
     "released_orders": 248,
@@ -608,8 +619,9 @@
     "test_released": 92,
     "test_n": 120,
     "block_reasons": {
-     "missingField": 21,
-     "unbound": 7
+     "missingField": 19,
+     "unbound": 7,
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
     "released_orders": 199,
@@ -679,9 +691,9 @@
   ],
   "gate_ms": {
    "n": 530,
-   "median": 0.173,
-   "p99": 0.431,
-   "max": 42.65
+   "median": 0.175,
+   "p99": 0.451,
+   "max": 27.886
   }
  },
  "Claude Opus 5.5": {
@@ -699,7 +711,8 @@
     "test_n": 120,
     "block_reasons": {
      "unbound": 2,
-     "missingField": 4
+     "ambiguousDrug": 2,
+     "missingField": 2
     },
     "released_outputs_with_error": 0,
     "released_orders": 247,
@@ -735,8 +748,9 @@
     "test_released": 95,
     "test_n": 120,
     "block_reasons": {
-     "missingField": 21,
-     "unbound": 4
+     "missingField": 19,
+     "unbound": 4,
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
     "released_orders": 201,
@@ -806,9 +820,9 @@
   ],
   "gate_ms": {
    "n": 529,
-   "median": 0.2,
-   "p99": 0.485,
-   "max": 286.608
+   "median": 0.183,
+   "p99": 0.468,
+   "max": 27.906
   }
  },
  "Claude Fable 5.1": {
@@ -826,7 +840,8 @@
     "test_n": 120,
     "block_reasons": {
      "unbound": 33,
-     "missingField": 2
+     "ambiguousDrug": 1,
+     "missingField": 1
     },
     "released_outputs_with_error": 0,
     "released_orders": 163,
@@ -863,7 +878,8 @@
     "test_n": 120,
     "block_reasons": {
      "unbound": 31,
-     "missingField": 14
+     "missingField": 12,
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
     "released_orders": 151,
@@ -934,9 +950,9 @@
   ],
   "gate_ms": {
    "n": 577,
-   "median": 0.204,
-   "p99": 0.465,
-   "max": 22.719
+   "median": 0.19,
+   "p99": 0.441,
+   "max": 27.395
   }
  }
 }

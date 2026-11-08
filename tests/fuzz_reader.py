@@ -9,10 +9,14 @@ orders and output templates are mutated, sent as one JSON request per line throu
 a single serve process, and each reply is compared with the prediction: the status,
 and the reason for a block or the text for an ok. An error reply must be an error.
 
---core v2 (default) judges the binary against version 2.1, the current layer. Its shape rules
+--core v2 (default) judges the binary against version 2.2, the current layer. Its shape rules
 reject a wrong JSON type, an empty string, or an unknown key in a request, bundle, or bundle entry
-wherever the reader would otherwise skip or default the value. The v1 core has none of these rules.
---core v1 judges it against the layer before version 2 (no 2.1 rules).
+wherever the reader would otherwise skip or default the value, and its version 2.2 rules refuse
+nested bundles, medication event resources, and foreign subjects, fail closed on every text-bearing
+order field the reader does not interpret, hold coding displays to a strength and dose-form grammar,
+and print a drug name only when it is in the RxNorm lexicon (data/rxnorm_names.txt). The v1 core has
+none of these rules.
+--core v1 judges it against the layer before version 2 (no 2.1 or 2.2 rules).
 --pre-merge accepts a disagreement when the reply matches the version 1 prediction
 exactly: the binary still has the version 1 core, and the difference comes from a
 version 2 core change. Without it, every disagreement fails the run.
@@ -161,16 +165,17 @@ CORES = {
     "v1": {"vocab": VOCAB_V1, "total": TOTAL_WORDS_V1, "shapes": V1_SHAPES, "free_drug_slot": True,
            "related": "token", "ambiguity_all_fields": False, "name_rules": "v1", "hours_rule": False,
            "daily_needs_timing": False, "ambiguous_reason": "ambiguousDaily",
-           "gate_2_1": False, "require_all": False, "text_chars": TEXT_CHARS_V1, "strict": False},
+           "gate_2_1": False, "gate_2_2": False, "require_all": False, "text_chars": TEXT_CHARS_V1,
+           "strict": False},
     "v2": {"vocab": VOCAB_V2, "total": TOTAL_WORDS_V2, "shapes": V2_SHAPES, "free_drug_slot": False,
            "related": "conservative", "ambiguity_all_fields": True, "name_rules": "v2", "hours_rule": True,
            "daily_needs_timing": True, "ambiguous_reason": "ambiguousDrug",
-           "gate_2_1": True, "require_all": True, "text_chars": TEXT_CHARS_V2, "strict": True},
+           "gate_2_1": True, "gate_2_2": True, "require_all": True, "text_chars": TEXT_CHARS_V2,
+           "strict": True},
 }
 REQUEST_KEYS = ("output", "bundle", "medicationRequests", "patient")
-BUNDLE_KEYS = ("resourceType", "id", "meta", "implicitRules", "language", "identifier", "type", "timestamp",
-               "total", "link", "entry", "signature", "extension")
-ENTRY_KEYS = ("fullUrl", "resource", "search", "response", "link", "extension")
+BUNDLE_KEYS = ("resourceType", "id", "meta", "type", "timestamp", "total", "link", "entry")
+ENTRY_KEYS = ("fullUrl", "resource", "search")
 FHIR_R4_RESOURCE_TYPES = (
     "Account", "ActivityDefinition", "AdverseEvent", "AllergyIntolerance", "Appointment",
     "AppointmentResponse", "AuditEvent", "Basic", "Binary", "BiologicallyDerivedProduct",
@@ -205,6 +210,39 @@ FHIR_R4_RESOURCE_TYPES = (
     "TestReport", "TestScript", "ValueSet", "VerificationResult", "VisionPrescription",
 )
 FHIR_PERIOD_UNITS = ("s", "min", "h", "d", "wk", "mo", "a")
+PRIORITY_CODES = ("routine", "urgent", "asap", "stat")
+LINK_RELATIONS = ("self", "next", "previous", "prev", "first", "last")
+SEARCH_MODES = ("match", "include", "outcome")
+EVENT_RESOURCE_TYPES = ("MedicationStatement", "MedicationDispense", "MedicationAdministration")
+RXNORM = "http://www.nlm.nih.gov/research/umls/rxnorm"
+NDC = "http://hl7.org/fhir/sid/ndc"
+ICD10CM = "http://hl7.org/fhir/sid/icd-10-cm"
+ICD10 = "http://hl7.org/fhir/sid/icd-10"
+CATEGORY_SYSTEM = "http://terminology.hl7.org/CodeSystem/medicationrequest-category"
+COURSE_SYSTEM = "http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy"
+US_CORE_PROFILE = "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest"
+REASON_SYSTEMS = (SNOMED, ICD10CM, ICD10)
+MEDICATION_SYSTEMS = (RXNORM, NDC, SNOMED)
+CATEGORY_TERMS = {"inpatient": "Inpatient", "outpatient": "Outpatient", "community": "Community",
+                  "discharge": "Discharge"}
+COURSE_TERMS = {"continuous": "Continuous long term therapy", "acute": "Short course (acute) therapy",
+                "seasonal": "Seasonal"}
+PROFILE_ALLOWLIST = (US_CORE_PROFILE, "http://hl7.org/fhir/StructureDefinition/MedicationRequest")
+STRENGTH_UNITS = {"mg", "mcg", "ug", "g", "ml", "l", "u", "iu", "unit", "units", "unt"}
+STRENGTH_DENOMINATORS = {"ml", "l", "g", "mg", "hr", "actuat"}
+FORM_WORDS = set("""oral orally tablet tablets capsule capsules solution suspension injectable injection extended
+release delayed chewable disintegrating film coated prefilled syringe pen injector auto cartridge inhaler inhalant
+metered powder topical cream ointment gel lotion patch transdermal system nasal spray ophthalmic otic rectal
+suppository sublingual lozenge granules packet liquid elixir syrup vaginal buccal enteric effervescent aerosol dry
+vial ampule implant""".split())
+REFERENCE_KEYS = ("subject", "encounter", "requester", "performer", "recorder")
+REFERENCE_LIST_KEYS = ("reasonReference", "supportingInformation", "basedOn", "insurance", "eventHistory")
+LEXICON = frozenset(line for line in (ROOT / "data/rxnorm_names.txt").read_text(encoding="utf-8").split("\n")
+                    if line != "")
+ASCII_ALNUM_CHARS = set(string.ascii_letters + string.digits)
+DIGITS = set("0123456789")
+DATE_TIME = re.compile(r"[0-9]{4}(-[0-9]{2}(-[0-9]{2}(T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2}))?)?)?")
+LANGUAGE = re.compile(r"[a-z]{2,3}(-[A-Z]{2})?")
 ASCII_LETTERS = set(string.ascii_letters)
 SLOT = re.compile(r"\{\{(drug|dose|frequency|route|sig|daily):([A-Za-z0-9.\-]+)\}\}")
 SENTENCE_END = re.compile(r"[.!?;:\n]")
@@ -363,22 +401,343 @@ def drug_of(order):
     return common
 
 
-def patient_id_of(ref):
+def patient_id_of(ref, cfg):
     segs = ref.split("/")
     if ref.startswith("urn:uuid:"):
         ident = ref[len("urn:uuid:"):]
     elif len(segs) == 2 and segs[0] == "Patient":
         ident = segs[1]
-    elif (ref.startswith("http://") or ref.startswith("https://")) and len(segs) >= 2 and segs[-2] == "Patient":
+    elif not cfg["gate_2_2"] and (ref.startswith("http://") or ref.startswith("https://")) and len(segs) >= 2 \
+            and segs[-2] == "Patient":
         ident = segs[-1]
     else:
         return None
+    if cfg["gate_2_2"]:
+        return ident if fhir_id_ok(ident) else None
     if ident == "" or any(c in ident for c in "/?#"):
         return None
     return ident
 
 
-def is_active(order, patient):
+def fhir_id_ok(s):
+    return 0 < len(s) <= 64 and all(c in ASCII_ALNUM_CHARS or c in "-." for c in s)
+
+
+def date_time_ok(s):
+    return DATE_TIME.fullmatch(s) is not None
+
+
+def language_ok(s):
+    return LANGUAGE.fullmatch(s) is not None
+
+
+def str_ok(ok):
+    return lambda value: isinstance(value, str) and ok(value)
+
+
+def is_boolean(value):
+    return isinstance(value, bool)
+
+
+def reference_ok(r):
+    if r.startswith("urn:uuid:"):
+        return fhir_id_ok(r[len("urn:uuid:"):])
+    parts = r.split("/")
+    return len(parts) == 2 and parts[0] in FHIR_R4_RESOURCE_TYPES and fhir_id_ok(parts[1])
+
+
+def ref_obj_ok(j):
+    return within(j, ("reference",)) and isinstance(j.get("reference"), str) and reference_ok(j["reference"])
+
+
+def digits_only(s):
+    return len(s) > 0 and all(c in DIGITS for c in s)
+
+
+def icd_head_ok(a):
+    return len(a) == 3 and a[0] in string.ascii_uppercase and a[1] in DIGITS \
+        and (a[2] in DIGITS or a[2] in string.ascii_uppercase)
+
+
+def icd_ok(code):
+    parts = code.split(".")
+    if len(parts) == 1:
+        return icd_head_ok(parts[0])
+    if len(parts) == 2:
+        return icd_head_ok(parts[0]) and 1 <= len(parts[1]) <= 4 \
+            and all(c in DIGITS or c in string.ascii_uppercase for c in parts[1])
+    return False
+
+
+def code_shape_ok(system, code):
+    if system == SNOMED:
+        return 6 <= len(code) <= 18 and digits_only(code)
+    if system == RXNORM:
+        return len(code) <= 8 and digits_only(code)
+    if system == NDC:
+        return 10 <= len(code) <= 13 and all(c in DIGITS or c == "-" for c in code)
+    if system in (ICD10CM, ICD10):
+        return icd_ok(code)
+    if system == CATEGORY_SYSTEM:
+        return code in CATEGORY_TERMS
+    if system == COURSE_SYSTEM:
+        return code in COURSE_TERMS
+    return False
+
+
+def displays_for(system, code):
+    if system == CATEGORY_SYSTEM:
+        return [CATEGORY_TERMS[code]] if code in CATEGORY_TERMS else []
+    if system == COURSE_SYSTEM:
+        return [COURSE_TERMS[code]] if code in COURSE_TERMS else []
+    return []
+
+
+def coded_coding_ok(systems, c):
+    if not within(c, ("system", "code", "display", "userSelected")):
+        return False
+    system, code = c.get("system"), c.get("code")
+    if not (isinstance(system, str) and isinstance(code, str)):
+        return False
+    if system not in systems or not code_shape_ok(system, code):
+        return False
+    display = c.get("display")
+    if display is not None and not (isinstance(display, str)
+                                    and any(same_text(display, d) for d in displays_for(system, code))):
+        return False
+    return field_ok(c, "userSelected", is_boolean)
+
+
+def coded_concept_ok(systems, cc):
+    return within(cc, ("coding",)) and field_ok(cc, "coding", list_of(lambda c: coded_coding_ok(systems, c)))
+
+
+def profile_ok(p):
+    if not isinstance(p, str):
+        return False
+    for a in PROFILE_ALLOWLIST:
+        if p == a:
+            return True
+        if p.startswith(a + "|"):
+            v = p[len(a) + 1:]
+            if v != "" and all(c in DIGITS or c == "." for c in v):
+                return True
+    return False
+
+
+def meta_ok(m):
+    return within(m, ("versionId", "lastUpdated", "profile", "security")) \
+        and field_ok(m, "versionId", str_ok(fhir_id_ok)) and field_ok(m, "lastUpdated", str_ok(date_time_ok)) \
+        and field_ok(m, "profile", list_of(profile_ok)) and not non_empty(m.get("security"))
+
+
+def dispense_quantity_ok(q):
+    if not (quantity_ok_shape(q) and within(q, ("value", "unit", "code", "system")) and quantity_ok(q)):
+        return False
+    code, unit = q.get("code"), q.get("unit")
+    if isinstance(code, str):
+        return code in UNIT_OF_CODE
+    if isinstance(unit, str):
+        return unit in UNIT_OF_CODE
+    return True
+
+
+def dispense_ok(d):
+    return within(d, ("numberOfRepeatsAllowed", "quantity")) and field_ok(d, "numberOfRepeatsAllowed", is_whole) \
+        and field_ok(d, "quantity", dispense_quantity_ok)
+
+
+def substitution_ok(s):
+    return within(s, ("allowedBoolean",)) and field_ok(s, "allowedBoolean", is_boolean)
+
+
+def number_tok(t):
+    return t != "" and all(c in DIGITS or c == "." for c in t) and t[0] in DIGITS and t[-1] in DIGITS \
+        and t.count(".") <= 1
+
+
+def unit_tok(t):
+    parts = t.split("/")
+    if len(parts) == 1:
+        return ascii_lower(parts[0]) in STRENGTH_UNITS
+    if len(parts) == 2:
+        return ascii_lower(parts[0]) in STRENGTH_UNITS and ascii_lower(parts[1]) in STRENGTH_DENOMINATORS
+    return False
+
+
+def form_tok(t):
+    return all(ascii_lower(w) in FORM_WORDS for w in t.split("-"))
+
+
+def remainder_tok(t):
+    return number_tok(t) or unit_tok(t) or form_tok(t)
+
+
+def in_lexicon(name):
+    return ascii_lower(trim(name)) in LEXICON
+
+
+def bracket_ok(b):
+    return b.startswith("[") and b.endswith("]") and in_lexicon(b[1:-1])
+
+
+def remainder_ok(r):
+    parts = r.split("[")
+    if len(parts) == 1:
+        body, brand = parts[0], None
+    elif len(parts) == 2:
+        body, brand = parts[0], "[" + parts[1]
+    else:
+        body, brand = "", ""
+    return all(remainder_tok(t) for t in body.split(" ") if t != "") and (brand is None or bracket_ok(brand))
+
+
+def display_matches(t, d):
+    tl, dl = ascii_lower(trim(t)), ascii_lower(trim(d))
+    if not dl.startswith(tl):
+        return False
+    rest = dl[len(tl):]
+    if rest and rest[0] in string.ascii_letters:
+        return False
+    return remainder_ok(rest)
+
+
+def med_coding_ok(c):
+    if not within(c, ("system", "code", "display", "userSelected")):
+        return False
+    system, code = c.get("system"), c.get("code")
+    if system is None and code is None:
+        ok = True
+    elif isinstance(system, str) and isinstance(code, str):
+        ok = system in MEDICATION_SYSTEMS and code_shape_ok(system, code)
+    else:
+        ok = False
+    return ok and field_ok(c, "userSelected", is_boolean)
+
+
+def displays_of(cc):
+    codings = cc.get("coding")
+    out = []
+    for coding in codings if isinstance(codings, list) else []:
+        if isinstance(coding, dict) and isinstance(coding.get("display"), str):
+            d = trim(coding["display"])
+            if d:
+                out.append(d)
+    return out
+
+
+def concept_named(cc):
+    if not within(cc, ("text", "coding")):
+        return ("", False)
+    codings = cc.get("coding")
+    codings = codings if isinstance(codings, list) else []
+    codings_ok = all(med_coding_ok(c) for c in codings)
+    text = cc.get("text")
+    if isinstance(text, str):
+        t = trim(text)
+        if t == "":
+            return ("", False)
+        ok = codings_ok and all(display_matches(t, c["display"]) for c in codings
+                                if isinstance(c, dict) and isinstance(c.get("display"), str))
+        return (t if ok and in_lexicon(t) else "", ok)
+    displays = displays_of(cc)
+    if not displays:
+        return ("", False)
+    d = displays[0]
+    ok = codings_ok and all(same_text(x, d) for x in displays[1:]) and all(in_lexicon(x) for x in displays)
+    return (d if ok else "", ok)
+
+
+def medication_entries(request):
+    bundle = request.get("bundle")
+    out = []
+    if isinstance(bundle, dict):
+        entries = bundle.get("entry")
+        for e in entries if isinstance(entries, list) else []:
+            if not isinstance(e, dict):
+                continue
+            r = e.get("resource")
+            if isinstance(r, dict) and r.get("resourceType") == "Medication":
+                full = e.get("fullUrl")
+                out.append((full if isinstance(full, str) else None, r))
+    return out
+
+
+def medication_resource_ok(r):
+    return within(r, ("resourceType", "id", "meta", "code", "status")) \
+        and field_ok(r, "status", lambda v: v == "active") and field_ok(r, "meta", meta_ok) \
+        and isinstance(r.get("code"), dict)
+
+
+def resolve_medication(meds, ref):
+    if ref.startswith("Medication/"):
+        ident = ref[len("Medication/"):]
+        hits = [m for m in meds if isinstance(m[1].get("id"), str) and m[1]["id"] == ident]
+    else:
+        hits = [m for m in meds if m[0] == ref]
+    if len(hits) != 1:
+        return None
+    r = hits[0][1]
+    return r.get("code") if medication_resource_ok(r) else None
+
+
+def order_concept(meds, order):
+    cc, ref = order.get("medicationCodeableConcept"), order.get("medicationReference")
+    if cc is not None and ref is None:
+        return cc
+    if cc is None and ref is not None:
+        if not ref_obj_ok(ref):
+            return None
+        return resolve_medication(meds, ref["reference"])
+    return None
+
+
+def medication_named(meds, order):
+    cc = order_concept(meds, order)
+    if cc is None or not concept_ok(cc):
+        return ("", False)
+    return concept_named(cc)
+
+
+def route_codings_known(route):
+    codings = route.get("coding") if isinstance(route, dict) else None
+    for c in codings if isinstance(codings, list) else []:
+        if not (isinstance(c, dict) and c.get("system") == SNOMED and isinstance(c.get("code"), str)
+                and c["code"] in ROUTE_PHRASE and field_ok(c, "userSelected", is_boolean)):
+            return False
+    return True
+
+
+def closed_fields(order):
+    if any(present(order, k) for k in ("statusReason", "identifier", "groupIdentifier", "instantiatesUri",
+                                        "instantiatesCanonical", "implicitRules")):
+        return True
+    if not field_ok(order, "reasonCode", list_of(lambda cc: coded_concept_ok(REASON_SYSTEMS, cc))):
+        return True
+    if not field_ok(order, "category", list_of(lambda cc: coded_concept_ok((CATEGORY_SYSTEM,), cc))):
+        return True
+    if not field_ok(order, "performerType", lambda cc: coded_concept_ok((SNOMED,), cc)):
+        return True
+    if not field_ok(order, "priority", str_ok(lambda v: v in PRIORITY_CODES)):
+        return True
+    if not field_ok(order, "language", str_ok(language_ok)):
+        return True
+    if not field_ok(order, "authoredOn", str_ok(date_time_ok)):
+        return True
+    if not field_ok(order, "meta", meta_ok):
+        return True
+    if not field_ok(order, "dispenseRequest", dispense_ok):
+        return True
+    if not field_ok(order, "substitution", substitution_ok):
+        return True
+    if not all(field_ok(order, k, ref_obj_ok) for k in REFERENCE_KEYS):
+        return True
+    if not all(field_ok(order, k, list_of(ref_obj_ok)) for k in REFERENCE_LIST_KEYS):
+        return True
+    return False
+
+
+def is_active(order, patient, cfg):
     if order.get("status") != "active":
         return False
     intent = order.get("intent")
@@ -387,7 +746,7 @@ def is_active(order, patient):
     not_performed = order.get("doNotPerform")
     if not_performed is not None and not_performed is not False:
         return False
-    if patient is not None and patient_id_of(subject_ref(order)) != patient:
+    if patient is not None and patient_id_of(subject_ref(order), cfg) != patient:
         return False
     return True
 
@@ -505,7 +864,7 @@ def optional_within(value, allowed):
 
 DOSAGE_KEYS = ("timing", "route", "doseAndRate", "asNeededBoolean", "sequence", "text",
                "additionalInstruction", "patientInstruction")
-CODING_KEYS = ("system", "code", "display", "version", "userSelected")
+CODING_KEYS = ("system", "code", "display", "userSelected")
 ORDER_KEYS = ("resourceType", "id", "meta", "implicitRules", "language", "identifier", "status", "intent",
               "category", "priority", "doNotPerform", "reportedBoolean", "reportedReference",
               "medicationCodeableConcept", "medicationReference", "subject", "encounter",
@@ -538,10 +897,12 @@ def dosage_keys_ok(dosage):
     return True
 
 
-def course_of_therapy_ok(order):
+def course_of_therapy_ok(order, cfg):
     course = order.get("courseOfTherapyType")
     if course is None:
         return True
+    if cfg["gate_2_2"] and not coded_concept_ok((COURSE_SYSTEM,), course):
+        return False
     codings = course.get("coding") if isinstance(course, dict) else None
     return isinstance(codings, list) and len(codings) > 0 and \
         all(isinstance(coding, dict) and coding.get("code") == "continuous" for coding in codings)
@@ -554,7 +915,9 @@ def reported_by_other(order):
 def order_closed(order, oid, refs, cfg):
     if cfg["gate_2_1"]:
         if has_extension_key(order) or not within(order, ORDER_KEYS) or present(order, "priorPrescription") \
-                or not course_of_therapy_ok(order) or reported_by_other(order):
+                or not course_of_therapy_ok(order, cfg) or reported_by_other(order):
+            return True
+        if cfg["gate_2_2"] and closed_fields(order):
             return True
     else:
         if any(present(order, k) for k in ("extension", "modifierExtension", "priorPrescription")):
@@ -584,6 +947,8 @@ def dosage_closed(dosage, cfg):
     route = dosage.get("route")
     if isinstance(route, dict) and not route_texts_ok(route):
         return True
+    if cfg["gate_2_2"] and route is not None and not route_codings_known(route):
+        return True
     rates = dosage.get("doseAndRate")
     first = rates[0] if isinstance(rates, list) and rates else None
     if isinstance(first, dict):
@@ -603,15 +968,19 @@ def free_text_closed(order, dosage):
         present(order, "note")
 
 
-def build_order(order, patient, refs, cfg):
-    built = {"id": order["id"], "active": is_active(order, patient), "drug": drug_of(order),
+def build_order(order, patient, refs, meds, cfg):
+    if cfg["gate_2_2"]:
+        name, named_ok = medication_named(meds, order)
+    else:
+        name, named_ok = drug_of(order), True
+    built = {"id": order["id"], "active": is_active(order, patient, cfg), "drug": name,
              "dose": None, "timing": None, "route": None, "as_needed": False}
     dosages = order.get("dosageInstruction")
     if not isinstance(dosages, list) or len(dosages) != 1 or not isinstance(dosages[0], dict):
         return built
     dosage = dosages[0]
     if fails_closed(dosage) or order_closed(order, order["id"], refs, cfg) or dosage_closed(dosage, cfg) \
-            or free_text_closed(order, dosage):
+            or not named_ok or free_text_closed(order, dosage):
         return built
     built["dose"] = dose_of(dosage)
     built["timing"] = timing_of(dosage)
@@ -932,7 +1301,8 @@ def timing_ok(timing):
 def dosage_ok(dosage):
     return isinstance(dosage, dict) and field_ok(dosage, "timing", timing_ok) \
         and field_ok(dosage, "route", concept_ok) and field_ok(dosage, "doseAndRate", list_of(rate_ok)) \
-        and field_ok(dosage, "asNeededBoolean", lambda v: isinstance(v, bool))
+        and field_ok(dosage, "asNeededBoolean", lambda v: isinstance(v, bool)) \
+        and field_ok(dosage, "sequence", is_whole)
 
 
 def order_ok(order):
@@ -947,17 +1317,48 @@ def order_ok(order):
 
 
 def resource_type_ok(resource):
-    return resource["resourceType"] in FHIR_R4_RESOURCE_TYPES
+    t = resource["resourceType"]
+    return t in FHIR_R4_RESOURCE_TYPES and t != "Bundle" and t not in EVENT_RESOURCE_TYPES
+
+
+def url_char(c):
+    return c not in " \t\r\n" and c not in '"<>'
+
+
+def full_url_ok(s):
+    return 0 < len(s) <= 512 and all(url_char(c) for c in s) \
+        and (s.startswith("urn:uuid:") or s.startswith("http://") or s.startswith("https://"))
+
+
+def search_ok(s):
+    return isinstance(s, dict) and within(s, ("mode", "score")) \
+        and field_ok(s, "mode", str_ok(lambda v: v in SEARCH_MODES)) and field_ok(s, "score", is_number)
 
 
 def entry_ok(entry):
     return isinstance(entry, dict) and keys_allowed(entry, ENTRY_KEYS) \
+        and field_ok(entry, "fullUrl", str_ok(full_url_ok)) and field_ok(entry, "search", search_ok) \
         and isinstance(entry.get("resource"), dict) and is_text(entry["resource"].get("resourceType")) \
         and resource_type_ok(entry["resource"])
 
 
+def link_ok(l):
+    return isinstance(l, dict) and within(l, ("relation", "url")) \
+        and isinstance(l.get("relation"), str) and l["relation"] in LINK_RELATIONS \
+        and isinstance(l.get("url"), str) and (l["url"].startswith("http://") or l["url"].startswith("https://")) \
+        and all(url_char(c) for c in l["url"])
+
+
+def bundle_meta_ok(m):
+    return isinstance(m, dict) and within(m, ("versionId", "lastUpdated")) \
+        and field_ok(m, "versionId", str_ok(fhir_id_ok)) and field_ok(m, "lastUpdated", str_ok(date_time_ok))
+
+
 def bundle_ok(bundle):
     return keys_allowed(bundle, BUNDLE_KEYS) and field_ok(bundle, "resourceType", lambda v: v == "Bundle") \
+        and field_ok(bundle, "id", str_ok(fhir_id_ok)) and field_ok(bundle, "meta", bundle_meta_ok) \
+        and field_ok(bundle, "timestamp", str_ok(date_time_ok)) and field_ok(bundle, "total", is_whole) \
+        and field_ok(bundle, "link", list_of(link_ok)) \
         and all(entry_ok(entry) for entry in bundle["entry"])
 
 
@@ -1003,22 +1404,36 @@ def predict(line, core):
         return ("error",)
     if cfg["strict"] and not all(is_text(order["id"]) and order_ok(order) for order in orders):
         return ("error",)
+    if cfg["gate_2_2"] and not all(fhir_id_ok(order["id"]) for order in orders):
+        return ("error",)
     patient = request.get("patient")
     if patient is not None and (not isinstance(patient, str) or patient == ""):
         return ("error",)
     refs = [subject_ref(order) for order in orders]
-    if None in refs or (patient is None and len(set(refs)) > 1):
+    if None in refs:
+        return ("error",)
+    if cfg["gate_2_2"]:
+        if any(ref.startswith("http://") or ref.startswith("https://") for ref in refs):
+            return ("error",)
+        if any(patient_id_of(ref, cfg) is None for ref in refs):
+            return ("error",)
+        if len(set(refs)) > 1:
+            return ("error",)
+        if patient is not None and refs and patient_id_of(refs[0], cfg) != patient:
+            return ("error",)
+    elif patient is None and len(set(refs)) > 1:
         return ("error",)
     if any(order.get("status") not in STATUS_CODES or order.get("intent") not in INTENT_CODES for order in orders):
         return ("error",)
-    if patient is not None and any(patient_id_of(ref) is None for ref in refs):
+    if patient is not None and any(patient_id_of(ref, cfg) is None for ref in refs):
         return ("error",)
     if len(orders) > MAX_ORDERS:
         return ("error",)
     prior = {order["priorPrescription"]["reference"] for order in orders
              if isinstance(order.get("priorPrescription"), dict)
              and isinstance(order["priorPrescription"].get("reference"), str)}
-    chart = [build_order(order, patient, prior, cfg) for order in orders]
+    meds = medication_entries(request) if cfg["gate_2_2"] else []
+    chart = [build_order(order, patient, prior, meds, cfg) for order in orders]
     result = render(chart, out, cfg)
     if result[0] == "ok" and len(result[1]) > MAX_OUTPUT:
         return ("error",)
@@ -1201,7 +1616,6 @@ NOISE = ["{", "}", "é", "*", "two", "5", "medicine", "x", "\n", "%", "now", "mg
 ROUTE_CODES = [code for code, _ in ROUTE_TERMS]
 ROUTE_TEXT_VALUES = ["by mouth", "Oral route", "ORAL USE", "Oral use", "under the tongue", "Sublingual route", "",
                      " by mouth ", None, 5, "Oral", "oral route", "into a vein", "Intravenous route"]
-RXNORM = "http://www.nlm.nih.gov/research/umls/rxnorm"
 TIMING_FAIL_KEYS = ["code", "frequencyMax", "periodMax", "duration", "durationMax", "durationUnit", "countMax",
                     "boundsDuration", "boundsRange", "boundsPeriod", "count", "offset", "dayOfWeek", "timeOfDay",
                     "when"]
@@ -1748,6 +2162,374 @@ def root_value(root, key):
     return None
 
 
+REASON_CODE_VALUES = [
+    [O([("text", "Hold if INR above 3")])],
+    [O([("coding", [O([("system", SNOMED), ("code", "44054006")])])])],
+    [O([("coding", [O([("system", SNOMED), ("code", "44054006"), ("display", "Diabetes mellitus type 2")])])])],
+    [O([("coding", [O([("system", ICD10CM), ("code", "E11.9")])])])],
+    [O([("coding", [O([("system", ICD10CM), ("code", "e11.9")])])])],
+    [O([("coding", [O([("system", ICD10), ("code", "I10")])])])],
+    [O([("coding", [O([("system", "http://example.org/reasons"), ("code", "x1")])])])],
+    [O([("coding", [O([("system", SNOMED), ("code", "4405")])])])],
+    [O([("coding", "Hold if INR above 3")])],
+    [O([("coding", [O([("system", SNOMED), ("code", "44054006"), ("userSelected", True)])])])],
+    [O([("coding", [O([("system", SNOMED), ("code", "44054006"), ("version", "2")])])])],
+    [O([("coding", [O([("system", SNOMED), ("code", "44054006")]), O([("text", "taper")])])])],
+    [], None, "sliding scale", [O()], [O([("text", None)])], O([("text", "x")]),
+]
+TEXT_CHANNEL_VALUES = [
+    ("identifier", [O([("system", "urn:example:orders"), ("value", "123")])]),
+    ("identifier", [O([("value", "prednisone-taper-step-3-of-4")])]), ("identifier", []), ("identifier", None),
+    ("groupIdentifier", O([("value", "g1")])),
+    ("instantiatesUri", ["https://protocols.example.org/insulin-lispro-sliding-scale"]),
+    ("instantiatesCanonical", ["PlanDefinition/p1"]), ("instantiatesUri", None),
+    ("statusReason", O([("text", "Discontinued due to adverse reaction")])),
+    ("statusReason", O([("coding", [O([("system", SNOMED), ("code", "182840001")])])])),
+    ("implicitRules", "http://example.org/rules"), ("note", [O([("text", "hold")])]),
+]
+PRIORITY_VALUES = ["routine", "urgent", "asap", "stat", "high", "Stat", None, Lit("1"), ""]
+LANGUAGE_VALUES = ["en", "en-US", "es", "fra", "english", "EN", "en-us", "en-US-x", "", None, Lit("1")]
+AUTHORED_VALUES = ["2026-01-05", "2026-01-05T10:00:00Z", "2026-01-05T10:00:00.123+05:00", "2026-01", "2026",
+                   "Jan 5 2026", "2026-1-5", "2026-01-05T10:00", "20260105", "2026-01-05 10:00:00", "", None,
+                   Lit("2026"), "2026-01-05T10:00:00", "2026-01-05T10:00:00.Z", "2026-01-05T"]
+CATEGORY_VALUES = [
+    [O([("coding", [O([("system", CATEGORY_SYSTEM), ("code", "community")])])])],
+    [O([("coding", [O([("system", CATEGORY_SYSTEM), ("code", "community"), ("display", "Community")])])])],
+    [O([("coding", [O([("system", CATEGORY_SYSTEM), ("code", "community"), ("display", "community ")])])])],
+    [O([("coding", [O([("system", CATEGORY_SYSTEM), ("code", "community"), ("display", "Hold")])])])],
+    [O([("text", "outpatient")])], [O([("coding", [O([("system", CATEGORY_SYSTEM), ("code", "home")])])])],
+    [O([("coding", [O([("code", "community")])])])], [], None, O([("coding", [])]), [O([("coding", [])])],
+]
+PERFORMER_TYPE_VALUES = [
+    O([("coding", [O([("system", SNOMED), ("code", "158965000")])])]), O([("text", "nurse")]),
+    O([("coding", [O([("system", SNOMED), ("code", "158965000"), ("display", "Medical practitioner")])])]), None,
+]
+REF_VALUES = [
+    O([("reference", "Practitioner/pr1")]), O([("reference", "Practitioner/pr1"), ("display", "Dr. Hold Warfarin")]),
+    O([("reference", "urn:uuid:3f2a0c1e-5b7d-4e8f-9a1b-2c3d4e5f6a7b")]), O([("reference", "Practitioner/")]),
+    O([("reference", "https://other.example/fhir/Practitioner/pr1")]), O([("reference", "Practitioner/pr 1")]),
+    O([("display", "Dr. X")]), O([("identifier", O([("value", "1")]))]),
+    O([("reference", "Practitioner/pr1"), ("type", "Practitioner")]), O([("reference", "Condition/c1")]),
+    O([("reference", "practitioner/pr1")]), O(), "Practitioner/pr1", None, O([("reference", "Patient/pat1")]),
+    O([("reference", "urn:uuid:")]), O([("reference", "Practitioner/pr1/_history/1")]),
+]
+META_VALUES = [
+    O([("versionId", "1")]), O([("lastUpdated", "2026-01-05T10:00:00Z")]), O([("profile", [US_CORE_PROFILE])]),
+    O([("profile", [US_CORE_PROFILE + "|6.1.0"])]), O([("profile", [US_CORE_PROFILE + "|"])]),
+    O([("profile", ["http://example.org/StructureDefinition/hold-if-inr-above-3"])]), O([("profile", US_CORE_PROFILE)]),
+    O([("tag", [O([("system", "http://example.org"), ("code", "x")])])]), O([("source", "http://example.org/x")]),
+    O([("security", [])]), O([("security", [O([("code", "R")])])]), O([("versionId", "a b")]),
+    O([("lastUpdated", "yesterday")]), O(), None, O([("versionId", Lit("1"))]), O([("tag", [])]),
+]
+DISPENSE_VALUES = [
+    O([("quantity", O([("value", Lit("30")), ("unit", "tablet")]))]),
+    O([("quantity", O([("value", Lit("30")), ("unit", "tablet"), ("code", "{tbl}"), ("system", UCUM)]))]),
+    O([("numberOfRepeatsAllowed", Lit("3"))]), O([("numberOfRepeatsAllowed", Lit("1.5"))]),
+    O([("expectedSupplyDuration", O([("value", Lit("6")), ("unit", "days")]))]),
+    O([("quantity", O([("value", Lit("21")), ("unit", "tablets, taper as directed")]))]),
+    O([("quantity", O([("value", "30")]))]), O([("quantity", O([("value", Lit("30")), ("code", "mg")]))]),
+    O([("quantity", O([("value", Lit("30")), ("unit", "mg"), ("code", "{tbl}")]))]),
+    O([("performer", O([("reference", "Organization/o1")]))]), O([("initialFill", O())]),
+    O([("validityPeriod", O([("end", "2026-12-31")]))]), O([("quantity", O([("value", Lit("30")), ("unit", "Tablet")]))]),
+    O(), None, O([("quantity", O([("value", Lit("30")), ("unit", "tablet"), ("comparator", "<")]))]),
+    O([("quantity", O([("value", Lit("30")), ("code", "{tbl}"), ("system", "http://example.org/units")]))]),
+    O([("quantity", O([("value", Lit("30")), ("unit", "tab"), ("code", "{tbl}")]))]),
+]
+SUBSTITUTION_VALUES = [O([("allowedBoolean", True)]), O([("allowedBoolean", False)]), O([("allowedBoolean", "yes")]),
+                       O([("allowedCodeableConcept", O([("text", "generic")]))]),
+                       O([("reason", O([("text", "formulary")]))]), O(), None]
+COURSE_VALUES = [
+    O([("coding", [O([("system", COURSE_SYSTEM), ("code", "continuous")])])]),
+    O([("coding", [O([("system", COURSE_SYSTEM), ("code", "continuous"), ("display", "Continuous long term therapy")])])]),
+    O([("coding", [O([("system", COURSE_SYSTEM), ("code", "continuous"), ("display", "Taper")])])]),
+    O([("coding", [O([("code", "continuous")])])]), O([("coding", [O([("system", COURSE_SYSTEM), ("code", "acute")])])]),
+    O([("text", "Short course, stop after 5 days")]), O([("coding", [])]), None,
+]
+SEQUENCE_VALUES = [Lit("1"), Lit("0"), Lit("2"), Lit("1.5"), Lit("-1"), "1", None, "hold", True]
+DISPLAY_SUFFIXES = [
+    "", " 10 MG Oral Tablet", " 100 UNT/ML Injectable Solution", " 100 UNT/ML Injectable Solution [Humalog]",
+    " 500 MG Extended Release Oral Tablet", " 0.5 MG/ML Oral Solution", " 25 MCG/HR Transdermal System",
+    " 5 MG Oral Tablet as needed for pain", " taper: 20 mg, then 10 mg", " sliding scale", "500 MG",
+    " 1 % Topical Cream", " 4 MG Oral Tablet [Medrol Dosepak]", " 15 MG Weekly Oral Tablet",
+    " Hydrochloride 500 MG Oral Tablet", " 10 MG Oral Tablet, hold if INR above 3", " 2.5 MG Oral Tablet [Coumadin]",
+    " 10 MG Extended-Release Oral Tablet", " 10 mg oral tablet", "  10 MG  Oral Tablet", "\t10 MG Oral Tablet",
+    " 10 MG Oral Tablet [", " 10 MG [a] [b]", " 1000 Oral Tablet", " MG Oral Tablet", " 10. MG", " 10 MG/",
+    " 0.09 MG/ACTUAT Metered Dose Inhaler", " 20 MEQ Extended Release Oral Tablet", " 81 MG Chewable Tablet",
+    " 100 UNT/ML Pen Injector", " 100 UNT/ML Prefilled Syringe", "x", " [Humalog]", " 10 MG Oral Tablet ",
+]
+LEXICON_NAMES = ["aspirin", "warfarin", "Warfarin", "insulin glargine", "Insulin Lispro", "metoprolol tartrate", "Lantus",
+                 "Coumadin", "levothyroxine sodium", "lisinopril", "Metformin", "metformin hydrochloride", "acetaminophen",
+                 "prednisone", "methotrexate", "heparin", "oxycodone", "methylprednisolone", "humalog"]
+NON_LEXICON_NAMES = ["Warfarin Held", "insulin aspart", "regular insulin", "Prednisone tapered", "Methotrexate Mondays",
+                     "Warfarin EOD", "Insulin lispro SlidingScale", "asa", "hctz", "warfarinn", "metformin  hydrochloride",
+                     " aspirin ", "Heparin weight based", "insulin", "glargine", "Regular insulin SSI",
+                     "Insulin Glargine Titrated", "clear days ahead", "fosamax plus d", "alocane max strength",
+                     "Toprol-XL", "Toprol XL", "ASPIRIN", "aspirin ", "aspirin."]
+MED_CODING_VALUES = [
+    O([("system", RXNORM), ("code", "314076")]), O([("system", RXNORM), ("code", "314076a")]),
+    O([("system", NDC), ("code", "0071-0155-23")]), O([("system", NDC), ("code", "0071")]),
+    O([("system", SNOMED), ("code", "386873009")]), O([("system", "http://example.org/drugs"), ("code", "x")]),
+    O([("code", "314076")]), O([("system", RXNORM)]), O([("system", RXNORM), ("code", "314076"), ("version", "2026")]),
+    O([("system", RXNORM), ("code", "314076"), ("userSelected", True)]),
+    O([("system", RXNORM), ("code", "314076"), ("userSelected", "yes")]), O(), O([("system", RXNORM), ("code", "")]),
+]
+SUBJECT_VARIANTS = ["https://other-hospital.example/fhir/Patient/pat1", "http://example.org/fhir/Patient/pat2",
+                    "Patient/pat2", "Group/g1", "patient/pat1", "Patient/pat1/_history/2", "urn:uuid:pat1",
+                    "Patient/pat 1", "Patient/PAT1", "Patient/pat1", "urn:uuid:", "Patient/", "pat1"]
+BUNDLE_FIELD_VALUES = [
+    ("id", "b1"), ("id", "b 1"), ("id", Lit("1")), ("meta", O([("lastUpdated", "2026-01-05T10:00:00Z")])),
+    ("meta", O([("versionId", "2")])), ("meta", O([("profile", ["http://hl7.org/fhir/StructureDefinition/Bundle"])])),
+    ("meta", O([("tag", [O([("code", "x")])])])), ("meta", O()), ("timestamp", "2026-01-05T10:00:00Z"),
+    ("timestamp", "yesterday"), ("total", Lit("1")), ("total", Lit("1.5")), ("total", "1"),
+    ("link", [O([("relation", "self"), ("url", "https://fhir.example.org/MedicationRequest?patient=pat1")])]),
+    ("link", [O([("relation", "self"), ("url", "hold if INR above 3")])]),
+    ("link", [O([("relation", "hold"), ("url", "https://fhir.example.org/x")])]),
+    ("link", [O([("relation", "next"), ("url", "https://fhir.example.org/x"), ("extension", [])])]), ("link", []),
+    ("link", O()), ("identifier", O([("value", "1")])), ("language", "en"), ("signature", O()), ("extension", []),
+    ("implicitRules", "http://example.org/x"), ("type", "collection"),
+]
+ENTRY_FIELD_VALUES = [
+    ("fullUrl", "urn:uuid:3f2a0c1e-5b7d-4e8f-9a1b-2c3d4e5f6a7b"), ("fullUrl", "https://fhir.example.org/MedicationRequest/m1"),
+    ("fullUrl", "hold if INR above 3"), ("fullUrl", "m1"), ("fullUrl", ""), ("fullUrl", Lit("1")),
+    ("search", O([("mode", "match")])), ("search", O([("mode", "match"), ("score", Lit("1"))])),
+    ("search", O([("mode", "hold")])), ("search", O([("text", "x")])), ("search", O()), ("search", "match"),
+    ("response", O([("status", "200")])), ("link", []), ("extension", []),
+]
+ROUTE_CODING_VARIANTS = [
+    O([("system", SNOMED), ("code", "26643006"), ("userSelected", True)]),
+    O([("system", SNOMED), ("code", "26643006"), ("userSelected", "yes")]),
+    O([("system", SNOMED), ("code", "26643006"), ("version", "20230301")]),
+    O([("system", RXNORM), ("code", "26643006")]), O([("system", SNOMED), ("code", "99999999")]),
+    O([("system", SNOMED), ("code", "26643006"), ("display", "Oral route")]),
+    O([("system", SNOMED), ("code", "26643006"), ("display", "by mouth, hold if vomiting")]),
+]
+EVENT_ENTRY_TYPES = ["MedicationStatement", "MedicationDispense", "MedicationAdministration", "Medication", "Condition",
+                     "Patient", "Practitioner", "OperationOutcome", "Bundle"]
+
+
+def set_order_key(rng, root, key, values):
+    orders = order_nodes(root)
+    if not orders:
+        return False
+    set_key_in(rng.choice(orders), key, clone(rng.choice(values)))
+    return True
+
+
+def m_reason_code(rng, root):
+    return set_order_key(rng, root, "reasonCode", REASON_CODE_VALUES)
+
+
+def m_text_channel(rng, root):
+    orders = order_nodes(root)
+    if not orders:
+        return False
+    key, value = rng.choice(TEXT_CHANNEL_VALUES)
+    set_key_in(rng.choice(orders), key, clone(value))
+    return True
+
+
+def m_priority_language_date(rng, root):
+    key, values = rng.choice([("priority", PRIORITY_VALUES), ("language", LANGUAGE_VALUES),
+                              ("authoredOn", AUTHORED_VALUES)])
+    return set_order_key(rng, root, key, values)
+
+
+def m_category_performer(rng, root):
+    key, values = rng.choice([("category", CATEGORY_VALUES), ("performerType", PERFORMER_TYPE_VALUES)])
+    return set_order_key(rng, root, key, values)
+
+
+def m_reference_field(rng, root):
+    if rng.random() < 0.5:
+        return set_order_key(rng, root, rng.choice(REFERENCE_KEYS), REF_VALUES)
+    value = rng.choice(REF_VALUES)
+    wrapped = [clone(value)] if rng.random() < 0.8 else value
+    return set_order_key(rng, root, rng.choice(REFERENCE_LIST_KEYS), [wrapped])
+
+
+def m_meta(rng, root):
+    return set_order_key(rng, root, "meta", META_VALUES)
+
+
+def m_dispense(rng, root):
+    return set_order_key(rng, root, "dispenseRequest", DISPENSE_VALUES)
+
+
+def m_substitution(rng, root):
+    return set_order_key(rng, root, "substitution", SUBSTITUTION_VALUES)
+
+
+def m_course_of_therapy(rng, root):
+    return set_order_key(rng, root, "courseOfTherapyType", COURSE_VALUES)
+
+
+def m_sequence(rng, root):
+    targets = [o for o in objects(root) if has_key(o, "doseAndRate") or has_key(o, "timing")]
+    if not targets:
+        return False
+    set_key_in(rng.choice(targets), "sequence", rng.choice(SEQUENCE_VALUES))
+    return True
+
+
+def m_display_remainder(rng, root):
+    hits = pairs_with_keys(root, ("medicationCodeableConcept",))
+    concepts = [obj[i][1] for obj, i in hits if isinstance(obj[i][1], O)]
+    if not concepts:
+        return False
+    concept = rng.choice(concepts)
+    name = rng.choice(LEXICON_NAMES)
+    display = name + rng.choice(DISPLAY_SUFFIXES)
+    coding = clone(rng.choice(MED_CODING_VALUES)) if rng.random() < 0.5 else O()
+    coding.append(("display", display))
+    codings = [coding]
+    if rng.random() < 0.2:
+        codings.append(O([("display", rng.choice([display, name, name + " 10 MG Oral Tablet"]))]))
+    roll = rng.random()
+    if roll < 0.7:
+        set_key_in(concept, "text", name)
+    elif roll < 0.85:
+        concept[:] = [(k, v) for k, v in concept if k != "text"]
+    else:
+        set_key_in(concept, "text", rng.choice(["Insulin", "Met", name.upper(), name + " "]))
+    set_key_in(concept, "coding", codings)
+    return True
+
+
+def m_lexicon_name(rng, root):
+    hits = pairs_with_keys(root, ("medicationCodeableConcept",))
+    concepts = [obj[i][1] for obj, i in hits if isinstance(obj[i][1], O)]
+    if not concepts:
+        return False
+    concept = rng.choice(concepts)
+    set_key_in(concept, "text", rng.choice(LEXICON_NAMES + NON_LEXICON_NAMES))
+    if rng.random() < 0.3:
+        set_key_in(concept, "coding", [clone(rng.choice(MED_CODING_VALUES))])
+    return True
+
+
+def bundle_of(root):
+    bundles = [obj[i][1] for obj, i in pairs_with_keys(root, ("bundle",)) if isinstance(obj[i][1], O)]
+    return bundles[0] if bundles else None
+
+
+def entries_of(bundle):
+    for k, v in bundle:
+        if k == "entry" and isinstance(v, list):
+            return v
+    return None
+
+
+def m_medication_reference(rng, root):
+    if bundle_of(root) is None and not m_bundle_wrap(rng, root):
+        return False
+    bundle = bundle_of(root)
+    entries = entries_of(bundle)
+    orders = order_nodes(root)
+    if entries is None or not orders:
+        return False
+    order = rng.choice(orders)
+    name = rng.choice(LEXICON_NAMES + NON_LEXICON_NAMES[:6])
+    ident = rng.choice(["med1", "med2", "med-1"])
+    ref = rng.choice([f"Medication/{ident}", f"Medication/{ident}", f"urn:uuid:{ident}", "Medication/missing",
+                      f"Medication/{ident}/_history/1", f"#{ident}"])
+    reference = O([("reference", ref)])
+    if rng.random() < 0.2:
+        reference.append(("display", name + " 5 mg tablet"))
+    if rng.random() < 0.75:
+        order[:] = [(k, v) for k, v in order if k != "medicationCodeableConcept"]
+    set_key_in(order, "medicationReference", reference)
+    code = rng.choice([O([("text", name)]), O([("text", name), ("coding", [O([("system", RXNORM), ("code", "855332"),
+                                                                             ("display", name)])])]),
+                       O([("coding", [O([("system", RXNORM), ("code", "855332"), ("display", name)])])]),
+                       O([("text", name + " 5 MG Oral Tablet")]), O()])
+    medication = O([("resourceType", "Medication"), ("id", ident), ("code", code)])
+    extra = rng.random()
+    if extra < 0.15:
+        medication.append(("status", rng.choice(["active", "inactive", "entered-in-error"])))
+    elif extra < 0.25:
+        medication.append(("form", O([("text", "tablet")])))
+    elif extra < 0.3:
+        medication.append(("meta", clone(rng.choice(META_VALUES))))
+    elif extra < 0.35:
+        medication[:] = [(k, v) for k, v in medication if k != "code"]
+    entry = O([("resource", medication)])
+    if rng.random() < 0.5:
+        entry.insert(0, ("fullUrl", f"urn:uuid:{ident}"))
+    entries.append(entry)
+    if rng.random() < 0.1:
+        entries.append(clone(entry))
+    return True
+
+
+def m_nested_bundle(rng, root):
+    if bundle_of(root) is None and not m_bundle_wrap(rng, root):
+        return False
+    entries = entries_of(bundle_of(root))
+    if not entries:
+        return False
+    i = rng.randrange(len(entries))
+    inner = clone(entries[i])
+    entries[i] = O([("resource", O([("resourceType", "Bundle"), ("type", "searchset"), ("entry", [inner])]))])
+    return True
+
+
+def m_event_resource(rng, root):
+    if bundle_of(root) is None and not m_bundle_wrap(rng, root):
+        return False
+    entries = entries_of(bundle_of(root))
+    if entries is None:
+        return False
+    kind = rng.choice(EVENT_ENTRY_TYPES)
+    resource = O([("resourceType", kind), ("id", "r1"), ("status", "active")])
+    if kind in ("MedicationStatement", "Medication"):
+        resource.append(("medicationCodeableConcept" if kind == "MedicationStatement" else "code",
+                         O([("text", "Ibuprofen")])))
+    entries.insert(rng.randint(0, len(entries)), O([("resource", resource)]))
+    return True
+
+
+def m_subject_variant(rng, root):
+    orders = order_nodes(root)
+    if not orders:
+        return False
+    roll = rng.random()
+    if roll < 0.7:
+        set_key_in(rng.choice(orders), "subject", O([("reference", rng.choice(SUBJECT_VARIANTS))]))
+    elif roll < 0.85:
+        set_key_in(rng.choice(orders), "subject", O([("reference", "Patient/pat1"), ("display", "Pat Example")]))
+    else:
+        set_key_in(root, "patient", rng.choice(["pat1", "pat2", "PAT1"]))
+    return True
+
+
+def m_bundle_fields(rng, root):
+    if bundle_of(root) is None and not m_bundle_wrap(rng, root):
+        return False
+    bundle = bundle_of(root)
+    if rng.random() < 0.5:
+        key, value = rng.choice(BUNDLE_FIELD_VALUES)
+        set_key_in(bundle, key, clone(value))
+        return True
+    entries = entries_of(bundle)
+    if not entries:
+        return False
+    entry = rng.choice(entries)
+    if not isinstance(entry, O):
+        return False
+    key, value = rng.choice(ENTRY_FIELD_VALUES)
+    set_key_in(entry, key, clone(value))
+    return True
+
+
+def m_route_coding(rng, root):
+    hits = pairs_with_keys(root, ("route",))
+    routes = [obj[i][1] for obj, i in hits if isinstance(obj[i][1], O)]
+    if not routes:
+        return False
+    set_key_in(rng.choice(routes), "coding", [clone(rng.choice(ROUTE_CODING_VARIANTS))])
+    return True
+
+
 def m_output_noise(rng, root):
     text = root_value(root, "output")
     if not isinstance(text, str):
@@ -1790,6 +2572,14 @@ MUTATIONS = [
     ("order_id", m_order_id), ("output_noise", m_output_noise), ("output_retarget", m_output_retarget),
     ("output_long", m_output_long), ("reserved_key", m_reserved_key),
     ("order_allowed_key", m_order_allowed_key), ("order_disallowed_key", m_order_disallowed_key),
+    ("reason_code", m_reason_code), ("text_channel", m_text_channel),
+    ("priority_language_date", m_priority_language_date), ("category_performer", m_category_performer),
+    ("reference_field", m_reference_field), ("meta", m_meta), ("dispense", m_dispense),
+    ("substitution", m_substitution), ("course_of_therapy", m_course_of_therapy), ("sequence", m_sequence),
+    ("display_remainder", m_display_remainder), ("lexicon_name", m_lexicon_name),
+    ("medication_reference", m_medication_reference), ("nested_bundle", m_nested_bundle),
+    ("event_resource", m_event_resource), ("subject_variant", m_subject_variant),
+    ("bundle_fields", m_bundle_fields), ("route_coding", m_route_coding),
 ]
 
 

@@ -67,7 +67,8 @@
   "passed": 114,
   "block_reasons": {
    "unbound": 2,
-   "missingField": 4
+   "ambiguousDrug": 2,
+   "missingField": 2
   },
   "raw_model_text": {
    "orders": 268,
@@ -149,8 +150,9 @@
   "n": 120,
   "passed": 95,
   "block_reasons": {
-   "missingField": 21,
-   "unbound": 4
+   "missingField": 19,
+   "unbound": 4,
+   "ambiguousDrug": 2
   },
   "raw_model_text": {
    "orders": 268,
@@ -294,8 +296,8 @@
  },
  "gate_ms": {
   "n": 529,
-  "median": 0.2,
-  "p99": 0.485,
-  "max": 286.608
+  "median": 0.183,
+  "p99": 0.468,
+  "max": 27.906
  }
 }

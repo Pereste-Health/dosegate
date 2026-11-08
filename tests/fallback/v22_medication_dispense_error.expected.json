@@ -1,0 +1,1 @@
+{"status": "error", "message": "a bundle entry resource with id d1 has resourceType MedicationDispense, which the gate cannot represent as an instruction; send only MedicationRequests"}

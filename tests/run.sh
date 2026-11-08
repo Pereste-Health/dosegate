@@ -91,10 +91,8 @@ else
 fi
 
 python3 - "$out/slots_400.json" "$out/slots_400.expected.json" <<'EOF'
-import itertools, json, string, sys
-reserved = {"ac", "an", "as", "at", "be", "by", "cc", "do", "gm", "go", "hi", "hs", "if", "ii", "im", "is", "it", "iu", "iv", "kg", "mg", "ml", "no", "of", "on", "or", "oz", "pc", "po", "pr", "pv", "qd", "qw", "sc", "sl", "so", "sq", "to", "ug", "up", "us", "vi", "we"}
-names = ["".join(p) for p in itertools.product(string.ascii_lowercase, repeat=2)]
-names = [n for n in names if n not in reserved][:100]
+import json, sys
+names = [line.strip() for line in open("tests/words/slot_names.txt") if line.strip()]
 route = {"coding": [{"system": "http://snomed.info/sct", "code": "26643006", "display": "Oral route"}]}
 orders = []
 for n in names:

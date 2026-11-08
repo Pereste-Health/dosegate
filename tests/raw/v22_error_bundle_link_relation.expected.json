@@ -1,0 +1,1 @@
+{"status": "error", "message": "bundle link entries may carry only a relation of self, next, previous, first, or last and an http or https url"}

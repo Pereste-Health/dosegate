@@ -1,0 +1,1 @@
+{"status": "error", "message": "a MedicationRequest subject.reference is an absolute URL; the gate accepts only Patient/id or urn:uuid:id"}

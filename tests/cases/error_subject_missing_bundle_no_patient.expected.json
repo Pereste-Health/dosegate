@@ -1,1 +1,1 @@
-{"status": "error", "message": "every MedicationRequest needs a subject.reference string when the request has no patient field"}
+{"status": "error", "message": "every MedicationRequest needs a subject.reference string"}

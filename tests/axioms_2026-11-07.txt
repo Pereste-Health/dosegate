@@ -199,4 +199,3 @@
 'DoseGate.render_noActive_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
 'DoseGate.render_no_active_default' depends on axioms: [propext, Classical.choice, Quot.sound]
 'DoseGate.render_one_active_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
-exit 0

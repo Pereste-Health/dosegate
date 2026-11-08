@@ -66,7 +66,8 @@
   "n": 120,
   "passed": 100,
   "block_reasons": {
-   "missingField": 20
+   "missingField": 18,
+   "ambiguousDrug": 2
   },
   "raw_model_text": {
    "orders": 268,
@@ -107,7 +108,8 @@
   "n": 120,
   "passed": 100,
   "block_reasons": {
-   "missingField": 20
+   "missingField": 18,
+   "ambiguousDrug": 2
   },
   "raw_model_text": {
    "orders": 268,
@@ -148,7 +150,8 @@
   "n": 120,
   "passed": 98,
   "block_reasons": {
-   "missingField": 22
+   "missingField": 20,
+   "ambiguousDrug": 2
   },
   "raw_model_text": {
    "orders": 268,
@@ -189,7 +192,8 @@
   "n": 120,
   "passed": 98,
   "block_reasons": {
-   "missingField": 22
+   "missingField": 20,
+   "ambiguousDrug": 2
   },
   "raw_model_text": {
    "orders": 268,
@@ -230,7 +234,8 @@
   "n": 240,
   "passed": 199,
   "block_reasons": {
-   "missingField": 41
+   "missingField": 37,
+   "ambiguousDrug": 4
   },
   "raw_model_text": {
    "orders": 536,
@@ -311,8 +316,8 @@
  },
  "gate_ms": {
   "n": 804,
-  "median": 0.185,
-  "p99": 0.476,
-  "max": 23.222
+  "median": 0.1755,
+  "p99": 0.463,
+  "max": 28.254
  }
 }

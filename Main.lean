@@ -108,7 +108,7 @@ def requestChart (ignoreFreeText : Bool) (req : Lean.Json) : Except (Lean.Json Ã
           match subjectProblem patient req with
           | some e => .error (errorJson e, 1)
           | none =>
-              match orderProblems patient req with
+              match orderProblems req with
               | some e => .error (errorJson e, 1)
               | none =>
                   match chartOf ignoreFreeText patient req with

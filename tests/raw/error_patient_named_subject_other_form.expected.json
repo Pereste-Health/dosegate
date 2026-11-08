@@ -1,1 +1,1 @@
-{"status": "error", "message": "MedicationRequest m1 needs a subject.reference that is Patient/id, urn:uuid:id, or an http or https URL ending in Patient/id"}
+{"status": "error", "message": "every MedicationRequest subject.reference must be Patient/id or urn:uuid:id"}
