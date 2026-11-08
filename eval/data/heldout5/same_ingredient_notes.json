@@ -1,0 +1,298 @@
+{
+ "flagged": [
+  {
+   "id": "h5_structure_27_control_salt_beside_base_both_active_blocked",
+   "names": "Metformin; Metformin Hydrochloride",
+   "note": "The text gives Metformin 500 mg twice a day and Metformin Hydrochloride 1000 mg once a day. Metformin hydrochloride is the salt form of metformin, so both lines are one active ingredient. A patient could follow both as separate medicines and take 2000 mg a day, a double dose."
+  },
+  {
+   "id": "h5_clinical_18_two_names_one_ingredient_different_doses",
+   "names": "Lopressor; Metoprolol tartrate",
+   "note": "Lopressor is a brand name for metoprolol tartrate. The text gives Lopressor 25 mg twice a day and Metoprolol tartrate 50 mg twice a day, so both lines are one active ingredient. A patient could follow both as separate medicines and take 150 mg a day, a double dose."
+  },
+  {
+   "id": "h5_clinical_09_taper_as_two_active_orders_prednisone",
+   "names": "Deltasone, Prednisone",
+   "note": "Deltasone is a brand name for prednisone. The text gives 20 mg once a day of Deltasone and 10 mg once a day of Prednisone, so a patient who follows both would take 30 mg a day of one ingredient."
+  },
+  {
+   "id": "h5_clinical_19_same_name_salt_and_base_control",
+   "names": "Metoprolol tartrate, Metoprolol succinate",
+   "note": "Tartrate and succinate are two salts of one active ingredient, metoprolol. They differ in release (tartrate is immediate release, succinate is extended release), but a patient could follow both as two medicines and take 125 mg a day of metoprolol. Decided: one ingredient a patient could double, so flagged."
+  }
+ ],
+ "considered_not_flagged": [
+  {
+   "id": "h5_model_style_15_same_order_sigdaily_then_instruction",
+   "note": "Lisinopril appears in two instructions under the same name, which is a repeated instruction. Metformin is a different drug from lisinopril."
+  },
+  {
+   "id": "h5_meaning_20_control_repeated_sig_with_daily",
+   "note": "Warfarin appears in two instructions under the same name, which is a repeated instruction. Metformin appears once and is a different drug."
+  },
+  {
+   "id": "h5_model_style_14_same_order_identical_twice",
+   "note": "Lisinopril appears in two instructions under the same name, which is a repeated instruction. Metformin is a different drug from lisinopril."
+  },
+  {
+   "id": "h5_structure_24_control_mixed_order_ids_in_one_sentence",
+   "note": "Lantus and Metformin are different drugs (insulin glargine and metformin), so they are not one ingredient."
+  },
+  {
+   "id": "h5_model_style_23_drug_and_dose_no_space",
+   "note": "The spacing variant lisinopril10 appears in only one instruction, so there is no second name. Metformin is a different drug."
+  },
+  {
+   "id": "h5_clinical_27_hold_marker_id_warfarin_daily_text",
+   "note": "Warfarin sodium appears in one instruction only, so there is no second name for the same ingredient."
+  },
+  {
+   "id": "h5_clinical_28_discontinued_marker_id_warfarin_daily_text",
+   "note": "Warfarin sodium appears in one instruction only, so there is no second name for the same ingredient."
+  },
+  {
+   "id": "h5_model_style_01_heading_per_order_mixed",
+   "note": "The released text lists lisinopril, metformin, acetaminophen, and methotrexate once each. Atorvastatin is stopped and absent from the text. No ingredient has two names."
+  },
+  {
+   "id": "h5_model_style_04_dose_before_drug",
+   "note": "Lisinopril appears once as 10 mg of lisinopril and metformin appears once. Different drugs, and only one instruction per drug."
+  },
+  {
+   "id": "h5_meaning_01_ask_team_heading_two_orders",
+   "note": "Warfarin and Metformin are different drugs. Each appears once."
+  },
+  {
+   "id": "h5_meaning_16_daily_total_under_list_frame",
+   "note": "Metformin and Warfarin are different drugs. Each appears once."
+  },
+  {
+   "id": "h5_meaning_26_ask_team_heading_weekly_order",
+   "note": "Warfarin and Metformin are different drugs. Each appears once."
+  },
+  {
+   "id": "h5_meaning_06_parenthesized_frequency_prn",
+   "note": "Acetaminophen and Metformin are different drugs. Each appears once."
+  },
+  {
+   "id": "h5_meaning_17_control_uppercase_forbidden_word",
+   "note": "Warfarin and Metformin are different drugs. Each appears once."
+  },
+  {
+   "id": "h5_meaning_15_list_frame_three_active_orders_control",
+   "note": "Warfarin, Metformin, and Acetaminophen are three different drugs, each appearing once."
+  },
+  {
+   "id": "h5_model_style_29_prn_sig_no_daily_control",
+   "note": "Lisinopril and acetaminophen are different drugs. Each appears once."
+  },
+  {
+   "id": "h5_model_style_24_closing_doctor_will_also_have_list",
+   "note": "Lisinopril, metformin, acetaminophen, and methotrexate are four different drugs, each appearing once."
+  },
+  {
+   "id": "h5_model_style_17_inactive_order_omitted_control",
+   "note": "Lisinopril, metformin, acetaminophen, and methotrexate are four different drugs, each appearing once."
+  },
+  {
+   "id": "h5_model_style_18_drug_only_list_items",
+   "note": "Lisinopril and metformin are different drugs. Each appears once."
+  },
+  {
+   "id": "h5_model_style_03_two_orders_comma_join",
+   "note": "Lisinopril and metformin are different drugs. Each appears once."
+  },
+  {
+   "id": "h5_model_style_04_dose_before_drug",
+   "note": "Lisinopril and metformin are different drugs. Each appears once."
+  },
+  {
+   "id": "h5_meaning_14_ask_team_after_prn_line",
+   "note": "Acetaminophen and metformin are different drugs. Each appears once."
+  },
+  {
+   "id": "h5_meaning_05_quoted_frequency_prn",
+   "note": "Acetaminophen and metformin are different drugs. Each appears once."
+  },
+  {
+   "id": "h5_model_style_08_letter_a_list_marker",
+   "note": "Lisinopril and metformin are different drugs. Each appears once."
+  },
+  {
+   "id": "h5_model_style_09_prn_timed_prints_as_needed",
+   "note": "Lisinopril and acetaminophen are different drugs. Each appears once."
+  },
+  {
+   "id": "h5_clinical_03_mwf_id_methotrexate_daily_text",
+   "note": "One instruction (methotrexate)."
+  },
+  {
+   "id": "h5_meaning_13_doctor_heading_no_requester",
+   "note": "Warfarin and metformin, two different drugs."
+  },
+  {
+   "id": "h5_chart_07_id_hld_warfarin",
+   "note": "One instruction (warfarin)."
+  },
+  {
+   "id": "h5_meaning_27_parenthesized_list_frame_on_hold_other_drug",
+   "note": "One instruction (metformin). The warfarin order is on hold and not in the released text."
+  },
+  {
+   "id": "h5_model_style_26_opening_so_ask_doctor_changing_tone",
+   "note": "Lisinopril, metformin, acetaminophen, and methotrexate, four different drugs."
+  },
+  {
+   "id": "h5_chart_16_link_url_hold_words_warfarin",
+   "note": "One instruction (warfarin)."
+  },
+  {
+   "id": "h5_clinical_20_klor_con_mg_potassium",
+   "note": "One instruction (Klor-Con, a potassium chloride brand name)."
+  },
+  {
+   "id": "h5_chart_28_uuid_hex_words_warfarin",
+   "note": "One instruction (warfarin)."
+  },
+  {
+   "id": "h5_structure_14_control_trailing_zero_dose_and_frequency",
+   "note": "One instruction (Lantus)."
+  },
+  {
+   "id": "h5_structure_29_control_two_orders_split_by_semicolon_released",
+   "note": "Lantus and metformin, two different drugs."
+  },
+  {
+   "id": "h5_structure_28_control_medreference_urn_uuid_resolves",
+   "note": "One instruction (Lantus)."
+  },
+  {
+   "id": "h5_chart_18_patient_name_hold_warfarin",
+   "note": "One instruction (warfarin)."
+  },
+  {
+   "id": "h5_model_style_27_plan_intent_omitted_under_list",
+   "note": "Lisinopril and amlodipine, two different drugs."
+  },
+  {
+   "id": "h5_meaning_25_these_are_your_medicines_prohibited_other_drug",
+   "note": "Metformin and warfarin, two different drugs."
+  },
+  {
+   "id": "h5_model_style_25_closing_ask_pharmacist_questions",
+   "note": "Lisinopril, metformin, acetaminophen, and methotrexate, four different drugs."
+  },
+  {
+   "id": "h5_model_style_12_weekly_instruction_no_daily",
+   "note": "Lisinopril and methotrexate, two different drugs."
+  },
+  {
+   "id": "h5_meaning_10_list_frame_prohibited_same_drug_higher_dose",
+   "note": "One instruction (warfarin). The request holds a second warfarin order, but the released text does not give it."
+  },
+  {
+   "id": "h5_meaning_18_control_hyphen_split_forbidden_word",
+   "note": "Warfarin and metformin, two different drugs."
+  },
+  {
+   "id": "h5_model_style_30_closing_doctor_changed_list_probe",
+   "note": "Lisinopril, metformin, acetaminophen, and methotrexate, four different drugs."
+  },
+  {
+   "id": "h5_model_style_05_route_on_own_line",
+   "note": "Lisinopril and metformin, two different drugs."
+  },
+  {
+   "id": "h5_structure_02_id_hld_hold_metformin",
+   "note": "One instruction (metformin)."
+  },
+  {
+   "id": "h5_clinical_04_three_times_week_id_furosemide_daily_text",
+   "note": "One instruction (furosemide)."
+  },
+  {
+   "id": "h5_meaning_03_have_questions_heading_prn_order",
+   "note": "Acetaminophen and metformin, two different drugs."
+  },
+  {
+   "id": "h5_model_style_13_same_order_instruction_then_sig",
+   "note": "Lisinopril appears twice under the same name, so this is a repeated instruction. Metformin is a different drug."
+  },
+  {
+   "id": "h5_model_style_06_frequency_line_for_next_order",
+   "note": "Lisinopril and metformin, two different drugs."
+  },
+  {
+   "id": "h5_meaning_07_list_frame_prohibited_other_drug",
+   "note": "One instruction (metformin)."
+  },
+  {
+   "id": "h5_chart_20_patient_deceased_past_warfarin",
+   "note": "One instruction (warfarin)."
+  },
+  {
+   "id": "h5_meaning_02_ask_team_parenthesized_after_order",
+   "note": "Warfarin and metformin, two different drugs."
+  },
+  {
+   "id": "h5_clinical_12_weekly_alendronate_dispense_four_tablets",
+   "note": "One instruction (alendronate)."
+  },
+  {
+   "id": "h5_chart_03_reflex_beside_active_lisinopril",
+   "note": "Lisinopril and warfarin, two different drugs."
+  },
+  {
+   "id": "h5_meaning_04_read_carefully_weekly_then_daily",
+   "note": "Warfarin and metformin, two different drugs."
+  },
+  {
+   "id": "h5_meaning_22_who_are_these_for_prn_line",
+   "note": "One instruction (acetaminophen)."
+  },
+  {
+   "id": "h5_meaning_09_list_frame_entered_in_error_other_drug",
+   "note": "One instruction (metformin)."
+  },
+  {
+   "id": "h5_structure_25_control_duplicate_order_id_blocked",
+   "note": "One instruction (Lantus). The request also holds a metformin order, which the released text does not give."
+  },
+  {
+   "id": "h5_model_style_19_daily_slot_alone_line",
+   "note": "Lisinopril and metformin, two different drugs."
+  },
+  {
+   "id": "h5_chart_10_id_digit_pattern_lisinopril",
+   "note": "One instruction (lisinopril)."
+  },
+  {
+   "id": "h5_clinical_29_meta_version_hold_marker_apixaban",
+   "note": "One instruction (apixaban)."
+  },
+  {
+   "id": "h5_structure_09_control_id_uuid_uppercase_accepted",
+   "note": "One instruction (Lantus)."
+  },
+  {
+   "id": "h5_meaning_19_control_team_as_drug_name",
+   "note": "One instruction. The released text has no drug name (it reads \"Take  5 mg\"), so there is no second name to compare."
+  },
+  {
+   "id": "h5_model_style_02_two_orders_semicolon_exclaim",
+   "note": "Lisinopril and metformin, two different drugs."
+  },
+  {
+   "id": "h5_structure_11_control_id_single_letter_prefix_accepted",
+   "note": "One instruction (Lantus)."
+  },
+  {
+   "id": "h5_meaning_21_sig_daily_clause_one_instruction",
+   "note": "Warfarin and metformin, two different drugs."
+  },
+  {
+   "id": "h5_chart_23_authored_future_warfarin",
+   "note": "One instruction (warfarin)."
+  }
+ ]
+}

@@ -4,7 +4,8 @@ from score import DATA
 
 ROUNDS = {"h2": ("heldout2", "labels_h2.json", "same_ingredient_pairs.json"),
           "h3": ("heldout3", "labels_h3.json", "same_ingredient_pairs.json"),
-          "h4": ("heldout4", "labels_h4.json", "same_ingredient_pairs.json")}
+          "h4": ("heldout4", "labels_h4.json", "same_ingredient_pairs.json"),
+          "h5": ("heldout5", "labels_h5.json", "same_ingredient_pairs.json")}
 CATS = ["faithful", "misstates_order", "unsupported_claim"]
 FILTERS = ("layer", "baseline")
 

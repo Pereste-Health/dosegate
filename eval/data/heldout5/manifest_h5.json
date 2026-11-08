@@ -1,0 +1,33 @@
+{
+ "layer_commit": "b271d111b33ced5bbdb141ce7d75268e5589776d",
+ "layer_version": "2.3",
+ "build_commit": "b271d111b33ced5bbdb141ce7d75268e5589776d",
+ "commit_note": "binaries built from build_commit with lake build DoseGate.Proofs dosegate dosegate-baseline; git diff --quiet build_commit HEAD -- DoseGate DoseGate.lean Main.lean Baseline.lean data lakefile.toml lake-manifest.json lean-toolchain eval/attacks.py reports no difference at the time this manifest was written",
+ "harness": "eval/attacks.py sends each request line unchanged (raw-number placeholders restored, line breaks inside a request replaced by spaces)",
+ "binaries": {
+  "dosegate": "7800da84bab9f60bb249cdd57ce760e79a305f21928e24f0ad0cc3dbb3bc09cc",
+  "dosegate-baseline": "fac7009746096b91b87fd0d4878f3a2825af3689208b937ff9bf3ce11f045780"
+ },
+ "files": {
+  "chart.jsonl": "a2a7ca5a251221f2157f8982726ac31337f8a2b1324a08da96a683306d6abf51",
+  "chart_results.jsonl": "225e651bf2d176ea0d71d2fb03582fcc566b1f0243e5dab9bf3535dbd9999b9d",
+  "clinical.jsonl": "e73c7281a449c3575f60a6b97bd08c4cfb89430bd89cd5ebe3f050aec71b5ff7",
+  "clinical_results.jsonl": "f7884f5e24a76595316763c55554c14adb2a7e718f99dd7d4045e1199dddb12c",
+  "meaning.jsonl": "d55038815674ef21d5d1258060ea217794f949cc7451f3fac0ee1efc86ba329a",
+  "meaning_results.jsonl": "03d22d4fd703bee2fcd9e3ac0276dfd12df5f81902c82f942bdd64424db6e0df",
+  "model_style.jsonl": "21172296e9be61ce86cf1392fcc81a3a973a3a141da647b58ffff9324d1fc013",
+  "model_style_results.jsonl": "da386c931b1037b9837b2cb2087f5abff65bd4627d1670ca7ecdac9483e38275",
+  "structure.jsonl": "39744dbea79ada363b1de836aa79c6aabdd990347591548ec0dd5a3ffd0e8bcd",
+  "structure_results.jsonl": "dd81acf3c46f28c6b9cffdc9b49c13ae118f541e8d02c1148a0f10ef6b024df7"
+ },
+ "requests": {
+  "chart": 28,
+  "clinical": 30,
+  "meaning": 27,
+  "model_style": 30,
+  "structure": 29
+ },
+ "recorded": "2026-11-08T15:03:04-06:00",
+ "note": "Recorded before any request file was run through eval/attacks.py; the *_results.jsonl hashes are appended after the run.",
+ "results_recorded": "2026-11-08T15:03:04-06:00"
+}

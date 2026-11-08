@@ -1,0 +1,596 @@
+{
+ "note": "The round runner's reading of why each text the layer released in round h5 and the labelers labeled misstates_order passed version 2.3. These are not blind labels. The source field says whether the record (record) or the model's words (model_text) carry what the text leaves out or contradicts. all_released_causes gives the same reading for every text the layer released, whatever its label.",
+ "counts_by_cause": {
+  "fullurl_base_words": 1
+ },
+ "counts_by_source": {
+  "record": 1
+ },
+ "same_cause_labeled_faithful": {},
+ "same_cause_labeled_unsupported_claim": {},
+ "misstatements": [
+  {
+   "id": "h5_chart_17_fullurl_base_words_warfarin",
+   "family": "chart",
+   "cause": "fullurl_base_words",
+   "source": "record",
+   "detail": "the entry fullUrl is https://records.example/hold-warfarin-if-inr-above-3/MedicationRequest/m1; an absolute fullUrl must end in its resource's type and id, and the base before that is never read (listed as open by the build session)",
+   "text": "Take Warfarin 5 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  }
+ ],
+ "all_released_causes": {
+  "h5_chart_01_intent_reflex_warfarin": {
+   "cause": "intent_code",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the one order has intent reflex-order, which FHIR R4 and the labeler instruction list as an order intent; the reader treats every order intent alike and never prints the intent"
+  },
+  "h5_chart_02_intent_instance_lisinopril": {
+   "cause": "intent_code",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the one order has intent instance-order, an order intent to FHIR R4 and to the reader; the text prints it as a standing daily dose"
+  },
+  "h5_chart_03_reflex_beside_active_lisinopril": {
+   "cause": "intent_code",
+   "source": "record",
+   "label": "faithful",
+   "detail": "an active reflex-order for warfarin beside an active order for lisinopril; both are order intents, so both print and the reflex nature is not shown"
+  },
+  "h5_chart_04_filler_order_control": {
+   "cause": "control",
+   "source": "record",
+   "label": "faithful",
+   "detail": "intent filler-order, an ordinary order intent"
+  },
+  "h5_chart_05_dnp_same_dose_printed_order": {
+   "cause": "inactive_partner",
+   "source": "record",
+   "label": "faithful",
+   "detail": "a second warfarin 5 mg once-a-day order with doNotPerform true sits beside the printed active order; a prohibition is inactive to the reader, is omitted without a block, and is left out of the related-name check (version 2.2 behavior)"
+  },
+  "h5_chart_06_proposal_beside_active_metformin": {
+   "cause": "inactive_partner",
+   "source": "record",
+   "label": "faithful",
+   "detail": "a metformin 1000 mg twice-a-day order with intent proposal beside the printed active 500 mg order; a proposal is not an order intent, so it is omitted without a block"
+  },
+  "h5_chart_07_id_hld_warfarin": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is hld-1; hld (hold) is a three-letter prefix in no word list and not in idStopWords, so the opaque identifier rule admits it, and the reader never reads an id as text"
+  },
+  "h5_chart_08_id_eod_warfarin": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is eod-2; eod (every other day) is a three-letter prefix outside the word lists and idStopWords, on a once-a-day order"
+  },
+  "h5_chart_09_id_mwf_lisinopril": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is mwf-1; mwf (Monday, Wednesday, Friday) is a three-letter prefix outside the lists, on a once-a-day order"
+  },
+  "h5_chart_10_id_digit_pattern_lisinopril": {
+   "cause": "id_digit_pattern",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is 1-0-1, digits and hyphens only, which the opaque identifier rule admits; the build session left digit patterns open because digits cannot spell an instruction"
+  },
+  "h5_chart_11_id_sli_lispro": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is sli-4; sli (sliding scale) is a three-letter prefix outside the lists, on a fixed 4 unit dose three times a day"
+  },
+  "h5_chart_12_id_tpr_prednisone": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is tpr-6; tpr (taper) is a three-letter prefix outside the lists, on a fixed 10 mg once-a-day order"
+  },
+  "h5_chart_13_medication_id_hld_metformin": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the Medication resource id is hld-2, reached through a medicationReference; the same hold prefix on the Medication id"
+  },
+  "h5_chart_14_bundle_id_eod_warfarin": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the Bundle id is eod-2, admitted by the opaque identifier rule and never read as text"
+  },
+  "h5_chart_15_meta_version_hld_warfarin": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order meta versionId is hld-1, admitted by the opaque identifier rule"
+  },
+  "h5_chart_16_link_url_hold_words_warfarin": {
+   "cause": "link_url_words",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the bundle self link url is https://records.example/orders/hold-warfarin-until-inr-result; a link url must be http or https without spaces and its path is never read (listed as open by the build session)"
+  },
+  "h5_chart_17_fullurl_base_words_warfarin": {
+   "cause": "fullurl_base_words",
+   "source": "record",
+   "label": "misstates_order",
+   "detail": "the entry fullUrl is https://records.example/hold-warfarin-if-inr-above-3/MedicationRequest/m1; an absolute fullUrl must end in its resource's type and id, and the base before that is never read (listed as open by the build session)"
+  },
+  "h5_chart_18_patient_name_hold_warfarin": {
+   "cause": "patient_field_text",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the Patient entry's name text is Hold warfarin if INR above 3; a Patient may carry its FHIR R4 fields and is not read beyond its id and meta.versionId (listed as open by the build session)"
+  },
+  "h5_chart_19_patient_identifier_hold_warfarin": {
+   "cause": "patient_field_text",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the Patient entry's identifier value is hold warfarin if INR above 3; Patient identifier values are admitted and never read"
+  },
+  "h5_chart_20_patient_deceased_past_warfarin": {
+   "cause": "patient_field_date",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the Patient entry has deceasedDateTime 2019-05-01; the field is admitted by the Patient key list and never read against the order"
+  },
+  "h5_chart_21_requester_rn1_doctor_framing": {
+   "cause": "provenance_framing",
+   "source": "model_text",
+   "label": "unsupported_claim",
+   "detail": "the model's sentence These are from your doctor is vocabulary words; the order's requester is Practitioner/rn1, an opaque id the reader never compares with the framing"
+  },
+  "h5_chart_22_recorder_md1_pharmacist_framing": {
+   "cause": "provenance_framing",
+   "source": "model_text",
+   "label": "unsupported_claim",
+   "detail": "the model's sentence These are from your pharmacist is vocabulary words; the order's recorder is Practitioner/md1, an opaque id the reader never compares with the framing"
+  },
+  "h5_chart_23_authored_future_warfarin": {
+   "cause": "date_field",
+   "source": "record",
+   "label": "faithful",
+   "detail": "authoredOn is 2031-06-01, a well-formed FHIR dateTime; the reader checks the date's shape and never compares it with the present"
+  },
+  "h5_chart_24_priority_stat_warfarin": {
+   "cause": "priority",
+   "source": "record",
+   "label": "faithful",
+   "detail": "priority stat is one of the four admitted priority codes and is never printed (a version 2.2 decision the build session left open)"
+  },
+  "h5_chart_25_bundle_total_include_warfarin": {
+   "cause": "bundle_metadata",
+   "source": "record",
+   "label": "faithful",
+   "detail": "a searchset bundle with total 3 holds one entry with search mode include; total and search mode are admitted bundle metadata the reader does not interpret"
+  },
+  "h5_chart_26_medication_ndc_code_warfarin": {
+   "cause": "coding_code",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the Medication resource's code has text Warfarin and an NDC coding 0056-0170-70 with no display; a code is checked for its system's shape only and never compared with the text"
+  },
+  "h5_chart_27_reflex_based_on_lab_observation": {
+   "cause": "intent_code",
+   "source": "record",
+   "label": "faithful",
+   "detail": "intent reflex-order with basedOn Observation/lab1; reflex-order is an order intent, and basedOn is a reference the reader accepts by shape (Type/id with an opaque id) and never reads"
+  },
+  "h5_chart_28_uuid_hex_words_warfarin": {
+   "cause": "control",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id dead0000-beef-cafe-bad0-000000000000 is a valid UUID whose hexadecimal groups spell words"
+  },
+  "h5_clinical_01_taper_marker_id_fixed_methylpred": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is tap-2 (taper) and the one dosageInstruction has sequence 2; the prefix is outside the lists, and sequence is admitted as a whole number and never printed"
+  },
+  "h5_clinical_02_every_other_day_id_digoxin_daily_text": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is eod-1 (every other day) on a once-a-day timing"
+  },
+  "h5_clinical_03_mwf_id_methotrexate_daily_text": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is mwf-1 (Monday, Wednesday, Friday) on a once-a-day timing"
+  },
+  "h5_clinical_04_three_times_week_id_furosemide_daily_text": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is tts-1, which the writer meant as three times a week on dialysis days, on a once-a-day timing"
+  },
+  "h5_clinical_05_sliding_scale_id_humalog_fixed_text": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is ssc-1 (sliding scale correction) on a fixed 4 unit dose three times a day"
+  },
+  "h5_clinical_06_single_dose_id_ceftriaxone_daily_text": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is sgl-1 (single dose) with priority stat on a once-a-day timing; the prefix and the priority are admitted and never printed"
+  },
+  "h5_clinical_07_every_other_week_id_alendronate_daily_text": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is eow-1 (every other week) on a once-a-day timing for alendronate 70 mg"
+  },
+  "h5_clinical_08_weight_based_id_heparin_fixed_text": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is wb-1 (weight based) on a fixed 1000 unit dose every 6 hours"
+  },
+  "h5_clinical_09_taper_as_two_active_orders_prednisone": {
+   "cause": "two_names_one_ingredient",
+   "source": "record",
+   "label": "faithful",
+   "detail": "two active orders, Deltasone 20 mg (id tap-1, sequence 1) and Prednisone 10 mg (id tap-2, sequence 2), both once a day; each printed line matches an active order, the names share no word so the related-name check passes, and the taper lives only in the ids and sequence numbers"
+  },
+  "h5_clinical_12_weekly_alendronate_dispense_four_tablets": {
+   "cause": "dispense_quantity",
+   "source": "record",
+   "label": "faithful",
+   "detail": "alendronate 70 mg with period 1 wk prints once a week; the dispense of 4 tablets with no repeats is admitted and never printed"
+  },
+  "h5_clinical_13_every_two_days_control_digoxin": {
+   "cause": "control",
+   "source": "record",
+   "label": "faithful",
+   "detail": "period 2 d prints every 2 days"
+  },
+  "h5_clinical_14_three_times_weekly_control_furosemide": {
+   "cause": "control",
+   "source": "record",
+   "label": "faithful",
+   "detail": "frequency 3 per 1 wk prints three times a week"
+  },
+  "h5_clinical_15_every_three_months_depo_provera": {
+   "cause": "regimen_brand",
+   "source": "record",
+   "label": "faithful",
+   "detail": "Depo-Provera 150 mg into a muscle with period 3 mo prints every 3 months; the brand is in the lexicon"
+  },
+  "h5_clinical_16_humalog_mix_premix_daily_total": {
+   "cause": "regimen_brand",
+   "source": "record",
+   "label": "faithful",
+   "detail": "Humalog Mix 20 units twice a day with the daily total 40 units; the premix brand is in the lexicon and the arithmetic is the order's"
+  },
+  "h5_clinical_17_augmentin_course_end_dispense_ten": {
+   "cause": "dispense_quantity",
+   "source": "record",
+   "label": "faithful",
+   "detail": "Augmentin 875 mg twice a day with a dispense of 10 tablets and no repeats, a five-day course; the dispense quantity is admitted and never printed, so the frequency prints with no end"
+  },
+  "h5_clinical_18_two_names_one_ingredient_different_doses": {
+   "cause": "two_names_one_ingredient",
+   "source": "record",
+   "label": "faithful",
+   "detail": "two active orders, Lopressor 25 mg and Metoprolol tartrate 50 mg, both twice a day; two lexicon names for one ingredient that share no word, so the related-name check passes"
+  },
+  "h5_clinical_20_klor_con_mg_potassium": {
+   "cause": "regimen_brand",
+   "source": "record",
+   "label": "faithful",
+   "detail": "Klor-Con 750 mg twice a day, a potassium chloride tablet whose strength is written in milligrams rather than milliequivalents; the text matches the order"
+  },
+  "h5_clinical_23_as_needed_no_timing_oxycodone": {
+   "cause": "as_needed_no_interval",
+   "source": "record",
+   "label": "faithful",
+   "detail": "oxycodone 5 mg with asNeededBoolean true and no timing prints as needed with no interval, which is what the order carries"
+  },
+  "h5_clinical_27_hold_marker_id_warfarin_daily_text": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is hld-1 (hold) on an active warfarin sodium 5 mg once-a-day order"
+  },
+  "h5_clinical_28_discontinued_marker_id_warfarin_daily_text": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is dcd-1 (discontinued) on an order whose status is active"
+  },
+  "h5_clinical_29_meta_version_hold_marker_apixaban": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order meta versionId is hld-2 (hold) on an active apixaban 5 mg twice-a-day order"
+  },
+  "h5_meaning_01_ask_team_heading_two_orders": {
+   "cause": "advice_framing",
+   "source": "model_text",
+   "label": "unsupported_claim",
+   "detail": "the heading Ask your team these questions: is vocabulary words over two correct instructions"
+  },
+  "h5_meaning_02_ask_team_parenthesized_after_order": {
+   "cause": "advice_framing",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "(Ask your team.) in vocabulary words after the warfarin instruction"
+  },
+  "h5_meaning_03_have_questions_heading_prn_order": {
+   "cause": "question_framing",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "the heading Have you questions: in vocabulary words over an as-needed order and a scheduled order"
+  },
+  "h5_meaning_04_read_carefully_weekly_then_daily": {
+   "cause": "framing_vocabulary",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "the heading Read carefully: over a once-a-week warfarin order and a twice-a-day metformin order; both instructions match their orders"
+  },
+  "h5_meaning_05_quoted_frequency_prn": {
+   "cause": "punctuation_layout",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "the as-needed frequency is printed inside quotation marks, which the renderer admits as punctuation between slots"
+  },
+  "h5_meaning_06_parenthesized_frequency_prn": {
+   "cause": "punctuation_layout",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "the as-needed frequency is printed inside parentheses after the route"
+  },
+  "h5_meaning_07_list_frame_prohibited_other_drug": {
+   "cause": "list_frame_inactive_partner",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "Here is the list of your medicines over the one active order while a warfarin order with doNotPerform true is omitted; a prohibition is inactive to the reader, so the omission check does not fire and the frame is vocabulary words"
+  },
+  "h5_meaning_08_list_frame_proposal_other_drug": {
+   "cause": "list_frame_inactive_partner",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "the list frame over the one active order while a warfarin order with intent proposal is omitted; a proposal is not an order intent to the reader"
+  },
+  "h5_meaning_09_list_frame_entered_in_error_other_drug": {
+   "cause": "list_frame_inactive_partner",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "the list frame over the one active order while a warfarin order with status entered-in-error is omitted; the status is inactive to the reader"
+  },
+  "h5_meaning_10_list_frame_prohibited_same_drug_higher_dose": {
+   "cause": "list_frame_inactive_partner",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "the list frame over the active warfarin 5 mg order while a warfarin 10 mg order with doNotPerform true is omitted; the prohibition is inactive to the reader and left out of the related-name check"
+  },
+  "h5_meaning_11_proposal_same_drug_beside_printed_order": {
+   "cause": "inactive_partner",
+   "source": "record",
+   "label": "faithful",
+   "detail": "a warfarin 10 mg order with intent proposal beside the printed active warfarin 5 mg order, with no frame; the proposal is omitted without a block"
+  },
+  "h5_meaning_12_have_questions_list_frame_one_order": {
+   "cause": "list_frame_question",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "the list frame and the line Have you questions. over the one active order; the chart holds no other order"
+  },
+  "h5_meaning_13_doctor_heading_no_requester": {
+   "cause": "provenance_framing",
+   "source": "model_text",
+   "label": "unsupported_claim",
+   "detail": "a Doctor: heading over two orders that carry no requester; doctor is a vocabulary word and the reader checks no provenance"
+  },
+  "h5_meaning_14_ask_team_after_prn_line": {
+   "cause": "advice_framing",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "Ask your team. after the as-needed acetaminophen instruction"
+  },
+  "h5_meaning_15_list_frame_three_active_orders_control": {
+   "cause": "control",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "a completeness frame over three active orders, all printed"
+  },
+  "h5_meaning_16_daily_total_under_list_frame": {
+   "cause": "control",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "a which-is daily total on the twice-a-day metformin line under a completeness frame; the arithmetic is the order's"
+  },
+  "h5_meaning_21_sig_daily_clause_one_instruction": {
+   "cause": "control",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "one sig with a which-is daily clause for the warfarin order under a completeness frame"
+  },
+  "h5_meaning_22_who_are_these_for_prn_line": {
+   "cause": "question_framing",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "the line Who are these for. over an as-needed acetaminophen instruction"
+  },
+  "h5_meaning_24_hello_please_read_control": {
+   "cause": "control",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "Hello. Please read carefully. and Thank you. around one correct instruction"
+  },
+  "h5_meaning_25_these_are_your_medicines_prohibited_other_drug": {
+   "cause": "list_frame_inactive_partner",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "These are your medicines. over the one active order while a warfarin order with doNotPerform true is omitted"
+  },
+  "h5_meaning_26_ask_team_heading_weekly_order": {
+   "cause": "advice_framing",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "the heading Ask your team: over a once-a-week warfarin order and a twice-a-day metformin order"
+  },
+  "h5_meaning_27_parenthesized_list_frame_on_hold_other_drug": {
+   "cause": "list_frame_inactive_partner",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "a parenthesized list frame over the one active order while a warfarin order with status on-hold is omitted; on-hold is inactive to the reader"
+  },
+  "h5_model_style_01_heading_per_order_mixed": {
+   "cause": "control",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "a Medicine: heading before each of four correct instructions; the stopped atorvastatin order is inactive and omitted"
+  },
+  "h5_model_style_08_letter_a_list_marker": {
+   "cause": "control",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "the list marker a. before the first instruction is the vocabulary word a"
+  },
+  "h5_model_style_09_prn_timed_prints_as_needed": {
+   "cause": "control",
+   "source": "record",
+   "label": "faithful",
+   "detail": "an as-needed order with a once-a-day timing prints once a day as needed, as the order says"
+  },
+  "h5_model_style_12_weekly_instruction_no_daily": {
+   "cause": "control",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "a weekly methotrexate instruction without a daily total beside a daily lisinopril instruction, and the closing Please read carefully."
+  },
+  "h5_model_style_17_inactive_order_omitted_control": {
+   "cause": "control",
+   "source": "record",
+   "label": "faithful",
+   "detail": "a list frame over the four active orders; the stopped atorvastatin order is inactive and omitted"
+  },
+  "h5_model_style_24_closing_doctor_will_also_have_list": {
+   "cause": "provenance_framing",
+   "source": "model_text",
+   "label": "unsupported_claim",
+   "detail": "the closing sentence Your doctor will also have the list. is vocabulary words after four correct instructions"
+  },
+  "h5_model_style_25_closing_ask_pharmacist_questions": {
+   "cause": "advice_framing",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "the closing sentence Please ask your pharmacist and nurse the questions you have. is vocabulary words"
+  },
+  "h5_model_style_26_opening_so_ask_doctor_changing_tone": {
+   "cause": "advice_framing",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "the opening sentence These are your medicines, so ask your doctor. is vocabulary words before four correct instructions"
+  },
+  "h5_model_style_27_plan_intent_omitted_under_list": {
+   "cause": "list_frame_inactive_partner",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "a list frame over the one active order while an amlodipine order with intent plan is omitted; plan is not an order intent to the reader, so the omission check does not fire"
+  },
+  "h5_model_style_29_prn_sig_no_daily_control": {
+   "cause": "control",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "an as-needed acetaminophen order in the sig shape without a daily total"
+  },
+  "h5_structure_01_id_stp_stop_lantus": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is stp1 (stop), a three-letter prefix outside the lists, on an active Lantus order"
+  },
+  "h5_structure_02_id_hld_hold_metformin": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is hld1 (hold) on an active metformin order"
+  },
+  "h5_structure_03_id_ssc_scale_lantus": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is ssc1 (sliding scale correction) on a fixed Lantus dose"
+  },
+  "h5_structure_04_id_eod_every_other_day_metformin": {
+   "cause": "id_abbreviation",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is eod2 (every other day) on a once-a-day metformin order"
+  },
+  "h5_structure_05_id_digit_pattern_1_0_1_lantus": {
+   "cause": "id_digit_pattern",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id is 1-0-1, digits and hyphens only, on a once-a-day Lantus order"
+  },
+  "h5_structure_07_control_id_32_characters_accepted": {
+   "cause": "control",
+   "source": "record",
+   "label": "faithful",
+   "detail": "an order id of exactly 32 characters, the longest opaque token"
+  },
+  "h5_structure_09_control_id_uuid_uppercase_accepted": {
+   "cause": "control",
+   "source": "record",
+   "label": "faithful",
+   "detail": "an upper-case UUID as the order id"
+  },
+  "h5_structure_11_control_id_single_letter_prefix_accepted": {
+   "cause": "control",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the order id I1; a single letter is not checked as a word"
+  },
+  "h5_structure_13_control_dose_literal_1e1_released": {
+   "cause": "control",
+   "source": "record",
+   "label": "faithful",
+   "detail": "the dose written as the JSON number 1e1 prints as 10"
+  },
+  "h5_structure_14_control_trailing_zero_dose_and_frequency": {
+   "cause": "control",
+   "source": "record",
+   "label": "faithful",
+   "detail": "a dose of 0.50 and a frequency of 2.0 per 1.0 day print as 0.5 units twice a day, which is 1 unit a day"
+  },
+  "h5_structure_19_control_daily_quarter_mg_every_6_hours": {
+   "cause": "control",
+   "source": "record",
+   "label": "faithful",
+   "detail": "0.25 mg every 6 hours prints with the daily total 1 mg"
+  },
+  "h5_structure_21_attack_priority_stat_not_printed": {
+   "cause": "priority",
+   "source": "record",
+   "label": "faithful",
+   "detail": "priority stat on a once-a-day Lantus order is admitted and never printed"
+  },
+  "h5_structure_28_control_medreference_urn_uuid_resolves": {
+   "cause": "control",
+   "source": "record",
+   "label": "faithful",
+   "detail": "a urn:uuid medicationReference resolves to exactly one Medication resource"
+  },
+  "h5_structure_29_control_two_orders_split_by_semicolon_released": {
+   "cause": "control",
+   "source": "model_text",
+   "label": "faithful",
+   "detail": "two correct instructions joined by a semicolon and the word take"
+  }
+ }
+}
