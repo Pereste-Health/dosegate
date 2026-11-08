@@ -580,43 +580,11 @@
  },
  {
   "case_id": "Jordon466_Corwin846_7260cc1d-2393-c0b0-1034-ac459b0f5ac0:natural",
-  "condition": "slot",
-  "sample": 0,
-  "model_words": {},
-  "layer_reason": "unbound",
-  "text": "Here is your medicine list. Take acetaminophen 325 mg by mouth four times a day, which is 1300 mg a day. Take lisinopril 10 mg by mouth once a day, which is 10 mg a day. Take amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day. Please ask your doctor and pharmacist your questions."
- },
- {
-  "case_id": "Jordon466_Corwin846_7260cc1d-2393-c0b0-1034-ac459b0f5ac0:natural",
-  "condition": "slot_daily",
-  "sample": 0,
-  "model_words": {},
-  "layer_reason": "unbound",
-  "text": "Here is your medicine list. Take acetaminophen 325 mg by mouth four times a day, which is 1300 mg a day. Take lisinopril 10 mg by mouth once a day, which is 10 mg a day. Take amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day. Please ask your doctor and pharmacist your questions."
- },
- {
-  "case_id": "Jordon466_Corwin846_7260cc1d-2393-c0b0-1034-ac459b0f5ac0:natural",
   "condition": "slot_hot",
   "sample": 2,
   "model_words": {},
   "layer_reason": "unbound",
   "text": "Here is the explanation for your medications:\n\nHere is your medicine list. Take acetaminophen 325 mg by mouth four times a day, which is 1300 mg a day. Take lisinopril 10 mg by mouth, once a day. Take amlodipine 2.5 mg by mouth, once a day."
- },
- {
-  "case_id": "Jordon466_Corwin846_7260cc1d-2393-c0b0-1034-ac459b0f5ac0:perturbed",
-  "condition": "slot",
-  "sample": 0,
-  "model_words": {},
-  "layer_reason": "unbound",
-  "text": "Here is your medicine list. Take acetaminophen 487.5 mg by mouth every 8 hours, which is 1462.5 mg a day. Take lisinopril 20 mg by mouth twice a day, which is 40 mg a day. Take amlodipine 7.5 mg by mouth twice a day, which is 15 mg a day. Please ask your doctor and pharmacist your questions."
- },
- {
-  "case_id": "Jordon466_Corwin846_7260cc1d-2393-c0b0-1034-ac459b0f5ac0:perturbed",
-  "condition": "slot_daily",
-  "sample": 0,
-  "model_words": {},
-  "layer_reason": "unbound",
-  "text": "Here is your medicine list. Take acetaminophen 487.5 mg by mouth every 8 hours, which is 1462.5 mg a day. Take lisinopril 20 mg by mouth twice a day, which is 40 mg a day. Take amlodipine 7.5 mg by mouth twice a day, which is 15 mg a day. Please ask your doctor and pharmacist your questions."
  },
  {
   "case_id": "Jordon466_Corwin846_7260cc1d-2393-c0b0-1034-ac459b0f5ac0:perturbed",

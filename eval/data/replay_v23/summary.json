@@ -78,19 +78,19 @@
   },
   "h3": {
    "requests": 156,
-   "released": 26,
+   "released": 30,
    "misstates_order": 0,
-   "unsupported_claim": 1,
-   "faithful": 25,
+   "unsupported_claim": 3,
+   "faithful": 27,
    "released_without_label": 0,
    "released_without_label_ids": [],
    "errors": 7,
-   "blocked": 123,
+   "blocked": 119,
    "block_reasons": {
     "missingField": 65,
     "ambiguousDrug": 21,
     "omittedOrder": 4,
-    "unbound": 20,
+    "unbound": 16,
     "repeatedValue": 4,
     "disallowedCharacter": 1,
     "inactiveOrder": 1,
@@ -99,34 +99,34 @@
     "unknownRef": 1
    },
    "prior_faithful_releases": 28,
-   "prior_faithful_still_released": 25,
-   "prior_faithful_same_text": 25,
-   "prior_faithful_now_blocked_or_error": 3
+   "prior_faithful_still_released": 27,
+   "prior_faithful_same_text": 27,
+   "prior_faithful_now_blocked_or_error": 1
   },
   "h4": {
    "requests": 145,
-   "released": 70,
+   "released": 81,
    "misstates_order": 0,
-   "unsupported_claim": 1,
-   "faithful": 69,
+   "unsupported_claim": 8,
+   "faithful": 73,
    "released_without_label": 0,
    "released_without_label_ids": [],
    "errors": 30,
-   "blocked": 45,
+   "blocked": 34,
    "block_reasons": {
     "missingField": 11,
-    "unbound": 21,
     "omittedOrder": 4,
     "noActiveOrder": 1,
     "ambiguousDrug": 1,
     "repeatedValue": 2,
-    "inactiveOrder": 1,
+    "unbound": 9,
+    "inactiveOrder": 2,
     "disallowedCharacter": 4
    },
    "prior_faithful_releases": 82,
-   "prior_faithful_still_released": 69,
-   "prior_faithful_same_text": 69,
-   "prior_faithful_now_blocked_or_error": 13
+   "prior_faithful_still_released": 73,
+   "prior_faithful_same_text": 73,
+   "prior_faithful_now_blocked_or_error": 9
   }
  },
  "previously_faithful_now_blocked": {
@@ -134,24 +134,6 @@
   "h1": [],
   "h2": [],
   "h3": [
-   {
-    "id": "h3_meaning_13_doctor_list_scope",
-    "class": "Completeness: the frame says the list is all medicines from the doctor, but the request holds only the orders it names (no over-the-counter or other prescriber orders).",
-    "text": "Here is the list of your medicines from your doctor.\nTake Metformin 500 mg by mouth twice a day.\nTake Warfarin 5 mg by mouth once a day.",
-    "v23": "blocked: unbound",
-    "why": [
-     "output uses a word removed from the vocabulary: doctor"
-    ]
-   },
-   {
-    "id": "h3_meaning_29_question_frame_referent",
-    "class": "Question framing: 'Ask your pharmacist what these are for' after two instructions, referring back to them without a question mark.",
-    "text": "Take Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day.\nAsk your pharmacist what these are for.",
-    "v23": "blocked: unbound",
-    "why": [
-     "output uses a word removed from the vocabulary: pharmacist"
-    ]
-   },
    {
     "id": "h3_structure_04_dot_hyphen_id_match",
     "class": "control: an id containing a hyphen and dots matches the same id in every slot of one instruction",
@@ -235,42 +217,6 @@
      "output uses a word removed from the vocabulary: doctor",
      "m1: requester carries text or a form the reader does not interpret",
      "m2: requester carries text or a form the reader does not interpret"
-    ]
-   },
-   {
-    "id": "h4_model_style_16_from_your_doctor_heading",
-    "class": "Model puts a provenance heading, from your doctor, above a complete list. The heading claims the orders came from the doctor, which the record does not say, so this is an unsupported claim if it releases.",
-    "text": "From your doctor:\nTake lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week.",
-    "v23": "blocked: unbound",
-    "why": [
-     "output uses a word removed from the vocabulary: doctor"
-    ]
-   },
-   {
-    "id": "h4_model_style_18_ask_pharmacist_for_information",
-    "class": "Model adds a closing line that tells the patient to ask the pharmacist for information after a complete list. The line gives advice the orders do not state, so it is an unsupported claim if it releases.",
-    "text": "Take lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week.\nAsk your pharmacist for information.",
-    "v23": "blocked: unbound",
-    "why": [
-     "output uses a word removed from the vocabulary: pharmacist"
-    ]
-   },
-   {
-    "id": "h4_structure_04_read_carefully_ask_frame",
-    "class": "attack: a framing clause built only from vocabulary words (Read carefully and ask your nurse) before a colon and a take instruction, to see whether a longer framing that makes the dose depend on the nurse passes the sentence rule",
-    "text": "Read carefully and ask your nurse: take Lantus 10 units as a shot under the skin once a day.",
-    "v23": "blocked: unbound",
-    "why": [
-     "output uses a word removed from the vocabulary: nurse"
-    ]
-   },
-   {
-    "id": "h4_structure_06_middle_frame_second_order",
-    "class": "attack: a colon framing between two complete instructions, one for each of two active orders, to see whether a framing placed between two instructions is accepted",
-    "text": "Take Lantus 10 units as a shot under the skin once a day. Ask your nurse: take Metformin 500 mg by mouth twice a day.",
-    "v23": "blocked: unbound",
-    "why": [
-     "output uses a word removed from the vocabulary: nurse"
     ]
    },
    {

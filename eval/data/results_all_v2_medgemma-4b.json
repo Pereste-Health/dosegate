@@ -232,10 +232,9 @@
  },
  "slot_hot": {
   "n": 240,
-  "passed": 189,
+  "passed": 199,
   "block_reasons": {
    "missingField": 37,
-   "unbound": 10,
    "ambiguousDrug": 4
   },
   "raw_model_text": {
@@ -265,7 +264,7 @@
    }
   },
   "text_shown_after_gate": {
-   "orders": 409,
+   "orders": 429,
    "dose_wrong": 0,
    "freq_wrong": 0,
    "missing": 0,
@@ -317,8 +316,8 @@
  },
  "gate_ms": {
   "n": 804,
-  "median": 0.171,
-  "p99": 0.449,
-  "max": 28.716
+  "median": 0.176,
+  "p99": 0.457,
+  "max": 28.131
  }
 }

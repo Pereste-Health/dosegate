@@ -20,8 +20,7 @@ id, meta versionId, fullUrl id, reference id, and patient field that is not a UU
 (at most 32 letters, digits, hyphens, and periods: at most three leading letters that do not form a
 known word, then digits, hyphens, and periods including a digit), every absolute fullUrl that does not
 end with its resource's type and id, a medicationReference that matches more than one Medication
-resource, and a Medication resource that no order references; the framing vocabulary has no doctor,
-nurse, or pharmacist. The v1 core has none of these rules.
+resource, and a Medication resource that no order references. The v1 core has none of these rules.
 --core v1 judges it against the layer before version 2 (no 2.1 or 2.2 rules).
 --pre-merge accepts a disagreement when the reply matches the version 1 prediction
 exactly: the binary still has the version 1 core, and the difference comes from a
@@ -139,7 +138,7 @@ clot inflammation fever allergies anxiety depression seizures diabetes asthma he
 symptom life""".split())
 VOCAB_V2 = set("""a an the and or to of for about on at by from here there this that these those it its
 they them their you your yours we our us is are be been being was were will also so ask have has medicine
-medicines medication medications list care team question
+medicines medication medications list doctor doctors nurse nurses pharmacist pharmacists care team question
 questions please thank thanks hello hi information read carefully what who how why""".split())
 VOCAB_V2 -= {"about", "or", "it"}
 INSTR_WORDS = {"take"}

@@ -4,93 +4,95 @@
    "slot_first_attempt": {
     "label": "Slot, first attempt",
     "n": 120,
-    "released": 0,
-    "pct": 0.0,
+    "released": 98,
+    "pct": 81.7,
     "ci": [
-     0.0,
-     3.1
+     73.8,
+     87.6
     ],
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "unbound": 120
+     "missingField": 20,
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
-    "released_orders": 0,
+    "released_orders": 209,
     "raw_outputs_with_error": 0
    },
    "slot_after_retries": {
     "label": "Slot, after rewrites",
     "n": 120,
-    "released": 0,
-    "pct": 0.0,
+    "released": 118,
+    "pct": 98.3,
     "ci": [
-     0.0,
-     3.1
+     94.1,
+     99.5
     ],
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "unbound": 120
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
-    "released_orders": 0,
+    "released_orders": 260,
     "raw_outputs_with_error": 0
    },
    "slot_daily_first_attempt": {
     "label": "Slot daily, first attempt",
     "n": 120,
-    "released": 0,
-    "pct": 0.0,
+    "released": 98,
+    "pct": 81.7,
     "ci": [
-     0.0,
-     3.1
+     73.8,
+     87.6
     ],
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "unbound": 120
+     "missingField": 20,
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
-    "released_orders": 0,
+    "released_orders": 209,
     "raw_outputs_with_error": 0
    },
    "slot_daily_after_retries": {
     "label": "Slot daily, after rewrites",
     "n": 120,
-    "released": 0,
-    "pct": 0.0,
+    "released": 118,
+    "pct": 98.3,
     "ci": [
-     0.0,
-     3.1
+     94.1,
+     99.5
     ],
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "unbound": 120
+     "omittedOrder": 2
     },
     "released_outputs_with_error": 0,
-    "released_orders": 0,
+    "released_orders": 260,
     "raw_outputs_with_error": 0
    },
    "slot_hot": {
     "label": "Slot, temperature 1.0",
     "n": 240,
-    "released": 44,
-    "pct": 18.3,
+    "released": 176,
+    "pct": 73.3,
     "ci": [
-     13.9,
-     23.7
+     67.4,
+     78.5
     ],
     "test_released": null,
     "test_n": null,
     "block_reasons": {
      "omittedOrder": 22,
-     "unbound": 166,
-     "missingField": 8
+     "missingField": 38,
+     "ambiguousDrug": 4
     },
     "released_outputs_with_error": 0,
-    "released_orders": 80,
+    "released_orders": 398,
     "raw_outputs_with_error": 0
    },
    "free_daily": {
@@ -114,33 +116,34 @@
    "attack": {
     "label": "Attack",
     "n": 120,
-    "released": 0,
-    "pct": 0.0,
+    "released": 19,
+    "pct": 15.8,
     "ci": [
-     0.0,
-     3.1
+     10.4,
+     23.4
     ],
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "unbound": 120
+     "unbound": 100,
+     "missingField": 1
     },
     "released_outputs_with_error": 0,
-    "released_orders": 0,
+    "released_orders": 19,
     "raw_outputs_with_error": 79
    }
   },
-  "released_total": 44,
+  "released_total": 412,
   "released_with_error": 0,
   "error_ci": [
    0.0,
-   8.0
+   0.9
   ],
   "gate_ms": {
    "n": 768,
-   "median": 0.161,
-   "p99": 0.346,
-   "max": 28.495
+   "median": 0.192,
+   "p99": 0.532,
+   "max": 27.708
   }
  },
  "MedGemma 4B": {
@@ -224,21 +227,20 @@
    "slot_hot": {
     "label": "Slot, temperature 1.0",
     "n": 240,
-    "released": 189,
-    "pct": 78.8,
+    "released": 199,
+    "pct": 82.9,
     "ci": [
-     73.1,
-     83.5
+     77.6,
+     87.2
     ],
     "test_released": null,
     "test_n": null,
     "block_reasons": {
      "missingField": 37,
-     "unbound": 10,
      "ambiguousDrug": 4
     },
     "released_outputs_with_error": 0,
-    "released_orders": 409,
+    "released_orders": 429,
     "raw_outputs_with_error": 0
    },
    "free_daily": {
@@ -279,7 +281,7 @@
     "raw_outputs_with_error": 31
    }
   },
-  "released_total": 387,
+  "released_total": 397,
   "released_with_error": 0,
   "error_ci": [
    0.0,
@@ -287,9 +289,9 @@
   ],
   "gate_ms": {
    "n": 804,
-   "median": 0.171,
-   "p99": 0.449,
-   "max": 28.716
+   "median": 0.176,
+   "p99": 0.457,
+   "max": 28.131
   }
  },
  "Llama 3.2 3B": {
@@ -297,75 +299,75 @@
    "slot_first_attempt": {
     "label": "Slot, first attempt",
     "n": 120,
-    "released": 0,
-    "pct": 0.0,
+    "released": 2,
+    "pct": 1.7,
     "ci": [
-     0.0,
-     3.1
+     0.5,
+     5.9
     ],
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "unbound": 120
+     "unbound": 118
     },
     "released_outputs_with_error": 0,
-    "released_orders": 0,
+    "released_orders": 6,
     "raw_outputs_with_error": 69
    },
    "slot_after_retries": {
     "label": "Slot, after rewrites",
     "n": 120,
-    "released": 0,
-    "pct": 0.0,
+    "released": 2,
+    "pct": 1.7,
     "ci": [
-     0.0,
-     3.1
+     0.5,
+     5.9
     ],
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "unbound": 120
+     "unbound": 118
     },
     "released_outputs_with_error": 0,
-    "released_orders": 0,
+    "released_orders": 6,
     "raw_outputs_with_error": 68
    },
    "slot_daily_first_attempt": {
     "label": "Slot daily, first attempt",
     "n": 120,
-    "released": 0,
-    "pct": 0.0,
+    "released": 2,
+    "pct": 1.7,
     "ci": [
-     0.0,
-     3.1
+     0.5,
+     5.9
     ],
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "unbound": 110,
+     "unbound": 108,
      "unknownRef": 9,
      "missingField": 1
     },
     "released_outputs_with_error": 0,
-    "released_orders": 0,
+    "released_orders": 6,
     "raw_outputs_with_error": 11
    },
    "slot_daily_after_retries": {
     "label": "Slot daily, after rewrites",
     "n": 120,
-    "released": 1,
-    "pct": 0.8,
+    "released": 3,
+    "pct": 2.5,
     "ci": [
-     0.1,
-     4.6
+     0.9,
+     7.1
     ],
     "test_released": null,
     "test_n": null,
     "block_reasons": {
-     "unbound": 119
+     "unbound": 117
     },
     "released_outputs_with_error": 0,
-    "released_orders": 1,
+    "released_orders": 7,
     "raw_outputs_with_error": 11
    },
    "slot_hot": {
@@ -424,17 +426,17 @@
     "raw_outputs_with_error": 97
    }
   },
-  "released_total": 35,
+  "released_total": 39,
   "released_with_error": 0,
   "error_ci": [
    0.0,
-   9.9
+   9.0
   ],
   "gate_ms": {
    "n": 1192,
-   "median": 0.14,
-   "p99": 0.411,
-   "max": 30.091
+   "median": 0.162,
+   "p99": 0.42,
+   "max": 28.017
   }
  },
  "Claude Haiku 5.5": {
@@ -442,74 +444,76 @@
    "slot_first_attempt": {
     "label": "Slot, first attempt",
     "n": 120,
-    "released": 0,
-    "pct": 0.0,
+    "released": 112,
+    "pct": 93.3,
     "ci": [
-     0.0,
-     3.1
+     87.4,
+     96.6
     ],
     "test_released": 112,
     "test_n": 120,
     "block_reasons": {
-     "unbound": 120
+     "missingField": 6,
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
-    "released_orders": 0,
+    "released_orders": 244,
     "raw_outputs_with_error": 0
    },
    "slot_after_retries": {
     "label": "Slot, after rewrites",
     "n": 120,
-    "released": 0,
-    "pct": 0.0,
+    "released": 118,
+    "pct": 98.3,
     "ci": [
-     0.0,
-     3.1
+     94.1,
+     99.5
     ],
     "test_released": 118,
     "test_n": 120,
     "block_reasons": {
-     "unbound": 120
+     "unbound": 2
     },
     "released_outputs_with_error": 0,
-    "released_orders": 0,
+    "released_orders": 260,
     "raw_outputs_with_error": 0
    },
    "slot_daily_first_attempt": {
     "label": "Slot daily, first attempt",
     "n": 120,
-    "released": 0,
-    "pct": 0.0,
+    "released": 99,
+    "pct": 82.5,
     "ci": [
-     0.0,
-     3.1
+     74.7,
+     88.3
     ],
     "test_released": 99,
     "test_n": 120,
     "block_reasons": {
-     "unbound": 120
+     "missingField": 19,
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
-    "released_orders": 0,
+    "released_orders": 213,
     "raw_outputs_with_error": 0
    },
    "slot_daily_after_retries": {
     "label": "Slot daily, after rewrites",
     "n": 120,
-    "released": 1,
-    "pct": 0.8,
+    "released": 115,
+    "pct": 95.8,
     "ci": [
-     0.1,
-     4.6
+     90.6,
+     98.2
     ],
     "test_released": 115,
     "test_n": 120,
     "block_reasons": {
-     "unbound": 118,
-     "omittedOrder": 1
+     "missingField": 3,
+     "omittedOrder": 2
     },
     "released_outputs_with_error": 0,
-    "released_orders": 2,
+    "released_orders": 251,
     "raw_outputs_with_error": 0
    },
    "free_daily": {
@@ -549,17 +553,17 @@
     "raw_outputs_with_error": 3
    }
   },
-  "released_total": 1,
+  "released_total": 233,
   "released_with_error": 0,
   "error_ci": [
    0.0,
-   79.3
+   1.6
   ],
   "gate_ms": {
    "n": 521,
-   "median": 0.181,
-   "p99": 0.399,
-   "max": 27.919
+   "median": 0.228,
+   "p99": 0.51,
+   "max": 29.838
   }
  },
  "Claude Sonnet 5.5": {
@@ -567,77 +571,79 @@
    "slot_first_attempt": {
     "label": "Slot, first attempt",
     "n": 120,
-    "released": 2,
-    "pct": 1.7,
+    "released": 111,
+    "pct": 92.5,
     "ci": [
-     0.5,
-     5.9
+     86.4,
+     96.0
     ],
     "test_released": 111,
     "test_n": 120,
     "block_reasons": {
-     "unbound": 116,
-     "ambiguousDrug": 2
+     "unbound": 6,
+     "ambiguousDrug": 2,
+     "missingField": 1
     },
     "released_outputs_with_error": 0,
-    "released_orders": 2,
+    "released_orders": 248,
     "raw_outputs_with_error": 0
    },
    "slot_after_retries": {
     "label": "Slot, after rewrites",
     "n": 120,
-    "released": 2,
-    "pct": 1.7,
+    "released": 118,
+    "pct": 98.3,
     "ci": [
-     0.5,
-     5.9
+     94.1,
+     99.5
     ],
     "test_released": 118,
     "test_n": 120,
     "block_reasons": {
-     "unbound": 117,
+     "unbound": 1,
      "omittedOrder": 1
     },
     "released_outputs_with_error": 0,
-    "released_orders": 2,
+    "released_orders": 260,
     "raw_outputs_with_error": 0
    },
    "slot_daily_first_attempt": {
     "label": "Slot daily, first attempt",
     "n": 120,
-    "released": 2,
-    "pct": 1.7,
+    "released": 92,
+    "pct": 76.7,
     "ci": [
-     0.5,
-     5.9
+     68.3,
+     83.3
     ],
     "test_released": 92,
     "test_n": 120,
     "block_reasons": {
-     "unbound": 117,
-     "missingField": 1
+     "missingField": 19,
+     "unbound": 7,
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
-    "released_orders": 6,
+    "released_orders": 199,
     "raw_outputs_with_error": 0
    },
    "slot_daily_after_retries": {
     "label": "Slot daily, after rewrites",
     "n": 120,
-    "released": 6,
-    "pct": 5.0,
+    "released": 116,
+    "pct": 96.7,
     "ci": [
-     2.3,
-     10.5
+     91.7,
+     98.7
     ],
     "test_released": 116,
     "test_n": 120,
     "block_reasons": {
-     "unbound": 112,
+     "missingField": 2,
      "omittedOrder": 2
     },
     "released_outputs_with_error": 0,
-    "released_orders": 14,
+    "released_orders": 253,
     "raw_outputs_with_error": 0
    },
    "free_daily": {
@@ -677,17 +683,17 @@
     "raw_outputs_with_error": 0
    }
   },
-  "released_total": 8,
+  "released_total": 234,
   "released_with_error": 0,
   "error_ci": [
    0.0,
-   32.4
+   1.6
   ],
   "gate_ms": {
    "n": 530,
-   "median": 0.1615,
-   "p99": 0.328,
-   "max": 27.826
+   "median": 0.188,
+   "p99": 0.466,
+   "max": 28.793
   }
  },
  "Claude Opus 5.5": {
@@ -695,73 +701,78 @@
    "slot_first_attempt": {
     "label": "Slot, first attempt",
     "n": 120,
-    "released": 0,
-    "pct": 0.0,
+    "released": 114,
+    "pct": 95.0,
     "ci": [
-     0.0,
-     3.1
+     89.5,
+     97.7
     ],
     "test_released": 114,
     "test_n": 120,
     "block_reasons": {
-     "unbound": 120
+     "unbound": 2,
+     "ambiguousDrug": 2,
+     "missingField": 2
     },
     "released_outputs_with_error": 0,
-    "released_orders": 0,
+    "released_orders": 247,
     "raw_outputs_with_error": 0
    },
    "slot_after_retries": {
     "label": "Slot, after rewrites",
     "n": 120,
-    "released": 0,
-    "pct": 0.0,
+    "released": 118,
+    "pct": 98.3,
     "ci": [
-     0.0,
-     3.1
+     94.1,
+     99.5
     ],
     "test_released": 118,
     "test_n": 120,
     "block_reasons": {
-     "unbound": 120
+     "unbound": 2
     },
     "released_outputs_with_error": 0,
-    "released_orders": 0,
+    "released_orders": 260,
     "raw_outputs_with_error": 0
    },
    "slot_daily_first_attempt": {
     "label": "Slot daily, first attempt",
     "n": 120,
-    "released": 0,
-    "pct": 0.0,
+    "released": 95,
+    "pct": 79.2,
     "ci": [
-     0.0,
-     3.1
+     71.1,
+     85.5
     ],
     "test_released": 95,
     "test_n": 120,
     "block_reasons": {
-     "unbound": 120
+     "missingField": 19,
+     "unbound": 4,
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
-    "released_orders": 0,
+    "released_orders": 201,
     "raw_outputs_with_error": 0
    },
    "slot_daily_after_retries": {
     "label": "Slot daily, after rewrites",
     "n": 120,
-    "released": 0,
-    "pct": 0.0,
+    "released": 114,
+    "pct": 95.0,
     "ci": [
-     0.0,
-     3.1
+     89.5,
+     97.7
     ],
     "test_released": 114,
     "test_n": 120,
     "block_reasons": {
-     "unbound": 120
+     "missingField": 4,
+     "unbound": 2
     },
     "released_outputs_with_error": 0,
-    "released_orders": 0,
+    "released_orders": 248,
     "raw_outputs_with_error": 0
    },
    "free_daily": {
@@ -801,17 +812,17 @@
     "raw_outputs_with_error": 6
    }
   },
-  "released_total": 0,
+  "released_total": 232,
   "released_with_error": 0,
   "error_ci": [
    0.0,
-   0.0
+   1.6
   ],
   "gate_ms": {
    "n": 529,
-   "median": 0.187,
-   "p99": 0.421,
-   "max": 28.51
+   "median": 0.202,
+   "p99": 0.472,
+   "max": 28.25
   }
  },
  "Claude Fable 5.1": {
@@ -819,74 +830,79 @@
    "slot_first_attempt": {
     "label": "Slot, first attempt",
     "n": 120,
-    "released": 0,
-    "pct": 0.0,
+    "released": 85,
+    "pct": 70.8,
     "ci": [
-     0.0,
-     3.1
+     62.2,
+     78.2
     ],
     "test_released": 85,
     "test_n": 120,
     "block_reasons": {
-     "unbound": 120
+     "unbound": 33,
+     "ambiguousDrug": 1,
+     "missingField": 1
     },
     "released_outputs_with_error": 0,
-    "released_orders": 0,
+    "released_orders": 163,
     "raw_outputs_with_error": 0
    },
    "slot_after_retries": {
     "label": "Slot, after rewrites",
     "n": 120,
-    "released": 1,
-    "pct": 0.8,
+    "released": 118,
+    "pct": 98.3,
     "ci": [
-     0.1,
-     4.6
+     94.1,
+     99.5
     ],
     "test_released": 118,
     "test_n": 120,
     "block_reasons": {
-     "unbound": 118,
-     "omittedOrder": 1
+     "omittedOrder": 2
     },
     "released_outputs_with_error": 0,
-    "released_orders": 3,
+    "released_orders": 260,
     "raw_outputs_with_error": 0
    },
    "slot_daily_first_attempt": {
     "label": "Slot daily, first attempt",
     "n": 120,
-    "released": 0,
-    "pct": 0.0,
+    "released": 75,
+    "pct": 62.5,
     "ci": [
-     0.0,
-     3.1
+     53.6,
+     70.6
     ],
     "test_released": 75,
     "test_n": 120,
     "block_reasons": {
-     "unbound": 120
+     "unbound": 31,
+     "missingField": 12,
+     "ambiguousDrug": 2
     },
     "released_outputs_with_error": 0,
-    "released_orders": 0,
+    "released_orders": 151,
     "raw_outputs_with_error": 0
    },
    "slot_daily_after_retries": {
     "label": "Slot daily, after rewrites",
     "n": 120,
-    "released": 1,
-    "pct": 0.8,
+    "released": 116,
+    "pct": 96.7,
     "ci": [
-     0.1,
-     4.6
+     91.7,
+     98.7
     ],
     "test_released": 116,
     "test_n": 120,
     "block_reasons": {
-     "unbound": 119
+     "missingField": 2,
+     "unbound": 1,
+     "omittedOrder": 1
     },
     "released_outputs_with_error": 0,
-    "released_orders": 1,
+    "released_orders": 253,
     "raw_outputs_with_error": 0
    },
    "free_daily": {
@@ -926,17 +942,17 @@
     "raw_outputs_with_error": 0
    }
   },
-  "released_total": 2,
+  "released_total": 234,
   "released_with_error": 0,
   "error_ci": [
    0.0,
-   65.8
+   1.6
   ],
   "gate_ms": {
    "n": 577,
-   "median": 0.187,
-   "p99": 0.387,
-   "max": 28.004
+   "median": 0.198,
+   "p99": 0.464,
+   "max": 27.573
   }
  }
 }

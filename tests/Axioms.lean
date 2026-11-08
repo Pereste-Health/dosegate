@@ -193,7 +193,6 @@ open DoseGate
 #print axioms DoseGate.allowed_not_forbidden
 #print axioms DoseGate.instr_total_clean
 #print axioms DoseGate.vocab_length
-#print axioms DoseGate.vocab_no_role_words
 #print axioms DoseGate.render_no_sign_before_slot
 #print axioms DoseGate.render_all_orders_named
 #print axioms DoseGate.render_all_orders_named_default

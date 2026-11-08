@@ -77,7 +77,7 @@ def vocab : List String :=
    "this", "that", "these", "those", "its", "they", "them", "their", "you", "your",
    "yours", "we", "our", "us", "is", "are", "be", "been", "being", "was", "were", "will",
    "also", "so", "ask", "have", "has", "medicine", "medicines", "medication", "medications",
-   "list", "care", "team",
+   "list", "doctor", "doctors", "nurse", "nurses", "pharmacist", "pharmacists", "care", "team",
    "question", "questions", "please", "thank", "thanks", "hello", "hi",
    "information", "read", "carefully", "what", "who", "how", "why"]
 

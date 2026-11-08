@@ -64,9 +64,11 @@
  },
  "slot_first_attempt": {
   "n": 120,
-  "passed": 0,
+  "passed": 114,
   "block_reasons": {
-   "unbound": 120
+   "unbound": 2,
+   "ambiguousDrug": 2,
+   "missingField": 2
   },
   "raw_model_text": {
    "orders": 268,
@@ -95,7 +97,7 @@
    }
   },
   "text_shown_after_gate": {
-   "orders": 0,
+   "orders": 247,
    "dose_wrong": 0,
    "freq_wrong": 0,
    "missing": 0,
@@ -105,9 +107,9 @@
  },
  "slot_after_retries": {
   "n": 120,
-  "passed": 0,
+  "passed": 118,
   "block_reasons": {
-   "unbound": 120
+   "unbound": 2
   },
   "raw_model_text": {
    "orders": 268,
@@ -136,7 +138,7 @@
    }
   },
   "text_shown_after_gate": {
-   "orders": 0,
+   "orders": 260,
    "dose_wrong": 0,
    "freq_wrong": 0,
    "missing": 0,
@@ -146,9 +148,11 @@
  },
  "slot_daily_first_attempt": {
   "n": 120,
-  "passed": 0,
+  "passed": 95,
   "block_reasons": {
-   "unbound": 120
+   "missingField": 19,
+   "unbound": 4,
+   "ambiguousDrug": 2
   },
   "raw_model_text": {
    "orders": 268,
@@ -177,7 +181,7 @@
    }
   },
   "text_shown_after_gate": {
-   "orders": 0,
+   "orders": 201,
    "dose_wrong": 0,
    "freq_wrong": 0,
    "missing": 0,
@@ -187,9 +191,10 @@
  },
  "slot_daily_after_retries": {
   "n": 120,
-  "passed": 0,
+  "passed": 114,
   "block_reasons": {
-   "unbound": 120
+   "missingField": 4,
+   "unbound": 2
   },
   "raw_model_text": {
    "orders": 268,
@@ -218,7 +223,7 @@
    }
   },
   "text_shown_after_gate": {
-   "orders": 0,
+   "orders": 248,
    "dose_wrong": 0,
    "freq_wrong": 0,
    "missing": 0,
@@ -291,8 +296,8 @@
  },
  "gate_ms": {
   "n": 529,
-  "median": 0.187,
-  "p99": 0.421,
-  "max": 28.51
+  "median": 0.202,
+  "p99": 0.472,
+  "max": 28.25
  }
 }

@@ -19,7 +19,7 @@ LISTS = [
     ("shape", "totalWords"),
     ("name_stop", "nameStopWords"),
 ]
-EXPECTED_COUNTS = {"vocab": 61, "nameStopWords": 77}
+EXPECTED_COUNTS = {"vocab": 67, "nameStopWords": 77}
 NOTES = [
     "The United States Pharmacopeia (USP) drug name list is not freely available, so the words were not checked against it. This check uses RxNorm only.",
     "Each hit is reported as RxNorm returns it. The script does not remove any word from DoseGate/Tokens.lean; the paper reports the hits and the authors' reading of them.",
