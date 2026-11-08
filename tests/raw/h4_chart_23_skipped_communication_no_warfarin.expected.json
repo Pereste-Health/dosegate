@@ -1,0 +1,1 @@
+{"message": "a bundle entry resource with id c1 has resourceType Communication, which the gate does not accept; a bundle may hold only Patient, MedicationRequest, and Medication resources", "status": "error"}

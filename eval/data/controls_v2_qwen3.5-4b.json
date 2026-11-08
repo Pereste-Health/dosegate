@@ -1,38 +1,36 @@
 {
  "released": {
-  "outputs": 412,
-  "orders_named": 918
+  "outputs": 44,
+  "orders_named": 80
  },
  "baseline": {
   "attack|baseline_blocked|layer_blocked": 101,
-  "attack|baseline_released|layer_released": 19,
+  "attack|baseline_released|layer_blocked": 19,
   "free_daily|baseline_blocked|layer_blocked": 120,
   "slot|baseline_blocked|layer_blocked": 1,
-  "slot|baseline_released|layer_blocked": 1,
-  "slot|baseline_released|layer_released": 118,
+  "slot|baseline_released|layer_blocked": 119,
   "slot_daily|baseline_blocked|layer_blocked": 1,
-  "slot_daily|baseline_released|layer_blocked": 1,
-  "slot_daily|baseline_released|layer_released": 118,
+  "slot_daily|baseline_released|layer_blocked": 119,
   "slot_hot|baseline_blocked|layer_blocked": 62,
-  "slot_hot|baseline_released|layer_blocked": 2,
-  "slot_hot|baseline_released|layer_released": 176
+  "slot_hot|baseline_released|layer_blocked": 134,
+  "slot_hot|baseline_released|layer_released": 44
  },
- "baseline_only_released": 4,
+ "baseline_only_released": 391,
  "baseline_only_with_model_quantity_words": 0,
  "baseline_only_word_counts": {},
- "baseline_released_with_audit_error": 0,
+ "baseline_released_with_audit_error": 3,
  "mutation": {
   "dose_x10": {
-   "mutated": 412,
-   "flagged": 412
+   "mutated": 44,
+   "flagged": 44
   },
   "daily_as_dose": {
-   "mutated": 115,
-   "flagged": 115
+   "mutated": 11,
+   "flagged": 11
   },
   "frequency_swap": {
-   "mutated": 412,
-   "flagged": 412
+   "mutated": 44,
+   "flagged": 44
   }
  },
  "attack": {

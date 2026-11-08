@@ -64,95 +64,9 @@
  },
  "slot_first_attempt": {
   "n": 120,
-  "passed": 111,
+  "passed": 2,
   "block_reasons": {
-   "unbound": 6,
-   "ambiguousDrug": 2,
-   "missingField": 1
-  },
-  "raw_model_text": {
-   "orders": 268,
-   "dose_wrong": 0,
-   "freq_wrong": 0,
-   "missing": 268,
-   "outputs_unsupported": 0,
-   "outputs_any_error": 0
-  },
-  "raw_by_variant": {
-   "natural": {
-    "orders": 134,
-    "dose_wrong": 0,
-    "freq_wrong": 0,
-    "missing": 134,
-    "outputs_unsupported": 0,
-    "outputs_any_error": 0
-   },
-   "perturbed": {
-    "orders": 134,
-    "dose_wrong": 0,
-    "freq_wrong": 0,
-    "missing": 134,
-    "outputs_unsupported": 0,
-    "outputs_any_error": 0
-   }
-  },
-  "text_shown_after_gate": {
-   "orders": 248,
-   "dose_wrong": 0,
-   "freq_wrong": 0,
-   "missing": 0,
-   "outputs_unsupported": 0,
-   "outputs_any_error": 0
-  }
- },
- "slot_after_retries": {
-  "n": 120,
-  "passed": 118,
-  "block_reasons": {
-   "unbound": 1,
-   "omittedOrder": 1
-  },
-  "raw_model_text": {
-   "orders": 268,
-   "dose_wrong": 0,
-   "freq_wrong": 0,
-   "missing": 268,
-   "outputs_unsupported": 0,
-   "outputs_any_error": 0
-  },
-  "raw_by_variant": {
-   "natural": {
-    "orders": 134,
-    "dose_wrong": 0,
-    "freq_wrong": 0,
-    "missing": 134,
-    "outputs_unsupported": 0,
-    "outputs_any_error": 0
-   },
-   "perturbed": {
-    "orders": 134,
-    "dose_wrong": 0,
-    "freq_wrong": 0,
-    "missing": 134,
-    "outputs_unsupported": 0,
-    "outputs_any_error": 0
-   }
-  },
-  "text_shown_after_gate": {
-   "orders": 260,
-   "dose_wrong": 0,
-   "freq_wrong": 0,
-   "missing": 0,
-   "outputs_unsupported": 0,
-   "outputs_any_error": 0
-  }
- },
- "slot_daily_first_attempt": {
-  "n": 120,
-  "passed": 92,
-  "block_reasons": {
-   "missingField": 19,
-   "unbound": 7,
+   "unbound": 116,
    "ambiguousDrug": 2
   },
   "raw_model_text": {
@@ -182,7 +96,91 @@
    }
   },
   "text_shown_after_gate": {
-   "orders": 199,
+   "orders": 2,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  }
+ },
+ "slot_after_retries": {
+  "n": 120,
+  "passed": 2,
+  "block_reasons": {
+   "unbound": 117,
+   "omittedOrder": 1
+  },
+  "raw_model_text": {
+   "orders": 268,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 268,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  },
+  "raw_by_variant": {
+   "natural": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   },
+   "perturbed": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   }
+  },
+  "text_shown_after_gate": {
+   "orders": 2,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 0,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  }
+ },
+ "slot_daily_first_attempt": {
+  "n": 120,
+  "passed": 2,
+  "block_reasons": {
+   "unbound": 117,
+   "missingField": 1
+  },
+  "raw_model_text": {
+   "orders": 268,
+   "dose_wrong": 0,
+   "freq_wrong": 0,
+   "missing": 268,
+   "outputs_unsupported": 0,
+   "outputs_any_error": 0
+  },
+  "raw_by_variant": {
+   "natural": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   },
+   "perturbed": {
+    "orders": 134,
+    "dose_wrong": 0,
+    "freq_wrong": 0,
+    "missing": 134,
+    "outputs_unsupported": 0,
+    "outputs_any_error": 0
+   }
+  },
+  "text_shown_after_gate": {
+   "orders": 6,
    "dose_wrong": 0,
    "freq_wrong": 0,
    "missing": 0,
@@ -192,9 +190,9 @@
  },
  "slot_daily_after_retries": {
   "n": 120,
-  "passed": 116,
+  "passed": 6,
   "block_reasons": {
-   "missingField": 2,
+   "unbound": 112,
    "omittedOrder": 2
   },
   "raw_model_text": {
@@ -224,7 +222,7 @@
    }
   },
   "text_shown_after_gate": {
-   "orders": 253,
+   "orders": 14,
    "dose_wrong": 0,
    "freq_wrong": 0,
    "missing": 0,
@@ -297,8 +295,8 @@
  },
  "gate_ms": {
   "n": 530,
-  "median": 0.175,
-  "p99": 0.451,
-  "max": 27.886
+  "median": 0.1615,
+  "p99": 0.328,
+  "max": 27.826
  }
 }

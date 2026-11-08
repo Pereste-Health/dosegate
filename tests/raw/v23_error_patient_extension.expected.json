@@ -1,0 +1,1 @@
+{"message": "the Patient resource pat1 carries an extension, which the gate does not read; send Patient resources without extensions", "status": "error"}

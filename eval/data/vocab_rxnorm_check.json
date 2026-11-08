@@ -1,7 +1,7 @@
 {
   "rxnorm_version": "02-Nov-2026",
   "rxnav_api_version": "3.1.357",
-  "access_date": "2026-11-06",
+  "access_date": "2026-11-08",
   "endpoints": [
     "https://rxnav.nlm.nih.gov/REST/version.json",
     "https://rxnav.nlm.nih.gov/REST/rxcui.json?name=<word>&search=2",
@@ -13,7 +13,7 @@
   "lists": {
     "vocab": {
       "group": "framing",
-      "count": 67
+      "count": 61
     },
     "instrWords": {
       "group": "shape",
@@ -28,18 +28,18 @@
       "count": 77
     }
   },
-  "unique_words_checked": 146,
+  "unique_words_checked": 140,
   "counts": {
-    "words_checked": 146,
+    "words_checked": 140,
     "words_with_hit": 3,
-    "words_without_hit": 143,
+    "words_without_hit": 137,
     "words_with_error": 0,
     "words_hit_by_rxcui_json": 3,
     "words_hit_by_drugs_json": 2,
     "distinct_rxcuis_in_hits": 22,
     "by_group": {
       "framing": {
-        "words_checked": 67,
+        "words_checked": 61,
         "words_with_hit": 1,
         "words_with_error": 0
       },
@@ -878,90 +878,6 @@
     },
     {
       "word": "list",
-      "rxcui_json": [],
-      "drugs_json": [],
-      "concepts": [],
-      "error": null,
-      "hit": false,
-      "groups": [
-        "framing"
-      ],
-      "lean_lists": [
-        "vocab"
-      ]
-    },
-    {
-      "word": "doctor",
-      "rxcui_json": [],
-      "drugs_json": [],
-      "concepts": [],
-      "error": null,
-      "hit": false,
-      "groups": [
-        "framing"
-      ],
-      "lean_lists": [
-        "vocab"
-      ]
-    },
-    {
-      "word": "doctors",
-      "rxcui_json": [],
-      "drugs_json": [],
-      "concepts": [],
-      "error": null,
-      "hit": false,
-      "groups": [
-        "framing"
-      ],
-      "lean_lists": [
-        "vocab"
-      ]
-    },
-    {
-      "word": "nurse",
-      "rxcui_json": [],
-      "drugs_json": [],
-      "concepts": [],
-      "error": null,
-      "hit": false,
-      "groups": [
-        "framing"
-      ],
-      "lean_lists": [
-        "vocab"
-      ]
-    },
-    {
-      "word": "nurses",
-      "rxcui_json": [],
-      "drugs_json": [],
-      "concepts": [],
-      "error": null,
-      "hit": false,
-      "groups": [
-        "framing"
-      ],
-      "lean_lists": [
-        "vocab"
-      ]
-    },
-    {
-      "word": "pharmacist",
-      "rxcui_json": [],
-      "drugs_json": [],
-      "concepts": [],
-      "error": null,
-      "hit": false,
-      "groups": [
-        "framing"
-      ],
-      "lean_lists": [
-        "vocab"
-      ]
-    },
-    {
-      "word": "pharmacists",
       "rxcui_json": [],
       "drugs_json": [],
       "concepts": [],

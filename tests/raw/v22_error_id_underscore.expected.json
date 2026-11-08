@@ -1,1 +1,1 @@
-{"status": "error", "message": "every MedicationRequest needs an id of 1 to 64 letters, digits, hyphens, or periods"}
+{"message": "MedicationRequest id m_1 is not a UUID or an opaque token (at most 32 letters, digits, hyphens, and periods that begin with at most three letters, which may not form a word the gate knows, carry no other letters, and include a digit)", "status": "error"}

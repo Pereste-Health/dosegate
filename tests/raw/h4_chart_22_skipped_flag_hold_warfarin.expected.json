@@ -1,0 +1,1 @@
+{"message": "a bundle entry resource with id f1 has resourceType Flag, which the gate does not accept; a bundle may hold only Patient, MedicationRequest, and Medication resources", "status": "error"}

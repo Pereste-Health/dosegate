@@ -16,4 +16,12 @@ theorem instr_total_clean :
     (instrWords ++ totalWords).all (fun w => !isForbidden w.toList) = true := by
   decide +kernel
 
+theorem vocab_length : vocab.length = 61 := by
+  decide +kernel
+
+theorem vocab_no_role_words :
+    ["doctor", "doctors", "nurse", "nurses", "pharmacist", "pharmacists"].all
+      (fun w => !vocab.contains w) = true := by
+  decide +kernel
+
 end DoseGate

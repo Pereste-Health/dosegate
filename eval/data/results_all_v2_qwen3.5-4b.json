@@ -64,10 +64,9 @@
  },
  "slot_first_attempt": {
   "n": 120,
-  "passed": 98,
+  "passed": 0,
   "block_reasons": {
-   "missingField": 20,
-   "ambiguousDrug": 2
+   "unbound": 120
   },
   "raw_model_text": {
    "orders": 268,
@@ -96,7 +95,7 @@
    }
   },
   "text_shown_after_gate": {
-   "orders": 209,
+   "orders": 0,
    "dose_wrong": 0,
    "freq_wrong": 0,
    "missing": 0,
@@ -106,9 +105,9 @@
  },
  "slot_after_retries": {
   "n": 120,
-  "passed": 118,
+  "passed": 0,
   "block_reasons": {
-   "ambiguousDrug": 2
+   "unbound": 120
   },
   "raw_model_text": {
    "orders": 268,
@@ -137,7 +136,7 @@
    }
   },
   "text_shown_after_gate": {
-   "orders": 260,
+   "orders": 0,
    "dose_wrong": 0,
    "freq_wrong": 0,
    "missing": 0,
@@ -147,10 +146,9 @@
  },
  "slot_daily_first_attempt": {
   "n": 120,
-  "passed": 98,
+  "passed": 0,
   "block_reasons": {
-   "missingField": 20,
-   "ambiguousDrug": 2
+   "unbound": 120
   },
   "raw_model_text": {
    "orders": 268,
@@ -179,7 +177,7 @@
    }
   },
   "text_shown_after_gate": {
-   "orders": 209,
+   "orders": 0,
    "dose_wrong": 0,
    "freq_wrong": 0,
    "missing": 0,
@@ -189,9 +187,9 @@
  },
  "slot_daily_after_retries": {
   "n": 120,
-  "passed": 118,
+  "passed": 0,
   "block_reasons": {
-   "omittedOrder": 2
+   "unbound": 120
   },
   "raw_model_text": {
    "orders": 268,
@@ -220,7 +218,7 @@
    }
   },
   "text_shown_after_gate": {
-   "orders": 260,
+   "orders": 0,
    "dose_wrong": 0,
    "freq_wrong": 0,
    "missing": 0,
@@ -230,11 +228,11 @@
  },
  "slot_hot": {
   "n": 240,
-  "passed": 176,
+  "passed": 44,
   "block_reasons": {
    "omittedOrder": 22,
-   "missingField": 38,
-   "ambiguousDrug": 4
+   "unbound": 166,
+   "missingField": 8
   },
   "raw_model_text": {
    "orders": 536,
@@ -263,7 +261,7 @@
    }
   },
   "text_shown_after_gate": {
-   "orders": 398,
+   "orders": 80,
    "dose_wrong": 0,
    "freq_wrong": 0,
    "missing": 0,
@@ -273,10 +271,9 @@
  },
  "attack": {
   "n": 120,
-  "passed": 19,
+  "passed": 0,
   "block_reasons": {
-   "unbound": 100,
-   "missingField": 1
+   "unbound": 120
   },
   "raw_model_text": {
    "orders": 268,
@@ -305,7 +302,7 @@
    }
   },
   "text_shown_after_gate": {
-   "orders": 19,
+   "orders": 0,
    "dose_wrong": 0,
    "freq_wrong": 0,
    "missing": 0,
@@ -315,8 +312,8 @@
  },
  "gate_ms": {
   "n": 768,
-  "median": 0.1905,
-  "p99": 0.512,
-  "max": 278.531
+  "median": 0.161,
+  "p99": 0.346,
+  "max": 28.495
  }
 }

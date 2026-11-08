@@ -35,6 +35,21 @@ def entryKeys : List String := ["fullUrl", "resource", "search"]
 def linkRelations : List String := ["self", "next", "previous", "prev", "first", "last"]
 def searchModes : List String := ["match", "include", "outcome"]
 def eventResourceTypes : List String := ["MedicationStatement", "MedicationDispense", "MedicationAdministration"]
+def allowedResourceTypes : List String := ["Patient", "MedicationRequest", "Medication"]
+def maxIdLength : Nat := 32
+def maxIdLetters : Nat := 3
+def idStopWords : List String :=
+  ["bd", "od", "os", "ou", "ad", "au", "tds", "qds", "tiw", "biw", "qh", "qn", "qhr", "sos", "npo", "nbm",
+   "dc", "ud", "utd", "ut", "am", "pm", "ivp", "pca", "ng", "ngt", "neb", "inh", "inj", "top", "vag", "et",
+   "gt", "wk", "mo", "hr", "sec", "ea", "ss", "ssi", "dl", "lb", "lbs", "sig", "amp", "sup"]
+def patientKeys : List String :=
+  ["resourceType", "id", "meta", "identifier", "active", "name", "telecom", "gender", "birthDate",
+   "deceasedBoolean", "deceasedDateTime", "address", "maritalStatus", "multipleBirthBoolean",
+   "multipleBirthInteger", "photo", "contact", "communication", "generalPractitioner",
+   "managingOrganization", "link"]
+def patientProfiles : List String :=
+  ["http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
+   "http://hl7.org/fhir/StructureDefinition/Patient"]
 
 def snomedSystem : String := "http://snomed.info/sct"
 def rxnormSystem : String := "http://www.nlm.nih.gov/research/umls/rxnorm"
@@ -286,8 +301,33 @@ def dosageOk (d : Json) : Bool :=
 
 /-! Grammars for the strings the reader keeps: ids, dates, language tags, references, and codes. -/
 
-def fhirIdOk (s : String) : Bool :=
-  !s.isEmpty && s.length ≤ 64 && s.toList.all fun c => c.isAlphanum || c == '-' || c == '.'
+def hexChar (c : Char) : Bool := c.isDigit || ('a' ≤ c && c ≤ 'f') || ('A' ≤ c && c ≤ 'F')
+
+def uuidOk (s : String) : Bool :=
+  match s.splitOn "-" with
+  | [a, b, c, d, e] =>
+      a.length == 8 && b.length == 4 && c.length == 4 && d.length == 4 && e.length == 12
+        && (a ++ b ++ c ++ d ++ e).toList.all hexChar
+  | _ => false
+
+def idTailChar (c : Char) : Bool := c.isDigit || c == '-' || c == '.'
+
+def knownWord (letters : List Char) : Bool :=
+  let w := letters.map Char.toLower
+  isForbidden w || isNameWord w || idStopWords.contains (String.ofList w)
+
+def opaqueTokenOk (s : String) : Bool :=
+  let cs := s.toList
+  let letters := cs.takeWhile Char.isAlpha
+  let tail := cs.drop letters.length
+  !cs.isEmpty && cs.length ≤ maxIdLength && letters.length ≤ maxIdLetters
+    && !(2 ≤ letters.length && knownWord letters)
+    && tail.all idTailChar && tail.any Char.isDigit
+
+def opaqueIdOk (s : String) : Bool := uuidOk s || opaqueTokenOk s
+
+def opaqueRule : String :=
+  "a UUID or an opaque token (at most 32 letters, digits, hyphens, and periods that begin with at most three letters, which may not form a word the gate knows, carry no other letters, and include a digit)"
 
 def digitsOnly (cs : List Char) : Bool := !cs.isEmpty && cs.all Char.isDigit
 
@@ -332,10 +372,16 @@ def languageOk (s : String) : Bool :=
   | _ => false
 
 def referenceOk (r : String) : Bool :=
-  if r.startsWith "urn:uuid:" then fhirIdOk (r.drop 9).toString
+  if r.startsWith "urn:uuid:" then opaqueIdOk (r.drop 9).toString
   else match r.splitOn "/" with
-    | [t, id] => fhirResourceTypes.contains t && fhirIdOk id
+    | [t, id] => fhirResourceTypes.contains t && opaqueIdOk id
     | _ => false
+
+def referenceIdOf? (r : String) : Option String :=
+  if r.startsWith "urn:uuid:" then some (r.drop 9).toString
+  else match r.splitOn "/" with
+    | [_, id] => some id
+    | _ => none
 
 def refObjOk (j : Json) : Bool :=
   keysWithin ["reference"] j && (match jStr? j "reference" with | some r => referenceOk r | none => false)
@@ -381,8 +427,8 @@ def codedCodingOk (systems : List String) (c : Json) : Bool :=
 def codedConceptOk (systems : List String) (cc : Json) : Bool :=
   keysWithin ["coding"] cc && fieldOk cc "coding" (arrOk (codedCodingOk systems))
 
-def profileOk : Json → Bool
-  | .str s => profileAllowlist.any fun a =>
+def profileOk (allow : List String) : Json → Bool
+  | .str s => allow.any fun a =>
       s == a || (s.startsWith (a ++ "|") &&
         (let v := (s.drop (a.length + 1)).toString
          !v.isEmpty && v.toList.all fun c => c.isDigit || c == '.'))
@@ -390,9 +436,16 @@ def profileOk : Json → Bool
 
 def metaOk (m : Json) : Bool :=
   keysWithin ["versionId", "lastUpdated", "profile", "security"] m
-  && fieldOk m "versionId" (strOk fhirIdOk)
+  && fieldOk m "versionId" (strOk opaqueIdOk)
   && fieldOk m "lastUpdated" (strOk dateTimeOk)
-  && fieldOk m "profile" (arrOk profileOk)
+  && fieldOk m "profile" (arrOk (profileOk profileAllowlist))
+  && !(jField? m "security").any nonEmptyJson
+
+def patientMetaOk (m : Json) : Bool :=
+  keysWithin ["versionId", "lastUpdated", "profile", "security"] m
+  && fieldOk m "versionId" (strOk opaqueIdOk)
+  && fieldOk m "lastUpdated" (strOk dateTimeOk)
+  && fieldOk m "profile" (arrOk (profileOk patientProfiles))
   && !(jField? m "security").any nonEmptyJson
 
 def standardAbbreviations : DoseUnit → List String
@@ -523,13 +576,17 @@ def medicationResourceOk (r : Json) : Bool :=
   && fieldOk r "meta" metaOk
   && (jField? r "code").any isObj
 
+def medicationMatches (ref : String) (m : Option String × Json) : Bool :=
+  let id? := jStr? m.2 "id"
+  (ref.startsWith "Medication/" && id? == some (ref.drop 11).toString)
+  || m.1 == some ref
+  || (ref.startsWith "urn:uuid:" && id? == some (ref.drop 9).toString)
+  || (match m.1 with
+      | some u => (u.startsWith "http://" || u.startsWith "https://") && u.endsWith ("/" ++ ref)
+      | none => false)
+
 def resolveMedication (meds : List (Option String × Json)) (ref : String) : Option Json :=
-  let hits :=
-    if ref.startsWith "Medication/" then
-      let id := (ref.drop 11).toString
-      meds.filter fun m => jStr? m.2 "id" == some id
-    else meds.filter fun m => m.1 == some ref
-  match hits with
+  match meds.filter (medicationMatches ref) with
   | [m] => if medicationResourceOk m.2 then jField? m.2 "code" else none
   | _ => none
 
@@ -712,13 +769,15 @@ def hasFreeText (mr d : Json) : Bool :=
 def subjectRef (mr : Json) : Option String :=
   ((jField? mr "subject").bind (jStr? · "reference")).filter fun r => !r.isEmpty
 
-def patientIdOf? (r : String) : Option String :=
+def subjectIdOf? (r : String) : Option String :=
   let id? :=
     if r.startsWith "urn:uuid:" then some (r.drop 9).toString
     else match r.splitOn "/" with
       | ["Patient", id] => some id
       | _ => none
-  id?.filter fhirIdOk
+  id?.filter fun id => !id.isEmpty
+
+def patientIdOf? (r : String) : Option String := (subjectIdOf? r).filter opaqueIdOk
 
 def subjectMatches (patient : Option String) (mr : Json) : Bool :=
   match patient with
@@ -812,8 +871,59 @@ def resourceProblem (e : Json) : Option String :=
         else if eventResourceTypes.contains t then
           some (who ++ " has resourceType " ++ t
             ++ ", which the gate cannot represent as an instruction; send only MedicationRequests")
-        else if fhirResourceTypes.contains t then none
+        else if allowedResourceTypes.contains t then none
+        else if fhirResourceTypes.contains t then
+          some (who ++ " has resourceType " ++ t
+            ++ ", which the gate does not accept; a bundle may hold only Patient, MedicationRequest, and Medication resources")
         else some (who ++ " has resourceType " ++ t ++ ", which is not a FHIR R4 resource type")
+
+def resourceIdProblem (e : Json) : Option String :=
+  match jField? e "resource" with
+  | none => none
+  | some r =>
+      let t := (jStr? r "resourceType").getD "resource"
+      if t == "MedicationRequest" then none else
+      (match jField? r "id" with
+        | none => none
+        | some (.str id) => if opaqueIdOk id then none else some (t ++ " id " ++ id ++ " is not " ++ opaqueRule)
+        | some _ => some ("a " ++ t ++ " id is not a string"))
+      <|> (match (jField? r "meta").bind (jField? · "versionId") with
+        | none => none
+        | some (.str v) =>
+            if opaqueIdOk v then none
+            else some (t ++ (match jStr? r "id" with | some id => " " ++ id | none => "")
+              ++ " meta versionId " ++ v ++ " is not " ++ opaqueRule)
+        | some _ => some ("a " ++ t ++ " meta versionId is not a string"))
+
+def fullUrlProblem (e : Json) : Option String :=
+  match jStr? e "fullUrl", jField? e "resource" with
+  | some u, some r =>
+      if u.startsWith "urn:uuid:" then
+        if opaqueIdOk (u.drop 9).toString then none
+        else some ("a bundle entry fullUrl " ++ u ++ " names an id that is not " ++ opaqueRule)
+      else
+        match jStr? r "resourceType", jStr? r "id" with
+        | some t, some id =>
+            if u.endsWith ("/" ++ t ++ "/" ++ id) then none
+            else some ("a bundle entry fullUrl " ++ u ++ " does not end with " ++ t ++ "/" ++ id
+              ++ ", the resourceType and id of its resource")
+        | _, _ => some ("a bundle entry fullUrl " ++ u ++ " needs a resource with a string id")
+  | _, _ => none
+
+def patientProblem (e : Json) : Option String :=
+  match jField? e "resource" with
+  | none => none
+  | some r =>
+      if jStr? r "resourceType" != some "Patient" then none else
+      let who := match jStr? r "id" with
+        | some id => "the Patient resource " ++ id
+        | none => "a Patient resource"
+      if hasExtensionKey r then
+        some (who ++ " carries an extension, which the gate does not read; send Patient resources without extensions")
+      else keyProblem patientKeys "Patient" r
+        <|> (if !fieldOk r "meta" patientMetaOk then
+              some (who ++ " meta may carry only versionId, lastUpdated, a Patient profile, and an empty security list")
+             else none)
 
 def urlChar (c : Char) : Bool := !c.isWhitespace && c != '"' && c != '<' && c != '>'
 
@@ -834,6 +944,9 @@ def entryProblem (e : Json) : Option String :=
           some "a bundle entry search may carry only a mode of match, include, or outcome and a numeric score"
          else none)
     <|> resourceProblem e
+    <|> resourceIdProblem e
+    <|> fullUrlProblem e
+    <|> patientProblem e
 
 def linkOk (l : Json) : Bool :=
   isObj l && keysWithin ["relation", "url"] l
@@ -844,10 +957,20 @@ def linkOk (l : Json) : Bool :=
 
 def bundleMetaOk (m : Json) : Bool :=
   isObj m && keysWithin ["versionId", "lastUpdated"] m
-    && fieldOk m "versionId" (strOk fhirIdOk) && fieldOk m "lastUpdated" (strOk dateTimeOk)
+    && fieldOk m "versionId" (strOk opaqueIdOk) && fieldOk m "lastUpdated" (strOk dateTimeOk)
+
+def bundleIdProblem (b : Json) : Option String :=
+  (match jField? b "id" with
+    | none => none
+    | some (.str id) => if opaqueIdOk id then none else some ("bundle id " ++ id ++ " is not " ++ opaqueRule)
+    | some _ => some "bundle id must be a string")
+  <|> (match (jField? b "meta").bind (jField? · "versionId") with
+    | none => none
+    | some (.str v) => if opaqueIdOk v then none else some ("bundle meta versionId " ++ v ++ " is not " ++ opaqueRule)
+    | some _ => some "bundle meta versionId must be a string")
 
 def bundleFieldsProblem (b : Json) : Option String :=
-  if !fieldOk b "id" (strOk fhirIdOk) then some "bundle id must be 1 to 64 letters, digits, hyphens, or periods"
+  if let some e := bundleIdProblem b then some e
   else if !fieldOk b "meta" bundleMetaOk then some "bundle meta may carry only versionId and lastUpdated"
   else if !fieldOk b "timestamp" (strOk dateTimeOk) then some "bundle timestamp must be a FHIR dateTime"
   else if !fieldOk b "total" isWhole then some "bundle total must be a whole number"
@@ -878,8 +1001,10 @@ def subjectProblem (patient : Option String) (req : Json) : Option String :=
     let rs := refs.filterMap id
     if rs.any (fun r => r.startsWith "http://" || r.startsWith "https://") then
       some "a MedicationRequest subject.reference is an absolute URL; the gate accepts only Patient/id or urn:uuid:id"
-    else if rs.any (fun r => (patientIdOf? r).isNone) then
+    else if rs.any (fun r => (subjectIdOf? r).isNone) then
       some "every MedicationRequest subject.reference must be Patient/id or urn:uuid:id"
+    else if rs.any (fun r => (patientIdOf? r).isNone) then
+      some ("every MedicationRequest subject.reference must name an id that is " ++ opaqueRule)
     else if rs.eraseDups.length > 1 then
       some "the MedicationRequests reference more than one subject; send one patient's orders"
     else match patient, rs.head? with
@@ -918,6 +1043,49 @@ def bundleResourceTypeBad (req : Json) : Bool :=
   | some b => !fieldOk b "resourceType" isBundle
   | none => false
 
+def orderIdProblem (mr : Json) : Option String :=
+  let id := (jStr? mr "id").getD ""
+  if !opaqueIdOk id then some ("MedicationRequest id " ++ id ++ " is not " ++ opaqueRule)
+  else match (jField? mr "meta").bind (jField? · "versionId") with
+    | none => none
+    | some (.str v) =>
+        if opaqueIdOk v then none
+        else some ("MedicationRequest " ++ id ++ " meta versionId " ++ v ++ " is not " ++ opaqueRule)
+    | some _ => some ("MedicationRequest " ++ id ++ " meta versionId is not a string")
+
+def checkedReferenceKeys : List String :=
+  ["encounter", "requester", "performer", "recorder", "medicationReference", "priorPrescription",
+   "reportedReference"]
+
+def referenceIdProblem (mr : Json) : Option String :=
+  let id := (jStr? mr "id").getD ""
+  let singles := checkedReferenceKeys.filterMap fun k =>
+    ((jField? mr k).bind (jStr? · "reference")).map fun r => (k, r)
+  let lists := referenceListKeys.flatMap fun k =>
+    (jArr? mr k).filterMap fun o => (jStr? o "reference").map fun r => (k, r)
+  (singles ++ lists).findSome? fun kr =>
+    match referenceIdOf? kr.2 with
+    | some rid =>
+        if opaqueIdOk rid then none
+        else some ("MedicationRequest " ++ id ++ " " ++ kr.1 ++ " reference " ++ kr.2
+          ++ " names an id that is not " ++ opaqueRule)
+    | none => none
+
+def medicationProblem (req : Json) : Option String :=
+  let meds := medicationEntries req
+  let refs := (orderResources req).filterMap fun mr =>
+    ((jField? mr "medicationReference").bind (jStr? · "reference")).map fun r => ((jStr? mr "id").getD "", r)
+  (refs.findSome? fun ir =>
+    let n := (meds.filter (medicationMatches ir.2)).length
+    if n > 1 then
+      some ("MedicationRequest " ++ ir.1 ++ " medicationReference " ++ ir.2 ++ " matches " ++ toString n
+        ++ " Medication resources in the bundle; it must match exactly one")
+    else none)
+  <|> (meds.findSome? fun m =>
+    if refs.any (fun ir => medicationMatches ir.2 m) then none
+    else some ("a Medication resource" ++ (match jStr? m.2 "id" with | some i => " with id " ++ i | none => "")
+      ++ " is not referenced by any MedicationRequest in the bundle"))
+
 def shapeProblem (req : Json) : Option String :=
   if (jField? req "bundle").isSome && (jField? req "medicationRequests").isSome then
     some "the request has both bundle and medicationRequests, so it is ambiguous; send only one of them"
@@ -932,14 +1100,18 @@ def shapeProblem (req : Json) : Option String :=
     some "every MedicationRequest needs an id string"
   else if (orderResources req).any (fun mr => (jStr? mr "id").any fun s => (trimmed s).isEmpty) then
     some "every MedicationRequest needs an id that is not empty"
-  else if (orderResources req).any (fun mr => (jStr? mr "id").any fun s => !fhirIdOk s) then
-    some "every MedicationRequest needs an id of 1 to 64 letters, digits, hyphens, or periods"
+  else if let some e := (orderResources req).findSome? orderIdProblem then some e
+  else if let some e := (orderResources req).findSome? referenceIdProblem then some e
+  else if let some e := medicationProblem req then some e
   else none
 
 def patientOf (req : Json) : Except String (Option String) :=
   match jField? req "patient" with
   | none => .ok none
-  | some (.str p) => if p.isEmpty then .error "patient must be a non-empty string" else .ok (some p)
+  | some (.str p) =>
+      if p.isEmpty then .error "patient must be a non-empty string"
+      else if !opaqueIdOk p then .error ("patient " ++ p ++ " is not " ++ opaqueRule)
+      else .ok (some p)
   | some _ => .error "patient must be a string"
 
 def chartOf (ignoreFreeText : Bool) (patient : Option String) (req : Json) : Option (List MedReq) :=

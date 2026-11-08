@@ -1,19 +1,19 @@
 {
  "released": {
-  "outputs": 234,
-  "orders_named": 513
+  "outputs": 8,
+  "orders_named": 16
  },
  "baseline": {
   "attack|baseline_blocked|layer_blocked": 116,
   "attack|baseline_released|layer_blocked": 4,
   "free_daily|baseline_blocked|layer_blocked": 120,
-  "slot|baseline_released|layer_blocked": 2,
-  "slot|baseline_released|layer_released": 118,
+  "slot|baseline_released|layer_blocked": 118,
+  "slot|baseline_released|layer_released": 2,
   "slot_daily|baseline_blocked|layer_blocked": 3,
-  "slot_daily|baseline_released|layer_blocked": 1,
-  "slot_daily|baseline_released|layer_released": 116
+  "slot_daily|baseline_released|layer_blocked": 111,
+  "slot_daily|baseline_released|layer_released": 6
  },
- "baseline_only_released": 7,
+ "baseline_only_released": 233,
  "baseline_only_with_model_quantity_words": 5,
  "baseline_only_word_counts": {
   "any": 4,
@@ -29,16 +29,16 @@
  "baseline_released_with_audit_error": 0,
  "mutation": {
   "dose_x10": {
-   "mutated": 234,
-   "flagged": 234
+   "mutated": 8,
+   "flagged": 8
   },
   "daily_as_dose": {
-   "mutated": 36,
-   "flagged": 36
+   "mutated": 2,
+   "flagged": 2
   },
   "frequency_swap": {
-   "mutated": 234,
-   "flagged": 234
+   "mutated": 8,
+   "flagged": 8
   }
  },
  "attack": {

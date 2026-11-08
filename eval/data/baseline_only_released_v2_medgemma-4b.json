@@ -1,34 +1,114 @@
 [
  {
+  "case_id": "Willis868_Crist667_b134995b-0860-21bc-9701-c89cb182c5d8:natural",
+  "condition": "slot_hot",
+  "sample": 1,
+  "model_words": {},
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list. Take lisinopril 10 mg by mouth once a day, which is 10 mg a day. Take amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day. Please ask your doctor and pharmacist your questions.\n"
+ },
+ {
+  "case_id": "Willis868_Crist667_b134995b-0860-21bc-9701-c89cb182c5d8:perturbed",
+  "condition": "slot_hot",
+  "sample": 1,
+  "model_words": {},
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list. Take lisinopril 15 mg by mouth once a day, which is 15 mg a day. Take amlodipine 5 mg by mouth once a day, which is 5 mg a day. Please ask your doctor and pharmacist your questions.\n"
+ },
+ {
+  "case_id": "Cortez851_Hermiston71_43b55ab2-6a84-030a-3bc4-b902d7304a72:natural",
+  "condition": "slot_hot",
+  "sample": 1,
+  "model_words": {},
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list. Take dolutegravir 50 mg by mouth once a day, which is 50 mg a day. Take lisinopril 10 mg by mouth once a day, which is 10 mg a day. Please ask your doctor and pharmacist your questions.\n"
+ },
+ {
+  "case_id": "Cortez851_Hermiston71_43b55ab2-6a84-030a-3bc4-b902d7304a72:perturbed",
+  "condition": "slot_hot",
+  "sample": 1,
+  "model_words": {},
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list. Take dolutegravir 100 mg by mouth every 12 hours, which is 200 mg a day. Take lisinopril 20 mg by mouth once a day, which is 20 mg a day. Please ask your doctor and pharmacist your questions.\n"
+ },
+ {
+  "case_id": "Anton902_Barton704_5e39348b-975c-4789-0871-0e61aac8d404:natural",
+  "condition": "slot_hot",
+  "sample": 1,
+  "model_words": {},
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list. Take lisinopril 10 mg by mouth once a day, which is 10 mg a day. Take amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day. Please ask your doctor and pharmacist your questions.\n"
+ },
+ {
+  "case_id": "Anton902_Barton704_5e39348b-975c-4789-0871-0e61aac8d404:perturbed",
+  "condition": "slot_hot",
+  "sample": 1,
+  "model_words": {},
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list. Take lisinopril 5 mg by mouth once a day, which is 5 mg a day. Take amlodipine 7.5 mg by mouth every 12 hours, which is 15 mg a day. Please ask your doctor and pharmacist your questions.\n"
+ },
+ {
   "case_id": "Esteban536_Bogisich202_18b4c619-9002-dad1-0daf-33e508bb2445:natural",
   "condition": "slot",
   "sample": 0,
   "model_words": {},
-  "layer_reason": "missingField",
-  "text": "Here is your medicine list. Take hydrochlorothiazide 25 mg by mouth once a day, which is 25 mg a day. Take 12 hr hydrocodone bitartrate 10 mg by mouth, twice a day. Take lisinopril 10 mg by mouth once a day, which is 10 mg a day. Take amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day.\n"
+  "layer_reason": "ambiguousDrug",
+  "text": "Here is your medicine list. Take hydrochlorothiazide 25 mg by mouth once a day, which is 25 mg a day. Take  10 mg by mouth, twice a day. Take lisinopril 10 mg by mouth once a day, which is 10 mg a day. Take amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day.\n"
  },
  {
   "case_id": "Esteban536_Bogisich202_18b4c619-9002-dad1-0daf-33e508bb2445:natural",
   "condition": "slot_daily",
   "sample": 0,
   "model_words": {},
-  "layer_reason": "missingField",
-  "text": "Here is your medicine list. Take hydrochlorothiazide 25 mg by mouth once a day, which is 25 mg a day. Take 12 hr hydrocodone bitartrate 10 mg by mouth, twice a day. Take lisinopril 10 mg by mouth once a day, which is 10 mg a day. Take amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day.\n"
+  "layer_reason": "ambiguousDrug",
+  "text": "Here is your medicine list. Take hydrochlorothiazide 25 mg by mouth once a day, which is 25 mg a day. Take  10 mg by mouth, twice a day. Take lisinopril 10 mg by mouth once a day, which is 10 mg a day. Take amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day.\n"
  },
  {
   "case_id": "Esteban536_Bogisich202_18b4c619-9002-dad1-0daf-33e508bb2445:natural",
   "condition": "slot_hot",
   "sample": 1,
   "model_words": {},
-  "layer_reason": "missingField",
-  "text": "Here is your medicine list. Take hydrochlorothiazide 25 mg by mouth once a day, which is 25 mg a day. Take 12 hr hydrocodone bitartrate 10 mg by mouth, twice a day. Take lisinopril 10 mg by mouth once a day, which is 10 mg a day. Take amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day.\n"
+  "layer_reason": "ambiguousDrug",
+  "text": "Here is your medicine list. Take hydrochlorothiazide 25 mg by mouth once a day, which is 25 mg a day. Take  10 mg by mouth, twice a day. Take lisinopril 10 mg by mouth once a day, which is 10 mg a day. Take amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day.\n"
  },
  {
   "case_id": "Esteban536_Bogisich202_18b4c619-9002-dad1-0daf-33e508bb2445:natural",
   "condition": "slot_hot",
   "sample": 2,
   "model_words": {},
-  "layer_reason": "missingField",
-  "text": "Here is your medicine list. Take hydrochlorothiazide 25 mg by mouth once a day, which is 25 mg a day.\nTake 12 hr hydrocodone bitartrate 10 mg by mouth, twice a day.\nTake lisinopril 10 mg by mouth once a day, which is 10 mg a day.\nTake amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day.\n"
+  "layer_reason": "ambiguousDrug",
+  "text": "Here is your medicine list. Take hydrochlorothiazide 25 mg by mouth once a day, which is 25 mg a day.\nTake  10 mg by mouth, twice a day.\nTake lisinopril 10 mg by mouth once a day, which is 10 mg a day.\nTake amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day.\n"
+ },
+ {
+  "case_id": "Ezequiel972_Halvorson124_c11057df-b1c7-60f9-1e8e-db31d5b48546:natural",
+  "condition": "slot_hot",
+  "sample": 1,
+  "model_words": {},
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list. Take lisinopril 10 mg by mouth once a day, which is 10 mg a day. Take amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day. Please ask your doctor and pharmacist your questions.\n"
+ },
+ {
+  "case_id": "Ezequiel972_Halvorson124_c11057df-b1c7-60f9-1e8e-db31d5b48546:perturbed",
+  "condition": "slot_hot",
+  "sample": 1,
+  "model_words": {},
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list. Take lisinopril 5 mg by mouth three times a day, which is 15 mg a day. Take amlodipine 7.5 mg by mouth every 8 hours, which is 22.5 mg a day. Please ask your doctor and pharmacist your questions.\n"
+ },
+ {
+  "case_id": "Truman805_Hodkiewicz467_f935b4e9-ddda-1003-2aa8-853214d954e9:natural",
+  "condition": "slot_hot",
+  "sample": 1,
+  "model_words": {},
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list. Take losartan potassium 25 mg by mouth once a day, which is 25 mg a day. Take amlodipine 2.5 mg by mouth once a day, which is 2.5 mg a day. Please ask your doctor and pharmacist your questions.\n"
+ },
+ {
+  "case_id": "Truman805_Hodkiewicz467_f935b4e9-ddda-1003-2aa8-853214d954e9:perturbed",
+  "condition": "slot_hot",
+  "sample": 1,
+  "model_words": {},
+  "layer_reason": "unbound",
+  "text": "Here is your medicine list. Take losartan potassium 12.5 mg by mouth once a day, which is 12.5 mg a day. Take amlodipine 5 mg by mouth once a day, which is 5 mg a day. Please ask your doctor and pharmacist your questions.\n"
  }
 ]

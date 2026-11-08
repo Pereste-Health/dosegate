@@ -64,9 +64,9 @@
  },
  "slot_first_attempt": {
   "n": 120,
-  "passed": 2,
+  "passed": 0,
   "block_reasons": {
-   "unbound": 118
+   "unbound": 120
   },
   "raw_model_text": {
    "orders": 268,
@@ -95,7 +95,7 @@
    }
   },
   "text_shown_after_gate": {
-   "orders": 6,
+   "orders": 0,
    "dose_wrong": 0,
    "freq_wrong": 0,
    "missing": 0,
@@ -105,9 +105,9 @@
  },
  "slot_after_retries": {
   "n": 120,
-  "passed": 2,
+  "passed": 0,
   "block_reasons": {
-   "unbound": 118
+   "unbound": 120
   },
   "raw_model_text": {
    "orders": 268,
@@ -136,7 +136,7 @@
    }
   },
   "text_shown_after_gate": {
-   "orders": 6,
+   "orders": 0,
    "dose_wrong": 0,
    "freq_wrong": 0,
    "missing": 0,
@@ -146,9 +146,9 @@
  },
  "slot_daily_first_attempt": {
   "n": 120,
-  "passed": 2,
+  "passed": 0,
   "block_reasons": {
-   "unbound": 108,
+   "unbound": 110,
    "unknownRef": 9,
    "missingField": 1
   },
@@ -179,7 +179,7 @@
    }
   },
   "text_shown_after_gate": {
-   "orders": 6,
+   "orders": 0,
    "dose_wrong": 0,
    "freq_wrong": 0,
    "missing": 0,
@@ -189,9 +189,9 @@
  },
  "slot_daily_after_retries": {
   "n": 120,
-  "passed": 3,
+  "passed": 1,
   "block_reasons": {
-   "unbound": 117
+   "unbound": 119
   },
   "raw_model_text": {
    "orders": 268,
@@ -220,7 +220,7 @@
    }
   },
   "text_shown_after_gate": {
-   "orders": 7,
+   "orders": 1,
    "dose_wrong": 0,
    "freq_wrong": 0,
    "missing": 0,
@@ -313,8 +313,8 @@
  },
  "gate_ms": {
   "n": 1192,
-  "median": 0.1315,
-  "p99": 0.395,
-  "max": 28.275
+  "median": 0.14,
+  "p99": 0.411,
+  "max": 30.091
  }
 }

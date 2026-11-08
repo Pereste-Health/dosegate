@@ -9,13 +9,19 @@ orders and output templates are mutated, sent as one JSON request per line throu
 a single serve process, and each reply is compared with the prediction: the status,
 and the reason for a block or the text for an ok. An error reply must be an error.
 
---core v2 (default) judges the binary against version 2.2, the current layer. Its shape rules
+--core v2 (default) judges the binary against version 2.3, the current layer. Its shape rules
 reject a wrong JSON type, an empty string, or an unknown key in a request, bundle, or bundle entry
-wherever the reader would otherwise skip or default the value, and its version 2.2 rules refuse
+wherever the reader would otherwise skip or default the value; its version 2.2 rules refuse
 nested bundles, medication event resources, and foreign subjects, fail closed on every text-bearing
 order field the reader does not interpret, hold coding displays to a strength and dose-form grammar,
-and print a drug name only when it is in the RxNorm lexicon (data/rxnorm_names.txt). The v1 core has
-none of these rules.
+and print a drug name only when it is in the RxNorm lexicon (data/rxnorm_names.txt); and its version
+2.3 rules refuse every bundle entry that is not a Patient, MedicationRequest, or Medication, every
+id, meta versionId, fullUrl id, reference id, and patient field that is not a UUID or an opaque token
+(at most 32 letters, digits, hyphens, and periods: at most three leading letters that do not form a
+known word, then digits, hyphens, and periods including a digit), every absolute fullUrl that does not
+end with its resource's type and id, a medicationReference that matches more than one Medication
+resource, and a Medication resource that no order references; the framing vocabulary has no doctor,
+nurse, or pharmacist. The v1 core has none of these rules.
 --core v1 judges it against the layer before version 2 (no 2.1 or 2.2 rules).
 --pre-merge accepts a disagreement when the reply matches the version 1 prediction
 exactly: the binary still has the version 1 core, and the difference comes from a
@@ -133,7 +139,7 @@ clot inflammation fever allergies anxiety depression seizures diabetes asthma he
 symptom life""".split())
 VOCAB_V2 = set("""a an the and or to of for about on at by from here there this that these those it its
 they them their you your yours we our us is are be been being was were will also so ask have has medicine
-medicines medication medications list doctor doctors nurse nurses pharmacist pharmacists care team question
+medicines medication medications list care team question
 questions please thank thanks hello hi information read carefully what who how why""".split())
 VOCAB_V2 -= {"about", "or", "it"}
 INSTR_WORDS = {"take"}
@@ -165,13 +171,13 @@ CORES = {
     "v1": {"vocab": VOCAB_V1, "total": TOTAL_WORDS_V1, "shapes": V1_SHAPES, "free_drug_slot": True,
            "related": "token", "ambiguity_all_fields": False, "name_rules": "v1", "hours_rule": False,
            "daily_needs_timing": False, "ambiguous_reason": "ambiguousDaily",
-           "gate_2_1": False, "gate_2_2": False, "require_all": False, "text_chars": TEXT_CHARS_V1,
-           "strict": False},
+           "gate_2_1": False, "gate_2_2": False, "gate_2_3": False, "require_all": False,
+           "text_chars": TEXT_CHARS_V1, "strict": False},
     "v2": {"vocab": VOCAB_V2, "total": TOTAL_WORDS_V2, "shapes": V2_SHAPES, "free_drug_slot": False,
            "related": "conservative", "ambiguity_all_fields": True, "name_rules": "v2", "hours_rule": True,
            "daily_needs_timing": True, "ambiguous_reason": "ambiguousDrug",
-           "gate_2_1": True, "gate_2_2": True, "require_all": True, "text_chars": TEXT_CHARS_V2,
-           "strict": True},
+           "gate_2_1": True, "gate_2_2": True, "gate_2_3": True, "require_all": True,
+           "text_chars": TEXT_CHARS_V2, "strict": True},
 }
 REQUEST_KEYS = ("output", "bundle", "medicationRequests", "patient")
 BUNDLE_KEYS = ("resourceType", "id", "meta", "type", "timestamp", "total", "link", "entry")
@@ -237,6 +243,20 @@ suppository sublingual lozenge granules packet liquid elixir syrup vaginal bucca
 vial ampule implant""".split())
 REFERENCE_KEYS = ("subject", "encounter", "requester", "performer", "recorder")
 REFERENCE_LIST_KEYS = ("reasonReference", "supportingInformation", "basedOn", "insurance", "eventHistory")
+CHECKED_REFERENCE_KEYS = ("encounter", "requester", "performer", "recorder", "medicationReference",
+                          "priorPrescription", "reportedReference")
+ALLOWED_RESOURCE_TYPES = ("Patient", "MedicationRequest", "Medication")
+MAX_ID_LENGTH = 32
+MAX_ID_LETTERS = 3
+ID_STOP_WORDS = set("""bd od os ou ad au tds qds tiw biw qh qn qhr sos npo nbm dc ud utd ut am pm ivp pca ng ngt neb inh inj
+top vag et gt wk mo hr sec ea ss ssi dl lb lbs sig amp sup""".split())
+PATIENT_KEYS = ("resourceType", "id", "meta", "identifier", "active", "name", "telecom", "gender", "birthDate",
+                "deceasedBoolean", "deceasedDateTime", "address", "maritalStatus", "multipleBirthBoolean",
+                "multipleBirthInteger", "photo", "contact", "communication", "generalPractitioner",
+                "managingOrganization", "link")
+PATIENT_PROFILES = ("http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
+                    "http://hl7.org/fhir/StructureDefinition/Patient")
+UUID_RE = re.compile(r"[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}")
 LEXICON = frozenset(line for line in (ROOT / "data/rxnorm_names.txt").read_text(encoding="utf-8").split("\n")
                     if line != "")
 ASCII_ALNUM_CHARS = set(string.ascii_letters + string.digits)
@@ -401,26 +421,60 @@ def drug_of(order):
     return common
 
 
-def patient_id_of(ref, cfg):
+def subject_id_of(ref):
     segs = ref.split("/")
     if ref.startswith("urn:uuid:"):
         ident = ref[len("urn:uuid:"):]
     elif len(segs) == 2 and segs[0] == "Patient":
         ident = segs[1]
-    elif not cfg["gate_2_2"] and (ref.startswith("http://") or ref.startswith("https://")) and len(segs) >= 2 \
-            and segs[-2] == "Patient":
+    else:
+        return None
+    return ident if ident != "" else None
+
+
+def patient_id_of(ref, cfg):
+    if cfg["gate_2_2"]:
+        ident = subject_id_of(ref)
+        return ident if ident is not None and opaque_id_ok(ident) else None
+    segs = ref.split("/")
+    if ref.startswith("urn:uuid:"):
+        ident = ref[len("urn:uuid:"):]
+    elif len(segs) == 2 and segs[0] == "Patient":
+        ident = segs[1]
+    elif (ref.startswith("http://") or ref.startswith("https://")) and len(segs) >= 2 and segs[-2] == "Patient":
         ident = segs[-1]
     else:
         return None
-    if cfg["gate_2_2"]:
-        return ident if fhir_id_ok(ident) else None
     if ident == "" or any(c in ident for c in "/?#"):
         return None
     return ident
 
 
-def fhir_id_ok(s):
-    return 0 < len(s) <= 64 and all(c in ASCII_ALNUM_CHARS or c in "-." for c in s)
+def known_word(letters):
+    word = ascii_lower(letters)
+    return is_forbidden(word) or word in VOCAB_V2 or word in INSTR_WORDS or word in TOTAL_WORDS_V2 \
+        or word in NAME_STOP_V2 or word in ID_STOP_WORDS
+
+
+def opaque_id_ok(s):
+    if UUID_RE.fullmatch(s):
+        return True
+    if s == "" or len(s) > MAX_ID_LENGTH:
+        return False
+    i = 0
+    while i < len(s) and s[i] in ASCII_LETTERS:
+        i += 1
+    letters, tail = s[:i], s[i:]
+    if len(letters) > MAX_ID_LETTERS or (len(letters) >= 2 and known_word(letters)):
+        return False
+    return all(c in DIGITS or c in "-." for c in tail) and any(c in DIGITS for c in tail)
+
+
+def reference_id_of(r):
+    if r.startswith("urn:uuid:"):
+        return r[len("urn:uuid:"):]
+    parts = r.split("/")
+    return parts[1] if len(parts) == 2 else None
 
 
 def date_time_ok(s):
@@ -441,9 +495,9 @@ def is_boolean(value):
 
 def reference_ok(r):
     if r.startswith("urn:uuid:"):
-        return fhir_id_ok(r[len("urn:uuid:"):])
+        return opaque_id_ok(r[len("urn:uuid:"):])
     parts = r.split("/")
-    return len(parts) == 2 and parts[0] in FHIR_R4_RESOURCE_TYPES and fhir_id_ok(parts[1])
+    return len(parts) == 2 and parts[0] in FHIR_R4_RESOURCE_TYPES and opaque_id_ok(parts[1])
 
 
 def ref_obj_ok(j):
@@ -512,22 +566,39 @@ def coded_concept_ok(systems, cc):
     return within(cc, ("coding",)) and field_ok(cc, "coding", list_of(lambda c: coded_coding_ok(systems, c)))
 
 
-def profile_ok(p):
-    if not isinstance(p, str):
-        return False
-    for a in PROFILE_ALLOWLIST:
-        if p == a:
-            return True
-        if p.startswith(a + "|"):
-            v = p[len(a) + 1:]
-            if v != "" and all(c in DIGITS or c == "." for c in v):
+def profile_in(allow):
+    def ok(p):
+        if not isinstance(p, str):
+            return False
+        for a in allow:
+            if p == a:
                 return True
-    return False
+            if p.startswith(a + "|"):
+                v = p[len(a) + 1:]
+                if v != "" and all(c in DIGITS or c == "." for c in v):
+                    return True
+        return False
+    return ok
+
+
+profile_ok = profile_in(PROFILE_ALLOWLIST)
+
+
+def patient_meta_ok(m):
+    return within(m, ("versionId", "lastUpdated", "profile", "security")) \
+        and field_ok(m, "versionId", str_ok(opaque_id_ok)) and field_ok(m, "lastUpdated", str_ok(date_time_ok)) \
+        and field_ok(m, "profile", list_of(profile_in(PATIENT_PROFILES))) and not non_empty(m.get("security"))
+
+
+def patient_ok(resource):
+    if has_extension_key(resource):
+        return False
+    return keys_allowed(resource, PATIENT_KEYS) and field_ok(resource, "meta", patient_meta_ok)
 
 
 def meta_ok(m):
     return within(m, ("versionId", "lastUpdated", "profile", "security")) \
-        and field_ok(m, "versionId", str_ok(fhir_id_ok)) and field_ok(m, "lastUpdated", str_ok(date_time_ok)) \
+        and field_ok(m, "versionId", str_ok(opaque_id_ok)) and field_ok(m, "lastUpdated", str_ok(date_time_ok)) \
         and field_ok(m, "profile", list_of(profile_ok)) and not non_empty(m.get("security"))
 
 
@@ -669,16 +740,61 @@ def medication_resource_ok(r):
         and isinstance(r.get("code"), dict)
 
 
+def medication_matches(ref, med):
+    full, r = med
+    ident = r.get("id") if isinstance(r.get("id"), str) else None
+    if ref.startswith("Medication/") and ident == ref[len("Medication/"):]:
+        return True
+    if full == ref:
+        return True
+    if ref.startswith("urn:uuid:") and ident == ref[len("urn:uuid:"):]:
+        return True
+    return full is not None and (full.startswith("http://") or full.startswith("https://")) \
+        and full.endswith("/" + ref)
+
+
 def resolve_medication(meds, ref):
-    if ref.startswith("Medication/"):
-        ident = ref[len("Medication/"):]
-        hits = [m for m in meds if isinstance(m[1].get("id"), str) and m[1]["id"] == ident]
-    else:
-        hits = [m for m in meds if m[0] == ref]
+    hits = [m for m in meds if medication_matches(ref, m)]
     if len(hits) != 1:
         return None
     r = hits[0][1]
     return r.get("code") if medication_resource_ok(r) else None
+
+
+def medication_problem(request, orders):
+    meds = medication_entries(request)
+    refs = []
+    for order in orders:
+        v = order.get("medicationReference")
+        if isinstance(v, dict) and isinstance(v.get("reference"), str):
+            refs.append(v["reference"])
+    if any(sum(1 for m in meds if medication_matches(ref, m)) > 1 for ref in refs):
+        return True
+    return any(not any(medication_matches(ref, m) for ref in refs) for m in meds)
+
+
+def reference_ids_ok(order):
+    refs = []
+    for k in CHECKED_REFERENCE_KEYS:
+        v = order.get(k)
+        if isinstance(v, dict) and isinstance(v.get("reference"), str):
+            refs.append(v["reference"])
+    for k in REFERENCE_LIST_KEYS:
+        v = order.get(k)
+        for o in v if isinstance(v, list) else []:
+            if isinstance(o, dict) and isinstance(o.get("reference"), str):
+                refs.append(o["reference"])
+    for r in refs:
+        rid = reference_id_of(r)
+        if rid is not None and not opaque_id_ok(rid):
+            return False
+    return True
+
+
+def version_id_ok(resource):
+    meta = resource.get("meta")
+    v = meta.get("versionId") if isinstance(meta, dict) else None
+    return v is None or (isinstance(v, str) and opaque_id_ok(v))
 
 
 def order_concept(meds, order):
@@ -1317,8 +1433,29 @@ def order_ok(order):
 
 
 def resource_type_ok(resource):
-    t = resource["resourceType"]
-    return t in FHIR_R4_RESOURCE_TYPES and t != "Bundle" and t not in EVENT_RESOURCE_TYPES
+    return resource["resourceType"] in ALLOWED_RESOURCE_TYPES
+
+
+def resource_ids_ok(resource):
+    if resource["resourceType"] == "MedicationRequest":
+        return True
+    ident = resource.get("id")
+    if ident is not None and not (isinstance(ident, str) and opaque_id_ok(ident)):
+        return False
+    if resource["resourceType"] == "Patient" and not patient_ok(resource):
+        return False
+    return version_id_ok(resource)
+
+
+def full_url_consistent(entry):
+    full = entry.get("fullUrl")
+    if not isinstance(full, str):
+        return True
+    if full.startswith("urn:uuid:"):
+        return opaque_id_ok(full[len("urn:uuid:"):])
+    resource = entry["resource"]
+    t, ident = resource.get("resourceType"), resource.get("id")
+    return isinstance(t, str) and isinstance(ident, str) and full.endswith(f"/{t}/{ident}")
 
 
 def url_char(c):
@@ -1339,7 +1476,7 @@ def entry_ok(entry):
     return isinstance(entry, dict) and keys_allowed(entry, ENTRY_KEYS) \
         and field_ok(entry, "fullUrl", str_ok(full_url_ok)) and field_ok(entry, "search", search_ok) \
         and isinstance(entry.get("resource"), dict) and is_text(entry["resource"].get("resourceType")) \
-        and resource_type_ok(entry["resource"])
+        and resource_type_ok(entry["resource"]) and resource_ids_ok(entry["resource"]) and full_url_consistent(entry)
 
 
 def link_ok(l):
@@ -1351,12 +1488,12 @@ def link_ok(l):
 
 def bundle_meta_ok(m):
     return isinstance(m, dict) and within(m, ("versionId", "lastUpdated")) \
-        and field_ok(m, "versionId", str_ok(fhir_id_ok)) and field_ok(m, "lastUpdated", str_ok(date_time_ok))
+        and field_ok(m, "versionId", str_ok(opaque_id_ok)) and field_ok(m, "lastUpdated", str_ok(date_time_ok))
 
 
 def bundle_ok(bundle):
     return keys_allowed(bundle, BUNDLE_KEYS) and field_ok(bundle, "resourceType", lambda v: v == "Bundle") \
-        and field_ok(bundle, "id", str_ok(fhir_id_ok)) and field_ok(bundle, "meta", bundle_meta_ok) \
+        and field_ok(bundle, "id", str_ok(opaque_id_ok)) and field_ok(bundle, "meta", bundle_meta_ok) \
         and field_ok(bundle, "timestamp", str_ok(date_time_ok)) and field_ok(bundle, "total", is_whole) \
         and field_ok(bundle, "link", list_of(link_ok)) \
         and all(entry_ok(entry) for entry in bundle["entry"])
@@ -1404,10 +1541,17 @@ def predict(line, core):
         return ("error",)
     if cfg["strict"] and not all(is_text(order["id"]) and order_ok(order) for order in orders):
         return ("error",)
-    if cfg["gate_2_2"] and not all(fhir_id_ok(order["id"]) for order in orders):
+    if cfg["gate_2_2"] and not all(opaque_id_ok(order["id"]) for order in orders):
         return ("error",)
+    if cfg["gate_2_3"]:
+        if not all(version_id_ok(order) and reference_ids_ok(order) for order in orders):
+            return ("error",)
+        if "bundle" in request and medication_problem(request, orders):
+            return ("error",)
     patient = request.get("patient")
     if patient is not None and (not isinstance(patient, str) or patient == ""):
+        return ("error",)
+    if cfg["gate_2_3"] and patient is not None and not opaque_id_ok(patient):
         return ("error",)
     refs = [subject_ref(order) for order in orders]
     if None in refs:
@@ -1609,8 +1753,59 @@ DRUG_NAMES = ["metformin hydrochloride", "Metformin", "aspirin mg", "naproxen so
               "warfarin", "Warfarin", "Take with milk", "Warfarin see doctor first", "insulin sliding scale",
               "aspirin", "Aspirin", "ASPIRIN", "metformin", "  aspirin ", "aspirin.", "ab-cd", "a-b-c-d-e",
               "inhaled", "Oral route", "medicine", "about", "lisinopril", "insulin", "glargine"]
-ID_VALUES = ["m2", "m3", "M1", "m 1", "", "m.1", "m-1", "m1", None, Lit("1")]
+ID_VALUES = ["m2", "m3", "M1", "m 1", "", "m.1", "m-1", "m1", None, Lit("1"), "pat1", "med1", "mmmm1", "m1-hold",
+             "3f2a0c1e-5b7d-4e8f-9a1b-2c3d4e5f6a7b", "x"]
 ID_EXTRA = ["m9", "M1", "m 1", "m.1", "", "m-1", "x"]
+OPAQUE_ID_VALUES = [
+    "m1", "m2", "pat1", "med1", "rx-12", "a1.2", "1", "123-456", "2026-01-05", "abc123", "ab12cd", "prn1", "qd-1", "bid3",
+    "iv1", "po1", "hs1", "inr3", "ssi1", "max1", "hold1", "m1-hold", "m1-prn", "warfarin-hold-if-inr-above-3",
+    "taper-1-of-6", "x", "X", "", "m 1", "M1", "mm1", "mmm1", "mmmm1", "m1_2", "m1-", ".1", "-1", "m" * 32, "1" * 32,
+    "1" * 33, "a" + "1" * 31, "a" + "1" * 32, "3f2a0c1e-5b7d-4e8f-9a1b-2c3d4e5f6a7b",
+    "3F2A0C1E-5B7D-4E8F-9A1B-2C3D4E5F6A7B", "3f2a0c1e-5b7d-4e8f-9a1b-2c3d4e5f6a7", "3f2a0c1e5b7d4e8f9a1b2c3d4e5f6a7b",
+    "deadbeef-dead-beef-cafe-badbadbadbad", "3f2a0c1g-5b7d-4e8f-9a1b-2c3d4e5f6a7b", "urn:uuid:m1", "Patient/m1", "m1 ",
+    "\u00e91", "m1\u200b", "we1", "Dr1", "sq2", "a1", "q1", "g1", Lit("1"), None,
+]
+VERSION_ID_VALUES = ["1", "2", "12", "v1", "a1", "hold-if-inr-above-3", "2026-01-05T10:00:00Z", "", "1.0", "m1-hold",
+                     "3f2a0c1e-5b7d-4e8f-9a1b-2c3d4e5f6a7b", Lit("1"), None, "ver1", "prn1", "x"]
+REFERENCE_ID_VALUES = [
+    "Practitioner/pr1", "Practitioner/pharmacist-kim", "Practitioner/dr-alvarez-md", "Practitioner/nurse-brandt",
+    "Practitioner/", "urn:uuid:3f2a0c1e-5b7d-4e8f-9a1b-2c3d4e5f6a7b", "urn:uuid:hold-warfarin", "urn:uuid:",
+    "Encounter/e1", "Encounter/enc-hold", "Practitioner/pr1/_history/1", "https://x.example/Practitioner/pr1",
+    "MedicationRequest/m2", "MedicationRequest/stop-m2", "Medication/med1", "Medication/heparin-weight-based-dose",
+    "Patient/pat1", "Patient/hold-warfarin", "#med1", "Practitioner/PR1", "Practitioner/prn1", "Practitioner/pr 1",
+]
+FOREIGN_RESOURCE_TYPES = ["Flag", "Communication", "Condition", "Observation", "Encounter", "Practitioner", "CarePlan",
+                          "MedicationKnowledge", "OperationOutcome", "Patient", "Medication", "List", "Provenance", "Flagg",
+                          "MedicationStatement"]
+FULL_URL_VALUES = [None, "same", "same", "https://fhir.example.org/MedicationRequest/other1",
+                   "https://records.example/orders/warfarin-hold-if-inr-above-3",
+                   "urn:uuid:3f2a0c1e-5b7d-4e8f-9a1b-2c3d4e5f6a7b", "urn:uuid:hold-warfarin", "urn:uuid:m1",
+                   "https://fhir.example.org/Patient/pat1", "https://fhir.example.org/MedicationRequest/m1/",
+                   "http://x/MedicationRequest/m1", "https://fhir.example.org/Medication/med1"]
+ROLE_SENTENCES = ["Please ask your doctor your questions.", "Ask your nurse.", "These are from your pharmacist.", "Doctor:",
+                  "Please ask your care team your questions.", "Ask your care team.", "Doctors and nurses are here.",
+                  "Your pharmacists have the list.", "Here is your medicine list.", "Nurse:\n", "Pharmacist:",
+                  "Your care team has this list."]
+PATIENT_ID_VALUES = ["pat1", "p1", "hold-warfarin", "pat 1", "3f2a0c1e-5b7d-4e8f-9a1b-2c3d4e5f6a7b", "PAT1", "prn1", "x",
+                     "npo1", "dc1", "bd-2"]
+PATIENT_FIELD_VALUES = [
+    ("name", [O([("family", "Example"), ("given", ["Pat"])])]), ("name", [O([("text", "Hold Warfarin")])]),
+    ("gender", "female"), ("birthDate", "1950-01-05"), ("active", True), ("identifier", [O([("value", "12345")])]),
+    ("telecom", [O([("system", "phone"), ("value", "555-0100")])]), ("address", [O([("city", "Shreveport")])]),
+    ("contained", [O([("resourceType", "MedicationRequest"), ("id", "h1"), ("status", "active"), ("intent", "order"),
+                      ("medicationCodeableConcept", O([("text", "warfarin")])),
+                      ("dosageInstruction", [O([("text", "Hold until INR below 2")])])])]),
+    ("contained", [O([("resourceType", "Flag"), ("id", "f1"), ("code", O([("text", "Hold warfarin")]))])]),
+    ("text", O([("status", "generated"), ("div", "<div>Warfarin on hold</div>")])),
+    ("extension", [O([("url", "http://example.org/hold"), ("valueString", "Hold warfarin")])]),
+    ("modifierExtension", [O([("url", "http://example.org/x")])]), ("implicitRules", "http://example.org/rules"),
+    ("language", "en"), ("generalPractitioner", [O([("reference", "Practitioner/dr1")])]),
+    ("communication", [O([("language", O([("text", "hold warfarin")]))])]),
+    ("meta", O([("versionId", "1")])), ("meta", O([("profile", [PATIENT_PROFILES[0]])])),
+    ("meta", O([("profile", [US_CORE_PROFILE])])), ("meta", O([("tag", [O([("code", "hold")])])])),
+    ("meta", O([("security", [O([("code", "R")])])])), ("meta", O([("versionId", "hold-1")])), ("deceasedBoolean", False),
+    ("photo", []), ("link", [O([("other", O([("reference", "Patient/p2")])), ("type", "seealso")])]), ("note", "x"),
+]
 NOISE = ["{", "}", "é", "*", "two", "5", "medicine", "x", "\n", "%", "now", "mg", " ", ".", "is", "your",
          "take", "Take", "tablet", "every", "which", "daily", "about", "or", "ask", "?", "!", "-", "+"]
 ROUTE_CODES = [code for code, _ in ROUTE_TERMS]
@@ -1645,6 +1840,8 @@ TEMPLATES = [
     "{{drug:ID}} with water.",
     "Please ask your doctor about this.",
     "Ask your doctor or nurse if you have questions.",
+    "Take {{drug:ID}} {{dose:ID}} {{route:ID}} {{frequency:ID}}. Please ask your care team your questions.",
+    "Here is your medicine list. Take {{drug:ID}} {{sig:ID}}. Ask your care team.",
     "Please read carefully: take {{drug:ID}} {{sig:ID}}.",
     "Take {{drug:ID}} {{dose:ID}}, {{route:ID}}, {{frequency:ID}}.",
     "Take {{drug:ID}} {{dose:ID}} {{route:ID}} {{frequency:ID}} {{daily:ID}}.",
@@ -2554,6 +2751,181 @@ def m_output_long(rng, root):
     return True
 
 
+def m_foreign_resource(rng, root):
+    if bundle_of(root) is None and not m_bundle_wrap(rng, root):
+        return False
+    entries = entries_of(bundle_of(root))
+    if entries is None:
+        return False
+    kind = rng.choice(FOREIGN_RESOURCE_TYPES)
+    resource = O([("resourceType", kind), ("id", rng.choice(["f1", "c1", "pat1", "med1", "hold-warfarin"]))])
+    if kind == "Flag":
+        resource.append(("code", O([("text", "Hold warfarin if INR above 3")])))
+    elif kind == "Communication":
+        resource.append(("payload", [O([("contentString", "Do not give warfarin until the INR result is back")])]))
+    elif kind == "Medication":
+        resource.append(("code", O([("text", "warfarin")])))
+    elif kind == "Patient":
+        resource.append(("name", [O([("family", "Hold"), ("given", ["Warfarin"])])]))
+    entries.insert(rng.randint(0, len(entries)), O([("resource", resource)]))
+    return True
+
+
+def m_opaque_id(rng, root):
+    hits = pairs_with_keys(root, ("id",))
+    if not hits:
+        return False
+    obj, i = rng.choice(hits)
+    old = obj[i][1]
+    value = rng.choice(OPAQUE_ID_VALUES)
+    obj[i] = ("id", value)
+    text = root_value(root, "output")
+    if has_key(obj, "status") and isinstance(old, str) and isinstance(value, str) and isinstance(text, str) \
+            and rng.random() < 0.6:
+        set_key_in(root, "output", text.replace(":" + old + "}}", ":" + value + "}}"))
+    return True
+
+
+def m_version_id(rng, root):
+    targets = [o for o in objects(root) if has_key(o, "resourceType") or has_key(o, "status") or has_key(o, "entry")]
+    if not targets:
+        return False
+    target = rng.choice(targets)
+    metas = [v for k, v in target if k == "meta" and isinstance(v, O)]
+    meta = metas[0] if metas else O()
+    set_key_in(meta, "versionId", rng.choice(VERSION_ID_VALUES))
+    if not metas:
+        set_key_in(target, "meta", meta)
+    return True
+
+
+def m_reference_id(rng, root):
+    orders = order_nodes(root)
+    if not orders:
+        return False
+    order = rng.choice(orders)
+    key = rng.choice(["requester", "recorder", "performer", "encounter", "priorPrescription", "reportedReference",
+                      "medicationReference", "basedOn", "reasonReference", "subject"])
+    ref = O([("reference", rng.choice(REFERENCE_ID_VALUES))])
+    set_key_in(order, key, [ref] if key in ("basedOn", "reasonReference") else ref)
+    return True
+
+
+def m_medication_resolution(rng, root):
+    if bundle_of(root) is None and not m_bundle_wrap(rng, root):
+        return False
+    entries = entries_of(bundle_of(root))
+    orders = order_nodes(root)
+    if entries is None or not orders:
+        return False
+    order = rng.choice(orders)
+    ident = rng.choice(["med1", "med2", "3f2a0c1e-5b7d-4e8f-9a1b-2c3d4e5f6a7b"])
+    code = O([("text", rng.choice(["warfarin", "heparin", "lisinopril"]))])
+
+    def med(i, full=None):
+        entry = O([("resource", O([("resourceType", "Medication"), ("id", i), ("code", clone(code))]))])
+        if full is not None:
+            entry.insert(0, ("fullUrl", full))
+        return entry
+
+    order[:] = [(k, v) for k, v in order if k != "medicationCodeableConcept"]
+    scenario = rng.randrange(7)
+    if scenario == 0:
+        set_key_in(order, "medicationReference", O([("reference", f"Medication/{ident}")]))
+        entries.append(med(ident))
+        entries.append(med("med9", f"https://fhir.example.org/Medication/{ident}"))
+    elif scenario == 1:
+        set_key_in(order, "medicationReference", O([("reference", f"urn:uuid:{ident}")]))
+        entries.append(med(ident))
+        entries.append(med("med9", f"urn:uuid:{ident}"))
+    elif scenario == 2:
+        set_key_in(order, "medicationCodeableConcept", O([("text", "aspirin")]))
+        entries.append(med(rng.choice(["med7", "heparin-weight-based-dose"])))
+    elif scenario == 3:
+        set_key_in(order, "medicationReference", O([("reference", f"Medication/{ident}")]))
+        entries.append(med(ident, f"https://fhir.example.org/Medication/{ident}"))
+    elif scenario == 4:
+        set_key_in(order, "medicationReference", O([("reference", f"urn:uuid:{ident}")]))
+        entries.append(med("med3", f"urn:uuid:{ident}"))
+    elif scenario == 5:
+        set_key_in(order, "medicationReference", O([("reference", f"Medication/{ident}")]))
+        others = [o for o in orders if o is not order]
+        if others:
+            other = rng.choice(others)
+            other[:] = [(k, v) for k, v in other if k != "medicationCodeableConcept"]
+            set_key_in(other, "medicationReference", O([("reference", f"Medication/{ident}")]))
+        entries.append(med(ident))
+    else:
+        set_key_in(order, "medicationReference", O([("reference", f"Medication/{ident}")]))
+        entries.append(med(ident, f"https://fhir.example.org/Medication/{rng.choice(['other1', ident.upper()])}"))
+    return True
+
+
+def m_full_url(rng, root):
+    if bundle_of(root) is None and not m_bundle_wrap(rng, root):
+        return False
+    entries = entries_of(bundle_of(root))
+    if not entries:
+        return False
+    entry = rng.choice(entries)
+    if not isinstance(entry, O):
+        return False
+    choice = rng.choice(FULL_URL_VALUES)
+    if choice == "same":
+        resources = [v for k, v in entry if k == "resource" and isinstance(v, O)]
+        if not resources:
+            return False
+        kinds = [v for k, v in resources[0] if k == "resourceType"]
+        ids = [v for k, v in resources[0] if k == "id"]
+        if not kinds or not ids or not isinstance(kinds[0], str) or not isinstance(ids[0], str):
+            return False
+        choice = f"https://fhir.example.org/{kinds[0]}/{ids[0]}"
+    if choice is None:
+        entry[:] = [(k, v) for k, v in entry if k != "fullUrl"]
+    else:
+        set_key_in(entry, "fullUrl", choice)
+    return True
+
+
+def m_role_word(rng, root):
+    text = root_value(root, "output")
+    if not isinstance(text, str):
+        return False
+    sentence = rng.choice(ROLE_SENTENCES)
+    if rng.random() < 0.5:
+        set_key_in(root, "output", sentence + ("" if sentence.endswith("\n") else "\n") + text)
+    else:
+        set_key_in(root, "output", text + " " + sentence)
+    return True
+
+
+def m_patient_content(rng, root):
+    if bundle_of(root) is None and not m_bundle_wrap(rng, root):
+        return False
+    entries = entries_of(bundle_of(root))
+    if entries is None:
+        return False
+    patients = [v for e in entries if isinstance(e, O) for k, v in e if k == "resource" and isinstance(v, O)
+                and any(kk == "resourceType" and vv == "Patient" for kk, vv in v)]
+    if not patients:
+        patient = O([("resourceType", "Patient"), ("id", "pat1")])
+        entries.insert(0, O([("resource", patient)]))
+        patients = [patient]
+    key, value = rng.choice(PATIENT_FIELD_VALUES)
+    set_key_in(rng.choice(patients), key, clone(value))
+    return True
+
+
+def m_patient_id(rng, root):
+    pid = rng.choice(PATIENT_ID_VALUES)
+    if rng.random() < 0.6:
+        set_key_in(root, "patient", pid)
+    for order in order_nodes(root):
+        if rng.random() < 0.8:
+            set_key_in(order, "subject", O([("reference", rng.choice([f"Patient/{pid}", f"urn:uuid:{pid}"]))]))
+    return True
+
+
 MUTATIONS = [
     ("drop_pair", m_drop_pair), ("drop_known_key", m_drop_known_key), ("duplicate_pair", m_duplicate_pair),
     ("add_key", m_add_key), ("retype_value", m_retype_value), ("string_edge", m_string_edge),
@@ -2580,6 +2952,9 @@ MUTATIONS = [
     ("medication_reference", m_medication_reference), ("nested_bundle", m_nested_bundle),
     ("event_resource", m_event_resource), ("subject_variant", m_subject_variant),
     ("bundle_fields", m_bundle_fields), ("route_coding", m_route_coding),
+    ("foreign_resource", m_foreign_resource), ("opaque_id", m_opaque_id), ("version_id", m_version_id),
+    ("reference_id", m_reference_id), ("medication_resolution", m_medication_resolution), ("full_url", m_full_url),
+    ("role_word", m_role_word), ("patient_id", m_patient_id), ("patient_content", m_patient_content),
 ]
 
 

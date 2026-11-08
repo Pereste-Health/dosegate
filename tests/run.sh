@@ -95,14 +95,14 @@ import json, sys
 names = [line.strip() for line in open("tests/words/slot_names.txt") if line.strip()]
 route = {"coding": [{"system": "http://snomed.info/sct", "code": "26643006", "display": "Oral route"}]}
 orders = []
-for n in names:
-    orders.append({"resourceType": "MedicationRequest", "id": "o" + n, "status": "active", "intent": "order",
+for i, n in enumerate(names):
+    orders.append({"resourceType": "MedicationRequest", "id": "o%d" % i, "status": "active", "intent": "order",
                    "medicationCodeableConcept": {"text": n}, "subject": {"reference": "Patient/pat1"},
                    "dosageInstruction": [{"timing": {"repeat": {"frequency": 1, "period": 1, "periodUnit": "d"}},
                                           "route": route,
                                           "doseAndRate": [{"doseQuantity": {"value": 81, "unit": "mg",
                                                            "system": "http://unitsofmeasure.org", "code": "mg"}}]}]})
-output = " ".join("Take {{drug:o%s}} {{dose:o%s}} {{route:o%s}} {{frequency:o%s}}." % (n, n, n, n) for n in names)
+output = " ".join("Take {{drug:o%d}} {{dose:o%d}} {{route:o%d}} {{frequency:o%d}}." % (i, i, i, i) for i in range(len(names)))
 text = " ".join("Take %s 81 mg by mouth once a day." % n for n in names)
 json.dump({"medicationRequests": orders, "output": output}, open(sys.argv[1], "w"))
 json.dump({"status": "ok", "text": text}, open(sys.argv[2], "w"))
