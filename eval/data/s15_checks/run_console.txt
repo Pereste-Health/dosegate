@@ -1,0 +1,97 @@
+sup_exact_two_default | dosegate render | {"detail":"another active order has the same or a related drug name, so the instructions could be confused","reason":"ambiguousDrug","status":"blocked"} | 
+sup_exact_two_omit | dosegate render --allow-omissions | {"detail":"another active order has the same or a related drug name, so the instructions could be confused","reason":"ambiguousDrug","status":"blocked"} | 
+sup_exact_m1only_default | dosegate render | {"detail":"MedicationRequest m2 is active but no dose, route, frequency, sig, or daily slot names it","reason":"omittedOrder","status":"blocked"} | 
+sup_exact_m1only_omit | dosegate render --allow-omissions | {"detail":"another active order has the same or a related drug name, so the instructions could be confused","reason":"ambiguousDrug","status":"blocked"} | 
+sup_exact_none_default | dosegate render | {"detail":"MedicationRequest m1 is active but no dose, route, frequency, sig, or daily slot names it","reason":"omittedOrder","status":"blocked"} | 
+sup_exact_none_omit | dosegate render --allow-omissions | {"status":"ok","text":"Here is your medicine list."} | 
+sup_exact_fallback | dosegate fallback | {"detail":"another active order has the same or a related drug name, so the instructions could be confused","reason":"ambiguousDrug","status":"blocked"} | 
+sup_urn_two_default | dosegate render | {"detail":"another active order has the same or a related drug name, so the instructions could be confused","reason":"ambiguousDrug","status":"blocked"} | 
+sup_urn_two_omit | dosegate render --allow-omissions | {"detail":"another active order has the same or a related drug name, so the instructions could be confused","reason":"ambiguousDrug","status":"blocked"} | 
+sup_urn_m1only_default | dosegate render | {"detail":"MedicationRequest m2 is active but no dose, route, frequency, sig, or daily slot names it","reason":"omittedOrder","status":"blocked"} | 
+sup_urn_m1only_omit | dosegate render --allow-omissions | {"detail":"another active order has the same or a related drug name, so the instructions could be confused","reason":"ambiguousDrug","status":"blocked"} | 
+sup_urn_none_default | dosegate render | {"detail":"MedicationRequest m1 is active but no dose, route, frequency, sig, or daily slot names it","reason":"omittedOrder","status":"blocked"} | 
+sup_urn_none_omit | dosegate render --allow-omissions | {"status":"ok","text":"Here is your medicine list."} | 
+sup_urn_fallback | dosegate fallback | {"detail":"another active order has the same or a related drug name, so the instructions could be confused","reason":"ambiguousDrug","status":"blocked"} | 
+sup_bare_two_default | dosegate render | {"detail":"another active order has the same or a related drug name, so the instructions could be confused","reason":"ambiguousDrug","status":"blocked"} | 
+sup_bare_two_omit | dosegate render --allow-omissions | {"detail":"another active order has the same or a related drug name, so the instructions could be confused","reason":"ambiguousDrug","status":"blocked"} | 
+sup_bare_m1only_default | dosegate render | {"detail":"MedicationRequest m2 is active but no dose, route, frequency, sig, or daily slot names it","reason":"omittedOrder","status":"blocked"} | 
+sup_bare_m1only_omit | dosegate render --allow-omissions | {"detail":"another active order has the same or a related drug name, so the instructions could be confused","reason":"ambiguousDrug","status":"blocked"} | 
+sup_bare_none_default | dosegate render | {"detail":"MedicationRequest m1 is active but no dose, route, frequency, sig, or daily slot names it","reason":"omittedOrder","status":"blocked"} | 
+sup_bare_none_omit | dosegate render --allow-omissions | {"status":"ok","text":"Here is your medicine list."} | 
+sup_bare_fallback | dosegate fallback | {"detail":"another active order has the same or a related drug name, so the instructions could be confused","reason":"ambiguousDrug","status":"blocked"} | 
+held_donotperform_m1only | dosegate render | {"status":"ok","text":"Take metformin 500 mg by mouth twice a day."} | 
+held_donotperform_m1only_omit | dosegate render --allow-omissions | {"status":"ok","text":"Take metformin 500 mg by mouth twice a day."} | 
+held_donotperform_fallback | dosegate fallback | {"status":"ok","text":"Take metformin 500 mg by mouth, twice a day."} | 
+held_onhold_m1only | dosegate render | {"status":"ok","text":"Take metformin 500 mg by mouth twice a day."} | 
+held_onhold_m1only_omit | dosegate render --allow-omissions | {"status":"ok","text":"Take metformin 500 mg by mouth twice a day."} | 
+held_onhold_fallback | dosegate fallback | {"status":"ok","text":"Take metformin 500 mg by mouth, twice a day."} | 
+held_stopped_m1only | dosegate render | {"status":"ok","text":"Take metformin 500 mg by mouth twice a day."} | 
+held_stopped_m1only_omit | dosegate render --allow-omissions | {"status":"ok","text":"Take metformin 500 mg by mouth twice a day."} | 
+held_stopped_fallback | dosegate fallback | {"status":"ok","text":"Take metformin 500 mg by mouth, twice a day."} | 
+held_donotperform_slot_on_held | dosegate render | {"detail":"MedicationRequest m1 is active but no dose, route, frequency, sig, or daily slot names it","reason":"omittedOrder","status":"blocked"} | 
+held_donotperform_default_none | dosegate render | {"detail":"MedicationRequest m1 is active but no dose, route, frequency, sig, or daily slot names it","reason":"omittedOrder","status":"blocked"} | 
+reported_boolean_m1only | dosegate render | {"detail":"MedicationRequest m2 is active but no dose, route, frequency, sig, or daily slot names it","reason":"omittedOrder","status":"blocked"} | 
+reported_boolean_m1only_omit | dosegate render --allow-omissions | {"status":"ok","text":"Take metformin 500 mg by mouth twice a day."} | 
+reported_boolean_none_omit | dosegate render --allow-omissions | {"status":"ok","text":"Here is your medicine list."} | 
+reported_boolean_fallback | dosegate fallback | {"detail":"MedicationRequest m2 has no usable sig","reason":"missingField","status":"blocked"} | 
+reported_reference_m1only | dosegate render | {"detail":"MedicationRequest m2 is active but no dose, route, frequency, sig, or daily slot names it","reason":"omittedOrder","status":"blocked"} | 
+reported_reference_m1only_omit | dosegate render --allow-omissions | {"status":"ok","text":"Take metformin 500 mg by mouth twice a day."} | 
+reported_reference_none_omit | dosegate render --allow-omissions | {"status":"ok","text":"Here is your medicine list."} | 
+reported_reference_fallback | dosegate fallback | {"detail":"MedicationRequest m2 has no usable sig","reason":"missingField","status":"blocked"} | 
+ft_q46_default | dosegate render | {"detail":"MedicationRequest m1 has no usable dose","reason":"missingField","status":"blocked"} | 
+ft_q46_ignore | dosegate render --ignore-free-text | {"status":"ok","text":"Take acetaminophen 325 mg by mouth four times a day."} | 
+ft_q46_ignore_rdaily | dosegate render --ignore-free-text | {"status":"ok","text":"Take acetaminophen 325 mg by mouth four times a day, which is 1300 mg a day."} | 
+ft_q46_nofreetext_ignore | dosegate render --ignore-free-text | {"status":"ok","text":"Take acetaminophen 325 mg by mouth four times a day."} | 
+ft_note_default | dosegate render | {"detail":"MedicationRequest m1 has no usable dose","reason":"missingField","status":"blocked"} | 
+ft_note_ignore | dosegate render --ignore-free-text | {"status":"ok","text":"Take acetaminophen 325 mg by mouth four times a day."} | 
+ft_raw12_ignore | dosegate render --ignore-free-text | {"detail":"MedicationRequest m1 has no usable dose","reason":"missingField","status":"blocked"} | 
+ft_struct12_ignore | dosegate render --ignore-free-text | {"status":"ok","text":"Take acetaminophen 500 mg by mouth twice a day."} | 
+ft_struct12_default | dosegate render | {"detail":"MedicationRequest m1 has no usable dose","reason":"missingField","status":"blocked"} | 
+weekly_render | dosegate render | {"status":"ok","text":"Take methotrexate 10 mg by mouth once a week."} | 
+weekly_render_daily | dosegate render | {"detail":"MedicationRequest m1 has no usable daily","reason":"missingField","status":"blocked"} | 
+weekly_fallback | dosegate fallback | {"status":"ok","text":"Take methotrexate 10 mg by mouth, once a week."} | 
+prn_fallback | dosegate fallback | {"status":"ok","text":"Take oxycodone hydrochloride 5 mg by mouth, once a day as needed."} | 
+prn_render | dosegate render | {"status":"ok","text":"Take oxycodone hydrochloride 5 mg by mouth once a day as needed."} | 
+prn_reason_fallback | dosegate fallback | {"detail":"MedicationRequest m1 has no usable sig","reason":"missingField","status":"blocked"} | 
+prn_apap_fallback | dosegate fallback | {"status":"ok","text":"Take acetaminophen 500 mg by mouth, four times a day as needed."} | 
+prn_apap_render | dosegate render | {"status":"ok","text":"Take acetaminophen 500 mg by mouth four times a day as needed."} | 
+insulin_regular_render | dosegate render | {"detail":"MedicationRequest m1 has no usable drug","reason":"missingField","status":"blocked"} | 
+insulin_regular_fallback | dosegate fallback | {"detail":"MedicationRequest m1 has no usable drug","reason":"missingField","status":"blocked"} | 
+insulin_basal_mealtime_render | dosegate render | {"detail":"another active order has the same or a related drug name, so the instructions could be confused","reason":"ambiguousDrug","status":"blocked"} | 
+insulin_basal_mealtime_fallback | dosegate fallback | {"detail":"another active order has the same or a related drug name, so the instructions could be confused","reason":"ambiguousDrug","status":"blocked"} | 
+metformin_render | dosegate render | {"status":"ok","text":"Take metformin 500 mg by mouth twice a day."} | 
+metformin_fallback | dosegate fallback | {"status":"ok","text":"Take metformin 500 mg by mouth, twice a day."} | 
+count_render | dosegate render | {"detail":"MedicationRequest m1 has no usable dose","reason":"missingField","status":"blocked"} | 
+supdiff_exact_two_default | dosegate render | {"detail":"MedicationRequest m1 has no usable dose","reason":"missingField","status":"blocked"} | 
+supdiff_exact_two_omit | dosegate render --allow-omissions | {"detail":"MedicationRequest m1 has no usable dose","reason":"missingField","status":"blocked"} | 
+supdiff_exact_m2only_omit | dosegate render --allow-omissions | {"detail":"MedicationRequest m2 has no usable dose","reason":"missingField","status":"blocked"} | 
+supdiff_exact_m2only_default | dosegate render | {"detail":"MedicationRequest m1 is active but no dose, route, frequency, sig, or daily slot names it","reason":"omittedOrder","status":"blocked"} | 
+supdiff_exact_fallback | dosegate fallback | {"detail":"MedicationRequest m1 has no usable sig","reason":"missingField","status":"blocked"} | 
+supdiff_urn_two_default | dosegate render | {"detail":"MedicationRequest m1 has no usable dose","reason":"missingField","status":"blocked"} | 
+supdiff_urn_two_omit | dosegate render --allow-omissions | {"detail":"MedicationRequest m1 has no usable dose","reason":"missingField","status":"blocked"} | 
+supdiff_urn_m2only_omit | dosegate render --allow-omissions | {"status":"ok","text":"Take lisinopril 10 mg by mouth twice a day."} | 
+supdiff_urn_m2only_default | dosegate render | {"detail":"MedicationRequest m1 is active but no dose, route, frequency, sig, or daily slot names it","reason":"omittedOrder","status":"blocked"} | 
+supdiff_urn_fallback | dosegate fallback | {"detail":"MedicationRequest m1 has no usable sig","reason":"missingField","status":"blocked"} | 
+held_example_render | dosegate render | {"status":"ok","text":"Here is your medicine list. Take metformin 500 mg by mouth twice a day."} | 
+held_example_render_omit | dosegate render --allow-omissions | {"status":"ok","text":"Here is your medicine list. Take metformin 500 mg by mouth twice a day."} | 
+held_example_fallback | dosegate fallback | {"status":"ok","text":"Take metformin 500 mg by mouth, twice a day."} | 
+reported_boolean_m2_omit | dosegate render --allow-omissions | {"detail":"MedicationRequest m2 has no usable dose","reason":"missingField","status":"blocked"} | 
+reported_boolean_none_default | dosegate render | {"detail":"MedicationRequest m1 is active but no dose, route, frequency, sig, or daily slot names it","reason":"omittedOrder","status":"blocked"} | 
+prn_reason_render | dosegate render | {"detail":"MedicationRequest m1 has no usable dose","reason":"missingField","status":"blocked"} | 
+prn_plain_fallback_again | dosegate fallback | {"status":"ok","text":"Take oxycodone hydrochloride 5 mg by mouth, once a day as needed."} | 
+insulin_humulin_render | dosegate render | {"status":"ok","text":"Take humulin r 20 units as a shot under the skin three times a day."} | 
+insulin_humulin_fallback | dosegate fallback | {"status":"ok","text":"Take humulin r 20 units as a shot under the skin, three times a day."} | 
+insulin_humulin_render_units_U | dosegate render | {"status":"ok","text":"Take humulin r 20 units as a shot under the skin three times a day."} | 
+supdiff_bare_m2only_omit | dosegate render --allow-omissions | {"status":"ok","text":"Take lisinopril 10 mg by mouth twice a day."} | 
+supdiff_urn_m2only_fallback | dosegate fallback | {"detail":"MedicationRequest m1 has no usable sig","reason":"missingField","status":"blocked"} | 
+held_dnp_m2_slot_omit | dosegate render --allow-omissions | {"detail":"MedicationRequest m2 is not active","reason":"inactiveOrder","status":"blocked"} | 
+held_dnp_m2_slot_default | dosegate render | {"detail":"MedicationRequest m1 is active but no dose, route, frequency, sig, or daily slot names it","reason":"omittedOrder","status":"blocked"} | 
+held_onhold_m2_slot_omit | dosegate render --allow-omissions | {"detail":"MedicationRequest m2 is not active","reason":"inactiveOrder","status":"blocked"} | 
+held_stopped_m2_slot_omit | dosegate render --allow-omissions | {"detail":"MedicationRequest m2 is not active","reason":"inactiveOrder","status":"blocked"} | 
+held_stopped_m2_slot_default | dosegate render | {"detail":"MedicationRequest m1 is active but no dose, route, frequency, sig, or daily slot names it","reason":"omittedOrder","status":"blocked"} | 
+ref_search_query_render | dosegate render | {"detail":"MedicationRequest m1 has no usable dose","reason":"missingField","status":"blocked"} | 
+ref_hash_render | dosegate render | {"detail":"MedicationRequest m1 has no usable dose","reason":"missingField","status":"blocked"} | 
+ref_urn_render | dosegate render | {"status":"ok","text":"Take metformin 500 mg by mouth twice a day."} | 
+ref_search_query_fallback | dosegate fallback | {"detail":"MedicationRequest m1 has no usable sig","reason":"missingField","status":"blocked"} | 
+ft_hydrocodone12_ignore | dosegate render --ignore-free-text | {"detail":"MedicationRequest m1 has no usable drug","reason":"missingField","status":"blocked"} | 
+ft_hydrocodone12_no_flag_name_only | dosegate render | {"status":"ok","text":"Take hydrocodone bitartrate 10 mg by mouth twice a day."} | 

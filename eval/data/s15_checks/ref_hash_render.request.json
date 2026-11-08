@@ -1,0 +1,50 @@
+{
+  "medicationRequests": [
+    {
+      "resourceType": "MedicationRequest",
+      "id": "m1",
+      "status": "active",
+      "intent": "order",
+      "medicationCodeableConcept": {
+        "text": "metformin"
+      },
+      "subject": {
+        "reference": "Patient/pat1"
+      },
+      "dosageInstruction": [
+        {
+          "timing": {
+            "repeat": {
+              "frequency": 2,
+              "period": 1,
+              "periodUnit": "d"
+            }
+          },
+          "doseAndRate": [
+            {
+              "doseQuantity": {
+                "value": 500,
+                "unit": "mg",
+                "system": "http://unitsofmeasure.org",
+                "code": "mg"
+              }
+            }
+          ],
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "26643006",
+                "display": "Oral route"
+              }
+            ]
+          }
+        }
+      ],
+      "encounter": {
+        "reference": "#enc1"
+      }
+    }
+  ],
+  "output": "Take {{drug:m1}} {{dose:m1}} {{route:m1}} {{frequency:m1}}."
+}

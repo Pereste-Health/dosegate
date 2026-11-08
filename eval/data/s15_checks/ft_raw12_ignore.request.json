@@ -1,0 +1,23 @@
+{
+  "medicationRequests": [
+    {
+      "resourceType": "MedicationRequest",
+      "id": "m1",
+      "status": "active",
+      "intent": "order",
+      "medicationCodeableConcept": {
+        "text": "acetaminophen"
+      },
+      "subject": {
+        "reference": "Patient/pat1"
+      },
+      "dosageInstruction": [
+        {
+          "text": "Every twelve hours as required (qualifier value)",
+          "asNeededBoolean": false
+        }
+      ]
+    }
+  ],
+  "output": "Take {{drug:m1}} {{dose:m1}} {{route:m1}} {{frequency:m1}}."
+}

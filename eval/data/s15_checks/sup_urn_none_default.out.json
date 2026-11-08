@@ -1,0 +1,1 @@
+{"detail":"MedicationRequest m1 is active but no dose, route, frequency, sig, or daily slot names it","reason":"omittedOrder","status":"blocked"}

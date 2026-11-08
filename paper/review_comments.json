@@ -1,87 +1,39 @@
 [
  {
-  "anchor": "Running title: Verified layer for medication instructions",
-  "comment": "Round 2 of the review loop (2026-11-07). Your 20 comments from the copy you marked up on November 7 are answered in comments that start with Reply. Decisions that still need you start with Still open. The Markdown master is still paper/dosegate_jamia.md; this file is a new copy named round2, and your marked-up copy is saved unchanged in the repository's scratch folder. Reply inside any comment and send the file back, as before."
+  "anchor": "Running title: A verified layer for LLM medication instructions",
+  "comment": "Round 3 of the review loop (2026-11-08). Since round 2: round h3 broke version 2.1 (35 misstatements in 91 releases, all through the record), you chose to fix and retest, version 2.2 closed the text channels, round h4 found 10 more through identifiers and skipped resources, version 2.3 closed those, and round h5, the final held-out round, found 1 misstatement in 95 releases. Claude Opus 5.5 and Fable 5.1 are in Table 4. Read Table 2, Table 3, the Results paragraphs on the adversarial rounds, and the second Discussion paragraph first; they carry the new story. Your two round-2 comments are answered below. Reply inside any comment as before. Reply (title): I set the running title to this one (48 characters); alternatives are \"Proof-checked medication instructions\" and \"Keeping LLM dose statements faithful to orders\". If you meant the main title, three options: \"A formally verified output layer keeps language model medication instructions faithful to the orders\"; \"A machine-checked guarantee that language model medication instructions match the orders\"; \"Proving that a language model's medication instructions match the orders\". Pick one or write your own and I will apply it."
  },
  {
-  "anchor": "Keywords: large language models; medication errors; formal verification; patient education; FHIR",
-  "comment": "Still open: JAMIA allows up to five keywords; change any? The title page also needs your credential as you want it printed, the affiliation line, and a decision on whether the clinical co-author placeholder stays until your mentor agrees."
+  "anchor": "Keywords: Large Language Models; Medication Errors; Formal Verification; Patient Education as Topic; Health Information Interoperability",
+  "comment": "Reply (keywords): I could not read JAMIA's own keyword traffic (the site blocks my browser), so I aligned the five with the Medical Subject Headings (MeSH) that indexers and searchers use: Large Language Models, Medication Errors, Patient Education as Topic, and Health Information Interoperability are MeSH descriptors (the last covers FHIR); formal verification is not a MeSH term (the nearest is Software Validation) but it is the phrase formal-methods readers search, so I kept it. Say if you prefer Software Validation or FHIR in its place. Still open: your credential and affiliation lines on the title page, and whether the clinical co-author placeholder stays."
  },
  {
-  "anchor": "3,960 on 2026-11-07",
-  "comment": "Still open: the official JAMIA instructions page refuses my browser (HTTP 403 again today), so the 4,000-word and 250-word limits, the four-table limit, the preprint policy, and whether a blinded copy or double spacing is required all rest on secondary guides. One look by you at https://academic.oup.com/jamia/pages/General_Instructions settles them."
+  "anchor": "3,962 on 2026-11-08",
+  "comment": "Still open: the official JAMIA instructions page refuses my browser, so the 4,000-word and 250-word limits, the four-table limit, the preprint policy, and whether a blinded copy or double spacing is required still rest on secondary guides. One look by you at https://academic.oup.com/jamia/pages/General_Instructions settles them. The main text is at 3,962 words before your human-label sentences go in, so those will need a cut elsewhere."
  },
  {
-  "anchor": "To test whether a layer verified in Lean 4",
-  "comment": "Reply (proved or proven): both are accepted past participles. Formal-methods writing says proved (proved correct), and proven is the usual adjective (a proven method). Where the word stood as an adjective, as in a proved layer, I changed it to verified, which the title already uses. Proved to meet, what is proved, and the Table 1 status Proved stay."
+  "anchor": "Round h2 (138 requests) tested version 2, h3 (156) version 2.1, h4 (145) version 2.2, and h5 (144) version 2.3",
+  "comment": "The four rounds in one sentence. Version 2.1 was the release you reviewed in rounds 1 and 2; versions 2.2 and 2.3 were built on November 7 and 8 after rounds h3 and h4, with your approval at each step; round h5 tested 2.3 and nothing changed after it, which is why only h5 counts as a held-out test of the current version."
  },
  {
-  "anchor": "On 138 adversarial requests, version 2 released 9 misstatements in 86 texts",
-  "comment": "Reply (remove version 1): version 1 and round h1 are out of the Abstract, Methods, Results, Discussion, Table 2, and Conclusion, as you asked. Their numbers sit in Supplementary Section S5 and Supplementary Table S5a, and the Methods keep one pointer to that section."
+  "anchor": "Table 3. The cause of every misstatement the layer released in rounds h2 to h5 and the change in the next version.",
+  "comment": "New table. It replaces the old list of nine round h2 requests (now Supplementary Table S17a) and is the single place a reviewer can see what each round found and what changed in response. Every count traces to the cause files in eval/data/heldout3, heldout4, and heldout5."
  },
  {
-  "anchor": "After rewrites it released 98.3% of slot outputs from Qwen3.5-4B, Claude Haiku 5.5, and Claude Sonnet 5.5",
-  "comment": "Reply (confusing numbers): each number now sits next to its model, here, in Results, and in the Conclusion. The hosted models stay in the headline as you asked."
+  "anchor": "The misstatement, which both readers called a judgment call, was a warfarin order",
+  "comment": "Decision for you: both blind readers labeled this a misstatement but called it a judgment call, because the hold lives in the host part of a web address that no reader or clinician would read as an instruction. I report it as a misstatement, which is the conservative reading. If you would rather state it as a labeled misstatement that the layer's design excludes by construction (addresses are not read), say so and I will reword the sentence and Table 3 row without changing the count."
  },
  {
-  "anchor": "Without the layer, Qwen3.5-4B misstated an order in at least 16 of 120 outputs",
-  "comment": "Reply: same change, each count named with its model."
+  "anchor": "The framing vocabulary lets the model address or attribute the orders to a doctor, nurse, or pharmacist",
+  "comment": "This is the sentence that records your decision to keep doctor, nurse, and pharmacist in the vocabulary after the removal blocked 1,323 stored outputs that copied the prompt's own example. Round h5 produced five such provenance or framing claims, none touching a dose; they are counted as unsupported claims, not misstatements."
  },
  {
-  "anchor": "clinician validation and a held-out round remain.",
-  "comment": "Reply (what these entail): Clinician validation means a pharmacist or clinician, your mentor or the clinical co-author, checks the four label-dose thresholds, the route and unit code tables, the 16 same-ingredient pairs, and the questionable faithful lines listed in Supplementary Section S10, and relabels a blind sample of released texts so we can report human agreement with the model labels. Your own labeling covers the blind sample, but a reviewer will still want a clinician's name on the dosing checks. A held-out round means a new adversarial round (h3) written by fresh instances against version 2.1 frozen at the release tag, with a file manifest, labeled and reported as found, with no code change until the labels are in. Both fit before submission; h3 is about a day of work. I have proposed h3 and the labeling tool as separate tasks that start on your go."
+  "anchor": "TODO human labels: the author's blind labels of a 193-item sample",
+  "comment": "Waiting on your labels. When you finish in the local page, press Export and save the file as eval/data/human_labels/parker_labels.json, then tell me; python3 eval/human_agreement.py prints the agreement figures and I write this sentence and the clinical validation paragraph from them. If you label in the artifact instead, I can read the labels back myself."
  },
  {
-  "anchor": "approved 14.0% to 60.5% of prohibited doses,^3^",
-  "comment": "Reply (arXiv): DoseBench is on arXiv as 2606.04262, posted June 2, 2026, five authors. I re-read the record today; its abstract carries the 230 questions and the 44.8%, 62.2%, 14.0%, and 60.5% figures we cite. If you meant our own paper, it is not on arXiv yet; the submission text is in paper/arxiv_submission.md for you to post, and JAMIA's preprint policy is one of the items to confirm on the instructions page."
- },
- {
-  "anchor": "Formal verification has been used in medicine before, to prove properties of the software in infusion pumps",
-  "comment": "Reply (infusion pumps): reworded to say what was verified and why it is the nearest precedent. Reference 7 is a formally developed infusion pump controller; reference 5 is Thimbleby's work on the number-entry keypads of medical devices, where a misread decimal point changes a dose tenfold."
- },
- {
-  "anchor": "has not, to our knowledge, been examined",
-  "comment": "Reply (we as a sole author): we and our are conventional and accepted for a single author in JAMIA, and they become literally true if the clinical co-author joins. I left them and changed the three phrases that said the authors' judgment to the singular, which the Methods already used. If you publish alone and prefer no plural, say so and I will recast those sentences."
- },
- {
-  "anchor": "with machine-checked proofs that each drug name, dose, route, frequency, and daily total in its released text equals the matching field of the active order it names",
-  "comment": "Reply (written specification; proved or proven; what stops the model): the sentence now says what the specification is, and the next two sentences say why the model cannot state an amount or a drug name: the layer rejects any output containing a digit, a number, unit, route, or frequency word, or any word outside the 67-word vocabulary and the four sentence shapes, so an amount reaches the patient only through a slot the layer fills from the order. Proved here is the participle (proved to have these properties), which is standard. Figure 1, new, with its legend after the references, shows the same flow."
- },
- {
-  "anchor": "render, the function that turns the model's text and the orders into released text or a block reason",
-  "comment": "Reply (what render means): render is the layer's main function. It takes the model's text and the patient's orders and returns either the text to release or the reason for blocking. It is now defined here and in the Methods paragraph on the specification."
- },
- {
-  "anchor": "no proof is a placeholder (sorry) or rests on running compiled code (native_decide)",
-  "comment": "Reply (sorry and native_decide): jargon, now spelled out. In Lean, sorry is a placeholder that lets a file compile with a proof missing, and native_decide proves a statement by running compiled code instead of checking it in the kernel. Neither appears in the development, and the continuous integration check enforces that on every push."
- },
- {
-  "anchor": "270 regression tests, each a fixed request with an expected reply; on 20,000 mutated requests of 53 kinds the reader agrees with a separate Python program that follows the same written rules",
-  "comment": "Reply (explain again): the reader is the code that turns the patient's FHIR orders into the values the proofs reason about. It is not proved, so it is tested two ways: 270 regression tests, each a fixed request with a known expected reply, and a fuzz test that mutates requests 20,000 times and checks that the Lean reader and a separate Python program written from the same rules give the same answer. That shows the reader follows its rules, not that the rules are right. The Methods paragraph before Table 1 now says this in those words."
- },
- {
-  "anchor": "the development rounds are in Supplementary Section S5",
-  "comment": "Reply (publish the working system): done. Version 1 and round h1 no longer appear in the main text; this pointer is all that remains, and Supplementary Section S5 and Table S5a hold the development rounds, the held-out round h1, and the lesson that correct proofs did not rescue a loose specification."
- },
- {
-  "anchor": "every label was assigned by an instance of Claude, and no clinician labeled any output",
-  "comment": "Reply (you labeling): yes. I have proposed a labeling task for you to start. It will give you a schema (faithful; misstates an order, with the error type; unsupported claim; plus the same-ingredient flag), a blind queue that shows each released text beside its active orders with the model labels hidden, and an export that computes your agreement with the model labels for this paragraph and for the clinical validation placeholder in Limitations. The sample: the 9 misstatements, 4 unsupported claims, 30 faithful texts, and 16 same-ingredient pairs from round h2, the 60 sampled open-model releases, and the 74 Claude free-daily flags, about 170 items."
- },
- {
-  "anchor": "Two hosted models from Anthropic, Claude Haiku 5.5 and Claude Sonnet 5.5, ran through the Messages API",
-  "comment": "Reply (test up to Fable): Claude Opus 5.5 and Claude Fable 5.1 can run through the same harness on the 120 cases and four conditions. Haiku and Sonnet together cost about $1.73, so the two larger models should cost roughly $10 to $40 together. Table 4 would then carry seven model columns and may need to turn sideways. I have proposed this as a task; it starts on your go. The settings to confirm first: low effort, a 2,000-token limit including thinking, no temperature sent, no sampled condition, and no labeler reading their outputs."
- },
- {
-  "anchor": "Table 2. Round h2 requests released by each filter and the labels of the released texts.",
-  "comment": "Reply (less confusing; define the headers): Table 2 now holds round h2 only, and the caption defines each column (request, released, misstates an order, unsupported claim, one ingredient under two names, faithful). The F05 relabel and the protocol count moved with the version 1 rows to Supplementary Section S5."
- },
- {
-  "anchor": "Supplementary Section S17 gives the repository identifier of each row.",
-  "comment": "Reply (underscores in a table): the request column now carries short descriptions, numbered, and the repository identifiers are listed here in the caption so a reader can find the files. Supplementary Table S5b and Section S6 keep identifiers because they are lookup lists."
- },
- {
-  "anchor": "Figure 1. How the layer handles one model output.",
-  "comment": "New: Figure 1 is drafted (paper/figures/figure1_layer.pdf, .png, and .tiff) and cited in Background. A second figure, misstatements by round, was drafted but rests on the version 1 rows, so I left it out; say if you want it as a supplementary figure."
+  "anchor": "Supplementary Table S18 adds 95% Wilson intervals",
+  "comment": "Table 4 lost its confidence intervals to fit seven models on a page; they are all in Supplementary Table S18, generated from eval/data/models_summary.json."
  },
  {
   "anchor": "their levothyroxine orders print 0.075 mg where US tablets are labeled in micrograms",
@@ -89,10 +41,14 @@
  },
  {
   "anchor": "The author used Claude (Anthropic) to draft Lean definitions",
-  "comment": "Still open: this statement needs checking against OUP's current policy on AI-assisted writing and code, and you decide whether to name the Claude model versions used. Two of the evaluated models are Claude models, so the statement says the harness and scoring are identical for every model."
+  "comment": "Still open: this statement needs checking against OUP's current policy on AI-assisted writing and code, and you decide whether to name the Claude model versions used. Four of the evaluated models are now Claude models, so the statement says the harness and scoring are identical for every model."
  },
  {
   "anchor": "lisinopril in 48, and simvastatin in 24",
   "comment": "Still open for the pharmacist: the lisinopril comparator is the top of the usual range (40 mg), not a labeled maximum. The four thresholds and the DailyMed quotations in eval/maxima.py need a pharmacist's confirmation before this section is final."
+ },
+ {
+  "anchor": "under the Apache 2.0 license, at release v2.3.0.",
+  "comment": "The repository commits for rounds h3 to h5 and versions 2.2 and 2.3 are on your Mac and not yet pushed, and the v2.3.0 tag does not exist yet. Pushing them and creating the tag makes the final version public; say the word and I do both. The arXiv manuscript (paper/paper.md) still describes version 2.1 and needs the same revision before you post it."
  }
 ]

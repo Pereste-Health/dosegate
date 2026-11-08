@@ -1,0 +1,92 @@
+{
+  "medicationRequests": [
+    {
+      "resourceType": "MedicationRequest",
+      "id": "m1",
+      "status": "active",
+      "intent": "order",
+      "medicationCodeableConcept": {
+        "text": "lisinopril"
+      },
+      "subject": {
+        "reference": "Patient/pat1"
+      },
+      "dosageInstruction": [
+        {
+          "timing": {
+            "repeat": {
+              "frequency": 1,
+              "period": 1,
+              "periodUnit": "d"
+            }
+          },
+          "doseAndRate": [
+            {
+              "doseQuantity": {
+                "value": 20,
+                "unit": "mg",
+                "system": "http://unitsofmeasure.org",
+                "code": "mg"
+              }
+            }
+          ],
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "26643006",
+                "display": "Oral route"
+              }
+            ]
+          }
+        }
+      ],
+      "priorPrescription": {
+        "reference": "urn:uuid:m2"
+      }
+    },
+    {
+      "resourceType": "MedicationRequest",
+      "id": "m2",
+      "status": "active",
+      "intent": "order",
+      "medicationCodeableConcept": {
+        "text": "lisinopril"
+      },
+      "subject": {
+        "reference": "Patient/pat1"
+      },
+      "dosageInstruction": [
+        {
+          "timing": {
+            "repeat": {
+              "frequency": 2,
+              "period": 1,
+              "periodUnit": "d"
+            }
+          },
+          "doseAndRate": [
+            {
+              "doseQuantity": {
+                "value": 10,
+                "unit": "mg",
+                "system": "http://unitsofmeasure.org",
+                "code": "mg"
+              }
+            }
+          ],
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "26643006",
+                "display": "Oral route"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "output": "Here is your medicine list."
+}
