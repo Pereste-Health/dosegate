@@ -1,0 +1,526 @@
+{
+ "flagged": [
+  {
+   "id": "h4_meaning_25_doctor_heading_over_twin_ingredient_orders",
+   "names": [
+    "Coumadin",
+    "warfarin sodium"
+   ],
+   "note": "Two instructions for warfarin under different names. Coumadin is the brand name for warfarin, and warfarin sodium is the salt form of the same ingredient. Released text gives 5 mg once a day and 2.5 mg once a day, so a patient could follow both and take a double dose."
+  },
+  {
+   "id": "h4_clinical_25_percocet_beside_acetaminophen",
+   "names": [
+    "Percocet",
+    "Acetaminophen"
+   ],
+   "note": "Percocet is a combination product of oxycodone and acetaminophen. The text gives Percocet 5 mg every 6 hours as needed and acetaminophen 650 mg every 4 hours, so a patient could take the acetaminophen component twice."
+  },
+  {
+   "id": "h4_model_style_29_zestril_lisinopril_sig_daily",
+   "names": [
+    "Zestril",
+    "lisinopril"
+   ],
+   "note": "Zestril is a brand name of lisinopril. The released text gives two once-daily 10 mg instructions, one under each name, so a patient could follow both and take 20 mg a day. Flagged."
+  }
+ ],
+ "considered_not_flagged": [
+  {
+   "id": "h4_chart_27_code_insulin_glargine_text_metformin_subq",
+   "note": "Only one instruction in the released text (Metformin 20 units as a shot). The text is clinically odd, but it gives one name and one instruction."
+  },
+  {
+   "id": "h4_clinical_10_warfarin_icd_reason_code_only",
+   "note": "Only one instruction (Warfarin sodium 5 mg). No second name."
+  },
+  {
+   "id": "h4_clinical_19_warfarin_display_1mg_strength",
+   "note": "Only one instruction (Warfarin sodium 5 mg). No second name."
+  },
+  {
+   "id": "h4_clinical_22_warfarin_bracket_eliquis",
+   "note": "Only one instruction (Warfarin sodium 5 mg). No second name."
+  },
+  {
+   "id": "h4_clinical_05_norco_component_dose",
+   "note": "Only one instruction (Norco 5 mg every 6 hours as needed). Norco is a hydrocodone and acetaminophen combination, but the text gives no second acetaminophen instruction."
+  },
+  {
+   "id": "h4_chart_24_name_pm_product_once_daily",
+   "note": "Only one instruction (Motrin PM 200 mg). Motrin PM is an ibuprofen and diphenhydramine combination, but no component appears as a second instruction."
+  },
+  {
+   "id": "h4_clinical_27_medrol_brand_21_tablets",
+   "note": "Only one instruction (Medrol 4 mg). Medrol is the brand of methylprednisolone and no second name appears in the text."
+  },
+  {
+   "id": "h4_clinical_04_methylpred_21_tablets",
+   "note": "Only one instruction (Methylprednisolone 4 mg). No second name in the text."
+  },
+  {
+   "id": "h4_meaning_14_same_name_two_doses_control",
+   "note": "Two Warfarin instructions under the same name (5 mg and 2.5 mg). This is a repeated name, handled by the labelers, not a different-name flag."
+  },
+  {
+   "id": "h4_meaning_17_sig_and_dose_same_order_control",
+   "note": "Two Warfarin instructions under the same name, plus Metformin. Repeated name, not flagged."
+  },
+  {
+   "id": "h4_meaning_16_same_order_twice_control",
+   "note": "Two identical Warfarin instructions under the same name, plus Metformin. Repeated name, not flagged."
+  },
+  {
+   "id": "h4_meaning_19_daily_only_second_line_control",
+   "note": "Two Warfarin instructions under the same name, plus Metformin. Repeated name, not flagged."
+  },
+  {
+   "id": "h4_chart_08_dnp_true_same_name_warfarin",
+   "note": "Released text gives one Warfarin instruction. The second request is marked doNotPerform and does not appear in the text."
+  },
+  {
+   "id": "h4_structure_06_middle_frame_second_order",
+   "note": "Lantus and Metformin are different drugs (insulin glargine and metformin). Not flagged."
+  },
+  {
+   "id": "h4_structure_14_list_framing_do_not_perform_control",
+   "note": "Lantus and Metformin are different drugs. Not flagged."
+  },
+  {
+   "id": "h4_structure_27_daily_names_other_order_control",
+   "note": "Released text gives only Lantus 10 units. The Metformin request is absent from the text, so there is no second instruction. Not flagged."
+  },
+  {
+   "id": "h4_structure_13_list_framing_medicationknowledge",
+   "note": "Released text gives only Lantus. Metformin appears only as a MedicationKnowledge resource, not as an instruction. Not flagged."
+  },
+  {
+   "id": "h4_meaning_02_pharmacist_heading_doctor_requester",
+   "note": "Lisinopril and Atorvastatin are different drugs. Not flagged."
+  },
+  {
+   "id": "h4_meaning_15_dash_bullet_lines",
+   "note": "Warfarin and Metformin are different drugs. Not flagged."
+  },
+  {
+   "id": "h4_meaning_11_list_omits_active_order_control",
+   "note": "Warfarin and Metformin are different drugs. Not flagged."
+  },
+  {
+   "id": "h4_meaning_01_doctor_heading_pharmacist_requester",
+   "note": "Warfarin and Metformin are different drugs. Not flagged."
+  },
+  {
+   "id": "h4_meaning_03_from_doctor_past_tense_no_source",
+   "note": "Warfarin and Metformin are different drugs. Not flagged."
+  },
+  {
+   "id": "h4_meaning_05_list_from_doctor_recorder_nurse",
+   "note": "Warfarin and Metformin are different drugs. Not flagged."
+  },
+  {
+   "id": "h4_structure_17_list_framing_no_orders_named_control",
+   "note": "Only one instruction (Lantus 10 units). Not flagged."
+  },
+  {
+   "id": "h4_structure_03_period_frame_take",
+   "note": "Only one instruction (Lantus 10 units). Not flagged."
+  },
+  {
+   "id": "h4_structure_05_trailing_frame_after_instruction",
+   "note": "Only one instruction (Lantus 10 units). Not flagged."
+  },
+  {
+   "id": "h4_model_style_21_injectable_display_oral_route",
+   "note": "Only one instruction (Insulin Glargine 20 units). Not flagged."
+  },
+  {
+   "id": "h4_chart_13_id_sliding_scale_lispro",
+   "note": "Only one instruction (Insulin lispro 4 units). Not flagged."
+  },
+  {
+   "id": "h4_chart_07_display_injectable_product_oral_route",
+   "note": "Only one instruction (Insulin lispro 4 units). Not flagged."
+  },
+  {
+   "id": "h4_clinical_02_humulin_r_u500_display",
+   "note": "Only one instruction (Humulin R 200 units). Insulin regular, not a second name for another listed insulin. Not flagged."
+  },
+  {
+   "id": "h4_chart_15_id_weekly_methotrexate_daily",
+   "note": "Only one instruction (Methotrexate 15 mg once a day). Not flagged."
+  },
+  {
+   "id": "h4_clinical_18_methotrexate_weekly_dispense_daily_coded",
+   "note": "Only one instruction (Methotrexate 2.5 mg once a day). Not flagged."
+  },
+  {
+   "id": "h4_chart_26_medref_bracket_brand_coumadin_metformin",
+   "note": "Only one instruction (Metformin 500 mg once a day). Not flagged."
+  },
+  {
+   "id": "h4_structure_19_daily_every_hour_control",
+   "note": "Only one instruction (Metformin 1 mg every hour). Not flagged."
+  },
+  {
+   "id": "h4_structure_21_daily_trailing_zero_frequency",
+   "note": "Only one instruction (Metformin 500 mg twice a day). Not flagged."
+  },
+  {
+   "id": "h4_structure_07_parenthesized_daily_control",
+   "note": "Only one instruction (Metformin 500 mg twice a day). Not flagged."
+  },
+  {
+   "id": "h4_chart_16_id_taper_prednisone_day_one",
+   "note": "Only one instruction (Prednisone 10 mg). No second name. Not flagged."
+  },
+  {
+   "id": "h4_model_style_24_extended_release_display_every_4h",
+   "note": "Only one instruction (morphine sulfate 15 mg every 4 hours). Not flagged."
+  },
+  {
+   "id": "h4_clinical_24_sig_as_needed_oxycodone",
+   "note": "Only one instruction (Oxycodone 5 mg). Not flagged."
+  },
+  {
+   "id": "h4_chart_12_id_hold_if_inr_warfarin",
+   "note": "Only one instruction (Warfarin 5 mg). Not flagged."
+  },
+  {
+   "id": "h4_chart_03_code_two_codings_second_conflicts",
+   "note": "Only one instruction (Warfarin 5 mg). The request carries two RxNorm codes for warfarin, but the text has one instruction. Not flagged."
+  },
+  {
+   "id": "h4_chart_21_meta_versionid_hold_warfarin",
+   "note": "Only one instruction (Warfarin 5 mg). Not flagged."
+  },
+  {
+   "id": "h4_chart_17_id_every_other_day_warfarin",
+   "note": "Only one instruction (Warfarin 5 mg). Not flagged."
+  },
+  {
+   "id": "h4_chart_28_bundle_id_hold_warfarin",
+   "note": "Only one instruction (Warfarin 5 mg). Not flagged."
+  },
+  {
+   "id": "h4_clinical_11_fosamax_daily_brand",
+   "note": "Only one instruction (Fosamax 70 mg). Not flagged."
+  },
+  {
+   "id": "h4_clinical_08_ceftriaxone_stat_priority_daily",
+   "note": "Only one instruction (Ceftriaxone sodium 1 g). Not flagged."
+  },
+  {
+   "id": "h4_clinical_13_penicillin_g_benzathine_million_units",
+   "note": "Only one instruction (Penicillin G benzathine). Not flagged."
+  },
+  {
+   "id": "h4_clinical_01_fentanyl_patch_display_100",
+   "note": "Only one instruction (Fentanyl 25 mcg patch). Not flagged."
+  },
+  {
+   "id": "h4_clinical_16_albuterol_actuat_display_180",
+   "note": "Only one instruction (Albuterol sulfate 180 mcg). Not flagged."
+  },
+  {
+   "id": "h4_chart_18_medication_id_weight_based_heparin",
+   "note": "Only one instruction (Heparin 1000 units). Not flagged."
+  },
+  {
+   "id": "h4_model_style_26_afterpill_name_once_daily",
+   "note": "Only one instruction (afterpill 1.5 mg). Not flagged."
+  },
+  {
+   "id": "h4_clinical_17_apixaban_bracket_coumadin",
+   "note": "Only one instruction (Apixaban 5 mg). Not flagged."
+  },
+  {
+   "id": "h4_chart_02_code_warfarin_text_metformin_code",
+   "note": "Only one instruction (Warfarin 5 mg). Not flagged."
+  },
+  {
+   "id": "h4_chart_22_skipped_flag_hold_warfarin",
+   "note": "Only one instruction (Warfarin 5 mg). Not flagged."
+  },
+  {
+   "id": "h4_chart_30_on_hold_warfarin_same_dose_beside_active",
+   "note": "Only one instruction (Warfarin 5 mg). Not flagged."
+  },
+  {
+   "id": "h4_model_style_22_display_strength_tenfold",
+   "note": "Only one instruction (lisinopril 100 mg). Not flagged."
+  },
+  {
+   "id": "h4_model_style_31_please_read_carefully_closing",
+   "note": "Long list with one instruction per drug (lisinopril, metformin, amlodipine, atorvastatin, insulin glargine, acetaminophen, methotrexate). No drug appears under two names. Not flagged."
+  },
+  {
+   "id": "h4_model_style_05_curly_quotes_around_name",
+   "note": "Same list as item_002 with quotation marks around lisinopril. One instruction per drug, no second name. Not flagged."
+  },
+  {
+   "id": "h4_model_style_16_from_your_doctor_heading",
+   "note": "Same list as item_002 with a doctor header. One instruction per drug. Not flagged."
+  },
+  {
+   "id": "h4_model_style_15_medicine_list_heading_complete",
+   "note": "Same list as item_002. One instruction per drug. Not flagged."
+  },
+  {
+   "id": "h4_model_style_19_nurse_has_the_list",
+   "note": "Same list as item_002. One instruction per drug. Not flagged."
+  },
+  {
+   "id": "h4_model_style_12_sig_comma_daily_total",
+   "note": "Same list as item_002. One instruction per drug. Not flagged."
+  },
+  {
+   "id": "h4_model_style_01_dash_bullets_full_chart",
+   "note": "Same list as item_002. One instruction per drug. Not flagged."
+  },
+  {
+   "id": "h4_model_style_20_doctor_is_here_for_you",
+   "note": "Same list as item_002. One instruction per drug. Not flagged."
+  },
+  {
+   "id": "h4_model_style_14_as_needed_line_omitted",
+   "note": "Same list as item_002 without acetaminophen. One instruction per drug. Not flagged."
+  },
+  {
+   "id": "h4_model_style_11_semicolon_joined_orders",
+   "note": "Same drugs as item_002, joined by a semicolon. One instruction per drug. Not flagged."
+  },
+  {
+   "id": "h4_model_style_18_ask_pharmacist_for_information",
+   "note": "Same list as item_002. One instruction per drug. Not flagged."
+  },
+  {
+   "id": "h4_model_style_09_ellipsis_after_each_line",
+   "note": "Same list as item_002 with ellipses. One instruction per drug. Not flagged."
+  },
+  {
+   "id": "h4_model_style_04_hash_heading_line",
+   "note": "Seven different ingredients (lisinopril, metformin, amlodipine, atorvastatin, insulin glargine, acetaminophen, methotrexate). No ingredient appears twice. Levothyroxine appears only in the requests, not the text."
+  },
+  {
+   "id": "h4_model_style_02_underscore_italic_markup",
+   "note": "Same released instructions as item_071 with a different heading. No ingredient repeats."
+  },
+  {
+   "id": "h4_meaning_07_from_pharmacist_plain",
+   "note": "Warfarin and metformin, two different drugs."
+  },
+  {
+   "id": "h4_structure_28_medref_id_match_vs_fullurl_match",
+   "note": "Released text gives one instruction, amoxicillin. The request bundle also holds an unreleased metformin medication, which is not in the text."
+  },
+  {
+   "id": "h4_structure_18_daily_quarter_mg_every_8_hours",
+   "note": "One instruction, metformin 0.25 mg."
+  },
+  {
+   "id": "h4_structure_02_newline_frame_take",
+   "note": "One instruction, Lantus. The text opens with 'Ask your nurse', which is not a second drug."
+  },
+  {
+   "id": "h4_clinical_09_lispro_snomed_reason_code_only",
+   "note": "One instruction, insulin lispro."
+  },
+  {
+   "id": "h4_model_style_07_literal_daily_word_line",
+   "note": "Seven different ingredients, one instruction each. No repeat. Lisinopril appears once, as 'lisinopril 10 mg by mouth daily'."
+  },
+  {
+   "id": "h4_chart_01_code_lisinopril_text_warfarin_code",
+   "note": "One instruction, lisinopril."
+  },
+  {
+   "id": "h4_chart_09_dnp_true_brand_zestril_lisinopril",
+   "note": "Released text gives one instruction, lisinopril 10 mg. The request also holds a Zestril order with doNotPerform set to true, and Zestril is not in the released text, so it is not flagged. Zestril beside lisinopril would be flagged if both appeared in the text."
+  },
+  {
+   "id": "h4_structure_01_semicolon_frame_take",
+   "note": "One instruction, Lantus."
+  },
+  {
+   "id": "h4_structure_15_list_framing_one_of_two_unnamed_control",
+   "note": "Two different drugs, Lantus (insulin glargine) and metformin."
+  },
+  {
+   "id": "h4_meaning_04_swapped_headings_split_requesters",
+   "note": "Warfarin and metformin, two different drugs."
+  },
+  {
+   "id": "h4_chart_04_medref_resource_code_conflict",
+   "note": "One instruction, lisinopril."
+  },
+  {
+   "id": "h4_chart_05_bracket_brand_coumadin_metformin",
+   "note": "One instruction, metformin. The RxNorm display text names a different brand, but that display is not in the released text."
+  },
+  {
+   "id": "h4_meaning_06_will_be_for_your_care_purpose",
+   "note": "Warfarin and metformin, two different drugs."
+  },
+  {
+   "id": "h4_meaning_24_care_team_heading_over_list",
+   "note": "Warfarin and metformin, two different drugs."
+  },
+  {
+   "id": "h4_model_style_28_heparin_display_oral_route",
+   "note": "One instruction, heparin."
+  },
+  {
+   "id": "h4_structure_16_list_framing_two_orders_complete_control",
+   "note": "Lantus (insulin glargine) and metformin, two different drugs."
+  },
+  {
+   "id": "h4_structure_24_sequence_three_single_dose",
+   "note": "One instruction, Lantus."
+  },
+  {
+   "id": "h4_meaning_18_colon_between_drug_and_dose_control",
+   "note": "Warfarin and metformin, two different drugs."
+  },
+  {
+   "id": "h4_model_style_17_care_team_list_heading",
+   "note": "Seven different ingredients, one instruction each. No repeat."
+  },
+  {
+   "id": "h4_structure_04_read_carefully_ask_frame",
+   "note": "One instruction, Lantus."
+  },
+  {
+   "id": "h4_meaning_12_no_active_order_list_control",
+   "note": "No dose instruction in the released text. The text says only 'Here is the list of your medicines.'"
+  },
+  {
+   "id": "h4_clinical_06_tylenol_codeine_30mg",
+   "note": "One instruction, Tylenol with codeine (a combination of acetaminophen and codeine). No separate acetaminophen instruction appears, so no double dose is possible from this text."
+  },
+  {
+   "id": "h4_clinical_20_amoxicillin_5ml_no_display",
+   "note": "One instruction, amoxicillin."
+  },
+  {
+   "id": "h4_structure_12_list_framing_careplan_medication",
+   "note": "One instruction, Lantus. The metformin in the CarePlan resource is not in the released text."
+  },
+  {
+   "id": "h4_chart_06_bracket_brand_lantus_metformin",
+   "note": "One instruction, metformin."
+  },
+  {
+   "id": "h4_model_style_23_display_tablet_as_milliliters",
+   "note": "One instruction, lisinopril."
+  },
+  {
+   "id": "h4_clinical_12_methotrexate_every_7_days",
+   "note": "One instruction, methotrexate."
+  },
+  {
+   "id": "h4_clinical_26_glargine_pen_0_3_ml",
+   "note": "One instruction, insulin glargine."
+  },
+  {
+   "id": "h4_meaning_10_list_omits_stopped_order_control",
+   "note": "One instruction, metformin. The warfarin order is stopped and not in the released text."
+  },
+  {
+   "id": "h4_meaning_21_quoted_drug_name_frame",
+   "note": "Warfarin and metformin, two different drugs."
+  },
+  {
+   "id": "h4_clinical_23_glargine_300_display",
+   "note": "One instruction, insulin glargine."
+  },
+  {
+   "id": "h4_model_style_06_em_dash_between_name_and_dose",
+   "note": "Seven different ingredients, one instruction each. No repeat. The em dash after the name does not add a second name."
+  },
+  {
+   "id": "h4_model_style_10_parenthesized_dose_line",
+   "note": "Seven different ingredients, one instruction each. No repeat. Lisinopril appears once, in parentheses."
+  },
+  {
+   "id": "h4_structure_08_quoted_instruction_control",
+   "note": "One instruction, Lantus, inside quotation marks."
+  },
+  {
+   "id": "h4_structure_10_take_note_frame_blocked",
+   "note": "One instruction, Lantus."
+  },
+  {
+   "id": "h4_chart_19_entry_fullurl_hold_warfarin",
+   "note": "One instruction, warfarin."
+  },
+  {
+   "id": "h4_chart_14_id_prn_flag_false_oxycodone",
+   "note": "One instruction, oxycodone."
+  },
+  {
+   "id": "h4_meaning_09_list_omits_plan_order_control",
+   "note": "One instruction, metformin. The warfarin plan is not in the released text."
+  },
+  {
+   "id": "h4_structure_22_id_64_letters_boundary",
+   "note": "One instruction, Lantus."
+  },
+  {
+   "id": "h4_model_style_27_six_order_chart_mixed_shapes",
+   "note": "Seven different ingredients, one instruction each. No repeat."
+  },
+  {
+   "id": "h4_clinical_03_lispro_u200_display",
+   "note": "One instruction, insulin lispro."
+  },
+  {
+   "id": "h4_chart_23_skipped_communication_no_warfarin",
+   "note": "One instruction, warfarin. The communication resource is not a dose instruction."
+  },
+  {
+   "id": "h4_chart_20_link_url_taper_prednisone",
+   "note": "One instruction, prednisone."
+  },
+  {
+   "id": "h4_structure_09_dash_bullet_control",
+   "note": "One instruction, Lantus."
+  },
+  {
+   "id": "h4_chart_11_stopped_warfarin_same_name_control",
+   "note": "One instruction, warfarin. The stopped 10 mg warfarin order is not in the released text."
+  },
+  {
+   "id": "h4_meaning_13_source_and_instruction_on_one_line",
+   "note": "Warfarin and metformin, two different drugs."
+  },
+  {
+   "id": "h4_chart_10_on_hold_metformin_same_name",
+   "note": "One instruction, metformin. The on-hold 1000 mg order is not in the released text."
+  },
+  {
+   "id": "h4_meaning_20_parenthesized_instruction",
+   "note": "Warfarin and metformin, two different drugs."
+  },
+  {
+   "id": "h4_clinical_07_depo_medrol_daily_im",
+   "note": "One instruction, Depo-Medrol (methylprednisolone acetate)."
+  },
+  {
+   "id": "h4_structure_11_which_frame_blocked",
+   "note": "One instruction, Lantus."
+  },
+  {
+   "id": "h4_meaning_08_doctor_heading_as_needed_pharmacist",
+   "note": "Acetaminophen and metformin, two different drugs. Acetaminophen appears once."
+  },
+  {
+   "id": "h4_model_style_25_brand_concerta_daily_total",
+   "note": "One instruction, Concerta."
+  },
+  {
+   "id": "h4_meaning_22_what_are_these_for_question_frame",
+   "note": "Warfarin and metformin, two different drugs."
+  }
+ ]
+}

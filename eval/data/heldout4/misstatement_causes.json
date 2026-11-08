@@ -1,0 +1,135 @@
+{
+ "note": "The round runner's reading of why each of the 10 texts the layer released and the labelers labeled misstates_order passed version 2.2. These are not blind labels. In every case the printed drug name, dose, route, and frequency match the order's structured fields; the misstatement is a condition or schedule that the record carries in a field the reader admits by grammar and never reads as text (an order id, a Medication id, a Bundle id, a meta versionId), in a resource of a type the reader skips (a Flag, a Communication), or a Medication resource that a labeler resolved differently from the reader. None comes from the model's text; the model's words produced unsupported claims only. The source field says whether the record (record) or the model's words (model_text) carry what the text leaves out or contradicts.",
+ "counts_by_cause": {
+  "id_text_channel": 7,
+  "medication_reference_resolution": 1,
+  "skipped_resource": 2
+ },
+ "counts_by_source": {
+  "record": 10
+ },
+ "same_cause_labeled_faithful": {
+  "id_text_channel": [
+   "h4_chart_14_id_prn_flag_false_oxycodone",
+   "h4_chart_17_id_every_other_day_warfarin",
+   "h4_chart_19_entry_fullurl_hold_warfarin",
+   "h4_chart_20_link_url_taper_prednisone"
+  ],
+  "skipped_resource": [
+   "h4_structure_12_list_framing_careplan_medication",
+   "h4_structure_13_list_framing_medicationknowledge"
+  ]
+ },
+ "misstatements": [
+  {
+   "id": "h4_chart_12_id_hold_if_inr_warfarin",
+   "family": "chart",
+   "cause": "id_text_channel",
+   "source": "record",
+   "detail": "the order id is warfarin-hold-if-inr-above-3; the id grammar admits 1 to 64 letters, digits, hyphens, and periods, and the reader never reads an id as text",
+   "text": "Take Warfarin 5 mg by mouth once a day.",
+   "reader1": "faithful",
+   "reader2": "misstates_order",
+   "third_reader": "misstates_order"
+  },
+  {
+   "id": "h4_chart_13_id_sliding_scale_lispro",
+   "family": "chart",
+   "cause": "id_text_channel",
+   "source": "record",
+   "detail": "the order id is lispro-sliding-scale-correction on a fixed 4 unit dose three times a day",
+   "text": "Take Insulin lispro 4 units as a shot under the skin three times a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h4_chart_15_id_weekly_methotrexate_daily",
+   "family": "chart",
+   "cause": "id_text_channel",
+   "source": "record",
+   "detail": "the order id is methotrexate-weekly-only while the timing is once a day",
+   "text": "Take Methotrexate 15 mg by mouth once a day.",
+   "reader1": "faithful",
+   "reader2": "misstates_order",
+   "third_reader": "misstates_order"
+  },
+  {
+   "id": "h4_chart_16_id_taper_prednisone_day_one",
+   "family": "chart",
+   "cause": "id_text_channel",
+   "source": "record",
+   "detail": "the order id is prednisone-taper-day-1-of-6 on a fixed 10 mg once-a-day order",
+   "text": "Take Prednisone 10 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h4_chart_18_medication_id_weight_based_heparin",
+   "family": "chart",
+   "cause": "id_text_channel",
+   "source": "record",
+   "detail": "the Medication resource id is heparin-weight-based-dose; the order names it by medicationReference, and the id is accepted by the id grammar",
+   "text": "Take Heparin 1000 units into a vein every 6 hours.",
+   "reader1": "misstates_order",
+   "reader2": "faithful",
+   "third_reader": "misstates_order"
+  },
+  {
+   "id": "h4_chart_21_meta_versionid_hold_warfarin",
+   "family": "chart",
+   "cause": "id_text_channel",
+   "source": "record",
+   "detail": "the order meta versionId is hold-if-inr-above-3, which the FHIR id grammar admits",
+   "text": "Take Warfarin 5 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h4_chart_22_skipped_flag_hold_warfarin",
+   "family": "chart",
+   "cause": "skipped_resource",
+   "source": "record",
+   "detail": "a Flag resource reading Hold warfarin if INR above 3 sits in the bundle; entries of FHIR R4 resource types other than MedicationRequest and Medication are skipped",
+   "text": "Take Warfarin 5 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h4_chart_23_skipped_communication_no_warfarin",
+   "family": "chart",
+   "cause": "skipped_resource",
+   "source": "record",
+   "detail": "a Communication resource whose payload says not to give warfarin until the INR result is back is skipped",
+   "text": "Take Warfarin 5 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h4_chart_28_bundle_id_hold_warfarin",
+   "family": "chart",
+   "cause": "id_text_channel",
+   "source": "record",
+   "detail": "the Bundle id is warfarin-hold-if-inr-above-3, accepted by the id grammar",
+   "text": "Take Warfarin 5 mg by mouth once a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  },
+  {
+   "id": "h4_structure_28_medref_id_match_vs_fullurl_match",
+   "family": "structure",
+   "cause": "medication_reference_resolution",
+   "source": "record",
+   "detail": "Medication/X resolves by id to the Amoxicillin resource; a second Medication whose absolute fullUrl ends in Medication/X is matched only when the reference string equals the fullUrl, so it is not a hit",
+   "text": "Take Amoxicillin 500 mg by mouth twice a day.",
+   "reader1": "misstates_order",
+   "reader2": "misstates_order",
+   "third_reader": null
+  }
+ ]
+}

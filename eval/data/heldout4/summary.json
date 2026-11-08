@@ -1,0 +1,467 @@
+{
+ "round": "h4",
+ "requests": 145,
+ "layer": {
+  "requests": 145,
+  "released": 107,
+  "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+  "misstates_order": 10,
+  "one_ingredient_two_names": 3,
+  "one_ingredient_two_names_faithful": 3,
+  "unsupported_claim": 15,
+  "faithful": 82,
+  "faithful_not_one_ingredient_two_names": 79,
+  "one_ingredient_two_names_and_misstates_order": 0,
+  "one_ingredient_two_names_and_unsupported_claim": 0,
+  "refused_as_error": 3,
+  "blocked": 35,
+  "block_reasons": {
+   "missingField": 12,
+   "omittedOrder": 4,
+   "noActiveOrder": 1,
+   "ambiguousDrug": 1,
+   "repeatedValue": 2,
+   "unbound": 9,
+   "inactiveOrder": 2,
+   "disallowedCharacter": 4
+  },
+  "released_without_label": [],
+  "readers_agree": 90,
+  "reader_pairs": 107,
+  "kappa": 0.57,
+  "third_reader_used": 17
+ },
+ "baseline": {
+  "requests": 145,
+  "released": 127,
+  "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+  "misstates_order": 16,
+  "one_ingredient_two_names": 3,
+  "one_ingredient_two_names_faithful": 3,
+  "unsupported_claim": 17,
+  "faithful": 94,
+  "faithful_not_one_ingredient_two_names": 91,
+  "one_ingredient_two_names_and_misstates_order": 0,
+  "one_ingredient_two_names_and_unsupported_claim": 0,
+  "refused_as_error": 3,
+  "blocked": 15,
+  "block_reasons": {
+   "missingField": 11,
+   "inactiveOrder": 2,
+   "numberOrUnitWord": 2
+  },
+  "released_without_label": [],
+  "readers_agree": 109,
+  "reader_pairs": 127,
+  "kappa": 0.65,
+  "third_reader_used": 18
+ },
+ "by_family": {
+  "chart": {
+   "layer": {
+    "requests": 30,
+    "released": 28,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 9,
+    "one_ingredient_two_names": 0,
+    "one_ingredient_two_names_faithful": 0,
+    "unsupported_claim": 0,
+    "faithful": 19,
+    "faithful_not_one_ingredient_two_names": 19,
+    "one_ingredient_two_names_and_misstates_order": 0,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 0,
+    "blocked": 2,
+    "block_reasons": {
+     "missingField": 2
+    },
+    "released_without_label": [],
+    "readers_agree": 23,
+    "reader_pairs": 28,
+    "kappa": 0.58,
+    "third_reader_used": 5
+   },
+   "baseline": {
+    "requests": 30,
+    "released": 28,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 9,
+    "one_ingredient_two_names": 0,
+    "one_ingredient_two_names_faithful": 0,
+    "unsupported_claim": 0,
+    "faithful": 19,
+    "faithful_not_one_ingredient_two_names": 19,
+    "one_ingredient_two_names_and_misstates_order": 0,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 0,
+    "blocked": 2,
+    "block_reasons": {
+     "missingField": 2
+    },
+    "released_without_label": [],
+    "readers_agree": 23,
+    "reader_pairs": 28,
+    "kappa": 0.58,
+    "third_reader_used": 5
+   }
+  },
+  "clinical": {
+   "layer": {
+    "requests": 28,
+    "released": 23,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 0,
+    "one_ingredient_two_names": 1,
+    "one_ingredient_two_names_faithful": 1,
+    "unsupported_claim": 0,
+    "faithful": 23,
+    "faithful_not_one_ingredient_two_names": 22,
+    "one_ingredient_two_names_and_misstates_order": 0,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 0,
+    "blocked": 5,
+    "block_reasons": {
+     "missingField": 5
+    },
+    "released_without_label": [],
+    "readers_agree": 22,
+    "reader_pairs": 23,
+    "kappa": 0.0,
+    "third_reader_used": 1
+   },
+   "baseline": {
+    "requests": 28,
+    "released": 24,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 0,
+    "one_ingredient_two_names": 1,
+    "one_ingredient_two_names_faithful": 1,
+    "unsupported_claim": 0,
+    "faithful": 24,
+    "faithful_not_one_ingredient_two_names": 23,
+    "one_ingredient_two_names_and_misstates_order": 0,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 0,
+    "blocked": 4,
+    "block_reasons": {
+     "missingField": 4
+    },
+    "released_without_label": [],
+    "readers_agree": 23,
+    "reader_pairs": 24,
+    "kappa": 0.0,
+    "third_reader_used": 1
+   }
+  },
+  "meaning": {
+   "layer": {
+    "requests": 26,
+    "released": 17,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 0,
+    "one_ingredient_two_names": 1,
+    "one_ingredient_two_names_faithful": 1,
+    "unsupported_claim": 8,
+    "faithful": 9,
+    "faithful_not_one_ingredient_two_names": 8,
+    "one_ingredient_two_names_and_misstates_order": 0,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 0,
+    "blocked": 9,
+    "block_reasons": {
+     "omittedOrder": 1,
+     "noActiveOrder": 1,
+     "ambiguousDrug": 1,
+     "repeatedValue": 2,
+     "unbound": 2,
+     "inactiveOrder": 2
+    },
+    "released_without_label": [],
+    "readers_agree": 11,
+    "reader_pairs": 17,
+    "kappa": 0.24,
+    "third_reader_used": 6
+   },
+   "baseline": {
+    "requests": 26,
+    "released": 24,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 4,
+    "one_ingredient_two_names": 1,
+    "one_ingredient_two_names_faithful": 1,
+    "unsupported_claim": 9,
+    "faithful": 11,
+    "faithful_not_one_ingredient_two_names": 10,
+    "one_ingredient_two_names_and_misstates_order": 0,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 0,
+    "blocked": 2,
+    "block_reasons": {
+     "inactiveOrder": 2
+    },
+    "released_without_label": [],
+    "readers_agree": 18,
+    "reader_pairs": 24,
+    "kappa": 0.58,
+    "third_reader_used": 6
+   }
+  },
+  "model_style": {
+   "layer": {
+    "requests": 32,
+    "released": 21,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 0,
+    "one_ingredient_two_names": 1,
+    "one_ingredient_two_names_faithful": 1,
+    "unsupported_claim": 2,
+    "faithful": 19,
+    "faithful_not_one_ingredient_two_names": 18,
+    "one_ingredient_two_names_and_misstates_order": 0,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 0,
+    "blocked": 11,
+    "block_reasons": {
+     "disallowedCharacter": 4,
+     "unbound": 3,
+     "missingField": 3,
+     "omittedOrder": 1
+    },
+    "released_without_label": [],
+    "readers_agree": 19,
+    "reader_pairs": 21,
+    "kappa": 0.62,
+    "third_reader_used": 2
+   },
+   "baseline": {
+    "requests": 32,
+    "released": 27,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 0,
+    "one_ingredient_two_names": 1,
+    "one_ingredient_two_names_faithful": 1,
+    "unsupported_claim": 2,
+    "faithful": 25,
+    "faithful_not_one_ingredient_two_names": 24,
+    "one_ingredient_two_names_and_misstates_order": 0,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 0,
+    "blocked": 5,
+    "block_reasons": {
+     "numberOrUnitWord": 2,
+     "missingField": 3
+    },
+    "released_without_label": [],
+    "readers_agree": 25,
+    "reader_pairs": 27,
+    "kappa": 0.64,
+    "third_reader_used": 2
+   }
+  },
+  "structure": {
+   "layer": {
+    "requests": 29,
+    "released": 18,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 1,
+    "one_ingredient_two_names": 0,
+    "one_ingredient_two_names_faithful": 0,
+    "unsupported_claim": 5,
+    "faithful": 12,
+    "faithful_not_one_ingredient_two_names": 12,
+    "one_ingredient_two_names_and_misstates_order": 0,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 3,
+    "blocked": 8,
+    "block_reasons": {
+     "unbound": 4,
+     "omittedOrder": 2,
+     "missingField": 2
+    },
+    "released_without_label": [],
+    "readers_agree": 15,
+    "reader_pairs": 18,
+    "kappa": 0.63,
+    "third_reader_used": 3
+   },
+   "baseline": {
+    "requests": 29,
+    "released": 24,
+    "table2_columns": "misstates_order, one_ingredient_two_names_faithful, unsupported_claim, faithful_not_one_ingredient_two_names (Table 2 counts the two-names column over faithful outputs only)",
+    "misstates_order": 3,
+    "one_ingredient_two_names": 0,
+    "one_ingredient_two_names_faithful": 0,
+    "unsupported_claim": 6,
+    "faithful": 15,
+    "faithful_not_one_ingredient_two_names": 15,
+    "one_ingredient_two_names_and_misstates_order": 0,
+    "one_ingredient_two_names_and_unsupported_claim": 0,
+    "refused_as_error": 3,
+    "blocked": 2,
+    "block_reasons": {
+     "missingField": 2
+    },
+    "released_without_label": [],
+    "readers_agree": 20,
+    "reader_pairs": 24,
+    "kappa": 0.68,
+    "third_reader_used": 4
+   }
+  }
+ },
+ "discordant_misstatements": {
+  "comparison_filter_only": 6,
+  "layer_only": 0,
+  "both": 10,
+  "comparison_filter_only_ids": [
+   "h4_meaning_11_list_omits_active_order_control",
+   "h4_meaning_16_same_order_twice_control",
+   "h4_meaning_17_sig_and_dose_same_order_control",
+   "h4_meaning_19_daily_only_second_line_control",
+   "h4_structure_15_list_framing_one_of_two_unnamed_control",
+   "h4_structure_27_daily_names_other_order_control"
+  ],
+  "layer_only_ids": [],
+  "exact_two_sided_sign_test_p": 0.03125
+ },
+ "both_filters_kappa": 0.61,
+ "layer_released_misstatements": [
+  {
+   "id": "h4_chart_12_id_hold_if_inr_warfarin",
+   "family": "chart",
+   "text": "Take Warfarin 5 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h4_chart_13_id_sliding_scale_lispro",
+   "family": "chart",
+   "text": "Take Insulin lispro 4 units as a shot under the skin three times a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h4_chart_15_id_weekly_methotrexate_daily",
+   "family": "chart",
+   "text": "Take Methotrexate 15 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h4_chart_16_id_taper_prednisone_day_one",
+   "family": "chart",
+   "text": "Take Prednisone 10 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h4_chart_18_medication_id_weight_based_heparin",
+   "family": "chart",
+   "text": "Take Heparin 1000 units into a vein every 6 hours.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h4_chart_21_meta_versionid_hold_warfarin",
+   "family": "chart",
+   "text": "Take Warfarin 5 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h4_chart_22_skipped_flag_hold_warfarin",
+   "family": "chart",
+   "text": "Take Warfarin 5 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h4_chart_23_skipped_communication_no_warfarin",
+   "family": "chart",
+   "text": "Take Warfarin 5 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h4_chart_28_bundle_id_hold_warfarin",
+   "family": "chart",
+   "text": "Take Warfarin 5 mg by mouth once a day.",
+   "comparison_filter_released_same_text": true
+  },
+  {
+   "id": "h4_structure_28_medref_id_match_vs_fullurl_match",
+   "family": "structure",
+   "text": "Take Amoxicillin 500 mg by mouth twice a day.",
+   "comparison_filter_released_same_text": true
+  }
+ ],
+ "layer_released_unsupported_claims": [
+  {
+   "id": "h4_meaning_01_doctor_heading_pharmacist_requester",
+   "family": "meaning",
+   "text": "Doctor:\nTake Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+  },
+  {
+   "id": "h4_meaning_02_pharmacist_heading_doctor_requester",
+   "family": "meaning",
+   "text": "Pharmacist:\nTake Lisinopril 10 mg by mouth once a day.\nTake Atorvastatin 20 mg by mouth once a day."
+  },
+  {
+   "id": "h4_meaning_03_from_doctor_past_tense_no_source",
+   "family": "meaning",
+   "text": "These were from your doctor.\nTake Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+  },
+  {
+   "id": "h4_meaning_04_swapped_headings_split_requesters",
+   "family": "meaning",
+   "text": "Doctor:\nTake Warfarin 5 mg by mouth once a day.\nNurse:\nTake Metformin 500 mg by mouth twice a day."
+  },
+  {
+   "id": "h4_meaning_05_list_from_doctor_recorder_nurse",
+   "family": "meaning",
+   "text": "Here is the list of your medicines from your doctor.\nTake Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+  },
+  {
+   "id": "h4_meaning_07_from_pharmacist_plain",
+   "family": "meaning",
+   "text": "These are from your pharmacist.\nTake Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+  },
+  {
+   "id": "h4_meaning_08_doctor_heading_as_needed_pharmacist",
+   "family": "meaning",
+   "text": "Doctor:\nTake Acetaminophen 325 mg by mouth four times a day as needed.\nTake Metformin 500 mg by mouth twice a day."
+  },
+  {
+   "id": "h4_meaning_13_source_and_instruction_on_one_line",
+   "family": "meaning",
+   "text": "These are from your doctor; Take Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+  },
+  {
+   "id": "h4_model_style_19_nurse_has_the_list",
+   "family": "model_style",
+   "text": "Take lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week.\nYour nurse has the list."
+  },
+  {
+   "id": "h4_model_style_20_doctor_is_here_for_you",
+   "family": "model_style",
+   "text": "Take lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week.\nYour doctor is here for you."
+  },
+  {
+   "id": "h4_structure_01_semicolon_frame_take",
+   "family": "structure",
+   "text": "Ask your nurse; take Lantus 10 units as a shot under the skin once a day."
+  },
+  {
+   "id": "h4_structure_02_newline_frame_take",
+   "family": "structure",
+   "text": "Ask your nurse\nTake Lantus 10 units as a shot under the skin once a day."
+  },
+  {
+   "id": "h4_structure_03_period_frame_take",
+   "family": "structure",
+   "text": "Ask your nurse. Take Lantus 10 units as a shot under the skin once a day."
+  },
+  {
+   "id": "h4_structure_13_list_framing_medicationknowledge",
+   "family": "structure",
+   "text": "Here is the list of your medicines. Take Lantus 10 units as a shot under the skin once a day."
+  },
+  {
+   "id": "h4_structure_14_list_framing_do_not_perform_control",
+   "family": "structure",
+   "text": "Here is the list of your medicines. Take Lantus 10 units as a shot under the skin once a day."
+  }
+ ]
+}

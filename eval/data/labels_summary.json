@@ -123,6 +123,37 @@
   },
   "both_filters_kappa": 0.76
  },
+ "h4": {
+  "layer": {
+   "released_outputs": 107,
+   "labels": {
+    "faithful": 82,
+    "misstates_order": 10,
+    "unsupported_claim": 15
+   },
+   "distinct_texts": 85,
+   "distinct_texts_with_mixed_labels": 3,
+   "readers_agree": 90,
+   "reader_pairs": 107,
+   "kappa": 0.57,
+   "third_reader_used": 17
+  },
+  "baseline": {
+   "released_outputs": 127,
+   "labels": {
+    "faithful": 94,
+    "misstates_order": 16,
+    "unsupported_claim": 17
+   },
+   "distinct_texts": 103,
+   "distinct_texts_with_mixed_labels": 3,
+   "readers_agree": 109,
+   "reader_pairs": 127,
+   "kappa": 0.65,
+   "third_reader_used": 18
+  },
+  "both_filters_kappa": 0.61
+ },
  "v2_review": {
   "llama_comparison_filter": {
    "released_outputs": 171,

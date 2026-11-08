@@ -1,0 +1,2342 @@
+[
+ {
+  "id": "h4_chart_01_code_lisinopril_text_warfarin_code",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Lisinopril 10 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_01_code_lisinopril_text_warfarin_code",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Lisinopril 10 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_02_code_warfarin_text_metformin_code",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_02_code_warfarin_text_metformin_code",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_03_code_two_codings_second_conflicts",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_03_code_two_codings_second_conflicts",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_04_medref_resource_code_conflict",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Lisinopril 10 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_04_medref_resource_code_conflict",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Lisinopril 10 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_05_bracket_brand_coumadin_metformin",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Metformin 500 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_05_bracket_brand_coumadin_metformin",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Metformin 500 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_06_bracket_brand_lantus_metformin",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Metformin 500 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_06_bracket_brand_lantus_metformin",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Metformin 500 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_07_display_injectable_product_oral_route",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Insulin lispro 4 units by mouth three times a day."
+ },
+ {
+  "id": "h4_chart_07_display_injectable_product_oral_route",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Insulin lispro 4 units by mouth three times a day."
+ },
+ {
+  "id": "h4_chart_08_dnp_true_same_name_warfarin",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_08_dnp_true_same_name_warfarin",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_09_dnp_true_brand_zestril_lisinopril",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Lisinopril 10 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_09_dnp_true_brand_zestril_lisinopril",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Lisinopril 10 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_10_on_hold_metformin_same_name",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Metformin 500 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_10_on_hold_metformin_same_name",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Metformin 500 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_11_stopped_warfarin_same_name_control",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_11_stopped_warfarin_same_name_control",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_12_id_hold_if_inr_warfarin",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "misstates_order",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_12_id_hold_if_inr_warfarin",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "misstates_order",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_13_id_sliding_scale_lispro",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Insulin lispro 4 units as a shot under the skin three times a day."
+ },
+ {
+  "id": "h4_chart_13_id_sliding_scale_lispro",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Insulin lispro 4 units as a shot under the skin three times a day."
+ },
+ {
+  "id": "h4_chart_14_id_prn_flag_false_oxycodone",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Oxycodone 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_14_id_prn_flag_false_oxycodone",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Oxycodone 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_15_id_weekly_methotrexate_daily",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "misstates_order",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Methotrexate 15 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_15_id_weekly_methotrexate_daily",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "misstates_order",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Methotrexate 15 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_16_id_taper_prednisone_day_one",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Prednisone 10 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_16_id_taper_prednisone_day_one",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Prednisone 10 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_17_id_every_other_day_warfarin",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_17_id_every_other_day_warfarin",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_18_medication_id_weight_based_heparin",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Heparin 1000 units into a vein every 6 hours."
+ },
+ {
+  "id": "h4_chart_18_medication_id_weight_based_heparin",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "misstates_order",
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Heparin 1000 units into a vein every 6 hours."
+ },
+ {
+  "id": "h4_chart_19_entry_fullurl_hold_warfarin",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "misstates_order",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_19_entry_fullurl_hold_warfarin",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "misstates_order",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_20_link_url_taper_prednisone",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Prednisone 10 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_20_link_url_taper_prednisone",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Prednisone 10 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_21_meta_versionid_hold_warfarin",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_21_meta_versionid_hold_warfarin",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_22_skipped_flag_hold_warfarin",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_22_skipped_flag_hold_warfarin",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_23_skipped_communication_no_warfarin",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_23_skipped_communication_no_warfarin",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_24_name_pm_product_once_daily",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Motrin PM 200 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_24_name_pm_product_once_daily",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Motrin PM 200 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_26_medref_bracket_brand_coumadin_metformin",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Metformin 500 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_26_medref_bracket_brand_coumadin_metformin",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Metformin 500 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_27_code_insulin_glargine_text_metformin_subq",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Metformin 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_chart_27_code_insulin_glargine_text_metformin_subq",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Metformin 20 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_chart_28_bundle_id_hold_warfarin",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_28_bundle_id_hold_warfarin",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_30_on_hold_warfarin_same_dose_beside_active",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_chart_30_on_hold_warfarin_same_dose_beside_active",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "chart",
+  "text": "Take Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_clinical_01_fentanyl_patch_display_100",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Fentanyl 25 mcg as a skin patch every 72 hours."
+ },
+ {
+  "id": "h4_clinical_01_fentanyl_patch_display_100",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Fentanyl 25 mcg as a skin patch every 72 hours."
+ },
+ {
+  "id": "h4_clinical_02_humulin_r_u500_display",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Humulin R 200 units as a shot under the skin three times a day."
+ },
+ {
+  "id": "h4_clinical_02_humulin_r_u500_display",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Humulin R 200 units as a shot under the skin three times a day."
+ },
+ {
+  "id": "h4_clinical_03_lispro_u200_display",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Insulin lispro 60 units as a shot under the skin three times a day."
+ },
+ {
+  "id": "h4_clinical_03_lispro_u200_display",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Insulin lispro 60 units as a shot under the skin three times a day."
+ },
+ {
+  "id": "h4_clinical_04_methylpred_21_tablets",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Methylprednisolone 4 mg by mouth once a day."
+ },
+ {
+  "id": "h4_clinical_04_methylpred_21_tablets",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Methylprednisolone 4 mg by mouth once a day."
+ },
+ {
+  "id": "h4_clinical_05_norco_component_dose",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Norco 5 mg by mouth every 6 hours as needed."
+ },
+ {
+  "id": "h4_clinical_05_norco_component_dose",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Norco 5 mg by mouth every 6 hours as needed."
+ },
+ {
+  "id": "h4_clinical_06_tylenol_codeine_30mg",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Tylenol with codeine 30 mg by mouth every 4 hours as needed."
+ },
+ {
+  "id": "h4_clinical_06_tylenol_codeine_30mg",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Tylenol with codeine 30 mg by mouth every 4 hours as needed."
+ },
+ {
+  "id": "h4_clinical_07_depo_medrol_daily_im",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Depo-Medrol 80 mg as a shot into a muscle once a day."
+ },
+ {
+  "id": "h4_clinical_07_depo_medrol_daily_im",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Depo-Medrol 80 mg as a shot into a muscle once a day."
+ },
+ {
+  "id": "h4_clinical_08_ceftriaxone_stat_priority_daily",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Ceftriaxone sodium 1 g as a shot into a muscle once a day."
+ },
+ {
+  "id": "h4_clinical_08_ceftriaxone_stat_priority_daily",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Ceftriaxone sodium 1 g as a shot into a muscle once a day."
+ },
+ {
+  "id": "h4_clinical_09_lispro_snomed_reason_code_only",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Insulin lispro 4 units as a shot under the skin three times a day, which is 12 units a day."
+ },
+ {
+  "id": "h4_clinical_09_lispro_snomed_reason_code_only",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Insulin lispro 4 units as a shot under the skin three times a day, which is 12 units a day."
+ },
+ {
+  "id": "h4_clinical_10_warfarin_icd_reason_code_only",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Warfarin sodium 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_clinical_10_warfarin_icd_reason_code_only",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Warfarin sodium 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_clinical_11_fosamax_daily_brand",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "unsupported_claim",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Fosamax 70 mg by mouth once a day."
+ },
+ {
+  "id": "h4_clinical_11_fosamax_daily_brand",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "unsupported_claim",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Fosamax 70 mg by mouth once a day."
+ },
+ {
+  "id": "h4_clinical_12_methotrexate_every_7_days",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Methotrexate 15 mg by mouth every 7 days."
+ },
+ {
+  "id": "h4_clinical_12_methotrexate_every_7_days",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Methotrexate 15 mg by mouth every 7 days."
+ },
+ {
+  "id": "h4_clinical_13_penicillin_g_benzathine_million_units",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Penicillin G benzathine 2400000 units as a shot into a muscle every 4 weeks."
+ },
+ {
+  "id": "h4_clinical_16_albuterol_actuat_display_180",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Albuterol sulfate 180 mcg breathed in every 4 hours as needed."
+ },
+ {
+  "id": "h4_clinical_16_albuterol_actuat_display_180",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Albuterol sulfate 180 mcg breathed in every 4 hours as needed."
+ },
+ {
+  "id": "h4_clinical_17_apixaban_bracket_coumadin",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Apixaban 5 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_clinical_17_apixaban_bracket_coumadin",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Apixaban 5 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_clinical_18_methotrexate_weekly_dispense_daily_coded",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Methotrexate 2.5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_clinical_18_methotrexate_weekly_dispense_daily_coded",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Methotrexate 2.5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_clinical_19_warfarin_display_1mg_strength",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Warfarin sodium 5 mg by mouth once a day, which is 5 mg a day."
+ },
+ {
+  "id": "h4_clinical_19_warfarin_display_1mg_strength",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Warfarin sodium 5 mg by mouth once a day, which is 5 mg a day."
+ },
+ {
+  "id": "h4_clinical_20_amoxicillin_5ml_no_display",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Amoxicillin 5 mL by mouth twice a day."
+ },
+ {
+  "id": "h4_clinical_20_amoxicillin_5ml_no_display",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Amoxicillin 5 mL by mouth twice a day."
+ },
+ {
+  "id": "h4_clinical_22_warfarin_bracket_eliquis",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Warfarin sodium 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_clinical_22_warfarin_bracket_eliquis",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Warfarin sodium 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_clinical_23_glargine_300_display",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Insulin glargine 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_clinical_23_glargine_300_display",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Insulin glargine 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_clinical_24_sig_as_needed_oxycodone",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Oxycodone 5 mg by mouth, every 4 hours as needed."
+ },
+ {
+  "id": "h4_clinical_24_sig_as_needed_oxycodone",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Oxycodone 5 mg by mouth, every 4 hours as needed."
+ },
+ {
+  "id": "h4_clinical_25_percocet_beside_acetaminophen",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Percocet 5 mg by mouth every 6 hours as needed. Take Acetaminophen 650 mg by mouth every 4 hours."
+ },
+ {
+  "id": "h4_clinical_25_percocet_beside_acetaminophen",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Percocet 5 mg by mouth every 6 hours as needed. Take Acetaminophen 650 mg by mouth every 4 hours."
+ },
+ {
+  "id": "h4_clinical_26_glargine_pen_0_3_ml",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Insulin glargine 0.3 mL as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_clinical_26_glargine_pen_0_3_ml",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Insulin glargine 0.3 mL as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_clinical_27_medrol_brand_21_tablets",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Medrol 4 mg by mouth once a day."
+ },
+ {
+  "id": "h4_clinical_27_medrol_brand_21_tablets",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "clinical",
+  "text": "Take Medrol 4 mg by mouth once a day."
+ },
+ {
+  "id": "h4_meaning_01_doctor_heading_pharmacist_requester",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "faithful",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Doctor:\nTake Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_01_doctor_heading_pharmacist_requester",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "faithful",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Doctor:\nTake Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_02_pharmacist_heading_doctor_requester",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "faithful",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Pharmacist:\nTake Lisinopril 10 mg by mouth once a day.\nTake Atorvastatin 20 mg by mouth once a day."
+ },
+ {
+  "id": "h4_meaning_02_pharmacist_heading_doctor_requester",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "faithful",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Pharmacist:\nTake Lisinopril 10 mg by mouth once a day.\nTake Atorvastatin 20 mg by mouth once a day."
+ },
+ {
+  "id": "h4_meaning_03_from_doctor_past_tense_no_source",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "These were from your doctor.\nTake Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_03_from_doctor_past_tense_no_source",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "These were from your doctor.\nTake Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_04_swapped_headings_split_requesters",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "faithful",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Doctor:\nTake Warfarin 5 mg by mouth once a day.\nNurse:\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_04_swapped_headings_split_requesters",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "faithful",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Doctor:\nTake Warfarin 5 mg by mouth once a day.\nNurse:\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_05_list_from_doctor_recorder_nurse",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "faithful",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Here is the list of your medicines from your doctor.\nTake Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_05_list_from_doctor_recorder_nurse",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "faithful",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Here is the list of your medicines from your doctor.\nTake Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_06_will_be_for_your_care_purpose",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "unsupported_claim",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "meaning",
+  "text": "Take Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day.\nThese will be for your care."
+ },
+ {
+  "id": "h4_meaning_06_will_be_for_your_care_purpose",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "unsupported_claim",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "meaning",
+  "text": "Take Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day.\nThese will be for your care."
+ },
+ {
+  "id": "h4_meaning_07_from_pharmacist_plain",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "These are from your pharmacist.\nTake Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_07_from_pharmacist_plain",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "These are from your pharmacist.\nTake Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_08_doctor_heading_as_needed_pharmacist",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Doctor:\nTake Acetaminophen 325 mg by mouth four times a day as needed.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_08_doctor_heading_as_needed_pharmacist",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Doctor:\nTake Acetaminophen 325 mg by mouth four times a day as needed.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_09_list_omits_plan_order_control",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "Here is the list of your medicines.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_09_list_omits_plan_order_control",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "Here is the list of your medicines.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_10_list_omits_stopped_order_control",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "Here is the list of your medicines.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_10_list_omits_stopped_order_control",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "Here is the list of your medicines.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_11_list_omits_active_order_control",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "Here is the list of your medicines.\nTake Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_meaning_12_no_active_order_list_control",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "Here is the list of your medicines."
+ },
+ {
+  "id": "h4_meaning_13_source_and_instruction_on_one_line",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "These are from your doctor; Take Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_13_source_and_instruction_on_one_line",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "meaning",
+  "text": "These are from your doctor; Take Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_14_same_name_two_doses_control",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "Take Warfarin 5 mg by mouth once a day.\nTake Warfarin 2.5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_meaning_15_dash_bullet_lines",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "- Take Warfarin 5 mg by mouth once a day.\n- Take Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_15_dash_bullet_lines",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "- Take Warfarin 5 mg by mouth once a day.\n- Take Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_16_same_order_twice_control",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "Take Warfarin 5 mg by mouth once a day.\nTake Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_meaning_17_sig_and_dose_same_order_control",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "Take Warfarin 5 mg by mouth, once a day.\nTake Warfarin 5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_meaning_18_colon_between_drug_and_dose_control",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "Take Warfarin: 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_19_daily_only_second_line_control",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "meaning",
+  "text": "Take Warfarin 5 mg by mouth once a day.\nTake Warfarin 5 mg a day.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_20_parenthesized_instruction",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "(Take Warfarin 5 mg by mouth once a day.)\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_20_parenthesized_instruction",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "(Take Warfarin 5 mg by mouth once a day.)\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_21_quoted_drug_name_frame",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "Take \"Warfarin\" 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_21_quoted_drug_name_frame",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "Take \"Warfarin\" 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_22_what_are_these_for_question_frame",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "What are these for.\nTake Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_22_what_are_these_for_question_frame",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "What are these for.\nTake Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_24_care_team_heading_over_list",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "Your care team:\nHere is the list of your medicines.\nTake Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_24_care_team_heading_over_list",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "Your care team:\nHere is the list of your medicines.\nTake Warfarin 5 mg by mouth once a day.\nTake Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_meaning_25_doctor_heading_over_twin_ingredient_orders",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "Doctor:\nTake Coumadin 5 mg by mouth once a day.\nTake warfarin sodium 2.5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_meaning_25_doctor_heading_over_twin_ingredient_orders",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "meaning",
+  "text": "Doctor:\nTake Coumadin 5 mg by mouth once a day.\nTake warfarin sodium 2.5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_model_style_01_dash_bullets_full_chart",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Medication list:\n- Take lisinopril 10 mg by mouth once a day which is 10 mg a day.\n- Take metformin 500 mg by mouth twice a day which is 1000 mg a day.\n- Take amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\n- Take atorvastatin 40 mg by mouth once a day which is 40 mg a day.\n- Take insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\n- Take acetaminophen 650 mg by mouth every 4 hours as needed.\n- Take methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_01_dash_bullets_full_chart",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Medication list:\n- Take lisinopril 10 mg by mouth once a day which is 10 mg a day.\n- Take metformin 500 mg by mouth twice a day which is 1000 mg a day.\n- Take amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\n- Take atorvastatin 40 mg by mouth once a day which is 40 mg a day.\n- Take insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\n- Take acetaminophen 650 mg by mouth every 4 hours as needed.\n- Take methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_02_underscore_italic_markup",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "_Medication list_\nTake lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_04_hash_heading_line",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "# Medication list\nTake lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_05_curly_quotes_around_name",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take \u201clisinopril\u201d 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_06_em_dash_between_name_and_dose",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril \u2014 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_07_literal_daily_word_line",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth daily.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_09_ellipsis_after_each_line",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day which is 10 mg a day...\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day...\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day...\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day...\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day...\nTake acetaminophen 650 mg by mouth every 4 hours as needed...\nTake methotrexate 15 mg by mouth once a week..."
+ },
+ {
+  "id": "h4_model_style_09_ellipsis_after_each_line",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day which is 10 mg a day...\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day...\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day...\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day...\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day...\nTake acetaminophen 650 mg by mouth every 4 hours as needed...\nTake methotrexate 15 mg by mouth once a week..."
+ },
+ {
+  "id": "h4_model_style_10_parenthesized_dose_line",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril (10 mg by mouth, once a day).\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_10_parenthesized_dose_line",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril (10 mg by mouth, once a day).\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_11_semicolon_joined_orders",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day which is 10 mg a day; take metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_11_semicolon_joined_orders",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day which is 10 mg a day; take metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_12_sig_comma_daily_total",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth, twice a day, which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_12_sig_comma_daily_total",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth, twice a day, which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_14_as_needed_line_omitted",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_15_medicine_list_heading_complete",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Here is your medicine list.\nTake lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_15_medicine_list_heading_complete",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Here is your medicine list.\nTake lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_16_from_your_doctor_heading",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "model_style",
+  "text": "From your doctor:\nTake lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_16_from_your_doctor_heading",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "model_style",
+  "text": "From your doctor:\nTake lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_17_care_team_list_heading",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Your care team list:\nTake lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_17_care_team_list_heading",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Your care team list:\nTake lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_18_ask_pharmacist_for_information",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week.\nAsk your pharmacist for information."
+ },
+ {
+  "id": "h4_model_style_18_ask_pharmacist_for_information",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week.\nAsk your pharmacist for information."
+ },
+ {
+  "id": "h4_model_style_19_nurse_has_the_list",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week.\nYour nurse has the list."
+ },
+ {
+  "id": "h4_model_style_19_nurse_has_the_list",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week.\nYour nurse has the list."
+ },
+ {
+  "id": "h4_model_style_20_doctor_is_here_for_you",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week.\nYour doctor is here for you."
+ },
+ {
+  "id": "h4_model_style_20_doctor_is_here_for_you",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week.\nYour doctor is here for you."
+ },
+ {
+  "id": "h4_model_style_21_injectable_display_oral_route",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take Insulin Glargine 20 units by mouth once a day which is 20 units a day."
+ },
+ {
+  "id": "h4_model_style_21_injectable_display_oral_route",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take Insulin Glargine 20 units by mouth once a day which is 20 units a day."
+ },
+ {
+  "id": "h4_model_style_22_display_strength_tenfold",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril 100 mg by mouth once a day which is 100 mg a day."
+ },
+ {
+  "id": "h4_model_style_22_display_strength_tenfold",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril 100 mg by mouth once a day which is 100 mg a day."
+ },
+ {
+  "id": "h4_model_style_23_display_tablet_as_milliliters",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mL by mouth once a day which is 10 mL a day."
+ },
+ {
+  "id": "h4_model_style_23_display_tablet_as_milliliters",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "faithful",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mL by mouth once a day which is 10 mL a day."
+ },
+ {
+  "id": "h4_model_style_24_extended_release_display_every_4h",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take morphine sulfate 15 mg by mouth every 4 hours which is 90 mg a day."
+ },
+ {
+  "id": "h4_model_style_24_extended_release_display_every_4h",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take morphine sulfate 15 mg by mouth every 4 hours which is 90 mg a day."
+ },
+ {
+  "id": "h4_model_style_25_brand_concerta_daily_total",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take Concerta 18 mg by mouth once a day which is 18 mg a day."
+ },
+ {
+  "id": "h4_model_style_25_brand_concerta_daily_total",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take Concerta 18 mg by mouth once a day which is 18 mg a day."
+ },
+ {
+  "id": "h4_model_style_26_afterpill_name_once_daily",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take afterpill 1.5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_model_style_26_afterpill_name_once_daily",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take afterpill 1.5 mg by mouth once a day."
+ },
+ {
+  "id": "h4_model_style_27_six_order_chart_mixed_shapes",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Medication list:\n- Take lisinopril 10 mg by mouth once a day which is 10 mg a day.\n- Take metformin 500 mg by mouth, twice a day, which is 1000 mg a day.\nTake amlodipine (2.5 mg by mouth, once a day) which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_27_six_order_chart_mixed_shapes",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Medication list:\n- Take lisinopril 10 mg by mouth once a day which is 10 mg a day.\n- Take metformin 500 mg by mouth, twice a day, which is 1000 mg a day.\nTake amlodipine (2.5 mg by mouth, once a day) which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week."
+ },
+ {
+  "id": "h4_model_style_28_heparin_display_oral_route",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take Heparin 5000 units by mouth once a day which is 5000 units a day."
+ },
+ {
+  "id": "h4_model_style_28_heparin_display_oral_route",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take Heparin 5000 units by mouth once a day which is 5000 units a day."
+ },
+ {
+  "id": "h4_model_style_29_zestril_lisinopril_sig_daily",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take Zestril 10 mg by mouth, once a day, which is 10 mg a day.\nTake lisinopril 10 mg by mouth, once a day, which is 10 mg a day."
+ },
+ {
+  "id": "h4_model_style_29_zestril_lisinopril_sig_daily",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take Zestril 10 mg by mouth, once a day, which is 10 mg a day.\nTake lisinopril 10 mg by mouth, once a day, which is 10 mg a day."
+ },
+ {
+  "id": "h4_model_style_31_please_read_carefully_closing",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week.\nPlease read carefully."
+ },
+ {
+  "id": "h4_model_style_31_please_read_carefully_closing",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "model_style",
+  "text": "Take lisinopril 10 mg by mouth once a day which is 10 mg a day.\nTake metformin 500 mg by mouth twice a day which is 1000 mg a day.\nTake amlodipine 2.5 mg by mouth once a day which is 2.5 mg a day.\nTake atorvastatin 40 mg by mouth once a day which is 40 mg a day.\nTake insulin glargine 20 units as a shot under the skin once a day which is 20 units a day.\nTake acetaminophen 650 mg by mouth every 4 hours as needed.\nTake methotrexate 15 mg by mouth once a week.\nPlease read carefully."
+ },
+ {
+  "id": "h4_structure_01_semicolon_frame_take",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "structure",
+  "text": "Ask your nurse; take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_01_semicolon_frame_take",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "structure",
+  "text": "Ask your nurse; take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_02_newline_frame_take",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "structure",
+  "text": "Ask your nurse\nTake Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_02_newline_frame_take",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "structure",
+  "text": "Ask your nurse\nTake Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_03_period_frame_take",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "structure",
+  "text": "Ask your nurse. Take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_03_period_frame_take",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "unsupported_claim",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "structure",
+  "text": "Ask your nurse. Take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_04_read_carefully_ask_frame",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Read carefully and ask your nurse: take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_04_read_carefully_ask_frame",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Read carefully and ask your nurse: take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_05_trailing_frame_after_instruction",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take Lantus 10 units as a shot under the skin once a day. Ask your nurse with questions."
+ },
+ {
+  "id": "h4_structure_06_middle_frame_second_order",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "unsupported_claim",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take Lantus 10 units as a shot under the skin once a day. Ask your nurse: take Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_structure_06_middle_frame_second_order",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "unsupported_claim",
+  "third_reader": "faithful",
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take Lantus 10 units as a shot under the skin once a day. Ask your nurse: take Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_structure_07_parenthesized_daily_control",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take Metformin 500 mg by mouth twice a day (which is 1000 mg a day)."
+ },
+ {
+  "id": "h4_structure_07_parenthesized_daily_control",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take Metformin 500 mg by mouth twice a day (which is 1000 mg a day)."
+ },
+ {
+  "id": "h4_structure_08_quoted_instruction_control",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "\"Take Lantus 10 units as a shot under the skin once a day.\""
+ },
+ {
+  "id": "h4_structure_08_quoted_instruction_control",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "\"Take Lantus 10 units as a shot under the skin once a day.\""
+ },
+ {
+  "id": "h4_structure_09_dash_bullet_control",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "- Take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_09_dash_bullet_control",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "- Take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_10_take_note_frame_blocked",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take note: take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_11_which_frame_blocked",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Here is which medicine: take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_12_list_framing_careplan_medication",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Here is the list of your medicines. Take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_12_list_framing_careplan_medication",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Here is the list of your medicines. Take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_13_list_framing_medicationknowledge",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "faithful",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "structure",
+  "text": "Here is the list of your medicines. Take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_13_list_framing_medicationknowledge",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "faithful",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "structure",
+  "text": "Here is the list of your medicines. Take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_14_list_framing_do_not_perform_control",
+  "filter": "layer",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "structure",
+  "text": "Here is the list of your medicines. Take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_14_list_framing_do_not_perform_control",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "unsupported_claim",
+  "third_reader": null,
+  "label": "unsupported_claim",
+  "family": "structure",
+  "text": "Here is the list of your medicines. Take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_15_list_framing_one_of_two_unnamed_control",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Here is the list of your medicines. Take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_16_list_framing_two_orders_complete_control",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Here is the list of your medicines. Take Lantus 10 units as a shot under the skin once a day. Take Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_structure_16_list_framing_two_orders_complete_control",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Here is the list of your medicines. Take Lantus 10 units as a shot under the skin once a day. Take Metformin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_structure_17_list_framing_no_orders_named_control",
+  "filter": "baseline",
+  "reader1": "unsupported_claim",
+  "reader2": "misstates_order",
+  "third_reader": "unsupported_claim",
+  "label": "unsupported_claim",
+  "family": "structure",
+  "text": "Here is the list of your medicines."
+ },
+ {
+  "id": "h4_structure_18_daily_quarter_mg_every_8_hours",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take Metformin 0.25 mg by mouth every 8 hours, which is 0.75 mg a day."
+ },
+ {
+  "id": "h4_structure_18_daily_quarter_mg_every_8_hours",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take Metformin 0.25 mg by mouth every 8 hours, which is 0.75 mg a day."
+ },
+ {
+  "id": "h4_structure_19_daily_every_hour_control",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take Metformin 1 mg by mouth every hour, which is 24 mg a day."
+ },
+ {
+  "id": "h4_structure_19_daily_every_hour_control",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take Metformin 1 mg by mouth every hour, which is 24 mg a day."
+ },
+ {
+  "id": "h4_structure_21_daily_trailing_zero_frequency",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take Metformin 500 mg by mouth twice a day, which is 1000 mg a day."
+ },
+ {
+  "id": "h4_structure_21_daily_trailing_zero_frequency",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take Metformin 500 mg by mouth twice a day, which is 1000 mg a day."
+ },
+ {
+  "id": "h4_structure_22_id_64_letters_boundary",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_22_id_64_letters_boundary",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_24_sequence_three_single_dose",
+  "filter": "layer",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_24_sequence_three_single_dose",
+  "filter": "baseline",
+  "reader1": "faithful",
+  "reader2": "faithful",
+  "third_reader": null,
+  "label": "faithful",
+  "family": "structure",
+  "text": "Take Lantus 10 units as a shot under the skin once a day."
+ },
+ {
+  "id": "h4_structure_27_daily_names_other_order_control",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take Lantus 10 units as a shot under the skin once a day, which is 1000 mg a day."
+ },
+ {
+  "id": "h4_structure_28_medref_id_match_vs_fullurl_match",
+  "filter": "layer",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take Amoxicillin 500 mg by mouth twice a day."
+ },
+ {
+  "id": "h4_structure_28_medref_id_match_vs_fullurl_match",
+  "filter": "baseline",
+  "reader1": "misstates_order",
+  "reader2": "misstates_order",
+  "third_reader": null,
+  "label": "misstates_order",
+  "family": "structure",
+  "text": "Take Amoxicillin 500 mg by mouth twice a day."
+ }
+]
