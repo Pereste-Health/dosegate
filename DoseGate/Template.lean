@@ -1,8 +1,8 @@
 /-
 The model's output is free text with slots. A slot is written
-`{{field:id}}`, where `field` is drug, dose, frequency, route, or sig and `id`
-is the id of a MedicationRequest in the patient's record. Any other brace in the
-text makes the output malformed, and malformed output is blocked.
+`{{field:id}}`, where `field` is drug, dose, frequency, route, sig, or daily and
+`id` is the id of a MedicationRequest in the patient's record. Any other brace in
+the text makes the output malformed, and malformed output is blocked.
 -/
 import DoseGate.Fhir
 
