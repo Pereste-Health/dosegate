@@ -71,7 +71,7 @@ def blockDetail (p : Policy) (out : String) : Block → String
   | .repeatedValue =>
       "a value slot (dose, route, frequency, sig, or daily) appears twice for one order, or sig appears with dose, route, or frequency for one order"
   | .ambiguousDrug _ =>
-      "another active order has the same or a related drug name, so the instructions could be confused"
+      "another active order has the same or a related drug name, or an active order has no usable drug name, so the instructions could be confused"
   | .signBeforeSlot =>
       "a text segment directly before a slot ends with a run of non-letter, non-digit characters that contains - or +, which would put a sign in front of a filled value"
   | .omittedOrder id =>

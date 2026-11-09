@@ -1,1 +1,1 @@
-{"status": "blocked", "reason": "ambiguousDrug", "detail": "another active order has the same or a related drug name, so the instructions could be confused"}
+{"status": "blocked", "reason": "ambiguousDrug", "detail": "another active order has the same or a related drug name, or an active order has no usable drug name, so the instructions could be confused"}
