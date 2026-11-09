@@ -15,7 +15,7 @@ Keywords: Large Language Models; Medication Errors; Formal Verification; Patient
 
 Running title: A verified layer for LLM medication instructions
 
-Word count of the main text (Background and Significance through Conclusion, whitespace-split, excluding tables and their captions): 3,969 on 2026-11-08. [TODO recount at submission]
+Word count of the main text (Background and Significance through Conclusion, whitespace-split, excluding tables and their captions): 3,977 on 2026-11-08. [TODO recount at submission]
 :::
 
 ## Abstract
