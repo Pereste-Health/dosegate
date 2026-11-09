@@ -48,7 +48,7 @@
   "comment": "Still open for the pharmacist: the lisinopril comparator is the top of the usual range (40 mg), not a labeled maximum. The four thresholds and the DailyMed quotations in eval/maxima.py need a pharmacist's confirmation before this section is final."
  },
  {
-  "anchor": "under the Apache 2.0 license, at release v2.3.0.",
-  "comment": "The repository commits for rounds h3 to h5 and versions 2.2 and 2.3 are on your Mac and not yet pushed, and the v2.3.0 tag does not exist yet. Pushing them and creating the tag makes the final version public; say the word and I do both. The arXiv manuscript (paper/paper.md) still describes version 2.1 and needs the same revision before you post it."
+  "anchor": "under the Apache 2.0 license, at release v2.3.0 (tag at commit 6e08a52).",
+  "comment": "Pushed and tagged on 2026-11-08 at your word: main on GitHub holds rounds h3 to h5, versions 2.2 and 2.3, and this draft, and the tag v2.3.0 marks commit 6e08a52. The arXiv manuscript (paper/paper.md) and the Pereste site still describe version 2.1 and need the same revision before you post or update them."
  }
 ]

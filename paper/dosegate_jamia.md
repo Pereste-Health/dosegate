@@ -183,7 +183,7 @@ The author used Claude (Anthropic) to draft Lean definitions, proofs, and evalua
 
 ## Data availability
 
-The Lean development, the command-line tool, the comparison filter, the regression and fuzz tests, the evaluation scripts, the normalized synthetic cases, every adversarial request, all model outputs, and all labels are available at https://github.com/Pereste-Health/dosegate under the Apache 2.0 license, at release v2.3.0. [TODO create the v2.3.0 tag at the final commit and add a Zenodo DOI.] The Synthea bundles are not distributed; `eval/build_cases.py` rebuilds the cases from them, and the SHA-256 of the case file is recorded in the repository.
+The Lean development, the command-line tool, the comparison filter, the regression and fuzz tests, the evaluation scripts, the normalized synthetic cases, every adversarial request, all model outputs, and all labels are available at https://github.com/Pereste-Health/dosegate under the Apache 2.0 license, at release v2.3.0 (tag at commit 6e08a52). [TODO add a Zenodo DOI.] The Synthea bundles are not distributed; `eval/build_cases.py` rebuilds the cases from them, and the SHA-256 of the case file is recorded in the repository.
 
 ## Ethics statement
 
