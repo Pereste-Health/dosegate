@@ -77,38 +77,44 @@ def figure_layer():
 
 def misstatement_counts():
     s = json.loads((ROOT / "eval/data/labels_summary.json").read_text())
+    replay = json.loads((ROOT / "eval/data/replay_v23/summary.json").read_text())["table"]
     rows = []
-    for key, name, n, first in (("development", "Development", 290, "Version 1"),
-                                ("h1", "Round h1", 113, "Version 1"),
-                                ("h2", "Round h2", 138, "Version 2")):
-        rows.append((f"{name}\n({n} requests)", first,
+    for key, name, n, tested in (("h2", "Round h2", 138, "Version 2"),
+                                 ("h3", "Round h3", 156, "Version 2.1"),
+                                 ("h4", "Round h4", 145, "Version 2.2"),
+                                 ("h5", "Round h5", 144, "Version 2.3 (held out)")):
+        rows.append((f"{name} ({n} requests)", tested,
                      s[key]["layer"]["labels"]["misstates_order"],
-                     s[key]["baseline"]["labels"]["misstates_order"], 0))
+                     s[key]["baseline"]["labels"]["misstates_order"],
+                     replay[key]["misstates_order"] if key in replay else None))
     return rows
 
 
 def figure_misstatements():
     rows = misstatement_counts()
-    fig, ax = plt.subplots(figsize=(6.0, 3.6))
+    fig, ax = plt.subplots(figsize=(6.0, 4.4))
     y = 0
     ticks, labels = [], []
-    for group, first, layer, base, v21 in rows:
-        ax.text(-0.31, y - 0.1, group.replace("\n", " "), ha="left", va="center", fontweight="bold", transform=ax.get_yaxis_transform())
+    for group, tested, layer, base, replay in rows:
+        ax.text(-0.34, y - 0.1, group, ha="left", va="center", fontweight="bold", transform=ax.get_yaxis_transform())
         y -= 1
-        for label, val, color in ((first, layer, GRAY), ("Comparison filter", base, LIGHT), ("Version 2.1 (replay)", v21, ACCENT)):
+        bars = [(tested, layer, ACCENT if tested.startswith("Version 2.3") else GRAY), ("Comparison filter", base, LIGHT)]
+        if replay is not None:
+            bars.append(("Version 2.3 (replay)", replay, ACCENT))
+        for label, val, color in bars:
             ax.barh(y, val, 0.72, color=color, edgecolor="none")
-            hi = label.startswith("Version 2.1")
-            ax.text(val + 1.2, y, str(val), va="center", fontsize=8.5, color=ACCENT if hi else INK, fontweight="bold" if hi else None)
-            ticks.append(y); labels.append(label)
+            hi = label.startswith("Version 2.3")
+            ax.text(val + 0.8, y, str(val), va="center", fontsize=8.5, color=ACCENT if hi else INK, fontweight="bold" if hi else None)
+            ticks.append(y)
+            labels.append(label)
             y -= 1
         y -= 0.6
     ax.set_yticks(ticks, labels)
     ax.set_ylim(y + 0.9, 0.9)
-    ax.set_xlim(0, 100)
+    ax.set_xlim(0, 60)
     ax.set_xlabel("Released outputs that misstate an order")
-    for side in ("top", "right"):
+    for side in ("top", "right", "left"):
         ax.spines[side].set_visible(False)
-    ax.spines["left"].set_visible(False)
     ax.spines["bottom"].set_linewidth(0.8)
     ax.tick_params(axis="y", length=0, labelsize=8.5)
     ax.tick_params(axis="x", width=0.8, labelsize=8.5)
