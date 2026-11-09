@@ -146,7 +146,7 @@ def noRepeatedValue (segs : List Seg) : Bool :=
     !vs.any fun gj => gj.2 == fi.2 && (gj.1 == .dose || gj.1 == .route || gj.1 == .frequency)
 
 def endsSign (t : List Char) : Bool :=
-  (t.reverse.takeWhile (fun c => !c.isAlphanum)).any (fun c => c == '-' || c == '+')
+  (t.reverse.takeWhile (fun c => !c.isAlphanum)).any (fun c => c == '-' || c == '+' || c == '/')
 
 def hasSignBeforeSlot : List Seg → Bool
   | .text t :: .slot f id :: rest => endsSign t || hasSignBeforeSlot (.slot f id :: rest)

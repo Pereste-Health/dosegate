@@ -1311,7 +1311,7 @@ def ends_sign(text):
         if c in ASCII_ALNUM:
             break
         run.append(c)
-    return any(c in "-+" for c in run)
+    return any(c in "-+/" for c in run)
 
 
 def render(chart, out, cfg):
@@ -1851,6 +1851,7 @@ TEMPLATES = [
     "Take {{drug:ID}} {{dose:ID}} {{route:ID}} {{frequency:ID}}, which is -{{daily:ID}}.",
     "Take {{drug:ID}} +{{dose:ID}} {{route:ID}} {{frequency:ID}}.",
     "- Take {{drug:ID}} {{dose:ID}} {{route:ID}} {{frequency:ID}}!",
+    "Take {{drug:ID}}/{{dose:ID}} {{route:ID}} {{frequency:ID}}.",
 ]
 VALUE_TEMPLATES = TEMPLATES[:4] + TEMPLATES[6:9] + TEMPLATES[10:11] + TEMPLATES[14:16]
 RAW_CHARS = '{}[],:"\\0123456789eE+-. tfn'

@@ -7,7 +7,7 @@ This is version 2.3. The history of versions 1, 2, 2.1, 2.2, and 2.3, and the he
 ## Layout
 
 - `DoseGate/*.lean`: definitions (exact decimals, units, the FHIR subset, the slot parser, word classes, the renderer, the specification).
-- `DoseGate/Proofs/*.lean`: the proofs. `lake build DoseGate.Proofs` checks all 202 theorems.
+- `DoseGate/Proofs/*.lean`: the proofs. `lake build DoseGate.Proofs` checks all 204 theorems.
 - `DoseGate/Json.lean`, `DoseGate/Lexicon.lean`, `Main.lean`: the FHIR input reader, the embedded drug-name lexicon, and the command-line tool. This code is tested, not proved.
 - `data/rxnorm_names.txt`: the drug-name lexicon, every RxNorm ingredient, precise ingredient, multiple ingredient, and brand name (27,369 names, RxNorm release of 2 November 2026); `data/README.md` records the source and `data/build_rxnorm_names.py` rebuilds it.
 - `Baseline.lean`: the comparison filter used in the evaluation. It uses the same input reader and slot formatting but checks model text only for braces, digits, and unit words.

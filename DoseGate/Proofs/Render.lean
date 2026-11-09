@@ -450,6 +450,17 @@ theorem render_decomp {p : Policy} {chart : List MedReq} {out r : List Char}
   obtain ⟨hn, segs, pieces, hp, hF, hsep, hr, hs, hrep, -, -, -⟩ := render_decomp_full h
   exact ⟨hn, segs, pieces, hp, hF, hsep, hr, hs, hrep⟩
 
+theorem endsSign_parts {t : List Char} (h : endsSign t = false) :
+    (t.reverse.takeWhile (fun c => !c.isAlphanum)).any (fun c => c == '-' || c == '+') = false ∧
+    (t.reverse.takeWhile (fun c => !c.isAlphanum)).any (fun c => c == '/') = false := by
+  unfold endsSign at h
+  generalize t.reverse.takeWhile (fun c => !c.isAlphanum) = run at h ⊢
+  induction run with
+  | nil => simp
+  | cons c cs ih =>
+      simp only [List.any_cons, Bool.or_eq_false_iff] at h ih ⊢
+      exact ⟨⟨h.1.1, (ih h.2).1⟩, h.1.2, (ih h.2).2⟩
+
 theorem render_no_sign_before_slot {p : Policy} {chart : List MedReq} {out r : List Char}
     (h : render p chart out = .ok r) :
     ∃ segs pieces, parseTemplate out = some segs ∧ Forall₂ (SegRendersTo chart) segs pieces ∧
@@ -460,7 +471,19 @@ theorem render_no_sign_before_slot {p : Policy} {chart : List MedReq} {out r : L
   obtain ⟨hn, segs, pieces, hp, hF, -, hr, -, -, hs, -, -⟩ := render_decomp_full h
   refine ⟨segs, pieces, hp, forall₂_spec hn hF, hr, ?_⟩
   intro s u t f id hsplit
-  exact hasSignBeforeSlot_split s u t f id (by rw [← hsplit]; exact hs)
+  exact (endsSign_parts (hasSignBeforeSlot_split s u t f id (by rw [← hsplit]; exact hs))).1
+
+theorem render_no_slash_before_slot {p : Policy} {chart : List MedReq} {out r : List Char}
+    (h : render p chart out = .ok r) :
+    ∃ segs pieces, parseTemplate out = some segs ∧ Forall₂ (SegRendersTo chart) segs pieces ∧
+      r = pieces.flatten ∧
+      ∀ (s u : List Seg) (t : List Char) (f : Field) (id : List Char),
+        segs = s ++ Seg.text t :: Seg.slot f id :: u →
+        (t.reverse.takeWhile (fun c => !c.isAlphanum)).any (fun c => c == '/') = false := by
+  obtain ⟨hn, segs, pieces, hp, hF, -, hr, -, -, hs, -, -⟩ := render_decomp_full h
+  refine ⟨segs, pieces, hp, forall₂_spec hn hF, hr, ?_⟩
+  intro s u t f id hsplit
+  exact (endsSign_parts (hasSignBeforeSlot_split s u t f id (by rw [← hsplit]; exact hs))).2
 
 theorem dose_key (p : Policy) (chart : List MedReq) : ∀ (segs : List Seg) (pieces : List (List Char)),
     Forall₂ (fun s x => renderSeg p chart s = .ok x) segs pieces →
