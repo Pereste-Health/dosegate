@@ -638,6 +638,11 @@ def jAsNeeded (d : Json) : Bool :=
   | some (.bool b) => b
   | _ => false
 
+def timingLost (d : Json) : Bool :=
+  jAsNeeded d && match (jField? d "timing").bind (jField? · "repeat") with
+    | some r => (jTiming? r).isNone
+    | none => false
+
 def failsClosed (d : Json) : Bool :=
   let timing := jField? d "timing"
   let repeatOf := timing.bind (jField? · "repeat")
@@ -654,6 +659,7 @@ def failsClosed (d : Json) : Bool :=
   || (match jField? d "asNeededBoolean" with
       | some (.bool _) | none => false
       | some _ => true)
+  || timingLost d
   || doseRates.length > 1
 
 def routeTerms : List (String × String) :=

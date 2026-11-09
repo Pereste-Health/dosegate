@@ -957,6 +957,9 @@ def fails_closed(dosage):
     as_needed = dosage.get("asNeededBoolean")
     if as_needed is not None and not isinstance(as_needed, bool):
         return True
+    if as_needed is True and isinstance(timing, dict) and isinstance(timing.get("repeat"), dict) \
+            and timing_of(dosage) is None:
+        return True
     return len(rates) > 1
 
 
@@ -1954,7 +1957,20 @@ def m_reported(rng, root):
     return True
 
 
+LOST_TIMING_EDITS = [("periodUnit", "s"), ("periodUnit", "min"), ("periodUnit", "a"), ("periodUnit", None),
+                     ("period", None), ("frequency", None)]
+
+
 def m_as_needed(rng, root):
+    dosages = [o for o in objects(root) if has_key(o, "timing") and isinstance(dict(o)["timing"], O)]
+    if dosages and rng.random() < 0.5:
+        dosage = rng.choice(dosages)
+        repeat = dict(dict(dosage)["timing"]).get("repeat")
+        if isinstance(repeat, O):
+            set_key_in(dosage, "asNeededBoolean", True)
+            key, value = rng.choice(LOST_TIMING_EDITS)
+            set_key_in(repeat, key, value)
+            return True
     return set_some(rng, root, "asNeededBoolean", AS_NEEDED_VALUES)
 
 
