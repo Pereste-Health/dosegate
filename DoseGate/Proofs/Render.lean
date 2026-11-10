@@ -182,16 +182,26 @@ theorem checkText_ok {p : Policy} {t : List Char} (h : checkText p t = .ok ()) :
         have := List.find?_eq_none.mp hfind tok htok
         simpa using this
 
+theorem bind_text_ok {t x : List Char} : ∀ (e : Except Block Unit),
+    (e >>= fun _ => (pure t : Except Block (List Char))) = .ok x → e = .ok () ∧ x = t
+  | .error _, h => by cases h
+  | .ok (), h => by
+      change (Except.ok t : Except Block (List Char)) = .ok x at h
+      cases h
+      exact ⟨rfl, rfl⟩
+
 theorem renderSeg_text {p : Policy} {chart : List MedReq} {t x : List Char}
-    (h : renderSeg p chart (.text t) = .ok x) : checkText p t = .ok () ∧ x = t := by
-  simp only [renderSeg] at h
-  cases hc : checkText p t with
-  | error b => simp only [hc, bind, Except.bind] at h; cases h
-  | ok u =>
-    cases u
-    simp only [hc, bind, Except.bind] at h
-    cases h
-    exact ⟨rfl, rfl⟩
+    (hs : p.numberOnly = false) (h : renderSeg p chart (.text t) = .ok x) :
+    checkText p t = .ok () ∧ x = t := by
+  unfold renderSeg at h
+  rw [hs] at h
+  simp only [Bool.false_eq_true, ↓reduceIte] at h
+  exact bind_text_ok _ h
+
+theorem renderSeg_text_eq {p : Policy} {chart : List MedReq} {t x : List Char}
+    (h : renderSeg p chart (.text t) = .ok x) : x = t := by
+  unfold renderSeg at h
+  exact (bind_text_ok _ h).2
 
 theorem text_no_forbidden {p : Policy} {t : List Char}
     (h : checkText p t = .ok ()) : (tokens t).filter isForbidden = [] := by
@@ -242,9 +252,23 @@ theorem renderSeg_slot_spec {p : Policy} {chart : List MedReq} {f : Field} {id x
       cases hf : fmtField f m with
       | none => simp [hact, hf] at h <;> split at h <;> cases h
       | some piece =>
-        simp [hact, hf] at h <;> split at h
-        · cases h
-        · exact congrArg some (Except.ok.inj h)
+        simp [hact, hf] at h
+        split at h <;> (try split at h) <;> first | exact congrArg some (Except.ok.inj h) | cases h
+
+theorem renderSeg_drug_number {p : Policy} {chart : List MedReq} {id x : List Char}
+    (hp : p.numberOnly = true) (h : renderSeg p chart (.slot .drug id) = .ok x) :
+    (tokens x).any numberLike = false := by
+  obtain ⟨m, hfind, hact, hf⟩ := renderSeg_slot_spec h
+  cases hc : (tokens x).any numberLike with
+  | false => rfl
+  | true =>
+    exfalso
+    unfold renderSeg at h
+    simp only [hfind, hact, hf, hp, hc, Bool.not_true, Bool.and_true, beq_self_eq_true,
+      ↓reduceIte] at h
+    by_cases hl : (chart.filter fun m' => m'.active && relatedDrug m'.drug m.drug).length > 1
+    · simp [hl] at h
+    · simp [hl] at h
 
 theorem renderSeg_slot_find {p : Policy} {chart : List MedReq} {f : Field} {id x : List Char}
     (h : renderSeg p chart (.slot f id) = .ok x) :
@@ -261,7 +285,7 @@ theorem forall₂_spec {p : Policy} {chart : List MedReq} (hn : (chart.map (·.i
       refine Forall₂.cons ?_ (forall₂_spec hn hF)
       cases s with
       | text t =>
-        obtain ⟨-, rfl⟩ := renderSeg_text hR
+        obtain rfl := renderSeg_text_eq hR
         simp [SegRendersTo]
       | slot f id =>
         obtain ⟨m, hm, hid, hact, hf⟩ := renderSeg_slot_find hR
@@ -485,16 +509,17 @@ theorem render_no_slash_before_slot {p : Policy} {chart : List MedReq} {out r : 
   intro s u t f id hsplit
   exact (endsSign_parts (hasSignBeforeSlot_split s u t f id (by rw [← hsplit]; exact hs))).2
 
-theorem dose_key (p : Policy) (chart : List MedReq) : ∀ (segs : List Seg) (pieces : List (List Char)),
+theorem dose_key (p : Policy) (chart : List MedReq) (hs : p.numberOnly = false) :
+    ∀ (segs : List Seg) (pieces : List (List Char)),
     Forall₂ (fun s x => renderSeg p chart s = .ok x) segs pieces →
     pieces.flatMap (fun pc => (tokens pc).filter isForbidden) = valueSlotTokens segs pieces
   | _, _, .nil => by simp [valueSlotTokens]
   | s :: segs, x :: pieces, .cons hR hF => by
-      have ih := dose_key p chart segs pieces hF
+      have ih := dose_key p chart hs segs pieces hF
       unfold valueSlotTokens at ih ⊢
       cases s with
       | text t =>
-        obtain ⟨hc, rfl⟩ := renderSeg_text hR
+        obtain ⟨hc, rfl⟩ := renderSeg_text hs hR
         simp [List.zip_cons_cons, Seg.isValueSlot, ih, text_no_forbidden hc]
       | slot f id =>
         by_cases hd : f = .drug
@@ -517,24 +542,25 @@ theorem render_fidelity {p : Policy} {chart : List MedReq} {out r : List Char}
   exact ⟨segs, pieces, hp, forall₂_spec hn hF, hr⟩
 
 theorem render_forbidden_tokens_from_value_slots {p : Policy} {chart : List MedReq} {out r : List Char}
-    (h : render p chart out = .ok r) :
+    (hs : p.numberOnly = false) (h : render p chart out = .ok r) :
     ∃ segs pieces, parseTemplate out = some segs ∧
       Forall₂ (SegRendersTo chart) segs pieces ∧
       (tokens r).filter isForbidden = valueSlotTokens segs pieces := by
   obtain ⟨hn, segs, pieces, hp, hF, hsep, hr, -, -⟩ := render_decomp h
   refine ⟨segs, pieces, hp, forall₂_spec hn hF, ?_⟩
   rw [hr, tokens_flatten_filter_eq hsep]
-  exact dose_key p chart segs pieces hF
+  exact dose_key p chart hs segs pieces hF
 
 theorem render_text_clean {p : Policy} {chart : List MedReq} {out r t : List Char} {segs : List Seg}
-    (h : render p chart out = .ok r) (hp : parseTemplate out = some segs) (ht : Seg.text t ∈ segs) :
+    (hs : p.numberOnly = false) (h : render p chart out = .ok r) (hp : parseTemplate out = some segs)
+    (ht : Seg.text t ∈ segs) :
     (tokens t).all (allowedWord p) = true ∧ (tokens t).all (fun tok => !isForbidden tok) = true ∧
       t.all isTextChar = true := by
   obtain ⟨-, segs', pieces, hp', hF, -, -, -, -⟩ := render_decomp h
   have e : segs' = segs := Option.some.inj (hp'.symm.trans hp)
   subst e
   obtain ⟨x, hx⟩ := forall₂_mem hF _ ht
-  obtain ⟨hc, -⟩ := renderSeg_text hx
+  obtain ⟨hc, -⟩ := renderSeg_text hs hx
   obtain ⟨hchar, hallowed⟩ := checkText_ok hc
   refine ⟨hallowed, List.all_eq_true.mpr fun tok htok => ?_, hchar⟩
   simp [allowedWord_not_forbidden (p := p) (List.all_eq_true.mp hallowed tok htok)]
@@ -774,8 +800,7 @@ theorem renderSeg_related_len {p : Policy} {chart : List MedReq} {f : Field} {id
   · cases h
   · split at h
     · cases h
-    · rename_i hc
-      omega
+    · split at h <;> first | cases h | omega
 
 theorem renderSeg_unique_related {p : Policy} {chart : List MedReq} {f : Field} {id piece : List Char}
     (h : renderSeg p chart (.slot f id) = .ok piece) :

@@ -1,0 +1,1 @@
+{"detail": "sentence 1, \"Take it twice\", uses the word twice, which may state a number, dose, or schedule. A sentence with no dose, route, frequency, sig, or daily slot must contain no slot and may use only common words from the approved number-only list.", "reason": "unbound", "status": "blocked"}

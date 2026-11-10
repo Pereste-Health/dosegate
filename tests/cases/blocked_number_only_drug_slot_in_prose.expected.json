@@ -1,0 +1,1 @@
+{"detail": "sentence 1, \"No, please keep taking {{drug:m1}}\", uses a drug slot, but a sentence with no dose, route, frequency, sig, or daily slot may not contain any slot. A sentence with no dose, route, frequency, sig, or daily slot must contain no slot and may use only common words from the approved number-only list.", "reason": "unbound", "status": "blocked"}

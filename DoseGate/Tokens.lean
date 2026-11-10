@@ -15,6 +15,12 @@ token is rejected even if a deployment adds it. `vocab_clean` in
 Two drug names are related when a reader could mistake one for the other, for
 example when they differ only in case, share a word, or one word begins with
 another. `relatedDrug` decides this conservatively.
+
+Number-only mode uses a different test on model text. A token is number-like
+when it could state a quantity, a dose unit, a schedule, or a change in amount.
+`numberLike` decides this. In number-only mode, prose may use only words on the
+approved list in `DoseGate/ProseWords.lean`, or the deployment's extra words, and
+no prose word may be number-like.
 -/
 namespace DoseGate
 
@@ -105,6 +111,31 @@ def isForbidden (tok : List Char) : Bool :=
 def isNameWord (tok : List Char) : Bool :=
   wordIn vocab tok || wordIn instrWords tok || wordIn totalWords tok || wordIn nameStopWords tok
 
+def plainQuantifiers : List String := ["all", "some", "any", "both"]
+
+def doseNouns : List String := ["dose", "doses", "dosage"]
+
+def scheduleWords : List String :=
+  ["every", "each", "per", "daily", "nightly", "weekly", "monthly", "hourly", "times", "bid",
+   "tid", "qid", "qd", "qod", "qhs", "prn", "qam", "qpm", "qw", "q", "h", "hs", "ac", "pc",
+   "morning", "mornings", "evening", "evenings", "night", "nights", "noon", "bedtime",
+   "breakfast", "lunch", "dinner", "supper", "meal", "meals", "hour", "hours", "minute",
+   "minutes", "day", "days", "week", "weeks", "month", "months", "year", "today", "tonight",
+   "tomorrow", "again"]
+
+def quantityChangeWords : List String :=
+  ["more", "less", "fewer", "increase", "increased", "decrease", "decreased", "reduce", "lower",
+   "lowered", "raise", "adjust", "max", "maximum", "min", "minimum", "most", "least"]
+
+def romanWords : List String :=
+  ["ii", "iii", "iv", "vi", "vii", "viii", "ix", "x", "xi", "xii", "xv", "xx"]
+
+def numberPrefixes : List String :=
+  ["four", "five", "seven", "nine", "twelve", "twenty", "thirty", "forty", "fifty", "sixty",
+   "eighty", "ninety", "hundred", "thousand", "million"]
+
+def numberSuffixes : List String := ["mg", "mcg", "ml"]
+
 def asciiLetterToken (tok : List Char) : Bool := tok.all Char.isAlpha
 
 def nonAsciiChar (c : Char) : Bool := c.toNat ≥ 128
@@ -115,5 +146,15 @@ def relatedDrug (a b : List Char) : Bool :=
   a.map Char.toLower == b.map Char.toLower ||
   (tokens a).any fun u => (tokens b).any fun v =>
     u == v || (4 ≤ u.length && u.isPrefixOf v) || (4 ≤ v.length && v.isPrefixOf u)
+
+def numberLike (tok : List Char) : Bool :=
+  tok.any Char.isDigit ||
+  (wordIn numberWords tok && !wordIn plainQuantifiers tok) ||
+  (wordIn unitWords tok && !wordIn doseNouns tok) ||
+  wordIn scheduleWords tok || wordIn quantityChangeWords tok ||
+  (tok.length == 1 && tok != "a".toList && tok != "i".toList) ||
+  wordIn romanWords tok ||
+  numberPrefixes.any (fun pre => pre.toList.isPrefixOf tok) ||
+  numberSuffixes.any (fun suf => suf.toList.isSuffixOf tok)
 
 end DoseGate

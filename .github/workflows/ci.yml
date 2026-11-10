@@ -27,3 +27,5 @@ jobs:
         run: bash tests/run.sh
       - name: Reader fuzz test
         run: python3 tests/fuzz_reader.py --core v2 --seed 7 --count 5000
+      - name: Number-only fuzz test
+        run: python3 tests/fuzz_number_only.py --seed 7 --count 5000

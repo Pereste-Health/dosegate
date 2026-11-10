@@ -5,3 +5,5 @@ import DoseGate.Proofs.Render
 import DoseGate.Proofs.Vocab
 import DoseGate.Proofs.Daily
 import DoseGate.Proofs.Shape
+import DoseGate.Proofs.NumberOnly
+import DoseGate.Proofs.ReaderNumbers

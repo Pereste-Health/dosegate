@@ -2,15 +2,24 @@
 The gate. `render` takes the patient's medication orders and the model's
 output, and either returns the text the reader will see or a reason it was
 blocked. Nothing else leaves the gate.
+
+By default the gate runs in strict mode, where model text may use only a fixed
+vocabulary. With `numberOnly` set, a sentence with no value slot may use no slot
+and only words on the approved list (`DoseGate/ProseWords.lean`) or the deployment's
+extra words, none of them number-like (see `numberLike` in `DoseGate/Tokens.lean`).
+The gate then promises that every number-like word in the output comes from a
+filled value slot, and that no fixed word of a value sentence shape is number-like.
 -/
 import DoseGate.Template
 import DoseGate.Tokens
+import DoseGate.ProseWords
 
 namespace DoseGate
 
 structure Policy where
   extraWords : List String := []
   requireAll : Bool := true
+  numberOnly : Bool := false
   deriving Repr, Inhabited
 
 inductive Block where
@@ -29,6 +38,7 @@ inductive Block where
   | signBeforeSlot
   | omittedOrder (id : List Char)
   | noActiveOrder
+  | numberInName (id : List Char)
   deriving Repr, DecidableEq, Inhabited
 
 def allowedWord (p : Policy) (tok : List Char) : Bool :=
@@ -47,8 +57,11 @@ def checkText (p : Policy) (t : List Char) : Except Block Unit :=
       | some tok => .error (.unknownWord tok)
       | none => .ok ()
 
+def checkNumberChars (t : List Char) : Except Block Unit :=
+  if !t.all (fun c => isTextChar c || c == '?') then .error .disallowedCharacter else .ok ()
+
 def renderSeg (p : Policy) (chart : List MedReq) : Seg → Except Block (List Char)
-  | .text t => do checkText p t; pure t
+  | .text t => (if p.numberOnly then checkNumberChars t else checkText p t) >>= fun _ => pure t
   | .slot f id =>
       match chart.find? (·.id == id) with
       | none => .error (.unknownRef id)
@@ -58,7 +71,10 @@ def renderSeg (p : Policy) (chart : List MedReq) : Seg → Except Block (List Ch
             .error (.ambiguousDrug id)
           else match fmtField f m with
             | none => .error (.missingField id f)
-            | some piece => .ok piece
+            | some piece =>
+                if p.numberOnly && f == .drug && (tokens piece).any numberLike then
+                  .error (.numberInName id)
+                else .ok piece
 
 def isSep (c : Char) : Bool := !c.isAlphanum
 
@@ -127,13 +143,33 @@ def instrDailyShape : List Item :=
 def sigDailyShape : List Item :=
   sigShape ++ [.w "which".toList, .w "is".toList, .s .daily]
 
+def takeDoseShape : List Item := [.w "take".toList, .s .drug, .s .dose]
+
+def takeRouteShape : List Item := [.w "take".toList, .s .drug, .s .route]
+
+def takeFrequencyShape : List Item := [.w "take".toList, .s .drug, .s .frequency]
+
+def yourDoseShape : List Item :=
+  [.w "your".toList, .w "dose".toList, .w "of".toList, .s .drug, .w "is".toList, .s .dose]
+
+def yourDailyTotalShape : List Item :=
+  [.w "your".toList, .w "total".toList, .w "of".toList, .s .drug,
+    .w "is".toList, .s .daily]
+
+def numberShapes : List (List Item) :=
+  [instrShape, sigShape, instrDailyShape, sigDailyShape, takeDoseShape, takeRouteShape,
+    takeFrequencyShape, yourDoseShape, yourDailyTotalShape]
+
 def sentenceOk (p : Policy) (g : List Seg) : Bool :=
   let sl := slotsOf g
   let ids := sl.map (·.2)
   ids.all (· == ids.headD []) &&
   (if sl.any (isValueField ·.1) then
-    itemsOf g == instrShape || itemsOf g == sigShape || itemsOf g == instrDailyShape ||
+    if p.numberOnly then numberShapes.contains (itemsOf g)
+    else itemsOf g == instrShape || itemsOf g == sigShape || itemsOf g == instrDailyShape ||
       itemsOf g == sigDailyShape
+  else if p.numberOnly then
+    sl.isEmpty && (wordsOf g).all (fun w => !numberLike w && (wordIn proseWords w || wordIn p.extraWords w))
   else sl.isEmpty && (wordsOf g).all (fun w => wordIn vocab w || wordIn p.extraWords w))
 
 def valueSlots (segs : List Seg) : List (Field × List Char) :=

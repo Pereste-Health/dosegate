@@ -144,5 +144,12 @@ for request in tests/fallback/*.request.json; do
     fi
 done
 
+if python3 tests/check_prose_words.py "$bin"; then
+    pass=$((pass + 1))
+else
+    echo "FAIL prose word list"
+    fail=$((fail + 1))
+fi
+
 echo "passed: $pass, failed: $fail"
 [ "$fail" -eq 0 ]

@@ -20,6 +20,7 @@ def blockName : Block → String
   | .signBeforeSlot => "signBeforeSlot"
   | .omittedOrder _ => "omittedOrder"
   | .noActiveOrder => "noActiveOrder"
+  | .numberInName _ => "numberInName"
 
 def slotText (f : Field) (id : List Char) : String :=
   "{{" ++ String.ofList f.name ++ ":" ++ String.ofList id ++ "}}"
@@ -36,9 +37,27 @@ def shapeOf (g : List Seg) : String :=
   else
     "A sentence with no dose, route, frequency, sig, or daily slot must use only common words and no slot, so a drug name needs a sentence with its dose, route, and frequency or its sig."
 
+def numberShapeOf (g : List Seg) : String :=
+  let sl := slotsOf g
+  let id := (sl.head?.map (·.2)).getD []
+  if sl.any (isValueField ·.1) then
+    "A sentence with a dose, route, frequency, sig, or daily slot must match one of these shapes, with no other words and every slot naming the same order: Take "
+      ++ slotText .drug id ++ " " ++ slotText .dose id ++ ". Take " ++ slotText .drug id ++ " "
+      ++ slotText .route id ++ ". Take " ++ slotText .drug id ++ " " ++ slotText .frequency id
+      ++ ". Take " ++ slotText .drug id ++ " " ++ slotText .sig id ++ ". Your dose of "
+      ++ slotText .drug id ++ " is " ++ slotText .dose id ++ ". Your total of "
+      ++ slotText .drug id ++ " is " ++ slotText .daily id ++ ". A daily total may also end: which is "
+      ++ slotText .daily id ++ "."
+  else
+    "A sentence with no dose, route, frequency, sig, or daily slot must contain no slot and may use only common words from the approved number-only list."
+
 def sentenceDetail (i : Nat) (g : List Seg) (problem : String) : String :=
   let text := (String.ofList (unparse g)).trimAscii.toString
   "sentence " ++ toString i ++ ", \"" ++ text ++ "\", " ++ problem ++ ". " ++ shapeOf g
+
+def numberSentenceDetail (i : Nat) (g : List Seg) (problem : String) : String :=
+  let text := (String.ofList (unparse g)).trimAscii.toString
+  "sentence " ++ toString i ++ ", \"" ++ text ++ "\", " ++ problem ++ ". " ++ numberShapeOf g
 
 def firstSentence (pred : List Seg → Bool) : Nat → List (List Seg) → Option (Nat × List Seg)
   | _, [] => none
@@ -52,10 +71,37 @@ def locateDetail (out : String) (pred : List Seg → Bool) (problem fallback : S
       | some (i, g) => sentenceDetail i g problem
       | none => fallback
 
+def numberUnboundDetail (p : Policy) (out : String) : String :=
+  let fallback := "a sentence does not match a valid number-only sentence shape"
+  match parseTemplate out.toList with
+  | none => fallback
+  | some segs =>
+      match firstSentence (fun g => !sentenceOk p g) 1 (sentences segs) with
+      | none => fallback
+      | some (i, g) =>
+          let ids := (slotsOf g).map (·.2)
+          if !(ids.all (· == ids.headD [])) then
+            numberSentenceDetail i g "names more than one MedicationRequest"
+          else if (slotsOf g).any (isValueField ·.1) then
+            numberSentenceDetail i g "does not match a valid sentence shape"
+          else if !(slotsOf g).isEmpty then
+            numberSentenceDetail i g "uses a drug slot, but a sentence with no dose, route, frequency, sig, or daily slot may not contain any slot"
+          else match (wordsOf g).find? (fun w => numberLike w || !(wordIn proseWords w || wordIn p.extraWords w)) with
+            | some tok =>
+                if numberLike tok then
+                  numberSentenceDetail i g ("uses the word " ++ String.ofList tok
+                    ++ ", which may state a number, dose, or schedule")
+                else
+                  numberSentenceDetail i g ("uses the word " ++ String.ofList tok
+                    ++ ", which is not on the approved number-only word list")
+            | none => numberSentenceDetail i g "does not match a valid sentence shape"
+
 def blockDetail (p : Policy) (out : String) : Block → String
   | .malformed => "output has an unclosed, stray, or unrecognized brace"
   | .duplicateIds => "two MedicationRequests share one id"
-  | .disallowedCharacter => "output contains a character that model text may not use: only letters, digits, spaces, line breaks, and . , ; : ( ) ' \" - /"
+  | .disallowedCharacter =>
+      "output contains a character that model text may not use: only letters, digits, spaces, line breaks, and . , ; : ( ) ' \" - /" ++
+        (if p.numberOnly then " ?" else "")
   | .forbiddenWord tok => "free text contains the forbidden word " ++ String.ofList tok
   | .unknownWord tok =>
       locateDetail out (fun g => (wordsOf g).contains tok)
@@ -66,7 +112,8 @@ def blockDetail (p : Policy) (out : String) : Block → String
   | .missingField id f => "MedicationRequest " ++ String.ofList id ++ " has no usable " ++ String.ofList f.name
   | .unseparated => "two filled slots touch without a space or punctuation between them"
   | .unbound =>
-      locateDetail out (fun g => !sentenceOk p g) "does not match a valid sentence shape"
+      if p.numberOnly then numberUnboundDetail p out
+      else locateDetail out (fun g => !sentenceOk p g) "does not match a valid sentence shape"
         "a sentence does not match a valid sentence shape"
   | .repeatedValue =>
       "a value slot (dose, route, frequency, sig, or daily) appears twice for one order, or sig appears with dose, route, or frequency for one order"
@@ -78,6 +125,8 @@ def blockDetail (p : Policy) (out : String) : Block → String
       "MedicationRequest " ++ String.ofList id ++ " is active but no dose, route, frequency, sig, or daily slot names it"
   | .noActiveOrder =>
       "no MedicationRequest is active, so the output has no order to name and is blocked"
+  | .numberInName id =>
+      "MedicationRequest " ++ String.ofList id ++ " has a drug name with a number-like word, so the drug name cannot be printed in number-only mode"
 
 def okJson (text : String) : Lean.Json :=
   Lean.Json.mkObj [("status", Lean.Json.str "ok"), ("text", Lean.Json.str text)]
@@ -178,14 +227,16 @@ partial def serveLoop (o : Opts) (stdin stdout : IO.FS.Stream) : IO Unit := do
     stdout.flush
   serveLoop o stdin stdout
 
-def parseOptions : List String → Option (Option String × Bool × Bool)
-  | [] => some (none, false, false)
+def parseOptions : List String → Option (Option String × Bool × Bool × Bool)
+  | [] => some (none, false, false, false)
   | "--extra-words" :: path :: rest =>
-      (parseOptions rest).bind fun (f, i, a) => if f.isSome then none else some (some path, i, a)
+      (parseOptions rest).bind fun (f, i, a, n) => if f.isSome then none else some (some path, i, a, n)
   | "--ignore-free-text" :: rest =>
-      (parseOptions rest).bind fun (f, i, a) => if i then none else some (f, true, a)
+      (parseOptions rest).bind fun (f, i, a, n) => if i then none else some (f, true, a, n)
   | "--allow-omissions" :: rest =>
-      (parseOptions rest).bind fun (f, i, a) => if a then none else some (f, i, true)
+      (parseOptions rest).bind fun (f, i, a, n) => if a then none else some (f, i, true, n)
+  | "--number-only" :: rest =>
+      (parseOptions rest).bind fun (f, i, a, n) => if n then none else some (f, i, a, true)
   | _ => none
 
 def loadExtraWords (path : String) : IO (List String) := do
@@ -201,12 +252,12 @@ def policyOf : Option String → IO Policy
       pure { extraWords := words }
 
 def usage : IO UInt32 := do
-  IO.eprintln "usage: dosegate render|serve [--extra-words FILE] [--ignore-free-text] [--allow-omissions], or dosegate fallback"
+  IO.eprintln "usage: dosegate render|serve [--extra-words FILE] [--ignore-free-text] [--allow-omissions] [--number-only], or dosegate fallback"
   pure 1
 
-def optsOf (file? : Option String) (ign allow : Bool) : IO Opts := do
+def optsOf (file? : Option String) (ign allow num : Bool) : IO Opts := do
   let pol ← policyOf file?
-  pure { policy := { pol with requireAll := !allow }, ignoreFreeText := ign }
+  pure { policy := { pol with requireAll := !(allow || num), numberOnly := num }, ignoreFreeText := ign }
 
 def main (args : List String) : IO UInt32 := do
   let stdin ← IO.getStdin
@@ -215,17 +266,17 @@ def main (args : List String) : IO UInt32 := do
     | c :: r => (c, r)
     | [] => ("", [])
   match cmd, parseOptions rest with
-  | "render", some (file?, ign, allow) =>
-      let o ← optsOf file? ign allow
+  | "render", some (file?, ign, allow, num) =>
+      let o ← optsOf file? ign allow num
       let (resp, code) := respondLine (handleRender o) (← readAll stdin)
       stdout.putStrLn resp.compress
       stdout.flush
       pure code.toUInt32
-  | "serve", some (file?, ign, allow) =>
-      let o ← optsOf file? ign allow
+  | "serve", some (file?, ign, allow, num) =>
+      let o ← optsOf file? ign allow num
       serveLoop o stdin stdout
       pure 0
-  | "fallback", some (none, false, false) =>
+  | "fallback", some (none, false, false, false) =>
       let o : Opts := { policy := {}, ignoreFreeText := false }
       let (resp, code) := respondLine (handleFallback o) (← readAll stdin)
       stdout.putStrLn resp.compress

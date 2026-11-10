@@ -31,4 +31,7 @@ def Seg.isValueSlot : Seg → Bool
 def valueSlotTokens (segs : List Seg) (pieces : List (List Char)) : List (List Char) :=
   ((segs.zip pieces).filter (·.1.isValueSlot)).flatMap fun sp => (tokens sp.2).filter isForbidden
 
+def valueSlotNumberTokens (segs : List Seg) (pieces : List (List Char)) : List (List Char) :=
+  ((segs.zip pieces).filter (·.1.isValueSlot)).flatMap fun sp => (tokens sp.2).filter numberLike
+
 end DoseGate

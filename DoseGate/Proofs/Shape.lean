@@ -2,29 +2,30 @@ import DoseGate.Proofs.Render
 
 namespace DoseGate
 
-theorem sentenceOk_value_shape {p : Policy} {g : List Seg} (h : sentenceOk p g = true)
-    (hv : (slotsOf g).any (isValueField ·.1) = true) :
+theorem sentenceOk_value_shape {p : Policy} {g : List Seg} (hn : p.numberOnly = false)
+    (h : sentenceOk p g = true) (hv : (slotsOf g).any (isValueField ·.1) = true) :
     itemsOf g = instrShape ∨ itemsOf g = sigShape ∨ itemsOf g = instrDailyShape ∨
       itemsOf g = sigDailyShape := by
   unfold sentenceOk at h
-  simp only [hv, ite_true, Bool.and_eq_true, Bool.or_eq_true, beq_iff_eq] at h
+  simp only [hv, hn, Bool.false_eq_true, ↓reduceIte, Bool.and_eq_true,
+    Bool.or_eq_true, beq_iff_eq] at h
   rcases h.2 with ((h1 | h2) | h3) | h4
   · exact Or.inl h1
   · exact Or.inr (Or.inl h2)
   · exact Or.inr (Or.inr (Or.inl h3))
   · exact Or.inr (Or.inr (Or.inr h4))
 
-theorem sentenceOk_free {p : Policy} {g : List Seg} (h : sentenceOk p g = true)
-    (hv : (slotsOf g).any (isValueField ·.1) = false) :
+theorem sentenceOk_free {p : Policy} {g : List Seg} (hn : p.numberOnly = false)
+    (h : sentenceOk p g = true) (hv : (slotsOf g).any (isValueField ·.1) = false) :
     (slotsOf g).isEmpty = true ∧ (wordsOf g).all (fun w => wordIn vocab w || wordIn p.extraWords w) = true := by
   unfold sentenceOk at h
-  simp only [hv, Bool.false_eq_true, ite_false, Bool.and_eq_true] at h
+  simp only [hv, hn, Bool.false_eq_true, ↓reduceIte, Bool.and_eq_true] at h
   exact h.2
 
-theorem sentenceOk_free_words {p : Policy} {g : List Seg} (h : sentenceOk p g = true)
-    (hv : (slotsOf g).any (isValueField ·.1) = false) :
+theorem sentenceOk_free_words {p : Policy} {g : List Seg} (hn : p.numberOnly = false)
+    (h : sentenceOk p g = true) (hv : (slotsOf g).any (isValueField ·.1) = false) :
     (wordsOf g).all (fun w => wordIn vocab w || wordIn p.extraWords w) = true :=
-  (sentenceOk_free h hv).2
+  (sentenceOk_free hn h hv).2
 
 theorem sentenceOk_one_order {p : Policy} {g : List Seg} (h : sentenceOk p g = true) :
     ((slotsOf g).map (·.2)).all (· == ((slotsOf g).map (·.2)).headD []) = true := by
@@ -53,15 +54,16 @@ theorem mem_of_mem_slotsOf (g : List Seg) (f : Field) (id : List Char) (h : (f, 
     obtain ⟨rfl, rfl⟩ := hsf
     exact hs
 
-theorem sentenceOk_free_no_slot {p : Policy} {g : List Seg} (h : sentenceOk p g = true)
-    (hv : (slotsOf g).any (isValueField ·.1) = false) : ∀ s ∈ g, s.isSlot = false := by
+theorem sentenceOk_free_no_slot {p : Policy} {g : List Seg} (hn : p.numberOnly = false)
+    (h : sentenceOk p g = true) (hv : (slotsOf g).any (isValueField ·.1) = false) :
+    ∀ s ∈ g, s.isSlot = false := by
   intro s hs
   cases s with
   | text t => rfl
   | slot f id =>
     exfalso
     have hm := mem_slotsOf_of_slot g f id hs
-    have he := (sentenceOk_free h hv).1
+    have he := (sentenceOk_free hn h hv).1
     rw [List.isEmpty_iff] at he
     rw [he] at hm
     simp at hm
@@ -146,7 +148,7 @@ theorem item_slot : ∀ (g : List Seg) (f : Field), Item.s f ∈ itemsOf g → �
         | slot f' id' => exact ⟨id, by simpa [slotsOf] using Or.inr hid⟩
 
 theorem render_value_sentence {p : Policy} {chart : List MedReq} {out r : List Char} {segs : List Seg}
-    {f : Field} {id : List Char}
+    {f : Field} {id : List Char} (hn : p.numberOnly = false)
     (h : render p chart out = .ok r) (hp : parseTemplate out = some segs)
     (hs : Seg.slot f id ∈ segs) :
     ∃ g ∈ sentences segs, Seg.slot f id ∈ g ∧ (∀ q ∈ slotsOf g, q.2 = id) ∧
@@ -161,18 +163,18 @@ theorem render_value_sentence {p : Policy} {chart : List MedReq} {out r : List C
     | true => rfl
     | false =>
       exfalso
-      have := sentenceOk_free_no_slot hsg hc (Seg.slot f id) hslot
+      have := sentenceOk_free_no_slot hn hsg hc (Seg.slot f id) hslot
       simp [Seg.isSlot] at this
-  exact ⟨g, hg, hslot, sentenceOk_one_id hsg hm, sentenceOk_value_shape hsg hv⟩
+  exact ⟨g, hg, hslot, sentenceOk_one_id hsg hm, sentenceOk_value_shape hn hsg hv⟩
 
 theorem render_daily_sentence {p : Policy} {chart : List MedReq} {out r : List Char}
-    {segs : List Seg} {id : List Char}
+    {segs : List Seg} {id : List Char} (hn : p.numberOnly = false)
     (h : render p chart out = .ok r) (hp : parseTemplate out = some segs)
     (hs : Seg.slot .daily id ∈ segs) :
     ∃ g ∈ sentences segs, Seg.slot .daily id ∈ g ∧
       ((Seg.slot .dose id ∈ g ∧ Seg.slot .route id ∈ g ∧ Seg.slot .frequency id ∈ g) ∨
         Seg.slot .sig id ∈ g) := by
-  obtain ⟨g, hg, hgs, hid, hshape⟩ := render_value_sentence h hp hs
+  obtain ⟨g, hg, hgs, hid, hshape⟩ := render_value_sentence hn h hp hs
   have key : ∀ f', Item.s f' ∈ itemsOf g → Seg.slot f' id ∈ g := by
     intro f' hf'
     obtain ⟨id', hid'⟩ := item_slot g f' hf'

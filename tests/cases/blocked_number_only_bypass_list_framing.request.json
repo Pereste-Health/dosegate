@@ -1,0 +1,3 @@
+{
+  "output": "Here is the list of your medicines. Take {{drug:m1}} {{dose:m1}}."
+}
